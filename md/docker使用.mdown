@@ -1,0 +1,12 @@
+安装docker后执行命令都提示
+`Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+`
+
+`service docker start`启动docker
+`docker info`还是提示这个信息
+`sudo docker info`意外的可以了
+`docker pull ubuntu:14.04`拉取镜像
+`sudo docker run hello-world`会自动拉取hello-world镜像
+
+### 添加当前用户到docker用户组以避免每次运行都加sudo
+`sudo adduser <username> docker`我是重启了以后才生效

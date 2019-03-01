@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <title>vue focus，blur事件</title>
+    <meta name="description" content="github blog">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.13/vue.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.3/vue.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <header>
+            <h1 class="title"><a href="http://www.yuedun.wang">www.yuedun.wang</a></h1>
+        </header>
+        <div id="container">
+            <p class="tagline">github page建立的博客</p>
+            <div id="main" role="main">
+                <div class="download-bar">
+                    <div class="inner">
+                        <a href="https://github.com/yuedun" class="code">View www.yuedun.wang on GitHub</a>
+                    </div>
+                    <span class="blc"></span><span class="trc"></span>
+                </div>
+                <article class="markdown-body">
+                    <h3>
+                        <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true">
+                            <span aria-hidden="true" class="octicon octicon-link"></span>
+                        </a>
+                    </h3>
+                    <h4>vue focus，blur事件</h4>
+                    <p>点击下面文本框触发focus事件</p>
+                    <p>点击页面其他地方触发blur事件</p>
+                    <p>修改文本框内容触发watch监听事件，具体改变内容可在控制台查看</p>
+                    <input type="text" @blur="bl" @focus="fs" v-model="message" placeholder="点击触发事件">
+                    <p v-text="message"></p>
+                    <button @click="cl">点击</button>
+                    <p>注意：如果发现功能不能正常实现把script放到最后，放在body结束标签前，<code>el: '#app'</code>这个id最好不要放在html标签和body标签上，vue2.x版本和vue1.x版本这点上有区别。<b style="color: red">详情参考本页面源码</b></p>
+                </article>
+    </div>
+        </div>
+        <link rel="import" href="./footer.html?__inline">
+    </div>
+    <div class="current-section">
+        <a href="#top">Scroll to top</a>
+        <a href="https://github.com/yuedun/yuedun.github.io/tarball/master" class="tar">tar</a><a href="https://github.com/yuedun/yuedun.github.io/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+        <p class="name"></p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: ''
+            },
+            methods:{
+                bl: function() {
+                    console.log("这是blur事件")
+                    this.message = "这是blur事件";
+                },
+                fs: function(e) {
+                    console.log("这是focus事件")
+                    this.message = "这是focus事件";
+                },
+                cl: function() {
+                    console.log("这是click事件")
+                    this.message = "这是click事件";
+                }
+            },
+            watch:{
+                "message": function(newVal, oldVal){
+                    console.log('new: %s, old: %s', newVal, oldVal)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

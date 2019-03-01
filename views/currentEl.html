@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" href="../stylesheets/github-dark.css">
+    <title>vuevue click事件获取当前元素对象</title>
+    <meta name="description" content="github blog">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.13/vue.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.3/vue.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper" id="app">
+        <header>
+            <h1 class="title"><a href="http://www.yuedun.wang">www.yuedun.wang</a></h1>
+        </header>
+        <div id="container">
+            <p class="tagline">github page建立的博客</p>
+            <div id="main" role="main">
+                <div class="download-bar">
+                    <div class="inner">
+                        <a href="https://github.com/yuedun" class="code">View www.yuedun.wang on GitHub</a>
+                    </div>
+                    <span class="blc"></span><span class="trc"></span>
+                </div>
+                <article class="markdown-body">
+                    <h3>
+                        <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true">
+                            <span aria-hidden="true" class="octicon octicon-link"></span>
+                        </a>
+                    </h3>
+                    <h4>vue focus，blur事件</h4>
+                    <ul>
+						<li v-on:click="say('hello!', $event)">点击当前行文本</li>
+						<li v-on:click="say('hello!', $event)">第二行内容</li>
+						<li v-on:click="say('hello!', $event)">第三行内容</li>
+					</ul>
+                    <p><b style="color: red">详情参考本页面源码</b></p>
+                </article>
+            </div>
+        </div>
+        <footer>
+            <div class="owner">
+                <p>
+                    <a href="https://github.com/yuedun" class="avatar"><img src="https://avatars0.githubusercontent.com/u/7362116?v=3&amp;s=60" width="48" height="48"></a>View <a href="https://github.com/yuedun">yuedun</a> on <a href="https://www.github.com">GitHub</a></p>
+            </div>
+            <div class="creds">
+                <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+            </div>
+        </footer>
+    </div>
+    <div class="current-section">
+        <a href="#top">Scroll to top</a>
+        <a href="https://github.com/yuedun/yuedun.github.io/tarball/master" class="tar">tar</a><a href="https://github.com/yuedun/yuedun.github.io/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+        <p class="name"></p>
+    </div>
+    <script>
+			new Vue({
+				el: '#app',
+				data: {
+			    	message: 'Hello Vue.js!'
+				},
+				methods: {
+					say: function(msg, event) { 
+						//获取点击对象      
+						var el = event.currentTarget;
+						alert("当前对象的内容："+el.innerHTML);
+					}
+				}
+			})
+		</script>
+</body>
+
+</html>

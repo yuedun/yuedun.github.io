@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js复制</title>
+    <link href="../stylesheets/mdstyle.css" rel="stylesheet" type='text/css'/>
+    <style type="text/css">
+    	#cptext{
+    		color: red;
+    	}
+    </style>
+</head>
+
+<body>
+	<article class="markdown-body">
+		<p>第一种复制方式：复制input输入框中的内容</p>
+	    <input type="text" id="website" value="http://yuedun.duapp.com" style="display:block;" />
+	    <button data-copytarget="#website" onclick="copy(event)">copy</button>
+	    <pre>
+	    	<code class="javascript">
+function copy(e) {
+	// 搜索目标元素
+	var
+	    t = e.target,
+	    c = t.dataset.copytarget,
+	    inp = (c ? document.querySelector(c) : null);
+	// 判断元素是否能被选中
+	if (inp) {
+	    inp.style.display = 'block';
+	    // 选择文本
+	    inp.select();
+	    try {
+	        // 复制文本
+	        document.execCommand('copy');
+	        inp.style.display = 'none';
+	        inp.blur();
+	    } catch (err) {
+	        alert('please press Ctrl/Cmd+C to copy');
+	    }
+	}
+}
+	    	</code>
+	    </pre>		
+		<hr>
+		<p>第二种复制方式：复制普通标签中的文本</p>
+		<p id="cptext">这是第二种方式复制的内容</p>
+		<button data-copytarget="#cptext" onclick="copy2(event)">copy</button>
+		<pre>
+	    	<code class="javascript">
+function copy2(e) {
+	var urlField = document.querySelector('#cptext');
+	var range = document.createRange();
+	urlField.style.display = "block";
+	range.selectNode(urlField);
+	window.getSelection().addRange(range);
+	document.execCommand('copy');
+	window.getSelection().removeAllRanges();
+	urlField.style.display="none"
+}
+	    	</code>
+	    </pre>
+	</article>
+	<script>
+	    function copy(e) {
+            // 搜索目标元素
+            var
+                t = e.target,
+                c = t.dataset.copytarget,
+                inp = (c ? document.querySelector(c) : null);
+            // 判断元素是否能被选中
+            if (inp) {
+                // inp.style.display = 'block';
+                // 选择文本
+                inp.select();
+                try {
+                    // 复制文本
+                    document.execCommand('copy');
+                    // inp.style.display = 'none';
+                    inp.blur();
+                } catch (err) {
+                    alert('please press Ctrl/Cmd+C to copy');
+                }
+            }
+        }
+        function copy2(e) {
+            var urlField = document.querySelector('#cptext');
+            var range = document.createRange();
+            // urlField.style.display = "block";
+            range.selectNode(urlField);
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            // urlField.style.display="none"
+        }
+    </script>
+</body>
+
+</html>
