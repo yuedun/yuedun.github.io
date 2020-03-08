@@ -1,0 +1,1 @@
+window.isResponse=false
