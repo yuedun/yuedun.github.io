@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CI/CD on 月盾的个人博客</title>
+    <link>/tags/ci/cd/</link>
+    <description>Recent content in CI/CD on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="/tags/ci/cd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>typescript不检查node_moduls</title>
+      <link>/blogdetail/60b48e405caa4b4dc69e3abf/</link>
+      <pubDate>Fri, 11 Jun 2021 14:16:17 +0800</pubDate>
+      
+      <guid>/blogdetail/60b48e405caa4b4dc69e3abf/</guid>
+      <description>tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
+node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&amp;gt; void) =&amp;gt; void;~~~~~~~~~~~node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&amp;gt; void) =&amp;gt; void;~~~~~~~~~~~node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.118 touch: (sid: string, session: Express.</description>
+    </item>
+    
+    <item>
+      <title>朱雀发布系统支持scp（rsync）发布</title>
+      <link>/blogdetail/60950c9ee76f307341586548/</link>
+      <pubDate>Fri, 11 Jun 2021 14:16:17 +0800</pubDate>
+      
+      <guid>/blogdetail/60950c9ee76f307341586548/</guid>
+      <description>去年花了三天时间开发了一个简易版的nodejs发布系统，它是基于pm2自带的deploy机制开发的，主要原理就是在两台装有pm2的机器直接通信，并执行相应的命令。再往简单了说就是在发布机上远程执行命令，而朱雀发布系统提供了一个图形界面而已。
+当时把这个系统定位为nodejs专用发布系统，因为它依赖了pm2，而pm2则是nodejs专用的进程管理工具，其他语言用不到。这个系统的上线也算是解决了我司一直以来没有合适的nodejs发布系统的空缺。
+经过9个月的使用，也算比较稳定。但是也存在问题，最大的问题是部署应用方面比较繁琐。
+基本流程如下：
+ 发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。  部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
+使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
+最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。 朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
+ 朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统</description>
+    </item>
+    
+  </channel>
+</rss>
