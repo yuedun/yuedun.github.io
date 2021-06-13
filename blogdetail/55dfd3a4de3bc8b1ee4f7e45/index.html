@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>sequelizejs中where条件与order排序的使用 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="最基本的where条件：jsPost.findAll({    where: {        authorId: 2    }}); SELECT * FRO">
+		<meta property="og:title" content="sequelizejs中where条件与order排序的使用" />
+<meta property="og:description" content="最基本的where条件：jsPost.findAll({    where: {        authorId: 2    }}); SELECT * FRO" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2015-08-28T03:21:08&#43;00:00" />
+<meta property="article:modified_time" content="2015-08-28T03:21:08&#43;00:00" />
+
+
+		<meta itemprop="name" content="sequelizejs中where条件与order排序的使用">
+<meta itemprop="description" content="最基本的where条件：jsPost.findAll({    where: {        authorId: 2    }}); SELECT * FRO"><meta itemprop="datePublished" content="2015-08-28T03:21:08&#43;00:00" />
+<meta itemprop="dateModified" content="2015-08-28T03:21:08&#43;00:00" />
+<meta itemprop="wordCount" content="326">
+<meta itemprop="keywords" content="" />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">sequelizejs中where条件与order排序的使用</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-08-28T03:21:08Z">2015-08-28 03:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>最基本的where条件：
+```js
+Post.findAll({
+where: {
+authorId: 2
+}
+});
+// SELECT * FROM post WHERE authorId = 2</p>
+<p>Post.findAll({
+where: {
+authorId: 12,
+status: active
+}
+});</p>
+<p>// SELECT * FROM post WHERE authorId = 12 AND status = &lsquo;active&rsquo;;</p>
+<p>Post.destroy({
+where: {
+status: &lsquo;inactive&rsquo;
+}
+});
+// DELETE FROM post WHERE status = &lsquo;inactive&rsquo;;</p>
+<p>Post.update({
+updatedAt: null,
+},
+{
+where: {
+deletedAt: {
+$ne: null
+}
+}
+});</p>
+<p>// UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL;
+```
+如果涉及到or的使用，sequelize也提供了很好的解决方案
+```js
+where: {
+rank: {
+$or: {
+$lt: 100,
+$eq: null
+}
+}
+}</p>
+<p>// rank &lt; 1000 OR rank IS NULL
+where: {
+createdAt: {
+$lt: new Date(),
+$gt: new Date(new Date() - 24 * 60 * 60 * 1000)
+}
+}</p>
+<p>// createdAt &lt; [timestamp] AND createdAt &gt; [timestamp]
+where: {
+$or: [
+{
+title: {
+$like: &lsquo;Boat%&rsquo;
+}
+},
+{
+description: {
+$like: &lsquo;%boat%&rsquo;
+}
+}
+]
+}</p>
+<p>// title LIKE &lsquo;Boat%&rsquo; OR description LIKE &lsquo;%boat%&rsquo;
+```
+相同字段不同条件用
+```js
+rank: {
+$or: {
+$lt: 100,
+$eq: null
+}
+}</p>
+<p>// rank &lt; 1000 OR rank IS NULL
+```
+多个字段的or操作
+```js
+$or: [
+{
+title: {
+$like: &lsquo;Boat%&rsquo;
+}
+},
+{
+description: {
+$like: &lsquo;%boat%&rsquo;
+}
+}
+]</p>
+<p>//title LIKE &lsquo;Boat%&rsquo; OR description LIKE &lsquo;%boat%&rsquo;
+```
+以下是sequelize的排序使用方法：
+```js
+something.findOne({
+order: [
+[&lsquo;username&rsquo;, &lsquo;DESC&rsquo;],
+// Will order by max(age)
+sequelize.fn(&lsquo;max&rsquo;, sequelize.col(&lsquo;age&rsquo;)),</p>
+<pre><code>// Will order by max(age) DESC
+\[sequelize.fn('max', sequelize.col('age')), 'DESC'\],
+
+// Will order by otherfunction(\`col1\`, 12, 'lalala') DESC
+\[sequelize.fn('otherfunction', sequelize.col('col1'), 12, 'lalala'), 'DESC'\],
+
+// Both the following statements will be treated literally so should be treated with care
+'name',
+'username DESC'
+\]
+</code></pre>
+<p>})
+```
+其中有一段需要特别说明一下：
+```js
+// Will order by otherfunction(`col1`, 12, &lsquo;lalala&rsquo;) DESC</p>
+<p>[sequelize.fn(&lsquo;otherfunction&rsquo;, sequelize.col(&lsquo;col1&rsquo;), 12, &lsquo;lalala&rsquo;), &lsquo;DESC&rsquo;],
+```
+这个otherfunction代表了其他更多函数，比如我使用的一段代码：
+```js
+where: {
+groupId: params.groupId,
+$or: [{
+state: params.state,
+releaseDate: {
+$eq: null
+}
+},
+{
+releaseDate: {
+$lt: new Date()
+}
+}
+]
+},</p>
+<p>order: [[sequelize.fn(&lsquo;ifnull&rsquo;, sequelize.col(&lsquo;releaseDate&rsquo;), sequelize.col(&lsquo;createDate&rsquo;)), &lsquo;DESC&rsquo;]]</p>
+<p>//ORDER BY ifnull(`releaseDate`,`createDate`) DESC;
+```
+需要排序的字段也要使用`sequelize.col(&lsquo;releaseDate&rsquo;)`处理，不过也不是必须的，这样是为了能使代码统一，否则就是这样：`ORDER BY ifnull(`releaseDate`, &lsquo;creat eDate&rsquo;) DESC;` `createDate`使用单引号包括的`releaseDate`使用反单引号包括的</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/55ab0f6ed366f15412cbf596/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">微信开发通过公网访问本地服务器</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/55e3e840db5ac9c2be76b2f9/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">一次简单的前端页面优化</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

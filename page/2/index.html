@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta name="generator" content="Hugo 0.83.1" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="欢迎访问我的博客">
+		<meta property="og:title" content="月盾的个人博客" />
+<meta property="og:description" content="欢迎访问我的博客" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/" />
+
+
+		<meta itemprop="name" content="月盾的个人博客">
+<meta itemprop="description" content="欢迎访问我的博客">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的个人博客">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main"><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ff449035e80c6649222da2c/" rel="bookmark">
+			基于sapper开发svelte项目配置本地代理
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-05T11:09:55Z">2021-01-05 11:09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		sapper可能被放弃更新，如果您要继续使用svelte，可以考虑使用sveltekit
+ 最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
+ 服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试）  可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
+遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
+import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.com&#39;, pathRewrite: { &#39;^/api&#39;: &#39;&#39; }, secure: false, changeOrigin: true, })) .
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ff3db095e80c6649222d94e/" rel="bookmark">
+			svelte项目rollup配置px2rem
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-05T03:20:41Z">2021-01-05 03:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		使用svelte开发项目时遇到需要将px转换成rem的需求，有试过postcss-px2rem，postcss-pxtorem，等postcss插件，都没成成功，最后找到了postcss-units插件成功实现。 完整rollup配置文件如下： converts px to rem 该配置是sapper项目配置
+import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-resolve&#39;; import replace from &#39;@rollup/plugin-replace&#39;; import commonjs from &#39;@rollup/plugin-commonjs&#39;; import url from &#39;@rollup/plugin-url&#39;; import svelte from &#39;rollup-plugin-svelte&#39;; import babel from &#39;@rollup/plugin-babel&#39;; import { terser } from &#39;rollup-plugin-terser&#39;; import config from &#39;sapper/config/rollup.js&#39;; import pkg from &#39;./package.json&#39;; import sveltePreprocess from &#39;svelte-preprocess&#39;; // import { less } from &#39;svelte-preprocess&#39;; const postcssUnits = require(&#39;postcss-units&#39;); const mode = process.env.NODE_ENV; const dev = mode === &#39;development&#39;; const legacy = !
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fea9271de75f459aa011018/" rel="bookmark">
+			svelte函数传参
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-12-29T02:20:33Z">2020-12-29 02:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		svelte给dom对象绑定事件和vue框架类似。 定义函数：
+function handler(index){ alert(&quot;hello&quot;, index); } 绑定事件：
+&lt;button on:click={handler}&gt;点击&lt;/button&gt;
+但是带参函数的使用就略有不同了，函数handler的参数index需要传入的时候，不能直接这样使用&lt;button on:click={handler(123)}&gt;点击&lt;/button&gt;,这样的写法会在页面打开时直接执行，而不是在点击按钮的时候执行。
+这是初学svelte的时候比较郁闷的事，官方文档中也没有明显的文档说明如何传参。 正确的传参方式是这样的： &lt;button on:click={() =&gt; handler(123)}&gt;点击&lt;/button&gt; 将on:click的内容改写为匿名函数，在函数中调用。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fc7321dc0ec0c27f57ace6e/" rel="bookmark">
+			go单元测试初始化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-12-02T06:20:13Z">2020-12-02 06:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		go单元测试会遇到这样的场景： 写好了service层函数getUser()。然后测试测试getUser函数。有个问题是，函数中使用了数据库连接，如果直接测试的话会报错误，比如空指针错误。
+ panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
+ 如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
+func TestMain(m *testing.M) { fmt.Println(&#34;begin&#34;) dba, err := gorm.Open(&#34;sqlite3&#34;, &#34;../../website.db&#34;) db.SQLLite = dba if err != nil { panic(err) } m.Run() fmt.Println(&#34;end&#34;) } func TestProjectUsers(t *testing.T) { userService := user.NewService(db.SQLLite) users, err := userService.GetProjectUsers(25) if err != nil { t.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fc1f965c0ec0c27f57ac7c9/" rel="bookmark">
+			Svelte3路由
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-28T07:16:53Z">2020-11-28 07:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		svelte目前没有提供官网路由组件，不过可以在社区中找到。本文介绍的是svelte-spa-router的使用方法。
+npm i svelte-spa-router 参考以下目录结构创建文件（不是必须）
+router.js:
+import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = { &#39;/&#39;: index, &#39;/a&#39;: a, &#39;/b&#39;: b } 动态导入组件和代码分割：
+import { wrap } from &#39;svelte-spa-router/wrap&#39; import index from &#39;./index/index.svelte&#39;; export const routes = { &#39;/&#39;: index, &#39;/a&#39;: wrap({ asyncComponent: () =&gt; import(&#39;./a/a.svelte&#39;) }), // &#39;/b&#39;: b 	// 动态加载  &#39;/b&#39;: wrap({ asyncComponent: () =&gt; import(&#39;./b/b.svelte&#39;) }), } 动态导入组件的优点是组件不会一起打包，而是单独的组件文件，在打开对应的页面时才会请求，可以有效减少包文件大小。 App.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fb757025edb9b37630b808b/" rel="bookmark">
+			vscode远程开发应用场景
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-20T05:41:22Z">2020-11-20 05:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		vscode远程开发 vscode远程开发功能在2019年5月份发布，到现在已经有一年半的时间了，但是周围的人很少提及此功能，并不是没有人使用vscode，而是对此没有强烈需求。
+那么远程开发还有什么用呢？下面我来举些列子。
+关于vscode远程环境搭建本文不重复说明，网上有大量教程，大家只需要安装remote development插件基本都可以使用起来。
+远程开发，顾名思义就是连接远端服务器进行开发，这样的场景确实不是很常见，但是有时候却是很有用，能够解决燃眉之急。
+本地主机性能差 有一些大型项目对电脑的要求也较高，编译耗时，跑起来吃内存，我们的常规解决方案是升级电脑内存，升级硬盘，总之就是换高配电脑，如果是换一台也倒罢了，如果是一个团队都要使用更高配的电脑，那这样的成本还是挺高的。
+此时利用远程开发功能，所有人共用一台8核16G服务器就足够了。能够解决编译耗时，吃内存等问题。
+开发环境统一 现代大多数应用服务是跑在Linux上的，而开发环境则有Windows，Mac，有些服务在开发环境下无法顺利跑起来，这种情况就可以利用远程开发，不再需要虚拟机或WSL了，在Linux上部署应用，在Windows上开发。
+远程调试 远程调试我想很多人都有过这样的需求，但是却从来没有过真正的实践，原因是太难搞了。线上出问题，本地无法复现，真希望能够直接调试线上代码，但是无奈无法实现。现在好了，有了vscode远程开发，调试就变得容易了。
+远程编辑文件 在Linux上编辑文件时使用的vim编辑器对大多数人来说有些头大，能在vscode中编辑文本就舒服多了。只需要使用vscode连接远程服务可以很方便打开文件并编辑。
+在家临时远程开发 作为开发的我们，每天下班都要背着电脑回家，主要原因就是防止线上有问题，能够打开电脑调试代码。一般来说并不是家里没有电脑，而是没有能够正常运行的开发环境。
+而远程开发正好能解决该问题，我们需要的仅仅是一台装有vscode的普通电脑即可，不需要再操心开发环境，各种SDK，C++，Python，Nodejs等等八辈子不用的软件装了一大堆，还需要经常更新才行。
+节省成本 大多数开发人员是不需要经常开发大型项目和远程调试代码的，但是不是完全没有，这样就需要为了不时之需而配置笔记本电脑，而笔记本电脑一般相对台式机是又贵性能还低，公司要为了应对偶发情况而给开发人员配备笔记本电脑，会造成资源浪费，成本升高。
+如果有了远程开发环境，则能应对临时性工作，大大降低成本。
+用iPad写代码 如果你觉得vscode远程开发还不够酷？那在iPad中写代码呢？
+vscode远程开发虽好，但还有有局限性，毕竟还是需要一台可以安装vscode的电脑，还是不能随时随地的写代码。现在我要告诉你如何在iPad中写代码！
+code-server是一个可以运行在服务器上的web项目，这下我们可以在浏览器中使用vscode了，可以在浏览器中打开vscode的，自然就可以使用iPad来写代码了。 Eclipse Theia https://gitpod.io/#https://github.com/eclipse-theia/theia 额，希望苹果能给我广告费！
+再或者使用使用codespaces也可以在线编辑代码，https://mp.weixin.qq.com/s/Eutjgbx_nofmuhU2yBGhxg
+最后 贴一篇带图的环境搭建教程真香！使用 VSCode 远程开发调试
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fb32fc75edb9b37630b7a6a/" rel="bookmark">
+			通用的数据库GUI工具
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-17T02:04:55Z">2020-11-17 02:04</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		MySQL常用的客户端是Navicat，SQLyog等，本文推荐另一款通用的客户端：DBeaver DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5faa34535edb9b37630b6e99/" rel="bookmark">
+			puppeteer模拟3G网络
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-10T06:33:55Z">2020-11-10 06:33</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		puppeteer要模拟3G，4G网络需要利用DevTools Protocol。 Chrome DevTools Protocol
+page = await browser.newPage(); // 模拟3g网络  let cdp = await page.target().createCDPSession(); await cdp.send(&#39;Network.emulateNetworkConditions&#39;, { &#39;offline&#39;: false, &#39;downloadThroughput&#39;: 600 * 1024,//(bytes/sec) 3G最高600K/s 4G 最高10M/s  &#39;uploadThroughput&#39;: 600 * 1024,//(bytes/sec)  &#39;latency&#39;: 0 }); await page.setCacheEnabled(false); await page.goto(url); 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fa0f8e55edb9b37630b65f7/" rel="bookmark">
+			postman使用技巧
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-03T06:29:57Z">2020-11-03 06:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		postman是开发人员必备的接口测试工具，虽然经常使用，但是并不会使用到所有功能，除了简单的接口测试外，它还有很多实用的功能，如果充分利用起来，能使我们的工作事半功倍。
+ 环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例  环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
+环境变量配置
+环境变量使用
+环境变量切换
+捕获请求和cookie 能够直接将浏览器中的请求和cookie同步到postman，省去手动复制请求接口和cookie到postman中。 同时，对于需要登录后使用的接口，postman可以直接使用浏览器的登录状态，而不必复制cookie。 举例： 收藏接口与分享接口 将自己保存的接口分享与他人，直接拿来即可使用。 如果安装了Chrome插件，则可以直接的浏览器中打开链接。使用客户端需要使用import来导入。 批量测试 保存的多个接口批量测试。 编写文档和示例 对于团队协作很有用，接口交流利器。不仅有了请求参数，添加一个example还可以看到接口返回参数。 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f6ae2145edb9b37630b34c1/" rel="bookmark">
+			vue nuxt组建注册
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-23T05:50:12Z">2020-09-23 05:50</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Nuxt.js 2.13+可以扫描并自动导入您的组件，不再需要在该script部分中手动导入它们！
+nuxt.config配置：
+export default { components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
+组件目录：
+components/ ComponentFoo.vue ComponentBar.vue 使用
+&lt;template&gt; &lt;ComponentFoo /&gt; &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
+	</div>
+</article>
+	</main>
+	
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/">«</a>
+	<span class="pagination__item pagination__item--current">2/19</span>
+	<a class="pagination__item pagination__item--next btn" href="/page/3/">»</a>
+</div>
+	
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/606d512c54277a10496a38ae/">使用sveltekit开发一个服务端渲染（SSR）项目</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/bae/">BAE</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/docker/">docker</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">Golang</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/mongodd/">MongoDd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ssh/">SSH</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/contributions/" title="Contributions ">Contributions </a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/foreach/" title="forEach">forEach</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongo/" title="mongo">mongo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title=" node"> node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="node.js">node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/null/" title="null">null</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2-logrotate%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/" title="pm2-logrotate日志分割">pm2-logrotate日志分割</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/protoc-gen-micro/" title="protoc-gen-micro">protoc-gen-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px2rem/" title="px2rem">px2rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pxtorem/" title="pxtorem">pxtorem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px%E8%BD%AC%E6%8D%A2%E6%88%90rem/" title="px转换成rem">px转换成rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime-text/" title="sublime text">sublime text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte%E4%BC%A0%E5%8F%82/" title="svelte传参">svelte传参</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%B8%8A%E6%B5%B7/" title="上海">上海</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/" title="元素对象">元素对象</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%83%A8%E7%BD%B2/" title="部署">部署</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

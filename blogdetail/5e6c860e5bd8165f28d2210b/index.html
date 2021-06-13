@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>go-micro v2弃用了consul作为默认的服务发现 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="很遗憾，go-micro v2版本不再使用**consul**作为服务发现中间件，官方文档也没有**consul**相关的文档，而是默认改用了**mdns**，">
+		<meta property="og:title" content="go-micro v2弃用了consul作为默认的服务发现" />
+<meta property="og:description" content="很遗憾，go-micro v2版本不再使用**consul**作为服务发现中间件，官方文档也没有**consul**相关的文档，而是默认改用了**mdns**，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/5e6c860e5bd8165f28d2210b/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2020-03-14T07:21:50&#43;00:00" />
+<meta property="article:modified_time" content="2020-03-14T07:21:50&#43;00:00" />
+
+
+		<meta itemprop="name" content="go-micro v2弃用了consul作为默认的服务发现">
+<meta itemprop="description" content="很遗憾，go-micro v2版本不再使用**consul**作为服务发现中间件，官方文档也没有**consul**相关的文档，而是默认改用了**mdns**，"><meta itemprop="datePublished" content="2020-03-14T07:21:50&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-14T07:21:50&#43;00:00" />
+<meta itemprop="wordCount" content="28">
+<meta itemprop="keywords" content="go-micro,consul,etcd," />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">go-micro v2弃用了consul作为默认的服务发现</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-14T07:21:50Z">2020-03-14 07:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>很遗憾，go-micro v2版本不再使用<strong>consul</strong>作为服务发现中间件，官方文档也没有<strong>consul</strong>相关的文档，而是默认改用了<strong>mdns</strong>，生产推荐<strong>etcd</strong>。</p>
+<p>问题：<a href="https://github.com/micro/go-micro/issues/890">I can&rsquo;t set registry with consul</a></p>
+<p>解答：《<a href="https://micro.mu/blog/2019/10/04/deprecating-consul.html">Deprecating Consul in favour of Etcd</a>》</p>
+<blockquote>
+<p>超过4年的时间，Consul一直是Micro的默认服务发现系统之一，为我们提供了良好的服务。实际上，从一开始，它就是用于注册表的默认机制以及入门所需的唯一基础依赖项。</p>
+</blockquote>
+<blockquote>
+<p>从那时起，世界在不断发展，原生云技术也在不断发展。我们发现了许多与使用Consul的方式有关的问题。这不是对Consul的打击，而是对我们的用例的反思，以及对继续前进的需求。</p>
+</blockquote>
+<blockquote>
+<p>例如，我们将元数据和服务端点信息进行二进制编码，压缩和base64编码，然后再将它们存储为Consul标签，因为没有其他方法可以这样做。我们还非常严重地滥用Consul的分布式属性，这导致了许多关于raft共识的问题。</p>
+</blockquote>
+<blockquote>
+<p>不幸的是，我们发现现在该继续前进了。</p>
+</blockquote>
+<blockquote>
+<p>自2014年以来，Kubernetes真正成为了容器编排和基础服务平台中的一支计算力。因此，etcd成为了他们选择的键值存储的一种，它是基于raft共识构建的分布式键值存储。它已经发展到可以满足kubernetes的规模需求，并且已经以其他开源项目所没有的方式经过了实战测试。</p>
+</blockquote>
+<blockquote>
+<p>Etcd还是用于二进制数据的非常标准的Get / Put / Delete存储，这意味着我们可以轻松地编码和存储服务元数据，而不会出现零问题。它对所存储数据的格式没有意见。</p>
+</blockquote>
+<blockquote>
+<p>过去一周中，我们已将etcd迁移为Micro中的默认服务发现机制之一，并将在未来几周内弃用Consul。这是什么意思？好吧，我们将领事移交给我们社区维护的go-plugins存储库，并专注于支持etcd。</p>
+</blockquote>
+<blockquote>
+<p>我们知道许多用户正在使用Consul，这可能会导致中断。对我们来说，这是通往v2的重大突破，因此我们的下一个发行版将被标记为v2。您可以放心，您的v1发行版将继续按原样运行，但希望我们发布的下一个发行版是micro v2.0.0。</p>
+</blockquote>
+<p>参考项目：<a href="https://github.com/yuedun/micro-service">micro-service</a></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/go-micro/" rel="tag">go-micro</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/consul/" rel="tag">consul</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/etcd/" rel="tag">etcd</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">vscode正则查找替换</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/5e709b485bd8165f28d22394/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">go-micro线上部署，注册服务到etcd</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>linux下添加svn用户名密码 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="首先需要知道配置文件的位置，比如我们的服务器中我就找到很多关于svn的目录，甚至分不清哪个目录下才是真正的配置文件root@handou:~# find  -n">
+		<meta property="og:title" content="linux下添加svn用户名密码" />
+<meta property="og:description" content="首先需要知道配置文件的位置，比如我们的服务器中我就找到很多关于svn的目录，甚至分不清哪个目录下才是真正的配置文件root@handou:~# find  -n" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/562d9ca9c6ed32d312337025/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2015-10-26T03:23:21&#43;00:00" />
+<meta property="article:modified_time" content="2015-10-26T03:23:21&#43;00:00" />
+
+
+		<meta itemprop="name" content="linux下添加svn用户名密码">
+<meta itemprop="description" content="首先需要知道配置文件的位置，比如我们的服务器中我就找到很多关于svn的目录，甚至分不清哪个目录下才是真正的配置文件root@handou:~# find  -n"><meta itemprop="datePublished" content="2015-10-26T03:23:21&#43;00:00" />
+<meta itemprop="dateModified" content="2015-10-26T03:23:21&#43;00:00" />
+<meta itemprop="wordCount" content="34">
+<meta itemprop="keywords" content="" />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">linux下添加svn用户名密码</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-26T03:23:21Z">2015-10-26 03:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>首先需要知道配置文件的位置，比如我们的服务器中我就找到很多关于svn的目录，甚至分不清哪个目录下才是真正的配置文件</p>
+<p><code>root@handou:~# find / -name subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/src/org/apache/subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/src/org/tigris/subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/tests/org/apache/subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/tests/org/tigris/subversion</code></p>
+<p><code>/etc/bash_completion.d/subversion</code></p>
+<p><code>/etc/subversion</code></p>
+<p><code>/usr/share/doc/subversion</code></p>
+<p>查找所得结果可以确定应该是在 /etc/subversion下，切换到subversion下有多个文件：</p>
+<p>config  config.dpkg-dist  dav_svn.authz  dav_svn.passwd   passwd  servers</p>
+<p>可能需要一一查看下都是什么内容，其实主要是dav_svn.authz  dav_svn.passwd这两个文件，一个存放用户名，一个存放密码，dav_svn.authz内容包含账号和权限：</p>
+<p><code>[groups]</code></p>
+<p><code>apiadmin=yuedun</code></p>
+<p><code>[handou:/]</code></p>
+<p><code>@admin=rw</code></p>
+<p><code>@apiadmin=rw</code></p>
+<p>可以编辑这个文件添加账号，然后添加密码，但是不能直接编辑dav_svn.passwd，这里面是加密数据，需要使用Apache的htpasswd命令添加。</p>
+<p><code>htpasswd /etc/subversion/dav_svn.passwd&amp;nbsp; &amp;lt;用户名&amp;gt;</code></p>
+<p>然后会提示输入密码，就此完成svn账号设置。</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/5628ab0882f22d389ded545a/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">一个下载电子书籍的好网站</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/563069efaa0d5223f187dfa4/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">检测网站中未使用的css样式</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

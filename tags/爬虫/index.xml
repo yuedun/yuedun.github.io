@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>爬虫 on 月盾的个人博客</title>
+    <link>/tags/%E7%88%AC%E8%99%AB/</link>
+    <description>Recent content in 爬虫 on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 27 Jul 2020 13:09:20 +0000</lastBuildDate><atom:link href="/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>goquery 中文乱码</title>
+      <link>/blogdetail/5f1fb24c4536b06ac3897662/</link>
+      <pubDate>Mon, 27 Jul 2020 13:09:20 +0000</pubDate>
+      
+      <guid>/blogdetail/5f1fb24c4536b06ac3897662/</guid>
+      <description>乱码的情况目前有两种可能：
+ 常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。  关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&amp;quot;Accept-Encoding&amp;quot;, &amp;quot;gzip, deflate&amp;quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。</description>
+    </item>
+    
+  </channel>
+</rss>

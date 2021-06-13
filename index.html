@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="zh-cn">
 <head>
 	<meta name="generator" content="Hugo 0.83.1" />
 	<meta charset="UTF-8">
@@ -27,12 +27,10 @@
 <body class="body">
 		<header class="header">
 	
-	<div class="logo logo--mixed">
+	<div class="logo">
 		<div class="container">
 			<a class="logo__link" href="/" title="月盾" rel="home">
-				<div class="logo__item logo__imagebox">
-						<img class="logo__img" src="/img/placeholder.png">
-					</div><div class="logo__item logo__text">
+				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
 						<div class="logo__tagline">欢迎访问我的博客</div>
 					</div>
@@ -45,20 +43,13 @@
 <nav class="menu">
 	<div class="container">
 		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-			<span class="menu__btn-title" tabindex="-1">Menu</span>
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
 		</button>
 		<ul class="menu__list">
 			<li class="menu__item">
-				<a class="menu__link" href="/about/">
+				<a class="menu__link" href="/catalog/">
 					
-					<span class="menu__text">关于我</span>
-					
-				</a>
-			</li>
-			<li class="menu__item">
-				<a class="menu__link" href="/weibo/">
-					
-					<span class="menu__text">微博</span>
+					<span class="menu__text">目录</span>
 					
 				</a>
 			</li>
@@ -70,9 +61,9 @@
 				</a>
 			</li>
 			<li class="menu__item">
-				<a class="menu__link" href="/catalog/">
+				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">目录</span>
+					<span class="menu__text">关于我</span>
 					
 				</a>
 			</li>
@@ -102,7 +93,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
-node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void;~~~~~~~~~~~node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;~~~~~~~~~~~node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.118 touch: (sid: string, session: Express.
+node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 118 touch: (sid: string, session: Express.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -127,77 +118,443 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'glob
  发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。  部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
 使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
 最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。 朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
+ 朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统 title: &ldquo;朱雀发布系统支持scp（rsync）发布&rdquo; description: &ldquo;去年花了三天时间开发了一个简易版的[nodejs发布系统](https:www.yuedun.wangblogdetail5f41c9d65edb9b37630&rdquo; date: 2021-05-07T09:47:10.117Z draft: true
+categories:
+ &ldquo;工具使用&rdquo; tags:   去年花了三天时间开发了一个简易版的nodejs发布系统，它是基于pm2自带的deploy机制开发的，主要原理就是在两台装有pm2的机器直接通信，并执行相应的命令。再往简单了说就是在发布机上远程执行命令，而朱雀发布系统提供了一个图形界面而已。
+当时把这个系统定位为nodejs专用发布系统，因为它依赖了pm2，而pm2则是nodejs专用的进程管理工具，其他语言用不到。这个系统的上线也算是解决了我司一直以来没有合适的nodejs发布系统的空缺。
+经过9个月的使用，也算比较稳定。但是也存在问题，最大的问题是部署应用方面比较繁琐。
+基本流程如下：
+ 发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。  部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
+使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
+最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。 朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
  朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/608eb0b254277a10496a5f56/" rel="bookmark">
+			一体LED可伸缩变焦手电筒拆解
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-05-02T14:01:22Z">2021-05-02 14:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		先看看一体LED可伸缩变焦手电筒长什么样子
+这种手电筒刚买回来几个月就不亮了，以为没电了，充电了也不行，想拆开看看却发现无从下手，手电筒是一体的，并没有地方可扭开。
+按钮部位看起来是可拆解的，想要转动一下，发现无法转动，最后抱着死马当活马医的心态，大不了拆坏了，随便用工具撬了下尾部凹槽部分，发现有活动迹象，然后就继续撬，果然是大力出奇迹。最后就是下面图展示的样子，有明显损坏痕迹，不过也没办法，实在不好拆。拆开后发现电池线断了，将就着接上后就好了。
+最后，虽然不建议买这种手电筒，但是既然您看到本文了，那也就有救了。 祝大家五一快乐！ 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/60861bef54277a10496a54b6/" rel="bookmark">
+			easy-monitor qps监控
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-04-26T01:48:31Z">2021-04-26 01:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Easy-Monitor是一款轻量级的Node性能监控工具，仅仅需要项目入口 require 一次，就可以非常便捷地展示出进程的状态细节。
+Easy-Monitor主要提供以下的功能：
+ 找出执行时长耗费最久的5个或者更多的函数 找出那些执行时间超出预期的函数 找出v8引擎无法优化的函数  Easy-Monitor的特点：
+ 轻量级：非传统C/S物理分离模式，require 后即可使用，没有额外的监控server/agent部署成本。 运行时：针对的是运行时的函数性能以及内存细节进行处理展示，可用于线上生产环境项目。 无状态：永远展示的是开发者访问时的业务进程状态  关于监控qps，作者在文档中并没有提到qps这样的关键字，很多人也不知道怎么监控qps。 不过在监控界面中有这样的指标数据： 所以我从源码入手，找到了该数据指标的源头是这样的：
+const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_memory_percent * 100).toFixed(2)), maxDisk: max_disk_usage, disks: disks_json, load1: Number(load1.toFixed(2)), load5: Number(load5.toFixed(2)), load15: Number(load15.toFixed(2)), nodeCount: node_count, scavengeTotal: total_scavange_duration, scavengeAverage: scavange_duration_last_record, marksweepTotal: total_marksweep_duration, marksweepAverage: marksweep_duration_last_record, qps: Number((http_response_sent / 60).toFixed(2)), rtExpired: http_patch_timeout, rtAverage: http_rt, }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/606d512c54277a10496a38ae/" rel="bookmark">
+			使用sveltekit开发一个服务端渲染（SSR）项目
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-04-07T06:29:00Z">2021-04-07 06:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		上篇简单介绍了sapper和sveltekit的发展，目前sveltekit还只是Beta版本，有很多不确定因素存在，有可能会有大的变更，所以还不推荐在生产环境中使用，不过在个人项目和小项目中可以大胆尝试。
+今天我们就正式使用sveltekit开发一个web项目。
+第一步：创建项目
+mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
+第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
+我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问/blog路由，还需要创建index.svelte文件，内容如下：
+&lt;script context=&quot;module&quot;&gt; /** * @type {import('@sveltejs/kit').Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json .then((r) =&gt; r.json()) .then((posts) =&gt; { console.log(posts); return { props: { posts } }; }); } &lt;/script&gt; &lt;script&gt; export let posts; &lt;/script&gt; &lt;svelte:head&gt; &lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt; &lt;h1&gt;Recent posts&lt;/h1&gt; &lt;ul&gt; {#each posts as post} &lt;!
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/60628dfa8f0b5a0240684581/" rel="bookmark">
+			关于svelte框架——sapper和sveltekit的发展
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-30T02:33:30Z">2021-03-30 02:33</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		虽然您可能现在还没有听说过svelte，但是其实svelte的发展速度超过了你的想象。
+本文主要讲的是关于sapper和sveltekit这两款框架的发展。
+svelte作者里奇·哈里斯（Rich Harris）在2020年10月的svelte峰会上表示：sapper永远不会发布1.0版本。
+也就是说sapper不会发布正式版，一直处于非稳定版本。也可能放弃更新。
+主要原因是sapper多年来代码库变得凌乱，但更主要的原因是最近网络发生了很大变化。
+而作者放弃sapper后的另一种选择是开发SvelteKit。
+Sapper和SvelteKit都是svelte的开发框架，类似于vue的nuxt框架。
+sveltekit包含的功能有：
+  服务端渲染（SSR）
+  路由
+  typescript支持
+  less, scss支持
+  serverless
+  vite打包
+  可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
+创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
+ $ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &gt; svelte-kit dev &quot;--open&quot; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import './dist/cli.js'; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/60459dcf8e743369d9dd5a8f/" rel="bookmark">
+			/bin/rm: argument list too long
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-08T03:45:19Z">2021-03-08 03:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		有人在服务器上不小心执行了rm -fr /*，而我想在删除某个文件夹下面的文件却遇到/bin/rm: argument list too long。
+意思是我删除的文件太多了，这倒有点稀奇。
+那怎么才能删除呢？
+试着直接删除目录也不行，这问题能难倒我，但难不倒百度。
+使用ls | xargs -n 1000 rm -fr ls删除，可是一直在输出错误提示：
+rm: invalid option -- &#39;s&#39; Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
+删除方式是：
+rm -- -foo 或 rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
+ls | xargs -n 1000 rm -frv ls
+rm命令加个参数v，用来显示删除信息。
+最终会输出这样的提示信息，
+removed ‘zMJ1MgKdzgbjNsWawUcX7OO3WspyxZEU.json’
+为了让它在后台执行可以这样：
+ls | xargs -n 1000 rm -frv ls &amp;
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/60191322ebffed4856026fc7/" rel="bookmark">
+			firefox火狐新标签中打开书签
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-02T08:53:54Z">2021-02-02 08:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		火狐浏览器新建标签总是在当前打开标签之后，而不是在最后一个标签后新建。 1.about:config 2.browser.tabs.insertAfterCurrent设为false。
+新标签中打开书签 browser.tabs.loadBookmarksInTabs设置true。
+新标签中打开搜索 browser.search.openintab设置true.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ffffe3d3f518207e7235250/" rel="bookmark">
+			nestjs中使用携程Apollo配置中心
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-14T08:18:05Z">2021-01-14 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
+集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
+// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;); async function bootstrap() { try { const root = join(__dirname, &#39;../&#39;); let envFile = join(root, &#39;.env&#39;) dotenv.config({ &#34;path&#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ff7d7cc3f518207e72349ed/" rel="bookmark">
+			svelte history路由刷新后404
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-08T03:55:56Z">2021-01-08 03:55</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持history模式的使用上也不是很方便，试用过五六个支持history的路由后最终@spaceavocado/svelte-router算是满足了要求。
+ 使用简单 功能丰富 支持history和hash 我也是够难伺候的。  在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
+使用方法：
+//App.svelte &lt;script&gt; import RouterView from '@spaceavocado/svelte-router/component/view'; import { routes } from './router.js' &lt;/script&gt; &lt;RouterView /&gt; //router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = createRouter({ mode: &#34;HISTORY&#34;, routes: [ { path: &#39;/&#39;, name: &#39;HOME&#39;, component: index, }, { path: &#39;/a&#39;, name: &#39;a&#39;, component: a, }, { path: &#39;/b&#39;, name: &#39;b&#39;, component: b, }, { path: &#39;*&#39;, component: index, }, ], }); // index.
 	</div>
 </article>
 	</main>
 	
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/19</span>
+	<a class="pagination__item pagination__item--next btn" href="/page/2/">»</a>
+</div>
 	
 
 			</div>
 			<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="/" />
 	</form>
 </div>
 <div class="widget-recent widget">
-	<h4 class="widget__title">Recent Posts</h4>
+	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/606d512c54277a10496a38ae/">使用sveltekit开发一个服务端渲染（SSR）项目</a></li>
 		</ul>
 	</div>
 </div>
 
 <div class="widget-categories widget">
-	<h4 class="widget__title">Categories</h4>
+	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/categories/bae/">BAE</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/docker/">docker</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">Golang</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/mongodd/">MongoDd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ssh/">SSH</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
 			</li>
 		</ul>
 	</div>
 </div>
 <div class="widget-taglist widget">
-	<h4 class="widget__title">Tags</h4>
+	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/contributions/" title="Contributions ">Contributions </a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/foreach/" title="forEach">forEach</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongo/" title="mongo">mongo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title=" node"> node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="node.js">node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/null/" title="null">null</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2-logrotate%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/" title="pm2-logrotate日志分割">pm2-logrotate日志分割</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/protoc-gen-micro/" title="protoc-gen-micro">protoc-gen-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px2rem/" title="px2rem">px2rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pxtorem/" title="pxtorem">pxtorem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px%E8%BD%AC%E6%8D%A2%E6%88%90rem/" title="px转换成rem">px转换成rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime-text/" title="sublime text">sublime text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte%E4%BC%A0%E5%8F%82/" title="svelte传参">svelte传参</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%B8%8A%E6%B5%B7/" title="上海">上海</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/" title="元素对象">元素对象</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%83%A8%E7%BD%B2/" title="部署">部署</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
 	</div>
 </div>
 <div class="widget-social widget">
-	<h4 class="widget-social__title widget__title">Social</h4>
+	<h4 class="widget-social__title widget__title">社交</h4>
 	<div class="widget-social__content widget__content">
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Facebook" rel="noopener noreferrer" href="https://facebook.com/username" target="_blank">
-				<svg class="widget-social__link-icon icon icon-facebook" width="24" height="24" viewBox="0 0 352 352"><path d="m0 32v288c0 17.5 14.5 32 32 32h288c17.5 0 32-14.5 32-32v-288c0-17.5-14.5-32-32-32h-288c-17.5 0-32 14.5-32 32zm320 0v288h-83v-108h41.5l6-48h-47.5v-31c0-14 3.5-23.5 23.5-23.5h26v-43.5c-4.4-.6-19.8-1.5-37.5-1.5-36.9 0-62 22.2-62 63.5v36h-42v48h42v108h-155v-288z"/></svg>
-				<span>Facebook</span>
-			</a>
-		</div>
 		<div class="widget-social__item widget__item">
 			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
 				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
 				<span>GitHub</span>
 			</a>
 		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Email" href="mailto:example@example.com">
-				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
-				<span>example@example.com</span>
-			</a>
-		</div>
 
 		
 		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="" rel="noopener noreferrer" href="" target="_blank">
-				<span></span>
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
 			</a>
 		</div>
 		
@@ -210,8 +567,8 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'glob
 		
 		<div class="footer__copyright">
 			&copy; 2021 月盾.
-			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a> theme.</span>
-			<span><a href="/imprint">Copyright © 2021 月&amp;盾</a></span>
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
 	</div>
 </footer>

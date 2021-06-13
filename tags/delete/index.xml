@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>delete on 月盾的个人博客</title>
+    <link>/tags/delete/</link>
+    <description>Recent content in delete on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 26 Nov 2015 07:53:28 +0000</lastBuildDate><atom:link href="/tags/delete/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sequelizejs删除对象属性</title>
+      <link>/blogdetail/5656ba78c72f59d15379b4ba/</link>
+      <pubDate>Thu, 26 Nov 2015 07:53:28 +0000</pubDate>
+      
+      <guid>/blogdetail/5656ba78c72f59d15379b4ba/</guid>
+      <description>js中有个delete操作符可以删除对象的属性，比如下面代码：
+//objtest对象有个prop属性
+var objtest = {
+&amp;amp;nbsp; prop: &amp;amp;#39;delete me&amp;amp;#39;
+};
+//或者这么声明的对象
+var objtest = new Array();
+objtest[&amp;amp;#39;prop&amp;amp;#39;] = &amp;amp;#39;delete me&amp;amp;#39;;
+//删除属性&amp;amp;#39;prop&amp;amp;#39;：
+delete objtest.prop;
+//或者
+delete objtest[&amp;amp;#39;prop&amp;amp;#39;];
+//还可以删除任意变量
+var numb = 17;
+delete numb;
+但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = {
+name:&amp;quot;鸣人&amp;quot;,
+age: 16,
+gender: &amp;quot;男&amp;quot;,
+friends: [
+{
+name:&amp;quot;小樱&amp;quot;,
+age:16,
+gender:&amp;quot;女&amp;quot;,
+friends:[
+{
+name:&amp;quot;井野&amp;quot;,
+age:16,
+gender:&amp;quot;女&amp;quot;
+}
+]
+},
+{
+name:&amp;quot;佐助&amp;quot;,
+age:16,
+gender:&amp;quot;男&amp;quot;
+}
+]
+}
+鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
+据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
+但是还是有办法的，可以这样删除
+user.getDataValue(&amp;amp;quot;friends&amp;amp;quot;)[0].setDataValue(&amp;amp;quot;friends&amp;amp;quot;, undefined) 就是将属性设置为undefined，查询的时候就没有小樱的friends了。</description>
+    </item>
+    
+  </channel>
+</rss>

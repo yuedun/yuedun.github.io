@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sapper on 月盾的个人博客</title>
+    <link>/tags/sapper/</link>
+    <description>Recent content in sapper on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 05 Jan 2021 11:09:55 +0000</lastBuildDate><atom:link href="/tags/sapper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于sapper开发svelte项目配置本地代理</title>
+      <link>/blogdetail/5ff449035e80c6649222da2c/</link>
+      <pubDate>Tue, 05 Jan 2021 11:09:55 +0000</pubDate>
+      
+      <guid>/blogdetail/5ff449035e80c6649222da2c/</guid>
+      <description>sapper可能被放弃更新，如果您要继续使用svelte，可以考虑使用sveltekit
+ 最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
+ 服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试）  可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
+遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
+import sirv from &amp;#39;sirv&amp;#39;; import polka from &amp;#39;polka&amp;#39;; import compression from &amp;#39;compression&amp;#39;; import * as sapper from &amp;#39;@sapper/server&amp;#39;; import { createProxyMiddleware } from &amp;#39;http-proxy-middleware&amp;#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &amp;#39;development&amp;#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&amp;#39;/api&amp;#39;, createProxyMiddleware({ target: &amp;#39;https://example.com&amp;#39;, pathRewrite: { &amp;#39;^/api&amp;#39;: &amp;#39;&amp;#39; }, secure: false, changeOrigin: true, })) .</description>
+    </item>
+    
+  </channel>
+</rss>

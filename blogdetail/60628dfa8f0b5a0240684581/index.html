@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>关于svelte框架——sapper和sveltekit的发展 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="虽然您可能现在还没有听说过svelte，但是其实svelte的发展速度超过了你的想象。本文主要讲的是关于sapper和sveltekit这两款框架的发展。sve">
+		<meta property="og:title" content="关于svelte框架——sapper和sveltekit的发展" />
+<meta property="og:description" content="虽然您可能现在还没有听说过svelte，但是其实svelte的发展速度超过了你的想象。本文主要讲的是关于sapper和sveltekit这两款框架的发展。sve" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/60628dfa8f0b5a0240684581/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2021-03-30T02:33:30&#43;00:00" />
+<meta property="article:modified_time" content="2021-03-30T02:33:30&#43;00:00" />
+
+
+		<meta itemprop="name" content="关于svelte框架——sapper和sveltekit的发展">
+<meta itemprop="description" content="虽然您可能现在还没有听说过svelte，但是其实svelte的发展速度超过了你的想象。本文主要讲的是关于sapper和sveltekit这两款框架的发展。sve"><meta itemprop="datePublished" content="2021-03-30T02:33:30&#43;00:00" />
+<meta itemprop="dateModified" content="2021-03-30T02:33:30&#43;00:00" />
+<meta itemprop="wordCount" content="128">
+<meta itemprop="keywords" content="sveltekit,svelte," />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">关于svelte框架——sapper和sveltekit的发展</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-30T02:33:30Z">2021-03-30 02:33</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#创建sveltekit的方法">创建sveltekit的方法：</a></li>
+        <li><a href="#最后">最后</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>虽然您可能现在还没有听说过svelte，但是其实svelte的发展速度超过了你的想象。</p>
+<p>本文主要讲的是关于sapper和sveltekit这两款框架的发展。</p>
+<p>svelte作者里奇·哈里斯（Rich Harris）在2020年10月的svelte峰会上表示：sapper永远不会发布1.0版本。</p>
+<p>也就是说sapper不会发布正式版，一直处于非稳定版本。也可能放弃更新。</p>
+<p>主要原因是sapper多年来代码库变得凌乱，但更主要的原因是最近网络发生了很大变化。</p>
+<p>而作者放弃sapper后的另一种选择是开发<strong>SvelteKit</strong>。</p>
+<p><strong>Sapper</strong>和<strong>SvelteKit</strong>都是svelte的开发框架，类似于vue的nuxt框架。</p>
+<p>sveltekit包含的功能有：</p>
+<ul>
+<li>
+<p>服务端渲染（SSR）</p>
+</li>
+<li>
+<p>路由</p>
+</li>
+<li>
+<p>typescript支持</p>
+</li>
+<li>
+<p>less, scss支持</p>
+</li>
+<li>
+<p>serverless</p>
+</li>
+<li>
+<p>vite打包</p>
+</li>
+</ul>
+<p>可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。</p>
+<h3 id="创建sveltekit的方法">创建sveltekit的方法：</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+mkdir my-app
+
+cd my-app
+
+npm init svelte@next
+
+npm install
+
+npm run dev
+
+</code></pre></div><p>需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：</p>
+<pre><code>
+$ npm run dev -- --open
+
+
+&gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app
+
+&gt; svelte-kit dev &quot;--open&quot;
+
+D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2
+
+import './dist/cli.js';
+
+	SyntaxError: Unexpected string
+	at Module._compile (internal/modules/cjs/loader.js:723:23)
+	at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+	at Module.load (internal/modules/cjs/loader.js:653:32)
+	at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+	at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+	at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)
+	at startup (internal/bootstrap/node.js:283:19)
+	at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)
+									   
+	npm ERR! code ELIFECYCLE
+	npm ERR! errno 1
+	npm ERR! sveltekit-app@0.0.1 dev: `svelte-kit dev &quot;--open&quot;`
+	npm ERR! Exit status 1
+	npm ERR!
+	npm ERR! Failed at the sveltekit-app@0.0.1 dev script.
+	npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+   
+</code></pre><p><a href="https://www.yuedun.wang/blogdetail/606d512c54277a10496a38ae">使用sveltekit开发一个服务端渲染（SSR）项目</a></p>
+<h3 id="最后">最后</h3>
+<p>虽然svelte以及sveltekit现在还不成熟，不过值得期待。
+参考文献：
+<a href="http://www.diglog.com/story/1033371.html">http://www.diglog.com/story/1033371.html</a></p>
+<p><a href="https://kit.svelte.dev/docs#introduction-what-is-sveltekit">https://kit.svelte.dev/docs#introduction-what-is-sveltekit</a></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/sveltekit/" rel="tag">sveltekit</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/svelte/" rel="tag">svelte</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/60459dcf8e743369d9dd5a8f/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">/bin/rm: argument list too long</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/606d512c54277a10496a38ae/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">使用sveltekit开发一个服务端渲染（SSR）项目</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

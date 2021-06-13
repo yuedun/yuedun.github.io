@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>mongodb启动服务失败的解决办法之一 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="在执行下面第一行启动mongodb服务的时候，命令行一闪而过，具体看了下输出内容看不出端倪来，不过解决办法却是有的，就是直接删除掉D:Datadb下面的mong">
+		<meta property="og:title" content="mongodb启动服务失败的解决办法之一" />
+<meta property="og:description" content="在执行下面第一行启动mongodb服务的时候，命令行一闪而过，具体看了下输出内容看不出端倪来，不过解决办法却是有的，就是直接删除掉D:Datadb下面的mong" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/54681e1ee8183bcf964f88ec/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2014-11-16T03:46:38&#43;00:00" />
+<meta property="article:modified_time" content="2014-11-16T03:46:38&#43;00:00" />
+
+
+		<meta itemprop="name" content="mongodb启动服务失败的解决办法之一">
+<meta itemprop="description" content="在执行下面第一行启动mongodb服务的时候，命令行一闪而过，具体看了下输出内容看不出端倪来，不过解决办法却是有的，就是直接删除掉D:Datadb下面的mong"><meta itemprop="datePublished" content="2014-11-16T03:46:38&#43;00:00" />
+<meta itemprop="dateModified" content="2014-11-16T03:46:38&#43;00:00" />
+<meta itemprop="wordCount" content="211">
+<meta itemprop="keywords" content="" />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">mongodb启动服务失败的解决办法之一</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-16T03:46:38Z">2014-11-16 03:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/mongodd/" rel="category">MongoDd</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>在执行下面第一行启动mongodb服务的时候，命令行一闪而过，具体看了下输出内容看不出端倪来，不过解决办法却是有的，就是直接删除掉D:\Data\db下面的mongod.lock文件可以了</p>
+<p>C:\Program Files\MongoDB 2.6 Standard\bin&gt;mongod &ndash;dbpath=D:\Data\db<br>
+2014-11-16T11:35:43.244+0800<br>
+2014-11-16T11:35:43.252+0800 warning: 32-bit servers don't have journaling enabl<br>
+ed by default. Please use &ndash;journal if you want durability.<br>
+2014-11-16T11:35:43.253+0800<br>
+2014-11-16T11:35:43.282+0800 [initandlisten] MongoDB starting : pid=8272 port=27<br>
+017 dbpath=D:\Data\db 32-bit host=hp<br>
+2014-11-16T11:35:43.283+0800 [initandlisten]<br>
+2014-11-16T11:35:43.284+0800 [initandlisten] ** NOTE: This is a 32 bit MongoDB b<br>
+inary.<br>
+2014-11-16T11:35:43.284+0800 [initandlisten] **       32 bit builds are limited<br>
+to less than 2GB of data (or less with &ndash;journal).<br>
+2014-11-16T11:35:43.284+0800 [initandlisten] **       Note that journaling defau<br>
+lts to off for 32 bit and is currently off.<br>
+2014-11-16T11:35:43.285+0800 [initandlisten] **       See <a href="http://dochub.mongodb/">http://dochub.mongodb</a>.<br>
+org/core/32bit<br>
+2014-11-16T11:35:43.286+0800 [initandlisten]<br>
+2014-11-16T11:35:43.286+0800 [initandlisten] targetMinOS: Windows XP SP3<br>
+2014-11-16T11:35:43.286+0800 [initandlisten] db version v2.6.4<br>
+2014-11-16T11:35:43.287+0800 [initandlisten] git version: 3a830be0eb92d772aa855e<br>
+bb711ac91d658ee910<br>
+2014-11-16T11:35:43.287+0800 [initandlisten] build info: windows sys.getwindowsv<br>
+ersion(major=6, minor=1, build=7601, platform=2, service_pack='Service Pack 1')<br>
+BOOST_LIB_VERSION=1_49<br>
+2014-11-16T11:35:43.290+0800 [initandlisten] allocator: system<br>
+2014-11-16T11:35:43.292+0800 [initandlisten] options: { storage: { dbPath: &quot;D:\D<br>
+ata\db&quot; } }<br>
+**************<br>
+Unclean shutdown detected.<br>
+Please visit <a href="http://dochub.mongodb.org/core/repair">http://dochub.mongodb.org/core/repair</a> for recovery instructions.<br>
+*************<br>
+2014-11-16T11:35:43.360+0800 [initandlisten] exception in initAndListen: 12596 o<br>
+ld lock file, terminating<br>
+2014-11-16T11:35:43.362+0800 [initandlisten] dbexit:<br>
+2014-11-16T11:35:43.364+0800 [initandlisten] shutdown: going to close listening<br>
+sockets&hellip;<br>
+2014-11-16T11:35:43.365+0800 [initandlisten] shutdown: going to flush diaglog&hellip;</p>
+<p>2014-11-16T11:35:43.367+0800 [initandlisten] shutdown: going to close sockets&hellip;</p>
+<p>2014-11-16T11:35:43.368+0800 [initandlisten] shutdown: waiting for fs preallocat<br>
+or&hellip;<br>
+2014-11-16T11:35:43.369+0800 [initandlisten] shutdown: closing all files&hellip;<br>
+2014-11-16T11:35:43.371+0800 [initandlisten] closeAllFiles() finished<br>
+2014-11-16T11:35:43.373+0800 [initandlisten] dbexit: really exiting now</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/54662bf3e8183bcf964f88eb/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">搞懂了七牛文件存储</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/5479b18a93ae2eb85f26b2d3/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">node.js作为微信接口服务器</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

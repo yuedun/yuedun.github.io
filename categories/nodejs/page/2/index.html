@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Nodejs - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Nodejs" />
+<meta property="og:description" content="欢迎访问我的博客" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/categories/nodejs/" />
+
+
+		<meta itemprop="name" content="Nodejs">
+<meta itemprop="description" content="欢迎访问我的博客">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" href="/categories/nodejs/index.xml" title="月盾的个人博客">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Nodejs</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/59eab23989faeadc30eac826/" rel="bookmark">
+			sequelize.js不能将驼峰camelCased命名转化为下划线underscored命名
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-21T02:34:33Z">2017-10-21 02:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		定义Model的时候有这样两个参数： underscored,underscoredAll,
+ Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
+ 其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
+var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assistance&#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &#39;assistance&#39;, charset: &#39;utf8&#39;, collate: &#39;utf8_unicode_ci&#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/599cf46c1bffdb00880597b3/" rel="bookmark">
+			Unhandled rejection CastError: Cast to ObjectId failed for value catalog at path _id for model Blog
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-23T03:20:12Z">2017-08-23 03:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Unhandled rejection CastError: Cast to ObjectId failed for value &quot;catalog&quot; at path &quot;_id&quot; for model &quot;Blog&quot; at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11) at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13) at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15) at ObjectId.castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:189:15) at ObjectId.SchemaType.castForQueryWrapper (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1021:15) at cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\cast.js:269:32) at Query.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:3103:12) at Query._castConditions (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1144:10) at Query._findOne (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1346:8) at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:250:8 at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:23:7 at nextTickCallbackWith0Args (node.js:489:9) at process._tickCallback (node.js:418:13) From previous event: at Query.exec (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2897:17) at Query.then (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2945:15) at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10) at e:\workspace\yuedun_ts\app.ts:53:14 at Layer.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5967123a3d2aae2ccfdc61a3/" rel="bookmark">
+			Sequelize批量插入数据
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-07-13T06:24:58Z">2017-07-13 06:24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
+User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to...  return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/591c5eac35b6751981e4681e/" rel="bookmark">
+			nodejs中promise的if流程控制
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-17T14:31:08Z">2017-05-17 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		nodejs中promise的if流程控制 Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
+ 假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
+ var fs = require(&#34;fs&#34;); function queue(){ return new Promise((resolve, reject)=&gt;{ fs.readFile(&#34;../queue.txt&#34;, &#34;utf8&#34;, (err, data)=&gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../account.txt&#39;, id+&#39;一个新账户&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;办卡成功!&#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../money.txt&#39;, id+&#39;存了10万&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;存款成功!&#39;); resolve(); }); }) } //入口 function enter(id) { Promise.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/590c93d3266e3f1c8fd4aa83/" rel="bookmark">
+			typescript泛型的使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T15:01:39Z">2017-05-05 15:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
+function a(args: number ): number { return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
+function b(args: string ): string { return args; } console.log(b(&quot;sdg&quot;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
+function c(args: any ): any { return args; } console.log(c(&quot;sdg&quot;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
+function c(args: any ): any { let n = args + &quot;变成了字符串&quot;; //甚至更多的处理 return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
+function d&lt;A&gt;(args: A ): A { let n = args + &quot;变成了字符串&quot;; //甚至更多的处理 return n; } console.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/58f8c22ae17cc00088e5ba4f/" rel="bookmark">
+			 error TS7010: skipTo, which lacks return-type annotation, implicitly has an any return type.
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-20T14:14:02Z">2017-04-20 14:14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: 'skipTo', which lacks return-type annotation, implicitly has an 'any' return type. 缺少返回类型的注释，隐含地具有&rsquo;any&rsquo;返回类型。 tsconfig.json配置文件中noImplicitAny设置为false,该选项的意思是：在表达式和声明上有隐含的&rsquo;any&rsquo;类型时报错。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/58243e338fa26c04fd124ee6/" rel="bookmark">
+			使用typescript开发nodejs的环境搭建（二）
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-10T09:30:27Z">2016-11-10 09:30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
+typescript编译配置
+{ &#34;compilerOptions&#34;: { &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  }, &#34;include&#34;: [ &#34;*/**/*.ts&#34; ], &#34;exclude&#34;: [ //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
+选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
+vscode编译typescript配置
+{ // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.json format  &#34;version&#34;: &#34;0.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/58037ab767a381257039c926/" rel="bookmark">
+			TypeScript中的装饰器Decorato什么时候执行？
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-16T13:03:51Z">2016-10-16 13:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启experimentalDecorators。
+命令行编译
+ tsc --target ES5 --experimentalDecorators /test.ts
+tsconfig.json:
+&quot;compilerOptions&quot;: { &quot;experimentalDecorators&quot;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
+//test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&#34;hello&#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name); } } 生成的js代码：
+//test.js var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/57fcf50869c8bf6e323dff48/" rel="bookmark">
+			使用typescript开发nodejs的环境搭建（一）
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-11T14:19:52Z">2016-10-11 14:19</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在一切开始之前先具备的开发环境：
+  nodejs4.0+
+  推荐的开发工具vscode
+  我希望通过本文介绍能直接做出一个最简单的项目框架，以便日后参考，这也是我想把之前纯nodejs写的博用typescript客重写一遍。
+还是以expressjs为框架来搭建
+使用express-generator来生成项目基本框架，需要全局安装
+ npm install -g express-generator
+  express -e mpro
+ 参数-e是以ejs为模板引擎，mpor为项目目录名，最后生成这样的目录结构：
+. ├── app.js ├── bin │ └── www ├── package.json ├── public │ ├── images │ ├── javascripts │ └── stylesheets │ └── style.css ├── routes │ ├── index.js │ └── users.js └── views ├── error.ejs └── index.ejs 然后是全局安装typescript，便于在任何目录下编译，也可以安装在项目目录下。
+ npm install -g typescript
+ 安装完以后初始化typescript:
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/57fb9d3169c8bf6e323dff46/" rel="bookmark">
+			使用半年TypeScript后的感受
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-10T13:52:49Z">2016-10-10 13:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		初识TypeScript 从入职新公司开始算，使用typescript已经有半年多了，这是一个创业公司使用nodejs开发的后台业务管理系统，已经做的很大了，支撑着公司每月千万人民币的业务处理。很多怀疑nodejs是否可以开发后台管理，作为一个过来人告诉你可以放心使用，现在的javascript早已不是10年前用来写前端特效的js了。美中不足的是nodejs对报表这类数据处理量较大的功能有点力不从心，经常拖垮系统，当然也不是完全不能用nodejs来处理报表，可以合理的使用子进程单独处理数据而不影响主进程。但还是不推荐。
+使用感受 其实起初对于typescript开发nodejs我是拒绝的，原因是建立起这个项目的人都走了，而这个项目结构实在是复杂，在windows下环境搭建费了好大精力，尤其是为了使用一个bcrypt加密包，需要安装Python,C++来编译，还不能使用nodejs0.12以上版本，最烦人的是每次修改文件后编译速度非常慢，这让我重新体验了开发JAVA时期的痛苦。而且服务启动方法也是前人自己编写shell脚本来同时编译前端文件和后端文件。并没有使用nodemon,supervisor这种监控工具。后来折腾发现可以直接使用vscode单独编译ts文件，一般12秒就编译完成，这与我之前的项目1秒修改重启相比还是慢了很多，不过也免强只能接受，此时只觉得如此麻烦和JAVA开发有什么区别！所以基于这些不好的体验我很不喜欢typescript。
+重新认识
+最近又折腾了下我用纯nodejs开发的博客，突然发现，写起来确实不如typescript爽，主要是纯nodejs在webstorm和vscode上语法提示和错误提示较弱，而typescript则可以很好的提示并且在开发过程中就能发现一些很低级错误，不用等到运行时才发现。尤其是对ES6的支持比较完整，甚至可以使用async,await这些ES7提案中的特性。虽然现在高版本的nodejs已经支持一些新特性，但是并不是所有项目都可以使用高版本。如果说为什么要使用typescript，那就是typescript集合了js的快速和强类型语言的安全稳定，用于开发一些较大的项目绝对利大于弊。 尤其是对于一些多人合作的项目来说，typescript的强类型能够很好约束对象属性，参数传递，对后续的重构也起到至关重要的作用。 有人可能会担心降低开发效率，这一点大可不必担心，你定义类型消耗的时间会从强类型提示上补回来的。 接下来会写一篇完整的环境搭建教程：使用typescript开发nodejs的环境搭建（一）
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/categories/nodejs/">«</a>
+	<span class="pagination__item pagination__item--current">2/4</span>
+	<a class="pagination__item pagination__item--next btn" href="/categories/nodejs/page/3/">»</a>
+</div>
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/606d512c54277a10496a38ae/">使用sveltekit开发一个服务端渲染（SSR）项目</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/bae/">BAE</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/docker/">docker</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">Golang</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/mongodd/">MongoDd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ssh/">SSH</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/contributions/" title="Contributions ">Contributions </a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/foreach/" title="forEach">forEach</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongo/" title="mongo">mongo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title=" node"> node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="node.js">node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/null/" title="null">null</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2-logrotate%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/" title="pm2-logrotate日志分割">pm2-logrotate日志分割</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/protoc-gen-micro/" title="protoc-gen-micro">protoc-gen-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px2rem/" title="px2rem">px2rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pxtorem/" title="pxtorem">pxtorem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px%E8%BD%AC%E6%8D%A2%E6%88%90rem/" title="px转换成rem">px转换成rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime-text/" title="sublime text">sublime text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte%E4%BC%A0%E5%8F%82/" title="svelte传参">svelte传参</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%B8%8A%E6%B5%B7/" title="上海">上海</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/" title="元素对象">元素对象</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%83%A8%E7%BD%B2/" title="部署">部署</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

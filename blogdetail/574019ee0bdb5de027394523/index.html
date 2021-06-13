@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>linux下安装nodejs - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="# 此文过旧，请参阅[linux安装nodejs——快捷版](http:yuedun.wangblogdetail5dd2378b00f24e1fd556d0c">
+		<meta property="og:title" content="linux下安装nodejs" />
+<meta property="og:description" content="# 此文过旧，请参阅[linux安装nodejs——快捷版](http:yuedun.wangblogdetail5dd2378b00f24e1fd556d0c" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/574019ee0bdb5de027394523/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2016-05-21T08:18:54&#43;00:00" />
+<meta property="article:modified_time" content="2016-05-21T08:18:54&#43;00:00" />
+
+
+		<meta itemprop="name" content="linux下安装nodejs">
+<meta itemprop="description" content="# 此文过旧，请参阅[linux安装nodejs——快捷版](http:yuedun.wangblogdetail5dd2378b00f24e1fd556d0c"><meta itemprop="datePublished" content="2016-05-21T08:18:54&#43;00:00" />
+<meta itemprop="dateModified" content="2016-05-21T08:18:54&#43;00:00" />
+<meta itemprop="wordCount" content="37">
+<meta itemprop="keywords" content="linux,安装," />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">linux下安装nodejs</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-05-21T08:18:54Z">2016-05-21 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<h1 id="此文过旧请参阅linux安装nodejs快捷版httpyuedunwangblogdetail5dd2378b00f24e1fd556d0c4-linux安装nodejs快捷版">此文过旧，请参阅<a href="http://yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4" title="linux安装nodejs——快捷版">linux安装nodejs——快捷版</a></h1>
+<p>首先下载nodejs压缩文件node-v4.4.4-linux-x64.tar.xz，先解压文件，
+<code>&gt; xz -d node-v4.4.4-linux-x64.tar.xz</code>解压为tar格式文件，再通过tar命令解压
+<code>&gt; tar -xvf node-v4.4.4-linux-x64.tar</code>
+可以将解压后的文件夹移动到自己的软件安装文件夹下，比如：<code>/usr/local</code>下，因为nodejs的版本更新太快，每次更新都这么移动文件夹太麻烦，所以还是改成一个通用的名字，就叫node，执行命令这样：
+<code>mv /home/huo/Download/node-v4.4.4-linux-x64 /usr/local/node</code>
+为了能够全局执行node和npm命令，需要建立软链接到可执行目录下，执行命令：
+<code>echo $PATH</code>
+可以看到：<code>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</code>是linux全局执行目录，所以就选择在<code>/usr/local/bin</code>下建立软链接吧。</p>
+<pre><code class="language-ln" data-lang="ln">ln -s /usr/local/node/bin/npm /usr/local/bin/npm
+</code></pre><p>这样就可以在任意目录下执行node和npm命令了，不过这样还没结束，使用npm全局安装包后，在命令行里执行会找不到命令，因为npm全局安装目录在node安装目录，也就是安装在了<code>/usr/local/node/lib/node_modules</code>目录下，所以还需要将这个目录添加的$PATH变量中，<code>sudo vim /etc/profile</code>在文件最下边添加<code>export PATH=&quot;/usr/local/node/bin:$PATH&quot;</code>,此处的路径<code>/usr/local/node/bin</code>并不是上面说的<code>/usr/local/node/lib/node_modules</code>目录，因为npm全局安装以后会在node安装目录下的bin文件夹中建立软链接，直接在<code>$PATH</code>中添加npm的全局安装目录是无法找到可执行文件的。</p>
+<p><strong>升级node版本</strong>
+可以通过全局安装<code>n</code>工具来升级 <code>npm install -g n</code>，或者<code>nvm</code>工具
+或者就是直接下载新的tar文件覆盖升级
+<code>cp -Rv node-v8.11.3-linux-x64/* /home/yuedun/software/nodejs/</code></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/linux/" rel="tag">linux</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/56f15a4a3823e4e62593d4e2/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">用java的思想方式写javascript</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/5742d3bb44b00beb2d26238d/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">VMware重新安装VMware Tool</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mongodb和mongoose聚合查询 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="## mongdb查询某一字段sum值&gt; 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计**">
+		<meta property="og:title" content="Mongodb和mongoose聚合查询" />
+<meta property="og:description" content="## mongdb查询某一字段sum值&gt; 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计**" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/5819b2b7c4d0a377509b8f1a/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2016-11-02T09:32:39&#43;00:00" />
+<meta property="article:modified_time" content="2016-11-02T09:32:39&#43;00:00" />
+
+
+		<meta itemprop="name" content="Mongodb和mongoose聚合查询">
+<meta itemprop="description" content="## mongdb查询某一字段sum值&gt; 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计**"><meta itemprop="datePublished" content="2016-11-02T09:32:39&#43;00:00" />
+<meta itemprop="dateModified" content="2016-11-02T09:32:39&#43;00:00" />
+<meta itemprop="wordCount" content="115">
+<meta itemprop="keywords" content="mongodb,mongoose," />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Mongodb和mongoose聚合查询</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016-11-02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/mongodd/" rel="category">MongoDd</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#mongdb查询某一字段sum值">mongdb查询某一字段sum值</a></li>
+  </ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<h2 id="mongdb查询某一字段sum值">mongdb查询某一字段sum值</h2>
+<blockquote>
+<p>需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计</p>
+</blockquote>
+<p><strong>mongodb中查询</strong></p>
+<pre><code>select sum(pv) from articles;
+db.articles.aggregate([{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);
+结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 2 }
+
+select sum(pv) from articles where createDate &lt;= '2016-10-20';
+db.articles.aggregate([{$match:{createDate:{$lte:&quot;2016-10-20&quot;}}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);
+结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 9 }
+
+select sum(pv) from articles where category = 'Nodejs';
+db.articles.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);
+结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 7 }
+
+</code></pre><p><em>需要注意<code>$match</code>和<code>$group</code>的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）</em></p>
+<p><strong>mongoose实现方式，与上面sql的顺序对应：</strong></p>
+<pre><code>Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(err, doc) {
+    console.log(&quot;1&quot;, doc);
+});
+Article.aggregate([{$match:{createDate:{$lte:&quot;2016-10-20&quot;}}},{$group:{_id:null, pvCount:{$sum:&quot;$pv&quot;}}}], function(err, doc) {
+    console.log(&quot;2&quot;, doc);
+});
+Article.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null, pvCount:{$sum:&quot;$pv&quot;}}}], function(err, doc) {
+    console.log(&quot;3&quot;, doc);
+});
+1 [ { _id: null, pv: 25 } ]
+2 [ { _id: null, pv: 9 } ]
+3 [ { _id: null, pv: 7 } ]
+
+</code></pre><p>参考文档：</p>
+<p><a href="https://docs.mongodb.com/manual/aggregation/">https://docs.mongodb.com/manual/aggregation/</a></p>
+<p><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/#aggregation-expression-operators">https://docs.mongodb.com/manual/reference/operator/aggregation/#aggregation-expression-operators</a></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mongodb/" rel="tag">mongodb</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mongoose/" rel="tag">mongoose</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/58037ab767a381257039c926/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">TypeScript中的装饰器Decorato什么时候执行？</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/581d736c43c18f1b7ae3e3ff/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">Mongodb和mongoose模糊查询</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

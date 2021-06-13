@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>go-micro线上部署，注册服务到etcd - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="## 线上部署在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。linux系统需要这样编译：GOOS=linux go buil">
+		<meta property="og:title" content="go-micro线上部署，注册服务到etcd" />
+<meta property="og:description" content="## 线上部署在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。linux系统需要这样编译：GOOS=linux go buil" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/5e709b485bd8165f28d22394/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2020-03-17T09:41:28&#43;00:00" />
+<meta property="article:modified_time" content="2020-03-17T09:41:28&#43;00:00" />
+
+
+		<meta itemprop="name" content="go-micro线上部署，注册服务到etcd">
+<meta itemprop="description" content="## 线上部署在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。linux系统需要这样编译：GOOS=linux go buil"><meta itemprop="datePublished" content="2020-03-17T09:41:28&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-17T09:41:28&#43;00:00" />
+<meta itemprop="wordCount" content="102">
+<meta itemprop="keywords" content="go-micro,etcd," />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">go-micro线上部署，注册服务到etcd</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-17T09:41:28Z">2020-03-17 09:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#线上部署">线上部署</a></li>
+    <li><a href="#etcd启动">etcd启动</a></li>
+  </ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<h2 id="线上部署">线上部署</h2>
+<p>在线上部署就不能使用<code>go run main.go</code>命令了，需要打包编译成可执行文件。
+linux系统需要这样编译：<code>GOOS=linux go build -o service main.go</code>，就是在windows系统上进行交叉编译，可根据自己服务器情况修改参数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -o service main.go
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -o api api/api.go
+</code></pre></div><p>线上的restful api也不能使用<code>micro api</code>了。需要选择适合自己的web服务框架，在web服务中调用api服务。</p>
+<h2 id="etcd启动">etcd启动</h2>
+<p>线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./service --registry<span style="color:#f92672">=</span>etcd --registry_address<span style="color:#f92672">=</span>xx.xx.xx.xx:2379
+2020-03-17 17:04:42 Starting <span style="color:#f92672">[</span>service<span style="color:#f92672">]</span> go.micro.srv.user
+2020-03-17 17:04:42 Server <span style="color:#f92672">[</span>grpc<span style="color:#f92672">]</span> Listening on <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:48493
+2020-03-17 17:04:42 Registry <span style="color:#f92672">[</span>etcd<span style="color:#f92672">]</span> Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395
+<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;warn&#34;</span>,<span style="color:#e6db74">&#34;ts&#34;</span>:<span style="color:#e6db74">&#34;2020-03-17T17:04:47.849+0800&#34;</span>,<span style="color:#e6db74">&#34;caller&#34;</span>:<span style="color:#e6db74">&#34;clientv3/retry_interceptor.go:61&#34;</span>,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;retrying of unary invoker failed&#34;</span>,<span style="color:#e6db74">&#34;target&#34;</span>:<span style="color:#e6db74">&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;</span>,<span style="color:#e6db74">&#34;attempt&#34;</span>:0,<span style="color:#e6db74">&#34;error&#34;</span>:<span style="color:#e6db74">&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.xx.xx.xx:2379: connect: connection refused\&#34;&#34;</span><span style="color:#f92672">}</span>
+2020-03-17 17:04:47 Server register error: %!<span style="color:#f92672">(</span>EXTRA context.deadlineExceededError<span style="color:#f92672">=</span>context deadline exceeded<span style="color:#f92672">)</span>
+</code></pre></div><p>这就是错误示例。
+为了能顺利看到胜利的结果，需要这样启动etcd:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ./etcd --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://0.0.0.0:2379 --listen-peer-urls http://0.0.0.0:2380 --initial-advertise-peer-urls http://0.0.0.0:2380  --initial-cluster my-etcd-1<span style="color:#f92672">=</span>http://0.0.0.0:2380
+</code></pre></div><p>将ip为0.0.0.0可以理解为不限制连接机器（真正的生产不推荐这样设置）。
+服务启动参数<code>--registry_address=xx.xx.xx.xx:2379</code>不能带<code>http://</code>。</p>
+<p>项目地址：<a href="https://github.com/yuedun/micro-service">https://github.com/yuedun/micro-service</a></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/go-micro/" rel="tag">go-micro</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/etcd/" rel="tag">etcd</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/5e6c860e5bd8165f28d2210b/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">go-micro v2弃用了consul作为默认的服务发现</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/5e815979c9109f0f909b4cdd/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">gorm模糊查询和分页查询同时查总条数</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

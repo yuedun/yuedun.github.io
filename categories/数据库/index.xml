@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库 on 月盾的个人博客</title>
+    <link>/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 11 Oct 2018 10:25:53 +0000</lastBuildDate><atom:link href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux修改MySQL 5.7.22字符集为utf8</title>
+      <link>/blogdetail/5bbf2531f846d21847dc2fcc/</link>
+      <pubDate>Thu, 11 Oct 2018 10:25:53 +0000</pubDate>
+      
+      <guid>/blogdetail/5bbf2531f846d21847dc2fcc/</guid>
+      <description>网上也找了很多方案结果就是奇葩的不成功，最后直接修改/etc/mysql/mysql.conf.d/mysqld.cnf成功了。 在该文件最后添加
+default-storage-engine=INNODB character-set-server=utf8 collation-server=utf8_general_ci 重启成功。 这是本地虚拟机里的mysql
+mysql&amp;gt; show variables like &amp;quot;character%&amp;quot;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | utf8 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | utf8 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 完全正确，但是修改阿里云服务器以后还是有点小问题 character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。 </description>
+    </item>
+    
+    <item>
+      <title>系统开发中默认值的设置 </title>
+      <link>/blogdetail/56c1b67cbf2e89202c146372/</link>
+      <pubDate>Mon, 15 Feb 2016 11:29:00 +0000</pubDate>
+      
+      <guid>/blogdetail/56c1b67cbf2e89202c146372/</guid>
+      <description>多人协作开发过程中会遇到一些字段设置默认值的情况，但是这个默认值到底该由哪一阶段来设置？比如有三个阶段:前端或移动端，接口程序，数据库。说个具体场景，APP上有个医生需要显示挂号费，这个挂号费是由后台管理系统添加的，但是在添加医生这个过程不是一次性完成的，先是添加员工信息，角色为医生，这个挂号费是添加完成员工信息以后在医生管理里设置的，那么在完成添加员工后还没来得及设置挂号费医生就显示到了APP中，由于这个医生没有挂号费，就会导致用户误解或者APP程序报错。这时候问题来了，挂号费该有个默认值吧！但是这个默认值由谁来设置呢？尤其是程序上线以后出现问题大家都不想背这个黑锅，移动端问接口，你要传个默认值给我，接口对后台管理说你怎么没传个默认值给我？后台管理说，就不能在数据库设置吗，没有值我干嘛还要传？究竟该由谁来设置这个默认值，好像谁都可以，但是有很多字段要设置的时候就有很多工作量要做了，需要判断用户有没有填，没有填就设置默认值。一堆的if判断，很不明智的做法，而且也不能保证万无一失。
+最后总结：默认值由数据库来设置，这是最简单的方法，可以为程序省去很多判断，而且数据库不为null的设置可以为索引字段带来好处，节省空间。</description>
+    </item>
+    
+    <item>
+      <title>数据表索引如何建立？多列索引还是单列索引</title>
+      <link>/blogdetail/5620bcc461248de07b018879/</link>
+      <pubDate>Fri, 16 Oct 2015 09:00:52 +0000</pubDate>
+      
+      <guid>/blogdetail/5620bcc461248de07b018879/</guid>
+      <description>数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。这时就产生了矛盾，又要加又不能多加，到底想怎么样？
+数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&amp;lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &amp;hellip; where name=&#39;nginx.cn&#39; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &amp;hellip; where name=&#39;nginx.cn&#39; and age in(15,16,17) and id =&#39;3&#39;</description>
+    </item>
+    
+    <item>
+      <title>数据库优化一点总结</title>
+      <link>/blogdetail/561677d7bfae4b590b7a4aaa/</link>
+      <pubDate>Thu, 08 Oct 2015 14:04:07 +0000</pubDate>
+      
+      <guid>/blogdetail/561677d7bfae4b590b7a4aaa/</guid>
+      <description>以前找工作的时候总被面试到数据库方面的知识，尤其是数据库优化。当然在去面试之前先补习一下，背一些网上的概念来应付。现在想想，要考察一个开发者数据库优化方面的知识只需要问一下有没有做过数据库设计和优化就行，如果做过相关工作那么多少会总结出来一些，如果没做过说出再多也是概念而已。
+国庆节前韩豆咖派上线，然后这个节日就不会有好日子过了，上线三四天的时候很多用户反映帖子刷新不出来，登陆不了等问题，起初我以为是放假了大家回家网络不好导致的，后来测试了下接口花了一分多钟数据才返回，看来不是网络问题。查了下数据库帖子数量，居然达到6万了，想到以前背的概念，首先加索引试试，果然快了。但是节后数量达到12万的时候又出现了相同的问题，有点纳闷，索引页加了怎么还是慢呢？经过多次试验，分拆复杂查询后得出结论是由于查询语句中使用了left join自连接查询，通俗的说就是在12万数据中找出需要的数据，然后再在这12万中找出关联数据，光是这两个12万都够吓人了。最后还是把复杂的sql分解用程序控制查询子句，速度果然又提高了。
+得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片：
+ 但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.</description>
+    </item>
+    
+    <item>
+      <title>MySQL查询当天0点，昨天</title>
+      <link>/blogdetail/5608dbb10adc9cf12635ebbb/</link>
+      <pubDate>Mon, 28 Sep 2015 06:18:25 +0000</pubDate>
+      
+      <guid>/blogdetail/5608dbb10adc9cf12635ebbb/</guid>
+      <description>今天是
+SELECT NOW();-- 2015-09-28 13:48:12 
+查询当天，格式为YYYY-MM-DD
+SELECT CURDATE();-- 2015-09-28
+查询当天，格式为YYYY-MM-DD HH:mm:ss
+SELECT NOW();-- 2015-09-28 13:42:00
+查询当天0点，格式为YYYY-MM-DD HH:mm:ss
+SELECT DATE_FORMAT(CURDATE(),&amp;amp;#39;%Y-%m-%d %H:%i:%s&amp;amp;#39;);-- 2015-09-28 00:00:00
+查询当天早上9点，格式为YYYY-MM-DD HH:mm:ss
+SELECT DATE_ADD(CURDATE(), INTERVAL 9 HOUR);-- 2015-09-28 09:00:00
+查询昨天，格式为YYYY-MM-DD
+SELECT DATE_SUB(CURDATE(),INTERVAL 1 DAY);-- 2015-09-27
+查询昨天早上9点
+SELECT DATE_ADD(DATE_SUB(CURDATE(),INTERVAL 1 DAY),INTERVAL 9 HOUR);-- 2015-09-27 09:00:00
+DATE_ADD(date,INTERVAL expr type) 参数是合法的日期表达式。expr 参数是您希望增加的时间。
+type 参数可以是下列值：
+Type 值
+MICROSECOND
+SECOND
+MINUTE
+HOUR
+DAY
+WEEK
+MONTH
+QUARTER
+YEAR
+SECOND_MICROSECOND
+MINUTE_MICROSECOND
+MINUTE_SECOND
+HOUR_MICROSECOND
+HOUR_SECOND</description>
+    </item>
+    
+    <item>
+      <title>总结一下最近数据库设计原则（待补充）</title>
+      <link>/blogdetail/55e91db7db5ac9c2be76b2fb/</link>
+      <pubDate>Fri, 04 Sep 2015 04:27:35 +0000</pubDate>
+      
+      <guid>/blogdetail/55e91db7db5ac9c2be76b2fb/</guid>
+      <description>在没有做过数据库设计之前认为：数据库设计是表与表的关系设计，合理的表关系设计能使逻辑更易编写，不过这是以前肤浅的认知。后来逐渐开始参与公司数据库的设计才发现，单单是数据库表名，字段名也有一定学问，在最近的开发过程中感觉尤为突出。其中一些是历史遗留发现的，另外一些是新加表中发现的。
+一、遗留问题主要体现在文档缺失上，基本所有表没有注释，字段更不用说，然后就对每个字段的作用搞不清楚，而且很多字段也不知道有没有用到，因为所有记录都没有值，但又不敢删。留着不管又影响性能，看着也不爽。
+二、在新加表出现的问题是：新人喜欢模仿以前的表设计，也不管字段有没有用，有什么用，先都照搬过来，而且又喜欢添加一些新字段，说是为了预留以后新加功能的时候万一用到了，这就重蹈覆辙了，把字段加上了却又不喜欢写注释，然后导致后来连自己也不知道当初为什么加这个字段。
+三、另外对于一些枚举字段，用了数字来表示不同类型，比如用1，2，3，4表示超级管理员，普通管理员，用户，小编，这种方式好处是占用字节少，但是坏处也不少，首先，从数值上看不出代表什么类型，需要看文档注释，要是连注释也没写那就坑了。
+四、由于业务不断增加，表字段也不管添加，最后一张表中就会有好几十个字段，最后变得不好维护，而且有些字段是做的时候加上，最后又不用了，又没有及时删掉，然后就变成了垃圾字段。
+以上几点问题是比较突出又影响开发的，我也总结出了对策：
+1、表和字段一定要写注释
+2、只添加需要用到的字段，千万不要加一些以后用到的字段，以后用到以后加
+3、枚举字段在MySQL中建议使用enum枚举类型，在插入记录的时候使用单词来表明类型，在数据库保存的实际是数值索引
+4、对于常用的字段放到一个表中，不常用的字段可以考虑分表存放，一对一关联，需要的时候查询即可
+数据库引擎的使用：
+就目前mysql的使用来说，大多数人在数据库引擎上会选择InnoDB，也总是有人建议这么做，主要目的是为了支持事务。但同样有人认为MyISAM读取性能比InnoDB强很多，会选择使用MyISAM。所以说具体选择哪种引擎类型依据业务实际情况决定。根据我们的项目实际使用情况，我最后选择了MyISAM作为数据库引擎。
+前一个项目使用java开发，MySQL数据库InnoDB，确实也出现一些问题，在某次活动时200左右的并发量下不仅服务器宕机，连另一台数据库服务器在连接数暴增的情况下读取性能骤降，从而导致java服务器不能及时响应。这次开发语言选择了nodejs，经测试发现，可以支撑的并发量在2000多近3000的样子，所以就要求数据库能尽快读取数据，再加上目前业务中不要求事务，那么MyISAM就成了不二之选。</description>
+    </item>
+    
+    <item>
+      <title>redis启动失败</title>
+      <link>/blogdetail/554aff409ddef487a8b23409/</link>
+      <pubDate>Thu, 07 May 2015 05:59:28 +0000</pubDate>
+      
+      <guid>/blogdetail/554aff409ddef487a8b23409/</guid>
+      <description>redis-server.exe redis.windows.conf 使用上面命令启动redis服务的时候报了以下错误信息： The Windows version of Redis allocates a memory mapped heap for sharing with the forked process used for persistence operations. In order to share this memory, Windows allocates from the system paging file a portion equal to the size of the Redis heap. At this time there is insufficient contiguous free space available in the system paging file for this operation (Windows error 0x5AF). To work around this you may either increase the size of the system paging file, or decrease the size of the Redis heap with the &amp;ndash;maxheap flag.</description>
+    </item>
+    
+    <item>
+      <title> mysql一个字段为空时使用另一个字段排序</title>
+      <link>/blogdetail/5534d242cf68fa0beaf71cb9/</link>
+      <pubDate>Mon, 20 Apr 2015 10:17:38 +0000</pubDate>
+      
+      <guid>/blogdetail/5534d242cf68fa0beaf71cb9/</guid>
+      <description>表中有两个日期字段createDate，updateDate。其中updateDate可以为空，要求使用updateDate排序，如果updateDate为空则使用createDate排序，结果要顺序排下来。
+ 按照常规方法：
+Sql代码  select * from table order by update desc   这样的结果是为空的数据排在了最下面，不符合要求。
+ 方法二：
+Sql代码  select * from table order by updateDate desc, createDate desc   这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。
+ 方法三：
+Sql代码  select * from table order by IFNULL(updateDate, createDate) desc   这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排</description>
+    </item>
+    
+    <item>
+      <title>oracle decode和nvl的用法</title>
+      <link>/blogdetail/5459dcd3bf93a1aa252561fe/</link>
+      <pubDate>Wed, 05 Nov 2014 08:16:19 +0000</pubDate>
+      
+      <guid>/blogdetail/5459dcd3bf93a1aa252561fe/</guid>
+      <description>Oracle 中 decode 函数用法
+含义解释： decode(条件,值1,返回值1,值2,返回值2,&amp;hellip;值n,返回值n,缺省值)
+该函数的含义如下：
+IF 条件=值1 THEN RETURN(翻译值1) ELSIF 条件=值2 THEN RETURN(翻译值2) ...... ELSIF 条件=值n THEN RETURN(翻译值n) ELSE RETURN(缺省值) END IF decode(字段或字段的运算，值1，值2，值3）
+这个函数运行的结果是，当字段或字段的运算的值等于值1时，该函数返回值2，否则返回值3 当然值1，值2，值3也可以是表达式，这个函数使得某些sql语句简单了许多
+使用方法： 1、比较大小 select decode(sign(变量1-变量2),-1,变量1,变量2) from dual; --取较小值 sign()函数根据某个值是0、正数还是负数，分别返回0、1、-1 例如： 变量1=10，变量2=20 则sign(变量1-变量2)返回-1，decode解码结果为“变量1”，达到了取较小值的目的。
+2、此函数用在SQL语句中，功能介绍如下：
+Decode函数与一系列嵌套的 IF-THEN-ELSE语句相似。base_exp与compare1,compare2等等依次进行比较。如果base_exp和 第i 个compare项匹配，就返回第i 个对应的value 。如果base_exp与任何的compare值都不匹配，则返回default。每个compare值顺次求值，如果发现一个匹配，则剩下的compare值（如果还有的话）就都不再求值。一个为NULL的base_exp被认为和NULL compare值等价。如果需要的话，每一个compare值都被转换成和第一个compare 值相同的数据类型，这个数据类型也是返回值的类型。
+Decode函数在实际开发中非常的有用
+结合Lpad函数，如何使主键的值自动加1并在前面补0 select LPAD(decode(count(记录编号),0,1,max(to_number(记录编号)+1)),14,&#39;0&#39;) 记录编号 from tetdmis
+eg: select decode(dir,1,0,1) from a1_interval dir 的值是1变为0，是0则变为1
+比如我要查询某班男生和女生的数量分别是多少?
+通常我们这么写:
+select count(*) from 表 where 性别 ＝ 男； select count(*) from 表 where 性别 ＝ 女； 要想显示到一起还要union一下，太麻烦了</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nodejs on 月盾的个人博客</title>
+    <link>/tags/nodejs/</link>
+    <description>Recent content in nodejs on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 18 Nov 2019 06:17:47 +0000</lastBuildDate><atom:link href="/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux安装nodejs——快捷版</title>
+      <link>/blogdetail/5dd2378b00f24e1fd556d0c4/</link>
+      <pubDate>Mon, 18 Nov 2019 06:17:47 +0000</pubDate>
+      
+      <guid>/blogdetail/5dd2378b00f24e1fd556d0c4/</guid>
+      <description>前面写过一篇linux下安装nodejs，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。
+wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
+另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
+wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode</description>
+    </item>
+    
+    <item>
+      <title>nodejs-go内存占比</title>
+      <link>/blogdetail/5c6cbe294a7b7e6cd80869e5/</link>
+      <pubDate>Wed, 20 Feb 2019 02:40:41 +0000</pubDate>
+      
+      <guid>/blogdetail/5c6cbe294a7b7e6cd80869e5/</guid>
+      <description>同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。  go占14.7M nodejs占122.2M</description>
+    </item>
+    
+    <item>
+      <title>nodejs中vm模块的作用</title>
+      <link>/blogdetail/5745791ed5034dff53ec6aa4/</link>
+      <pubDate>Wed, 25 May 2016 10:06:22 +0000</pubDate>
+      
+      <guid>/blogdetail/5745791ed5034dff53ec6aa4/</guid>
+      <description>vm提供了一个沙箱环境，什么叫沙箱环境？类似于一个独立的执行空间，什么时候会用到vm模块？就以我现在接触的需求来说，每个月都有运营活动，但是每次需求又不同，比如一些优惠规则不同，最后可能只需要得到一个结果，如果每次活动都去修改代码就会显得很麻烦，我们提供一个后台管理界面，或者直接在数据库里写入每次活动的不同计算规则，这些规则其实也是JavaScript代码，既然是代码就需要执行才行。这就形成了一种情况：在已有的程序中插入一段代码进行执行，这要怎么实现？如果觉得很容易插入的话，那么是不是黑客可以在你的程序中插入一段代码执行呢？这当然是不允许的，所以就需要提供一种安全环境来执行——就是沙箱了，而vm模块就是提供了这样一种执行环境。 http://www.cnblogs.com/softlover/archive/2012/10/03/2707144.html</description>
+    </item>
+    
+  </channel>
+</rss>

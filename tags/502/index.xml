@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>502 on 月盾的个人博客</title>
+    <link>/tags/502/</link>
+    <description>Recent content in 502 on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Jul 2020 11:49:05 +0000</lastBuildDate><atom:link href="/tags/502/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>让web项目不再502</title>
+      <link>/blogdetail/5f119031148c8850e521735f/</link>
+      <pubDate>Fri, 17 Jul 2020 11:49:05 +0000</pubDate>
+      
+      <guid>/blogdetail/5f119031148c8850e521735f/</guid>
+      <description>前后端分离 近几年比较流行的web项目开发架构是前后端分离，前后端分离架构在系统稳定性方面非常有优势，其中一点优势主要体现在用户感知上，即使服务端发生错误也不会展现在视图层，一般情况下用户是可以继续浏览网页，不会很突兀的显示这样的信息： 502 bad gateway
+在接口发生错误时虽然可能会获取不到一些数据，但是在用户体验上比直接显示502错误要好。
+部署也相对安全和方便。
+前后端分离架构虽好，但不是”银弹”，不是所有网站都能使用前后端分离架构来做。
+服务端渲染 至于分不分离都有诸多的优缺点，可根据实际场景选择，本文要说的是不分离情况下文章开始所提到的问题——难看的502，500错误。
+本文我将使用“服务端渲染”来代替不分离的架构。
+由于服务端渲染的所有数据处理都在服务端进行，发生任何错误都可能引起500错误，这种错误会直接体现在视图层，用户看到这样的信息很不友好。 500 Internal Server Error
+遇到这种错误，可以使用适当的措施来弥补，带来的效果却非常良好。开发web最多遇到的错误码有：404，500，502。
+404错误很多网站都有默认页面，像这样的：
+但是500，502错误却鲜有默认页面，我们何不也搞一个呢？
+500错误 首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。
+502错误 再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。
+server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/html; } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。</description>
+    </item>
+    
+  </channel>
+</rss>

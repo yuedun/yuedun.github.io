@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Blogdetails - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Blogdetails" />
+<meta property="og:description" content="欢迎访问我的博客" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/blogdetail/" />
+
+
+		<meta itemprop="name" content="Blogdetails">
+<meta itemprop="description" content="欢迎访问我的博客">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" href="/blogdetail/index.xml" title="月盾的个人博客">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Blogdetails</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5eb778a2bd7e796e7100c718/" rel="bookmark">
+			你是拿锤子的前端开发吗？
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-05-10T03:44:34Z">2020-05-10 03:44</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前言 接上篇《说道说道前后端分离》今天再次对前端现状作一次分析（吐槽）。
+再次引用一句《穷查理宝典》中的理论：
+ 在手里拿着锤子的人看来，所有的东西都会是钉子。
+  因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。
+ 事出有因 这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。
+最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。 对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。 而我们一个移动端网站的资源居然能超过3M，究其原因：
+ 图片大 js大 css大  图片大是因为图片基本没任何大小控制，都是使用了最高标准原图。js和css大基本是属于架构问题，一个项目中包含的上百的页面每个页面600多k的js是绕不过去的（vendor.js,app.js等打包资源，不包含其他引入资源）。
+看到vendor.js,app.js这两个名称很多人应该想到了，这是vue（react）框架开发的网站。 是的，就是用vue开发的移动端网站，使用vue开发网站本身也不是什么大问题，毕竟有实力的公司不需要SEO，直接竞价排名就行。而我要说的问题是，不是什么网站都可以用vue来开发，不信请继续往下看。
+问题分析 我司的移动端网站作用并不仅仅是用来展示公司形象的，更重要的是用户转化的，就是让用户注册的。而且是要和很多第三方机构合作投放引流，经常需要分析页面UI的不同对转化率的影响，所以需要的页面不是几个，而是几十上百个，还在不停增加，每周都有三五个页面增加。 由于vue主要是以开发单页SPA应用为主的，在开发人员不考虑真实需求的情况下自然会使用流行的技术，最终把网站开发成一个单页应用。单页应用的特点就是单页，就是把不同的页面做成一个页面一次加载，加载完成后页面之间的切换就会很快，一般无需再加载资源，用户体验也会好很多，可以套用一句话：“一次等待，处处快速”。
+这个特点在管理后台项目中很合适，但是在只需要展示一次的项目中也合适吗？不合适。
+我们的网站项目是用来做很多落地页的，各个落地页之间没有关联性，不会A页面跳到B页面，从B页面跳到C页面，A页面中不需要B页面的资源，B页面也不需要C页面的资源。然而vue项目打包的时候会把每个页面独有的一些资源都融合在一起，形成公共资源。结果就显而易见了，一个页面总要加载一堆无关资源，不仅资源大，还有很长的白屏时间，用户体验下降。
+还有一点不该使用单页应用的原因是我们的页面是纯展示的页面，不需要很多数据交互，vue能起到什么作用？操作数据？驱动UI？模块化？通通不需要。现代html可以不借助第三方库和框架的情况下完全能实现。
+结论  JavaScript 的最大优势之一是它不需要编译，所以可以在浏览器中直接运行。这样你就可以立刻获得编码的反馈。入门门槛很低；你只需一个文本编辑器和一个浏览器就能编写软件了。 不幸的是，这种简单性和可访问性已被称为过度工具链的风气破坏了。这种风气已经将 JavaScript 的开发工作变成了一场噩梦。我甚至看过一整套关于配置 Webpack 的课程。这种乱象需要有个尽头——生命苦短啊。
+ VUE，React这类框架用于构建应用方面很合适，但不太适合构建网站。应用是需要有较多的UI和数据方面的交互，而网站则更多的是信息展示，你可能根本不需要JavaScript（框架）。
+追求新技术可以让我们获得新奇感，成就感，解决老问题，而不是带来新问题。复杂性才是造成软件问题的根本原因。——试问：离开框架的你还会开发网站吗？
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e96f1d8bd7e796e7100a71a/" rel="bookmark">
+			人人都值得学习的UI自动化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-15T11:36:56Z">2020-04-15 11:36</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		为什么需要UI自动化？ 说起自动化，听着很厉害，可是也没见识过到底多厉害，基本是属于传说，没见过实战。但不能否认其价值，作者本人作为一个开发者也是偶然的机会接触到UI自动化，感受到了自动化的魅力，才不惜花时间来学习并使用在实际工作中。下面就来说一下为什么要做自动化。 自动化有很多种，单元测试，接口测试，UI测试。所有测试过程可以形成这样一个金字塔： （图片来自网络） （图片来自网络）
+从图中看出底层测试简单快速，每个单元相对独立，测试成本也较低。而最顶层的UI层聚合了底层的很多接口服务，一个测试流程相对更长更复杂，也就导致了速度慢，成本高的问题。如果由人工来完成，一个完整的测试流程往往需要几分钟，而且是不停的重复这样一个流程。所以很多开发都不愿意完整的测试自己所开发的一套业务，只能由测试人员不厌其烦的循环往复。此时如果有自动化的话就非常nice了。口说无凭，一图胜千言： 是不是还没看清？没错，平时人工测试一个报名表单需要15秒左右，而自动化后几乎一瞬间即可完成，速度提升不言而喻。如果您对UI自动化已产生兴趣，请继续往下看。
+哪些场景可以UI自动化？ UI自动化的目的不是为了自动化而自动化，也并不能覆盖所有测试。还是以测试金字塔来说明： UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越往顶层消耗的人力成本越高，如果底层测试不够充分就只能靠顶层测试来保证。自动化虽好，但需要满足特定的场景才行，那么什么样的场景可以做UI自动化？
+ 流程变化少。侧重UI的修改，而不是流程的修改。 频繁的回归测试。比如一个报名表单样式修改比较频繁，需要测试其报名是否可用。 界面稳定。样式可以频繁修改，但表单顺序和个数变化较少不能频繁变更。 维护周期长。如果只是使用一次那也不必自动化了，毕竟自动化是解决重复劳动。 开发与测试可相互配合。自动化需要程序有一定规范便于测试人员写测试程序。 测试人员具备编程能力。 如果满足了上述的场景，那么UI自动化在人力消耗和效率上就有很大的提升。正确性上更有保证，手工录入会有输错重输的情况，而自动化则不会出现。 再看一个流程比较长的页面：  上面动图并没与快进，一气呵成完成了一次下单流程，基本不需要停留即可进入下一步，相比起手动操作省时省力。
+为什么UI自动化普及率低？ 既然UI自动化能提高效率，但为什么却很少有人去使用？
+ 开发自动化程序对测试人员的编程水平有一定要求，很少有人愿意花时间去写这个程序。 对于互联网公司，大多数业务需要快速迭代，一个页面的生存周期很短，也可能只是一次性的，自动化测试没有存在的必要性。 测试人员没有切实的感受到效率提升。  其实说白了，就是大家觉得投入和产出不值得。如果是迫于领导压力要写自动化程序，就会不停的对程序修修补补，自己用的话有问题大不了不用自动化，手动测试一下通过就行，如果是给别人用就会不停收到反馈和吐槽，自然也就没有写下去的动力了。 所以个人觉得，自动化程序不应该成为一种流程和形式，而是应该由开发和测试人员自发的去将自身经常重复的工作做成自动化。因为自动化本身就不能覆盖所有场景，只有实际参与的人才能知道哪些是可以自动化的。
+有哪些工具可以选择？ 目前市场上不仅提供了多种工具可以选择，还支持不同语言。 web端：selenium、webdriver、robotframework、puppeteer等。 APP端：Appium、Instrumentation、Robotium 、UIAutomator、Espresso、Calabash、Selendroid、Robolectric、RoboSpock、Cafe、Athrun等。
+ 移动APP自动化测试框架
+ 本文不对所有工具一一详解，可自行根据平台选择合适的工具和语言进行学习使用。只针对个别WEB端工具做简单说明。 拿selenium来说，selenium是一款很多人比较熟悉的工具，支持的语言有Python，Java，JavaScript等，推荐使用Python。而且其支持的浏览器也很全面： Google Chrome Internet Explorer 7, 8, 9, 10, 11 Firefox Safari Opera HtmlUnit phantomjs Android iOS
+一些常见问题 在自动化过程中最多的就是对元素进行定位，自动化工具常见的定位符有：
+ id name class name tag link text partial link text xpath css selector  以上这些元素定位对于以前的网页来说还足以应对，因为以前开发的网页大多数元素会有id，class这些属性，定位起来也比较方便。但是对于react，vue，angular这类数据驱动的框架就不那么友好了。 比如有这么一个元素：&lt;div&gt;{{element}}&lt;/div&gt;结果为：
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e8bf346bd7e796e7100a03c/" rel="bookmark">
+			免费的mongdb集群
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-07T03:28:06Z">2020-04-07 03:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/mongodd/" rel="category">MongoDd</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		mongodb提供了免费的mongdb集群可用于学习使用 https://www.mongodb.com/cloud 并且有3个节点 mongodb Atlas免费集群存储空间为512M，这对于个人项目来说足够使用（本博客运行6年使用空间8M）。
+本地客户端连接mongo Atlas 复制了连接字符串后直接粘贴到客户端中，替换,点击From SRV,会自动拉取集群配置，点击Test测试连接是否成功。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e8b4742bd7e796e71009fcc/" rel="bookmark">
+			golang操作mongodb
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-06T15:14:10Z">2020-04-06 15:14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在之前mgo是一个使用广泛的mongodb驱动器，不过从2018年开始已不再维护，虽然觉得怪可惜的，但也不推荐使用了，毕竟mongodb本身一直在迭代，如果驱动器不更新后续也没法使用。 详细说明见仓库:https://github.com/go-mgo/mgo
+而mongodb提供了官方驱动，目前能找到的中文文档大多比较旧了，推荐直接看官方文档，有完整的操作手册:https://www.mongodb.com/blog/search/golang 本文也不想做一次搬运工，毕竟也不能随时保持更新，还是直接看官方文档比较好。下面列出一些主要的文章链接:
+Stack Overflow Research of 100,000 Developers Finds MongoDB is the Most Wanted Database (2019-2-2)
+Official MongoDB Go Driver Now Available for Beta Testing (2019-2-2) mongodb将为go提供官方驱动支持
+MongoDB Go Driver Tutorial (2019-5-30) MongoDB Go驱动程序教程
+Go Migration Guide (2019-2-2) 从社区驱动（mgo）迁移到官方驱动
+MongoDB Stitch Functions – The AWS re:Invent Stitch Rover Demo(2019-10-15)
+Calling the MongoDB Atlas API - How to do it from Go(2019-3-18)
+MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2019-4-23)
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e87e9ac75da9268a3e5993c/" rel="bookmark">
+			mongodb创建新数据库和创建用户
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-04T01:58:04Z">2020-04-04 01:58</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/mongodd/" rel="category">MongoDd</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
+db.createUser( {user: &quot;hp_website&quot;,pwd: &quot;xxxxxx&quot;,roles: [ { role: &quot;userAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbOwner&quot;, db: &quot;website&quot; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
+use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e85a563c9109f0f909b52bf/" rel="bookmark">
+			使用pm2一键部署多个服务
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-02T08:42:11Z">2020-04-02 08:42</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  { // Applications part  &#34;apps&#34; : [{ &#34;name&#34; : &#34;API&#34;, &#34;script&#34; : &#34;app.js&#34;, &#34;env&#34;: { &#34;COMMON_VARIABLE&#34;: &#34;true&#34; }, // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34; } },{ &#34;name&#34; : &#34;WEB&#34;, &#34;script&#34; : &#34;web.js&#34; }], // 部署部分  // Here you describe each environment  &#34;deploy&#34; : { &#34;production&#34; : { &#34;user&#34; : &#34;node&#34;, // 多主机配置  &#34;host&#34; : [&#34;212.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e815979c9109f0f909b4cdd/" rel="bookmark">
+			gorm模糊查询和分页查询同时查总条数
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-30T02:29:13Z">2020-03-30 02:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		gorm概述  全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好  已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
+func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { if search.Name != &#34;&#34; { u.mysql = u.mysql.Where(&#34;name LIKE ?&#34;, search.Name+&#34;%&#34;) } if search.Category != &#34;&#34; { u.mysql = u.mysql.Where(&#34;age =?&#34;, search.Age) } err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
+1.if代码是动态组装条件。
+2.err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error
+这行代码包含了数据列表查询和数据条数。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e709b485bd8165f28d22394/" rel="bookmark">
+			go-micro线上部署，注册服务到etcd
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-17T09:41:28Z">2020-03-17 09:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		线上部署 在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。 linux系统需要这样编译：GOOS=linux go build -o service main.go，就是在windows系统上进行交叉编译，可根据自己服务器情况修改参数。
+go build -o service main.go go build -o api api/api.go 线上的restful api也不能使用micro api了。需要选择适合自己的web服务框架，在web服务中调用api服务。
+etcd启动 线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。
+$ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04:42 Starting [service] go.micro.srv.user 2020-03-17 17:04:42 Server [grpc] Listening on [::]:48493 2020-03-17 17:04:42 Registry [etcd] Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395 {&#34;level&#34;:&#34;warn&#34;,&#34;ts&#34;:&#34;2020-03-17T17:04:47.849+0800&#34;,&#34;caller&#34;:&#34;clientv3/retry_interceptor.go:61&#34;,&#34;msg&#34;:&#34;retrying of unary invoker failed&#34;,&#34;target&#34;:&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;,&#34;attempt&#34;:0,&#34;error&#34;:&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e6c860e5bd8165f28d2210b/" rel="bookmark">
+			go-micro v2弃用了consul作为默认的服务发现
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-14T07:21:50Z">2020-03-14 07:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		很遗憾，go-micro v2版本不再使用consul作为服务发现中间件，官方文档也没有consul相关的文档，而是默认改用了mdns，生产推荐etcd。
+问题：I can&rsquo;t set registry with consul
+解答：《Deprecating Consul in favour of Etcd》
+ 超过4年的时间，Consul一直是Micro的默认服务发现系统之一，为我们提供了良好的服务。实际上，从一开始，它就是用于注册表的默认机制以及入门所需的唯一基础依赖项。
+  从那时起，世界在不断发展，原生云技术也在不断发展。我们发现了许多与使用Consul的方式有关的问题。这不是对Consul的打击，而是对我们的用例的反思，以及对继续前进的需求。
+  例如，我们将元数据和服务端点信息进行二进制编码，压缩和base64编码，然后再将它们存储为Consul标签，因为没有其他方法可以这样做。我们还非常严重地滥用Consul的分布式属性，这导致了许多关于raft共识的问题。
+  不幸的是，我们发现现在该继续前进了。
+  自2014年以来，Kubernetes真正成为了容器编排和基础服务平台中的一支计算力。因此，etcd成为了他们选择的键值存储的一种，它是基于raft共识构建的分布式键值存储。它已经发展到可以满足kubernetes的规模需求，并且已经以其他开源项目所没有的方式经过了实战测试。
+  Etcd还是用于二进制数据的非常标准的Get / Put / Delete存储，这意味着我们可以轻松地编码和存储服务元数据，而不会出现零问题。它对所存储数据的格式没有意见。
+  过去一周中，我们已将etcd迁移为Micro中的默认服务发现机制之一，并将在未来几周内弃用Consul。这是什么意思？好吧，我们将领事移交给我们社区维护的go-plugins存储库，并专注于支持etcd。
+  我们知道许多用户正在使用Consul，这可能会导致中断。对我们来说，这是通往v2的重大突破，因此我们的下一个发行版将被标记为v2。您可以放心，您的v1发行版将继续按原样运行，但希望我们发布的下一个发行版是micro v2.0.0。
+ 参考项目：micro-service
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e5a3fb45bd8165f28d21307/" rel="bookmark">
+			vscode正则查找替换
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-02-29T10:40:52Z">2020-02-29 10:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		查找某一类型字符串： 正则表达式onclick=.*&quot; 会查找到所有： onclick=&quot;_msq.push(['trackEvent', '210074305d6b0409-09c7759e04e98528', ''pcpid', '']);&quot;
+onclick=是固定一样的字符，
+.代表除\r和\n之外的任意字符，等价于[^\r\n]
+*代表匹配前面的模式 0或多次 {0,}
+&quot;这是字符串最后一个字符
+在vscode中的效果如下：  至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：
+查找：(onclick=.*&quot;) 替换：aaa($1) 结果： 
+替换字符串两头，保留中间 
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/blogdetail/page/3/">«</a>
+	<span class="pagination__item pagination__item--current">4/19</span>
+	<a class="pagination__item pagination__item--next btn" href="/blogdetail/page/5/">»</a>
+</div>
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/606d512c54277a10496a38ae/">使用sveltekit开发一个服务端渲染（SSR）项目</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/bae/">BAE</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/docker/">docker</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">Golang</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/mongodd/">MongoDd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ssh/">SSH</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/contributions/" title="Contributions ">Contributions </a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/foreach/" title="forEach">forEach</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongo/" title="mongo">mongo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title=" node"> node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="node.js">node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/null/" title="null">null</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2-logrotate%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/" title="pm2-logrotate日志分割">pm2-logrotate日志分割</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/protoc-gen-micro/" title="protoc-gen-micro">protoc-gen-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px2rem/" title="px2rem">px2rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pxtorem/" title="pxtorem">pxtorem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px%E8%BD%AC%E6%8D%A2%E6%88%90rem/" title="px转换成rem">px转换成rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime-text/" title="sublime text">sublime text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte%E4%BC%A0%E5%8F%82/" title="svelte传参">svelte传参</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%B8%8A%E6%B5%B7/" title="上海">上海</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/" title="元素对象">元素对象</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%83%A8%E7%BD%B2/" title="部署">部署</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

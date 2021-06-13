@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>用java的思想方式写javascript - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="javascript和java有相似之处也有很大区别，对于初学者来说很容易被名称迷惑，其实当初javascript就是借着java的顺风车进行推广的。由于jav">
+		<meta property="og:title" content="用java的思想方式写javascript" />
+<meta property="og:description" content="javascript和java有相似之处也有很大区别，对于初学者来说很容易被名称迷惑，其实当初javascript就是借着java的顺风车进行推广的。由于jav" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/56f15a4a3823e4e62593d4e2/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2016-03-22T14:44:26&#43;00:00" />
+<meta property="article:modified_time" content="2016-03-22T14:44:26&#43;00:00" />
+
+
+		<meta itemprop="name" content="用java的思想方式写javascript">
+<meta itemprop="description" content="javascript和java有相似之处也有很大区别，对于初学者来说很容易被名称迷惑，其实当初javascript就是借着java的顺风车进行推广的。由于jav"><meta itemprop="datePublished" content="2016-03-22T14:44:26&#43;00:00" />
+<meta itemprop="dateModified" content="2016-03-22T14:44:26&#43;00:00" />
+<meta itemprop="wordCount" content="65">
+<meta itemprop="keywords" content="" />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">用java的思想方式写javascript</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-03-22T14:44:26Z">2016-03-22 14:44</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>javascript和java有相似之处也有很大区别，对于初学者来说很容易被名称迷惑，其实当初javascript就是借着java的顺风车进行推广的。</p>
+<p>由于javascript是动态语言，java是静态语言，所以两者在编写方式上有很大区别，主要是因为javascript没有类的概念，在ES6标准发布之前要构造一个对象需要用new关键字实例化一个function或者直接使用对象字面量。不过ES6标准的发布，使得javascript也可像java一样声明类了。</p>
+<p>在使用nodejs开发大型应用时需要到类的概念来封装一个复杂的逻辑，我们可以从现在开始逐步使用ES6开发，但是基于现有的支持环境，很多时候还得用ES5编写代码，那么这时候怎么来抽象一个类和实例化对象？</p>
+<p>以Java的思想方式来编写JavaScript，首先是一个构造函数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span>){
+	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+}
+</code></pre></div><p>这就像是Java的构造函数，可以new一个对象出来</p>
+<p><code>var tom = new Person(&quot;Tom&quot;,12);</code></p>
+<p>构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:</p>
+<pre><code class="language-jacascript" data-lang="jacascript">var tom = new Person();
+
+tom.name = &quot;Tom&quot;;
+tom.age = 13;
+</code></pre><p>有了构造函数，还要有普通函数：</p>
+<pre><code class="language-jacascript" data-lang="jacascript">tom.sayHello = function(){
+
+	console.log(&quot;my name is &quot;+this.name);//my name is Tom
+
+}
+</code></pre><p>接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象</p>
+<pre><code class="language-jacascript" data-lang="jacascript">function Person(name, age){
+	this.name = name;
+
+	this.age = age;
+
+}
+
+Person.getAge = function(){
+
+	console.log(this.age);
+
+}
+
+Person.age = 12;
+
+Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age
+</code></pre><p>至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/56f1498b3823e4e62593d4e1/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">fullcalendar点击prve或者next按钮翻月触发事件调用</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/574019ee0bdb5de027394523/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">linux下安装nodejs</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

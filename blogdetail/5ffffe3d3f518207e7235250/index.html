@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>nestjs中使用携程Apollo配置中心 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="nest框架官方文档中使用的是本地文件配置，也就是@nestjsconfig包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾">
+		<meta property="og:title" content="nestjs中使用携程Apollo配置中心" />
+<meta property="og:description" content="nest框架官方文档中使用的是本地文件配置，也就是@nestjsconfig包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/5ffffe3d3f518207e7235250/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2021-01-14T08:18:05&#43;00:00" />
+<meta property="article:modified_time" content="2021-01-14T08:18:05&#43;00:00" />
+
+
+		<meta itemprop="name" content="nestjs中使用携程Apollo配置中心">
+<meta itemprop="description" content="nest框架官方文档中使用的是本地文件配置，也就是@nestjsconfig包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾"><meta itemprop="datePublished" content="2021-01-14T08:18:05&#43;00:00" />
+<meta itemprop="dateModified" content="2021-01-14T08:18:05&#43;00:00" />
+<meta itemprop="wordCount" content="231">
+<meta itemprop="keywords" content="" />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">nestjs中使用携程Apollo配置中心</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-14T08:18:05Z">2021-01-14 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>nest框架官方文档中使用的是本地文件配置，也就是<code>@nestjs/config</code>包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。</p>
+<p>集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。
+在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。
+先看代码再解释。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// main.ts
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">NestFactory</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/core&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ExpressAdapter</span>, <span style="color:#a6e22e">NestExpressApplication</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/platform-express&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppModule</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./app.module&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">MyLogger</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./libs/mylog.service&#39;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">join</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;path&#39;</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Apollo</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">require</span>(<span style="color:#e6db74">&#39;node-apollo&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dotenv</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">require</span>(<span style="color:#e6db74">&#39;dotenv&#39;</span>);
+
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bootstrap() {</span>
+    <span style="color:#66d9ef">try</span> {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">root</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;../&#39;</span>);
+        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">envFile</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">root</span>, <span style="color:#e6db74">&#39;.env&#39;</span>)
+        <span style="color:#a6e22e">dotenv</span>.<span style="color:#a6e22e">config</span>({ <span style="color:#e6db74">&#34;path&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">envFile</span> })
+        <span style="color:#66d9ef">const</span> {
+            <span style="color:#a6e22e">APOLLO_APPID</span>,
+            <span style="color:#a6e22e">APOLLO_ENV</span>,
+            <span style="color:#a6e22e">APOLLO_HOST</span>,
+            <span style="color:#a6e22e">APOLLO_NAMESPACE</span>,
+            <span style="color:#a6e22e">APOLLO_PORT</span>,
+            <span style="color:#a6e22e">APOLLO_TOKEN</span>,
+            <span style="color:#a6e22e">APOLLO_ClUSTER</span>
+        } <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>;
+        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">apolloEnv</span> <span style="color:#f92672">=</span> {
+            <span style="color:#a6e22e">configServerUrl</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`http://</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">APOLLO_HOST</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">APOLLO_PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+            <span style="color:#a6e22e">appId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">APOLLO_APPID</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+            <span style="color:#a6e22e">clusterName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">APOLLO_ClUSTER</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+            <span style="color:#a6e22e">apolloEnv</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">APOLLO_ENV</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+            <span style="color:#a6e22e">token</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">APOLLO_TOKEN</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+            <span style="color:#a6e22e">namespaceName</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">APOLLO_NAMESPACE</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>]
+        };
+        <span style="color:#75715e">// 获取到的配置信息
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">zmConf</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">Apollo</span>.<span style="color:#a6e22e">remoteConfigService</span>(<span style="color:#a6e22e">apolloEnv</span>);
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;main.config&#34;</span>, <span style="color:#a6e22e">zmConf</span>);
+        <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">assign</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>, <span style="color:#a6e22e">zmConf</span>);
+    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`获取环境变量异常:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">err</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+    }
+
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">NestFactory</span>.<span style="color:#a6e22e">create</span>&lt;<span style="color:#f92672">NestExpressApplication</span>&gt;(<span style="color:#a6e22e">AppModule</span>, <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExpressAdapter</span>());
+    <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">useLogger</span>(<span style="color:#a6e22e">app</span>.<span style="color:#66d9ef">get</span>(<span style="color:#a6e22e">MyLogger</span>));
+
+    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3434</span>, () <span style="color:#f92672">=&gt;</span> {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">logger</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyLogger</span>(<span style="color:#e6db74">&#39;main.ts&#39;</span>);
+        <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">debug</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">NODE_ENV</span>, <span style="color:#e6db74">&#39;main.ts&#39;</span>);
+        <span style="color:#a6e22e">logger</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;server start on http://localhost:3434&#39;</span>);
+    });
+}
+<span style="color:#a6e22e">bootstrap</span>();
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#75715e">// app.module.ts
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">@Module</span>({
+    <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [
+        <span style="color:#75715e">// MongooseModule.forRoot(`mongodb://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${process.env.DATABASE_DATABASE}`),
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">MongooseModule</span>.<span style="color:#a6e22e">forRootAsync</span>({
+            <span style="color:#a6e22e">useFactory</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> ({
+                <span style="color:#a6e22e">uri</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`mongodb://</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_USER</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_PASSWORD</span><span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_HOST</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_DATABASE</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+            }),
+        }),
+        <span style="color:#75715e">//  Nest can&#39;t resolve dependencies of the AppService (?). Please make sure that the argument ArticleService at index [0] is available in the AppModule context.
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// 在article.service中exports:[ArticleService]
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">ArticleModule</span>,
+        <span style="color:#a6e22e">LoggerModule</span>,
+        <span style="color:#75715e">// HttpModule,
+</span><span style="color:#75715e"></span>    ], <span style="color:#75715e">// 导入模块所需的导入模块列表
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">controllers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">AppController</span>], <span style="color:#75715e">// 必须创建的一组控制器
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">AppService</span>, <span style="color:#a6e22e">MyLogger</span>], <span style="color:#75715e">// 由 Nest 注入器实例化的提供者，并且可以在整个模块中共享
+</span><span style="color:#75715e"></span>})
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppModule</span> <span style="color:#66d9ef">implements</span> <span style="color:#a6e22e">NestModule</span> {
+    <span style="color:#75715e">// 中间件模块在此处添加，可以给某一部分增加中间件，如果要全局增加则在main.ts中使用app.use添加
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">configure</span>(<span style="color:#a6e22e">consumer</span>: <span style="color:#66d9ef">MiddlewareConsumer</span>) {
+        <span style="color:#a6e22e">consumer</span>
+            .<span style="color:#a6e22e">apply</span>()
+            <span style="color:#75715e">// .with(&#39;中间件参数&#39;)
+</span><span style="color:#75715e"></span>            .<span style="color:#a6e22e">forRoutes</span>(<span style="color:#e6db74">&#39;/*&#39;</span>);
+    }
+}
+</code></pre></div><p>使用<code>MongooseModule.forRoot</code>连接数据库肯定是不行的，需要改成异步的：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#a6e22e">MongooseModule</span>.<span style="color:#a6e22e">forRootAsync</span>({
+    <span style="color:#a6e22e">useFactory</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> ({
+        <span style="color:#a6e22e">uri</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`mongodb://</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_USER</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_PASSWORD</span><span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_HOST</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">DATABASE_DATABASE</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+    }),
+}),
+</code></pre></div><p>因为按照nodejs模块导入的顺序，main.ts中先导入AppModule，AppModule中连接数据库，此时main.ts中的Apollo配置还没获取到，所以就不能正常连接了。那么就只能使用动态连接方式咯。</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/5ff7d7cc3f518207e72349ed/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">svelte history路由刷新后404</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/60191322ebffed4856026fc7/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">firefox火狐新标签中打开书签</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

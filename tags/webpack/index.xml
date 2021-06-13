@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webpack on 月盾的个人博客</title>
+    <link>/tags/webpack/</link>
+    <description>Recent content in webpack on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 16 Feb 2018 13:22:49 +0000</lastBuildDate><atom:link href="/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>webpack构建vue项目警告</title>
+      <link>/blogdetail/5a86db29c3700db1c9ae7c55/</link>
+      <pubDate>Fri, 16 Feb 2018 13:22:49 +0000</pubDate>
+      
+      <guid>/blogdetail/5a86db29c3700db1c9ae7c55/</guid>
+      <description>bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &amp;lt;Root&amp;gt;) 解决方案：与entry属性平级添加
+resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录 } } // 需要编译器 new Vue({ template: &#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释</description>
+    </item>
+    
+    <item>
+      <title>vue.js开发gulp监听文件变化自动编译</title>
+      <link>/blogdetail/568a088edb1fef9e0cda949e/</link>
+      <pubDate>Mon, 04 Jan 2016 05:52:14 +0000</pubDate>
+      
+      <guid>/blogdetail/568a088edb1fef9e0cda949e/</guid>
+      <description>直接看代码：
+var gulp = require(&amp;#39;gulp&amp;#39;) var webpack = require(&amp;#34;gulp-webpack&amp;#34;); var webpackConfig = require(&amp;#34;./webpack.config.js&amp;#34;); // gulp.task(&amp;#34;webpack&amp;#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;err:&amp;#34;+JSON.stringify(err)) // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;stats:&amp;#34;+stats) // if(err) throw new Error(&amp;#34;webpack&amp;#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&amp;#34;webpack&amp;#34;, function(){ return gulp.src(&amp;#34;./app.js&amp;#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&amp;#34;./dist/&amp;#34;)) }); gulp.watch(&amp;#39;./views/*&amp;#39;, [&amp;#39;webpack&amp;#39;]); webpack.config.js配置
+var webpack = require(&amp;#34;webpack&amp;#34;); module.exports = { entry: //&amp;#34;./app.js&amp;#34;,  { app:&amp;#34;./app.js&amp;#34; // vendor: [&amp;#34;.</description>
+    </item>
+    
+  </channel>
+</rss>

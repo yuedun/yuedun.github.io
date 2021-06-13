@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>读写数据库与读写文件哪个更快？ - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故">
+		<meta property="og:title" content="读写数据库与读写文件哪个更快？" />
+<meta property="og:description" content="由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/5a1d8147da5c711b612f4d88/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2017-11-28T15:31:19&#43;00:00" />
+<meta property="article:modified_time" content="2017-11-28T15:31:19&#43;00:00" />
+
+
+		<meta itemprop="name" content="读写数据库与读写文件哪个更快？">
+<meta itemprop="description" content="由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故"><meta itemprop="datePublished" content="2017-11-28T15:31:19&#43;00:00" />
+<meta itemprop="dateModified" content="2017-11-28T15:31:19&#43;00:00" />
+<meta itemprop="wordCount" content="158">
+<meta itemprop="keywords" content="" />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">读写数据库与读写文件哪个更快？</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-28T15:31:19Z">2017-11-28 15:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故，我们本文还是来实测一下，由于时间关系，VC还没装，书生先用PHP测试了一下，下次有时间在C/C++上补充测试到本文来，因为 PHP的底层解析应该也是基于C的，所以估计两者环境测试结果差不多，小问题大收获，现在就来看一下测试过程及结果。</p>
+<h5 id="测试程序如下">测试程序如下：</h5>
+<p>//说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。</p>
+<p>//说明2：测试两次一次是4K数据，一次是整形数据</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#a6e22e">set_time_limit</span>(<span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fnGet</span>($filename)
+{
+    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">file_get_contents</span>($filename);
+    <span style="color:#66d9ef">return</span> $content;
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fnGetContent</span>($filename)
+{
+    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">fnGet</span>($filename);
+    <span style="color:#66d9ef">return</span> $content;
+}
+   
+$times<span style="color:#f92672">=</span><span style="color:#ae81ff">100000</span>;   
+<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;数据库查询结果：&lt;br/&gt;&#39;</span>;
+<span style="color:#75715e">//---------------------------------
+</span><span style="color:#75715e"></span>$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+<span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+{
+    $res<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_query</span>(<span style="color:#e6db74">&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;</span>);
+    $row<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_fetch_row</span>($res);
+    $content<span style="color:#f92672">=</span>$row[<span style="color:#ae81ff">0</span>];
+}
+<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;fetch_row &#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39; 次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+<span style="color:#75715e">//---------------------------------
+</span><span style="color:#75715e"></span>
+$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+<span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+{
+    $res<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_query</span>(<span style="color:#e6db74">&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;</span>);
+    $row<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_fetch_array</span>($res);
+    $content<span style="color:#f92672">=</span>$row[<span style="color:#e6db74">&#39;log_Content&#39;</span>];   
+}
+<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;fetch_array &#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39; 次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+<span style="color:#75715e">//---------------------------------
+</span><span style="color:#75715e"></span>
+$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+<span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+{
+    $res<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_query</span>(<span style="color:#e6db74">&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;</span>);
+    $row<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_fetch_object</span>($res);
+    $content<span style="color:#f92672">=</span>$row<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">log_Content</span>;   
+}
+<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;fetch_object &#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39; 次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+<span style="color:#75715e">//---------------------------------
+</span><span style="color:#75715e"></span>
+$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_free_results</span>();
+$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_disconnect</span>();
+
+<span style="color:#a6e22e">fnWriteCache</span>(<span style="color:#e6db74">&#39;test.txt&#39;</span>,$content);
+
+<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;直接读文件测试结果：&lt;br/&gt;&#39;</span>;
+
+<span style="color:#75715e">//---------------------------------
+</span><span style="color:#75715e"></span>$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+<span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+{
+    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">fnGetContent</span>(<span style="color:#e6db74">&#39;test.txt&#39;</span>);
+}
+<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;file_get_contents直接读&#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+<span style="color:#75715e">//---------------------------------
+</span><span style="color:#75715e"></span>
+$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+<span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+{
+    $fname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test.txt&#39;</span>;
+    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">file_exists</span>($fname))
+     {
+        $fp<span style="color:#f92672">=</span><span style="color:#a6e22e">fopen</span>($fname,<span style="color:#e6db74">&#34;r&#34;</span>);<span style="color:#75715e">//flock($fp,LOCK_EX);       
+</span><span style="color:#75715e"></span>        $file_data<span style="color:#f92672">=</span><span style="color:#a6e22e">fread</span>($fp, <span style="color:#a6e22e">filesize</span>($fname));<span style="color:#75715e">//rewind($fp);      
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">fclose</span>($fp);
+    }
+    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">fnGetContent</span>(<span style="color:#e6db74">&#39;test.txt&#39;</span>);
+}   
+<span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;fopen直接读&#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+</code></pre></div><h4 id="结果">结果：</h4>
+<blockquote>
+<p>4K大小数据的查询结果：
+fetch_row 100000 次时间：16.737720012665秒
+fetch_array 100000 次时间：16.661195993423秒
+fetch_object 100000 次时间：16.775065898895秒
+直接读文件测试结果：
+file_get_contents直接读100000次时间：5.4631857872009秒
+fopen直接读100000次时间：11.463611125946秒</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>整形ID查询结果：
+fetch_row 100000 次时间：12.812072038651秒
+fetch_array 100000 次时间：12.667390108109秒
+fetch_object 100000 次时间：12.988099098206秒
+直接读文件测试结果：
+file_get_contents直接读100000次时间：5.6616430282593秒
+fopen直接读100000次时间：11.542816877365秒</p>
+</blockquote>
+<h4 id="测试结论">测试结论：</h4>
+<p>1、<strong>直接读文件相比数据库查询效率更胜一筹</strong>，而且文中还没算上连接和断开的时间。</p>
+<p>2、<strong>一次读取的内容越大，直接读文件的优势会越明显</strong>（读文件时间都是小幅增长，这跟文件存储的连续性和簇大小等有关系），这个结果恰恰跟书生预料的相反，说明MYSQL对更大文件读取可能又附加了某些操作（两次时间增长了近30%），如果只是单纯的赋值转换应该是差异偏小才对。</p>
+<p>3、<strong>写文件和INSERT几乎不用测试就可以推测出，数据库效率只会更差。</strong></p>
+<p>4、<strong>很小的配置文件如果不需要使用到数据库特性，更加适合放到独立文件里存取</strong>，无需单独创建数据表或记录，很大的文件比如图片、音乐等采用文件存储更为方便，只把路径或缩略图等索引信息放到数据库里更合理一些。</p>
+<p>5、PHP上如果只是读文件，file_get_contents比fopen、fclose更有效率，不包括判断存在这个函数时间会少3秒左右。</p>
+<p>6、fetch_row和fetch_object应该是从fetch_array转换而来的，书生没看过PHP的源码，单从执行上就可以说明fetch_array效率更高，这跟网上的说法似乎相反。</p>
+<p>实际上在做这个试验之前，从个人经验判断就有了大概的结果，测试完成后则有种豁然开朗的感觉。假定在程序效率和关键过程相当且不计入缓存等措施的条件下，读 写任何类型的数据都没有直接操作文件来的快，不论MSYQL过程如何，最后都要到磁盘上去读这个“文件”（记录存储区等效），所以当然这一切的前提是只读 内容，无关任何排序或查找操作。</p>
+<p>转自：http://blog.163.com/ruihuadesunny@126/blog/static/3902619120101018104335211/</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/5a1be456da5c711b612f4d39/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">Dockerfile CMD命令没有执行npm start</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/5a24ed6c2d700330ae669e89/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">请求发送到Nodejs服务器以后响应非常慢</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

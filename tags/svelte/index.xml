@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>svelte on 月盾的个人博客</title>
+    <link>/tags/svelte/</link>
+    <description>Recent content in svelte on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 07 Apr 2021 06:29:00 +0000</lastBuildDate><atom:link href="/tags/svelte/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用sveltekit开发一个服务端渲染（SSR）项目</title>
+      <link>/blogdetail/606d512c54277a10496a38ae/</link>
+      <pubDate>Wed, 07 Apr 2021 06:29:00 +0000</pubDate>
+      
+      <guid>/blogdetail/606d512c54277a10496a38ae/</guid>
+      <description>上篇简单介绍了sapper和sveltekit的发展，目前sveltekit还只是Beta版本，有很多不确定因素存在，有可能会有大的变更，所以还不推荐在生产环境中使用，不过在个人项目和小项目中可以大胆尝试。
+今天我们就正式使用sveltekit开发一个web项目。
+第一步：创建项目
+mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
+第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
+我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问/blog路由，还需要创建index.svelte文件，内容如下：
+&amp;lt;script context=&amp;quot;module&amp;quot;&amp;gt; /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json .then((r) =&amp;gt; r.json()) .then((posts) =&amp;gt; { console.log(posts); return { props: { posts } }; }); } &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; export let posts; &amp;lt;/script&amp;gt; &amp;lt;svelte:head&amp;gt; &amp;lt;title&amp;gt;Blog&amp;lt;/title&amp;gt; &amp;lt;/svelte:head&amp;gt; &amp;lt;h1&amp;gt;Recent posts&amp;lt;/h1&amp;gt; &amp;lt;ul&amp;gt; {#each posts as post} &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>关于svelte框架——sapper和sveltekit的发展</title>
+      <link>/blogdetail/60628dfa8f0b5a0240684581/</link>
+      <pubDate>Tue, 30 Mar 2021 02:33:30 +0000</pubDate>
+      
+      <guid>/blogdetail/60628dfa8f0b5a0240684581/</guid>
+      <description>虽然您可能现在还没有听说过svelte，但是其实svelte的发展速度超过了你的想象。
+本文主要讲的是关于sapper和sveltekit这两款框架的发展。
+svelte作者里奇·哈里斯（Rich Harris）在2020年10月的svelte峰会上表示：sapper永远不会发布1.0版本。
+也就是说sapper不会发布正式版，一直处于非稳定版本。也可能放弃更新。
+主要原因是sapper多年来代码库变得凌乱，但更主要的原因是最近网络发生了很大变化。
+而作者放弃sapper后的另一种选择是开发SvelteKit。
+Sapper和SvelteKit都是svelte的开发框架，类似于vue的nuxt框架。
+sveltekit包含的功能有：
+  服务端渲染（SSR）
+  路由
+  typescript支持
+  less, scss支持
+  serverless
+  vite打包
+  可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
+创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
+ $ npm run dev -- --open &amp;gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &amp;gt; svelte-kit dev &amp;quot;--open&amp;quot; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import &#39;./dist/cli.js&#39;; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.</description>
+    </item>
+    
+    <item>
+      <title>svelte history路由刷新后404</title>
+      <link>/blogdetail/5ff7d7cc3f518207e72349ed/</link>
+      <pubDate>Fri, 08 Jan 2021 03:55:56 +0000</pubDate>
+      
+      <guid>/blogdetail/5ff7d7cc3f518207e72349ed/</guid>
+      <description>npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持history模式的使用上也不是很方便，试用过五六个支持history的路由后最终@spaceavocado/svelte-router算是满足了要求。
+ 使用简单 功能丰富 支持history和hash 我也是够难伺候的。  在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&amp;hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
+使用方法：
+//App.svelte &amp;lt;script&amp;gt; import RouterView from &#39;@spaceavocado/svelte-router/component/view&#39;; import { routes } from &#39;./router.js&#39; &amp;lt;/script&amp;gt; &amp;lt;RouterView /&amp;gt; //router.js import createRouter from &amp;#39;@spaceavocado/svelte-router&amp;#39;; import index from &amp;#39;./index/index.svelte&amp;#39;; import a from &amp;#39;./a/a.svelte&amp;#39;; import b from &amp;#39;./b/b.svelte&amp;#39;; export const routes = createRouter({ mode: &amp;#34;HISTORY&amp;#34;, routes: [ { path: &amp;#39;/&amp;#39;, name: &amp;#39;HOME&amp;#39;, component: index, }, { path: &amp;#39;/a&amp;#39;, name: &amp;#39;a&amp;#39;, component: a, }, { path: &amp;#39;/b&amp;#39;, name: &amp;#39;b&amp;#39;, component: b, }, { path: &amp;#39;*&amp;#39;, component: index, }, ], }); // index.</description>
+    </item>
+    
+    <item>
+      <title>基于sapper开发svelte项目配置本地代理</title>
+      <link>/blogdetail/5ff449035e80c6649222da2c/</link>
+      <pubDate>Tue, 05 Jan 2021 11:09:55 +0000</pubDate>
+      
+      <guid>/blogdetail/5ff449035e80c6649222da2c/</guid>
+      <description>sapper可能被放弃更新，如果您要继续使用svelte，可以考虑使用sveltekit
+ 最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
+ 服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试）  可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
+遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
+import sirv from &amp;#39;sirv&amp;#39;; import polka from &amp;#39;polka&amp;#39;; import compression from &amp;#39;compression&amp;#39;; import * as sapper from &amp;#39;@sapper/server&amp;#39;; import { createProxyMiddleware } from &amp;#39;http-proxy-middleware&amp;#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &amp;#39;development&amp;#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&amp;#39;/api&amp;#39;, createProxyMiddleware({ target: &amp;#39;https://example.com&amp;#39;, pathRewrite: { &amp;#39;^/api&amp;#39;: &amp;#39;&amp;#39; }, secure: false, changeOrigin: true, })) .</description>
+    </item>
+    
+    <item>
+      <title>svelte项目rollup配置px2rem</title>
+      <link>/blogdetail/5ff3db095e80c6649222d94e/</link>
+      <pubDate>Tue, 05 Jan 2021 03:20:41 +0000</pubDate>
+      
+      <guid>/blogdetail/5ff3db095e80c6649222d94e/</guid>
+      <description>使用svelte开发项目时遇到需要将px转换成rem的需求，有试过postcss-px2rem，postcss-pxtorem，等postcss插件，都没成成功，最后找到了postcss-units插件成功实现。 完整rollup配置文件如下： converts px to rem 该配置是sapper项目配置
+import path from &amp;#39;path&amp;#39;; import resolve from &amp;#39;@rollup/plugin-node-resolve&amp;#39;; import replace from &amp;#39;@rollup/plugin-replace&amp;#39;; import commonjs from &amp;#39;@rollup/plugin-commonjs&amp;#39;; import url from &amp;#39;@rollup/plugin-url&amp;#39;; import svelte from &amp;#39;rollup-plugin-svelte&amp;#39;; import babel from &amp;#39;@rollup/plugin-babel&amp;#39;; import { terser } from &amp;#39;rollup-plugin-terser&amp;#39;; import config from &amp;#39;sapper/config/rollup.js&amp;#39;; import pkg from &amp;#39;./package.json&amp;#39;; import sveltePreprocess from &amp;#39;svelte-preprocess&amp;#39;; // import { less } from &amp;#39;svelte-preprocess&amp;#39;; const postcssUnits = require(&amp;#39;postcss-units&amp;#39;); const mode = process.env.NODE_ENV; const dev = mode === &amp;#39;development&amp;#39;; const legacy = !</description>
+    </item>
+    
+    <item>
+      <title>svelte函数传参</title>
+      <link>/blogdetail/5fea9271de75f459aa011018/</link>
+      <pubDate>Tue, 29 Dec 2020 02:20:33 +0000</pubDate>
+      
+      <guid>/blogdetail/5fea9271de75f459aa011018/</guid>
+      <description>svelte给dom对象绑定事件和vue框架类似。 定义函数：
+function handler(index){ alert(&amp;quot;hello&amp;quot;, index); } 绑定事件：
+&amp;lt;button on:click={handler}&amp;gt;点击&amp;lt;/button&amp;gt;
+但是带参函数的使用就略有不同了，函数handler的参数index需要传入的时候，不能直接这样使用&amp;lt;button on:click={handler(123)}&amp;gt;点击&amp;lt;/button&amp;gt;,这样的写法会在页面打开时直接执行，而不是在点击按钮的时候执行。
+这是初学svelte的时候比较郁闷的事，官方文档中也没有明显的文档说明如何传参。 正确的传参方式是这样的： &amp;lt;button on:click={() =&amp;gt; handler(123)}&amp;gt;点击&amp;lt;/button&amp;gt; 将on:click的内容改写为匿名函数，在函数中调用。</description>
+    </item>
+    
+  </channel>
+</rss>

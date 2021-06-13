@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="zh-cn">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,12 +26,10 @@
 <body class="body">
 		<header class="header">
 	
-	<div class="logo logo--mixed">
+	<div class="logo">
 		<div class="container">
 			<a class="logo__link" href="/" title="月盾" rel="home">
-				<div class="logo__item logo__imagebox">
-						<img class="logo__img" src="/img/placeholder.png">
-					</div><div class="logo__item logo__text">
+				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
 						<div class="logo__tagline">欢迎访问我的博客</div>
 					</div>
@@ -44,20 +42,13 @@
 <nav class="menu">
 	<div class="container">
 		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
-			<span class="menu__btn-title" tabindex="-1">Menu</span>
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
 		</button>
 		<ul class="menu__list">
 			<li class="menu__item">
-				<a class="menu__link" href="/about/">
+				<a class="menu__link" href="/catalog/">
 					
-					<span class="menu__text">关于我</span>
-					
-				</a>
-			</li>
-			<li class="menu__item">
-				<a class="menu__link" href="/weibo/">
-					
-					<span class="menu__text">微博</span>
+					<span class="menu__text">目录</span>
 					
 				</a>
 			</li>
@@ -69,9 +60,9 @@
 				</a>
 			</li>
 			<li class="menu__item">
-				<a class="menu__link" href="/catalog/">
+				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">目录</span>
+					<span class="menu__text">关于我</span>
 					
 				</a>
 			</li>
@@ -104,7 +95,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
-node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void;~~~~~~~~~~~node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;~~~~~~~~~~~node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.118 touch: (sid: string, session: Express.
+node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 118 touch: (sid: string, session: Express.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -129,77 +120,443 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'glob
  发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。  部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
 使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
 最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。 朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
+ 朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统 title: &ldquo;朱雀发布系统支持scp（rsync）发布&rdquo; description: &ldquo;去年花了三天时间开发了一个简易版的[nodejs发布系统](https:www.yuedun.wangblogdetail5f41c9d65edb9b37630&rdquo; date: 2021-05-07T09:47:10.117Z draft: true
+categories:
+ &ldquo;工具使用&rdquo; tags:   去年花了三天时间开发了一个简易版的nodejs发布系统，它是基于pm2自带的deploy机制开发的，主要原理就是在两台装有pm2的机器直接通信，并执行相应的命令。再往简单了说就是在发布机上远程执行命令，而朱雀发布系统提供了一个图形界面而已。
+当时把这个系统定位为nodejs专用发布系统，因为它依赖了pm2，而pm2则是nodejs专用的进程管理工具，其他语言用不到。这个系统的上线也算是解决了我司一直以来没有合适的nodejs发布系统的空缺。
+经过9个月的使用，也算比较稳定。但是也存在问题，最大的问题是部署应用方面比较繁琐。
+基本流程如下：
+ 发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。  部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
+使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
+最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。 朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
  朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/60861bef54277a10496a54b6/" rel="bookmark">
+			easy-monitor qps监控
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-04-26T01:48:31Z">2021-04-26 01:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Easy-Monitor是一款轻量级的Node性能监控工具，仅仅需要项目入口 require 一次，就可以非常便捷地展示出进程的状态细节。
+Easy-Monitor主要提供以下的功能：
+ 找出执行时长耗费最久的5个或者更多的函数 找出那些执行时间超出预期的函数 找出v8引擎无法优化的函数  Easy-Monitor的特点：
+ 轻量级：非传统C/S物理分离模式，require 后即可使用，没有额外的监控server/agent部署成本。 运行时：针对的是运行时的函数性能以及内存细节进行处理展示，可用于线上生产环境项目。 无状态：永远展示的是开发者访问时的业务进程状态  关于监控qps，作者在文档中并没有提到qps这样的关键字，很多人也不知道怎么监控qps。 不过在监控界面中有这样的指标数据： 所以我从源码入手，找到了该数据指标的源头是这样的：
+const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_memory_percent * 100).toFixed(2)), maxDisk: max_disk_usage, disks: disks_json, load1: Number(load1.toFixed(2)), load5: Number(load5.toFixed(2)), load15: Number(load15.toFixed(2)), nodeCount: node_count, scavengeTotal: total_scavange_duration, scavengeAverage: scavange_duration_last_record, marksweepTotal: total_marksweep_duration, marksweepAverage: marksweep_duration_last_record, qps: Number((http_response_sent / 60).toFixed(2)), rtExpired: http_patch_timeout, rtAverage: http_rt, }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/60191322ebffed4856026fc7/" rel="bookmark">
+			firefox火狐新标签中打开书签
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-02-02T08:53:54Z">2021-02-02 08:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		火狐浏览器新建标签总是在当前打开标签之后，而不是在最后一个标签后新建。 1.about:config 2.browser.tabs.insertAfterCurrent设为false。
+新标签中打开书签 browser.tabs.loadBookmarksInTabs设置true。
+新标签中打开搜索 browser.search.openintab设置true.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fb757025edb9b37630b808b/" rel="bookmark">
+			vscode远程开发应用场景
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-20T05:41:22Z">2020-11-20 05:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		vscode远程开发 vscode远程开发功能在2019年5月份发布，到现在已经有一年半的时间了，但是周围的人很少提及此功能，并不是没有人使用vscode，而是对此没有强烈需求。
+那么远程开发还有什么用呢？下面我来举些列子。
+关于vscode远程环境搭建本文不重复说明，网上有大量教程，大家只需要安装remote development插件基本都可以使用起来。
+远程开发，顾名思义就是连接远端服务器进行开发，这样的场景确实不是很常见，但是有时候却是很有用，能够解决燃眉之急。
+本地主机性能差 有一些大型项目对电脑的要求也较高，编译耗时，跑起来吃内存，我们的常规解决方案是升级电脑内存，升级硬盘，总之就是换高配电脑，如果是换一台也倒罢了，如果是一个团队都要使用更高配的电脑，那这样的成本还是挺高的。
+此时利用远程开发功能，所有人共用一台8核16G服务器就足够了。能够解决编译耗时，吃内存等问题。
+开发环境统一 现代大多数应用服务是跑在Linux上的，而开发环境则有Windows，Mac，有些服务在开发环境下无法顺利跑起来，这种情况就可以利用远程开发，不再需要虚拟机或WSL了，在Linux上部署应用，在Windows上开发。
+远程调试 远程调试我想很多人都有过这样的需求，但是却从来没有过真正的实践，原因是太难搞了。线上出问题，本地无法复现，真希望能够直接调试线上代码，但是无奈无法实现。现在好了，有了vscode远程开发，调试就变得容易了。
+远程编辑文件 在Linux上编辑文件时使用的vim编辑器对大多数人来说有些头大，能在vscode中编辑文本就舒服多了。只需要使用vscode连接远程服务可以很方便打开文件并编辑。
+在家临时远程开发 作为开发的我们，每天下班都要背着电脑回家，主要原因就是防止线上有问题，能够打开电脑调试代码。一般来说并不是家里没有电脑，而是没有能够正常运行的开发环境。
+而远程开发正好能解决该问题，我们需要的仅仅是一台装有vscode的普通电脑即可，不需要再操心开发环境，各种SDK，C++，Python，Nodejs等等八辈子不用的软件装了一大堆，还需要经常更新才行。
+节省成本 大多数开发人员是不需要经常开发大型项目和远程调试代码的，但是不是完全没有，这样就需要为了不时之需而配置笔记本电脑，而笔记本电脑一般相对台式机是又贵性能还低，公司要为了应对偶发情况而给开发人员配备笔记本电脑，会造成资源浪费，成本升高。
+如果有了远程开发环境，则能应对临时性工作，大大降低成本。
+用iPad写代码 如果你觉得vscode远程开发还不够酷？那在iPad中写代码呢？
+vscode远程开发虽好，但还有有局限性，毕竟还是需要一台可以安装vscode的电脑，还是不能随时随地的写代码。现在我要告诉你如何在iPad中写代码！
+code-server是一个可以运行在服务器上的web项目，这下我们可以在浏览器中使用vscode了，可以在浏览器中打开vscode的，自然就可以使用iPad来写代码了。 Eclipse Theia https://gitpod.io/#https://github.com/eclipse-theia/theia 额，希望苹果能给我广告费！
+再或者使用使用codespaces也可以在线编辑代码，https://mp.weixin.qq.com/s/Eutjgbx_nofmuhU2yBGhxg
+最后 贴一篇带图的环境搭建教程真香！使用 VSCode 远程开发调试
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fb32fc75edb9b37630b7a6a/" rel="bookmark">
+			通用的数据库GUI工具
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-17T02:04:55Z">2020-11-17 02:04</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		MySQL常用的客户端是Navicat，SQLyog等，本文推荐另一款通用的客户端：DBeaver DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5faa34535edb9b37630b6e99/" rel="bookmark">
+			puppeteer模拟3G网络
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-10T06:33:55Z">2020-11-10 06:33</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		puppeteer要模拟3G，4G网络需要利用DevTools Protocol。 Chrome DevTools Protocol
+page = await browser.newPage(); // 模拟3g网络  let cdp = await page.target().createCDPSession(); await cdp.send(&#39;Network.emulateNetworkConditions&#39;, { &#39;offline&#39;: false, &#39;downloadThroughput&#39;: 600 * 1024,//(bytes/sec) 3G最高600K/s 4G 最高10M/s  &#39;uploadThroughput&#39;: 600 * 1024,//(bytes/sec)  &#39;latency&#39;: 0 }); await page.setCacheEnabled(false); await page.goto(url); 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fa0f8e55edb9b37630b65f7/" rel="bookmark">
+			postman使用技巧
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-03T06:29:57Z">2020-11-03 06:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		postman是开发人员必备的接口测试工具，虽然经常使用，但是并不会使用到所有功能，除了简单的接口测试外，它还有很多实用的功能，如果充分利用起来，能使我们的工作事半功倍。
+ 环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例  环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
+环境变量配置
+环境变量使用
+环境变量切换
+捕获请求和cookie 能够直接将浏览器中的请求和cookie同步到postman，省去手动复制请求接口和cookie到postman中。 同时，对于需要登录后使用的接口，postman可以直接使用浏览器的登录状态，而不必复制cookie。 举例： 收藏接口与分享接口 将自己保存的接口分享与他人，直接拿来即可使用。 如果安装了Chrome插件，则可以直接的浏览器中打开链接。使用客户端需要使用import来导入。 批量测试 保存的多个接口批量测试。 编写文档和示例 对于团队协作很有用，接口交流利器。不仅有了请求参数，添加一个example还可以看到接口返回参数。 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f41c9d65edb9b37630b0d46/" rel="bookmark">
+			nodejs专用发布系统
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-08-23T01:43:50Z">2020-08-23 01:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Nodejs项目部署到服务器以后接下来做的最多的操作就是上线发布了。因为nodejs的语言特性决定了其开发效率高，发布自然就频繁，每个公司或个人都有自己的发布方式。
+有的公司会有严格的流程，必须通过CI/CD工具进行发布，有可能使用现成的工具，如：jenkins。有可能是自研发布系统。
+有的公司会通过FTP上传代码到服务器发布。
+有的公司使用更原始的发布方式，直接登录服务拉代码发布。
+不论哪种发布方式都有其优缺点，越高级的工具会有诸多限制，比如有权限控制，有严格的审批流程，自然就不能随时发布，也就越僵化。越原始的方式越简单越灵活，自然风险也越高。
+至于采用哪种发布方式，依据需要选择即可。
+而关于nodejs的发布方式，本人也是也是多种方式都有使用，公司项目也经历过多次变迁。公司最开始是直接登录服务器拉代码发布，后来有了运维团队，领导说开发自己发布不安全，于是就由运维搭建了Jenkins环境来发布，但是每次发布都需要走流程，后来因为发布太频繁，每1-2天要发布一次，又要灰度发布，运维也会觉得烦。于是开发就搭建了某个发布系统自己来发布，不过这个发布系统有个缺点，就是发布集群的时候是串行的，每次发布要十几分钟。
+另外说明一下Jenkins。它应该是使用最多的发布系统了，Jenkins基于Java开发，它已经是成熟的系统了，成熟同时也代表着复杂，复杂代表修改困难，我想大家也不太会基于Jenkins定制开发。 然后是部署困难，相比较nodejs三条命令搞定linux安装nodejs——快捷版，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。
+于是下定决心自己开发一个发布系统，朱雀发布系统因此诞生。
+基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图： 和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下： 项目地址：nodejs发布系统
+朱雀发布系统支持scp（rsync）发布
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e96f1d8bd7e796e7100a71a/" rel="bookmark">
+			人人都值得学习的UI自动化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-15T11:36:56Z">2020-04-15 11:36</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		为什么需要UI自动化？ 说起自动化，听着很厉害，可是也没见识过到底多厉害，基本是属于传说，没见过实战。但不能否认其价值，作者本人作为一个开发者也是偶然的机会接触到UI自动化，感受到了自动化的魅力，才不惜花时间来学习并使用在实际工作中。下面就来说一下为什么要做自动化。 自动化有很多种，单元测试，接口测试，UI测试。所有测试过程可以形成这样一个金字塔： （图片来自网络） （图片来自网络）
+从图中看出底层测试简单快速，每个单元相对独立，测试成本也较低。而最顶层的UI层聚合了底层的很多接口服务，一个测试流程相对更长更复杂，也就导致了速度慢，成本高的问题。如果由人工来完成，一个完整的测试流程往往需要几分钟，而且是不停的重复这样一个流程。所以很多开发都不愿意完整的测试自己所开发的一套业务，只能由测试人员不厌其烦的循环往复。此时如果有自动化的话就非常nice了。口说无凭，一图胜千言： 是不是还没看清？没错，平时人工测试一个报名表单需要15秒左右，而自动化后几乎一瞬间即可完成，速度提升不言而喻。如果您对UI自动化已产生兴趣，请继续往下看。
+哪些场景可以UI自动化？ UI自动化的目的不是为了自动化而自动化，也并不能覆盖所有测试。还是以测试金字塔来说明： UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越往顶层消耗的人力成本越高，如果底层测试不够充分就只能靠顶层测试来保证。自动化虽好，但需要满足特定的场景才行，那么什么样的场景可以做UI自动化？
+ 流程变化少。侧重UI的修改，而不是流程的修改。 频繁的回归测试。比如一个报名表单样式修改比较频繁，需要测试其报名是否可用。 界面稳定。样式可以频繁修改，但表单顺序和个数变化较少不能频繁变更。 维护周期长。如果只是使用一次那也不必自动化了，毕竟自动化是解决重复劳动。 开发与测试可相互配合。自动化需要程序有一定规范便于测试人员写测试程序。 测试人员具备编程能力。 如果满足了上述的场景，那么UI自动化在人力消耗和效率上就有很大的提升。正确性上更有保证，手工录入会有输错重输的情况，而自动化则不会出现。 再看一个流程比较长的页面：  上面动图并没与快进，一气呵成完成了一次下单流程，基本不需要停留即可进入下一步，相比起手动操作省时省力。
+为什么UI自动化普及率低？ 既然UI自动化能提高效率，但为什么却很少有人去使用？
+ 开发自动化程序对测试人员的编程水平有一定要求，很少有人愿意花时间去写这个程序。 对于互联网公司，大多数业务需要快速迭代，一个页面的生存周期很短，也可能只是一次性的，自动化测试没有存在的必要性。 测试人员没有切实的感受到效率提升。  其实说白了，就是大家觉得投入和产出不值得。如果是迫于领导压力要写自动化程序，就会不停的对程序修修补补，自己用的话有问题大不了不用自动化，手动测试一下通过就行，如果是给别人用就会不停收到反馈和吐槽，自然也就没有写下去的动力了。 所以个人觉得，自动化程序不应该成为一种流程和形式，而是应该由开发和测试人员自发的去将自身经常重复的工作做成自动化。因为自动化本身就不能覆盖所有场景，只有实际参与的人才能知道哪些是可以自动化的。
+有哪些工具可以选择？ 目前市场上不仅提供了多种工具可以选择，还支持不同语言。 web端：selenium、webdriver、robotframework、puppeteer等。 APP端：Appium、Instrumentation、Robotium 、UIAutomator、Espresso、Calabash、Selendroid、Robolectric、RoboSpock、Cafe、Athrun等。
+ 移动APP自动化测试框架
+ 本文不对所有工具一一详解，可自行根据平台选择合适的工具和语言进行学习使用。只针对个别WEB端工具做简单说明。 拿selenium来说，selenium是一款很多人比较熟悉的工具，支持的语言有Python，Java，JavaScript等，推荐使用Python。而且其支持的浏览器也很全面： Google Chrome Internet Explorer 7, 8, 9, 10, 11 Firefox Safari Opera HtmlUnit phantomjs Android iOS
+一些常见问题 在自动化过程中最多的就是对元素进行定位，自动化工具常见的定位符有：
+ id name class name tag link text partial link text xpath css selector  以上这些元素定位对于以前的网页来说还足以应对，因为以前开发的网页大多数元素会有id，class这些属性，定位起来也比较方便。但是对于react，vue，angular这类数据驱动的框架就不那么友好了。 比如有这么一个元素：&lt;div&gt;{{element}}&lt;/div&gt;结果为：
 	</div>
 </article>
 </main>
 
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/3</span>
+	<a class="pagination__item pagination__item--next btn" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/page/2/">»</a>
+</div>
 
 			</div>
 			
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
-			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
 		<input type="hidden" name="sitesearch" value="/" />
 	</form>
 </div>
 <div class="widget-recent widget">
-	<h4 class="widget__title">Recent Posts</h4>
+	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/606d512c54277a10496a38ae/">使用sveltekit开发一个服务端渲染（SSR）项目</a></li>
 		</ul>
 	</div>
 </div>
 
 <div class="widget-categories widget">
-	<h4 class="widget__title">Categories</h4>
+	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
+				<a class="widget__link" href="/categories/bae/">BAE</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/docker/">docker</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">Golang</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/mongodd/">MongoDd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ssh/">SSH</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
 			</li>
 		</ul>
 	</div>
 </div>
 <div class="widget-taglist widget">
-	<h4 class="widget__title">Tags</h4>
+	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/contributions/" title="Contributions ">Contributions </a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/foreach/" title="forEach">forEach</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongo/" title="mongo">mongo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title=" node"> node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="node.js">node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/null/" title="null">null</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2-logrotate%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/" title="pm2-logrotate日志分割">pm2-logrotate日志分割</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/protoc-gen-micro/" title="protoc-gen-micro">protoc-gen-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px2rem/" title="px2rem">px2rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pxtorem/" title="pxtorem">pxtorem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px%E8%BD%AC%E6%8D%A2%E6%88%90rem/" title="px转换成rem">px转换成rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime-text/" title="sublime text">sublime text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte%E4%BC%A0%E5%8F%82/" title="svelte传参">svelte传参</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%B8%8A%E6%B5%B7/" title="上海">上海</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/" title="元素对象">元素对象</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%83%A8%E7%BD%B2/" title="部署">部署</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
 	</div>
 </div>
 <div class="widget-social widget">
-	<h4 class="widget-social__title widget__title">Social</h4>
+	<h4 class="widget-social__title widget__title">社交</h4>
 	<div class="widget-social__content widget__content">
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Facebook" rel="noopener noreferrer" href="https://facebook.com/username" target="_blank">
-				<svg class="widget-social__link-icon icon icon-facebook" width="24" height="24" viewBox="0 0 352 352"><path d="m0 32v288c0 17.5 14.5 32 32 32h288c17.5 0 32-14.5 32-32v-288c0-17.5-14.5-32-32-32h-288c-17.5 0-32 14.5-32 32zm320 0v288h-83v-108h41.5l6-48h-47.5v-31c0-14 3.5-23.5 23.5-23.5h26v-43.5c-4.4-.6-19.8-1.5-37.5-1.5-36.9 0-62 22.2-62 63.5v36h-42v48h42v108h-155v-288z"/></svg>
-				<span>Facebook</span>
-			</a>
-		</div>
 		<div class="widget-social__item widget__item">
 			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
 				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
 				<span>GitHub</span>
 			</a>
 		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Email" href="mailto:example@example.com">
-				<svg class="widget-social__link-icon icon icon-mail" width="24" height="24" viewBox="0 0 416 288"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
-				<span>example@example.com</span>
-			</a>
-		</div>
 
 		
 		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="" rel="noopener noreferrer" href="" target="_blank">
-				<span></span>
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
 			</a>
 		</div>
 		
@@ -212,8 +569,8 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'glob
 		
 		<div class="footer__copyright">
 			&copy; 2021 月盾.
-			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a> theme.</span>
-			<span><a href="/imprint">Copyright © 2021 月&amp;盾</a></span>
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
 	</div>
 </footer>

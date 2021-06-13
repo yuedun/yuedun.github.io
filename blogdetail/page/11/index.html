@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Blogdetails - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Blogdetails" />
+<meta property="og:description" content="欢迎访问我的博客" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/blogdetail/" />
+
+
+		<meta itemprop="name" content="Blogdetails">
+<meta itemprop="description" content="欢迎访问我的博客">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" href="/blogdetail/index.xml" title="月盾的个人博客">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Blogdetails</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/591c5eac35b6751981e4681e/" rel="bookmark">
+			nodejs中promise的if流程控制
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-17T14:31:08Z">2017-05-17 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		nodejs中promise的if流程控制 Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
+ 假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
+ var fs = require(&#34;fs&#34;); function queue(){ return new Promise((resolve, reject)=&gt;{ fs.readFile(&#34;../queue.txt&#34;, &#34;utf8&#34;, (err, data)=&gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../account.txt&#39;, id+&#39;一个新账户&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;办卡成功!&#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../money.txt&#39;, id+&#39;存了10万&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;存款成功!&#39;); resolve(); }); }) } //入口 function enter(id) { Promise.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/590c93d3266e3f1c8fd4aa83/" rel="bookmark">
+			typescript泛型的使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T15:01:39Z">2017-05-05 15:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
+function a(args: number ): number { return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
+function b(args: string ): string { return args; } console.log(b(&quot;sdg&quot;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
+function c(args: any ): any { return args; } console.log(c(&quot;sdg&quot;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
+function c(args: any ): any { let n = args + &quot;变成了字符串&quot;; //甚至更多的处理 return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
+function d&lt;A&gt;(args: A ): A { let n = args + &quot;变成了字符串&quot;; //甚至更多的处理 return n; } console.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/58f8c22ae17cc00088e5ba4f/" rel="bookmark">
+			 error TS7010: skipTo, which lacks return-type annotation, implicitly has an any return type.
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-20T14:14:02Z">2017-04-20 14:14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: 'skipTo', which lacks return-type annotation, implicitly has an 'any' return type. 缺少返回类型的注释，隐含地具有&rsquo;any&rsquo;返回类型。 tsconfig.json配置文件中noImplicitAny设置为false,该选项的意思是：在表达式和声明上有隐含的&rsquo;any&rsquo;类型时报错。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5875a127ea6fa8193f372f35/" rel="bookmark">
+			手机丢前必做的两件事
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-01-11T03:06:15Z">2017-01-11 03:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		很多段子手都曾经发过《手机丢后必做的N件事》这类教程，比如：致电运营商挂失手机号；致电银行冻结手机网银；手机解绑支付宝；微信冻结账号；修改微博、微信、QQ等密码；找手机运营商补手机卡；等等等等，实际上，这类教程所要求的事情都不是必要的，真正要做到丢失后手机安全，只需要事前做两件事情：设置指纹密码和SIM卡密码。
+以iPhone为例，一般都会设置“查找我的iPhone”功能，由于iPhone有GPS定位功能，小偷如果偷到手机不关机的话，会被GPS定位追踪，因此绝大多数小偷拿到手机后做的第一件事情往往是关机，这正好让指纹锁屏密码和SIM卡PIN码发挥最大作用：如果重新开机，必须要输入手机密码才能开机，同时，SIM卡处于锁定状态，需要输入PIN码才能正常通信，输错3次PIN码后就只能用PUK码来解锁，把SIM卡拔出来查到别的手机上，也需要输入SIM卡PIN码才能通讯，也就是说，不知道PIN码，这个SIM卡就无法接收短信和拨打电话，因此小偷就无法通过这个SIM卡来盗取用户的网银、支付宝、微信上的财产，甚至，小偷连这个手机的手机号码都无法获得，更不用说盗取微信和QQ密码了。
+当然，丢失iPhone手机的用户还需要补SIM卡和设置远程抹除iPhone内容最安全，千万不要关闭“查找我的iPhone”功能，忽略那些以苹果名义发来的钓鱼邮件和短信。
+以下是iPhone指纹解锁功能设置方法和iPhone的修改SIM卡密码的方法：
+指纹密码 指纹天生就是一种个人认证工具，虽然人人都有指纹，但各不相同，据说，现在还没有发现两个指纹完全相同的人。随着年龄的增长，指纹的纹样不会发生变化。因此，使用指纹做为身份验证是非常理想的。 iPhone指纹解锁功能设置
+iPhone设置指纹密码的具体方法是：
+第一步：依次进入iPhone的“设置”，然后再找到，并点击进入“Touch ID与密码”设置。
+第二步：接下来需要输入一次四位数字的iPhone6手机密码，这个密码就是手机解锁密码，输入密码后，就可以进入iPhone指纹识别设置界面了。然后我们就可以开始录入指纹了，点击下方的“添加指纹”开始添加。
+第三步：接下来我们按照提示开始录入指纹，请将需要设置指纹的手指放置在iPhone屏幕底部的指纹识别Home键上，按照提示放置上去，再移开手指，反复几次，等待指纹录入完成。
+第四步：以上操作完成就，就可以成功完成一个手指的指纹录入，在返回的指纹设置中，已经可以看到有一个“指纹1”的记录了，如果还想录入多个指纹信息，继续点击下方的“添加指纹”，按照上面的步骤完成其他指纹信息录入即可。
+iPhone最多支持设置5个指纹，可以同时录入自己的和自己亲人的，另外录入成功的指纹1和指纹2名称，还可以自行修改名称。指纹信息录入成功后，在iTunes Stor与App Store安装应用开启指纹识别即可。
+SIM卡密码
+SIM卡是（Subscriber Identity Module 客户识别模块）即用户身份识别卡，是手机的一张个人资料卡。SIM卡通常用来存储用户的电话号码、安全数据、通讯费用以及能让运营商判定用户是否是其公司客户的数据。当用户更换新的手机，可以直接插入旧手机原有的SIM卡，即可继续享受之前的各项手机服务。
+SIM卡的PIN码（Personal Identification Number 个人识别码）主要用于保护SIM卡的安全性和隐私性，当手机重启、或者插拔SIM卡后，需要输入最正确的SIM卡PIN码才能使用SIM卡的通讯功能（拨打电话、收发短信等操作），当输入三次失败后，SIM卡则会被锁定，而需要输入PUK码（Personal Unlock Key 个人解锁码）进行解锁，PUK码共有10次输入机会，输错10次后，SIM卡会自动启动自毁程序，使SIM卡失效。
+修改设置SIM卡PIN码的步骤是：设置 - 电话 - SIM卡PIN码，将其启用。修改PIN码要先输入原有PIN码，SIM卡的默认PIN码为0000或1234，如果都不对的话，可以输错3次，使用PUK码强制修改PIN码。
+修改SIM卡PIN码
+修改SIM卡PIN码
+PUK码由8位数字组成，这是用户无法更改的。一些SIM卡的PUK码是用户在购卡时随卡附带的，通常在卡套背后附有PUK码，也可以登录运营商的网上营业厅，在自助服务里通常会提供查询PUK码的功能。实在找不到的话，也可以致电SIM卡所属运营商的服务热线，客服人员也可以提供查询PUK码的服务。
+SIM卡的PIN码有效地防止了盗用SIM卡的情况发生，使用户的正常通信得到了可靠保障。设置了PIN码之后，当用户手机丢失后，别人无法通过取出SIM卡插入另一部手机，来进行原SIM卡的通讯功能（拨打电话、收发短信等）。因此，建议所有手机用户都立刻启用SIM卡的PIN码。
+iPhone被偷
+iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和SIM卡PIN码应该同时启用，缺一不可。如果手机的SIM卡设置了PIN码，那么这个SIM卡插入另一个手机就需要PIN码解锁，重启手机也要PIN码解锁，不解锁无法进行通讯，这从一定程度上保证了手机通讯的安全性，SIM卡默认的PIN码通常是1234，建议手机用户都修改一下这个PIN码。锁屏密码不要使用简单密码，使用数字字母组合长密码，有条件的话建议选择支持指纹密码的iPhone，其使用体验远远优于普通的密码解锁。
+2、开启“查找我的iPhone”功能。iCloud设置强密码。iCloud开通二次验证。
+3、支付宝等应用启用指纹密码。
+4、发现手机丢失后，立即打电话给移动运营商，挂失SIM卡。登录iCloud的“查找我的iPhone”功能，启用“丢失模式”。
+5、登录appleid网站，将该手机从“受信任设备”中移除。
+6、忽略那些以苹果名义发来的钓鱼邮件和短信。
+7、如果手机确认无法找回，在“查找我的iPhone”里，使用“抹掉iPhone”功能。
+8、申请一个新的SIM卡并启用。
+总结：iPhone丢失后应该做什么？丢失前：设置指纹锁屏和SIM卡PIN码；开启“查找我的iPhone”功能。iCloud设置强密码。丢失后：打电话给移动运营商，挂失SIM卡。登录iCloud，启用“丢失模式”（无法找回的话就用“抹掉iPhone”）。电话冻结绑定的支付宝和网银。申请一个新的SIM卡并启用。
+作者：月光 (williamlong) | 来自：月光博客
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/58243e338fa26c04fd124ee6/" rel="bookmark">
+			使用typescript开发nodejs的环境搭建（二）
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-10T09:30:27Z">2016-11-10 09:30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
+typescript编译配置
+{ &#34;compilerOptions&#34;: { &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  }, &#34;include&#34;: [ &#34;*/**/*.ts&#34; ], &#34;exclude&#34;: [ //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
+选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
+vscode编译typescript配置
+{ // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.json format  &#34;version&#34;: &#34;0.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/581dae6e8c4c3f206816c226/" rel="bookmark">
+			我喜欢的电影之《吸血鬼猎人D》
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T10:03:26Z">2016-11-05 10:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在遥远的未来，由于最后一次世界大战破坏了所有科学文明，曾经君临天下的贵族，凌驾于人类的统治者吸血鬼面临着原因不明的物种衰退，但是他们仍然威胁着人类的生存，猎杀吸血鬼的职业猎人便应运而生。其中人与吸血鬼贵族的混血儿由于兼备了吸血鬼和人类两方的优点，理所当然的成为了最理想的猎人。然而不幸的是，这些被称为“丹皮尔”的混血儿，无法过正常人的生活，就连吸血鬼也不欢迎他们。在这群孤独的人中有一位英俊的佼佼者，他就是吸血鬼猎人D。
+故事发生在西历12090年，埃尔邦家族的小姐夏洛特被吸血鬼贵族玛埃尔从家中绑架，于是埃尔邦老爷雇佣了远近闻名，连吸血鬼贵族也害怕的第一吸血鬼猎人D和另一组猎人玛克斯兄妹去救回女儿。
+外表高贵俊美，一身漆黑，骑着黑马的“D”，与玛克斯兄妹一路追踪驾马车逃走的吸血鬼。途中D和玛克斯兄妹为争夺奖金发生激斗，并且得知夏洛特并非被绑架，而是爱上了吸血鬼玛埃尔，但他们的爱不被接受，所以他们打算到没有人类和吸血鬼贵族的理想国度“夜之都”去过平静的生活。D受到贵族三杰“影子使者”、“千面人”和“狼人”的阻击，关键时刻D的“阳光症”发作，玛克斯兄妹中的雷拉及时伸出援手，他们约定两人中不管谁先死，另一个一定要到墓上献花。吸血鬼玛埃尔的目的地是让吸血鬼都闻风丧胆，被称为“喋血伯爵夫人”卡蜜拉的旧领地切迪城堡。卡蜜拉称自己理解他们，愿意帮助他们离开纷乱的世界前往理想的国度，并向他们展示了城堡内的飞船。
+一切都看似顺利，但玛埃尔和夏洛特没有想到卡蜜拉邀请他们来此只是一个险恶的阴谋，卡蜜拉为了复活需要夏洛特的鲜血。一番恶斗后，D彻底消灭了卡蜜拉，被吸血鬼洗礼的夏洛特则昏死在吸血鬼玛埃尔的怀中，等待新的生命。城堡在主人消失后开始崩溃，玛埃尔抱着夏洛特乘上飞船飞上蓝天，飞向他们梦想的地方。很多年过去了，在雷拉的葬礼上，她的小孙女看到远处的黑衣猎人，D遵守了和雷拉的约定。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/581d736c43c18f1b7ae3e3ff/" rel="bookmark">
+			Mongodb和mongoose模糊查询
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T05:51:40Z">2016-11-05 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/mongodd/" rel="category">MongoDd</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
+ 以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
+mongodb中查询
+select * from articles where content like '%Nodejs%'; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
+var a=&quot;Nodejs&quot; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
+var text = 'Nodejs';//动态传入的变量 Article.find({ content: { $regex: text, $options: 'i' }}, function (err, docs) {}); $options选项值：
+ i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串  其实$regex就是正则表达式的写法
+查找数组中的字段：
+contacts:{ [ { address: &quot;address1&quot;, name: &quot;张三&quot; }, { address: &quot;address2&quot;, name: &quot;李四&quot; }, .
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5819b2b7c4d0a377509b8f1a/" rel="bookmark">
+			Mongodb和mongoose聚合查询
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016-11-02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/mongodd/" rel="category">MongoDd</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		mongdb查询某一字段sum值  需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
+ mongodb中查询
+select sum(pv) from articles;db.articles.aggregate([{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 2 }select sum(pv) from articles where createDate &lt;= '2016-10-20';db.articles.aggregate([{$match:{createDate:{$lte:&quot;2016-10-20&quot;}}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 9 }select sum(pv) from articles where category = 'Nodejs';db.articles.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 7 }需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
+mongoose实现方式，与上面sql的顺序对应：
+Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(err, doc) {console.log(&quot;1&quot;, doc);});Article.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/58037ab767a381257039c926/" rel="bookmark">
+			TypeScript中的装饰器Decorato什么时候执行？
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-16T13:03:51Z">2016-10-16 13:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启experimentalDecorators。
+命令行编译
+ tsc --target ES5 --experimentalDecorators /test.ts
+tsconfig.json:
+&quot;compilerOptions&quot;: { &quot;experimentalDecorators&quot;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
+//test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&#34;hello&#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name); } } 生成的js代码：
+//test.js var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/57fcf50869c8bf6e323dff48/" rel="bookmark">
+			使用typescript开发nodejs的环境搭建（一）
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-11T14:19:52Z">2016-10-11 14:19</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在一切开始之前先具备的开发环境：
+  nodejs4.0+
+  推荐的开发工具vscode
+  我希望通过本文介绍能直接做出一个最简单的项目框架，以便日后参考，这也是我想把之前纯nodejs写的博用typescript客重写一遍。
+还是以expressjs为框架来搭建
+使用express-generator来生成项目基本框架，需要全局安装
+ npm install -g express-generator
+  express -e mpro
+ 参数-e是以ejs为模板引擎，mpor为项目目录名，最后生成这样的目录结构：
+. ├── app.js ├── bin │ └── www ├── package.json ├── public │ ├── images │ ├── javascripts │ └── stylesheets │ └── style.css ├── routes │ ├── index.js │ └── users.js └── views ├── error.ejs └── index.ejs 然后是全局安装typescript，便于在任何目录下编译，也可以安装在项目目录下。
+ npm install -g typescript
+ 安装完以后初始化typescript:
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/blogdetail/page/10/">«</a>
+	<span class="pagination__item pagination__item--current">11/19</span>
+	<a class="pagination__item pagination__item--next btn" href="/blogdetail/page/12/">»</a>
+</div>
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/606d512c54277a10496a38ae/">使用sveltekit开发一个服务端渲染（SSR）项目</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/bae/">BAE</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/docker/">docker</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">Golang</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/mongodd/">MongoDd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ssh/">SSH</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/contributions/" title="Contributions ">Contributions </a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/foreach/" title="forEach">forEach</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongo/" title="mongo">mongo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title=" node"> node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="node.js">node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/null/" title="null">null</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2-logrotate%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/" title="pm2-logrotate日志分割">pm2-logrotate日志分割</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/protoc-gen-micro/" title="protoc-gen-micro">protoc-gen-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px2rem/" title="px2rem">px2rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pxtorem/" title="pxtorem">pxtorem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px%E8%BD%AC%E6%8D%A2%E6%88%90rem/" title="px转换成rem">px转换成rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime-text/" title="sublime text">sublime text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte%E4%BC%A0%E5%8F%82/" title="svelte传参">svelte传参</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%B8%8A%E6%B5%B7/" title="上海">上海</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/" title="元素对象">元素对象</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%83%A8%E7%BD%B2/" title="部署">部署</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

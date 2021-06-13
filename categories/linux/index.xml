@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on 月盾的个人博客</title>
+    <link>/categories/linux/</link>
+    <description>Recent content in linux on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 08 Mar 2021 03:45:19 +0000</lastBuildDate><atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>/bin/rm: argument list too long</title>
+      <link>/blogdetail/60459dcf8e743369d9dd5a8f/</link>
+      <pubDate>Mon, 08 Mar 2021 03:45:19 +0000</pubDate>
+      
+      <guid>/blogdetail/60459dcf8e743369d9dd5a8f/</guid>
+      <description>有人在服务器上不小心执行了rm -fr /*，而我想在删除某个文件夹下面的文件却遇到/bin/rm: argument list too long。
+意思是我删除的文件太多了，这倒有点稀奇。
+那怎么才能删除呢？
+试着直接删除目录也不行，这问题能难倒我，但难不倒百度。
+使用ls | xargs -n 1000 rm -fr ls删除，可是一直在输出错误提示：
+rm: invalid option -- &amp;#39;s&amp;#39; Try &amp;#39;rm --help&amp;#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
+删除方式是：
+rm -- -foo 或 rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
+ls | xargs -n 1000 rm -frv ls
+rm命令加个参数v，用来显示删除信息。
+最终会输出这样的提示信息，
+removed ‘zMJ1MgKdzgbjNsWawUcX7OO3WspyxZEU.json’
+为了让它在后台执行可以这样：
+ls | xargs -n 1000 rm -frv ls &amp;amp;</description>
+    </item>
+    
+    <item>
+      <title>新阿里云服务器一些基本设置</title>
+      <link>/blogdetail/5b21fc996699964267f5e168/</link>
+      <pubDate>Thu, 14 Jun 2018 05:26:49 +0000</pubDate>
+      
+      <guid>/blogdetail/5b21fc996699964267f5e168/</guid>
+      <description>修改terminal apt-get update更新软件源，安装zsh，设置默认terminal为zsh，chsh -s /usr/bin/zsh。非root用户需要在root权限下修改/etc/passwd文件才能实现。
+安装git
+ apt-get install git
+ nginx设置：
+ sudo /etc/init.d/nginx restart # or start, stop
+ 或
+ sudo service nginx restart # or start, stop
+ 有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
+目录/etc/nginx/sites-available/下增加文件配置反向代理，并软链接到/etc/nginx/sites-enabled/下
+mongodb导入数据 启动：
+ /usr/local/mongodb/bin/mongod &amp;ndash;dbpath=/usr/local/mongodb/data &amp;ndash;logpath=/usr/local/mongodb/logs &amp;ndash;logappend &amp;ndash;auth &amp;ndash;fork
+ 如需外网客户端连接加参数--bind_ip_all
+导入单个collection
+ ./mongorestore -v -h ip -u xxxx -p xxxx &amp;ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
+ 或导入整个目录
+ ./mongorestore -v -h ip -u xxxx -p xxxx &amp;ndash;db=blogs &amp;ndash;drop /home/yuedun/download/xxxx.</description>
+    </item>
+    
+    <item>
+      <title>使用scp在Windows和linux之间传输文件</title>
+      <link>/blogdetail/575134e682887be008614fc5/</link>
+      <pubDate>Fri, 03 Jun 2016 07:42:30 +0000</pubDate>
+      
+      <guid>/blogdetail/575134e682887be008614fc5/</guid>
+      <description>获取远程服务器（linux）文件到本地（Windows）： scp 远程name@远程IP:远程文件 本地文件
+发送本地文件（Windows）到远程服务器（linux）： scp 本地文件名 远程name@远程IP地址**:远程文件**</description>
+    </item>
+    
+    <item>
+      <title>linux下安装nodejs</title>
+      <link>/blogdetail/574019ee0bdb5de027394523/</link>
+      <pubDate>Sat, 21 May 2016 08:18:54 +0000</pubDate>
+      
+      <guid>/blogdetail/574019ee0bdb5de027394523/</guid>
+      <description>此文过旧，请参阅linux安装nodejs——快捷版 首先下载nodejs压缩文件node-v4.4.4-linux-x64.tar.xz，先解压文件， &amp;gt; xz -d node-v4.4.4-linux-x64.tar.xz解压为tar格式文件，再通过tar命令解压 &amp;gt; tar -xvf node-v4.4.4-linux-x64.tar 可以将解压后的文件夹移动到自己的软件安装文件夹下，比如：/usr/local下，因为nodejs的版本更新太快，每次更新都这么移动文件夹太麻烦，所以还是改成一个通用的名字，就叫node，执行命令这样： mv /home/huo/Download/node-v4.4.4-linux-x64 /usr/local/node 为了能够全局执行node和npm命令，需要建立软链接到可执行目录下，执行命令： echo $PATH 可以看到：/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin是linux全局执行目录，所以就选择在/usr/local/bin下建立软链接吧。
+ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录下执行node和npm命令了，不过这样还没结束，使用npm全局安装包后，在命令行里执行会找不到命令，因为npm全局安装目录在node安装目录，也就是安装在了/usr/local/node/lib/node_modules目录下，所以还需要将这个目录添加的$PATH变量中，sudo vim /etc/profile在文件最下边添加export PATH=&amp;quot;/usr/local/node/bin:$PATH&amp;quot;,此处的路径/usr/local/node/bin并不是上面说的/usr/local/node/lib/node_modules目录，因为npm全局安装以后会在node安装目录下的bin文件夹中建立软链接，直接在$PATH中添加npm的全局安装目录是无法找到可执行文件的。
+升级node版本 可以通过全局安装n工具来升级 npm install -g n，或者nvm工具 或者就是直接下载新的tar文件覆盖升级 cp -Rv node-v8.11.3-linux-x64/* /home/yuedun/software/nodejs/</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Blogdetails - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Blogdetails" />
+<meta property="og:description" content="欢迎访问我的博客" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/blogdetail/" />
+
+
+		<meta itemprop="name" content="Blogdetails">
+<meta itemprop="description" content="欢迎访问我的博客">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" href="/blogdetail/index.xml" title="月盾的个人博客">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Blogdetails</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f41c9d65edb9b37630b0d46/" rel="bookmark">
+			nodejs专用发布系统
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-08-23T01:43:50Z">2020-08-23 01:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Nodejs项目部署到服务器以后接下来做的最多的操作就是上线发布了。因为nodejs的语言特性决定了其开发效率高，发布自然就频繁，每个公司或个人都有自己的发布方式。
+有的公司会有严格的流程，必须通过CI/CD工具进行发布，有可能使用现成的工具，如：jenkins。有可能是自研发布系统。
+有的公司会通过FTP上传代码到服务器发布。
+有的公司使用更原始的发布方式，直接登录服务拉代码发布。
+不论哪种发布方式都有其优缺点，越高级的工具会有诸多限制，比如有权限控制，有严格的审批流程，自然就不能随时发布，也就越僵化。越原始的方式越简单越灵活，自然风险也越高。
+至于采用哪种发布方式，依据需要选择即可。
+而关于nodejs的发布方式，本人也是也是多种方式都有使用，公司项目也经历过多次变迁。公司最开始是直接登录服务器拉代码发布，后来有了运维团队，领导说开发自己发布不安全，于是就由运维搭建了Jenkins环境来发布，但是每次发布都需要走流程，后来因为发布太频繁，每1-2天要发布一次，又要灰度发布，运维也会觉得烦。于是开发就搭建了某个发布系统自己来发布，不过这个发布系统有个缺点，就是发布集群的时候是串行的，每次发布要十几分钟。
+另外说明一下Jenkins。它应该是使用最多的发布系统了，Jenkins基于Java开发，它已经是成熟的系统了，成熟同时也代表着复杂，复杂代表修改困难，我想大家也不太会基于Jenkins定制开发。 然后是部署困难，相比较nodejs三条命令搞定linux安装nodejs——快捷版，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。
+于是下定决心自己开发一个发布系统，朱雀发布系统因此诞生。
+基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图： 和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下： 项目地址：nodejs发布系统
+朱雀发布系统支持scp（rsync）发布
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f3644b25edb9b37630b026a/" rel="bookmark">
+			MEGAEASE的远程工作文化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-08-14T08:00:50Z">2020-08-14 08:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E4%BD%9C/" rel="category">工作</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		MegaEase 是我创业的公司，主要是想把云计算（PaaS/SaaS层）的那些高可用高并发的分布式技术普及到那需要对技术自主可控的公司，这样就不需要去使用不能自主可控的闭源系统或是大公司的云平台。我于2016年开始成立MegaEase，从早期8个人，直到今天有20来个人，我们从一开始到今天都是在远程工作的公司文化。因为我很喜欢《Rework》这本书，写这本书的公司叫37signal（现名basecamp），这家公司在发《Rework》这本书的时候，整个公司只有16个人，分布在全世界8个城市，这种Geek的公司的文化很吸引我，所以，在我决定创业的时候，我就止不住地想成立这样能够远程工作的公司，于是，远程工作的团队文化就这样成为了MegaEase的基因。下面我会分享一下，我们公司的远程工作文化和其中的一些问题，最后还有一个工作协议。
+我们在早期的时候，8个员工来自5个城市，现在的20来个员工来自8个城市2个国家。虽然我们现在使用“共享办公室”，但是本质上，我们的整个文化是远程工作的文化。在2017-2018年度，我们公司产品商业化以来，公司早期的8个工程师在远程工作的状态下成功支持了得到的老罗的跨年演讲活动，以及其它几个客户，一方面验证了用户愿意付费购买我们的产品和服务之后，另一方面也有一些不错的收入，客单价都在百万左右。还记得当时，有几个投资人并不相信我们连个办公室都没有，而且8个人分布在5个城市，觉得我们是个骗子公司（哈哈）。在过去的一年，我们通过我们的产品和服务帮助银行电信互联网等公司进行了他们的系统架构的改造和升级，让复杂和高门槛的分布式技术和架构可以被更多的企业所掌握所应用。这说明，远程工作是没有什么问题的。实际上远程团队远程工作真的不新鲜，Github上有个Repo维护着一个支持远程工作的公司列表，还有一个跟远程工作相关的Awesome索引。
+当然，自从我创业以来，我身边就一直有好些不同的声音质疑远程工作。听过他们的理由后，我能够理解他们的疑虑和困惑，因为管理的确是一个很复杂的事，因为要面对的是极为复杂的人，所以，有这些疑虑也是正常的。下面是我的一些经验和分享。先说宏观管理，再说微观实践。
+目录
+ 宏观管理  一、努力找到好的人 二、设定共同的目标和使命 三、倾向使用小团队   微观实践 远程工作协议 小结  宏观管理 我发现很多人比较质疑远程工作的原因，更多的是表现在对宏观的管理上有问题。所以，我还是想先说一下宏观管理，这其实并不分远程办公还是集中式办公，如果能够解决好些这管理上的根本问题，其实，远程不远程都无所谓了。只不过，这些问题在“远程办室”的场景更更突显罢了。
+一、努力找到好的人 团队管理的头等大事是找人，没有之一。 很多人都会跟我说，你的这种远程团队需要很好的人。是的，没错，人很关键。远程团队需要的人的一般需要有这些特质：
+ 能独挡一面的人。这样交给他的事能独立完成，没有路能自己找路，这样可以省很多管理成本。 沟通能力很强的人。一方面，他们把模糊的事能变清楚，另一方面，他能有效地说服他人。不然就会非常扯皮和消耗时间。 能自管理和自驱动。不能自管理和自驱的人，会增加大量的管理和教育成本。能自驱动的人，都是对负责的事情有认同的人。  如果你仔细思考一下，你会发现，这样的人是任何一家公司所渴望的人，和远不远程无关。只不过，如果是远程团队的话，你会被逼着要招到这样的人。
+招到这样的人，你团队的执行力会非常的强悍。招不到这样的人，你只能为他们不能自管理和自驱而招“经理”，不能写出好的代码而招“测试”，不能很好的沟通而招个“项目经理”，不能独档一面，而要把好的人安排给他们当“教练”，而好的人则会被累死……
+这个时候，你就需要计算一下了，是花时间精力在教育不好的人，还是花时间精力找好的人？无论远不远程，聪明的管理者都会选择后者。这也就是为什么Amazon的Bezos会说，“我宁愿面50个人一个人都招不到，我也不愿意降低我的面试标准”。
+二、设定共同的目标和使命 对于远程团队来说因为见不到面，所以，缺乏交流和沟通。所以，需要团队里所有人能在同一篇上，能够对要做的事有一个统一标准的认识。也就是共同的目标和使命的认知。知道要要什么，不要什么。知道取舍，知道trade-off。这些东西都是需要团队一起达成的共识。如果没有这样的“Same Picture”的目标和使命，就会出现很多不必要的误解和冲突。另外，因为团队和业务也在迅速发展中，所以，也需要不断地调整和沟通。这都需要领导者花费时间统一目标和使命。
+老实说，无论远程不远程，一个团队也是需要有共同的目标和使命的。没有共同的目标，就算是集中在一起办公，也一样没有效率的。
+三、倾向使用小团队 因为沟通成本的问题，远程团队更为倾向使用小团队，但并不是说小团队会限制整个公司的规模。《人月神话》说过，只有小团队才能驾驭复杂的系统。Amazon 的 Two Pizza Team的文化（团队的大小只能到两张披萨就能喂饱的大小），就是把整个系统拆成“微服务”架构，这样可以导致整体效率的巨大提升。表现在，可以并行开发，专注于一个功能更利于解决复杂问题，简单可以更容易的运维，可以更容易的规模化……
+我工作的这20多年来经历过很多公司，尤其是创业的这几年来，看过的公司更多了（50+以上了），我发现，人数越多的团队，基本上来说，就更偏劳动密集型。劳动密集型的一个特征就是，大家整天在想，得整点什么事给这么多人，好让他们忙起来。而人数少的团队，因为人不够，所以每天都在想，什么样的事更重要，什么样的事可以自动化，怎么做更有效率…… 小团队和大团队的关注点就这么不一样了，所以做出来的事也就不一样了……
+当然，并不是说劳动密集型有什么问题，就像《软件团队的两种管理方式》一文所说的一样，远程团队工作更倾向于“电影工作组”式的每个人都是leader的知识密集型的团队。
+微观实践 在远程工作中，我们需要有很多的微观操作来让大家能够更好的进行远程工作。因为远程工作也有一些问题（但是方法总比问题多，不是吗？）
+  文档驱动。首先，远程的问题就是沟通不方便了，集中化的办公一群人可以在白板上进行讨论，然后远程工作这个事就变成很复杂了。所以，当要讨论什么事的时候，需要发起人先写一个文档，然后大家在这个文档上进行讨论（我们通常使用Github的issue，Pull Request或Google Doc）。另外，写文档的好处太多了，除了给后人有一个可以追溯的东西，更重要的是，写作是一种深度思考，当你把你脑子里想的东西写下来的时候，你就会发现你的思考更多了。所以，文档驱动我们团队能力非常重要的事。
+  自动化和简化。自动化和简化是我平时追得最多的东西了，从软件的Unit Test, Functional Test, Performance Test 一直到用Kubernetes进行自动化部署，我要求的就是从一提交完代码后就自动化的上线。我们玩的是Amazon的“单分支”代码管理的玩法，一旦代码merge上master，就会直接上线（当然需要通过灰度）。因为远程团队如果没有自动化的工具，那么，就会导致整体效率的下降。
+  Owner文化。这个太重要的了，但是，这并不是在说，如果一个事没有owner，就会像“三个和尚”那样，事情就进了没人管的地步。这是因为很多人在工作中都是比较 nice 的，比较 nice 的人通常来说都不好意思跳出来对别人发号施令。所以，Owner 文化就是要求每件事都要定义一个Owner，而这个Owner是有权对其它人发号施令的，其他人也有义务要配合他。当然，Owner 的权利越大，责任也会越大！
+  Review文化。Review文档是一种把知识或是想法传递出去的方式。我们在实践过程中，需要大家把好的想法写下来，这需要包括问题背景、目标、可选的方案（这些方案需要有引用和数据，不能是拍脑袋）、还需要有Pros/Cons的比较。然后再发起讨论。这样，事情在一开始就做好，那么就可以让大家的讨论更加地有效率。很多人以为开会讨论有个议题就行了，其实不够，有效率的开会讨论需要的是议案，而且还是高质量的议案！
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f24e2665edb9b37630af3bb/" rel="bookmark">
+			vue子组件修改父组件的数据
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-08-01T03:32:54Z">2020-08-01 03:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		vue在子组件中直接修改父组件传递下来的数据会报错： Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: &quot;json&quot;
+原因是vue子组件不能直接修改父组件的数据，可以使用this.$emit发送通知，让父组件来修改。 示例代码：
+子组件：
+this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;); 父组件：
+&lt;mycomponent :json=&quot;JsonData&quot; @changeData=&quot;changeData&quot;&gt;&lt;/mycomponent&gt; data(){ return { JsonData:{} } } methods:{ changeData(newData){ this.JsonData = newData; } } 子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f20f0c05981482973150396/" rel="bookmark">
+			原生js实现图片预览
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-29T03:45:04Z">2020-07-29 03:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		不依赖jquery也可以实现图片预览功能：
+&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&quot;outerdiv&quot; style=&quot;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&quot;&gt; &lt;img id=&quot;bigimg&quot; style=&quot;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&quot; src=&quot;&quot; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&quot;text/javascript&quot;&gt; //图片放大 document.querySelector(&quot;#outerdiv&quot;).style.display = &quot;none&quot;; document.querySelectorAll(&quot;img&quot;).forEach(function (item) { item.style.cursor = &quot;pointer&quot;; }); document.querySelectorAll(&quot;img&quot;).forEach(function (item) { item.addEventListener(&quot;click&quot;, function () { imgShow(&quot;#outerdiv&quot;, &quot;#bigimg&quot;, this); }) }) function imgShow(outerdiv, bigimg, _this) { var src = _this.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f1fb24c4536b06ac3897662/" rel="bookmark">
+			goquery 中文乱码
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-27T13:09:20Z">2020-07-27 13:09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		乱码的情况目前有两种可能：
+ 常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。  关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&quot;Accept-Encoding&quot;, &quot;gzip, deflate&quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f1e88b24536b06ac38974d6/" rel="bookmark">
+			国产动漫之不幸
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-26T14:56:34Z">2020-07-26 14:56</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		最近侄子放暑假来我家玩，顺便带来了暑假作业，写作业的时候他问：“我国四大名著是什么？”
+我当时一愣，心想这种问题还需要问吗？但是没有这么问他，而是问：“你们课本上没有教过吗？”
+他说：“没有！”
+我问：“那老师有没有说过？”
+他说：“没有”
+我心想：“可能是二年级还没有到应该知道的年龄！”
+就问：“那你知道《西游记》吗？”
+他说：“不知道。”
+我问：“那《三国演义》，《红楼梦》，《水浒传》你更不知道了吧？”
+他说：“不知道。”
+当时我就有点气了，我气的不是他什么都不知道，而是气他到底看些什么动画。
+于是我问：“《西游记》动画片你都没看过，那你平时都看什么动画？”
+他说：“奥特曼，小猪佩奇，海绵宝宝，汪汪队，还有……”
+四大名著不知道，四个动漫说的很溜，而且好像都是国外动漫，我赶紧打断，说道：“行了，行了，从今天开始，在我家你不能看这些动画片了，我们从今天开始先从《西游记》看起。”
+他顿时有点不乐意了，但是也没办法。于是在吃饭时间我找到了《西游记》动画，结果看了两集他就直对我说好看。 此刻，我对国漫的现状感到悲哀，正好和最近多次在公众号上看到关于国漫被举报的话题相对应——“人物头发染成五颜六色，穿得花里胡哨，价值导向有问题”。 当时也只是感觉现在这家长真是闲的慌，自己的价值观是不是有问题，反而去举报动漫。动漫中的人物染五颜六色的头发也能成举报理由，我们从小看的动漫人物不都是这种造型吗？并没觉得有什么不妥，也没听说过有人因动漫人物造型问题而走上违法犯罪的道路。 现在摆在眼前的现实问题是：我们的孩子不只是没有国产动漫可以看，甚至连中国文化都开始丢弃，是因为中国文化不好吗？绝对不是！而是作为家长，作为长辈的我们都在排斥和诋毁中国文化。小时候看的一些优秀动画现在都已经看不到了，其中有不少是禁播了。老的动画禁播，新的动画审核不通过，剩下的只有国外入侵动漫，国外文化入侵。
+请问下面哪个是孙悟空？ 希望我们的后代还能分得清什么是中国的，什么是外国的。
+国产动画不乏有很多优秀作品，未来会有更多，希望能够理性的对待，而是总是在挑毛病。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f1393cf148c8850e52174dc/" rel="bookmark">
+			关于个人博客（网站）发展的一些思考
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-19T00:29:03Z">2020-07-19 00:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		最近在更新网站源码的时候想到一个很现实的问题，当初出于学习和兴趣的目的花了很大的力气建立这个博客，也陆陆续续更新了一百多篇文章，到现在更新博客还是出于兴趣。但是有一个不得不面对的问题，就是维护成本。
+回想一下这个博客也是经历过几次迁移，最开始是部署在百度云上，那时是2014年，百度云也算建立初期为了吸引用户和内测，提供了BAE服务，费用很低，每天只需2毛钱，一个月也就6块钱并且免费提供了数据库服务，基本算是白嫖。不过这种便宜的午餐持续到2018年结束了，正好遇到阿里云活动，3年270元，果断下单。然后就是域名备案，数据迁移等。
+由此可知，自己维护一个博客（网站）还是很费心神的，很多个人博客都逐渐退出了互联网。就连一些大平台提供的博客都逐步下线，更不要说个人博客了。 在我接触互联网以来经历了很多博客平台的没落，其中不乏大平台，举例一二：网易博客，百度空间，甚至连新浪博客也出现不维护的现象，最近半年都无法发布内容。
+虽然博客走向没落，但其实人的需求一直是存在的，人们一直希望有个平台来展示自己，发布信息，只不过一直在迁徙而已。从前的博客，现在的微信公众号，只是平台在变化，不变的是一颗躁动的心。 即使有再多的自媒体，短视频，微博，这些大多属于娱乐信息，提供的有用信息很有限，真正有用的信息还是来自个人博客。现在的知乎，简书算是提供了个人发布信息的平台，而微信公众号虽然也有很高的价值，但是其系统过于封闭，搜索引擎是收集不到的，所以信息的传播能力也有限，只能被动的接收，并不能主动的获取需要的信息。
+在未来，更多的人需要个性化的展示平台，也就是不断有新生力量建立博客，虽然“博客”这个词都有可能过时，但是这样的网站会层出不穷。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f119031148c8850e521735f/" rel="bookmark">
+			让web项目不再502
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-17T11:49:05Z">2020-07-17 11:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前后端分离 近几年比较流行的web项目开发架构是前后端分离，前后端分离架构在系统稳定性方面非常有优势，其中一点优势主要体现在用户感知上，即使服务端发生错误也不会展现在视图层，一般情况下用户是可以继续浏览网页，不会很突兀的显示这样的信息： 502 bad gateway
+在接口发生错误时虽然可能会获取不到一些数据，但是在用户体验上比直接显示502错误要好。
+部署也相对安全和方便。
+前后端分离架构虽好，但不是”银弹”，不是所有网站都能使用前后端分离架构来做。
+服务端渲染 至于分不分离都有诸多的优缺点，可根据实际场景选择，本文要说的是不分离情况下文章开始所提到的问题——难看的502，500错误。
+本文我将使用“服务端渲染”来代替不分离的架构。
+由于服务端渲染的所有数据处理都在服务端进行，发生任何错误都可能引起500错误，这种错误会直接体现在视图层，用户看到这样的信息很不友好。 500 Internal Server Error
+遇到这种错误，可以使用适当的措施来弥补，带来的效果却非常良好。开发web最多遇到的错误码有：404，500，502。
+404错误很多网站都有默认页面，像这样的：
+但是500，502错误却鲜有默认页面，我们何不也搞一个呢？
+500错误 首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。
+502错误 再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。
+server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/html; } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5eec6fd5e8775d3b7f2ee79c/" rel="bookmark">
+			go mongo-driver动态条件
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-06-19T07:57:09Z">2020-06-19 07:57</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/mongodd/" rel="category">MongoDd</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&ldquo;someKey&rdquo;]=&ldquo;someValue&rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
+//构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;condition) log.Println(condition) if err = this.mongo.Collection(&#34;user&#34;).FindOne(context.TODO(), condition).Decode(&amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
+search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ee6fae2e8775d3b7f2ee0c6/" rel="bookmark">
+			puppeteer TypeError: text is not iterable
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-06-15T04:36:50Z">2020-06-15 04:36</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		(node:9828) UnhandledPromiseRejectionWarning: TypeError: text is not iterable at Keyboard.type (D:\workspace\auto-ui\node_modules\puppeteer-core\lib\Input.js:160:24) at Keyboard.&lt;anonymous&gt; (D:\workspace\auto-ui\node_modules\puppeteer-core\lib\helper.js:112:23) at openBrowser (D:\workspace\auto-ui\test-email\index.js:106:25) at process._tickCallback (internal/process/next_tick.js:68:7) (node:9828) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 3) (node:9828) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/blogdetail/page/2/">«</a>
+	<span class="pagination__item pagination__item--current">3/19</span>
+	<a class="pagination__item pagination__item--next btn" href="/blogdetail/page/4/">»</a>
+</div>
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/606d512c54277a10496a38ae/">使用sveltekit开发一个服务端渲染（SSR）项目</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/bae/">BAE</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/docker/">docker</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">Golang</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/mongodd/">MongoDd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ssh/">SSH</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/contributions/" title="Contributions ">Contributions </a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/foreach/" title="forEach">forEach</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongo/" title="mongo">mongo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title=" node"> node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="node.js">node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/null/" title="null">null</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2-logrotate%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/" title="pm2-logrotate日志分割">pm2-logrotate日志分割</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/protoc-gen-micro/" title="protoc-gen-micro">protoc-gen-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px2rem/" title="px2rem">px2rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pxtorem/" title="pxtorem">pxtorem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px%E8%BD%AC%E6%8D%A2%E6%88%90rem/" title="px转换成rem">px转换成rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime-text/" title="sublime text">sublime text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte%E4%BC%A0%E5%8F%82/" title="svelte传参">svelte传参</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%B8%8A%E6%B5%B7/" title="上海">上海</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/" title="元素对象">元素对象</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%83%A8%E7%BD%B2/" title="部署">部署</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

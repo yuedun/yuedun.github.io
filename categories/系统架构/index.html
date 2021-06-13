@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>系统架构 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="系统架构" />
+<meta property="og:description" content="欢迎访问我的博客" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" />
+
+
+		<meta itemprop="name" content="系统架构">
+<meta itemprop="description" content="欢迎访问我的博客">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" title="月盾的个人博客">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">系统架构</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f119031148c8850e521735f/" rel="bookmark">
+			让web项目不再502
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-17T11:49:05Z">2020-07-17 11:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前后端分离 近几年比较流行的web项目开发架构是前后端分离，前后端分离架构在系统稳定性方面非常有优势，其中一点优势主要体现在用户感知上，即使服务端发生错误也不会展现在视图层，一般情况下用户是可以继续浏览网页，不会很突兀的显示这样的信息： 502 bad gateway
+在接口发生错误时虽然可能会获取不到一些数据，但是在用户体验上比直接显示502错误要好。
+部署也相对安全和方便。
+前后端分离架构虽好，但不是”银弹”，不是所有网站都能使用前后端分离架构来做。
+服务端渲染 至于分不分离都有诸多的优缺点，可根据实际场景选择，本文要说的是不分离情况下文章开始所提到的问题——难看的502，500错误。
+本文我将使用“服务端渲染”来代替不分离的架构。
+由于服务端渲染的所有数据处理都在服务端进行，发生任何错误都可能引起500错误，这种错误会直接体现在视图层，用户看到这样的信息很不友好。 500 Internal Server Error
+遇到这种错误，可以使用适当的措施来弥补，带来的效果却非常良好。开发web最多遇到的错误码有：404，500，502。
+404错误很多网站都有默认页面，像这样的：
+但是500，502错误却鲜有默认页面，我们何不也搞一个呢？
+500错误 首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。
+502错误 再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。
+server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/html; } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5eb778a2bd7e796e7100c718/" rel="bookmark">
+			你是拿锤子的前端开发吗？
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-05-10T03:44:34Z">2020-05-10 03:44</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前言 接上篇《说道说道前后端分离》今天再次对前端现状作一次分析（吐槽）。
+再次引用一句《穷查理宝典》中的理论：
+ 在手里拿着锤子的人看来，所有的东西都会是钉子。
+  因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。
+ 事出有因 这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。
+最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。 对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。 而我们一个移动端网站的资源居然能超过3M，究其原因：
+ 图片大 js大 css大  图片大是因为图片基本没任何大小控制，都是使用了最高标准原图。js和css大基本是属于架构问题，一个项目中包含的上百的页面每个页面600多k的js是绕不过去的（vendor.js,app.js等打包资源，不包含其他引入资源）。
+看到vendor.js,app.js这两个名称很多人应该想到了，这是vue（react）框架开发的网站。 是的，就是用vue开发的移动端网站，使用vue开发网站本身也不是什么大问题，毕竟有实力的公司不需要SEO，直接竞价排名就行。而我要说的问题是，不是什么网站都可以用vue来开发，不信请继续往下看。
+问题分析 我司的移动端网站作用并不仅仅是用来展示公司形象的，更重要的是用户转化的，就是让用户注册的。而且是要和很多第三方机构合作投放引流，经常需要分析页面UI的不同对转化率的影响，所以需要的页面不是几个，而是几十上百个，还在不停增加，每周都有三五个页面增加。 由于vue主要是以开发单页SPA应用为主的，在开发人员不考虑真实需求的情况下自然会使用流行的技术，最终把网站开发成一个单页应用。单页应用的特点就是单页，就是把不同的页面做成一个页面一次加载，加载完成后页面之间的切换就会很快，一般无需再加载资源，用户体验也会好很多，可以套用一句话：“一次等待，处处快速”。
+这个特点在管理后台项目中很合适，但是在只需要展示一次的项目中也合适吗？不合适。
+我们的网站项目是用来做很多落地页的，各个落地页之间没有关联性，不会A页面跳到B页面，从B页面跳到C页面，A页面中不需要B页面的资源，B页面也不需要C页面的资源。然而vue项目打包的时候会把每个页面独有的一些资源都融合在一起，形成公共资源。结果就显而易见了，一个页面总要加载一堆无关资源，不仅资源大，还有很长的白屏时间，用户体验下降。
+还有一点不该使用单页应用的原因是我们的页面是纯展示的页面，不需要很多数据交互，vue能起到什么作用？操作数据？驱动UI？模块化？通通不需要。现代html可以不借助第三方库和框架的情况下完全能实现。
+结论  JavaScript 的最大优势之一是它不需要编译，所以可以在浏览器中直接运行。这样你就可以立刻获得编码的反馈。入门门槛很低；你只需一个文本编辑器和一个浏览器就能编写软件了。 不幸的是，这种简单性和可访问性已被称为过度工具链的风气破坏了。这种风气已经将 JavaScript 的开发工作变成了一场噩梦。我甚至看过一整套关于配置 Webpack 的课程。这种乱象需要有个尽头——生命苦短啊。
+ VUE，React这类框架用于构建应用方面很合适，但不太适合构建网站。应用是需要有较多的UI和数据方面的交互，而网站则更多的是信息展示，你可能根本不需要JavaScript（框架）。
+追求新技术可以让我们获得新奇感，成就感，解决老问题，而不是带来新问题。复杂性才是造成软件问题的根本原因。——试问：离开框架的你还会开发网站吗？
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e183a7a54cf7f406dcb28f5/" rel="bookmark">
+			“中台”是架构的捷径吗？
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-10T08:48:58Z">2020-01-10 08:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		由于“中台”概念的推动，关心业务架构的读者越来越多，很多企业也对实施“中台”、“中台”方法论趋之若鹜。历史总是相似的，之前无论 SOA、微服务、DDD，还是敏捷开发、双模开发等热门技术概念出现时，都曾经给大家燃起“捷径”的希望。 然而，最终还是证明了软件领域没有“银弹”，很多时候，反倒是应了北欧的一句民谚：捷径是迷路的最快方法。 架构没有捷径，无论从架构的设计、架构的落地还是架构的学习方面来讲，都是如此。
+1.架构设计没有捷径 架构设计如同求医问诊，必须对症下药。盲目相信任何已有架构设计成果都是很危险且极不负责任的。每个人的身体都各有特点，企业也是如此，而企业级转型、企业级工程是对企业现有能力的最大调整，需要企业在认清自己的基础上进行，任何忽略“向内看”过程的架构设计，都是为今后的混乱，甚至失败埋下伏笔。 对于复杂手术，不经过详细的诊断，不经过对术式反复揣摩，医生不会轻易为患者开刀，否则，不啻于用生命做试验。软件工程虽然少有“人命关天”的事情，但是，浪费时间也等同于浪费生命。
+ 没有为企业做过深入“体检”而轻易相信“领先实践”，很容易把在架构设计上节省的时间和精力，加倍“奉还”到实施过程中去。
+ 企业级架构设计往往给人以过于漫长、难以响应变化的印象，但是，人们恰恰忽略了由此带来的架构认知的积累，以及由量变到质变的过程。 当人们感慨一次“传统”的企业级业务架构设计方式可能耗时一到两年，而互联网时代非常追逐“快”时，其实并没有充分意识到，互联网企业的架构，比如阿里的“中台”也经历了十余年的积淀，而且十余年的积淀也还只是理清了一个方向，不然也不会有今日对“中台”概念的众说纷纭。 互联网架构并不代表架构设计上有“捷径”，反而证明了，任何“快”都来自于自身的积累，是充分“向内看”才有了外在的“快”。“快”源自对业务的深刻理解，“中台”对公共能力的沉淀正是来自于对业务能力的归纳和提炼，所以阿里才十分重视业务架构师的培养，而对“中台”的探索绝不仅限于对公共能力的沉淀，最终会上升到对企业整体、对何为业务经营的认识，这是一个自然的过程。 笔者在最近与原阿里中台核心架构师毗卢老师的交流中了解到，他们在进行中台设计时也在反复思考技术要努力支持业务经营的快速变化。
+ 那业务经营到底是什么？其实，大家关注的问题从领域级逐步上升到企业级之后，是一定会思考到底企业是什么、企业如何运转这些问题的。
+ 互联网架构并非简单地快速试错，这种试错是对业务选择能力的支持，而从技术视角看，则是对架构能力的不断提炼，是架构的强大才有了快速设计的可能。 所以，架构设计没有捷径，唯有积累，通过积累提高了对企业自身的了解、对架构设计的驾驭能力，才有了可以快的“资本”。
+此处，还得再说一次前边提到的北欧民谚：捷径是迷路的最快方法，无论是企业还是个人，切换架构设计方法前，都要对学习曲线有深刻的认识，否则，当别人在原来的方向上越走越远时，你可能还是在原地打转，只不过为别人提供了案例。
+ 笔者 2019 年在公司负责搭建风险管理体系，而该项工作再次让我认识到，架构不是可以“抄”的。
+ 风险管理是个很成熟的领域了，三道防线的体系设计方式，无论是金融企业还是科技企业、无论是国内企业还是国外企业都在使用，但是，你却无法直接把其他企业的防线设计简单套用过来，必须一个工作事项一个工作事项地分析自己企业的流程，确认风险点，确认工作事项的负责团队，落实具体的风控职责，之后，再考虑风控措施是否可以实现“机控”，而这一切又取决于该工作事项是否已经线上化。 这样才能形成一个与实际工作环境相符，并融合数字化风控方向的全面风险管理体系。这种深入细节的体系建设无法通过照搬任何现成经验来获得，否则会出现“削足适履”的情况。没有“捷径”，只有“路径”。
+2.架构落地没有捷径 经常有读者好奇企业级业务架构设计如何落地，笔者在书中、在 2019 年 12 月南京的中台大会上都直言，企业级业务架构设计的落地过程没有任何神秘和特殊，也不该有，今天笔者认为企业级业务架构日益重要，并不是因为它有什么落地的捷径，任何架构设计的落地过程都是靠一个逻辑一个逻辑、一个模块一个模块地实现的。 企业级业务架构设计只是让业务端的整理更加的结构化、整体化了，不同于需求分析对局部细节的关注，也不同于产品分析的领域性特点，企业级业务架构关注的是企业能力的整体规划和结构化表达，但它并不意味着在实现层面有何特殊性，它只是提供了软件过程中的一个“指挥棒”，通过业务架构设计形成对软件功能划分的指导。 而更重要的是，通过业务和技术都能理解的业务架构模型，使企业内部形成可以交流、甚至可以跨领域交流的“共同语言”。
+ 这个“指挥棒”对于提升企业的整体性而言是必不可少的，管理学上一直在研究如何让企业内部形成管理合力。
+ 业务架构诞生初期，在上个世纪 80-90 年代，企业的信息化程度还不如今日这么高，业务和技术的深度融合还没有受到应用的重视，但是今天，淘宝、滴滴、美团、头条等跨界竞争者给传统行业的原有企业造成了极大的竞争压力，乃至很多人都认同未来企业大部分都将转型为科技企业，工行的领导者最近也发表了此类言论。 由此可见，加强业务与技术的深度融合已经十分必要了，而业务架构正是符合这种时代要求的工具，赋予企业清晰的能力视图，清晰的结构加上架构的演进，就可能会不断提升架构的弹性。 企业管理经常追求韧性，常说希望企业能够像拧毛巾一样，越拧越紧却不会拧断，而未来，鉴于企业都具有科技属性，这样的“韧性”可能就要来自于架构的“弹性”了。 提升企业的整体性犹如进行马拉松训练，业务架构虽然提供了一个有力的工具，但是马拉松还是得依靠训练者一步一步地跑完，成绩的提升完全取决于训练者自身的能力和毅力。
+ 回到软件工程上，架构落地即便是采用敏捷过程，也不意味着靠的是什么“捷径”，而只是对工程组织方式的改进和对效率的追求。
+ 笔者近日阅读了《敏捷革命》一书，与广为流传的“敏捷价值观”相比，敏捷方法的原创者其实更在意的是如何通过信息的充分获取与共享、良好的思维模型，以短周期的方式迅速提供核心价值，从而降低项目周期过长导致的项目失败风险，通过多轮短周期的可控“冲刺”替代长周期的不可控过程。
+原创者非常推崇 OODA 原则，也就是飞行员训练中采用的**“观察 - 导向 - 决定 - 行动”模式**，其实每一次敏捷的 Scrum 中都体现了这一思想。 “观察”代表了对全面信息的迅速获取；“导向”是依靠思维模型进行快速分析，也就是快速的设计过程；“决定”就是确定结论，不再犹豫，“行动”就是将决定付诸实现。 原创者在书中也强调一个 Scrum 内，需求确定后就尽可能不动，这与飞行员的“决定”、“行动”的模式一样，因为空战时间太短了，几乎没有后悔重来的机会。 敏捷方法原创者十分推崇丰田的生产方式，笔者恰好最近也读了《新乡重夫谈丰田生产方式》一书。丰田的生产方式，又称“精益生产”、“Just-in-time”，是对拒绝“浪费”的极致追求，这个浪费指的不是原材料的浪费，而对是时间、效率的浪费。 比如，丰田在思考原材料在不同生产场地间搬运造成的浪费时，首先的解决思路是如何做到不搬运，通过这种思考去调整生产环境；再比如，在反思如何提高打磨零件毛刺工作的效率时，采用了引入欧洲真空加工技术，让零件根本不产生毛刺的方法。
+ 诸如此类的例子还有很多，正是通过这种对点滴效率提升的持续近 20 年的不断追求，才最终打造出丰田生产方式。
+ 任何方法的形成都是一个长期积累和反思的过程，而应用这些方法也需要使用者付出合理的努力加以掌握，架构设计的落地说到底是软件工程问题，没有捷径，只有持之以恒的效率提升。无论是给予敏捷方法原创者灵感的丰田生产方式，还是敏捷方法原创者自己的实践历程，都是一个对方法持续改进、日益精熟的过程。 没有真正理解方法之前，根本谈不上效率，与其总是在方法之间换来换去地求“快”，不如真把自己已有的功夫练到极致，只要解决问题的效率高，你自己就是“一派”。“四万八千法门”都能成佛，能够在修炼过程中“博采众长”就更好了，其实敏捷方法的原创者也正是这样创立敏捷方法的。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5df30ce58803fb4044fa0651/" rel="bookmark">
+			 一次商业web网站搭建的取舍过程
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-12-13T04:00:37Z">2019-12-13 04:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。
+所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。
+要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。
+选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。
+技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
+这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5c739d01e4d2f35bdd267d2d/" rel="bookmark">
+			Consul 入门教程
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-25T07:45:05Z">2019-02-25 07:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		一、什么是服务发现
+二、consul 简介
+三、consul的几个概念
+四、安装 Consul
+五、运行 Consul Agent
+六、集群成员
+七、停止 Agent
+八、注册服务
+九、Consul 集群
+十、健康检查
+十一、KV Data
+十二、Consul Web UI
+十三、Docker下安装consul 作者：菲宇
+来源：CSDN
+原文：https://blog.csdn.net/bbwangj/article/details/81116505
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5c735c58e4d2f35bdd267d22/" rel="bookmark">
+			服务发现：Zookeeper vs etcd vs Consul 
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-25T03:09:12Z">2019-02-25 03:09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		【编者的话】本文对比了Zookeeper、etcd和Consul三种服务发现工具，探讨了最佳的服务发现解决方案，仅供参考。
+如果使用预定义的端口，服务越多，发生冲突的可能性越大，毕竟，不可能有两个服务监听同一个端口。管理一个拥挤的比方说被几百个服务所使用的所有端口的列表，本身就是一个挑战，添加到该列表后，这些服务需要的数据库和数量会日益增多。因此我们应该部署无需指定端口的服务，并且让Docker为我们分配一个随机的端口。唯一的问题是我们需要发现端口号，并且让别人知道。 当我们开始在一个分布式系统上部署服务到其中一台服务器上时，事情会变得更加复杂，我们可以选择预先定义哪台服务器运行哪个服务的方式，但这会导致很多问题。我们应该尽我们所能尽量利用服务器资源，但是如果预先定义每个服务的部署位置，那么要实现尽量利用服务器资源是几乎不可能的。另一个问题是服务的自动伸缩将会非常困难，更不用说自动恢复了，比方说服务器故障。另一方面，如果我们将服务部署到某台只有最少数量的容器在运行的服务器上，我们需要添加IP地址到数据列表中，这些数据需要可以被发现并存储在某处。 当我们需要存储和发现一些与正在工作的服务相关的信息时，还有很多其他的例子。
+为了能够定位服务，我们需要至少接下来的两个有用的步骤。 服务注册——该步骤存储的信息至少包括正在运行的服务的主机和端口信息 服务发现——该步骤允许其他用户可以发现在服务注册阶段存储的信息。
+除了上述的步骤，我们还需要考虑其他方面。如果一个服务停止工作并部署/注册了一个新的服务实例，那么该服务是否应该注销呢？当有相同服务的多个副本时咋办？我们该如何做负载均衡呢？如果一个服务器宕机了咋办？所有这些问题都与注册和发现阶段紧密关联。现在，我们限定只在服务发现的范围里（常见的名字，围绕上述步骤）以及用于服务发现任务的工具，它们中的大多数采用了高可用的分布式键/值存储。
+服务发现工具 服务发现工具的主要目标是用来服务查找和相互对话，为此该工具需要知道每个服务，这不是一个新概念，在Docker之前就已经存在很多类似的工具了，然而，容器带给了这些工具一个全新水平的需求。
+服务发现背后的基本思想是对于服务的每一个新实例（或应用程序），能够识别当前环境和存储相关信息。存储的注册表信息本身通常采用键/值对的格式，由于服务发现经常用于分布式系统，所以要求这些信息可伸缩、支持容错和分布式集群中的所有节点。这种存储的主要用途是给所有感兴趣的各方提供最起码诸如服务IP地址和端口这样的信息，用于它们之间的相互通讯，这些数据还经常扩展到其它类型的信息服务发现工具倾向于提供某种形式的API，用于服务自身的注册以及服务信息的查找。
+比方说我们有两个服务，一个是提供方，另一个是第一个服务的消费者，一旦部署了服务提供方，就需要在服务发现注册表中存储其信息。接着，当消费者试图访问服务提供者时，它首先查询服务注册表，使用获取到的IP地址和端口来调用服务提供者。为了与注册表中的服务提供方的具体实现解耦，我们常常采用某种代理服务。这样消费者总是向固定IP地址的代理请求信息，代理再依次使用服务发现来查找服务提供方信息并重定向请求，在本文中我们稍后通过反向代理来实现。现在重要的是要理解基于三种角色（服务消费者、提供者和代理）的服务发现流程。
+服务发现工具要查找的是数据，至少我们应该能够找出服务在哪里？服务是否健康和可用？配置是什么样的？既然我们正在多台服务器上构建一个分布式系统，那么该工具需要足够健壮，保证其中一个节点的宕机不会危及数据，同时，每个节点应该有完全相同的数据副本，进一步地，我们希望能够以任何顺序启动服务、杀死服务或者替换服务的新版本，我们还应该能够重新配置服务并且查看到数据相应的变化。
+让我们看一下一些常用的选项来完成我们上面设定的目标。
+手动配置 大多数服务仍然是需要手动管理的，我们预先决定在何处部署服务、如何配置和希望不管什么原因，服务都将继续正常工作，直到天荒地老。这样的目标不是可以轻易达到的。部署第二个服务实例意味着我们需要启动全程的手动处理，我们需要引入一台新的服务器，或者找出哪一台服务器资源利用率较低，然后创建一个新的配置集并启动服务。情况或许会变得越来越复杂，比方说，硬件故障导致的手动管理下的反应时间变得很慢。可见性是另外一个痛点，我们知道什么是静态配置，毕竟是我们预先准备好的，然而，大多数的服务有很多动态生成的信息，这些信息不是轻易可见的，也没有一个单独的地方供我们在需要时参考这些数据。
+反应时间会不可避免的变慢，鉴于存在许多需要手动处理的移动组件，故障恢复和监控也会变得非常难以管理。
+尽管在过去或者当服务/服务器数量很少的时候有借口不做这项工作，随着服务发现工具的出现，这个借口已经不存在了。
+Zookeeper Zookeeper是这种类型的项目中历史最悠久的之一，它起源于Hadoop，帮助在Hadoop集群中维护各种组件。它非常成熟、可靠，被许多大公司（YouTube、eBay、雅虎等）使用。其数据存储的格式类似于文件系统，如果运行在一个服务器集群中，Zookeper将跨所有节点共享配置状态，每个集群选举一个领袖，客户端可以连接到任何一台服务器获取数据。
+Zookeeper的主要优势是其成熟、健壮以及丰富的特性，然而，它也有自己的缺点，其中采用Java开发以及复杂性是罪魁祸首。尽管Java在许多方面非常伟大，然后对于这种类型的工作还是太沉重了，Zookeeper使用Java以及相当数量的依赖使其对于资源竞争非常饥渴。因为上述的这些问题，Zookeeper变得非常复杂，维护它需要比我们期望从这种类型的应用程序中获得的收益更多的知识。这部分地是由于丰富的特性反而将其从优势转变为累赘。应用程序的特性功能越多，就会有越大的可能性不需要这些特性，因此，我们最终将会为这些不需要的特性付出复杂度方面的代价。
+Zookeeper为其他项目相当大的改进铺平了道路，“大数据玩家“在使用它，因为没有更好的选择。今天，Zookeeper已经老态龙钟了，我们有了更好的选择。
+etcd etcd是一个采用HTTP协议的健/值对存储系统，它是一个分布式和功能层次配置系统，可用于构建服务发现系统。其很容易部署、安装和使用，提供了可靠的数据持久化特性。它是安全的并且文档也十分齐全。
+etcd比Zookeeper是比更好的选择，因为它很简单，然而，它需要搭配一些第三方工具才可以提供服务发现功能。 现在，我们有一个地方来存储服务相关信息，我们还需要一个工具可以自动发送信息给etcd。但在这之后，为什么我们还需要手动把数据发送给etcd呢？即使我们希望手动将信息发送给etcd，我们通常情况下也不会知道是什么信息。记住这一点，服务可能会被部署到一台运行最少数量容器的服务器上，并且随机分配一个端口。理想情况下，这个工具应该监视所有节点上的Docker容器，并且每当有新容器运行或者现有的一个容器停止的时候更新etcd，其中的一个可以帮助我们达成目标的工具就是Registrator。
+Registrator Registrator通过检查容器在线或者停止运行状态自动注册和去注册服务，它目前支持etcd、Consul和SkyDNS 2。
+Registrator与etcd是一个简单但是功能强大的组合，可以运行很多先进的技术。每当我们打开一个容器，所有数据将被存储在etcd并传播到集群中的所有节点。我们将决定什么信息是我们的。 上述的拼图游戏还缺少一块，我们需要一种方法来创建配置文件，与数据都存储在etcd，通过运行一些命令来创建这些配置文件。
+Confd Confd是一个轻量级的配置管理工具，常见的用法是通过使用存储在etcd、consul和其他一些数据登记处的数据保持配置文件的最新状态，它也可以用来在配置文件改变时重新加载应用程序。换句话说，我们可以用存储在etcd（或者其他注册中心）的信息来重新配置所有服务。 对于etcd、Registrator和Confd组合的最后的思考 当etcd、Registrator和Confd结合时，可以获得一个简单而强大的方法来自动化操作我们所有的服务发现和需要的配置。这个组合还展示了“小”工具正确组合的有效性，这三个小东西可以如我们所愿正好完成我们需要达到的目标，若范围稍微小一些，我们将无法完成我们面前的目标，而另一方面如果他们设计时考虑到更大的范围，我们将引入不必要的复杂性和服务器资源开销。
+在我们做出最后的判决之前，让我们看看另一个有相同目标的工具组合，毕竟，我们不应该满足于一些没有可替代方案的选择。
+Consul Consul是强一致性的数据存储，使用gossip形成动态集群。它提供分级键/值存储方式，不仅可以存储数据，而且可以用于注册器件事各种任务，从发送数据改变通知到运行健康检查和自定义命令，具体如何取决于它们的输出。
+与Zookeeper和etcd不一样，Consul内嵌实现了服务发现系统，所以这样就不需要构建自己的系统或使用第三方系统。这一发现系统除了上述提到的特性之外，还包括节点健康检查和运行在其上的服务。
+Zookeeper和etcd只提供原始的键/值队存储，要求应用程序开发人员构建他们自己的系统提供服务发现功能。而Consul提供了一个内置的服务发现的框架。客户只需要注册服务并通过DNS或HTTP接口执行服务发现。其他两个工具需要一个亲手制作的解决方案或借助于第三方工具。
+Consul为多种数据中心提供了开箱即用的原生支持，其中的gossip系统不仅可以工作在同一集群内部的各个节点，而且还可以跨数据中心工作。 Consul还有另一个不错的区别于其他工具的功能，它不仅可以用来发现已部署的服务以及其驻留的节点信息，还通过HTTP请求、TTLs（time-to-live）和自定义命令提供了易于扩展的健康检查特性。
+Registrator Registrator有两个Consul协议，其中consulkv协议产生类似于etcd协议的结果。
+除了通常的IP和端口存储在etcd或consulkv协议中之外，Registrator consul协议存储了更多的信息，我们可以得到服务运行节点的信息，以及服务ID和名称。我们也可以借助于一些额外的环境变量按照一定的标记存储额外的信息。 Consul-template confd可以像和etce搭配一样用于Consul，不过Consul有自己的模板服务，其更适配Consul。
+通过从Consul获得的信息，Consul-template是一个非常方便的创建文件的途径，还有一个额外的好处就是在文件更新后可以运行任意命令，正如confd，Consul-template也可以使用 Go模板格式。 Consul健康检查、Web界面和数据中心 监控集群节点和服务的健康状态与测试和部署它们一样的重要。虽然我们应该向着拥有从来没有故障的稳定的环境努力，但我们也应该承认，随时会有意想不到的故障发生，时刻准备着采取相应的措施。例如我们可以监控内存使用情况，如果达到一定的阈值，那么迁移一些服务到集群中的另外一个节点，这将是在发生“灾难”前执行的一个预防措施。另一方面，并不是所有潜在的故障都可以被及时检测到并采取措施。单个服务可能会齿白，一个完整的节点也可能由于硬件故障而停止工作。在这种情况下我们应该准备尽快行动，例如一个节点替换为一个新的并迁移失败的服务。Consul有一个简单的、优雅的但功能强大的方式进行健康检查，当健康阀值达到一定数目时，帮助用户定义应该执行的操作。
+如果用户Google搜索“etcd ui”或者“etec dashboard”时，用户可能看到只有几个可用的解决方案，可能会问为什么我们还没有介绍给用户，这个原因很简单，etcd只是键/值对存储，仅此而已。通过一个UI呈现数据没有太多的用处，因为我们可以很容易地通过etcdctl获得这些数据。这并不意味着etcd UI是无用的，但鉴于其有限的使用范围，它不会产生多大影响。
+Consu不仅仅是一个简单的键/值对存储，正如我们已经看到的，除了存储简单的键/值对，它还有一个服务的概念以及所属的数据。它还可以执行健康检查，因此成为一个好的候选dashboard，在上面可以看到我们的节点的状态和运行的服务。最后，它支持了多数据中心的概念。所有这些特性的结合让我们从不同的角度看到引入dashboard的必要性。
+通过Consul Web界面，用户可以查看所有的服务和节点、监控健康检查状态以及通过切换数据中心读取设置键/值对数据。 对于Consul、Registrator、Template、健康检查和Web UI的最终思考 Consul以及上述我们一起探讨的工具在很多情况下提供了比etcd更好的解决方案。这是从内心深处为了服务架构和发现而设计的方案，简单而强大。它提供了一个完整的同时不失简洁的解决方案，在许多情况下，这是最佳的服务发现以及满足健康检查需求的工具。 结论 所有这些工具都是基于相似的原则和架构，它们在节点上运行，需要仲裁来运行，并且都是强一致性的，都提供某种形式的键/值对存储。
+Zookeeper是其中最老态龙钟的一个，使用年限显示出了其复杂性、资源利用和尽力达成的目标，它是为了与我们评估的其他工具所处的不同时代而设计的（即使它不是老得太多）。
+etcd、Registrator和Confd是一个非常简单但非常强大的组合，可以解决大部分问题，如果不是全部满足服务发现需要的话。它还展示了我们可以通过组合非常简单和特定的工具来获得强大的服务发现能力，它们中的每一个都执行一个非常具体的任务，通过精心设计的API进行通讯，具备相对自治工作的能力，从架构和功能途径方面都是微服务方式。
+Consul的不同之处在于无需第三方工具就可以原生支持多数据中心和健康检查，这并不意味着使用第三方工具不好。实际上，在这篇博客里我们通过选择那些表现更佳同时不会引入不必要的功能的的工具，尽力组合不同的工具。使用正确的工具可以获得最好的结果。如果工具引入了工作不需要的特性，那么工作效率反而会下降，另一方面，如果工具没有提供工作所需要的特性也是没有用的。Consul很好地权衡了权重，用尽量少的东西很好的达成了目标。
+Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建，特别是对于大的数据中心。将存储数据作为服务的能力使其比etcd仅仅只有健/值对存储的特性更加完整、更有用（即使Consul也有该选项）。虽然我们可以在etcd中通过插入多个键来达成相同的目标，Consul的服务实现了一个更紧凑的结果，通常只需要一次查询就可以获得与服务相关的所有数据。除此之外，Registrator很好地实现了Consul的两个协议，使其合二为一，特别是添加Consul-template到了拼图中。Consul的Web UI更是锦上添花般地提供了服务和健康检查的可视化途径。
+我不能说Consul是一个明确的赢家，而是与etcd相比其有一个轻微的优势。服务发现作为一个概念，以及作为工具都很新，我们可以期待在这一领域会有许多的变化。秉承开放的心态，大家可以对本文的建议持保留态度，尝试不同的工具然后做出自己的结论。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5c6cbe294a7b7e6cd80869e5/" rel="bookmark">
+			nodejs-go内存占比
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-20T02:40:41Z">2019-02-20 02:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。  go占14.7M nodejs占122.2M
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5bc1bd1bf846d21847dc3014/" rel="bookmark">
+			gRPC负载均衡
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-13T09:38:35Z">2018-10-13 09:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。
+在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
+upstream grpcservice { server localhost:50051; server localhost:50052; } server { listen 8080 http2;#需要加http2 server_name localhost; location / { grpc_pass grpc://grpcservice;#以grpc为前缀 } grpc_connect_timeout 10; } 配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图：可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
+虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。 原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5b1fcbf7e205c79ceab7a529/" rel="bookmark">
+			过早的优化是万恶之源
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-12T13:34:47Z">2018-06-12 13:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		“过早的优化是万恶之源”，这句话或多或少在哪听过，不过为什么优化也会带来问题，恐怕只有经历过的人才能理解其中的意义。
+关于程序优化，产品优化这些词在开发工作中一定有经历过。某位程序员做事一丝不苟，对程序开发特别注重性能问题，花大量时间来优化某段代码。某位产品在提出需求的时候总是有一些目前用不到的功能，说是为了方便将来扩展。
+那么实际工作中这种优化到底起到了什么作用？个人认为弊多于利。
+问题一：过早引入新技术 甲同学在做一个员工日常工作内容列表的接口时，认为该接口会产生性能问题，将来数据增多的时候会有性能瓶颈，于是利用了某项缓存技术，觉得缓存一定比直接查数据库速度快，于是就引入了缓存数据库。把数据拉到缓存中，先从缓存中读取数据，没有数据的时候从数据库中读取放到缓存中。这个思路看似挺好，不过为了更新数据就设置过期时间为1天。上线后发现很多员工的日常工作内容一天内会有变化，就设置过期时间为半天，结果半天过期时间还是会有部分员工工作内容更新频繁。这时候就有些纠结了，到底是再降低过期时间还是单独更新某个员工的数据？如果选择降低过期时间会导致所有数据都要从数据库重新拉取，选择单独更新又要对各个更新几口进行修改来更新缓存。这期间不免要折腾几回来适应业务需求，而且容易造成各个业务过度依赖缓存，为了保持缓存数据一致性需要做很多工作，然而很多的工作目的并没有提高系统可用性。
+问题二：过早优化数据库 有些同学在设计数据库的时候总喜欢多加些字段，为了方便未来使用，知道索引能加速查询，就使劲加索引，这基本属于不够成熟的思想，试问：等真正需要字段的时候加会晚吗？现在提前加了后面还能知道这个字段当初是准备怎么用来的吗？别的同学要加的时候发现已经有了一个类似的，这个字段到底有没有在用，不敢删又不敢用。索引加了一大堆本以为有积极作用，可不知道索引会占用空间，插入修改却慢了下来。
+问题三：过早进行防范准备 在没有真实QPS数据和准确预估的情况，开发同学生生怕线上出现故障，要求多部署几台服务器做负载均衡，反正服务器多了也不会有问题。但是过多的服务器会带来其他方面的问题： 1、运维难度增加 2、企业成本增加 3、线上故障排查难度增加
+针对性优化 在避免过度设计的情况下才进行针对性优化。性能问题的出现并不是经常性的，而是在某个访问高峰期出现，这时候影响范围还不是很大，但是该考虑进行优化了，如果是经常性突发并发数增加可以考虑缓存数据库。如果是日常单机承载能力高可以进行一定压力测试，评估并发压力增加合适的服务器。随着企业发展，数据量不断累积，此时数据库成为主要压力，此时对数据库索引，SQL进行优化，往往能有立竿见影的效果。
+总结：没有针对性的性能优化，只是按照假象场景来设计，最后不但不能起到优化作用反而为后期优化带来累赘。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5b1d2d8f2c36bd008e01f5a3/" rel="bookmark">
+			消息队列中参数的传递和存储
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-10T13:54:23Z">2018-06-10 13:54</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		消息队列（MQ）在系统架构中发挥了重要作用，其主要作用有系统解耦，流量削峰，异步消息存储，分布式系统最终一致性等。 本文介绍的是消息系统中消息发布者和订阅者间参数如何约定和传递？实际应用场景中，一种消息的发布者和订阅者都有可能是多个，也就是多对多的关系，这样就形成了消息参数传递的复杂性，就算一开始参数有约定，大家都按照最初约定来开发，但不免开发过程中各端需求变化带来的修改。例如最开始为了实现系统解耦而引进了消息队列，此时消息参与者较少，只有一个发布者和一个订阅者，这种情况最简单（其实最简单还是直接调接口），双方简单约定了需要传递的参数。
+{ userId:123, userName:&quot;阿离&quot;, age:23 } 后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
+{ userId:123, userName:&quot;阿离&quot;, age:23, gender:&quot;女&quot;, address:&quot;上海&quot;, job:&quot;测试&quot; } 再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
+{ userId:123, userName:&quot;阿离&quot;, age:23, gender:&quot;女&quot;, address:&quot;上海&quot;, job:&quot;测试&quot;, workingLife:4 } 再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
+这时消息系统已经不是当初简单的两个发布者订阅者了，而是一群人在参数，所谓的众口难调。此时弊端已现，无论哪一方有变化都势必牵连所有人。所以看出的出这种消息参数传递有其不合理的地方，那么怎么传递更合理？此处的MQ最开始已经说了，是为了解耦而引进，说明该MQ是多个系统的衔接者，而多个系统终究还是系统，不是简单的前端和后端接口调用，例如某个前端A也是由自己的接口提供服务系统的，MQ不是直接为前端A提供参数的。应该是由前端A自己的服务端A订阅消息，前端A需要什么参数就有服务A查询需要的参数即可，前端B需要什么参数由服务B查询提供。而发布者A，发布者B等只需要传递关键参数userId即可，其他姓名，性别，年龄什么的都不需要传。
+此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
+总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/2</span>
+	<a class="pagination__item pagination__item--next btn" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/page/2/">»</a>
+</div>
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/606d512c54277a10496a38ae/">使用sveltekit开发一个服务端渲染（SSR）项目</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/bae/">BAE</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/docker/">docker</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">Golang</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/mongodd/">MongoDd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ssh/">SSH</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/contributions/" title="Contributions ">Contributions </a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/foreach/" title="forEach">forEach</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongo/" title="mongo">mongo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node/" title=" node"> node</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="node.js">node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/null/" title="null">null</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2-logrotate%E6%97%A5%E5%BF%97%E5%88%86%E5%89%B2/" title="pm2-logrotate日志分割">pm2-logrotate日志分割</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/protoc-gen-micro/" title="protoc-gen-micro">protoc-gen-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px2rem/" title="px2rem">px2rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pxtorem/" title="pxtorem">pxtorem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/px%E8%BD%AC%E6%8D%A2%E6%88%90rem/" title="px转换成rem">px转换成rem</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime-text/" title="sublime text">sublime text</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte%E4%BC%A0%E5%8F%82/" title="svelte传参">svelte传参</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%B8%8A%E6%B5%B7/" title="上海">上海</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1/" title="元素对象">元素对象</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" title="路由">路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%83%A8%E7%BD%B2/" title="部署">部署</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

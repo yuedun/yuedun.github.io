@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NODE_ENV on 月盾的个人博客</title>
+    <link>/tags/node_env/</link>
+    <description>Recent content in NODE_ENV on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 02 Mar 2018 03:25:51 +0000</lastBuildDate><atom:link href="/tags/node_env/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pm2设置NODE_ENV环境变量</title>
+      <link>/blogdetail/5a98c43ff4583f741c210b89/</link>
+      <pubDate>Fri, 02 Mar 2018 03:25:51 +0000</pubDate>
+      
+      <guid>/blogdetail/5a98c43ff4583f741c210b89/</guid>
+      <description>nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量，可以临时设置
+设置方式一： linux：export NODE_ENV=development&amp;amp;&amp;amp; node app.js
+win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
+一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可，
+设置方式二： 而设置环境变量在pm2中可以轻松实现
+ pm2 start pm2.json &amp;ndash;env production
+ --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量
+//pm2.json { &amp;quot;apps&amp;quot; : [{ &amp;quot;name&amp;quot;: &amp;quot;issue&amp;quot;, &amp;quot;cwd&amp;quot;: &amp;quot;dest&amp;quot;, &amp;quot;script&amp;quot; : &amp;quot;bin/www.js&amp;quot;, &amp;quot;instances&amp;quot; : &amp;quot;2&amp;quot;, &amp;quot;exec_mode&amp;quot; : &amp;quot;cluster&amp;quot;, &amp;quot;env&amp;quot;: { &amp;quot;NODE_ENV&amp;quot;: &amp;quot;development&amp;quot;, &amp;quot;PORT&amp;quot;: 3002 }, &amp;quot;env_production&amp;quot; : { &amp;quot;NODE_ENV&amp;quot;: &amp;quot;production&amp;quot;, &amp;quot;PORT&amp;quot;: 3003 }, &amp;quot;log_date_format&amp;quot;: &amp;quot;YYYY-MM-DD_HH:mm Z&amp;quot;, &amp;quot;merge_logs&amp;quot;: true }] } 如果不加参数则默认使用
+&amp;quot;env&amp;quot;: { &amp;quot;NODE_ENV&amp;quot;: &amp;quot;development&amp;quot;, &amp;quot;PORT&amp;quot;: 3002 } 结果：NODE_ENV=development,PORT=3002</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on 月盾的个人博客</title>
+    <link>/tags/go/</link>
+    <description>Recent content in go on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 19 Jun 2020 07:57:09 +0000</lastBuildDate><atom:link href="/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go mongo-driver动态条件</title>
+      <link>/blogdetail/5eec6fd5e8775d3b7f2ee79c/</link>
+      <pubDate>Fri, 19 Jun 2020 07:57:09 +0000</pubDate>
+      
+      <guid>/blogdetail/5eec6fd5e8775d3b7f2ee79c/</guid>
+      <description>在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&amp;ldquo;someKey&amp;rdquo;]=&amp;ldquo;someValue&amp;rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
+//构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) log.Println(condition) if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), condition).Decode(&amp;amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
+search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
+    </item>
+    
+    <item>
+      <title>nodejs-go内存占比</title>
+      <link>/blogdetail/5c6cbe294a7b7e6cd80869e5/</link>
+      <pubDate>Wed, 20 Feb 2019 02:40:41 +0000</pubDate>
+      
+      <guid>/blogdetail/5c6cbe294a7b7e6cd80869e5/</guid>
+      <description>同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。  go占14.7M nodejs占122.2M</description>
+    </item>
+    
+    <item>
+      <title>beego post请求获取request body参数</title>
+      <link>/blogdetail/57d6aaa7471c11fa271ed1bb/</link>
+      <pubDate>Mon, 12 Sep 2016 13:16:23 +0000</pubDate>
+      
+      <guid>/blogdetail/57d6aaa7471c11fa271ed1bb/</guid>
+      <description>为了获取json类型的参数煞费苦心，差点不再爱了。
+前端请求代码：
+$.ajax({ url: &amp;#34;/user&amp;#34;, type: &amp;#34;post&amp;#34;, data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &amp;#34;json&amp;#34; }).done(function(res) { if(res.result){ alert(&amp;#34;成功&amp;#34;) } }); 后端接收代码：
+func (this *UserController) Post() { var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;amp;ob)//解析二进制json，把结果放进ob中  user := &amp;amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数  if nil != err { this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: false, &amp;#34;msg&amp;#34;: err} } else { this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;新增成功&amp;#34;} } this.ServeJSON() } this.</description>
+    </item>
+    
+    <item>
+      <title>Go语言学习笔记</title>
+      <link>/blogdetail/56556da1c72f59d15379b4b9/</link>
+      <pubDate>Wed, 25 Nov 2015 08:13:21 +0000</pubDate>
+      
+      <guid>/blogdetail/56556da1c72f59d15379b4b9/</guid>
+      <description>近些年出现不少新的开发语言，比如:
+Rust是Mozilla开发的注重安全、性能和并发性的编程语言。
+Go语言是谷歌2009发布的第二款开源编程语言。专门针对多处理器系统应用程序的编程进行了优化，使用Go编译的程序可以媲美C或C++代码的速度，而且更加安全、支持并行进程。
+D语言最初由Digital Mars公司就职的Walter Bright于2001年发布，意图改进C++语言。目前最新D语言被简称为D2。最主要的D语言的实现是DMD。
+Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行的数据密集型的实时应用。
+等等……
+对于这些新语言，总有不少槽点被开发者吐槽。很多人都会进行对比，褒贬。但是我还是首先选择了Nodejs，简单快速上手，目前完全用于生产环境，它的快速开发让我很满意。ES6标准的定稿更让我肯定nodejs将会有更好的发展。
+最近又学习了go语言，在学一门语言前总会迟疑值不值得学习，然后看到网上各种讨论。但我觉得还是值得学习，且不说性能有没有C++好，光凭开发效率就值得我学了，现代计算机性能都有很大的提升，如果不是开发底层系统，而是开发软件服务端系统那么它的有点足够了。
+原生http请求获取参数   获取URL参数
+  url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&amp;quot;startDate&amp;quot;])
+  go返回json数据
+  type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&amp;#34;code&amp;#34;` // Data map[string]string `json:&amp;#34;data&amp;#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&amp;#34;code&amp;#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&amp;#34;Code&amp;#34;:0,&amp;#34;Data&amp;#34;:{&amp;#34;a&amp;#34;:&amp;#34;aaaaaa&amp;#34;}}和{&amp;#34;code&amp;#34;:0,&amp;#34;data&amp;#34;:{&amp;#34;a&amp;#34;:&amp;#34;aaaaaa&amp;#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&amp;#34;a&amp;#34;] = &amp;#34;aaaaaa&amp;#34; ress := &amp;amp;ResObj{ Code: 0, Data: m} byt, _ := json.</description>
+    </item>
+    
+  </channel>
+</rss>

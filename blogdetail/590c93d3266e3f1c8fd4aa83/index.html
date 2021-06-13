@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>typescript泛型的使用方法 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点">
+		<meta property="og:title" content="typescript泛型的使用方法" />
+<meta property="og:description" content="typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/590c93d3266e3f1c8fd4aa83/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2017-05-05T15:01:39&#43;00:00" />
+<meta property="article:modified_time" content="2017-05-05T15:01:39&#43;00:00" />
+
+
+		<meta itemprop="name" content="typescript泛型的使用方法">
+<meta itemprop="description" content="typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点"><meta itemprop="datePublished" content="2017-05-05T15:01:39&#43;00:00" />
+<meta itemprop="dateModified" content="2017-05-05T15:01:39&#43;00:00" />
+<meta itemprop="wordCount" content="103">
+<meta itemprop="keywords" content="" />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">typescript泛型的使用方法</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T15:01:39Z">2017-05-05 15:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）
+个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。</p>
+<pre><code>function a(args: number ): number {
+	return args;
+}
+console.log(a(123));
+</code></pre><p>又有另外一个要求，参数为string类型，并且返回string</p>
+<pre><code>function b(args: string ): string {
+	return args;
+}
+console.log(b(&quot;sdg&quot;));
+</code></pre><p>如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：</p>
+<pre><code>function c(args: any ): any {
+	return args;
+}
+console.log(c(&quot;sdg&quot;));
+</code></pre><p>这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的<code>c</code>函数稍作修改：</p>
+<pre><code>function c(args: any ): any {
+    let n = args + &quot;变成了字符串&quot;;
+    //甚至更多的处理
+	return n;
+}
+console.log(c(1));
+</code></pre><p><code>c</code>函数参数是数字，返回的可能是其他类型。
+知道前面几种写法的不足再对比一下泛型的写法：</p>
+<pre><code>function d&lt;A&gt;(args: A ): A {
+    let n = args + &quot;变成了字符串&quot;;
+    //甚至更多的处理
+	return n;
+}
+console.log(d(1));
+</code></pre><p><img src="http://hopefully-img.yuedun.wang/FhO7R54TnMePUhwcnry3fo8AJz7_" alt="FhO7R54TnMePUhwcnry3fo8AJz7_">
+<code>d</code>函数要求参数是A类型，并且返回A类型，但是实际返回的类型可能由number类型变成了string类型，所以提示错误。其中<code>&lt;&gt;</code>中可以是任意大小写的英文，中文也行，但数字不行，比如：</p>
+<pre><code>function d&lt;Az&gt;(args: Az ): Az {
+    let n = args + &quot;变成了字符串&quot;;
+    //甚至更多的处理
+	return n;
+}
+console.log(d(1));
+</code></pre><p><code>&lt;&gt;</code>中的值是指代某种基础类型或任何自定义类型，它只是一种形式。也可以有下面的形式：</p>
+<pre><code>function d&lt;T, U&gt;(args: T,ar: U): U {
+	return ar;
+}
+console.log(d(2, &quot;aaaa&quot;))
+</code></pre><p>其实就是提供一种形式供后面代码使用，没有提供就不能使用。</p>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/58f8c22ae17cc00088e5ba4f/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title"> error TS7010: skipTo, which lacks return-type annotation, implicitly has an any return type.</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/591c5eac35b6751981e4681e/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">nodejs中promise的if流程控制</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

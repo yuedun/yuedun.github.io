@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>js prototype的理解【转】 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototyp">
+		<meta property="og:title" content="js prototype的理解【转】" />
+<meta property="og:description" content="prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototyp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blogdetail/56551ce4c72f59d15379b4b8/" /><meta property="article:section" content="blogdetail" />
+<meta property="article:published_time" content="2015-11-25T02:28:52&#43;00:00" />
+<meta property="article:modified_time" content="2015-11-25T02:28:52&#43;00:00" />
+
+
+		<meta itemprop="name" content="js prototype的理解【转】">
+<meta itemprop="description" content="prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototyp"><meta itemprop="datePublished" content="2015-11-25T02:28:52&#43;00:00" />
+<meta itemprop="dateModified" content="2015-11-25T02:28:52&#43;00:00" />
+<meta itemprop="wordCount" content="353">
+<meta itemprop="keywords" content="" />
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">欢迎访问我的博客</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/message/">
+					
+					<span class="menu__text">留言</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">js prototype的理解【转】</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T02:28:52Z">2015-11-25 02:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents"></nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototype属性，可以给类动态地添加方法，以便在JavaScript中实现“ 继承”的效果。</p>
+<p>具体来说，prototype 是在 IE 4 及其以后版本引入的一个针对于某一类的对象的方法，当你用prototype编写一个类后，如果new一个新的对象，浏览器会自动把prototype中 的内容替你附加在对象上。这样，通过利用prototype就可以在JavaScript中实现成员函数的定义，甚至是“继承”的效果。</p>
+<p>对于javascript本身而言是基于对象的，任何元素都可以看成对象。然而类型和对象是不同的，而我们所讲的prototype属性即是基于类型的一 种属性。对于prototype的基本使用就如对象的创建及属性赋值一样的简单。直接通过赋值操作即可完成属性的创建。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">
+<span style="color:#75715e">/**
+</span><span style="color:#75715e"> * 
+</span><span style="color:#75715e">关于prototype,
+</span><span style="color:#75715e">理解这个很有必要
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">JS中允许的类型有Array,
+</span><span style="color:#75715e">Boolean,
+</span><span style="color:#75715e">Date,
+</span><span style="color:#75715e">Enumerator,
+</span><span style="color:#75715e">Error,
+</span><span style="color:#75715e">Function,
+</span><span style="color:#75715e">Number,
+</span><span style="color:#75715e">Object,
+</span><span style="color:#75715e">RegExp,
+</span><span style="color:#75715e">String
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例
+</span><span style="color:#75715e">
+</span><span style="color:#75715e"> */</span>
+Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
+
+Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">nihao</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+
+    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;i can method name is &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+
+}
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+
+<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">nihao</span>();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">name</span>);
+
+
+
+<span style="color:#75715e">// 在实例上不能使用prototype，否则会发生编译错误
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;男&#34;</span>; <span style="color:#75715e">//error,无法给一个实例prototype
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> {
+
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>
+
+}
+
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>; <span style="color:#75715e">//error,无法给一个实例prototype
+</span><span style="color:#75715e">//可以为类型定义“静态”的属性和方法，直接在类型上调用即可
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>(Object.<span style="color:#a6e22e">name</span>);
+
+Object.<span style="color:#a6e22e">nihao</span>();
+
+<span style="color:#75715e">//实例不能调用类型的静态属性或方法，否则发生对象未定义的错误。
+</span><span style="color:#75715e"></span>Object.<span style="color:#66d9ef">class</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;三年二班&#34;</span>; <span style="color:#75715e">//类静态属性
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">ob</span>.<span style="color:#66d9ef">class</span>); <span style="color:#75715e">//error 实例不能调用类型的静态属性和方法
+</span><span style="color:#75715e">//可以在外部使用prototype为自定义的类型添加属性和方法。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest</span>() {
+
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
+
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+
+}
+
+<span style="color:#a6e22e">Mytest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+
+    <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+
+}
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+
+<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">hello</span>();
+
+<span style="color:#75715e">//在外部不能通过prototype改变自定义类型的属性或方法。
+</span><span style="color:#75715e">//该例子可以看到：调用的属性和方法仍是最初定义的结果。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Mytest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lisi&#34;</span>;
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mm</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">name</span>);
+
+<span style="color:#75715e">//可以在对象实例上改变或增加属性。（这个是肯定的）
+</span><span style="color:#75715e">//也可以在对象上改变或增加方法。（和普遍的面向对象的概念不同）
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">name2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lisi&#34;</span>;
+
+<span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+
+    <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name2</span>);
+
+}
+
+<span style="color:#75715e">//mm.hello();
+</span><span style="color:#75715e">//继承，这个例子说明了一个类型如何从另一个类型继承。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest2</span>() { }
+
+<span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>;
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest2</span>();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">name</span>);
+
+<span style="color:#75715e">//这个例子说明了子类如何重写父类的属性或方法。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wangwu&#34;</span>;
+
+<span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+
+    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;i can mytest2 extend Mytest save method hello&#39;</span>);
+
+}
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest2</span>();
+
+<span style="color:#a6e22e">m3</span>.<span style="color:#a6e22e">hello</span>();
+
+<span style="color:#75715e">//子类中的name属性值不会被父类覆盖
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest3</span>() {
+
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;子类中的name属性值不会被父类覆盖&#34;</span>;
+
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+
+}
+
+<span style="color:#a6e22e">Mytest3</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m4</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest3</span>();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">m4</span>.<span style="color:#a6e22e">name</span>);
+
+    Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
+
+    Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">nihao</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+
+        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;i can method name is &#34;</span><span style="color:#f92672">+</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+
+    }
+
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+
+    <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">nihao</span>();
+
+    <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">name</span>);
+
+
+
+    <span style="color:#e6db74">/ /</span> <span style="color:#a6e22e">在实例上不能使用prototype</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">否则会发生编译错误</span>
+
+<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;男&#34;</span>; <span style="color:#75715e">//error,无法给一个实例prototype
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> {
+
+    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>
+
+}
+
+<span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>; <span style="color:#75715e">//error,无法给一个实例prototype
+</span><span style="color:#75715e">//可以为类型定义“静态”的属性和方法，直接在类型上调用即可
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>(Object.<span style="color:#a6e22e">name</span>);
+
+Object.<span style="color:#a6e22e">nihao</span>();
+
+<span style="color:#75715e">//实例不能调用类型的静态属性或方法，否则发生对象未定义的错误。
+</span><span style="color:#75715e"></span>Object.<span style="color:#66d9ef">class</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;三年二班&#34;</span>; <span style="color:#75715e">//类静态属性
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">ob</span>.<span style="color:#66d9ef">class</span>); <span style="color:#75715e">//error 实例不能调用类型的静态属性和方法
+</span><span style="color:#75715e">//可以在外部使用prototype为自定义的类型添加属性和方法。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest</span>() {
+
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
+
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+
+}
+
+<span style="color:#a6e22e">Mytest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+
+    <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+
+}
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+
+<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">hello</span>();
+
+<span style="color:#75715e">//在外部不能通过prototype改变自定义类型的属性或方法。
+</span><span style="color:#75715e">//该例子可以看到：调用的属性和方法仍是最初定义的结果。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Mytest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lisi&#34;</span>;
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mm</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">name</span>);
+
+<span style="color:#75715e">//可以在对象实例上改变或增加属性。（这个是肯定的）
+</span><span style="color:#75715e">//也可以在对象上改变或增加方法。（和普遍的面向对象的概念不同）
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">name2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lisi&#34;</span>;
+
+<span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+
+    <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name2</span>);
+
+}
+
+<span style="color:#75715e">//mm.hello();
+</span><span style="color:#75715e">//继承，这个例子说明了一个类型如何从另一个类型继承。
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest2</span>() {}
+
+<span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>;
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest2</span>();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">name</span>);
+
+<span style="color:#75715e">//这个例子说明了子类如何重写父类的属性或方法。
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wangwu&#34;</span>;
+
+<span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+
+    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;i can mytest2 extend Mytest save method hello&#39;</span>);
+
+}
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest2</span>();
+
+<span style="color:#a6e22e">m3</span>.<span style="color:#a6e22e">hello</span>();
+
+<span style="color:#75715e">//子类中的name属性值不会被父类覆盖
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest3</span>() {
+
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;子类中的name属性值不会被父类覆盖&#34;</span>;
+
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+
+}
+
+<span style="color:#a6e22e">Mytest3</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m4</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest3</span>();
+
+<span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">m4</span>.<span style="color:#a6e22e">name</span>);
+</code></pre></div><p>来源：http://my.oschina.net/tongjh/blog/265209</p>
+<blockquote>
+<p>构造函数通常没有返回值。他们初始化作为this的值来传递的对象，并没有返回值。然而，一个构造函数是允许返回一个对象值的，并且，如果这么做，返回的对象成为new表达式的值。在此情况下，作为this的值得对象会被抛弃。</p>
+</blockquote>
+
+		</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="月盾 avatar" src="http://www.hopefly.top/static/dist/img/wx.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name"></span>
+	</div>
+	<div class="authorbox__description">
+		这是我的微信，需要联系请扫码添加
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/blogdetail/564c33be91dccd315681abff/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">代码是否应该重构</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/blogdetail/56556da1c72f59d15379b4b9/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">Go语言学习笔记</p>
+		</a>
+	</div>
+</nav>
+
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>
