@@ -6,7 +6,32 @@
     <description>Recent content in 工具使用 on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 11 Jun 2021 14:16:17 +0800</lastBuildDate><atom:link href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Jun 2021 10:40:52 +0000</lastBuildDate><atom:link href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vscode正则查找替换</title>
+      <link>/blogdetail/5e5a3fb45bd8165f28d21307/</link>
+      <pubDate>Mon, 14 Jun 2021 10:40:52 +0000</pubDate>
+      
+      <guid>/blogdetail/5e5a3fb45bd8165f28d21307/</guid>
+      <description>查找某一类型字符串： 正则表达式onclick=.*&amp;quot; 会查找到所有： onclick=&amp;quot;_msq.push([&#39;trackEvent&#39;, &#39;210074305d6b0409-09c7759e04e98528&#39;, &#39;&#39;pcpid&#39;, &#39;&#39;]);&amp;quot;
+onclick=是固定一样的字符，
+.代表除\r和\n之外的任意字符，等价于[^\r\n]
+*代表匹配前面的模式 0或多次 {0,}
+&amp;quot;这是字符串最后一个字符
+在vscode中的效果如下： 至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：
+查找替换 查找：(onclick=.*&amp;quot;)
+替换：aaa($1)
+结果：
+替换字符串两头，保留中间 两部分文字交换位置 相同模式的文字交换位置。
+查找：(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))
+替换：$2 $1
+结果：
+vscode中一对括号()代表一个变量。
+第一组正则 (\(\d{4}-\d{1,2}-\d{2}\)) 对应 $1，
+第二组正则 (\[.*\))对应 $2，以此类推。
+所以，可以查找多组数据，在替换部分将两个对应变量交换位置即可。</description>
+    </item>
+    
     <item>
       <title>typescript不检查node_moduls</title>
       <link>/blogdetail/60b48e405caa4b4dc69e3abf/</link>
@@ -153,22 +178,6 @@ page = await browser.newPage(); // 模拟3g网络  let cdp = await page.target()
  本文不对所有工具一一详解，可自行根据平台选择合适的工具和语言进行学习使用。只针对个别WEB端工具做简单说明。 拿selenium来说，selenium是一款很多人比较熟悉的工具，支持的语言有Python，Java，JavaScript等，推荐使用Python。而且其支持的浏览器也很全面： Google Chrome Internet Explorer 7, 8, 9, 10, 11 Firefox Safari Opera HtmlUnit phantomjs Android iOS
 一些常见问题 在自动化过程中最多的就是对元素进行定位，自动化工具常见的定位符有：
  id name class name tag link text partial link text xpath css selector  以上这些元素定位对于以前的网页来说还足以应对，因为以前开发的网页大多数元素会有id，class这些属性，定位起来也比较方便。但是对于react，vue，angular这类数据驱动的框架就不那么友好了。 比如有这么一个元素：&amp;lt;div&amp;gt;{{element}}&amp;lt;/div&amp;gt;结果为：</description>
-    </item>
-    
-    <item>
-      <title>vscode正则查找替换</title>
-      <link>/blogdetail/5e5a3fb45bd8165f28d21307/</link>
-      <pubDate>Sat, 29 Feb 2020 10:40:52 +0000</pubDate>
-      
-      <guid>/blogdetail/5e5a3fb45bd8165f28d21307/</guid>
-      <description>查找某一类型字符串： 正则表达式onclick=.*&amp;quot; 会查找到所有： onclick=&amp;quot;_msq.push([&#39;trackEvent&#39;, &#39;210074305d6b0409-09c7759e04e98528&#39;, &#39;&#39;pcpid&#39;, &#39;&#39;]);&amp;quot;
-onclick=是固定一样的字符，
-.代表除\r和\n之外的任意字符，等价于[^\r\n]
-*代表匹配前面的模式 0或多次 {0,}
-&amp;quot;这是字符串最后一个字符
-在vscode中的效果如下：  至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：
-查找：(onclick=.*&amp;quot;) 替换：aaa($1) 结果： 
-替换字符串两头，保留中间 </description>
     </item>
     
     <item>

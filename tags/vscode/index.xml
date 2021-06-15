@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vscode on 月盾的个人博客</title>
+    <link>/tags/vscode/</link>
+    <description>Recent content in vscode on 月盾的个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 Jun 2021 10:40:52 +0000</lastBuildDate><atom:link href="/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vscode正则查找替换</title>
+      <link>/blogdetail/5e5a3fb45bd8165f28d21307/</link>
+      <pubDate>Mon, 14 Jun 2021 10:40:52 +0000</pubDate>
+      
+      <guid>/blogdetail/5e5a3fb45bd8165f28d21307/</guid>
+      <description>查找某一类型字符串： 正则表达式onclick=.*&amp;quot; 会查找到所有： onclick=&amp;quot;_msq.push([&#39;trackEvent&#39;, &#39;210074305d6b0409-09c7759e04e98528&#39;, &#39;&#39;pcpid&#39;, &#39;&#39;]);&amp;quot;
+onclick=是固定一样的字符，
+.代表除\r和\n之外的任意字符，等价于[^\r\n]
+*代表匹配前面的模式 0或多次 {0,}
+&amp;quot;这是字符串最后一个字符
+在vscode中的效果如下： 至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：
+查找替换 查找：(onclick=.*&amp;quot;)
+替换：aaa($1)
+结果：
+替换字符串两头，保留中间 两部分文字交换位置 相同模式的文字交换位置。
+查找：(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))
+替换：$2 $1
+结果：
+vscode中一对括号()代表一个变量。
+第一组正则 (\(\d{4}-\d{1,2}-\d{2}\)) 对应 $1，
+第二组正则 (\[.*\))对应 $2，以此类推。
+所以，可以查找多组数据，在替换部分将两个对应变量交换位置即可。</description>
+    </item>
+    
+  </channel>
+</rss>
