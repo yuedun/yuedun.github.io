@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="Blogdetails">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Blogdetails"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -162,7 +174,7 @@ gender:&quot;男&quot;
 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
 据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
 但是还是有办法的，可以这样删除
-user.getDataValue(&amp;quot;friends&amp;quot;)[0].setDataValue(&amp;quot;friends&amp;quot;, undefined) 就是将属性设置为undefined，查询的时候就没有小樱的friends了。
+user.getDataValue(&amp;quot;friends&amp;quot;)[0].setDataValue(&amp;quot;friends&amp;quot;, undefined)就是将属性设置为undefined，查询的时候就没有小樱的friends了。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -193,6 +205,9 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
   go返回json数据
   type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&#34;a&#34;] = &#34;aaaaaa&#34; ress := &amp;ResObj{ Code: 0, Data: m} byt, _ := json.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/56556da1c72f59d15379b4b9/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -213,6 +228,9 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 具体来说，prototype 是在 IE 4 及其以后版本引入的一个针对于某一类的对象的方法，当你用prototype编写一个类后，如果new一个新的对象，浏览器会自动把prototype中 的内容替你附加在对象上。这样，通过利用prototype就可以在JavaScript中实现成员函数的定义，甚至是“继承”的效果。
 对于javascript本身而言是基于对象的，任何元素都可以看成对象。然而类型和对象是不同的，而我们所讲的prototype属性即是基于类型的一 种属性。对于prototype的基本使用就如对象的创建及属性赋值一样的简单。直接通过赋值操作即可完成属性的创建。
 /** * 关于prototype, 理解这个很有必要 可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 JS中允许的类型有Array, Boolean, Date, Enumerator, Error, Function, Number, Object, RegExp, String 以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例 */ Object.prototype.name = &#34;zhangsan&#34;; Object.prototype.nihao = function () { alert(&#34;i can method name is &#34; + this.name); } var obj = new Object(); obj.nihao(); alert(obj.name); // 在实例上不能使用prototype，否则会发生编译错误  obj.prototype.sex = &#34;男&#34;; //error,无法给一个实例prototype var o = { name: &#34;zhangsan&#34; } o.prototype.age = 30; //error,无法给一个实例prototype //可以为类型定义“静态”的属性和方法，直接在类型上调用即可 alert(Object.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/56551ce4c72f59d15379b4b8/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -286,6 +304,9 @@ function seekTo(s){
 player.seekTo(s);
 }
 function currentTime(){
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/564adbd591dccd315681abfe/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -367,6 +388,9 @@ function currentTime(){
 2、用筷子试插，如无血水渗出即已熟透，捞出，待冷却后切成薄片备用（上面提到过不可接触凉水）
 3、青辣椒洗净，去蒂去籽，切成菱形
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/56499caf536a927c57d10a9c/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -414,6 +438,9 @@ Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved in .
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/56400429c888d8070f145c35/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

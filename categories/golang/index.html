@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="Golang">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Golang"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -99,6 +111,9 @@
  如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
 func TestMain(m *testing.M) { fmt.Println(&#34;begin&#34;) dba, err := gorm.Open(&#34;sqlite3&#34;, &#34;../../website.db&#34;) db.SQLLite = dba if err != nil { panic(err) } m.Run() fmt.Println(&#34;end&#34;) } func TestProjectUsers(t *testing.T) { userService := user.NewService(db.SQLLite) users, err := userService.GetProjectUsers(25) if err != nil { t.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5fc7321dc0ec0c27f57ace6e/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -144,6 +159,9 @@ MongoDB Stitch Functions – The AWS re:Invent Stitch Rover Demo(2019-10-15)
 Calling the MongoDB Atlas API - How to do it from Go(2019-3-18)
 MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2019-4-23)
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e8b4742bd7e796e71009fcc/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -166,6 +184,9 @@ func (u *userService) GetuserList(offset, limit int, search User) (users []User,
 2.err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error
 这行代码包含了数据列表查询和数据条数。
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e815979c9109f0f909b4cdd/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -186,6 +207,9 @@ func (u *userService) GetuserList(offset, limit int, search User) (users []User,
 go build -o service main.go go build -o api api/api.go 线上的restful api也不能使用micro api了。需要选择适合自己的web服务框架，在web服务中调用api服务。
 etcd启动 线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。
 $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04:42 Starting [service] go.micro.srv.user 2020-03-17 17:04:42 Server [grpc] Listening on [::]:48493 2020-03-17 17:04:42 Registry [etcd] Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395 {&#34;level&#34;:&#34;warn&#34;,&#34;ts&#34;:&#34;2020-03-17T17:04:47.849+0800&#34;,&#34;caller&#34;:&#34;clientv3/retry_interceptor.go:61&#34;,&#34;msg&#34;:&#34;retrying of unary invoker failed&#34;,&#34;target&#34;:&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;,&#34;attempt&#34;:0,&#34;error&#34;:&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e709b485bd8165f28d22394/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -240,6 +264,9 @@ req := httplib.Get(&#34;http://beego.me/&#34;) 然后我们就可以获取数据
 str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
 获取body信息 func RequestByAjax3(region, language string) { req := httplib.Get(fmt.Sprintf(&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;, url.QueryEscape(region), language)) req.Header(&#34;Referer&#34;, &#34;https://m.lagou.com/search.html&#34;) req.Header(&#34;Cookie&#34;, &#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;) req.Header(&#34;Host&#34;, &#34;m.lagou.com&#34;) req.Header(&#34;User-Agent&#34;, &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e216204567cde49c49187f1/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -283,8 +310,11 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、安装gRPC  $ go get -u google.golang.org/grpc
- package google.golang.org/grpc: unrecognized import path &quot;google.golang.org/grpc&quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
+ package google.golang.org/grpc: unrecognized import path &quot;google.golang.org/grpc&quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.)grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
 git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5c63b5334a7b7e6cd808697a/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

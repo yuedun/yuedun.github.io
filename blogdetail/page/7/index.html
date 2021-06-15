@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="Blogdetails">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Blogdetails"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -113,7 +125,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		win10家庭版本身不支持组策略，但还是有办法让其支持。 复制下面内容到文本文件：
-@echo off pushd &quot;%~dp0&quot; dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt for /f %%i in ('findstr /i . List.txt 2^&gt;nul') do dism /online /norestart /add-package:&quot;C:\Windows\servicing\Packages\%%i&quot; pause 后缀名保存为cmd,以管理员身份执行： 然后WIN+R中执行gpedit.msc即可打开组策略。 如此可以关闭占用CPU过高的Windows Defender。
+@echo offpushd &quot;%~dp0&quot;dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txtdir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txtfor /f %%i in ('findstr /i . List.txt 2^&gt;nul') do dism /online /norestart /add-package:&quot;C:\Windows\servicing\Packages\%%i&quot;pause后缀名保存为cmd,以管理员身份执行： 然后WIN+R中执行gpedit.msc即可打开组策略。 如此可以关闭占用CPU过高的Windows Defender。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -181,6 +193,9 @@ package main import ( &#34;log&#34; &#34;net/http&#34; &#34;fmt&#34; ) func hell
 	<div class="content list__excerpt post__content clearfix">
 		//上传图片 	var imagesBase64 = []; $(&#34;input[type=file]&#34;).on(&#34;change&#34;, function (e) { var image = e.target.files[0]; var imgFile = new FileReader(); var imgShow = new Image(); imgFile.readAsDataURL(image); imgFile.onload = function () { var imgData = this.result; //base64数据 	imagesBase64.push({ teaId: teacherInfo.id, fileType: &#34;award&#34;,//图片 	fileName: image.name, file: imgData, }); imgShow.src = imgData; imgShow.style.width = &#34;100px&#34;; imgShow.style.height = &#34;100px&#34;; imgShow.title = &#34;双击删除&#34;; $(&#34;#imageShow&#34;).append(imgShow); } }); $(&#34;#imageShow&#34;).on(&#34;dblclick &#34;, &#34;img&#34;, function () { var index = $(&#34;#imageShow &gt; img&#34;).
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5b309564cca06924b14119ea/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -213,6 +228,9 @@ mongodb导入数据 启动：
  ./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
  或导入整个目录
  ./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5b21fc996699964267f5e168/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -256,9 +274,9 @@ mongodb导入数据 启动：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		消息队列（MQ）在系统架构中发挥了重要作用，其主要作用有系统解耦，流量削峰，异步消息存储，分布式系统最终一致性等。 本文介绍的是消息系统中消息发布者和订阅者间参数如何约定和传递？实际应用场景中，一种消息的发布者和订阅者都有可能是多个，也就是多对多的关系，这样就形成了消息参数传递的复杂性，就算一开始参数有约定，大家都按照最初约定来开发，但不免开发过程中各端需求变化带来的修改。例如最开始为了实现系统解耦而引进了消息队列，此时消息参与者较少，只有一个发布者和一个订阅者，这种情况最简单（其实最简单还是直接调接口），双方简单约定了需要传递的参数。
-{ userId:123, userName:&quot;阿离&quot;, age:23 } 后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
-{ userId:123, userName:&quot;阿离&quot;, age:23, gender:&quot;女&quot;, address:&quot;上海&quot;, job:&quot;测试&quot; } 再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
-{ userId:123, userName:&quot;阿离&quot;, age:23, gender:&quot;女&quot;, address:&quot;上海&quot;, job:&quot;测试&quot;, workingLife:4 } 再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
+{userId:123,userName:&quot;阿离&quot;,age:23}后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
+{userId:123,userName:&quot;阿离&quot;,age:23,gender:&quot;女&quot;,address:&quot;上海&quot;,job:&quot;测试&quot;}再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
+{userId:123,userName:&quot;阿离&quot;,age:23,gender:&quot;女&quot;,address:&quot;上海&quot;,job:&quot;测试&quot;,workingLife:4}再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
 这时消息系统已经不是当初简单的两个发布者订阅者了，而是一群人在参数，所谓的众口难调。此时弊端已现，无论哪一方有变化都势必牵连所有人。所以看出的出这种消息参数传递有其不合理的地方，那么怎么传递更合理？此处的MQ最开始已经说了，是为了解耦而引进，说明该MQ是多个系统的衔接者，而多个系统终究还是系统，不是简单的前端和后端接口调用，例如某个前端A也是由自己的接口提供服务系统的，MQ不是直接为前端A提供参数的。应该是由前端A自己的服务端A订阅消息，前端A需要什么参数就有服务A查询需要的参数即可，前端B需要什么参数由服务B查询提供。而发布者A，发布者B等只需要传递关键参数userId即可，其他姓名，性别，年龄什么的都不需要传。
 此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
 总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。
@@ -285,6 +303,9 @@ ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;cont
 最终结果显示上面的注解路由时错误的，下面是正确的注册方式： 问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。 即/admin为命名空间，注解中只需写/user/get-all-user，不能这样写/admin/user/get-all-user
 // @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ad46aebb9be3f8e30daaea8/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -303,6 +324,9 @@ ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;cont
 	<div class="content list__excerpt post__content clearfix">
 		go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
 package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() { syncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&#34;syncFunc start:&#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&#34;syncFunc end:&#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5acb49ba45213aca5fde59e1/">阅读全文…</a>
 	</div>
 </article>
 </main>

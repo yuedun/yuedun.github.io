@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="Nodejs">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nodejs"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -99,6 +111,9 @@
  其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
 var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assistance&#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &#39;assistance&#39;, charset: &#39;utf8&#39;, collate: &#39;utf8_unicode_ci&#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/59eab23989faeadc30eac826/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -115,7 +130,10 @@ var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assista
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Unhandled rejection CastError: Cast to ObjectId failed for value &quot;catalog&quot; at path &quot;_id&quot; for model &quot;Blog&quot; at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11) at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13) at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15) at ObjectId.castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:189:15) at ObjectId.SchemaType.castForQueryWrapper (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1021:15) at cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\cast.js:269:32) at Query.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:3103:12) at Query._castConditions (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1144:10) at Query._findOne (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1346:8) at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:250:8 at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:23:7 at nextTickCallbackWith0Args (node.js:489:9) at process._tickCallback (node.js:418:13) From previous event: at Query.exec (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2897:17) at Query.then (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2945:15) at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10) at e:\workspace\yuedun_ts\app.ts:53:14 at Layer.
+		Unhandled rejection CastError: Cast to ObjectId failed for value &quot;catalog&quot; at path &quot;_id&quot; for model &quot;Blog&quot;at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11)at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13)at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15)at ObjectId.castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:189:15)at ObjectId.SchemaType.castForQueryWrapper (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1021:15)at cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\cast.js:269:32)at Query.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:3103:12)at Query._castConditions (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1144:10)at Query._findOne (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1346:8)at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:250:8at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:23:7at nextTickCallbackWith0Args (node.js:489:9)at process._tickCallback (node.js:418:13)From previous event:at Query.exec (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2897:17)at Query.then (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2945:15)at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10)at e:\workspace\yuedun_ts\app.ts:53:14at Layer.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/599cf46c1bffdb00880597b3/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -156,6 +174,9 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
  假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
  var fs = require(&#34;fs&#34;); function queue(){ return new Promise((resolve, reject)=&gt;{ fs.readFile(&#34;../queue.txt&#34;, &#34;utf8&#34;, (err, data)=&gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../account.txt&#39;, id+&#39;一个新账户&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;办卡成功!&#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../money.txt&#39;, id+&#39;存了10万&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;存款成功!&#39;); resolve(); }); }) } //入口 function enter(id) { Promise.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/591c5eac35b6751981e4681e/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -173,11 +194,14 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
-function a(args: number ): number { return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
-function b(args: string ): string { return args; } console.log(b(&quot;sdg&quot;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
-function c(args: any ): any { return args; } console.log(c(&quot;sdg&quot;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
-function c(args: any ): any { let n = args + &quot;变成了字符串&quot;; //甚至更多的处理 return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
-function d&lt;A&gt;(args: A ): A { let n = args + &quot;变成了字符串&quot;; //甚至更多的处理 return n; } console.
+function a(args: number ): number {return args;}console.log(a(123));又有另外一个要求，参数为string类型，并且返回string
+function b(args: string ): string {return args;}console.log(b(&quot;sdg&quot;));如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
+function c(args: any ): any {return args;}console.log(c(&quot;sdg&quot;));这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
+function c(args: any ): any {let n = args + &quot;变成了字符串&quot;;//甚至更多的处理return n;}console.log(c(1));c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
+function d&lt;A&gt;(args: A ): A {let n = args + &quot;变成了字符串&quot;;//甚至更多的处理return n;}console.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/590c93d3266e3f1c8fd4aa83/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -195,7 +219,7 @@ function d&lt;A&gt;(args: A ): A { let n = args + &quot;变成了字符串&quot;
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: 'skipTo', which lacks return-type annotation, implicitly has an 'any' return type. 缺少返回类型的注释，隐含地具有&rsquo;any&rsquo;返回类型。 tsconfig.json配置文件中noImplicitAny设置为false,该选项的意思是：在表达式和声明上有隐含的&rsquo;any&rsquo;类型时报错。
+		node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: 'skipTo', which lacks return-type annotation, implicitly has an 'any' return type.缺少返回类型的注释，隐含地具有&rsquo;any&rsquo;返回类型。 tsconfig.json配置文件中noImplicitAny设置为false,该选项的意思是：在表达式和声明上有隐含的&rsquo;any&rsquo;类型时报错。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -220,6 +244,9 @@ typescript编译配置
 vscode编译typescript配置
 { // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.json format  &#34;version&#34;: &#34;0.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/58243e338fa26c04fd124ee6/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -240,9 +267,12 @@ vscode编译typescript配置
 命令行编译
  tsc --target ES5 --experimentalDecorators /test.ts
 tsconfig.json:
-&quot;compilerOptions&quot;: { &quot;experimentalDecorators&quot;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
+&quot;compilerOptions&quot;: {&quot;experimentalDecorators&quot;: true}}那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
 //test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&#34;hello&#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name); } } 生成的js代码：
 //test.js var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/58037ab767a381257039c926/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -272,6 +302,9 @@ tsconfig.json:
 . ├── app.js ├── bin │ └── www ├── package.json ├── public │ ├── images │ ├── javascripts │ └── stylesheets │ └── style.css ├── routes │ ├── index.js │ └── users.js └── views ├── error.ejs └── index.ejs 然后是全局安装typescript，便于在任何目录下编译，也可以安装在项目目录下。
  npm install -g typescript
  安装完以后初始化typescript:
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/57fcf50869c8bf6e323dff48/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

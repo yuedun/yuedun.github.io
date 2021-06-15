@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="sapper">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="sapper"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -99,6 +111,9 @@
  服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试）  可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
 遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
 import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.com&#39;, pathRewrite: { &#39;^/api&#39;: &#39;&#39; }, secure: false, changeOrigin: true, })) .
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ff449035e80c6649222da2c/">阅读全文…</a>
 	</div>
 </article>
 </main>

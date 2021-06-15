@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="Blogdetails">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Blogdetails"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -125,6 +137,9 @@ MINUTE_MICROSECOND
 MINUTE_SECOND
 HOUR_MICROSECOND
 HOUR_SECOND
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5608dbb10adc9cf12635ebbb/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -279,6 +294,9 @@ Post.findAll({ where: { authorId: 12, status: active } });
 Post.destroy({ where: { status: &lsquo;inactive&rsquo; } }); // DELETE FROM post WHERE status = &lsquo;inactive&rsquo;;
 Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } });
 // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; ``` 如果涉及到or的使用，sequelize也提供了很好的解决方案 ```js where: { rank: { $or: { $lt: 100, $eq: null } } }
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="docker">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="docker"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -115,7 +127,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		首先看项目目录： 再看Dockerfile文件内容：
-# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&quot;pm2-runtime&quot;, &quot;dest/server.js&quot;, &quot;--no-daemon&quot;] # ENTRYPOINT [&quot;node&quot;, &quot;server.js&quot;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+# 以最新的node为基础镜像FROM hub.c.163.com/library/node:latest# 工作目录为appWORKDIR /app# 拷贝当前所在项目根目录到app目录COPY . /app# 全局安装pm2RUN npm install pm2 -gEXPOSE 8081#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出CMD [&quot;pm2-runtime&quot;, &quot;dest/server.js&quot;, &quot;--no-daemon&quot;]# ENTRYPOINT [&quot;node&quot;, &quot;server.js&quot;]或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
 	</div>
@@ -136,7 +148,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Dockerfile
-FROM hub.c.163.com/public/nodejs:6.11.0 WORKDIR /app COPY . /app RUN npm install EXPOSE 3000 # CMD [&quot;npm&quot;, &quot;start&quot;] ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]  docker ps:
+FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm installEXPOSE 3000# CMD [&quot;npm&quot;, &quot;start&quot;]ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;] docker ps:
  CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &quot;/bin/sh -c '/usr/...&quot; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
 	</div>
 </article>

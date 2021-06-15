@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="工具使用">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="工具使用"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -225,7 +237,10 @@ ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		windows下npm install安装依赖的时候出现下面的错误：
-npm ERR! Windows_NT 6.1.7601 npm ERR! argv &quot;D:\\Program Files\\nodejs\\node.exe&quot; &quot;D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&quot; &quot;install&quot; &quot;yog2@1.0.0&quot; npm ERR! node v4.8.0 npm ERR! npm v2.15.11 npm ERR! path C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925 npm ERR! code EPERM npm ERR! errno -4048 npm ERR! syscall rename npm ERR! Error: EPERM: operation not permitted, rename 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925' -&gt; 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz' npm ERR! at Error (native) npm ERR! { [Error: EPERM: operation not permitted, rename 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925' -&gt; 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz'] npm ERR! errno: -4048, npm ERR!
+npm ERR! Windows_NT 6.1.7601npm ERR! argv &quot;D:\\Program Files\\nodejs\\node.exe&quot; &quot;D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&quot; &quot;install&quot; &quot;yog2@1.0.0&quot;npm ERR! node v4.8.0npm ERR! npm v2.15.11npm ERR! path C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925npm ERR! code EPERMnpm ERR! errno -4048npm ERR! syscall renamenpm ERR! Error: EPERM: operation not permitted, rename 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925' -&gt; 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz'npm ERR! at Error (native)npm ERR! { [Error: EPERM: operation not permitted, rename 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925' -&gt; 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz']npm ERR! errno: -4048,npm ERR!
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/59532a3233c3c869639761db/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -247,8 +262,8 @@ npm ERR! Windows_NT 6.1.7601 npm ERR! argv &quot;D:\\Program Files\\nodejs\\node
  鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
 查询操作 点击某个collection后的默认画面： 
 查询界面很简单，关键是怎么写查询语句？ 点击文本可以查看所有数据字段，查询title为“测试”文档：
-array( 'title' =&gt; '测试' ) 模糊查询：
-array( 'title'=&gt; new MongoRegex(&quot;/测试/i&quot;) ) 字段名要加引号，中间使用=&gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据 修改操作 动作中选择“modify” 再查询一下 基本操作就是这样，删除操作不用说也应该能知道怎么做了。
+array('title' =&gt; '测试')模糊查询：
+array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引号，中间使用=&gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据 修改操作 动作中选择“modify” 再查询一下 基本操作就是这样，删除操作不用说也应该能知道怎么做了。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

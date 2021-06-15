@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="Blogdetails">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Blogdetails"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -133,6 +145,9 @@ var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: 
 4. gzip 压缩
 开启 gzip 压缩对你的 Web 应用会产生巨大影响。当一个 gzip 压缩浏览器请求某些资源的时候，服务器会在响应返回给浏览器之前进行压缩。如果你不用 gzip 压缩你的静态资源，浏览器拿到它们可能会花费更长时间。
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/54488218aedc6cf109b96d32/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -163,6 +178,9 @@ git reset &ndash; . # 从暂存区恢复到工作文件
 git reset &ndash;hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改
 git ci &lt;file&gt; git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做　git ci -am &quot;some comments&quot;
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/54486c117b1470fa64bb911a/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -181,6 +199,9 @@ git ci &lt;file&gt; git ci . git ci -a # 将git add, git rm和git ci等操作都
 	<div class="content list__excerpt post__content clearfix">
 		随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。 首先看下mongoose API，find方法源码：
  Model.find = function find (conditions, fields, options, callback){ if(&amp;#39;function&amp;#39;==typeof conditions){ &amp;nbsp; &amp;nbsp; callback = conditions; &amp;nbsp; &amp;nbsp; conditions ={}; &amp;nbsp; &amp;nbsp; fields = null; &amp;nbsp; &amp;nbsp; options = null; }elseif(&amp;#39;function&amp;#39;==typeof fields){ &amp;nbsp; &amp;nbsp; callback = fields; &amp;nbsp; &amp;nbsp; fields = null; &amp;nbsp; &amp;nbsp; options = null; }elseif(&amp;#39;function&amp;#39;==typeof options){ &amp;nbsp; &amp;nbsp; callback = options; &amp;nbsp; &amp;nbsp; options = null; } // get the raw mongodb collection object &amp;nbsp; var mq =newQuery({}, options,this,this.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5440a294fea3dae97beee4f9/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -207,7 +228,7 @@ git ci &lt;file&gt; git ci . git ci -a # 将git add, git rm和git ci等操作都
 3、例如：127.0.0.1：300/index，然后post了一个id=2的值，这种方式是获取客户端post过来的数据，可以通过req.body.id获取，类似于PHP的post方法；
 下面举例介绍下这三个方法：
 如下一个test.html代码
-&lt;form action=&quot;/index&quot; method=&quot;get&quot;&gt; &lt;input type=&quot;text&quot; name=&quot;login_name&quot; /&gt; &lt;input type=&quot;submit&quot; value=&quot;Sign In&quot; /&gt; &lt;/form&gt; 在nodeJs中我们要自定义HTTP，因此创建index.js
+&lt;form action=&quot;/index&quot; method=&quot;get&quot;&gt;&lt;input type=&quot;text&quot; name=&quot;login_name&quot; /&gt;&lt;input type=&quot;submit&quot; value=&quot;Sign In&quot; /&gt;&lt;/form&gt;在nodeJs中我们要自定义HTTP，因此创建index.js
 app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //输出index  console.log(req.body.login_name); //输出表单post提交的login_name  res.send(&#39;great you are right for post method!&#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791
 	</div>
 </article><article class="list__item post">

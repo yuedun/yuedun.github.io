@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="Golang">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Golang"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -100,6 +112,9 @@ ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;cont
 最终结果显示上面的注解路由时错误的，下面是正确的注册方式： 问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。 即/admin为命名空间，注解中只需写/user/get-all-user，不能这样写/admin/user/get-all-user
 // @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ad46aebb9be3f8e30daaea8/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -118,6 +133,9 @@ ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;cont
 	<div class="content list__excerpt post__content clearfix">
 		go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
 package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() { syncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&#34;syncFunc start:&#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&#34;syncFunc end:&#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5acb49ba45213aca5fde59e1/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -141,6 +159,9 @@ func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头
  func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
 gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ac588446a513c7b8bfd72e6/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -158,7 +179,7 @@ gopl.io/ch11/word1 // Package word provides utilities for word games. package wo
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( &quot;fmt&quot; ) 然后在代码里面可以通过如下的方式调用 fmt.Println(&quot;hello world&quot;)
+import(&quot;fmt&quot;)然后在代码里面可以通过如下的方式调用 fmt.Println(&quot;hello world&quot;)
 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块： 相对路径 import &quot;./model&quot; //当前文件同一目录的model目录，但是不建议这种方式import 绝对路径 import &quot;shorturl/model&quot; //加载GOPATH/src/shorturl/model模块
 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
   点操作 有时候会看到如下的方式导入包import( . “fmt” ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的fmt.Println(“hello world”)可以省略的写成Println(“hello world”)
@@ -186,7 +207,10 @@ import( &quot;fmt&quot; ) 然后在代码里面可以通过如下的方式调用
 	<div class="content list__excerpt post__content clearfix">
 		以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
 package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&#34;获取用户名：&#34;, user.name) } func main() { user := new(User) user.name=&#34;张三&#34; user.age=26 user.createdAt=time.Now() fmt.Println(&#34;user.createdAt&#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&#34;2006-01-02 15:04:05&#34;) fmt.Println(&#34;userpj.createdAt&#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
-# command-line-arguments .
+# command-line-arguments.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5944b81d9d957900957feff6/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -205,8 +229,8 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		原生的go推荐目录是
-├─bin ├─pkg ├─src bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
-.src\ ├─project1 ├─project2 ├─project3 所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
+├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
+.src\├─project1├─project2├─project3所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
 但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。
 	</div>
 </article><article class="list__item post">
@@ -229,6 +253,9 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 前端请求代码：
 $.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 后端接收代码：
 func (this *UserController) Post() { var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;ob)//解析二进制json，把结果放进ob中  user := &amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数  if nil != err { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } this.ServeJSON() } this.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/57d6aaa7471c11fa271ed1bb/">阅读全文…</a>
 	</div>
 </article>
 </main>

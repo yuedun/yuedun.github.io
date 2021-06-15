@@ -16,6 +16,10 @@
 
 		<meta itemprop="name" content="月盾的个人博客">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="月盾的个人博客"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -23,6 +27,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -32,7 +44,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -136,6 +148,9 @@
 一些常见问题 在自动化过程中最多的就是对元素进行定位，自动化工具常见的定位符有：
  id name class name tag link text partial link text xpath css selector  以上这些元素定位对于以前的网页来说还足以应对，因为以前开发的网页大多数元素会有id，class这些属性，定位起来也比较方便。但是对于react，vue，angular这类数据驱动的框架就不那么友好了。 比如有这么一个元素：&lt;div&gt;{{element}}&lt;/div&gt;结果为：
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e96f1d8bd7e796e7100a71a/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -181,6 +196,9 @@ MongoDB Stitch Functions – The AWS re:Invent Stitch Rover Demo(2019-10-15)
 Calling the MongoDB Atlas API - How to do it from Go(2019-3-18)
 MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2019-4-23)
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e8b4742bd7e796e71009fcc/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -198,7 +216,7 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
-db.createUser( {user: &quot;hp_website&quot;,pwd: &quot;xxxxxx&quot;,roles: [ { role: &quot;userAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbOwner&quot;, db: &quot;website&quot; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
+db.createUser( {user: &quot;hp_website&quot;,pwd: &quot;xxxxxx&quot;,roles: [ { role: &quot;userAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbOwner&quot;, db: &quot;website&quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
 use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。
 	</div>
 </article><article class="list__item post">
@@ -218,6 +236,9 @@ use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  { // Applications part  &#34;apps&#34; : [{ &#34;name&#34; : &#34;API&#34;, &#34;script&#34; : &#34;app.js&#34;, &#34;env&#34;: { &#34;COMMON_VARIABLE&#34;: &#34;true&#34; }, // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34; } },{ &#34;name&#34; : &#34;WEB&#34;, &#34;script&#34; : &#34;web.js&#34; }], // 部署部分  // Here you describe each environment  &#34;deploy&#34; : { &#34;production&#34; : { &#34;user&#34; : &#34;node&#34;, // 多主机配置  &#34;host&#34; : [&#34;212.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e85a563c9109f0f909b52bf/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -241,6 +262,9 @@ func (u *userService) GetuserList(offset, limit int, search User) (users []User,
 2.err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error
 这行代码包含了数据列表查询和数据条数。
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e815979c9109f0f909b4cdd/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -261,6 +285,9 @@ func (u *userService) GetuserList(offset, limit int, search User) (users []User,
 go build -o service main.go go build -o api api/api.go 线上的restful api也不能使用micro api了。需要选择适合自己的web服务框架，在web服务中调用api服务。
 etcd启动 线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。
 $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04:42 Starting [service] go.micro.srv.user 2020-03-17 17:04:42 Server [grpc] Listening on [::]:48493 2020-03-17 17:04:42 Registry [etcd] Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395 {&#34;level&#34;:&#34;warn&#34;,&#34;ts&#34;:&#34;2020-03-17T17:04:47.849+0800&#34;,&#34;caller&#34;:&#34;clientv3/retry_interceptor.go:61&#34;,&#34;msg&#34;:&#34;retrying of unary invoker failed&#34;,&#34;target&#34;:&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;,&#34;attempt&#34;:0,&#34;error&#34;:&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e709b485bd8165f28d22394/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

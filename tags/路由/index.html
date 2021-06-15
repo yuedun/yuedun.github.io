@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="路由">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="路由"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -97,7 +109,10 @@
 		npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持history模式的使用上也不是很方便，试用过五六个支持history的路由后最终@spaceavocado/svelte-router算是满足了要求。
  使用简单 功能丰富 支持history和hash 我也是够难伺候的。  在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
 使用方法：
-//App.svelte &lt;script&gt; import RouterView from '@spaceavocado/svelte-router/component/view'; import { routes } from './router.js' &lt;/script&gt; &lt;RouterView /&gt; //router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = createRouter({ mode: &#34;HISTORY&#34;, routes: [ { path: &#39;/&#39;, name: &#39;HOME&#39;, component: index, }, { path: &#39;/a&#39;, name: &#39;a&#39;, component: a, }, { path: &#39;/b&#39;, name: &#39;b&#39;, component: b, }, { path: &#39;*&#39;, component: index, }, ], }); // index.
+//App.svelte&lt;script&gt;import RouterView from '@spaceavocado/svelte-router/component/view';import { routes } from './router.js'&lt;/script&gt;&lt;RouterView /&gt;//router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = createRouter({ mode: &#34;HISTORY&#34;, routes: [ { path: &#39;/&#39;, name: &#39;HOME&#39;, component: index, }, { path: &#39;/a&#39;, name: &#39;a&#39;, component: a, }, { path: &#39;/b&#39;, name: &#39;b&#39;, component: b, }, { path: &#39;*&#39;, component: index, }, ], }); // index.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ff7d7cc3f518207e72349ed/">阅读全文…</a>
 	</div>
 </article>
 </main>

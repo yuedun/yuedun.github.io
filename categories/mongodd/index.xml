@@ -15,7 +15,7 @@
       <guid>/blogdetail/5eec6fd5e8775d3b7f2ee79c/</guid>
       <description>在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&amp;ldquo;someKey&amp;rdquo;]=&amp;ldquo;someValue&amp;rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
 //构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) log.Println(condition) if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), condition).Decode(&amp;amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
-search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
+search := User{ID: id,Name: name,Age: age,}search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
       
       <guid>/blogdetail/5e87e9ac75da9268a3e5993c/</guid>
       <description>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
-db.createUser( {user: &amp;quot;hp_website&amp;quot;,pwd: &amp;quot;xxxxxx&amp;quot;,roles: [ { role: &amp;quot;userAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbOwner&amp;quot;, db: &amp;quot;website&amp;quot; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
+db.createUser( {user: &amp;quot;hp_website&amp;quot;,pwd: &amp;quot;xxxxxx&amp;quot;,roles: [ { role: &amp;quot;userAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbOwner&amp;quot;, db: &amp;quot;website&amp;quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
 use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。</description>
     </item>
     
@@ -46,7 +46,7 @@ use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxx
       
       <guid>/blogdetail/5bb08746f846d21847dc2aef/</guid>
       <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;) db.getCollection(&#39;blogs&#39;).save(item) print(&amp;quot;&amp;gt;&amp;gt;&amp;quot;, item.content); }) </description>
+db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;)db.getCollection(&#39;blogs&#39;).save(item)print(&amp;quot;&amp;gt;&amp;gt;&amp;quot;, item.content);})</description>
     </item>
     
     <item>
@@ -56,9 +56,9 @@ db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}
       
       <guid>/blogdetail/5b90f19bb1f3aa6dab14313d/</guid>
       <description>使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&#39;mongoose&#39;); mongoose.connect(&#39;mongodb://localhost/my_database&#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
-const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = conn.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
-const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = mongoose.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 不能工作 </description>
+const mongoose = require(&#39;mongoose&#39;);mongoose.connect(&#39;mongodb://localhost/my_database&#39;);使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = conn.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 可以工作vs
+const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = mongoose.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 不能工作</description>
     </item>
     
     <item>
@@ -67,8 +67,8 @@ const conn = mongoose.createConnection(&#39;your connection string&#39;); const 
       <pubDate>Fri, 18 Aug 2017 08:18:36 +0000</pubDate>
       
       <guid>/blogdetail/5996a2dc9205bd72e7290ebb/</guid>
-      <description>`open()` is deprecated in mongoose &amp;gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true // reconnectTries: 30,//尝试重连，默认30次 // reconnectInterval: 1000, //重连间隔，默认1000毫秒 loggerLevel: &amp;quot;warn&amp;quot;, //error/warn/info/debug useMongoClient: true }; mongoose.</description>
+      <description>`open()` is deprecated in mongoose &amp;gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;const opts = {// autoReconnect: false,//默认true// reconnectTries: 30,//尝试重连，默认30次// reconnectInterval: 1000, //重连间隔，默认1000毫秒loggerLevel: &amp;quot;warn&amp;quot;, //error/warn/info/debuguseMongoClient: true};mongoose.</description>
     </item>
     
     <item>
@@ -89,12 +89,12 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
       <description>需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
  以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
 mongodb中查询
-select * from articles where content like &#39;%Nodejs%&#39;; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
-var a=&amp;quot;Nodejs&amp;quot; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&amp;quot;a&amp;quot;当做要查询的关键字而不是&amp;quot;Nodejs&amp;quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
-var text = &#39;Nodejs&#39;;//动态传入的变量 Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {}); $options选项值：
+select * from articles where content like &#39;%Nodejs%&#39;;db.articles.find( { content: /Nodejs/i } )Article.find({ content: /Nodejs/i}, function (err, docs) {});这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
+var a=&amp;quot;Nodejs&amp;quot; ;Article.find({ content: /a/i}, function (err, docs) {});此时会把&amp;quot;a&amp;quot;当做要查询的关键字而不是&amp;quot;Nodejs&amp;quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
+var text = &#39;Nodejs&#39;;//动态传入的变量Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {});$options选项值：
  i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串  其实$regex就是正则表达式的写法
 查找数组中的字段：
-contacts:{ [ { address: &amp;quot;address1&amp;quot;, name: &amp;quot;张三&amp;quot; }, { address: &amp;quot;address2&amp;quot;, name: &amp;quot;李四&amp;quot; }, .</description>
+contacts:{[{address: &amp;quot;address1&amp;quot;,name: &amp;quot;张三&amp;quot;},{address: &amp;quot;address2&amp;quot;,name: &amp;quot;李四&amp;quot;},.</description>
     </item>
     
     <item>

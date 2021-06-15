@@ -16,6 +16,10 @@
 
 		<meta itemprop="name" content="月盾的个人博客">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="月盾的个人博客"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -23,6 +27,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -32,7 +44,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -161,6 +173,9 @@ Consul的不同之处在于无需第三方工具就可以原生支持多数据�
 Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建，特别是对于大的数据中心。将存储数据作为服务的能力使其比etcd仅仅只有健/值对存储的特性更加完整、更有用（即使Consul也有该选项）。虽然我们可以在etcd中通过插入多个键来达成相同的目标，Consul的服务实现了一个更紧凑的结果，通常只需要一次查询就可以获得与服务相关的所有数据。除此之外，Registrator很好地实现了Consul的两个协议，使其合二为一，特别是添加Consul-template到了拼图中。Consul的Web UI更是锦上添花般地提供了服务和健康检查的可视化途径。
 我不能说Consul是一个明确的赢家，而是与etcd相比其有一个轻微的优势。服务发现作为一个概念，以及作为工具都很新，我们可以期待在这一领域会有许多的变化。秉承开放的心态，大家可以对本文的建议持保留态度，尝试不同的工具然后做出自己的结论。
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5c735c58e4d2f35bdd267d22/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -240,8 +255,11 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、安装gRPC  $ go get -u google.golang.org/grpc
- package google.golang.org/grpc: unrecognized import path &quot;google.golang.org/grpc&quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
+ package google.golang.org/grpc: unrecognized import path &quot;google.golang.org/grpc&quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.)grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
 git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5c63b5334a7b7e6cd808697a/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -261,7 +279,7 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
 	<div class="content list__excerpt post__content clearfix">
 		gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。
 在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
-upstream grpcservice { server localhost:50051; server localhost:50052; } server { listen 8080 http2;#需要加http2 server_name localhost; location / { grpc_pass grpc://grpcservice;#以grpc为前缀 } grpc_connect_timeout 10; } 配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图：可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
+upstream grpcservice {server localhost:50051;server localhost:50052;}server {listen 8080 http2;#需要加http2server_name localhost;location / {grpc_pass grpc://grpcservice;#以grpc为前缀}grpc_connect_timeout 10;}配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图：可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
 虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。 原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。 
 	</div>
 </article><article class="list__item post">
@@ -281,8 +299,8 @@ upstream grpcservice { server localhost:50051; server localhost:50052; } server 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		网上也找了很多方案结果就是奇葩的不成功，最后直接修改/etc/mysql/mysql.conf.d/mysqld.cnf成功了。 在该文件最后添加
-default-storage-engine=INNODB character-set-server=utf8 collation-server=utf8_general_ci 重启成功。 这是本地虚拟机里的mysql
-mysql&gt; show variables like &quot;character%&quot;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | utf8 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | utf8 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 完全正确，但是修改阿里云服务器以后还是有点小问题 character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。 
+default-storage-engine=INNODBcharacter-set-server=utf8collation-server=utf8_general_ci重启成功。 这是本地虚拟机里的mysql
+mysql&gt; show variables like &quot;character%&quot;;+--------------------------+----------------------------+| Variable_name | Value |+--------------------------+----------------------------+| character_set_client | utf8 || character_set_connection | utf8 || character_set_database | utf8 || character_set_filesystem | binary || character_set_results | utf8 || character_set_server | utf8 || character_set_system | utf8 || character_sets_dir | /usr/share/mysql/charsets/ |+--------------------------+----------------------------+完全正确，但是修改阿里云服务器以后还是有点小问题 character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。 
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -301,7 +319,7 @@ mysql&gt; show variables like &quot;character%&quot;; +-------------------------
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection('blogs').find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, 'hopefully-img.yuedun.wang') db.getCollection('blogs').save(item) print(&quot;&gt;&gt;&quot;, item.content); }) 
+db.getCollection('blogs').find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){item.content = item.content.replace(/hopefully.qiniudn.com/g, 'hopefully-img.yuedun.wang')db.getCollection('blogs').save(item)print(&quot;&gt;&gt;&quot;, item.content);})
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -320,9 +338,9 @@ db.getCollection('blogs').find({content:{$regex:/hopefully.qiniudn.com/}}).forEa
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require('mongoose'); mongoose.connect('mongodb://localhost/my_database'); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
-const conn = mongoose.createConnection('your connection string'); const MyModel = conn.model('ModelName', schema); const m = new MyModel; m.save(); // 可以工作 vs
-const conn = mongoose.createConnection('your connection string'); const MyModel = mongoose.model('ModelName', schema); const m = new MyModel; m.save(); // 不能工作 
+const mongoose = require('mongoose');mongoose.connect('mongodb://localhost/my_database');使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const conn = mongoose.createConnection('your connection string');const MyModel = conn.model('ModelName', schema);const m = new MyModel;m.save(); // 可以工作vs
+const conn = mongoose.createConnection('your connection string');const MyModel = mongoose.model('ModelName', schema);const m = new MyModel;m.save(); // 不能工作
 	</div>
 </article>
 	</main>

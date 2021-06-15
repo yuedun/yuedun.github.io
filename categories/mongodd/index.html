@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="MongoDd">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MongoDd"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -96,7 +108,7 @@
 	<div class="content list__excerpt post__content clearfix">
 		在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&ldquo;someKey&rdquo;]=&ldquo;someValue&rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
 //构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;condition) log.Println(condition) if err = this.mongo.Collection(&#34;user&#34;).FindOne(context.TODO(), condition).Decode(&amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
-search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
+search := User{ID: id,Name: name,Age: age,}search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -134,7 +146,7 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
-db.createUser( {user: &quot;hp_website&quot;,pwd: &quot;xxxxxx&quot;,roles: [ { role: &quot;userAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbOwner&quot;, db: &quot;website&quot; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
+db.createUser( {user: &quot;hp_website&quot;,pwd: &quot;xxxxxx&quot;,roles: [ { role: &quot;userAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbOwner&quot;, db: &quot;website&quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
 use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。
 	</div>
 </article><article class="list__item post">
@@ -154,7 +166,7 @@ use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection('blogs').find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, 'hopefully-img.yuedun.wang') db.getCollection('blogs').save(item) print(&quot;&gt;&gt;&quot;, item.content); }) 
+db.getCollection('blogs').find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){item.content = item.content.replace(/hopefully.qiniudn.com/g, 'hopefully-img.yuedun.wang')db.getCollection('blogs').save(item)print(&quot;&gt;&gt;&quot;, item.content);})
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -173,9 +185,9 @@ db.getCollection('blogs').find({content:{$regex:/hopefully.qiniudn.com/}}).forEa
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require('mongoose'); mongoose.connect('mongodb://localhost/my_database'); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
-const conn = mongoose.createConnection('your connection string'); const MyModel = conn.model('ModelName', schema); const m = new MyModel; m.save(); // 可以工作 vs
-const conn = mongoose.createConnection('your connection string'); const MyModel = mongoose.model('ModelName', schema); const m = new MyModel; m.save(); // 不能工作 
+const mongoose = require('mongoose');mongoose.connect('mongodb://localhost/my_database');使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const conn = mongoose.createConnection('your connection string');const MyModel = conn.model('ModelName', schema);const m = new MyModel;m.save(); // 可以工作vs
+const conn = mongoose.createConnection('your connection string');const MyModel = mongoose.model('ModelName', schema);const m = new MyModel;m.save(); // 不能工作
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -193,8 +205,11 @@ const conn = mongoose.createConnection('your connection string'); const MyModel 
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true // reconnectTries: 30,//尝试重连，默认30次 // reconnectInterval: 1000, //重连间隔，默认1000毫秒 loggerLevel: &quot;warn&quot;, //error/warn/info/debug useMongoClient: true }; mongoose.
+		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;const opts = {// autoReconnect: false,//默认true// reconnectTries: 30,//尝试重连，默认30次// reconnectInterval: 1000, //重连间隔，默认1000毫秒loggerLevel: &quot;warn&quot;, //error/warn/info/debuguseMongoClient: true};mongoose.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -233,12 +248,15 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 		需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
  以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
 mongodb中查询
-select * from articles where content like '%Nodejs%'; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
-var a=&quot;Nodejs&quot; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
-var text = 'Nodejs';//动态传入的变量 Article.find({ content: { $regex: text, $options: 'i' }}, function (err, docs) {}); $options选项值：
+select * from articles where content like '%Nodejs%';db.articles.find( { content: /Nodejs/i } )Article.find({ content: /Nodejs/i}, function (err, docs) {});这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
+var a=&quot;Nodejs&quot; ;Article.find({ content: /a/i}, function (err, docs) {});此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
+var text = 'Nodejs';//动态传入的变量Article.find({ content: { $regex: text, $options: 'i' }}, function (err, docs) {});$options选项值：
  i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串  其实$regex就是正则表达式的写法
 查找数组中的字段：
-contacts:{ [ { address: &quot;address1&quot;, name: &quot;张三&quot; }, { address: &quot;address2&quot;, name: &quot;李四&quot; }, .
+contacts:{[{address: &quot;address1&quot;,name: &quot;张三&quot;},{address: &quot;address2&quot;,name: &quot;李四&quot;},.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/581d736c43c18f1b7ae3e3ff/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -261,6 +279,9 @@ contacts:{ [ { address: &quot;address1&quot;, name: &quot;张三&quot; }, { addr
 select sum(pv) from articles;db.articles.aggregate([{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 2 }select sum(pv) from articles where createDate &lt;= '2016-10-20';db.articles.aggregate([{$match:{createDate:{$lte:&quot;2016-10-20&quot;}}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 9 }select sum(pv) from articles where category = 'Nodejs';db.articles.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 7 }需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
 mongoose实现方式，与上面sql的顺序对应：
 Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(err, doc) {console.log(&quot;1&quot;, doc);});Article.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5819b2b7c4d0a377509b8f1a/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -292,6 +313,9 @@ inary.
 2014-11-16T11:35:43.284+0800 [initandlisten] ** 32 bit builds are limited
 to less than 2GB of data (or less with &ndash;journal).
 2014-11-16T11:35:43.284+0800 [initandlisten] ** Note that journaling defau
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/54681e1ee8183bcf964f88ec/">阅读全文…</a>
 	</div>
 </article>
 </main>

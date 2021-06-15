@@ -16,6 +16,10 @@
 
 		<meta itemprop="name" content="月盾的个人博客">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="月盾的个人博客"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -23,6 +27,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -32,7 +44,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -98,6 +110,9 @@ func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头
  func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
 gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ac588446a513c7b8bfd72e6/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -115,7 +130,7 @@ gopl.io/ch11/word1 // Package word provides utilities for word games. package wo
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( &quot;fmt&quot; ) 然后在代码里面可以通过如下的方式调用 fmt.Println(&quot;hello world&quot;)
+import(&quot;fmt&quot;)然后在代码里面可以通过如下的方式调用 fmt.Println(&quot;hello world&quot;)
 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块： 相对路径 import &quot;./model&quot; //当前文件同一目录的model目录，但是不建议这种方式import 绝对路径 import &quot;shorturl/model&quot; //加载GOPATH/src/shorturl/model模块
 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
   点操作 有时候会看到如下的方式导入包import( . “fmt” ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的fmt.Println(“hello world”)可以省略的写成Println(“hello world”)
@@ -168,8 +183,11 @@ win：set NODE_ENV=development&amp;&amp; node app.js
 设置方式二： 而设置环境变量在pm2中可以轻松实现
  pm2 start pm2.json &ndash;env production
  --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量
-//pm2.json { &quot;apps&quot; : [{ &quot;name&quot;: &quot;issue&quot;, &quot;cwd&quot;: &quot;dest&quot;, &quot;script&quot; : &quot;bin/www.js&quot;, &quot;instances&quot; : &quot;2&quot;, &quot;exec_mode&quot; : &quot;cluster&quot;, &quot;env&quot;: { &quot;NODE_ENV&quot;: &quot;development&quot;, &quot;PORT&quot;: 3002 }, &quot;env_production&quot; : { &quot;NODE_ENV&quot;: &quot;production&quot;, &quot;PORT&quot;: 3003 }, &quot;log_date_format&quot;: &quot;YYYY-MM-DD_HH:mm Z&quot;, &quot;merge_logs&quot;: true }] } 如果不加参数则默认使用
-&quot;env&quot;: { &quot;NODE_ENV&quot;: &quot;development&quot;, &quot;PORT&quot;: 3002 } 结果：NODE_ENV=development,PORT=3002
+//pm2.json{&quot;apps&quot; : [{&quot;name&quot;: &quot;issue&quot;,&quot;cwd&quot;: &quot;dest&quot;,&quot;script&quot; : &quot;bin/www.js&quot;,&quot;instances&quot; : &quot;2&quot;,&quot;exec_mode&quot; : &quot;cluster&quot;,&quot;env&quot;: {&quot;NODE_ENV&quot;: &quot;development&quot;,&quot;PORT&quot;: 3002},&quot;env_production&quot; : {&quot;NODE_ENV&quot;: &quot;production&quot;,&quot;PORT&quot;: 3003},&quot;log_date_format&quot;: &quot;YYYY-MM-DD_HH:mm Z&quot;,&quot;merge_logs&quot;: true}]}如果不加参数则默认使用
+&quot;env&quot;: {&quot;NODE_ENV&quot;: &quot;development&quot;,&quot;PORT&quot;: 3002}结果：NODE_ENV=development,PORT=3002
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -187,8 +205,8 @@ win：set NODE_ENV=development&amp;&amp; node app.js
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
-resolve: { alias: { 'vue$': 'vue/dist/vue.esm.js' //该路径为node_modules下的vue目录 } } // 需要编译器 new Vue({ template: '&lt;div&gt;{{ hi }}&lt;/div&gt;' }) // 不需要编译器 new Vue({ render (h) { return h('div', this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
+		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.(found in &lt;Root&gt;)解决方案：与entry属性平级添加
+resolve: {alias: {'vue$': 'vue/dist/vue.esm.js'//该路径为node_modules下的vue目录}}// 需要编译器new Vue({template: '&lt;div&gt;{{ hi }}&lt;/div&gt;'})// 不需要编译器new Vue({render (h) {return h('div', this.hi)}})出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -228,10 +246,13 @@ resolve: { alias: { 'vue$': 'vue/dist/vue.esm.js' //该路径为node_modules下�
 	<div class="content list__excerpt post__content clearfix">
 		pm2介绍 pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。 最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。 总体来说就是有性能监控、自动重启、负载均衡的作用。
 pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路径：
-error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
+error log path │ /home/username/.pm2/logs/app-error-0.logout log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
 安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
 pm2-logrotate配置
  ``max_size` (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K ``retain` (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a69a8301f395d7179259c45/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -270,7 +291,7 @@ pm2-logrotate配置
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		首先看项目目录： 再看Dockerfile文件内容：
-# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&quot;pm2-runtime&quot;, &quot;dest/server.js&quot;, &quot;--no-daemon&quot;] # ENTRYPOINT [&quot;node&quot;, &quot;server.js&quot;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+# 以最新的node为基础镜像FROM hub.c.163.com/library/node:latest# 工作目录为appWORKDIR /app# 拷贝当前所在项目根目录到app目录COPY . /app# 全局安装pm2RUN npm install pm2 -gEXPOSE 8081#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出CMD [&quot;pm2-runtime&quot;, &quot;dest/server.js&quot;, &quot;--no-daemon&quot;]# ENTRYPOINT [&quot;node&quot;, &quot;server.js&quot;]或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
 	</div>

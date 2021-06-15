@@ -14,13 +14,13 @@
       
       <guid>/blogdetail/57c7f2301165e2677d137d65/</guid>
       <description>nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
-var request=require(&amp;amp;#39;request&amp;amp;#39;); var fs=require(&amp;amp;#39;fs&amp;amp;#39;); var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;; HttpRequest.get(url, (err, res, body) =&amp;amp;gt; { res.setEncoding(&amp;amp;#39;binary&amp;amp;#39;);//二进制（binary） FS.writeFile(&amp;amp;#39;out.png&amp;amp;#39;, body, &amp;amp;#39;binary&amp;amp;#39;, function (err) {//以二进制格式保存 if (err) throw err; console.log(&amp;amp;#39;file saved&amp;amp;#39;); }); }); 这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
+var request=require(&amp;amp;#39;request&amp;amp;#39;);var fs=require(&amp;amp;#39;fs&amp;amp;#39;);var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;amp;gt; {res.setEncoding(&amp;amp;#39;binary&amp;amp;#39;);//二进制（binary）FS.writeFile(&amp;amp;#39;out.png&amp;amp;#39;, body, &amp;amp;#39;binary&amp;amp;#39;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;amp;#39;file saved&amp;amp;#39;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
-var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;; request(url).pipe(fs.createWriteStream(&amp;amp;#39;out.png&amp;amp;#39;)); 不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
+var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;;request(url).pipe(fs.createWriteStream(&amp;amp;#39;out.png&amp;amp;#39;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？
 非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉
 有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，
-const http = require(&amp;amp;#39;http&amp;amp;#39;); var server = http.createServer( (req, res) =&amp;amp;gt; { } 其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;amp;#39;out.png&amp;amp;#39;));,
+const http = require(&amp;amp;#39;http&amp;amp;#39;);var server = http.createServer( (req, res) =&amp;amp;gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;amp;#39;out.png&amp;amp;#39;));,
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。</description>
     </item>
     

@@ -29,8 +29,8 @@ win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
 设置方式二： 而设置环境变量在pm2中可以轻松实现
  pm2 start pm2.json &amp;ndash;env production
  --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量
-//pm2.json { &amp;quot;apps&amp;quot; : [{ &amp;quot;name&amp;quot;: &amp;quot;issue&amp;quot;, &amp;quot;cwd&amp;quot;: &amp;quot;dest&amp;quot;, &amp;quot;script&amp;quot; : &amp;quot;bin/www.js&amp;quot;, &amp;quot;instances&amp;quot; : &amp;quot;2&amp;quot;, &amp;quot;exec_mode&amp;quot; : &amp;quot;cluster&amp;quot;, &amp;quot;env&amp;quot;: { &amp;quot;NODE_ENV&amp;quot;: &amp;quot;development&amp;quot;, &amp;quot;PORT&amp;quot;: 3002 }, &amp;quot;env_production&amp;quot; : { &amp;quot;NODE_ENV&amp;quot;: &amp;quot;production&amp;quot;, &amp;quot;PORT&amp;quot;: 3003 }, &amp;quot;log_date_format&amp;quot;: &amp;quot;YYYY-MM-DD_HH:mm Z&amp;quot;, &amp;quot;merge_logs&amp;quot;: true }] } 如果不加参数则默认使用
-&amp;quot;env&amp;quot;: { &amp;quot;NODE_ENV&amp;quot;: &amp;quot;development&amp;quot;, &amp;quot;PORT&amp;quot;: 3002 } 结果：NODE_ENV=development,PORT=3002</description>
+//pm2.json{&amp;quot;apps&amp;quot; : [{&amp;quot;name&amp;quot;: &amp;quot;issue&amp;quot;,&amp;quot;cwd&amp;quot;: &amp;quot;dest&amp;quot;,&amp;quot;script&amp;quot; : &amp;quot;bin/www.js&amp;quot;,&amp;quot;instances&amp;quot; : &amp;quot;2&amp;quot;,&amp;quot;exec_mode&amp;quot; : &amp;quot;cluster&amp;quot;,&amp;quot;env&amp;quot;: {&amp;quot;NODE_ENV&amp;quot;: &amp;quot;development&amp;quot;,&amp;quot;PORT&amp;quot;: 3002},&amp;quot;env_production&amp;quot; : {&amp;quot;NODE_ENV&amp;quot;: &amp;quot;production&amp;quot;,&amp;quot;PORT&amp;quot;: 3003},&amp;quot;log_date_format&amp;quot;: &amp;quot;YYYY-MM-DD_HH:mm Z&amp;quot;,&amp;quot;merge_logs&amp;quot;: true}]}如果不加参数则默认使用
+&amp;quot;env&amp;quot;: {&amp;quot;NODE_ENV&amp;quot;: &amp;quot;development&amp;quot;,&amp;quot;PORT&amp;quot;: 3002}结果：NODE_ENV=development,PORT=3002</description>
     </item>
     
     <item>
@@ -41,7 +41,7 @@ win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
       <guid>/blogdetail/5a69a8301f395d7179259c45/</guid>
       <description>pm2介绍 pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。 最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。 总体来说就是有性能监控、自动重启、负载均衡的作用。
 pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路径：
-error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
+error log path │ /home/username/.pm2/logs/app-error-0.logout log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
 安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
 pm2-logrotate配置
  ``max_size` (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K ``retain` (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&amp;rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&amp;rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.</description>

@@ -23,7 +23,7 @@
       
       <guid>/blogdetail/5b8b9d63b1f3aa6dab1430d2/</guid>
       <description>win10家庭版本身不支持组策略，但还是有办法让其支持。 复制下面内容到文本文件：
-@echo off pushd &amp;quot;%~dp0&amp;quot; dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &amp;gt;List.txt dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &amp;gt;&amp;gt;List.txt for /f %%i in (&#39;findstr /i . List.txt 2^&amp;gt;nul&#39;) do dism /online /norestart /add-package:&amp;quot;C:\Windows\servicing\Packages\%%i&amp;quot; pause 后缀名保存为cmd,以管理员身份执行： 然后WIN+R中执行gpedit.msc即可打开组策略。 如此可以关闭占用CPU过高的Windows Defender。</description>
+@echo offpushd &amp;quot;%~dp0&amp;quot;dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &amp;gt;List.txtdir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &amp;gt;&amp;gt;List.txtfor /f %%i in (&#39;findstr /i . List.txt 2^&amp;gt;nul&#39;) do dism /online /norestart /add-package:&amp;quot;C:\Windows\servicing\Packages\%%i&amp;quot;pause后缀名保存为cmd,以管理员身份执行： 然后WIN+R中执行gpedit.msc即可打开组策略。 如此可以关闭占用CPU过高的Windows Defender。</description>
     </item>
     
     <item>

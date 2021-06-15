@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="系统架构">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="系统架构"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -174,6 +186,9 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
  诸如此类的例子还有很多，正是通过这种对点滴效率提升的持续近 20 年的不断追求，才最终打造出丰田生产方式。
  任何方法的形成都是一个长期积累和反思的过程，而应用这些方法也需要使用者付出合理的努力加以掌握，架构设计的落地说到底是软件工程问题，没有捷径，只有持之以恒的效率提升。无论是给予敏捷方法原创者灵感的丰田生产方式，还是敏捷方法原创者自己的实践历程，都是一个对方法持续改进、日益精熟的过程。 没有真正理解方法之前，根本谈不上效率，与其总是在方法之间换来换去地求“快”，不如真把自己已有的功夫练到极致，只要解决问题的效率高，你自己就是“一派”。“四万八千法门”都能成佛，能够在修炼过程中“博采众长”就更好了，其实敏捷方法的原创者也正是这样创立敏捷方法的。
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e183a7a54cf7f406dcb28f5/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -282,6 +297,9 @@ Consul的不同之处在于无需第三方工具就可以原生支持多数据�
 Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建，特别是对于大的数据中心。将存储数据作为服务的能力使其比etcd仅仅只有健/值对存储的特性更加完整、更有用（即使Consul也有该选项）。虽然我们可以在etcd中通过插入多个键来达成相同的目标，Consul的服务实现了一个更紧凑的结果，通常只需要一次查询就可以获得与服务相关的所有数据。除此之外，Registrator很好地实现了Consul的两个协议，使其合二为一，特别是添加Consul-template到了拼图中。Consul的Web UI更是锦上添花般地提供了服务和健康检查的可视化途径。
 我不能说Consul是一个明确的赢家，而是与etcd相比其有一个轻微的优势。服务发现作为一个概念，以及作为工具都很新，我们可以期待在这一领域会有许多的变化。秉承开放的心态，大家可以对本文的建议持保留态度，尝试不同的工具然后做出自己的结论。
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5c735c58e4d2f35bdd267d22/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -318,7 +336,7 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 	<div class="content list__excerpt post__content clearfix">
 		gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。
 在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
-upstream grpcservice { server localhost:50051; server localhost:50052; } server { listen 8080 http2;#需要加http2 server_name localhost; location / { grpc_pass grpc://grpcservice;#以grpc为前缀 } grpc_connect_timeout 10; } 配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图：可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
+upstream grpcservice {server localhost:50051;server localhost:50052;}server {listen 8080 http2;#需要加http2server_name localhost;location / {grpc_pass grpc://grpcservice;#以grpc为前缀}grpc_connect_timeout 10;}配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图：可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
 虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。 原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。 
 	</div>
 </article><article class="list__item post">
@@ -363,9 +381,9 @@ upstream grpcservice { server localhost:50051; server localhost:50052; } server 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		消息队列（MQ）在系统架构中发挥了重要作用，其主要作用有系统解耦，流量削峰，异步消息存储，分布式系统最终一致性等。 本文介绍的是消息系统中消息发布者和订阅者间参数如何约定和传递？实际应用场景中，一种消息的发布者和订阅者都有可能是多个，也就是多对多的关系，这样就形成了消息参数传递的复杂性，就算一开始参数有约定，大家都按照最初约定来开发，但不免开发过程中各端需求变化带来的修改。例如最开始为了实现系统解耦而引进了消息队列，此时消息参与者较少，只有一个发布者和一个订阅者，这种情况最简单（其实最简单还是直接调接口），双方简单约定了需要传递的参数。
-{ userId:123, userName:&quot;阿离&quot;, age:23 } 后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
-{ userId:123, userName:&quot;阿离&quot;, age:23, gender:&quot;女&quot;, address:&quot;上海&quot;, job:&quot;测试&quot; } 再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
-{ userId:123, userName:&quot;阿离&quot;, age:23, gender:&quot;女&quot;, address:&quot;上海&quot;, job:&quot;测试&quot;, workingLife:4 } 再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
+{userId:123,userName:&quot;阿离&quot;,age:23}后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
+{userId:123,userName:&quot;阿离&quot;,age:23,gender:&quot;女&quot;,address:&quot;上海&quot;,job:&quot;测试&quot;}再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
+{userId:123,userName:&quot;阿离&quot;,age:23,gender:&quot;女&quot;,address:&quot;上海&quot;,job:&quot;测试&quot;,workingLife:4}再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
 这时消息系统已经不是当初简单的两个发布者订阅者了，而是一群人在参数，所谓的众口难调。此时弊端已现，无论哪一方有变化都势必牵连所有人。所以看出的出这种消息参数传递有其不合理的地方，那么怎么传递更合理？此处的MQ最开始已经说了，是为了解耦而引进，说明该MQ是多个系统的衔接者，而多个系统终究还是系统，不是简单的前端和后端接口调用，例如某个前端A也是由自己的接口提供服务系统的，MQ不是直接为前端A提供参数的。应该是由前端A自己的服务端A订阅消息，前端A需要什么参数就有服务A查询需要的参数即可，前端B需要什么参数由服务B查询提供。而发布者A，发布者B等只需要传递关键参数userId即可，其他姓名，性别，年龄什么的都不需要传。
 此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
 总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。

@@ -16,6 +16,10 @@
 
 		<meta itemprop="name" content="月盾的个人博客">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="月盾的个人博客"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -23,6 +27,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -32,7 +44,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -118,6 +130,9 @@
 $.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 后端接收代码：
 func (this *UserController) Post() { var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;ob)//解析二进制json，把结果放进ob中  user := &amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数  if nil != err { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } this.ServeJSON() } this.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/57d6aaa7471c11fa271ed1bb/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -157,13 +172,13 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
-var request=require(&amp;#39;request&amp;#39;); var fs=require(&amp;#39;fs&amp;#39;); var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;; HttpRequest.get(url, (err, res, body) =&amp;gt; { res.setEncoding(&amp;#39;binary&amp;#39;);//二进制（binary） FS.writeFile(&amp;#39;out.png&amp;#39;, body, &amp;#39;binary&amp;#39;, function (err) {//以二进制格式保存 if (err) throw err; console.log(&amp;#39;file saved&amp;#39;); }); }); 这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
+var request=require(&amp;#39;request&amp;#39;);var fs=require(&amp;#39;fs&amp;#39;);var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;gt; {res.setEncoding(&amp;#39;binary&amp;#39;);//二进制（binary）FS.writeFile(&amp;#39;out.png&amp;#39;, body, &amp;#39;binary&amp;#39;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;#39;file saved&amp;#39;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
-var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;; request(url).pipe(fs.createWriteStream(&amp;#39;out.png&amp;#39;)); 不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
+var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;request(url).pipe(fs.createWriteStream(&amp;#39;out.png&amp;#39;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？
 非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉
 有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，
-const http = require(&amp;#39;http&amp;#39;); var server = http.createServer( (req, res) =&amp;gt; { } 其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;#39;out.png&amp;#39;));,
+const http = require(&amp;#39;http&amp;#39;);var server = http.createServer( (req, res) =&amp;gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;#39;out.png&amp;#39;));,
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。
 	</div>
 </article><article class="list__item post">
@@ -279,7 +294,7 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		此文过旧，请参阅linux安装nodejs——快捷版 首先下载nodejs压缩文件node-v4.4.4-linux-x64.tar.xz，先解压文件， &gt; xz -d node-v4.4.4-linux-x64.tar.xz解压为tar格式文件，再通过tar命令解压 &gt; tar -xvf node-v4.4.4-linux-x64.tar 可以将解压后的文件夹移动到自己的软件安装文件夹下，比如：/usr/local下，因为nodejs的版本更新太快，每次更新都这么移动文件夹太麻烦，所以还是改成一个通用的名字，就叫node，执行命令这样： mv /home/huo/Download/node-v4.4.4-linux-x64 /usr/local/node 为了能够全局执行node和npm命令，需要建立软链接到可执行目录下，执行命令： echo $PATH 可以看到：/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin是linux全局执行目录，所以就选择在/usr/local/bin下建立软链接吧。
-ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录下执行node和npm命令了，不过这样还没结束，使用npm全局安装包后，在命令行里执行会找不到命令，因为npm全局安装目录在node安装目录，也就是安装在了/usr/local/node/lib/node_modules目录下，所以还需要将这个目录添加的$PATH变量中，sudo vim /etc/profile在文件最下边添加export PATH=&quot;/usr/local/node/bin:$PATH&quot;,此处的路径/usr/local/node/bin并不是上面说的/usr/local/node/lib/node_modules目录，因为npm全局安装以后会在node安装目录下的bin文件夹中建立软链接，直接在$PATH中添加npm的全局安装目录是无法找到可执行文件的。
+ln -s /usr/local/node/bin/npm /usr/local/bin/npm这样就可以在任意目录下执行node和npm命令了，不过这样还没结束，使用npm全局安装包后，在命令行里执行会找不到命令，因为npm全局安装目录在node安装目录，也就是安装在了/usr/local/node/lib/node_modules目录下，所以还需要将这个目录添加的$PATH变量中，sudo vim /etc/profile在文件最下边添加export PATH=&quot;/usr/local/node/bin:$PATH&quot;,此处的路径/usr/local/node/bin并不是上面说的/usr/local/node/lib/node_modules目录，因为npm全局安装以后会在node安装目录下的bin文件夹中建立软链接，直接在$PATH中添加npm的全局安装目录是无法找到可执行文件的。
 升级node版本 可以通过全局安装n工具来升级 npm install -g n，或者nvm工具 或者就是直接下载新的tar文件覆盖升级 cp -Rv node-v8.11.3-linux-x64/* /home/yuedun/software/nodejs/
 	</div>
 </article>

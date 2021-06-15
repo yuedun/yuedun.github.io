@@ -15,7 +15,7 @@
       <guid>/blogdetail/5944b81d9d957900957feff6/</guid>
       <description>以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
 package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&amp;#34;获取用户名：&amp;#34;, user.name) } func main() { user := new(User) user.name=&amp;#34;张三&amp;#34; user.age=26 user.createdAt=time.Now() fmt.Println(&amp;#34;user.createdAt&amp;#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) fmt.Println(&amp;#34;userpj.createdAt&amp;#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
-# command-line-arguments .</description>
+# command-line-arguments.</description>
     </item>
     
   </channel>

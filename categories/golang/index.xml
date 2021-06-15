@@ -130,7 +130,7 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
       
       <guid>/blogdetail/5c63b5334a7b7e6cd808697a/</guid>
       <description>一、安装gRPC  $ go get -u google.golang.org/grpc
- package google.golang.org/grpc: unrecognized import path &amp;quot;google.golang.org/grpc&amp;quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
+ package google.golang.org/grpc: unrecognized import path &amp;quot;google.golang.org/grpc&amp;quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.)grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
 git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.</description>
     </item>
     
@@ -191,7 +191,7 @@ gopl.io/ch11/word1 // Package word provides utilities for word games. package wo
       
       <guid>/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
       <description>一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( &amp;quot;fmt&amp;quot; ) 然后在代码里面可以通过如下的方式调用 fmt.Println(&amp;quot;hello world&amp;quot;)
+import(&amp;quot;fmt&amp;quot;)然后在代码里面可以通过如下的方式调用 fmt.Println(&amp;quot;hello world&amp;quot;)
 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块： 相对路径 import &amp;quot;./model&amp;quot; //当前文件同一目录的model目录，但是不建议这种方式import 绝对路径 import &amp;quot;shorturl/model&amp;quot; //加载GOPATH/src/shorturl/model模块
 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
   点操作 有时候会看到如下的方式导入包import( . “fmt” ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的fmt.Println(“hello world”)可以省略的写成Println(“hello world”)
@@ -210,7 +210,7 @@ import( &amp;quot;fmt&amp;quot; ) 然后在代码里面可以通过如下的方�
       <guid>/blogdetail/5944b81d9d957900957feff6/</guid>
       <description>以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
 package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&amp;#34;获取用户名：&amp;#34;, user.name) } func main() { user := new(User) user.name=&amp;#34;张三&amp;#34; user.age=26 user.createdAt=time.Now() fmt.Println(&amp;#34;user.createdAt&amp;#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) fmt.Println(&amp;#34;userpj.createdAt&amp;#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
-# command-line-arguments .</description>
+# command-line-arguments.</description>
     </item>
     
     <item>
@@ -220,8 +220,8 @@ package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type Use
       
       <guid>/blogdetail/59278639c1abbe00911df03c/</guid>
       <description>原生的go推荐目录是
-├─bin ├─pkg ├─src bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
-.src\ ├─project1 ├─project2 ├─project3 所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
+├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
+.src\├─project1├─project2├─project3所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
 但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。</description>
     </item>
     

@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="Blogdetails">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Blogdetails"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -95,7 +107,10 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
-node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'. 118 touch: (sid: string, session: Express.
+node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void;~~~~~~~~~~~node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;~~~~~~~~~~~node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.118 touch: (sid: string, session: Express.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/60b48e405caa4b4dc69e3abf/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -196,7 +211,10 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问/blog路由，还需要创建index.svelte文件，内容如下：
-&lt;script context=&quot;module&quot;&gt; /** * @type {import('@sveltejs/kit').Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json .then((r) =&gt; r.json()) .then((posts) =&gt; { console.log(posts); return { props: { posts } }; }); } &lt;/script&gt; &lt;script&gt; export let posts; &lt;/script&gt; &lt;svelte:head&gt; &lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt; &lt;h1&gt;Recent posts&lt;/h1&gt; &lt;ul&gt; {#each posts as post} &lt;!
+&lt;script context=&quot;module&quot;&gt;/*** @type {import('@sveltejs/kit').Load}*/export async function load({ page, fetch, session, context }) {return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json.then((r) =&gt; r.json()).then((posts) =&gt; {console.log(posts);return {props: {posts}};});}&lt;/script&gt;&lt;script&gt;export let posts;&lt;/script&gt;&lt;svelte:head&gt;&lt;title&gt;Blog&lt;/title&gt;&lt;/svelte:head&gt;&lt;h1&gt;Recent posts&lt;/h1&gt;&lt;ul&gt;{#each posts as post}&lt;!
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/606d512c54277a10496a38ae/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -230,7 +248,10 @@ sveltekit包含的功能有：
   vite打包
   可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
 创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
- $ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &gt; svelte-kit dev &quot;--open&quot; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import './dist/cli.js'; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.
+$ npm run dev -- --open&gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app&gt; svelte-kit dev &quot;--open&quot;D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2import './dist/cli.js';SyntaxError: Unexpected stringat Module._compile (internal/modules/cjs/loader.js:723:23)at Object.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/60628dfa8f0b5a0240684581/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -303,6 +324,9 @@ ls | xargs -n 1000 rm -frv ls &amp;
 集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
 // main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;); async function bootstrap() { try { const root = join(__dirname, &#39;../&#39;); let envFile = join(root, &#39;.env&#39;) dotenv.config({ &#34;path&#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ffffe3d3f518207e7235250/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -322,7 +346,10 @@ ls | xargs -n 1000 rm -frv ls &amp;
 		npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持history模式的使用上也不是很方便，试用过五六个支持history的路由后最终@spaceavocado/svelte-router算是满足了要求。
  使用简单 功能丰富 支持history和hash 我也是够难伺候的。  在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
 使用方法：
-//App.svelte &lt;script&gt; import RouterView from '@spaceavocado/svelte-router/component/view'; import { routes } from './router.js' &lt;/script&gt; &lt;RouterView /&gt; //router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = createRouter({ mode: &#34;HISTORY&#34;, routes: [ { path: &#39;/&#39;, name: &#39;HOME&#39;, component: index, }, { path: &#39;/a&#39;, name: &#39;a&#39;, component: a, }, { path: &#39;/b&#39;, name: &#39;b&#39;, component: b, }, { path: &#39;*&#39;, component: index, }, ], }); // index.
+//App.svelte&lt;script&gt;import RouterView from '@spaceavocado/svelte-router/component/view';import { routes } from './router.js'&lt;/script&gt;&lt;RouterView /&gt;//router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = createRouter({ mode: &#34;HISTORY&#34;, routes: [ { path: &#39;/&#39;, name: &#39;HOME&#39;, component: index, }, { path: &#39;/a&#39;, name: &#39;a&#39;, component: a, }, { path: &#39;/b&#39;, name: &#39;b&#39;, component: b, }, { path: &#39;*&#39;, component: index, }, ], }); // index.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ff7d7cc3f518207e72349ed/">阅读全文…</a>
 	</div>
 </article>
 </main>

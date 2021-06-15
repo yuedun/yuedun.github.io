@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="vue">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="vue"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -98,8 +110,8 @@
 nuxt.config配置：
 export default { components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
 组件目录：
-components/ ComponentFoo.vue ComponentBar.vue 使用
-&lt;template&gt; &lt;ComponentFoo /&gt; &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
+components/ComponentFoo.vueComponentBar.vue使用
+&lt;template&gt;&lt;ComponentFoo /&gt;&lt;component-bar /&gt;&lt;/template&gt;注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -120,8 +132,8 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 		vue在子组件中直接修改父组件传递下来的数据会报错： Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: &quot;json&quot;
 原因是vue子组件不能直接修改父组件的数据，可以使用this.$emit发送通知，让父组件来修改。 示例代码：
 子组件：
-this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;); 父组件：
-&lt;mycomponent :json=&quot;JsonData&quot; @changeData=&quot;changeData&quot;&gt;&lt;/mycomponent&gt; data(){ return { JsonData:{} } } methods:{ changeData(newData){ this.JsonData = newData; } } 子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
+this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
+&lt;mycomponent :json=&quot;JsonData&quot; @changeData=&quot;changeData&quot;&gt;&lt;/mycomponent&gt;data(){return {JsonData:{}}}methods:{changeData(newData){this.JsonData = newData;}}子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -171,8 +183,8 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;); 父组件：
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
-resolve: { alias: { 'vue$': 'vue/dist/vue.esm.js' //该路径为node_modules下的vue目录 } } // 需要编译器 new Vue({ template: '&lt;div&gt;{{ hi }}&lt;/div&gt;' }) // 不需要编译器 new Vue({ render (h) { return h('div', this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
+		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.(found in &lt;Root&gt;)解决方案：与entry属性平级添加
+resolve: {alias: {'vue$': 'vue/dist/vue.esm.js'//该路径为node_modules下的vue目录}}// 需要编译器new Vue({template: '&lt;div&gt;{{ hi }}&lt;/div&gt;'})// 不需要编译器new Vue({render (h) {return h('div', this.hi)}})出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
 	</div>
 </article>
 </main>

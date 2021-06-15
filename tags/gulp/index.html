@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="gulp">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="gulp"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -120,6 +132,9 @@
 		直接看代码：
 var gulp = require(&#39;gulp&#39;) var webpack = require(&#34;gulp-webpack&#34;); var webpackConfig = require(&#34;./webpack.config.js&#34;); // gulp.task(&#34;webpack&#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err)) // console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats) // if(err) throw new Error(&#34;webpack&#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&#34;webpack&#34;, function(){ return gulp.src(&#34;./app.js&#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&#34;./dist/&#34;)) }); gulp.watch(&#39;./views/*&#39;, [&#39;webpack&#39;]); webpack.config.js配置
 var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app.js&#34;,  { app:&#34;./app.js&#34; // vendor: [&#34;.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/568a088edb1fef9e0cda949e/">阅读全文…</a>
 	</div>
 </article>
 </main>

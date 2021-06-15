@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="createConnection">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="createConnection"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -95,9 +107,9 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require('mongoose'); mongoose.connect('mongodb://localhost/my_database'); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
-const conn = mongoose.createConnection('your connection string'); const MyModel = conn.model('ModelName', schema); const m = new MyModel; m.save(); // 可以工作 vs
-const conn = mongoose.createConnection('your connection string'); const MyModel = mongoose.model('ModelName', schema); const m = new MyModel; m.save(); // 不能工作 
+const mongoose = require('mongoose');mongoose.connect('mongodb://localhost/my_database');使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const conn = mongoose.createConnection('your connection string');const MyModel = conn.model('ModelName', schema);const m = new MyModel;m.save(); // 可以工作vs
+const conn = mongoose.createConnection('your connection string');const MyModel = mongoose.model('ModelName', schema);const m = new MyModel;m.save(); // 不能工作
 	</div>
 </article>
 </main>

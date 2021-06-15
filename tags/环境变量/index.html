@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="环境变量">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="环境变量"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -101,8 +113,11 @@ win：set NODE_ENV=development&amp;&amp; node app.js
 设置方式二： 而设置环境变量在pm2中可以轻松实现
  pm2 start pm2.json &ndash;env production
  --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量
-//pm2.json { &quot;apps&quot; : [{ &quot;name&quot;: &quot;issue&quot;, &quot;cwd&quot;: &quot;dest&quot;, &quot;script&quot; : &quot;bin/www.js&quot;, &quot;instances&quot; : &quot;2&quot;, &quot;exec_mode&quot; : &quot;cluster&quot;, &quot;env&quot;: { &quot;NODE_ENV&quot;: &quot;development&quot;, &quot;PORT&quot;: 3002 }, &quot;env_production&quot; : { &quot;NODE_ENV&quot;: &quot;production&quot;, &quot;PORT&quot;: 3003 }, &quot;log_date_format&quot;: &quot;YYYY-MM-DD_HH:mm Z&quot;, &quot;merge_logs&quot;: true }] } 如果不加参数则默认使用
-&quot;env&quot;: { &quot;NODE_ENV&quot;: &quot;development&quot;, &quot;PORT&quot;: 3002 } 结果：NODE_ENV=development,PORT=3002
+//pm2.json{&quot;apps&quot; : [{&quot;name&quot;: &quot;issue&quot;,&quot;cwd&quot;: &quot;dest&quot;,&quot;script&quot; : &quot;bin/www.js&quot;,&quot;instances&quot; : &quot;2&quot;,&quot;exec_mode&quot; : &quot;cluster&quot;,&quot;env&quot;: {&quot;NODE_ENV&quot;: &quot;development&quot;,&quot;PORT&quot;: 3002},&quot;env_production&quot; : {&quot;NODE_ENV&quot;: &quot;production&quot;,&quot;PORT&quot;: 3003},&quot;log_date_format&quot;: &quot;YYYY-MM-DD_HH:mm Z&quot;,&quot;merge_logs&quot;: true}]}如果不加参数则默认使用
+&quot;env&quot;: {&quot;NODE_ENV&quot;: &quot;development&quot;,&quot;PORT&quot;: 3002}结果：NODE_ENV=development,PORT=3002
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
 	</div>
 </article>
 </main>

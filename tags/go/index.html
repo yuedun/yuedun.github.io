@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="go">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="go"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -96,7 +108,7 @@
 	<div class="content list__excerpt post__content clearfix">
 		在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&ldquo;someKey&rdquo;]=&ldquo;someValue&rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
 //构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;condition) log.Println(condition) if err = this.mongo.Collection(&#34;user&#34;).FindOne(context.TODO(), condition).Decode(&amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
-search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
+search := User{ID: id,Name: name,Age: age,}search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -137,6 +149,9 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
 $.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 后端接收代码：
 func (this *UserController) Post() { var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;ob)//解析二进制json，把结果放进ob中  user := &amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数  if nil != err { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } this.ServeJSON() } this.
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/57d6aaa7471c11fa271ed1bb/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -165,6 +180,9 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
   url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
   go返回json数据
   type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&#34;a&#34;] = &#34;aaaaaa&#34; ress := &amp;ResObj{ Code: 0, Data: m} byt, _ := json.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/56556da1c72f59d15379b4b9/">阅读全文…</a>
 	</div>
 </article>
 </main>

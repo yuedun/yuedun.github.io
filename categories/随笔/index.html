@@ -15,6 +15,10 @@
 
 		<meta itemprop="name" content="随笔">
 <meta itemprop="description" content="欢迎访问我的博客">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="随笔"/>
+<meta name="twitter:description" content="欢迎访问我的博客"/>
+
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
@@ -22,6 +26,14 @@
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
 </head>
 <body class="body">
 		<header class="header">
@@ -31,7 +43,7 @@
 			<a class="logo__link" href="/" title="月盾" rel="home">
 				<div class="logo__item logo__text">
 						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">欢迎访问我的博客</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
 					</div>
 			</a>
 		</div>
@@ -316,6 +328,9 @@
 奶茶店最重要的三要素，地理位置，地理位置，还是地理位置，就算你打算做外卖，也要选附近有学校或者是CBD。
 这些地理位置的统一特征就是贵。
 	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5d81a71a00f24e1fd556cc25/">阅读全文…</a>
+	</div>
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -379,6 +394,9 @@
 测试程序如下： //说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。
 //说明2：测试两次一次是4K数据，一次是整形数据
 set_time_limit(0); function fnGet($filename) { $content = file_get_contents($filename); return $content; } function fnGetContent($filename) { $content = fnGet($filename); return $content; } $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_row($res); $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_array($res); $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_object($res); $content=$row-&gt;log_Content; } echo &#39;fetch_object &#39;.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a1d8147da5c711b612f4d88/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

@@ -56,7 +56,7 @@ gender:&amp;quot;男&amp;quot;
 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
 据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
 但是还是有办法的，可以这样删除
-user.getDataValue(&amp;amp;quot;friends&amp;amp;quot;)[0].setDataValue(&amp;amp;quot;friends&amp;amp;quot;, undefined) 就是将属性设置为undefined，查询的时候就没有小樱的friends了。</description>
+user.getDataValue(&amp;amp;quot;friends&amp;amp;quot;)[0].setDataValue(&amp;amp;quot;friends&amp;amp;quot;, undefined)就是将属性设置为undefined，查询的时候就没有小樱的friends了。</description>
     </item>
     
   </channel>
