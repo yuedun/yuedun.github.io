@@ -19,7 +19,7 @@
 <meta itemprop="description" content="svelte目前没有提供官网路由组件，不过可以在社区中找到。本文介绍的是svelte-spa-router的使用方法。npm i svelte-spa-rout"><meta itemprop="datePublished" content="2020-11-28T07:16:53&#43;00:00" />
 <meta itemprop="dateModified" content="2020-11-28T07:16:53&#43;00:00" />
 <meta itemprop="wordCount" content="101">
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="svelte," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Svelte3路由"/>
 <meta name="twitter:description" content="svelte目前没有提供官网路由组件，不过可以在社区中找到。本文介绍的是svelte-spa-router的使用方法。npm i svelte-spa-rout"/>
@@ -141,22 +141,33 @@
 }
 </code></pre></div><p>动态导入组件的优点是组件不会一起打包，而是单独的组件文件，在打开对应的页面时才会请求，可以有效减少包文件大小。
 <strong>App.svelte</strong>:</p>
-<pre><code>&lt;script&gt;
-	import Router from 'svelte-spa-router'
-	import { routes } from './router.js'
-&lt;/script&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Router</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte-spa-router&#39;</span>
+	<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">routes</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./router.js&#39;</span>
+&lt;/<span style="color:#f92672">script</span>&gt;
 
-&lt;Router {routes} /&gt;
-</code></pre><p><strong>a.svelte</strong>:</p>
-<pre><code>&lt;script&gt;
-import { link } from &quot;svelte-spa-router&quot;;
-&lt;/script&gt;
+&lt;<span style="color:#f92672">Router</span> <span style="color:#960050;background-color:#1e0010">{</span><span style="color:#a6e22e">routes</span><span style="color:#960050;background-color:#1e0010">}</span> /&gt;
+</code></pre></div><p><strong>a.svelte</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span>&gt;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">link</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;svelte-spa-router&#34;</span>;
+&lt;/<span style="color:#f92672">script</span>&gt;
 
-&lt;a href=&quot;/a&quot; use:link&gt;a&lt;/a&gt;
-&lt;a href=&quot;/b&quot; use:link&gt;b&lt;/a&gt;
-</code></pre><p>注意：<strong>svelte-spa-router</strong>是基于hash实现，作者认为这是静态单页应用的理想实现方式，history方式的路由需要增加服务端，这增加了复杂性。</p>
+&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/a&#34;</span> <span style="color:#a6e22e">use:link</span>&gt;a&lt;/<span style="color:#f92672">a</span>&gt;
+&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/b&#34;</span> <span style="color:#a6e22e">use:link</span>&gt;b&lt;/<span style="color:#f92672">a</span>&gt;
+</code></pre></div><p>注意：<strong>svelte-spa-router</strong>是基于hash实现，作者认为这是静态单页应用的理想实现方式，history方式的路由需要增加服务端，这增加了复杂性。</p>
 
 		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/svelte/" rel="tag">svelte</a>
+		</li>
+	</ul>
+</div>
+		</footer>
 	</article>
 </main>
 

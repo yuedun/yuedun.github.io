@@ -19,7 +19,7 @@
 <meta itemprop="description" content="Nodejs项目部署到服务器以后接下来做的最多的操作就是上线发布了。因为nodejs的语言特性决定了其开发效率高，发布自然就频繁，每个公司或个人都有自己的发布方"><meta itemprop="datePublished" content="2020-08-23T01:43:50&#43;00:00" />
 <meta itemprop="dateModified" content="2020-08-23T01:43:50&#43;00:00" />
 <meta itemprop="wordCount" content="17">
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="CI/CD," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="nodejs专用发布系统"/>
 <meta name="twitter:description" content="Nodejs项目部署到服务器以后接下来做的最多的操作就是上线发布了。因为nodejs的语言特性决定了其开发效率高，发布自然就频繁，每个公司或个人都有自己的发布方"/>
@@ -120,9 +120,9 @@
 <p>另外说明一下Jenkins。它应该是使用最多的发布系统了，Jenkins基于Java开发，它已经是成熟的系统了，成熟同时也代表着复杂，复杂代表修改困难，我想大家也不太会基于Jenkins定制开发。
 然后是部署困难，相比较nodejs三条命令搞定<a href="http://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4">linux安装nodejs——快捷版</a>，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。</p>
 <p>于是下定决心自己开发一个发布系统，<strong>朱雀发布系统</strong>因此诞生。</p>
-<p>基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图：
-<img src="http://hopefully-img.yuedun.wang/zhuque.jpg" alt="架构图">
-和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。
+<p>基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图：</p>
+<p><img src="http://hopefully-img.yuedun.wang/zhuque.jpg" alt="架构图"></p>
+<p>和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。
 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。
 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。
 放一张图来看一下：
@@ -131,6 +131,17 @@
 <p><a href="https://www.yuedun.wang/blogdetail/60950c9ee76f307341586548">朱雀发布系统支持scp（rsync）发布</a></p>
 
 		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ci/cd/" rel="tag">CI/CD</a>
+		</li>
+	</ul>
+</div>
+		</footer>
 	</article>
 </main>
 

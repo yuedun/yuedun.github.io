@@ -116,7 +116,7 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问/blog路由，还需要创建index.svelte文件，内容如下：
-&amp;lt;script context=&amp;quot;module&amp;quot;&amp;gt;/*** @type {import(&#39;@sveltejs/kit&#39;).Load}*/export async function load({ page, fetch, session, context }) {return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json.then((r) =&amp;gt; r.json()).then((posts) =&amp;gt; {console.log(posts);return {props: {posts}};});}&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;export let posts;&amp;lt;/script&amp;gt;&amp;lt;svelte:head&amp;gt;&amp;lt;title&amp;gt;Blog&amp;lt;/title&amp;gt;&amp;lt;/svelte:head&amp;gt;&amp;lt;h1&amp;gt;Recent posts&amp;lt;/h1&amp;gt;&amp;lt;ul&amp;gt;{#each posts as post}&amp;lt;!</description>
+&amp;lt;script context=&amp;#34;module&amp;#34;&amp;gt; /** * @type {import(&amp;#39;@sveltejs/kit&amp;#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&amp;gt; r.json()) .then((posts) =&amp;gt; { console.log(posts); return { props: { posts } }; }); } &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; export let posts; &amp;lt;/script&amp;gt; &amp;lt;svelte:head&amp;gt; &amp;lt;title&amp;gt;Blog&amp;lt;/title&amp;gt; &amp;lt;/svelte:head&amp;gt; &amp;lt;h1&amp;gt;Recent posts&amp;lt;/h1&amp;gt; &amp;lt;ul&amp;gt; {#each posts as post} &amp;lt;!</description>
     </item>
     
     <item>
@@ -349,7 +349,8 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 而关于nodejs的发布方式，本人也是也是多种方式都有使用，公司项目也经历过多次变迁。公司最开始是直接登录服务器拉代码发布，后来有了运维团队，领导说开发自己发布不安全，于是就由运维搭建了Jenkins环境来发布，但是每次发布都需要走流程，后来因为发布太频繁，每1-2天要发布一次，又要灰度发布，运维也会觉得烦。于是开发就搭建了某个发布系统自己来发布，不过这个发布系统有个缺点，就是发布集群的时候是串行的，每次发布要十几分钟。
 另外说明一下Jenkins。它应该是使用最多的发布系统了，Jenkins基于Java开发，它已经是成熟的系统了，成熟同时也代表着复杂，复杂代表修改困难，我想大家也不太会基于Jenkins定制开发。 然后是部署困难，相比较nodejs三条命令搞定linux安装nodejs——快捷版，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。
 于是下定决心自己开发一个发布系统，朱雀发布系统因此诞生。
-基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图： 和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下： 项目地址：nodejs发布系统
+基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图：
+和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下： 项目地址：nodejs发布系统
 朱雀发布系统支持scp（rsync）发布</description>
     </item>
     

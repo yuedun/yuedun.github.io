@@ -111,6 +111,11 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 		<a class="list__footer-readmore btn" href="/blogdetail/60b48e405caa4b4dc69e3abf/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="/blogdetail/60950c9ee76f307341586548/">
+			<img src="https://hopefully-img.yuedun.wang/zhuque1.jpg" alt="朱雀发布系统支持scp（rsync）发布" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/60950c9ee76f307341586548/" rel="bookmark">
@@ -136,6 +141,11 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
  朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="/blogdetail/608eb0b254277a10496a5f56/">
+			<img src="https://hopefully-img.yuedun.wang/led%E6%89%8B%E7%94%B5%E7%AD%92.jpg" alt="一体LED可伸缩变焦手电筒拆解" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/608eb0b254277a10496a5f56/" rel="bookmark">
@@ -200,7 +210,7 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问/blog路由，还需要创建index.svelte文件，内容如下：
-&lt;script context=&quot;module&quot;&gt;/*** @type {import('@sveltejs/kit').Load}*/export async function load({ page, fetch, session, context }) {return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json.then((r) =&gt; r.json()).then((posts) =&gt; {console.log(posts);return {props: {posts}};});}&lt;/script&gt;&lt;script&gt;export let posts;&lt;/script&gt;&lt;svelte:head&gt;&lt;title&gt;Blog&lt;/title&gt;&lt;/svelte:head&gt;&lt;h1&gt;Recent posts&lt;/h1&gt;&lt;ul&gt;{#each posts as post}&lt;!
+&lt;script context=&#34;module&#34;&gt; /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&gt; r.json()) .then((posts) =&gt; { console.log(posts); return { props: { posts } }; }); } &lt;/script&gt; &lt;script&gt; export let posts; &lt;/script&gt; &lt;svelte:head&gt; &lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt; &lt;h1&gt;Recent posts&lt;/h1&gt; &lt;ul&gt; {#each posts as post} &lt;!
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/606d512c54277a10496a38ae/">阅读全文…</a>

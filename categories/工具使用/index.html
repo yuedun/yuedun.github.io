@@ -113,6 +113,11 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 		<a class="list__footer-readmore btn" href="/blogdetail/60b48e405caa4b4dc69e3abf/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="/blogdetail/60950c9ee76f307341586548/">
+			<img src="https://hopefully-img.yuedun.wang/zhuque1.jpg" alt="朱雀发布系统支持scp（rsync）发布" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/60950c9ee76f307341586548/" rel="bookmark">
@@ -275,6 +280,11 @@ page = await browser.newPage(); // 模拟3g网络  let cdp = await page.target()
 捕获请求和cookie 能够直接将浏览器中的请求和cookie同步到postman，省去手动复制请求接口和cookie到postman中。 同时，对于需要登录后使用的接口，postman可以直接使用浏览器的登录状态，而不必复制cookie。 举例： 收藏接口与分享接口 将自己保存的接口分享与他人，直接拿来即可使用。 如果安装了Chrome插件，则可以直接的浏览器中打开链接。使用客户端需要使用import来导入。 批量测试 保存的多个接口批量测试。 编写文档和示例 对于团队协作很有用，接口交流利器。不仅有了请求参数，添加一个example还可以看到接口返回参数。 
 	</div>
 </article><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="/blogdetail/5f41c9d65edb9b37630b0d46/">
+			<img src="https://hopefully-img.yuedun.wang/zhuque.jpg" alt="nodejs专用发布系统" />
+		</a>
+	</figure>
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5f41c9d65edb9b37630b0d46/" rel="bookmark">
@@ -299,7 +309,8 @@ page = await browser.newPage(); // 模拟3g网络  let cdp = await page.target()
 而关于nodejs的发布方式，本人也是也是多种方式都有使用，公司项目也经历过多次变迁。公司最开始是直接登录服务器拉代码发布，后来有了运维团队，领导说开发自己发布不安全，于是就由运维搭建了Jenkins环境来发布，但是每次发布都需要走流程，后来因为发布太频繁，每1-2天要发布一次，又要灰度发布，运维也会觉得烦。于是开发就搭建了某个发布系统自己来发布，不过这个发布系统有个缺点，就是发布集群的时候是串行的，每次发布要十几分钟。
 另外说明一下Jenkins。它应该是使用最多的发布系统了，Jenkins基于Java开发，它已经是成熟的系统了，成熟同时也代表着复杂，复杂代表修改困难，我想大家也不太会基于Jenkins定制开发。 然后是部署困难，相比较nodejs三条命令搞定linux安装nodejs——快捷版，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。
 于是下定决心自己开发一个发布系统，朱雀发布系统因此诞生。
-基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图： 和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下： 项目地址：nodejs发布系统
+基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图：
+和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下： 项目地址：nodejs发布系统
 朱雀发布系统支持scp（rsync）发布
 	</div>
 </article><article class="list__item post">
