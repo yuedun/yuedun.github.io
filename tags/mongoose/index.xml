@@ -20,6 +20,16 @@ const conn = mongoose.createConnection(&#39;your connection string&#39;);const 
     </item>
     
     <item>
+      <title>open() is deprecated in mongoose &gt;= 4.11.0, use openUri()</title>
+      <link>/blogdetail/5996a2dc9205bd72e7290ebb/</link>
+      <pubDate>Fri, 18 Aug 2017 08:18:36 +0000</pubDate>
+      
+      <guid>/blogdetail/5996a2dc9205bd72e7290ebb/</guid>
+      <description>`open()` is deprecated in mongoose &amp;gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;const opts = {// autoReconnect: false,//默认true// reconnectTries: 30,//尝试重连，默认30次// reconnectInterval: 1000, //重连间隔，默认1000毫秒loggerLevel: &amp;quot;warn&amp;quot;, //error/warn/info/debuguseMongoClient: true};mongoose.</description>
+    </item>
+    
+    <item>
       <title>mongoose自动添加createdAt和updatedAt</title>
       <link>/blogdetail/593b6b37b787b03177cfff16/</link>
       <pubDate>Sat, 10 Jun 2017 04:44:55 +0000</pubDate>

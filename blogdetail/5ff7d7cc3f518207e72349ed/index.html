@@ -19,7 +19,7 @@
 <meta itemprop="description" content="npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持hist"><meta itemprop="datePublished" content="2021-01-08T03:55:56&#43;00:00" />
 <meta itemprop="dateModified" content="2021-01-08T03:55:56&#43;00:00" />
 <meta itemprop="wordCount" content="310">
-<meta itemprop="keywords" content="svelte,路由," />
+<meta itemprop="keywords" content="svelte," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="svelte history路由刷新后404"/>
 <meta name="twitter:description" content="npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持hist"/>
@@ -120,14 +120,14 @@
 <p>在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip;
 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用<code>@spaceavocado/svelte-router</code>包实现了history路由的时候我还是满心欢喜。</p>
 <p><strong>使用方法：</strong></p>
-<pre><code>//App.svelte
-&lt;script&gt;
-	import RouterView from '@spaceavocado/svelte-router/component/view';
-	import { routes } from './router.js'
-&lt;/script&gt;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">//App.svelte
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">RouterView</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router/component/view&#39;</span>;
+	<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">routes</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./router.js&#39;</span>
+&lt;/<span style="color:#f92672">script</span>&gt;
 
-&lt;RouterView /&gt;
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//router.js
+&lt;<span style="color:#f92672">RouterView</span> /&gt;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//router.js
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">createRouter</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router&#39;</span>;
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">index</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./index/index.svelte&#39;</span>;
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./a/a.svelte&#39;</span>;
@@ -157,57 +157,57 @@
         },
     ],
 });
-</code></pre></div><pre><code>// index.svelte
-&lt;script&gt;
-	import RouterLink from '@spaceavocado/svelte-router/component/link';
-&lt;/script&gt;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// index.svelte
+&lt;<span style="color:#f92672">script</span>&gt;
+	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">RouterLink</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router/component/link&#39;</span>;
+&lt;/<span style="color:#f92672">script</span>&gt;
 
-&lt;main&gt;
-	&lt;h1&gt;Hello {name}!&lt;/h1&gt;
-	&lt;RouterLink to=&quot;/a&quot;&gt;a页面&lt;/RouterLink&gt;
-	&lt;RouterLink to=&quot;/b&quot;&gt;b页面&lt;/RouterLink&gt;
-&lt;/main&gt;
-</code></pre><p>可是一刷新就嗝屁了，依旧出现404.无意中就试了一下之前使用其他路由包使用的一种rollup配置方法。
+&lt;<span style="color:#f92672">main</span>&gt;
+	&lt;<span style="color:#f92672">h1</span>&gt;Hello {name}!&lt;/<span style="color:#f92672">h1</span>&gt;
+	&lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/a&#34;</span>&gt;a页面&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+	&lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/b&#34;</span>&gt;b页面&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+&lt;/<span style="color:#f92672">main</span>&gt;
+</code></pre></div><p>可是一刷新就嗝屁了，依旧出现404.无意中就试了一下之前使用其他路由包使用的一种rollup配置方法。
 package.json中的start命令：
 <code>sirv public -s</code>加了<code>-s</code>参数就好了。</p>
 <p><code>sirv-cli</code>是一个提供静态文件服务命令行工具。</p>
-<pre><code> $ sirv --help
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"> $ sirv --help
 
   Description
     Run a static file server
 
   Usage
-    $ sirv [dir] [options]
+    $ sirv <span style="color:#f92672">[</span>dir<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
 
   Options
-    -D, --dev          Enable &quot;dev&quot; mode
-    -e, --etag         Enable &quot;ETag&quot; header
+    -D, --dev          Enable <span style="color:#e6db74">&#34;dev&#34;</span> mode
+    -e, --etag         Enable <span style="color:#e6db74">&#34;ETag&#34;</span> header
     -d, --dotfiles     Enable dotfile asset requests
-    -c, --cors         Enable &quot;CORS&quot; headers to allow any origin requestor
-    -G, --gzip         Send precompiled &quot;*.gz&quot; files when &quot;gzip&quot; is supported  (default true)
-    -B, --brotli       Send precompiled &quot;*.br&quot; files when &quot;brotli&quot; is supported  (default true)
-    -m, --maxage       Enable &quot;Cache-Control&quot; header &amp; define its &quot;max-age&quot; value (sec)
-    -i, --immutable    Enable the &quot;immutable&quot; directive for &quot;Cache-Control&quot; header
+    -c, --cors         Enable <span style="color:#e6db74">&#34;CORS&#34;</span> headers to allow any origin requestor
+    -G, --gzip         Send precompiled <span style="color:#e6db74">&#34;*.gz&#34;</span> files when <span style="color:#e6db74">&#34;gzip&#34;</span> is supported  <span style="color:#f92672">(</span>default true<span style="color:#f92672">)</span>
+    -B, --brotli       Send precompiled <span style="color:#e6db74">&#34;*.br&#34;</span> files when <span style="color:#e6db74">&#34;brotli&#34;</span> is supported  <span style="color:#f92672">(</span>default true<span style="color:#f92672">)</span>
+    -m, --maxage       Enable <span style="color:#e6db74">&#34;Cache-Control&#34;</span> header &amp; define its <span style="color:#e6db74">&#34;max-age&#34;</span> value <span style="color:#f92672">(</span>sec<span style="color:#f92672">)</span>
+    -i, --immutable    Enable the <span style="color:#e6db74">&#34;immutable&#34;</span> directive <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#34;Cache-Control&#34;</span> header
     -k, --http2        Enable the HTTP/2 protocol. Requires Node.js 8.4.0+
-    -C, --cert         Path to certificate file for HTTP/2 server
-    -K, --key          Path to certificate key for HTTP/2 server
+    -C, --cert         Path to certificate file <span style="color:#66d9ef">for</span> HTTP/2 server
+    -K, --key          Path to certificate key <span style="color:#66d9ef">for</span> HTTP/2 server
     -P, --pass         Passphrase to decrypt a certificate key
-    -s, --single       Serve as single-page application with &quot;index.html&quot; fallback
-    -I, --ignores      Any URL pattern(s) to ignore &quot;index.html&quot; assumptions
+    -s, --single       Serve as single-page application with <span style="color:#e6db74">&#34;index.html&#34;</span> fallback
+    -I, --ignores      Any URL pattern<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> to ignore <span style="color:#e6db74">&#34;index.html&#34;</span> assumptions
     -q, --quiet        Disable logging to terminal
-    -H, --host         Hostname to bind  (default localhost)
-    -p, --port         Port to bind  (default 5000)
+    -H, --host         Hostname to bind  <span style="color:#f92672">(</span>default localhost<span style="color:#f92672">)</span>
+    -p, --port         Port to bind  <span style="color:#f92672">(</span>default 5000<span style="color:#f92672">)</span>
     -v, --version      Displays current version
     -h, --help         Displays this message
 
   Examples
-    $ sirv build --cors --port 8080
-    $ sirv public --quiet --etag --maxage 31536000 --immutable
+    $ sirv build --cors --port <span style="color:#ae81ff">8080</span>
+    $ sirv public --quiet --etag --maxage <span style="color:#ae81ff">31536000</span> --immutable
     $ sirv public --http2 --key priv.pem --cert cert.pem
-    $ sirv public -qeim 31536000
-    $ sirv --port 8080 --etag
+    $ sirv public -qeim <span style="color:#ae81ff">31536000</span>
+    $ sirv --port <span style="color:#ae81ff">8080</span> --etag
     $ sirv --host --dev
-</code></pre><p>功能还是蛮丰富的，其中<code>-s</code>参数是专门用户单页应用的。</p>
+</code></pre></div><p>功能还是蛮丰富的，其中<code>-s</code>参数是专门用户单页应用的。</p>
 <p>总结：不怕困难多，只要肯折腾！</p>
 
 		</div>
@@ -218,9 +218,6 @@ package.json中的start命令：
 	<ul class="tags__list">
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/svelte/" rel="tag">svelte</a>
-		</li>
-		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/%E8%B7%AF%E7%94%B1/" rel="tag">路由</a>
 		</li>
 	</ul>
 </div>

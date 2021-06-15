@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="typescript不检查node_moduls">
 <meta itemprop="description" content="sgrfh"><meta itemprop="datePublished" content="2021-06-11T14:16:17&#43;08:00" />
 <meta itemprop="dateModified" content="2021-06-11T14:16:17&#43;08:00" />
-<meta itemprop="wordCount" content="194">
+<meta itemprop="wordCount" content="89">
 <meta itemprop="keywords" content="CI/CD,scp,rsync," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="typescript不检查node_moduls"/>
@@ -111,53 +111,24 @@
 </div>
 <div class="content post__content clearfix">
 			<p>tsconfig.json 中 exclude node_modules，但 tsc 还是报错。</p>
-<pre><code>node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace <span style="color:#e6db74">&#39;global.Express&#39;</span> has no exported member <span style="color:#e6db74">&#39;SessionData&#39;</span>.
 
-113         get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void;
+<span style="color:#ae81ff">113</span>         get: <span style="color:#f92672">(</span>sid: string, callback: <span style="color:#f92672">(</span>err: any, session: Express.SessionData | null<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void;
                                                                      ~~~~~~~~~~~
 
-node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.
+node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace <span style="color:#e6db74">&#39;global.Express&#39;</span> has no exported member <span style="color:#e6db74">&#39;SessionData&#39;</span>.
 
-114         set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;
+<span style="color:#ae81ff">114</span>         set: <span style="color:#f92672">(</span>sid: string, session: Express.SessionData, callback?: <span style="color:#f92672">(</span>err: any<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void;
                                                 ~~~~~~~~~~~
 
-node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.
+node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace <span style="color:#e6db74">&#39;global.Express&#39;</span> has no exported member <span style="color:#e6db74">&#39;SessionData&#39;</span>.
 
-118         touch: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;
-</code></pre><p>另一种解决方案：</p>
-<pre><code>&quot;compilerOptions&quot;: {
-        &quot;skipLibCheck&quot;: true
-    }
-</code></pre><p>设置<code>skipLibCheck</code>选项。&mdash;
-title: &ldquo;typescript不检查node_moduls&rdquo;
-description: &ldquo;tsconfig.json 中 exclude node_modules，但 tsc 还是报错。node_modulesconnect-mongosrctype&rdquo;
-date: 2021-05-31T07:20:32.118Z
-draft: true</p>
-<p>categories:</p>
-<ul>
-<li>&ldquo;Nodejs&rdquo;
-tags:</li>
-</ul>
-<hr>
-<p>tsconfig.json 中 exclude node_modules，但 tsc 还是报错。</p>
-<pre><code>node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.
-
-113         get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void;
-                                                                     ~~~~~~~~~~~
-
-node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.
-
-114         set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;
-                                                ~~~~~~~~~~~
-
-node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace 'global.Express' has no exported member 'SessionData'.
-
-118         touch: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;
-</code></pre><p>另一种解决方案：</p>
-<pre><code>&quot;compilerOptions&quot;: {
-        &quot;skipLibCheck&quot;: true
-    }
-</code></pre><p>设置<code>skipLibCheck</code>选项。</p>
+<span style="color:#ae81ff">118</span>         touch: <span style="color:#f92672">(</span>sid: string, session: Express.SessionData, callback?: <span style="color:#f92672">(</span>err: any<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void;
+</code></pre></div><p>另一种解决方案：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;compilerOptions&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+      <span style="color:#f92672">&#34;skipLibCheck&#34;</span>: <span style="color:#66d9ef">true</span>
+  }
+</code></pre></div><p>设置<code>skipLibCheck</code>选项。</p>
 
 		</div>
 		<footer class="post__footer">

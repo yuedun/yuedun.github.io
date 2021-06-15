@@ -6,7 +6,21 @@
     <description>Recent content in nodejs on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 18 Nov 2019 06:17:47 +0000</lastBuildDate><atom:link href="/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Dec 2019 04:00:37 +0000</lastBuildDate><atom:link href="/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> 一次商业web网站搭建的取舍过程</title>
+      <link>/blogdetail/5df30ce58803fb4044fa0651/</link>
+      <pubDate>Fri, 13 Dec 2019 04:00:37 +0000</pubDate>
+      
+      <guid>/blogdetail/5df30ce58803fb4044fa0651/</guid>
+      <description>最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。
+所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。
+要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。
+选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。
+技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
+这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。</description>
+    </item>
+    
     <item>
       <title>linux安装nodejs——快捷版</title>
       <link>/blogdetail/5dd2378b00f24e1fd556d0c4/</link>
@@ -35,6 +49,24 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
       
       <guid>/blogdetail/5745791ed5034dff53ec6aa4/</guid>
       <description>vm提供了一个沙箱环境，什么叫沙箱环境？类似于一个独立的执行空间，什么时候会用到vm模块？就以我现在接触的需求来说，每个月都有运营活动，但是每次需求又不同，比如一些优惠规则不同，最后可能只需要得到一个结果，如果每次活动都去修改代码就会显得很麻烦，我们提供一个后台管理界面，或者直接在数据库里写入每次活动的不同计算规则，这些规则其实也是JavaScript代码，既然是代码就需要执行才行。这就形成了一种情况：在已有的程序中插入一段代码进行执行，这要怎么实现？如果觉得很容易插入的话，那么是不是黑客可以在你的程序中插入一段代码执行呢？这当然是不允许的，所以就需要提供一种安全环境来执行——就是沙箱了，而vm模块就是提供了这样一种执行环境。 http://www.cnblogs.com/softlover/archive/2012/10/03/2707144.html</description>
+    </item>
+    
+    <item>
+      <title>使用sublime开发node.js快速跳转到变量函数声明处</title>
+      <link>/blogdetail/56286643ce46c19e89132968/</link>
+      <pubDate>Thu, 22 Oct 2015 04:29:55 +0000</pubDate>
+      
+      <guid>/blogdetail/56286643ce46c19e89132968/</guid>
+      <description>开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
+ 所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
+首先在uses.js文件中有一个函数
+//我是一个测试方法
+router.get(&amp;amp;#39;/commeHere&amp;amp;#39;, function(req, res) {
+});
+然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
+可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是&amp;lt;open folders&amp;gt;，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
+双击就可以跳转到对应的文件和行上。
+当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。</description>
     </item>
     
   </channel>

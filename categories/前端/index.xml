@@ -44,7 +44,7 @@ sveltekit包含的功能有：
   vite打包
   可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
 创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
-$ npm run dev -- --open&amp;gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app&amp;gt; svelte-kit dev &amp;quot;--open&amp;quot;D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2import &#39;./dist/cli.js&#39;;SyntaxError: Unexpected stringat Module._compile (internal/modules/cjs/loader.js:723:23)at Object.</description>
+$ npm run dev -- --open &amp;gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &amp;gt; svelte-kit dev &amp;#34;--open&amp;#34; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import &amp;#39;./dist/cli.js&amp;#39;; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.Module._extensions..js (internal/modules/cjs/loader.</description>
     </item>
     
     <item>
@@ -56,7 +56,7 @@ sveltekit包含的功能有：
       <description>npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持history模式的使用上也不是很方便，试用过五六个支持history的路由后最终@spaceavocado/svelte-router算是满足了要求。
  使用简单 功能丰富 支持history和hash 我也是够难伺候的。  在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&amp;hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
 使用方法：
-//App.svelte&amp;lt;script&amp;gt;import RouterView from &#39;@spaceavocado/svelte-router/component/view&#39;;import { routes } from &#39;./router.js&#39;&amp;lt;/script&amp;gt;&amp;lt;RouterView /&amp;gt;//router.js import createRouter from &amp;#39;@spaceavocado/svelte-router&amp;#39;; import index from &amp;#39;./index/index.svelte&amp;#39;; import a from &amp;#39;./a/a.svelte&amp;#39;; import b from &amp;#39;./b/b.svelte&amp;#39;; export const routes = createRouter({ mode: &amp;#34;HISTORY&amp;#34;, routes: [ { path: &amp;#39;/&amp;#39;, name: &amp;#39;HOME&amp;#39;, component: index, }, { path: &amp;#39;/a&amp;#39;, name: &amp;#39;a&amp;#39;, component: a, }, { path: &amp;#39;/b&amp;#39;, name: &amp;#39;b&amp;#39;, component: b, }, { path: &amp;#39;*&amp;#39;, component: index, }, ], }); // index.</description>
+//App.svelte &amp;lt;script&amp;gt; import RouterView from &amp;#39;@spaceavocado/svelte-router/component/view&amp;#39;; import { routes } from &amp;#39;./router.js&amp;#39; &amp;lt;/script&amp;gt; &amp;lt;RouterView /&amp;gt; //router.js import createRouter from &amp;#39;@spaceavocado/svelte-router&amp;#39;; import index from &amp;#39;./index/index.svelte&amp;#39;; import a from &amp;#39;./a/a.svelte&amp;#39;; import b from &amp;#39;./b/b.svelte&amp;#39;; export const routes = createRouter({ mode: &amp;#34;HISTORY&amp;#34;, routes: [ { path: &amp;#39;/&amp;#39;, name: &amp;#39;HOME&amp;#39;, component: index, }, { path: &amp;#39;/a&amp;#39;, name: &amp;#39;a&amp;#39;, component: a, }, { path: &amp;#39;/b&amp;#39;, name: &amp;#39;b&amp;#39;, component: b, }, { path: &amp;#39;*&amp;#39;, component: index, }, ], }); // index.</description>
     </item>
     
     <item>
@@ -118,8 +118,8 @@ import { wrap } from &amp;#39;svelte-spa-router/wrap&amp;#39; import index from 
 nuxt.config配置：
 export default { components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
 组件目录：
-components/ComponentFoo.vueComponentBar.vue使用
-&amp;lt;template&amp;gt;&amp;lt;ComponentFoo /&amp;gt;&amp;lt;component-bar /&amp;gt;&amp;lt;/template&amp;gt;注意：如果使用nuxt 2.10&amp;hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。</description>
+components/ ComponentFoo.vue ComponentBar.vue 使用
+&amp;lt;template&amp;gt; &amp;lt;ComponentFoo /&amp;gt; &amp;lt;component-bar /&amp;gt; &amp;lt;/template&amp;gt; 注意：如果使用nuxt 2.10&amp;hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。</description>
     </item>
     
     <item>

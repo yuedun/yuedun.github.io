@@ -6,7 +6,28 @@
     <description>Recent content in mongodb on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 06 Apr 2020 15:14:10 +0000</lastBuildDate><atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Jun 2020 07:57:09 +0000</lastBuildDate><atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go mongo-driver动态条件</title>
+      <link>/blogdetail/5eec6fd5e8775d3b7f2ee79c/</link>
+      <pubDate>Fri, 19 Jun 2020 07:57:09 +0000</pubDate>
+      
+      <guid>/blogdetail/5eec6fd5e8775d3b7f2ee79c/</guid>
+      <description>在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&amp;ldquo;someKey&amp;rdquo;]=&amp;ldquo;someValue&amp;rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
+//构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) log.Println(condition) if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), condition).Decode(&amp;amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
+search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
+    </item>
+    
+    <item>
+      <title>免费的mongdb集群</title>
+      <link>/blogdetail/5e8bf346bd7e796e7100a03c/</link>
+      <pubDate>Tue, 07 Apr 2020 03:28:06 +0000</pubDate>
+      
+      <guid>/blogdetail/5e8bf346bd7e796e7100a03c/</guid>
+      <description>mongodb提供了免费的mongdb集群可用于学习使用 https://www.mongodb.com/cloud 并且有3个节点 mongodb Atlas免费集群存储空间为512M，这对于个人项目来说足够使用（本博客运行6年使用空间8M）。
+本地客户端连接mongo Atlas 复制了连接字符串后直接粘贴到客户端中，替换,点击From SRV,会自动拉取集群配置，点击Test测试连接是否成功。</description>
+    </item>
+    
     <item>
       <title>golang操作mongodb</title>
       <link>/blogdetail/5e8b4742bd7e796e71009fcc/</link>
@@ -25,6 +46,17 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
     </item>
     
     <item>
+      <title>mongodb创建新数据库和创建用户</title>
+      <link>/blogdetail/5e87e9ac75da9268a3e5993c/</link>
+      <pubDate>Sat, 04 Apr 2020 01:58:04 +0000</pubDate>
+      
+      <guid>/blogdetail/5e87e9ac75da9268a3e5993c/</guid>
+      <description>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
+db.createUser( {user: &amp;quot;hp_website&amp;quot;,pwd: &amp;quot;xxxxxx&amp;quot;,roles: [ { role: &amp;quot;userAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbOwner&amp;quot;, db: &amp;quot;website&amp;quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
+use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。</description>
+    </item>
+    
+    <item>
       <title>mongodb forEach替换文本</title>
       <link>/blogdetail/5bb08746f846d21847dc2aef/</link>
       <pubDate>Sun, 30 Sep 2018 08:20:22 +0000</pubDate>
@@ -32,6 +64,18 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
       <guid>/blogdetail/5bb08746f846d21847dc2aef/</guid>
       <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
 db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;)db.getCollection(&#39;blogs&#39;).save(item)print(&amp;quot;&amp;gt;&amp;gt;&amp;quot;, item.content);})</description>
+    </item>
+    
+    <item>
+      <title>mongoose查询没有响应</title>
+      <link>/blogdetail/5b90f19bb1f3aa6dab14313d/</link>
+      <pubDate>Thu, 06 Sep 2018 09:21:31 +0000</pubDate>
+      
+      <guid>/blogdetail/5b90f19bb1f3aa6dab14313d/</guid>
+      <description>使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
+const mongoose = require(&#39;mongoose&#39;);mongoose.connect(&#39;mongodb://localhost/my_database&#39;);使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = conn.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 可以工作vs
+const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = mongoose.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 不能工作</description>
     </item>
     
     <item>
@@ -56,6 +100,16 @@ mongodb导入数据 启动：
  ./mongorestore -v -h ip -u xxxx -p xxxx &amp;ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
  或导入整个目录
  ./mongorestore -v -h ip -u xxxx -p xxxx &amp;ndash;db=blogs &amp;ndash;drop /home/yuedun/download/xxxx.</description>
+    </item>
+    
+    <item>
+      <title>open() is deprecated in mongoose &gt;= 4.11.0, use openUri()</title>
+      <link>/blogdetail/5996a2dc9205bd72e7290ebb/</link>
+      <pubDate>Fri, 18 Aug 2017 08:18:36 +0000</pubDate>
+      
+      <guid>/blogdetail/5996a2dc9205bd72e7290ebb/</guid>
+      <description>`open()` is deprecated in mongoose &amp;gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;const opts = {// autoReconnect: false,//默认true// reconnectTries: 30,//尝试重连，默认30次// reconnectInterval: 1000, //重连间隔，默认1000毫秒loggerLevel: &amp;quot;warn&amp;quot;, //error/warn/info/debuguseMongoClient: true};mongoose.</description>
     </item>
     
     <item>
