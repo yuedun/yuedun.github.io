@@ -66,13 +66,6 @@
 				</a>
 			</li>
 			<li class="menu__item">
-				<a class="menu__link" href="/message/">
-					
-					<span class="menu__text">留言</span>
-					
-				</a>
-			</li>
-			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
 					<span class="menu__text">关于我</span>
@@ -89,28 +82,6 @@
 			<div class="primary">
 			
 <main class="main list" role="main"><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5449dac894f76294f5e60fe1/" rel="bookmark">
-			BAE上连接mongodb每隔十多小时就不能连接的问题(二)
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-24T04:51:20Z">2014-10-24 04:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/bae/" rel="category">BAE</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		前段时间写了《BAE上连接mongodb每隔十多小时就不能连接的问题(一)》之后暂时的解决了连不上的问题，每隔十小时重启一次，但是这个方法却没有彻底解决问题，偶尔还会出现三四小时就连不上，实在搞不懂问题到底出在哪，到底是bae的mongodb的问题还是mongoose中间件的问题，现象是有做open操作，但是却没有open事件发出，那么我想是不是mongoose存在bug，翻看了源码也没看出来个所以然，不过大概是觉得要重新打开需要保证连接已经关闭的，那么干脆在监听到error事件时就将状态直接改为disconnected，反正是要调用db.close()方法进行关闭连接的，可能close()方法不好使，没有完全关闭，如果我手动将状态设为disconnected，close方法中也会判断是否是这个状态，如果是就直接返回，省的多走其他步骤了。不过这样一来就不会有close事件发出了，根据我所写代码的逻辑，那就不会调用open()方法了，但实际情况确实程序可以正常运行，说明已经重连上了，原来在代码中添加了这个属性：
-Js代码 :
-var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: true
-}, user: username, pass: password };  上面的红色字体，只能说是可能这个参数起作用了。
- 不过由此看来，auto_reconect这个参数要起作用必须是在连接断开的情况下，说明close()方法有时候并没有完全断开连接。
-	</div>
-</article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/54488218aedc6cf109b96d32/" rel="bookmark">
@@ -400,9 +371,6 @@ app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //�
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/ssh/">SSH</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
