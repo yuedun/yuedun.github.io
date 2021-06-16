@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>golang on 月盾的博客</title>
+    <title>golang on 月盾的个人博客</title>
     <link>/tags/golang/</link>
-    <description>Recent content in golang on 月盾的博客</description>
+    <description>Recent content in golang on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 19 Jun 2020 07:57:09 +0000</lastBuildDate><atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
@@ -36,6 +36,23 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
     </item>
     
     <item>
+      <title>部署golang到服务器</title>
+      <link>/blogdetail/5c70f2074a7b7e6cd8086a1f/</link>
+      <pubDate>Sat, 23 Feb 2019 07:11:03 +0000</pubDate>
+      
+      <guid>/blogdetail/5c70f2074a7b7e6cd8086a1f/</guid>
+      <description>说起将开发好的程序部署到服务上，常用的有两种方式：
+ 本地编译打包，上传到服务器 git push到远程仓库，在服务器上拉取（编译-打包）  无论以怎样的方式发布，都只有熟悉流程才能得心应手。今天我要说的是golang的部署流程。
+如果是在公司内，自然有专人负责发布事宜，也有公司暂无运维人员，这时还是由开发人员负责服务器发布工作，当然，CI/CD这类工具一般也没有搭建起来。但这并不影响我们快速发布。 得益于go的编译速度，整个发布过程可能也就2分钟，接下来说明一下我个人的发布流程:
+ 在项目目录下执行go打包命令  GOOS=linux GOARCH=amd64 go build 由于是要部署到Linux服务器上，所以加上GOOS=linux GOARCH=amd64就可以打包出对应系统的二进制可执行文件。可以将该命令写成脚本文件。
+ 推送代码到git仓库，这一步并不是必须，之所以需要这一步，是因为go只打包*.go文件，并不会打包静态文件，所以还需要把相关静态文件推送的git仓库以便拉取。
+  上传打包好的二进制可执行文件到服务器的项目目录下。为什么是项目目录？因为还有静态文件需要使用，所以服务器上也要有同样的项目结构。可借助一些工具来上传，我使用了rz命令来上传。
+  git pull代码，主要是拉取静态文件。
+  重启应用。
+  整个过程比较耗时的操作是上传文件和推拉代码，打包和重启应用反而很快，基本是两三秒完成。 golang相对于其他语言，在服务，器上不需要安装运行时，不像Java和nodejs都需要安装正确的运行时版本，go只需要把打包好的二进制可执行文件扔上去就可以执行。</description>
+    </item>
+    
+    <item>
       <title>go测试函数的编写及运行</title>
       <link>/blogdetail/5ac588446a513c7b8bfd72e6/</link>
       <pubDate>Thu, 05 Apr 2018 02:21:56 +0000</pubDate>
@@ -46,6 +63,24 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
 func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
  func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
 gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.</description>
+    </item>
+    
+    <item>
+      <title>Golang－ import 导入包的语法</title>
+      <link>/blogdetail/5aaf2e3da55bb1fd38001c70/</link>
+      <pubDate>Mon, 19 Mar 2018 03:27:57 +0000</pubDate>
+      
+      <guid>/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
+      <description>一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
+import(&amp;quot;fmt&amp;quot;)然后在代码里面可以通过如下的方式调用 fmt.Println(&amp;quot;hello world&amp;quot;)
+上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块： 相对路径 import &amp;quot;./model&amp;quot; //当前文件同一目录的model目录，但是不建议这种方式import 绝对路径 import &amp;quot;shorturl/model&amp;quot; //加载GOPATH/src/shorturl/model模块
+上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
+  点操作 有时候会看到如下的方式导入包import( . “fmt” ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的fmt.Println(“hello world”)可以省略的写成Println(“hello world”)
+  别名操作 别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字import( f “fmt” )别名操作调用包函数时前缀变成了重命名的前缀，即f.Println(“hello world”)
+  _操作 这个操作经常是让很多人费解的一个操作符，请看下面这个import import ( “database/sql” _ “github.com/ziutek/mymysql/godrv” ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
+  二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程： 
+通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
+原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457</description>
     </item>
     
   </channel>

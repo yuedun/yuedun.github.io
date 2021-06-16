@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>grpc on 月盾的博客</title>
+    <title>grpc on 月盾的个人博客</title>
     <link>/tags/grpc/</link>
-    <description>Recent content in grpc on 月盾的博客</description>
+    <description>Recent content in grpc on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 12 Feb 2019 14:12:03 +0000</lastBuildDate><atom:link href="/tags/grpc/index.xml" rel="self" type="application/rss+xml" />
@@ -28,6 +28,24 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
 在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
 upstream grpcservice {server localhost:50051;server localhost:50052;}server {listen 8080 http2;#需要加http2server_name localhost;location / {grpc_pass grpc://grpcservice;#以grpc为前缀}grpc_connect_timeout 10;}配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图：可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
 虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。 原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。 </description>
+    </item>
+    
+    <item>
+      <title>为什么需要RPC，而不是简单的HTTP接口</title>
+      <link>/blogdetail/5a375f52e9a4cf008860c09b/</link>
+      <pubDate>Mon, 18 Dec 2017 06:25:22 +0000</pubDate>
+      
+      <guid>/blogdetail/5a375f52e9a4cf008860c09b/</guid>
+      <description>目前有很多Java的RPC框架，有基于Json的，有基于XML，也有基于二进制对象的。
+论复杂度，RPC框架肯定是高于简单的HTTP接口的。但毋庸置疑，HTTP接口由于受限于HTTP协议，需要带HTTP请求头，导致传输起来效率或者说安全性不如RPC。
+现在问题是，遇到怎样的瓶颈了才需要或者说更适合用RPC（比如像阿里这么大的请求并发量，简单的HTTP肯定达不到预期），但问题是大家所在的公司，要有像阿里这么大的量是比较少的，甚至说1/1000的量可能都没有，那我们还需要使用RPC吗？
+技术应该不是为了使用新技术而去使用，而应该是旧技术存在某些瓶颈，存在难以支撑或者扩展性越老越差等问题暴露出来之后，用新技术来进行解决。
+那RPC最大的优点，或者说它相比简单的HTTP接口，它的优势、更适合它的业务场景是怎样呢？简单的HTTP又哪里不足，哪些场景明显不太适合呢？ RPC=Remote Produce Call 是一种技术的概念名词. HTTP是一种协议,RPC可以通过HTTP来实现,也可以通过Socket自己实现一套协议来实现.所以楼主可以换一个问法,为何RPC还有除HTTP 之外的实现法,有何必要.毕竟除了HTTP实现外,私有协议不具备通用性.那么我想唯一的答案就在于HTTP不能满足其业务场景的地方,所以这个就要具体 案例具体分析了. http接口是在接口不多、系统与系统交互较少的情况下，解决信息孤岛初期常使用的一种通信手段；优点就是简单、直接、开发方便。利用现成的http协议 进行传输。但是如果是一个大型的网站，内部子系统较多、接口非常多的情况下，RPC框架的好处就显示出来了，首先就是长链接，不必每次通信都要像http 一样去3次握手什么的，减少了网络开销；其次就是RPC框架一般都有注册中心，有丰富的监控管理；发布、下线接口、动态扩展等，对调用方来说是无感知、统 一化的操作。第三个来说就是安全性。最后就是最近流行的服务化架构、服务化治理，RPC框架是一个强力的支撑 rpc是一种概念，http也是rpc实现的一种方式。论复杂度，dubbo/hessian用起来是超级简单的。最近用dubbo和hessian比较多，http的几乎都被废弃了。
+至于为什么用，其实很简单，业务场景不一样。我最早的单位所有的代码都在一个工程里，一次要发布几百m的代码。这种架构是非常有利于小程序的。但是我们为什么要应用rpc层呢，一个功能，一套代码下来不就解决了么？我觉得有几个好处：
+1 灵活部署 2 解耦 至于为什么，当你用到的时候，你会体会。
+系统做大了，肯定是需要做微服务的。 现在我们做电商就是这样，单独有一个订单系统，支付系统，商品系统，用户系统。都是分开部署，单独上线的。 但我们交互是用HTTP接口来交互的，我想转用RPC，但问题是我现在还没发现为什么需要用RPC，我还没能理解它的作用和意义。
+用http交互其实就已经属于rpc了。 RPC:远程过程调用。RPC的核心并不在于使用什么协议。RPC的目的是让你在本地调用远程的方法，而对你来说这个调用是透明的，你并不知道这个调用的方法是部署哪里。通过RPC能解耦服务，这才是使用RPC的真正目的。RPC的原理主要用到了动态代理模式，至于http协议，只是传输协议而已。简单的实现可以参考spring remoting，复杂的实现可以参考dubbo。 RPC是一个软件结构概念，是构建分布式应用的理论基础。就好比为啥你家可以用到发电厂发出来的电？是因为电是可以传输的。至于用铜线还是用铁丝还是其他 种类的导线，也就是用http还是用其他协议的问题了。这个要看什么场景，对性能要求怎么样。比如在java中的最基本的就是RMI技术，它是java原 生的应用层分布式技术。我们可以肯定的是在传输性能方面，RMI的性能是优于HTTP的。那为啥很少用到这个技术？那是因为用这个有很多局限性，首先它要 保证传输的两端都要要用java实现，且两边需要有相同的对象类型和代理接口，不需要容器，但是加大了编程的难度，在应用内部的各个子系统之间还是会看到 他的身影，比如EJB就是基于rmi技术的。这就与目前的bs架构的软件大相径庭。用http必须要服务端位于http容器里面，这样减少了网络传输方面 的开发，只需要关注业务开发即可。所以在架构一个软件的时候，不能一定根据需求选定技术。
+转自：https://www.cnblogs.com/winner-0715/p/5847638.html</description>
     </item>
     
   </channel>
