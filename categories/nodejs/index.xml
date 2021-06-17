@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nodejs on 月盾的个人博客</title>
-    <link>/categories/nodejs/</link>
+    <link>https://www.yuedun.wang/categories/nodejs/</link>
     <description>Recent content in Nodejs on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 14 Jan 2021 08:18:05 +0000</lastBuildDate><atom:link href="/categories/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jan 2021 08:18:05 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/nodejs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>nestjs中使用携程Apollo配置中心</title>
-      <link>/blogdetail/5ffffe3d3f518207e7235250/</link>
+      <link>https://www.yuedun.wang/blogdetail/5ffffe3d3f518207e7235250/</link>
       <pubDate>Thu, 14 Jan 2021 08:18:05 +0000</pubDate>
       
-      <guid>/blogdetail/5ffffe3d3f518207e7235250/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5ffffe3d3f518207e7235250/</guid>
       <description>nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
 集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
 // main.ts import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdapter, NestExpressApplication } from &amp;#39;@nestjs/platform-express&amp;#39;; import { AppModule } from &amp;#39;./app.module&amp;#39;; import { MyLogger } from &amp;#39;./libs/mylog.service&amp;#39;; import { join } from &amp;#39;path&amp;#39;; const Apollo = require(&amp;#39;node-apollo&amp;#39;); const dotenv = require(&amp;#39;dotenv&amp;#39;); async function bootstrap() { try { const root = join(__dirname, &amp;#39;../&amp;#39;); let envFile = join(root, &amp;#39;.env&amp;#39;) dotenv.config({ &amp;#34;path&amp;#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.</description>
@@ -20,19 +20,19 @@
     
     <item>
       <title>使用pm2一键部署多个服务</title>
-      <link>/blogdetail/5e85a563c9109f0f909b52bf/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e85a563c9109f0f909b52bf/</link>
       <pubDate>Thu, 02 Apr 2020 08:42:11 +0000</pubDate>
       
-      <guid>/blogdetail/5e85a563c9109f0f909b52bf/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e85a563c9109f0f909b52bf/</guid>
       <description>pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  { // Applications part  &amp;#34;apps&amp;#34; : [{ &amp;#34;name&amp;#34; : &amp;#34;API&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;app.js&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;COMMON_VARIABLE&amp;#34;: &amp;#34;true&amp;#34; }, // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &amp;#34;env_production&amp;#34; : { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34; } },{ &amp;#34;name&amp;#34; : &amp;#34;WEB&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;web.js&amp;#34; }], // 部署部分  // Here you describe each environment  &amp;#34;deploy&amp;#34; : { &amp;#34;production&amp;#34; : { &amp;#34;user&amp;#34; : &amp;#34;node&amp;#34;, // 多主机配置  &amp;#34;host&amp;#34; : [&amp;#34;212.</description>
     </item>
     
     <item>
       <title>linux安装nodejs——快捷版</title>
-      <link>/blogdetail/5dd2378b00f24e1fd556d0c4/</link>
+      <link>https://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4/</link>
       <pubDate>Mon, 18 Nov 2019 06:17:47 +0000</pubDate>
       
-      <guid>/blogdetail/5dd2378b00f24e1fd556d0c4/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4/</guid>
       <description>前面写过一篇linux下安装nodejs，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。
 wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
 另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
@@ -41,29 +41,29 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
     
     <item>
       <title>nestjs框架中使用nunjucks模板引擎</title>
-      <link>/blogdetail/5cc807d6effb223a816d9114/</link>
+      <link>https://www.yuedun.wang/blogdetail/5cc807d6effb223a816d9114/</link>
       <pubDate>Tue, 30 Apr 2019 08:31:18 +0000</pubDate>
       
-      <guid>/blogdetail/5cc807d6effb223a816d9114/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5cc807d6effb223a816d9114/</guid>
       <description>main.ts
 import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdapter, NestExpressApplication, } from &amp;#39;@nestjs/platform-express&amp;#39;; import { AppModule } from &amp;#39;./app.module&amp;#39;; import nunjucks = require(&amp;#39;nunjucks&amp;#39;); import { join } from &amp;#39;path&amp;#39;; async function bootstrap() { const app = await NestFactory.create&amp;lt;NestExpressApplication&amp;gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &amp;#39;..&amp;#39;, &amp;#39;public&amp;#39;)); // NestFactory.create需要加泛型参数&amp;lt;NestExpressApplication&amp;gt;  app.setBaseViewsDir(join(__dirname, &amp;#39;..&amp;#39;, &amp;#39;views&amp;#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&amp;#39;views&amp;#39;, { ext:&amp;#39;njk&amp;#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&amp;gt; { }); } bootstrap(); app.</description>
     </item>
     
     <item>
       <title>typescript中导入koa-error后报错</title>
-      <link>/blogdetail/5b8e2ce2b1f3aa6dab143109/</link>
+      <link>https://www.yuedun.wang/blogdetail/5b8e2ce2b1f3aa6dab143109/</link>
       <pubDate>Tue, 04 Sep 2018 06:57:38 +0000</pubDate>
       
-      <guid>/blogdetail/5b8e2ce2b1f3aa6dab143109/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5b8e2ce2b1f3aa6dab143109/</guid>
       <description>无法重新声明块范围变量“onerror” 解决办法：打开tsconfig.json中的&amp;quot;lib&amp;quot;: [&amp;quot;es2015&amp;quot;, &amp;quot;es2016&amp;quot;, &amp;quot;es2017&amp;quot;]</description>
     </item>
     
     <item>
       <title>pm2设置NODE_ENV环境变量</title>
-      <link>/blogdetail/5a98c43ff4583f741c210b89/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a98c43ff4583f741c210b89/</link>
       <pubDate>Fri, 02 Mar 2018 03:25:51 +0000</pubDate>
       
-      <guid>/blogdetail/5a98c43ff4583f741c210b89/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a98c43ff4583f741c210b89/</guid>
       <description>nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量，可以临时设置
 设置方式一： linux：export NODE_ENV=development&amp;amp;&amp;amp; node app.js
 win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
@@ -77,10 +77,10 @@ win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
     
     <item>
       <title>pm2日志记录和日志分割</title>
-      <link>/blogdetail/5a69a8301f395d7179259c45/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a69a8301f395d7179259c45/</link>
       <pubDate>Thu, 25 Jan 2018 09:49:36 +0000</pubDate>
       
-      <guid>/blogdetail/5a69a8301f395d7179259c45/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a69a8301f395d7179259c45/</guid>
       <description>pm2介绍 pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。 最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。 总体来说就是有性能监控、自动重启、负载均衡的作用。
 pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路径：
 error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
@@ -91,10 +91,10 @@ pm2-logrotate配置
     
     <item>
       <title>pm2的fork模式和cluster模式的区别</title>
-      <link>/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</link>
       <pubDate>Wed, 17 Jan 2018 14:21:51 +0000</pubDate>
       
-      <guid>/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</guid>
       <description>pm2的fork模式和cluster模式的区别
 fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。 参考：http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2 运行非js语言必须设置运行模式为fork_mode
 cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。 ** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
@@ -104,30 +104,30 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
     
     <item>
       <title>sequelize外键关联报错SequelizeDatabaseError: Cant write; duplicate key in table #sql-454_d</title>
-      <link>/blogdetail/5a06d5989f088c0683b93d26/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a06d5989f088c0683b93d26/</link>
       <pubDate>Sat, 11 Nov 2017 10:48:56 +0000</pubDate>
       
-      <guid>/blogdetail/5a06d5989f088c0683b93d26/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a06d5989f088c0683b93d26/</guid>
       <description>Assistance.belongTo(User)会报以下错误：
 ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&amp;#39;t write; duplicate key in table &amp;#39;#sql-454_d&amp;#39; at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16) at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23) at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12) at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28) at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16) at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14) at Socket.&amp;lt;anonymous&amp;gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29) at emitOne (events.js:115:13) at Socket.emit (events.js:210:7) at addChunk (_stream_readable.js:264:12) at readableAddChunk (_stream_readable.js:251:11) at Socket.Readable.push (_stream_readable.js:209:10) at TCP.onread (net.</description>
     </item>
     
     <item>
       <title>typescript开发sequelize返回ModelInstance或null值无法获取属性值</title>
-      <link>/blogdetail/59f4a228f99acfed859c831e/</link>
+      <link>https://www.yuedun.wang/blogdetail/59f4a228f99acfed859c831e/</link>
       <pubDate>Sat, 28 Oct 2017 15:28:40 +0000</pubDate>
       
-      <guid>/blogdetail/59f4a228f99acfed859c831e/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/59f4a228f99acfed859c831e/</guid>
       <description>从图片中的代码可以看出 let userRecord = await item.getUser();获取到的是Bluebird&amp;lt;UserInstance | null&amp;gt;类型，然后在下面获取对象属性的时候报错，错误信息是：
 [ts] Object is possibly &#39;null&#39;.let userRecord: UserInstance | null说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &amp;quot;strictNullChecks&amp;quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。</description>
     </item>
     
     <item>
       <title>sequelize.js不能将驼峰camelCased命名转化为下划线underscored命名</title>
-      <link>/blogdetail/59eab23989faeadc30eac826/</link>
+      <link>https://www.yuedun.wang/blogdetail/59eab23989faeadc30eac826/</link>
       <pubDate>Sat, 21 Oct 2017 02:34:33 +0000</pubDate>
       
-      <guid>/blogdetail/59eab23989faeadc30eac826/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/59eab23989faeadc30eac826/</guid>
       <description>定义Model的时候有这样两个参数： underscored,underscoredAll,
  Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
  其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
@@ -136,29 +136,29 @@ var Model = sequelize.define&amp;lt;ModelInstance, ModelAttributes&amp;gt;( &amp
     
     <item>
       <title>Unhandled rejection CastError: Cast to ObjectId failed for value catalog at path _id for model Blog</title>
-      <link>/blogdetail/599cf46c1bffdb00880597b3/</link>
+      <link>https://www.yuedun.wang/blogdetail/599cf46c1bffdb00880597b3/</link>
       <pubDate>Wed, 23 Aug 2017 03:20:12 +0000</pubDate>
       
-      <guid>/blogdetail/599cf46c1bffdb00880597b3/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/599cf46c1bffdb00880597b3/</guid>
       <description>Unhandled rejection CastError: Cast to ObjectId failed for value &amp;quot;catalog&amp;quot; at path &amp;quot;_id&amp;quot; for model &amp;quot;Blog&amp;quot;at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11)at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13)at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15)at ObjectId.castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:189:15)at ObjectId.SchemaType.castForQueryWrapper (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1021:15)at cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\cast.js:269:32)at Query.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:3103:12)at Query._castConditions (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1144:10)at Query._findOne (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1346:8)at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:250:8at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:23:7at nextTickCallbackWith0Args (node.js:489:9)at process._tickCallback (node.js:418:13)From previous event:at Query.exec (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2897:17)at Query.then (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2945:15)at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10)at e:\workspace\yuedun_ts\app.ts:53:14at Layer.</description>
     </item>
     
     <item>
       <title>Sequelize批量插入数据</title>
-      <link>/blogdetail/5967123a3d2aae2ccfdc61a3/</link>
+      <link>https://www.yuedun.wang/blogdetail/5967123a3d2aae2ccfdc61a3/</link>
       <pubDate>Thu, 13 Jul 2017 06:24:58 +0000</pubDate>
       
-      <guid>/blogdetail/5967123a3d2aae2ccfdc61a3/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5967123a3d2aae2ccfdc61a3/</guid>
       <description>sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
 User.bulkCreate([ { username: &amp;#39;barfooz&amp;#39;, isAdmin: true }, { username: &amp;#39;foo&amp;#39;, isAdmin: true }, { username: &amp;#39;bar&amp;#39;, isAdmin: false } ]).then(() =&amp;gt; { // Notice: There are no arguments here, as of right now you&amp;#39;ll have to...  return User.findAll(); }).then(users =&amp;gt; { console.log(users) // ... in order to get the array of user objects }) </description>
     </item>
     
     <item>
       <title>nodejs中promise的if流程控制</title>
-      <link>/blogdetail/591c5eac35b6751981e4681e/</link>
+      <link>https://www.yuedun.wang/blogdetail/591c5eac35b6751981e4681e/</link>
       <pubDate>Wed, 17 May 2017 14:31:08 +0000</pubDate>
       
-      <guid>/blogdetail/591c5eac35b6751981e4681e/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/591c5eac35b6751981e4681e/</guid>
       <description>nodejs中promise的if流程控制 Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
  假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
  var fs = require(&amp;#34;fs&amp;#34;); function queue(){ return new Promise((resolve, reject)=&amp;gt;{ fs.readFile(&amp;#34;../queue.txt&amp;#34;, &amp;#34;utf8&amp;#34;, (err, data)=&amp;gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&amp;gt;{ fs.writeFile(&amp;#39;../account.txt&amp;#39;, id+&amp;#39;一个新账户&amp;#39;, (err) =&amp;gt; { if (err) reject(err); console.log(&amp;#39;办卡成功!&amp;#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&amp;gt;{ fs.writeFile(&amp;#39;../money.txt&amp;#39;, id+&amp;#39;存了10万&amp;#39;, (err) =&amp;gt; { if (err) reject(err); console.log(&amp;#39;存款成功!&amp;#39;); resolve(); }); }) } //入口 function enter(id) { Promise.</description>
@@ -166,10 +166,10 @@ User.bulkCreate([ { username: &amp;#39;barfooz&amp;#39;, isAdmin: true }, { user
     
     <item>
       <title>typescript泛型的使用方法</title>
-      <link>/blogdetail/590c93d3266e3f1c8fd4aa83/</link>
+      <link>https://www.yuedun.wang/blogdetail/590c93d3266e3f1c8fd4aa83/</link>
       <pubDate>Fri, 05 May 2017 15:01:39 +0000</pubDate>
       
-      <guid>/blogdetail/590c93d3266e3f1c8fd4aa83/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/590c93d3266e3f1c8fd4aa83/</guid>
       <description>typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
 function a(args: number ): number {return args;}console.log(a(123));又有另外一个要求，参数为string类型，并且返回string
 function b(args: string ): string {return args;}console.log(b(&amp;quot;sdg&amp;quot;));如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
@@ -180,19 +180,19 @@ function d&amp;lt;A&amp;gt;(args: A ): A {let n = args + &amp;quot;变成了字
     
     <item>
       <title> error TS7010: skipTo, which lacks return-type annotation, implicitly has an any return type.</title>
-      <link>/blogdetail/58f8c22ae17cc00088e5ba4f/</link>
+      <link>https://www.yuedun.wang/blogdetail/58f8c22ae17cc00088e5ba4f/</link>
       <pubDate>Thu, 20 Apr 2017 14:14:02 +0000</pubDate>
       
-      <guid>/blogdetail/58f8c22ae17cc00088e5ba4f/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/58f8c22ae17cc00088e5ba4f/</guid>
       <description>node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: &#39;skipTo&#39;, which lacks return-type annotation, implicitly has an &#39;any&#39; return type.缺少返回类型的注释，隐含地具有&amp;rsquo;any&amp;rsquo;返回类型。 tsconfig.json配置文件中noImplicitAny设置为false,该选项的意思是：在表达式和声明上有隐含的&amp;rsquo;any&amp;rsquo;类型时报错。</description>
     </item>
     
     <item>
       <title>使用typescript开发nodejs的环境搭建（二）</title>
-      <link>/blogdetail/58243e338fa26c04fd124ee6/</link>
+      <link>https://www.yuedun.wang/blogdetail/58243e338fa26c04fd124ee6/</link>
       <pubDate>Thu, 10 Nov 2016 09:30:27 +0000</pubDate>
       
-      <guid>/blogdetail/58243e338fa26c04fd124ee6/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/58243e338fa26c04fd124ee6/</guid>
       <description>完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
 typescript编译配置
 { &amp;#34;compilerOptions&amp;#34;: { &amp;#34;module&amp;#34;: &amp;#34;commonjs&amp;#34;,//模块化规范  &amp;#34;target&amp;#34;: &amp;#34;es5&amp;#34;,//生成js  &amp;#34;noImplicitAny&amp;#34;: true,//在表达式和声明上有隐含的&amp;#39;any&amp;#39;类型时报错  &amp;#34;noImplicitReturns&amp;#34;: true,//函数没有返回值提示  &amp;#34;noFallthroughCasesInSwitch&amp;#34;: true,//switch没有break提示  &amp;#34;removeComments&amp;#34;: true,//输出文件移除注释  &amp;#34;noEmitOnError&amp;#34;: true,//ts文件错误时不生成js  &amp;#34;rootDir&amp;#34;: &amp;#34;./&amp;#34;,//需要编译的根目录  &amp;#34;outDir&amp;#34;: &amp;#34;./build&amp;#34;,//编译文件输出目录  &amp;#34;sourceMap&amp;#34;: ture//是否生成.map文件，用于ts debug调试  }, &amp;#34;include&amp;#34;: [ &amp;#34;*/**/*.ts&amp;#34; ], &amp;#34;exclude&amp;#34;: [ //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
@@ -203,10 +203,10 @@ vscode编译typescript配置
     
     <item>
       <title>TypeScript中的装饰器Decorato什么时候执行？</title>
-      <link>/blogdetail/58037ab767a381257039c926/</link>
+      <link>https://www.yuedun.wang/blogdetail/58037ab767a381257039c926/</link>
       <pubDate>Sun, 16 Oct 2016 13:03:51 +0000</pubDate>
       
-      <guid>/blogdetail/58037ab767a381257039c926/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/58037ab767a381257039c926/</guid>
       <description>ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启experimentalDecorators。
 命令行编译
  tsc --target ES5 --experimentalDecorators /test.ts
@@ -218,10 +218,10 @@ tsconfig.json:
     
     <item>
       <title>使用typescript开发nodejs的环境搭建（一）</title>
-      <link>/blogdetail/57fcf50869c8bf6e323dff48/</link>
+      <link>https://www.yuedun.wang/blogdetail/57fcf50869c8bf6e323dff48/</link>
       <pubDate>Tue, 11 Oct 2016 14:19:52 +0000</pubDate>
       
-      <guid>/blogdetail/57fcf50869c8bf6e323dff48/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/57fcf50869c8bf6e323dff48/</guid>
       <description>在一切开始之前先具备的开发环境：
   nodejs4.0+
   推荐的开发工具vscode
@@ -238,10 +238,10 @@ tsconfig.json:
     
     <item>
       <title>使用半年TypeScript后的感受</title>
-      <link>/blogdetail/57fb9d3169c8bf6e323dff46/</link>
+      <link>https://www.yuedun.wang/blogdetail/57fb9d3169c8bf6e323dff46/</link>
       <pubDate>Mon, 10 Oct 2016 13:52:49 +0000</pubDate>
       
-      <guid>/blogdetail/57fb9d3169c8bf6e323dff46/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/57fb9d3169c8bf6e323dff46/</guid>
       <description>初识TypeScript 从入职新公司开始算，使用typescript已经有半年多了，这是一个创业公司使用nodejs开发的后台业务管理系统，已经做的很大了，支撑着公司每月千万人民币的业务处理。很多怀疑nodejs是否可以开发后台管理，作为一个过来人告诉你可以放心使用，现在的javascript早已不是10年前用来写前端特效的js了。美中不足的是nodejs对报表这类数据处理量较大的功能有点力不从心，经常拖垮系统，当然也不是完全不能用nodejs来处理报表，可以合理的使用子进程单独处理数据而不影响主进程。但还是不推荐。
 使用感受 其实起初对于typescript开发nodejs我是拒绝的，原因是建立起这个项目的人都走了，而这个项目结构实在是复杂，在windows下环境搭建费了好大精力，尤其是为了使用一个bcrypt加密包，需要安装Python,C++来编译，还不能使用nodejs0.12以上版本，最烦人的是每次修改文件后编译速度非常慢，这让我重新体验了开发JAVA时期的痛苦。而且服务启动方法也是前人自己编写shell脚本来同时编译前端文件和后端文件。并没有使用nodemon,supervisor这种监控工具。后来折腾发现可以直接使用vscode单独编译ts文件，一般12秒就编译完成，这与我之前的项目1秒修改重启相比还是慢了很多，不过也免强只能接受，此时只觉得如此麻烦和JAVA开发有什么区别！所以基于这些不好的体验我很不喜欢typescript。
 重新认识 最近又折腾了下我用纯nodejs开发的博客，突然发现，写起来确实不如typescript爽，主要是纯nodejs在webstorm和vscode上语法提示和错误提示较弱，而typescript则可以很好的提示并且在开发过程中就能发现一些很低级错误，不用等到运行时才发现。尤其是对ES6的支持比较完整，甚至可以使用async,await这些ES7提案中的特性。虽然现在高版本的nodejs已经支持一些新特性，但是并不是所有项目都可以使用高版本。如果说为什么要使用typescript，那就是typescript集合了js的快速和强类型语言的安全稳定，用于开发一些较大的项目绝对利大于弊。 尤其是对于一些多人合作的项目来说，typescript的强类型能够很好约束对象属性，参数传递，对后续的重构也起到至关重要的作用。 有人可能会担心降低开发效率，这一点大可不必担心，你定义类型消耗的时间会从强类型提示上补回来的。 接下来会写一篇完整的环境搭建教程：使用typescript开发nodejs的环境搭建（一）</description>
@@ -249,10 +249,10 @@ tsconfig.json:
     
     <item>
       <title>nodejs请求网络资源写到本地</title>
-      <link>/blogdetail/57c7f2301165e2677d137d65/</link>
+      <link>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</link>
       <pubDate>Thu, 01 Sep 2016 09:17:36 +0000</pubDate>
       
-      <guid>/blogdetail/57c7f2301165e2677d137d65/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</guid>
       <description>nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
 var request=require(&amp;amp;#39;request&amp;amp;#39;);var fs=require(&amp;amp;#39;fs&amp;amp;#39;);var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;amp;gt; {res.setEncoding(&amp;amp;#39;binary&amp;amp;#39;);//二进制（binary）FS.writeFile(&amp;amp;#39;out.png&amp;amp;#39;, body, &amp;amp;#39;binary&amp;amp;#39;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;amp;#39;file saved&amp;amp;#39;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
@@ -266,10 +266,10 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
     
     <item>
       <title>用java的思想方式写javascript</title>
-      <link>/blogdetail/56f15a4a3823e4e62593d4e2/</link>
+      <link>https://www.yuedun.wang/blogdetail/56f15a4a3823e4e62593d4e2/</link>
       <pubDate>Tue, 22 Mar 2016 14:44:26 +0000</pubDate>
       
-      <guid>/blogdetail/56f15a4a3823e4e62593d4e2/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/56f15a4a3823e4e62593d4e2/</guid>
       <description>javascript和java有相似之处也有很大区别，对于初学者来说很容易被名称迷惑，其实当初javascript就是借着java的顺风车进行推广的。
 由于javascript是动态语言，java是静态语言，所以两者在编写方式上有很大区别，主要是因为javascript没有类的概念，在ES6标准发布之前要构造一个对象需要用new关键字实例化一个function或者直接使用对象字面量。不过ES6标准的发布，使得javascript也可像java一样声明类了。
 在使用nodejs开发大型应用时需要到类的概念来封装一个复杂的逻辑，我们可以从现在开始逐步使用ES6开发，但是基于现有的支持环境，很多时候还得用ES5编写代码，那么这时候怎么来抽象一个类和实例化对象？
@@ -284,10 +284,10 @@ function Person(name, age){this.name = name;this.age = age;}Person.getAge = 
     
     <item>
       <title>sequelizejs删除对象属性</title>
-      <link>/blogdetail/5656ba78c72f59d15379b4ba/</link>
+      <link>https://www.yuedun.wang/blogdetail/5656ba78c72f59d15379b4ba/</link>
       <pubDate>Thu, 26 Nov 2015 07:53:28 +0000</pubDate>
       
-      <guid>/blogdetail/5656ba78c72f59d15379b4ba/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5656ba78c72f59d15379b4ba/</guid>
       <description>js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
 var objtest = {
@@ -336,10 +336,10 @@ user.getDataValue(&amp;amp;quot;friends&amp;amp;quot;)[0].setDataValue(&amp;amp;
     
     <item>
       <title>windows下使用脚本快速启动nodejs服务</title>
-      <link>/blogdetail/5624482861248de07b01887a/</link>
+      <link>https://www.yuedun.wang/blogdetail/5624482861248de07b01887a/</link>
       <pubDate>Mon, 19 Oct 2015 01:32:24 +0000</pubDate>
       
-      <guid>/blogdetail/5624482861248de07b01887a/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5624482861248de07b01887a/</guid>
       <description>每次启动node服务都要先打开cmd命令行，或者在win8下先打开文件资源管理器&amp;gt;文件&amp;gt;打开命令提示符，然后执行node命令，这样的过程真的很烦人，当然需要一个简单粗暴的方式启动了，就像用bat文件双击启动。
 首先，建一个空白文件，输入以下内容：
 E:
@@ -352,10 +352,10 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
     
     <item>
       <title>pm2在线监控</title>
-      <link>/blogdetail/55f2670ce893a5b0008e57fa/</link>
+      <link>https://www.yuedun.wang/blogdetail/55f2670ce893a5b0008e57fa/</link>
       <pubDate>Fri, 11 Sep 2015 05:30:52 +0000</pubDate>
       
-      <guid>/blogdetail/55f2670ce893a5b0008e57fa/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/55f2670ce893a5b0008e57fa/</guid>
       <description>先来一张效果图：
 
 由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。
@@ -367,10 +367,10 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
     
     <item>
       <title>使用nodemailer发送邮件</title>
-      <link>/blogdetail/55e518e0db5ac9c2be76b2fa/</link>
+      <link>https://www.yuedun.wang/blogdetail/55e518e0db5ac9c2be76b2fa/</link>
       <pubDate>Tue, 01 Sep 2015 03:17:52 +0000</pubDate>
       
-      <guid>/blogdetail/55e518e0db5ac9c2be76b2fa/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/55e518e0db5ac9c2be76b2fa/</guid>
       <description>var nodemailer = require(&amp;amp;#39;nodemailer&amp;amp;#39;);
 var transporter = nodemailer.createTransport({
 service: &amp;amp;#39;gmail&amp;amp;#39;,
@@ -391,10 +391,10 @@ text: &amp;amp;#39;hello world!&amp;amp;#39;
     
     <item>
       <title>sequelizejs中where条件与order排序的使用</title>
-      <link>/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</link>
+      <link>https://www.yuedun.wang/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</link>
       <pubDate>Fri, 28 Aug 2015 03:21:08 +0000</pubDate>
       
-      <guid>/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</guid>
       <description>最基本的where条件： ```js Post.findAll({ where: { authorId: 2 } }); // SELECT * FROM post WHERE authorId = 2
 Post.findAll({ where: { authorId: 12, status: active } });
 // SELECT * FROM post WHERE authorId = 12 AND status = &amp;lsquo;active&amp;rsquo;;
@@ -405,10 +405,10 @@ Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } });
     
     <item>
       <title>sequelize定义实体对象</title>
-      <link>/blogdetail/554ae5b3a07843eb8002a388/</link>
+      <link>https://www.yuedun.wang/blogdetail/554ae5b3a07843eb8002a388/</link>
       <pubDate>Thu, 07 May 2015 04:10:27 +0000</pubDate>
       
-      <guid>/blogdetail/554ae5b3a07843eb8002a388/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/554ae5b3a07843eb8002a388/</guid>
       <description>sequelize定义实体对象
 var sequelize = require(&#39;../utils/sequelizeDB&#39;);//连接数据库 var Sequelize = require(&#39;sequelize&#39;); var User = sequelize.define(&#39;User&#39;, {
 user_id:{ type: Sequelize.STRING, primaryKey: true},
@@ -426,10 +426,10 @@ define函数的第一个参数’User’就是定义一个实体对象，名称�
     
     <item>
       <title>node.js作为微信接口服务器</title>
-      <link>/blogdetail/5479b18a93ae2eb85f26b2d3/</link>
+      <link>https://www.yuedun.wang/blogdetail/5479b18a93ae2eb85f26b2d3/</link>
       <pubDate>Sat, 29 Nov 2014 11:44:10 +0000</pubDate>
       
-      <guid>/blogdetail/5479b18a93ae2eb85f26b2d3/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5479b18a93ae2eb85f26b2d3/</guid>
       <description>前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了
 /**
 * Created by huopanpan on 2014/10/10.
@@ -458,10 +458,10 @@ console.log(&amp;quot;signature:&amp;quot;+signature);</description>
     
     <item>
       <title>Nodejs核心常用工具</title>
-      <link>/blogdetail/5451f72e0eb53ef723e47bfe/</link>
+      <link>https://www.yuedun.wang/blogdetail/5451f72e0eb53ef723e47bfe/</link>
       <pubDate>Thu, 30 Oct 2014 08:30:38 +0000</pubDate>
       
-      <guid>/blogdetail/5451f72e0eb53ef723e47bfe/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5451f72e0eb53ef723e47bfe/</guid>
       <description>内容摘自《nodejs开发指南》
  util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能
 过于精简的不足。 util.inherits 
@@ -473,10 +473,10 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
     
     <item>
       <title>让你的Node.js应用跑得更快的10个技巧</title>
-      <link>/blogdetail/54488218aedc6cf109b96d32/</link>
+      <link>https://www.yuedun.wang/blogdetail/54488218aedc6cf109b96d32/</link>
       <pubDate>Thu, 23 Oct 2014 04:20:40 +0000</pubDate>
       
-      <guid>/blogdetail/54488218aedc6cf109b96d32/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/54488218aedc6cf109b96d32/</guid>
       <description>Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那么你就应该无所不用，让你的应用更快，异常的快。本文将介绍10条经过检验得知可大大提高Node速度的应用技巧。废话不多说，让我们逐条来看看。
 **1.**并行
 创建 Web 应用的时候，你可能要多次调用内部 API 来获取各种数据。比如说，假设在 Dashboard 页面上，你要执行下面这几个调用：
@@ -497,10 +497,10 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
     
     <item>
       <title>NodeJs中的express框架获取http参数  </title>
-      <link>/blogdetail/543fdff0bba99b9e56a705d1/</link>
+      <link>https://www.yuedun.wang/blogdetail/543fdff0bba99b9e56a705d1/</link>
       <pubDate>Thu, 16 Oct 2014 15:10:40 +0000</pubDate>
       
-      <guid>/blogdetail/543fdff0bba99b9e56a705d1/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/543fdff0bba99b9e56a705d1/</guid>
       <description>express获取参数有三种方法：官网介绍如下
  hecks route params (req.params), ex: /user/:id
   Checks query string params (req.query), ex: ?id=12

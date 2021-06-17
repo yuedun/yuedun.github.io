@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Consul on 月盾的个人博客</title>
-    <link>/tags/consul/</link>
+    <link>https://www.yuedun.wang/tags/consul/</link>
     <description>Recent content in Consul on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 14 Mar 2020 07:21:50 +0000</lastBuildDate><atom:link href="/tags/consul/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Mar 2020 07:21:50 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/consul/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>go-micro v2弃用了consul作为默认的服务发现</title>
-      <link>/blogdetail/5e6c860e5bd8165f28d2210b/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e6c860e5bd8165f28d2210b/</link>
       <pubDate>Sat, 14 Mar 2020 07:21:50 +0000</pubDate>
       
-      <guid>/blogdetail/5e6c860e5bd8165f28d2210b/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e6c860e5bd8165f28d2210b/</guid>
       <description>很遗憾，go-micro v2版本不再使用consul作为服务发现中间件，官方文档也没有consul相关的文档，而是默认改用了mdns，生产推荐etcd。
 问题：I can&amp;rsquo;t set registry with consul
 解答：《Deprecating Consul in favour of Etcd》
@@ -29,10 +29,10 @@
     
     <item>
       <title>服务发现：Zookeeper vs etcd vs Consul </title>
-      <link>/blogdetail/5c735c58e4d2f35bdd267d22/</link>
+      <link>https://www.yuedun.wang/blogdetail/5c735c58e4d2f35bdd267d22/</link>
       <pubDate>Mon, 25 Feb 2019 03:09:12 +0000</pubDate>
       
-      <guid>/blogdetail/5c735c58e4d2f35bdd267d22/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5c735c58e4d2f35bdd267d22/</guid>
       <description>【编者的话】本文对比了Zookeeper、etcd和Consul三种服务发现工具，探讨了最佳的服务发现解决方案，仅供参考。
 如果使用预定义的端口，服务越多，发生冲突的可能性越大，毕竟，不可能有两个服务监听同一个端口。管理一个拥挤的比方说被几百个服务所使用的所有端口的列表，本身就是一个挑战，添加到该列表后，这些服务需要的数据库和数量会日益增多。因此我们应该部署无需指定端口的服务，并且让Docker为我们分配一个随机的端口。唯一的问题是我们需要发现端口号，并且让别人知道。 当我们开始在一个分布式系统上部署服务到其中一台服务器上时，事情会变得更加复杂，我们可以选择预先定义哪台服务器运行哪个服务的方式，但这会导致很多问题。我们应该尽我们所能尽量利用服务器资源，但是如果预先定义每个服务的部署位置，那么要实现尽量利用服务器资源是几乎不可能的。另一个问题是服务的自动伸缩将会非常困难，更不用说自动恢复了，比方说服务器故障。另一方面，如果我们将服务部署到某台只有最少数量的容器在运行的服务器上，我们需要添加IP地址到数据列表中，这些数据需要可以被发现并存储在某处。 当我们需要存储和发现一些与正在工作的服务相关的信息时，还有很多其他的例子。
 为了能够定位服务，我们需要至少接下来的两个有用的步骤。 服务注册——该步骤存储的信息至少包括正在运行的服务的主机和端口信息 服务发现——该步骤允许其他用户可以发现在服务注册阶段存储的信息。

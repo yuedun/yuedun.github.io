@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on 月盾的个人博客</title>
-    <link>/categories/golang/</link>
+    <link>https://www.yuedun.wang/categories/golang/</link>
     <description>Recent content in Golang on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 02 Dec 2020 06:20:13 +0000</lastBuildDate><atom:link href="/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Dec 2020 06:20:13 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>go单元测试初始化</title>
-      <link>/blogdetail/5fc7321dc0ec0c27f57ace6e/</link>
+      <link>https://www.yuedun.wang/blogdetail/5fc7321dc0ec0c27f57ace6e/</link>
       <pubDate>Wed, 02 Dec 2020 06:20:13 +0000</pubDate>
       
-      <guid>/blogdetail/5fc7321dc0ec0c27f57ace6e/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5fc7321dc0ec0c27f57ace6e/</guid>
       <description>go单元测试会遇到这样的场景： 写好了service层函数getUser()。然后测试测试getUser函数。有个问题是，函数中使用了数据库连接，如果直接测试的话会报错误，比如空指针错误。
  panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
  如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
@@ -21,20 +21,20 @@ func TestMain(m *testing.M) { fmt.Println(&amp;#34;begin&amp;#34;) dba, err := g
     
     <item>
       <title>goquery 中文乱码</title>
-      <link>/blogdetail/5f1fb24c4536b06ac3897662/</link>
+      <link>https://www.yuedun.wang/blogdetail/5f1fb24c4536b06ac3897662/</link>
       <pubDate>Mon, 27 Jul 2020 13:09:20 +0000</pubDate>
       
-      <guid>/blogdetail/5f1fb24c4536b06ac3897662/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5f1fb24c4536b06ac3897662/</guid>
       <description>乱码的情况目前有两种可能：
  常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。  关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&amp;quot;Accept-Encoding&amp;quot;, &amp;quot;gzip, deflate&amp;quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。</description>
     </item>
     
     <item>
       <title>golang操作mongodb</title>
-      <link>/blogdetail/5e8b4742bd7e796e71009fcc/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e8b4742bd7e796e71009fcc/</link>
       <pubDate>Mon, 06 Apr 2020 15:14:10 +0000</pubDate>
       
-      <guid>/blogdetail/5e8b4742bd7e796e71009fcc/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e8b4742bd7e796e71009fcc/</guid>
       <description>在之前mgo是一个使用广泛的mongodb驱动器，不过从2018年开始已不再维护，虽然觉得怪可惜的，但也不推荐使用了，毕竟mongodb本身一直在迭代，如果驱动器不更新后续也没法使用。 详细说明见仓库:https://github.com/go-mgo/mgo
 而mongodb提供了官方驱动，目前能找到的中文文档大多比较旧了，推荐直接看官方文档，有完整的操作手册:https://www.mongodb.com/blog/search/golang 本文也不想做一次搬运工，毕竟也不能随时保持更新，还是直接看官方文档比较好。下面列出一些主要的文章链接:
 Stack Overflow Research of 100,000 Developers Finds MongoDB is the Most Wanted Database (2019-2-2)
@@ -48,10 +48,10 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
     
     <item>
       <title>gorm模糊查询和分页查询同时查总条数</title>
-      <link>/blogdetail/5e815979c9109f0f909b4cdd/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e815979c9109f0f909b4cdd/</link>
       <pubDate>Mon, 30 Mar 2020 02:29:13 +0000</pubDate>
       
-      <guid>/blogdetail/5e815979c9109f0f909b4cdd/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e815979c9109f0f909b4cdd/</guid>
       <description>gorm概述  全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好  已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
 func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { if search.Name != &amp;#34;&amp;#34; { u.mysql = u.mysql.Where(&amp;#34;name LIKE ?&amp;#34;, search.Name+&amp;#34;%&amp;#34;) } if search.Category != &amp;#34;&amp;#34; { u.mysql = u.mysql.Where(&amp;#34;age =?&amp;#34;, search.Age) } err = u.mysql.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
 1.if代码是动态组装条件。
@@ -61,10 +61,10 @@ func (u *userService) GetuserList(offset, limit int, search User) (users []User,
     
     <item>
       <title>go-micro线上部署，注册服务到etcd</title>
-      <link>/blogdetail/5e709b485bd8165f28d22394/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e709b485bd8165f28d22394/</link>
       <pubDate>Tue, 17 Mar 2020 09:41:28 +0000</pubDate>
       
-      <guid>/blogdetail/5e709b485bd8165f28d22394/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e709b485bd8165f28d22394/</guid>
       <description>线上部署 在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。 linux系统需要这样编译：GOOS=linux go build -o service main.go，就是在windows系统上进行交叉编译，可根据自己服务器情况修改参数。
 go build -o service main.go go build -o api api/api.go 线上的restful api也不能使用micro api了。需要选择适合自己的web服务框架，在web服务中调用api服务。
 etcd启动 线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。
@@ -73,10 +73,10 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
     
     <item>
       <title>go-micro v2弃用了consul作为默认的服务发现</title>
-      <link>/blogdetail/5e6c860e5bd8165f28d2210b/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e6c860e5bd8165f28d2210b/</link>
       <pubDate>Sat, 14 Mar 2020 07:21:50 +0000</pubDate>
       
-      <guid>/blogdetail/5e6c860e5bd8165f28d2210b/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e6c860e5bd8165f28d2210b/</guid>
       <description>很遗憾，go-micro v2版本不再使用consul作为服务发现中间件，官方文档也没有consul相关的文档，而是默认改用了mdns，生产推荐etcd。
 问题：I can&amp;rsquo;t set registry with consul
 解答：《Deprecating Consul in favour of Etcd》
@@ -93,10 +93,10 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
     
     <item>
       <title>beego httplib库使用方法</title>
-      <link>/blogdetail/5e216204567cde49c49187f1/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e216204567cde49c49187f1/</link>
       <pubDate>Thu, 16 Jan 2020 14:28:04 +0000</pubDate>
       
-      <guid>/blogdetail/5e216204567cde49c49187f1/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e216204567cde49c49187f1/</guid>
       <description>beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。 常用的模块有以下这些：
  session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块  本文要讲解的是httplib客户端请求的使用。
 日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用httplib。
@@ -108,10 +108,10 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
     
     <item>
       <title>部署golang到服务器</title>
-      <link>/blogdetail/5c70f2074a7b7e6cd8086a1f/</link>
+      <link>https://www.yuedun.wang/blogdetail/5c70f2074a7b7e6cd8086a1f/</link>
       <pubDate>Sat, 23 Feb 2019 07:11:03 +0000</pubDate>
       
-      <guid>/blogdetail/5c70f2074a7b7e6cd8086a1f/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5c70f2074a7b7e6cd8086a1f/</guid>
       <description>说起将开发好的程序部署到服务上，常用的有两种方式：
  本地编译打包，上传到服务器 git push到远程仓库，在服务器上拉取（编译-打包）  无论以怎样的方式发布，都只有熟悉流程才能得心应手。今天我要说的是golang的部署流程。
 如果是在公司内，自然有专人负责发布事宜，也有公司暂无运维人员，这时还是由开发人员负责服务器发布工作，当然，CI/CD这类工具一般也没有搭建起来。但这并不影响我们快速发布。 得益于go的编译速度，整个发布过程可能也就2分钟，接下来说明一下我个人的发布流程:
@@ -125,10 +125,10 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
     
     <item>
       <title>go语言开发grpc——安装grpc</title>
-      <link>/blogdetail/5c63b5334a7b7e6cd808697a/</link>
+      <link>https://www.yuedun.wang/blogdetail/5c63b5334a7b7e6cd808697a/</link>
       <pubDate>Tue, 12 Feb 2019 14:12:03 +0000</pubDate>
       
-      <guid>/blogdetail/5c63b5334a7b7e6cd808697a/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5c63b5334a7b7e6cd808697a/</guid>
       <description>一、安装gRPC  $ go get -u google.golang.org/grpc
  package google.golang.org/grpc: unrecognized import path &amp;quot;google.golang.org/grpc&amp;quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.)grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
 git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.</description>
@@ -136,10 +136,10 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
     
     <item>
       <title>go实现文件下载</title>
-      <link>/blogdetail/5b3604876b5bf65ca5031db7/</link>
+      <link>https://www.yuedun.wang/blogdetail/5b3604876b5bf65ca5031db7/</link>
       <pubDate>Fri, 29 Jun 2018 13:05:59 +0000</pubDate>
       
-      <guid>/blogdetail/5b3604876b5bf65ca5031db7/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5b3604876b5bf65ca5031db7/</guid>
       <description>go可以很容易实现一个文件服务器，只需要使用函数 func ServeFile(w ResponseWriter, r *Request, name string)即可。
 package main import ( &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;fmt&amp;#34; ) func helloHandler(res http.ResponseWriter, req *http.Request) { http.ServeFile(res, req, &amp;#34;E:/go-work/src/go-learning/foo.xlsx&amp;#34;) } func main() { fmt.Println(&amp;#34;web服务启动成功，可在浏览器中访问：localhost:8081&amp;#34;) http.HandleFunc(&amp;#34;/file&amp;#34;, helloHandler) http.Handle(&amp;#34;/&amp;#34;, http.FileServer(http.Dir(&amp;#34;E:/go-work/src/go-learning/&amp;#34;))) err := http.ListenAndServe(&amp;#34;:8081&amp;#34;, nil) if err != nil { log.Fatal(&amp;#34;ListenAndServe:&amp;#34;, err.Error()) } } 查看go文档除了翻墙访问https://golang.org
 还可以访问国内镜像：https://golang.google.cn/
@@ -150,10 +150,10 @@ package main import ( &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;
     
     <item>
       <title>beego注解路由404</title>
-      <link>/blogdetail/5ad46aebb9be3f8e30daaea8/</link>
+      <link>https://www.yuedun.wang/blogdetail/5ad46aebb9be3f8e30daaea8/</link>
       <pubDate>Sun, 15 Apr 2018 13:21:36 +0000</pubDate>
       
-      <guid>/blogdetail/5ad46aebb9be3f8e30daaea8/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5ad46aebb9be3f8e30daaea8/</guid>
       <description>beego注解路由匹配不到，返回404页面 router.go使用了两种方式注册路由：
 ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, beego.NSRouter(&amp;#34;/&amp;#34;, &amp;amp;controllers.UserController{}, &amp;#34;get:Welcome&amp;#34;), beego.NSInclude( &amp;amp;controllers.UserController{}, ), controller中的路由注解设置：
 // @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&amp;#34;json&amp;#34;] = ErrorMsg(err) } c.Data[&amp;#34;json&amp;#34;] = users c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
@@ -163,20 +163,20 @@ ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, beego.NSRouter(&amp;#34;/&amp
     
     <item>
       <title>go并发获取数据</title>
-      <link>/blogdetail/5acb49ba45213aca5fde59e1/</link>
+      <link>https://www.yuedun.wang/blogdetail/5acb49ba45213aca5fde59e1/</link>
       <pubDate>Mon, 09 Apr 2018 11:08:42 +0000</pubDate>
       
-      <guid>/blogdetail/5acb49ba45213aca5fde59e1/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5acb49ba45213aca5fde59e1/</guid>
       <description>go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
 package main import ( &amp;#34;sync&amp;#34; &amp;#34;time&amp;#34; &amp;#34;fmt&amp;#34; ) func main() { syncFunc() fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) asyncFunc() fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&amp;#34;syncFunc start:&amp;#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&amp;#34;syncFunc end:&amp;#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.</description>
     </item>
     
     <item>
       <title>go测试函数的编写及运行</title>
-      <link>/blogdetail/5ac588446a513c7b8bfd72e6/</link>
+      <link>https://www.yuedun.wang/blogdetail/5ac588446a513c7b8bfd72e6/</link>
       <pubDate>Thu, 05 Apr 2018 02:21:56 +0000</pubDate>
       
-      <guid>/blogdetail/5ac588446a513c7b8bfd72e6/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5ac588446a513c7b8bfd72e6/</guid>
       <description>go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内，所有以_test.go为后缀名的源文件并不是go build构建包的一部分，它们是go test测试的一部分。 在\*_test.go文件中，有三种类型的函数：测试函数、基准测试函数、示例函数。一个测试函数是以Test为函数名前缀的函数，用于测试程序的一些逻辑行为是否正确； go test命令会调用这些测试函数并报告测试结果是PASS或FAIL。基准测试函数是以Benchmark为函数名前缀的函数，它们用于衡量一些函数的性能；go test命令会多次运行基准函数以计算一个平均的执行时间。示例函数是以Example为函数名前缀的函数，提供一个由编译器保证正确性的示例文档。
 测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
 func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
@@ -186,10 +186,10 @@ gopl.io/ch11/word1 // Package word provides utilities for word games. package wo
     
     <item>
       <title>Golang－ import 导入包的语法</title>
-      <link>/blogdetail/5aaf2e3da55bb1fd38001c70/</link>
+      <link>https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/</link>
       <pubDate>Mon, 19 Mar 2018 03:27:57 +0000</pubDate>
       
-      <guid>/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
       <description>一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
 import(&amp;quot;fmt&amp;quot;)然后在代码里面可以通过如下的方式调用 fmt.Println(&amp;quot;hello world&amp;quot;)
 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块： 相对路径 import &amp;quot;./model&amp;quot; //当前文件同一目录的model目录，但是不建议这种方式import 绝对路径 import &amp;quot;shorturl/model&amp;quot; //加载GOPATH/src/shorturl/model模块
@@ -204,10 +204,10 @@ import(&amp;quot;fmt&amp;quot;)然后在代码里面可以通过如下的方�
     
     <item>
       <title>go语言实现继承，重写</title>
-      <link>/blogdetail/5944b81d9d957900957feff6/</link>
+      <link>https://www.yuedun.wang/blogdetail/5944b81d9d957900957feff6/</link>
       <pubDate>Fri, 16 Jun 2017 15:03:25 +0000</pubDate>
       
-      <guid>/blogdetail/5944b81d9d957900957feff6/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5944b81d9d957900957feff6/</guid>
       <description>以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
 package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&amp;#34;获取用户名：&amp;#34;, user.name) } func main() { user := new(User) user.name=&amp;#34;张三&amp;#34; user.age=26 user.createdAt=time.Now() fmt.Println(&amp;#34;user.createdAt&amp;#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) fmt.Println(&amp;#34;userpj.createdAt&amp;#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
 # command-line-arguments.</description>
@@ -215,10 +215,10 @@ package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type Use
     
     <item>
       <title>基于beego框架的go项目目录结构</title>
-      <link>/blogdetail/59278639c1abbe00911df03c/</link>
+      <link>https://www.yuedun.wang/blogdetail/59278639c1abbe00911df03c/</link>
       <pubDate>Thu, 25 May 2017 15:34:49 +0000</pubDate>
       
-      <guid>/blogdetail/59278639c1abbe00911df03c/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/59278639c1abbe00911df03c/</guid>
       <description>原生的go推荐目录是
 ├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
 .src\├─project1├─project2├─project3所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
@@ -227,10 +227,10 @@ package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type Use
     
     <item>
       <title>beego post请求获取request body参数</title>
-      <link>/blogdetail/57d6aaa7471c11fa271ed1bb/</link>
+      <link>https://www.yuedun.wang/blogdetail/57d6aaa7471c11fa271ed1bb/</link>
       <pubDate>Mon, 12 Sep 2016 13:16:23 +0000</pubDate>
       
-      <guid>/blogdetail/57d6aaa7471c11fa271ed1bb/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/57d6aaa7471c11fa271ed1bb/</guid>
       <description>为了获取json类型的参数煞费苦心，差点不再爱了。
 前端请求代码：
 $.ajax({ url: &amp;#34;/user&amp;#34;, type: &amp;#34;post&amp;#34;, data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &amp;#34;json&amp;#34; }).done(function(res) { if(res.result){ alert(&amp;#34;成功&amp;#34;) } }); 后端接收代码：

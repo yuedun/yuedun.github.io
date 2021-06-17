@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on 月盾的个人博客</title>
-    <link>/tags/golang/</link>
+    <link>https://www.yuedun.wang/tags/golang/</link>
     <description>Recent content in golang on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 19 Jun 2020 07:57:09 +0000</lastBuildDate><atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Jun 2020 07:57:09 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>go mongo-driver动态条件</title>
-      <link>/blogdetail/5eec6fd5e8775d3b7f2ee79c/</link>
+      <link>https://www.yuedun.wang/blogdetail/5eec6fd5e8775d3b7f2ee79c/</link>
       <pubDate>Fri, 19 Jun 2020 07:57:09 +0000</pubDate>
       
-      <guid>/blogdetail/5eec6fd5e8775d3b7f2ee79c/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5eec6fd5e8775d3b7f2ee79c/</guid>
       <description>在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&amp;ldquo;someKey&amp;rdquo;]=&amp;ldquo;someValue&amp;rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
 //构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) log.Println(condition) if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), condition).Decode(&amp;amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
 search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
@@ -20,10 +20,10 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
     
     <item>
       <title>golang操作mongodb</title>
-      <link>/blogdetail/5e8b4742bd7e796e71009fcc/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e8b4742bd7e796e71009fcc/</link>
       <pubDate>Mon, 06 Apr 2020 15:14:10 +0000</pubDate>
       
-      <guid>/blogdetail/5e8b4742bd7e796e71009fcc/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e8b4742bd7e796e71009fcc/</guid>
       <description>在之前mgo是一个使用广泛的mongodb驱动器，不过从2018年开始已不再维护，虽然觉得怪可惜的，但也不推荐使用了，毕竟mongodb本身一直在迭代，如果驱动器不更新后续也没法使用。 详细说明见仓库:https://github.com/go-mgo/mgo
 而mongodb提供了官方驱动，目前能找到的中文文档大多比较旧了，推荐直接看官方文档，有完整的操作手册:https://www.mongodb.com/blog/search/golang 本文也不想做一次搬运工，毕竟也不能随时保持更新，还是直接看官方文档比较好。下面列出一些主要的文章链接:
 Stack Overflow Research of 100,000 Developers Finds MongoDB is the Most Wanted Database (2019-2-2)
@@ -37,10 +37,10 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
     
     <item>
       <title>部署golang到服务器</title>
-      <link>/blogdetail/5c70f2074a7b7e6cd8086a1f/</link>
+      <link>https://www.yuedun.wang/blogdetail/5c70f2074a7b7e6cd8086a1f/</link>
       <pubDate>Sat, 23 Feb 2019 07:11:03 +0000</pubDate>
       
-      <guid>/blogdetail/5c70f2074a7b7e6cd8086a1f/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5c70f2074a7b7e6cd8086a1f/</guid>
       <description>说起将开发好的程序部署到服务上，常用的有两种方式：
  本地编译打包，上传到服务器 git push到远程仓库，在服务器上拉取（编译-打包）  无论以怎样的方式发布，都只有熟悉流程才能得心应手。今天我要说的是golang的部署流程。
 如果是在公司内，自然有专人负责发布事宜，也有公司暂无运维人员，这时还是由开发人员负责服务器发布工作，当然，CI/CD这类工具一般也没有搭建起来。但这并不影响我们快速发布。 得益于go的编译速度，整个发布过程可能也就2分钟，接下来说明一下我个人的发布流程:
@@ -54,10 +54,10 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
     
     <item>
       <title>go测试函数的编写及运行</title>
-      <link>/blogdetail/5ac588446a513c7b8bfd72e6/</link>
+      <link>https://www.yuedun.wang/blogdetail/5ac588446a513c7b8bfd72e6/</link>
       <pubDate>Thu, 05 Apr 2018 02:21:56 +0000</pubDate>
       
-      <guid>/blogdetail/5ac588446a513c7b8bfd72e6/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5ac588446a513c7b8bfd72e6/</guid>
       <description>go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内，所有以_test.go为后缀名的源文件并不是go build构建包的一部分，它们是go test测试的一部分。 在\*_test.go文件中，有三种类型的函数：测试函数、基准测试函数、示例函数。一个测试函数是以Test为函数名前缀的函数，用于测试程序的一些逻辑行为是否正确； go test命令会调用这些测试函数并报告测试结果是PASS或FAIL。基准测试函数是以Benchmark为函数名前缀的函数，它们用于衡量一些函数的性能；go test命令会多次运行基准函数以计算一个平均的执行时间。示例函数是以Example为函数名前缀的函数，提供一个由编译器保证正确性的示例文档。
 测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
 func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
@@ -67,10 +67,10 @@ gopl.io/ch11/word1 // Package word provides utilities for word games. package wo
     
     <item>
       <title>Golang－ import 导入包的语法</title>
-      <link>/blogdetail/5aaf2e3da55bb1fd38001c70/</link>
+      <link>https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/</link>
       <pubDate>Mon, 19 Mar 2018 03:27:57 +0000</pubDate>
       
-      <guid>/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
       <description>一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
 import(&amp;quot;fmt&amp;quot;)然后在代码里面可以通过如下的方式调用 fmt.Println(&amp;quot;hello world&amp;quot;)
 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块： 相对路径 import &amp;quot;./model&amp;quot; //当前文件同一目录的model目录，但是不建议这种方式import 绝对路径 import &amp;quot;shorturl/model&amp;quot; //加载GOPATH/src/shorturl/model模块

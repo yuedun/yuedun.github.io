@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nestjs on 月盾的个人博客</title>
-    <link>/tags/nestjs/</link>
+    <link>https://www.yuedun.wang/tags/nestjs/</link>
     <description>Recent content in nestjs on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 30 Apr 2019 08:31:18 +0000</lastBuildDate><atom:link href="/tags/nestjs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Apr 2019 08:31:18 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/nestjs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>nestjs框架中使用nunjucks模板引擎</title>
-      <link>/blogdetail/5cc807d6effb223a816d9114/</link>
+      <link>https://www.yuedun.wang/blogdetail/5cc807d6effb223a816d9114/</link>
       <pubDate>Tue, 30 Apr 2019 08:31:18 +0000</pubDate>
       
-      <guid>/blogdetail/5cc807d6effb223a816d9114/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5cc807d6effb223a816d9114/</guid>
       <description>main.ts
 import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdapter, NestExpressApplication, } from &amp;#39;@nestjs/platform-express&amp;#39;; import { AppModule } from &amp;#39;./app.module&amp;#39;; import nunjucks = require(&amp;#39;nunjucks&amp;#39;); import { join } from &amp;#39;path&amp;#39;; async function bootstrap() { const app = await NestFactory.create&amp;lt;NestExpressApplication&amp;gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &amp;#39;..&amp;#39;, &amp;#39;public&amp;#39;)); // NestFactory.create需要加泛型参数&amp;lt;NestExpressApplication&amp;gt;  app.setBaseViewsDir(join(__dirname, &amp;#39;..&amp;#39;, &amp;#39;views&amp;#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&amp;#39;views&amp;#39;, { ext:&amp;#39;njk&amp;#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&amp;gt; { }); } bootstrap(); app.</description>
     </item>

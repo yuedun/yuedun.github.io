@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gulp on 月盾的个人博客</title>
-    <link>/tags/gulp/</link>
+    <link>https://www.yuedun.wang/tags/gulp/</link>
     <description>Recent content in gulp on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Dec 2019 04:00:37 +0000</lastBuildDate><atom:link href="/tags/gulp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Dec 2019 04:00:37 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/gulp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title> 一次商业web网站搭建的取舍过程</title>
-      <link>/blogdetail/5df30ce58803fb4044fa0651/</link>
+      <link>https://www.yuedun.wang/blogdetail/5df30ce58803fb4044fa0651/</link>
       <pubDate>Fri, 13 Dec 2019 04:00:37 +0000</pubDate>
       
-      <guid>/blogdetail/5df30ce58803fb4044fa0651/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5df30ce58803fb4044fa0651/</guid>
       <description>最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。
 所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。
 要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。
@@ -23,10 +23,10 @@
     
     <item>
       <title>vue.js开发gulp监听文件变化自动编译</title>
-      <link>/blogdetail/568a088edb1fef9e0cda949e/</link>
+      <link>https://www.yuedun.wang/blogdetail/568a088edb1fef9e0cda949e/</link>
       <pubDate>Mon, 04 Jan 2016 05:52:14 +0000</pubDate>
       
-      <guid>/blogdetail/568a088edb1fef9e0cda949e/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/568a088edb1fef9e0cda949e/</guid>
       <description>直接看代码：
 var gulp = require(&amp;#39;gulp&amp;#39;) var webpack = require(&amp;#34;gulp-webpack&amp;#34;); var webpackConfig = require(&amp;#34;./webpack.config.js&amp;#34;); // gulp.task(&amp;#34;webpack&amp;#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;err:&amp;#34;+JSON.stringify(err)) // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;stats:&amp;#34;+stats) // if(err) throw new Error(&amp;#34;webpack&amp;#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&amp;#34;webpack&amp;#34;, function(){ return gulp.src(&amp;#34;./app.js&amp;#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&amp;#34;./dist/&amp;#34;)) }); gulp.watch(&amp;#39;./views/*&amp;#39;, [&amp;#39;webpack&amp;#39;]); webpack.config.js配置
 var webpack = require(&amp;#34;webpack&amp;#34;); module.exports = { entry: //&amp;#34;./app.js&amp;#34;,  { app:&amp;#34;./app.js&amp;#34; // vendor: [&amp;#34;.</description>

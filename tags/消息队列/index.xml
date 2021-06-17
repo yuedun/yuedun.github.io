@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>消息队列 on 月盾的个人博客</title>
-    <link>/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</link>
+    <link>https://www.yuedun.wang/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</link>
     <description>Recent content in 消息队列 on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 10 Jun 2018 13:54:23 +0000</lastBuildDate><atom:link href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Jun 2018 13:54:23 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>消息队列中参数的传递和存储</title>
-      <link>/blogdetail/5b1d2d8f2c36bd008e01f5a3/</link>
+      <link>https://www.yuedun.wang/blogdetail/5b1d2d8f2c36bd008e01f5a3/</link>
       <pubDate>Sun, 10 Jun 2018 13:54:23 +0000</pubDate>
       
-      <guid>/blogdetail/5b1d2d8f2c36bd008e01f5a3/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5b1d2d8f2c36bd008e01f5a3/</guid>
       <description>消息队列（MQ）在系统架构中发挥了重要作用，其主要作用有系统解耦，流量削峰，异步消息存储，分布式系统最终一致性等。 本文介绍的是消息系统中消息发布者和订阅者间参数如何约定和传递？实际应用场景中，一种消息的发布者和订阅者都有可能是多个，也就是多对多的关系，这样就形成了消息参数传递的复杂性，就算一开始参数有约定，大家都按照最初约定来开发，但不免开发过程中各端需求变化带来的修改。例如最开始为了实现系统解耦而引进了消息队列，此时消息参与者较少，只有一个发布者和一个订阅者，这种情况最简单（其实最简单还是直接调接口），双方简单约定了需要传递的参数。
 {userId:123,userName:&amp;quot;阿离&amp;quot;,age:23}后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
 {userId:123,userName:&amp;quot;阿离&amp;quot;,age:23,gender:&amp;quot;女&amp;quot;,address:&amp;quot;上海&amp;quot;,job:&amp;quot;测试&amp;quot;}再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。

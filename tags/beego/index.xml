@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>beego on 月盾的个人博客</title>
-    <link>/tags/beego/</link>
+    <link>https://www.yuedun.wang/tags/beego/</link>
     <description>Recent content in beego on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 Apr 2018 13:21:36 +0000</lastBuildDate><atom:link href="/tags/beego/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Apr 2018 13:21:36 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/beego/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>beego注解路由404</title>
-      <link>/blogdetail/5ad46aebb9be3f8e30daaea8/</link>
+      <link>https://www.yuedun.wang/blogdetail/5ad46aebb9be3f8e30daaea8/</link>
       <pubDate>Sun, 15 Apr 2018 13:21:36 +0000</pubDate>
       
-      <guid>/blogdetail/5ad46aebb9be3f8e30daaea8/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5ad46aebb9be3f8e30daaea8/</guid>
       <description>beego注解路由匹配不到，返回404页面 router.go使用了两种方式注册路由：
 ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, beego.NSRouter(&amp;#34;/&amp;#34;, &amp;amp;controllers.UserController{}, &amp;#34;get:Welcome&amp;#34;), beego.NSInclude( &amp;amp;controllers.UserController{}, ), controller中的路由注解设置：
 // @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&amp;#34;json&amp;#34;] = ErrorMsg(err) } c.Data[&amp;#34;json&amp;#34;] = users c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
@@ -22,10 +22,10 @@ ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, beego.NSRouter(&amp;#34;/&amp
     
     <item>
       <title>beego post请求获取request body参数</title>
-      <link>/blogdetail/57d6aaa7471c11fa271ed1bb/</link>
+      <link>https://www.yuedun.wang/blogdetail/57d6aaa7471c11fa271ed1bb/</link>
       <pubDate>Mon, 12 Sep 2016 13:16:23 +0000</pubDate>
       
-      <guid>/blogdetail/57d6aaa7471c11fa271ed1bb/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/57d6aaa7471c11fa271ed1bb/</guid>
       <description>为了获取json类型的参数煞费苦心，差点不再爱了。
 前端请求代码：
 $.ajax({ url: &amp;#34;/user&amp;#34;, type: &amp;#34;post&amp;#34;, data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &amp;#34;json&amp;#34; }).done(function(res) { if(res.result){ alert(&amp;#34;成功&amp;#34;) } }); 后端接收代码：

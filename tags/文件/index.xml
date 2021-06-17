@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>文件 on 月盾的个人博客</title>
-    <link>/tags/%E6%96%87%E4%BB%B6/</link>
+    <link>https://www.yuedun.wang/tags/%E6%96%87%E4%BB%B6/</link>
     <description>Recent content in 文件 on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Sep 2016 09:17:36 +0000</lastBuildDate><atom:link href="/tags/%E6%96%87%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Sep 2016 09:17:36 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/%E6%96%87%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>nodejs请求网络资源写到本地</title>
-      <link>/blogdetail/57c7f2301165e2677d137d65/</link>
+      <link>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</link>
       <pubDate>Thu, 01 Sep 2016 09:17:36 +0000</pubDate>
       
-      <guid>/blogdetail/57c7f2301165e2677d137d65/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</guid>
       <description>nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
 var request=require(&amp;amp;#39;request&amp;amp;#39;);var fs=require(&amp;amp;#39;fs&amp;amp;#39;);var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;amp;gt; {res.setEncoding(&amp;amp;#39;binary&amp;amp;#39;);//二进制（binary）FS.writeFile(&amp;amp;#39;out.png&amp;amp;#39;, body, &amp;amp;#39;binary&amp;amp;#39;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;amp;#39;file saved&amp;amp;#39;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。

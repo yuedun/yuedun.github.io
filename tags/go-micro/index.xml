@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>go-micro on 月盾的个人博客</title>
-    <link>/tags/go-micro/</link>
+    <link>https://www.yuedun.wang/tags/go-micro/</link>
     <description>Recent content in go-micro on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 17 Mar 2020 09:41:28 +0000</lastBuildDate><atom:link href="/tags/go-micro/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Mar 2020 09:41:28 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/go-micro/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>go-micro线上部署，注册服务到etcd</title>
-      <link>/blogdetail/5e709b485bd8165f28d22394/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e709b485bd8165f28d22394/</link>
       <pubDate>Tue, 17 Mar 2020 09:41:28 +0000</pubDate>
       
-      <guid>/blogdetail/5e709b485bd8165f28d22394/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e709b485bd8165f28d22394/</guid>
       <description>线上部署 在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。 linux系统需要这样编译：GOOS=linux go build -o service main.go，就是在windows系统上进行交叉编译，可根据自己服务器情况修改参数。
 go build -o service main.go go build -o api api/api.go 线上的restful api也不能使用micro api了。需要选择适合自己的web服务框架，在web服务中调用api服务。
 etcd启动 线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。
@@ -21,10 +21,10 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
     
     <item>
       <title>go-micro v2弃用了consul作为默认的服务发现</title>
-      <link>/blogdetail/5e6c860e5bd8165f28d2210b/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e6c860e5bd8165f28d2210b/</link>
       <pubDate>Sat, 14 Mar 2020 07:21:50 +0000</pubDate>
       
-      <guid>/blogdetail/5e6c860e5bd8165f28d2210b/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e6c860e5bd8165f28d2210b/</guid>
       <description>很遗憾，go-micro v2版本不再使用consul作为服务发现中间件，官方文档也没有consul相关的文档，而是默认改用了mdns，生产推荐etcd。
 问题：I can&amp;rsquo;t set registry with consul
 解答：《Deprecating Consul in favour of Etcd》

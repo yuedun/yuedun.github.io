@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>pm2 on 月盾的个人博客</title>
-    <link>/tags/pm2/</link>
+    <link>https://www.yuedun.wang/tags/pm2/</link>
     <description>Recent content in pm2 on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Apr 2020 08:42:11 +0000</lastBuildDate><atom:link href="/tags/pm2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Apr 2020 08:42:11 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/pm2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用pm2一键部署多个服务</title>
-      <link>/blogdetail/5e85a563c9109f0f909b52bf/</link>
+      <link>https://www.yuedun.wang/blogdetail/5e85a563c9109f0f909b52bf/</link>
       <pubDate>Thu, 02 Apr 2020 08:42:11 +0000</pubDate>
       
-      <guid>/blogdetail/5e85a563c9109f0f909b52bf/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5e85a563c9109f0f909b52bf/</guid>
       <description>pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  { // Applications part  &amp;#34;apps&amp;#34; : [{ &amp;#34;name&amp;#34; : &amp;#34;API&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;app.js&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;COMMON_VARIABLE&amp;#34;: &amp;#34;true&amp;#34; }, // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &amp;#34;env_production&amp;#34; : { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34; } },{ &amp;#34;name&amp;#34; : &amp;#34;WEB&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;web.js&amp;#34; }], // 部署部分  // Here you describe each environment  &amp;#34;deploy&amp;#34; : { &amp;#34;production&amp;#34; : { &amp;#34;user&amp;#34; : &amp;#34;node&amp;#34;, // 多主机配置  &amp;#34;host&amp;#34; : [&amp;#34;212.</description>
     </item>
     
     <item>
       <title>pm2设置NODE_ENV环境变量</title>
-      <link>/blogdetail/5a98c43ff4583f741c210b89/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a98c43ff4583f741c210b89/</link>
       <pubDate>Fri, 02 Mar 2018 03:25:51 +0000</pubDate>
       
-      <guid>/blogdetail/5a98c43ff4583f741c210b89/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a98c43ff4583f741c210b89/</guid>
       <description>nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量，可以临时设置
 设置方式一： linux：export NODE_ENV=development&amp;amp;&amp;amp; node app.js
 win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
@@ -35,10 +35,10 @@ win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
     
     <item>
       <title>pm2日志记录和日志分割</title>
-      <link>/blogdetail/5a69a8301f395d7179259c45/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a69a8301f395d7179259c45/</link>
       <pubDate>Thu, 25 Jan 2018 09:49:36 +0000</pubDate>
       
-      <guid>/blogdetail/5a69a8301f395d7179259c45/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a69a8301f395d7179259c45/</guid>
       <description>pm2介绍 pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。 最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。 总体来说就是有性能监控、自动重启、负载均衡的作用。
 pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路径：
 error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
@@ -49,10 +49,10 @@ pm2-logrotate配置
     
     <item>
       <title>pm2的fork模式和cluster模式的区别</title>
-      <link>/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</link>
       <pubDate>Wed, 17 Jan 2018 14:21:51 +0000</pubDate>
       
-      <guid>/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</guid>
       <description>pm2的fork模式和cluster模式的区别
 fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。 参考：http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2 运行非js语言必须设置运行模式为fork_mode
 cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。 ** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数

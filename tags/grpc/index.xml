@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>grpc on 月盾的个人博客</title>
-    <link>/tags/grpc/</link>
+    <link>https://www.yuedun.wang/tags/grpc/</link>
     <description>Recent content in grpc on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 12 Feb 2019 14:12:03 +0000</lastBuildDate><atom:link href="/tags/grpc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Feb 2019 14:12:03 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/grpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>go语言开发grpc——安装grpc</title>
-      <link>/blogdetail/5c63b5334a7b7e6cd808697a/</link>
+      <link>https://www.yuedun.wang/blogdetail/5c63b5334a7b7e6cd808697a/</link>
       <pubDate>Tue, 12 Feb 2019 14:12:03 +0000</pubDate>
       
-      <guid>/blogdetail/5c63b5334a7b7e6cd808697a/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5c63b5334a7b7e6cd808697a/</guid>
       <description>一、安装gRPC  $ go get -u google.golang.org/grpc
  package google.golang.org/grpc: unrecognized import path &amp;quot;google.golang.org/grpc&amp;quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.)grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
 git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.</description>
@@ -20,10 +20,10 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
     
     <item>
       <title>gRPC负载均衡</title>
-      <link>/blogdetail/5bc1bd1bf846d21847dc3014/</link>
+      <link>https://www.yuedun.wang/blogdetail/5bc1bd1bf846d21847dc3014/</link>
       <pubDate>Sat, 13 Oct 2018 09:38:35 +0000</pubDate>
       
-      <guid>/blogdetail/5bc1bd1bf846d21847dc3014/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5bc1bd1bf846d21847dc3014/</guid>
       <description>gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。
 在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
 upstream grpcservice {server localhost:50051;server localhost:50052;}server {listen 8080 http2;#需要加http2server_name localhost;location / {grpc_pass grpc://grpcservice;#以grpc为前缀}grpc_connect_timeout 10;}配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图：可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
@@ -32,10 +32,10 @@ upstream grpcservice {server localhost:50051;server localhost:50052;}server 
     
     <item>
       <title>为什么需要RPC，而不是简单的HTTP接口</title>
-      <link>/blogdetail/5a375f52e9a4cf008860c09b/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a375f52e9a4cf008860c09b/</link>
       <pubDate>Mon, 18 Dec 2017 06:25:22 +0000</pubDate>
       
-      <guid>/blogdetail/5a375f52e9a4cf008860c09b/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a375f52e9a4cf008860c09b/</guid>
       <description>目前有很多Java的RPC框架，有基于Json的，有基于XML，也有基于二进制对象的。
 论复杂度，RPC框架肯定是高于简单的HTTP接口的。但毋庸置疑，HTTP接口由于受限于HTTP协议，需要带HTTP请求头，导致传输起来效率或者说安全性不如RPC。
 现在问题是，遇到怎样的瓶颈了才需要或者说更适合用RPC（比如像阿里这么大的请求并发量，简单的HTTP肯定达不到预期），但问题是大家所在的公司，要有像阿里这么大的量是比较少的，甚至说1/1000的量可能都没有，那我们还需要使用RPC吗？

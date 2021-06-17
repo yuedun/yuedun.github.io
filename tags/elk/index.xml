@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ELK on 月盾的个人博客</title>
-    <link>/tags/elk/</link>
+    <link>https://www.yuedun.wang/tags/elk/</link>
     <description>Recent content in ELK on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Dec 2017 15:24:12 +0000</lastBuildDate><atom:link href="/tags/elk/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Dec 2017 15:24:12 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/elk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>推荐在Nodejs使用的java常用技术和工具</title>
-      <link>/blogdetail/5a430ce84aa3290e95cb0e67/</link>
+      <link>https://www.yuedun.wang/blogdetail/5a430ce84aa3290e95cb0e67/</link>
       <pubDate>Tue, 26 Dec 2017 15:24:12 +0000</pubDate>
       
-      <guid>/blogdetail/5a430ce84aa3290e95cb0e67/</guid>
+      <guid>https://www.yuedun.wang/blogdetail/5a430ce84aa3290e95cb0e67/</guid>
       <description>作为Nodejs开发者可能会对java中常用的一些技术工具不太关心，主要原因大概除了语言级别的间隙就是Nodejs相对于java来说比较轻量级，大多用来开发简单系统，用不到其他工具。根据经验来说，开发相同功能的系统，Nodejs的开发周期和代码体量上也会比Java少太多，毕竟java出生年代长，生态丰富，如果不使用几个框架都感觉不是在开发系统。而Nodejs要开发一个web系统基本使用express或koa就差不多够了。所以对于Nodejs开发者来说，分布式，消息队列，远程调用等技术接触就少些。当然，不用这些技术其实也不会有太大影响，但是对于一个有追求有理想的码农来说我们的眼界不应该局限于系统能运行就行。 下面就来介绍一些可以在nodejs中使用的JAVA常用工具和技术。
 elasticsearch ElasticSearch（以下简称ES）是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。看见了吧，这就是一个使用JAVA开发的全文搜索引擎，到底有什么用呢？就是可以提供像google和百度一样的搜索功能，就算不需要这样功能，也可以用于管理后台的字段搜索，大家知道数据库的搜索效率比较差，有索引的字段还好，没有的就很慢了，这时ES就可以派上用场了，把数据同步进ES,不论查询列表还是以字段搜索都是极快的，是redis缓存的很好补充。
 ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是一款轻量级的日志搜集处理框架，可以方便的把分散的、多样化的日志搜集起来，并进行自定义的处理，然后传输到指定的位置，比如某个服务器或者文件。 Kibana是一个使用nodejs开发的web应用，用于查询和操作ES，就是一个ES的图形界面。 如果nodejs系统布署在多台服务器，那么查看日志是件很头疼的事，你不知道请求发送到哪一台服务器，需要挨个查看，如果服务超过5台，这绝对是噩梦。这时候ELK就是很好的解决方案，LogStash收集每一台服务器的日志统一存到ES中，利用ES的优点，查询任何关键字都很快很方便。
