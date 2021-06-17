@@ -6,7 +6,18 @@
     <description>Recent content in mysql on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 16 Oct 2015 09:00:52 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Oct 2018 10:25:53 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux修改MySQL 5.7.22字符集为utf8</title>
+      <link>https://www.yuedun.wang/blogdetail/5bbf2531f846d21847dc2fcc/</link>
+      <pubDate>Thu, 11 Oct 2018 10:25:53 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/5bbf2531f846d21847dc2fcc/</guid>
+      <description>网上也找了很多方案结果就是奇葩的不成功，最后直接修改/etc/mysql/mysql.conf.d/mysqld.cnf成功了。 在该文件最后添加
+default-storage-engine=INNODBcharacter-set-server=utf8collation-server=utf8_general_ci重启成功。 这是本地虚拟机里的mysql
+mysql&amp;gt; show variables like &amp;quot;character%&amp;quot;;+--------------------------+----------------------------+| Variable_name | Value |+--------------------------+----------------------------+| character_set_client | utf8 || character_set_connection | utf8 || character_set_database | utf8 || character_set_filesystem | binary || character_set_results | utf8 || character_set_server | utf8 || character_set_system | utf8 || character_sets_dir | /usr/share/mysql/charsets/ |+--------------------------+----------------------------+完全正确，但是修改阿里云服务器以后还是有点小问题 character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。 </description>
+    </item>
+    
     <item>
       <title>数据表索引如何建立？多列索引还是单列索引</title>
       <link>https://www.yuedun.wang/blogdetail/5620bcc461248de07b018879/</link>

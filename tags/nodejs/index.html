@@ -129,6 +129,50 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ffffe3d3f518207e7235250/" rel="bookmark">
+			nestjs中使用携程Apollo配置中心
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-14T08:18:05Z">2021-01-14 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
+集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
+// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;); async function bootstrap() { try { const root = join(__dirname, &#39;../&#39;); let envFile = join(root, &#39;.env&#39;) dotenv.config({ &#34;path&#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ffffe3d3f518207e7235250/">阅读全文…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e85a563c9109f0f909b52bf/" rel="bookmark">
+			使用pm2一键部署多个服务
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-02T08:42:11Z">2020-04-02 08:42</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  { // Applications part  &#34;apps&#34; : [{ &#34;name&#34; : &#34;API&#34;, &#34;script&#34; : &#34;app.js&#34;, &#34;env&#34;: { &#34;COMMON_VARIABLE&#34;: &#34;true&#34; }, // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34; } },{ &#34;name&#34; : &#34;WEB&#34;, &#34;script&#34; : &#34;web.js&#34; }], // 部署部分  // Here you describe each environment  &#34;deploy&#34; : { &#34;production&#34; : { &#34;user&#34; : &#34;node&#34;, // 多主机配置  &#34;host&#34; : [&#34;212.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e85a563c9109f0f909b52bf/">阅读全文…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5df30ce58803fb4044fa0651/" rel="bookmark">
 			 一次商业web网站搭建的取舍过程
 			</a>
@@ -160,7 +204,7 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019-11-18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019-11-18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
@@ -169,6 +213,28 @@
 wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
 另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
 wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5cc807d6effb223a816d9114/" rel="bookmark">
+			nestjs框架中使用nunjucks模板引擎
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-04-30T08:31:18Z">2019-04-30 08:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		main.ts
+import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;; async function bootstrap() { const app = await NestFactory.create&lt;NestExpressApplication&gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;  app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&#39;views&#39;, { ext:&#39;njk&#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&gt; { }); } bootstrap(); app.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5cc807d6effb223a816d9114/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -187,6 +253,54 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。  go占14.7M nodejs占122.2M
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5b8e2ce2b1f3aa6dab143109/" rel="bookmark">
+			typescript中导入koa-error后报错
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-04T06:57:38Z">2018-09-04 06:57</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		无法重新声明块范围变量“onerror” 解决办法：打开tsconfig.json中的&quot;lib&quot;: [&quot;es2015&quot;, &quot;es2016&quot;, &quot;es2017&quot;]
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a98c43ff4583f741c210b89/" rel="bookmark">
+			pm2设置NODE_ENV环境变量
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-02T03:25:51Z">2018-03-02 03:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV。那么在生产环境中使用pm2如何设置环境变量？
+设置方式一：shell命令设置 linux：export NODE_ENV=development&amp;&amp; node app.js
+win：set NODE_ENV=development&amp;&amp; node app.js
+一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
+设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
+ pm2 start pm2.json &ndash;env production
+ --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
+pm2.json
+{ &#34;apps&#34; : [{ &#34;name&#34;: &#34;issue&#34;, &#34;cwd&#34;: &#34;dest&#34;, &#34;script&#34; : &#34;bin/www.js&#34;, &#34;instances&#34; : &#34;2&#34;, &#34;exec_mode&#34; : &#34;cluster&#34;, &#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 }, &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34;, &#34;PORT&#34;: 3003 }, &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;, &#34;merge_logs&#34;: true }] } 如果不加参数则默认使用
+&#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -211,113 +325,36 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a6021fa4bdc8ea471fd2db0/" rel="bookmark">
-			在docker中运行nodejs
+			<a href="/blogdetail/5a69a8301f395d7179259c45/" rel="bookmark">
+			pm2日志记录和日志分割
 			</a>
 		</h2>
 		<div class="list__meta meta"><div class="meta__item-author meta__item">
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-18T04:26:34Z">2018-01-18 04:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/docker/" rel="category">docker</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-25T09:49:36Z">2018-01-25 09:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		首先看项目目录： 再看Dockerfile文件内容：
-# 以最新的node为基础镜像FROM hub.c.163.com/library/node:latest# 工作目录为appWORKDIR /app# 拷贝当前所在项目根目录到app目录COPY . /app# 全局安装pm2RUN npm install pm2 -gEXPOSE 8081#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出CMD [&quot;pm2-runtime&quot;, &quot;dest/server.js&quot;, &quot;--no-daemon&quot;]# ENTRYPOINT [&quot;node&quot;, &quot;server.js&quot;]或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
-如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
-需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
+		pm2介绍 pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。 最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。 总体来说就是有性能监控、自动重启、负载均衡的作用。
+pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路径：
+error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
+安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
+pm2-logrotate配置
+ max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a430ce84aa3290e95cb0e67/" rel="bookmark">
-			推荐在Nodejs使用的java常用技术和工具
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-12-26T15:24:12Z">2017-12-26 15:24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		作为Nodejs开发者可能会对java中常用的一些技术工具不太关心，主要原因大概除了语言级别的间隙就是Nodejs相对于java来说比较轻量级，大多用来开发简单系统，用不到其他工具。根据经验来说，开发相同功能的系统，Nodejs的开发周期和代码体量上也会比Java少太多，毕竟java出生年代长，生态丰富，如果不使用几个框架都感觉不是在开发系统。而Nodejs要开发一个web系统基本使用express或koa就差不多够了。所以对于Nodejs开发者来说，分布式，消息队列，远程调用等技术接触就少些。当然，不用这些技术其实也不会有太大影响，但是对于一个有追求有理想的码农来说我们的眼界不应该局限于系统能运行就行。 下面就来介绍一些可以在nodejs中使用的JAVA常用工具和技术。
-elasticsearch ElasticSearch（以下简称ES）是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。看见了吧，这就是一个使用JAVA开发的全文搜索引擎，到底有什么用呢？就是可以提供像google和百度一样的搜索功能，就算不需要这样功能，也可以用于管理后台的字段搜索，大家知道数据库的搜索效率比较差，有索引的字段还好，没有的就很慢了，这时ES就可以派上用场了，把数据同步进ES,不论查询列表还是以字段搜索都是极快的，是redis缓存的很好补充。
-ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是一款轻量级的日志搜集处理框架，可以方便的把分散的、多样化的日志搜集起来，并进行自定义的处理，然后传输到指定的位置，比如某个服务器或者文件。 Kibana是一个使用nodejs开发的web应用，用于查询和操作ES，就是一个ES的图形界面。 如果nodejs系统布署在多台服务器，那么查看日志是件很头疼的事，你不知道请求发送到哪一台服务器，需要挨个查看，如果服务超过5台，这绝对是噩梦。这时候ELK就是很好的解决方案，LogStash收集每一台服务器的日志统一存到ES中，利用ES的优点，查询任何关键字都很快很方便。
-消息中间件（kafka） 拿用户注册为例，需要发送邮件，短信，这两个服务之间本没有关联关系，但我们的一贯作风是用户注册的时候调用邮件服务，短信服务，严谨一点会放在事务中操作，假如一个服务失败可能会让事务回滚，所有操作都失败。这是一种情况，另一种情况是如果要再注册后加积分，那么就得改代码，要是有更多服务要添加就得每次改代码发布，启停服务，不送积分了又要删代码，这就是耦合度太高导致的结果。使用消息中间件不仅能保证服务完整性还可以有效解耦，有兴趣可以去了解kafka,rabbitMQ,roketMQ等消息中间件。
-远程调用RPC 通俗的来讲就是两台服务器A和B，A服务器直接调用B服务器上的函数，如果没有一个具体事例很难理解A服务器怎么可能调用到B服务器的函数，感兴趣可下载尝试：https://github.com/yuedun/nodejs-grpc 那么为什么要用rpc呢？A服务器要调用B服务的资源直接用http提供接口不就行了吗？其实http也算是一种远程调用，而且也比较简单直观，但是其效率较低，调用成本高，三次握手耗时，甚至请求头的数据量比请求体还大。那么就需要一种更高效的调用协议了——rpc。为什么需要RPC，而不是简单的HTTP接口
-总结：以上的这些工具和技术和语言并没有绑定，java可以使用，nodejs也可以使用，推荐理由：投入成本小，使用收益高。
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a24ed6c2d700330ae669e89/" rel="bookmark">
-			请求发送到Nodejs服务器以后响应非常慢
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-12-04T06:38:36Z">2017-12-04 06:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		在项目中遇到过这种情况：请求发送后迟迟没有响应，但也并没有报错，在代码中一步步调试都没有发现问题，明明已经走到最后返回数据一步了客户端却没有返回。原因是在中间件中使用了redis或memcache缓存，然后连接缓存服务失败，然后就会一直等待，直到连接缓存超时才会继续执行后续操作。
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5745791ed5034dff53ec6aa4/" rel="bookmark">
-			nodejs中vm模块的作用
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-05-25T10:06:22Z">2016-05-25 10:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/" rel="category">Categories</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		vm提供了一个沙箱环境，什么叫沙箱环境？类似于一个独立的执行空间，什么时候会用到vm模块？就以我现在接触的需求来说，每个月都有运营活动，但是每次需求又不同，比如一些优惠规则不同，最后可能只需要得到一个结果，如果每次活动都去修改代码就会显得很麻烦，我们提供一个后台管理界面，或者直接在数据库里写入每次活动的不同计算规则，这些规则其实也是JavaScript代码，既然是代码就需要执行才行。这就形成了一种情况：在已有的程序中插入一段代码进行执行，这要怎么实现？如果觉得很容易插入的话，那么是不是黑客可以在你的程序中插入一段代码执行呢？这当然是不允许的，所以就需要提供一种安全环境来执行——就是沙箱了，而vm模块就是提供了这样一种执行环境。 http://www.cnblogs.com/softlover/archive/2012/10/03/2707144.html
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/56286643ce46c19e89132968/" rel="bookmark">
-			使用sublime开发node.js快速跳转到变量函数声明处
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T04:29:55Z">2015-10-22 04:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
- 所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
-首先在uses.js文件中有一个函数
-//我是一个测试方法
-router.get(&amp;#39;/commeHere&amp;#39;, function(req, res) {
-});
-然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
-可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是&lt;open folders&gt;，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
-双击就可以跳转到对应的文件和行上。
-当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a69a8301f395d7179259c45/">阅读全文…</a>
 	</div>
 </article>
 </main>
 
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/4</span>
+	<a class="pagination__item pagination__item--next btn" href="/tags/nodejs/page/2/">»</a>
+</div>
 
 			</div>
 			
@@ -334,11 +371,11 @@ router.get(&amp;#39;/commeHere&amp;#39;, function(req, res) {
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
 		</ul>
 	</div>
 </div>
@@ -348,25 +385,16 @@ router.get(&amp;#39;/commeHere&amp;#39;, function(req, res) {
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/bae/">BAE</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/docker/">docker</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/golang/">Golang</a>
-			</li>
-			<li class="widget__item">
 				<a class="widget__link" href="/categories/linux/">linux</a>
 			</li>
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
@@ -407,7 +435,6 @@ router.get(&amp;#39;/commeHere&amp;#39;, function(req, res) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
@@ -468,11 +495,12 @@ router.get(&amp;#39;/commeHere&amp;#39;, function(req, res) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
@@ -481,7 +509,6 @@ router.get(&amp;#39;/commeHere&amp;#39;, function(req, res) {
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>

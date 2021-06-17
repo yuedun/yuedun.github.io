@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>产品设计 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="产品设计" />
+<meta property="og:description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.yuedun.wang/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" />
+
+
+		<meta itemprop="name" content="产品设计">
+<meta itemprop="description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="产品设计"/>
+<meta name="twitter:description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构"/>
+
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/index.xml" title="月盾的个人博客">
+
+	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
+
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
+<script>
+  
+  
+  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
+  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
+  const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
+  AV.init({ appId, appKey, serverURL });
+  function updateCollect() {
+    const collect = new AV.Query('Collect');
+    const url = location.pathname;
+    collect.select(['url', 'pv'])
+    collect.equalTo('url', url);
+    collect.first().then((col) => {
+      if (!col) {
+        
+        const Collect = AV.Object.extend('Collect');
+        
+        const collect = new Collect();
+        
+        collect.set('url', url);
+        collect.set('pv', 1);
+        collect.save()
+      } else {
+        col.increment('pv', 1)
+        col.save();
+
+        const context = document.querySelector('.post__meta.meta');
+        const pv = document.createElement('div');
+        pv.setAttribute('class', 'meta__item-author meta__item');
+        const span = document.createElement('span');
+        span.setAttribute('class', 'meta__text');
+        span.innerText = "浏览（" + col.get('pv') + "）";
+        pv.appendChild(span)
+        context.appendChild(pv)
+      }
+    });
+  }
+
+  updateCollect()
+</script>
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">产品设计</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5db03db400f24e1fd556cec4/" rel="bookmark">
+			让代码配置化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-10-23T11:47:00Z">2019-10-23 11:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。
+日常开发流程是这样的：
+ 开发 -&gt; 合代码 -&gt; 上测试环境 -&gt; 测试 -&gt; 合代码 -&gt; 上uat环境 -&gt; 测试 -&gt; 合代码 -&gt; 提发布申请 -&gt; 发布 -&gt; 验收
+就算是一个3分钟搞定的需求，流程也需要1天，因为中间有太多的环境切换和人员流转。
+这样的经历所有做过运营活动的童鞋或多或少都有体验，所以很多人也想过做一个编辑器，比如拖拉组件的方式实现一个页面。
+我们曾经有种设想是直接给运营做一个活动编辑器，让他们自己去修改，自己去做页面，自己发布。说实话这个也做过，但是没用起来，原因呢大概就是人性的贪婪与懒惰，当初做出第一版的时候觉得太简单，不能满足使用需求，第二版的时候功能倒是挺丰富，但是运营又不会用。想想那么多css样式，你以为图形化了他们就会用？太天真！干脆教他们写代码好了！
+所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。 这个平台最终流程变成了这样：
+开发 -&gt; 测试 -&gt; 发布 -&gt; 验收
+是的，由原来的11步直接变成了4步，其中开发和发布也比原来更简单了，你可以选择自己喜欢的编辑方式和开发框架，或vscode，或devtool,或工具提供的文本框，或jquery，或vue。可单独对css，js，html修改，将修改的内容直接提交即可看到效果。 为什么会减少这么多？因为没有了测试环境和uat环境的流转，直接在生产环境操作的。
+是不是会有疑问——直接在生产环境开发会不会有风险？ 答案是：不会！项目本身是分为两个环境，一个是开发环境，另一个是访问环境。开发环境是用于内部开发和测试使用，不对外开放，只有发布后才将开发数据同步到公开环境。
+上图展示的是一个示例程序，提供一种思路，可根据自己需求开发相应功能。比如支持多环境发布，回滚，都可以做到点个按钮就行，不需要等待编译和重启等耗时。因为开发完成后的一切操作都是数据的操作，并不会涉及到编译，所以无论是发布还是回滚都是毫秒完成。 这种做法适合频繁修改的页面，万年不变的页面就不需要这样做了。
+核心思想 这个项目的核心思想是将代码做成配置，我们都喜欢做配置平台，让业务来操作数据省去了修改代码，为什么不可以将代码也做成配置？
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5567d3f08b7f4aa8a0d1d3f3/" rel="bookmark">
+			腾旭内部价值千万的24张产品策略PPT【图】
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-29T02:50:24Z">2015-05-29 02:50</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5567d3ab8b7f4aa8a0d1d3f2/" rel="bookmark">
+			马化腾：如何打造中国最牛逼的产品【图】
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-29T02:49:15Z">2015-05-29 02:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/555feb54576fa2560c02302e/" rel="bookmark">
+			互联网产品体验分析
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-23T02:52:04Z">2015-05-23 02:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在寫產品體驗報告的時候，經常會陷入這樣的一個困境，即把體驗報告寫成了這個產品的說明書或者營銷文案，幾乎把這個產品的所有功能又複述了一遍，重點不突出。在網上看了不少的體驗報告，基本也都陷入了這樣的一個怪圈。很多人一上來就很宏大地開始架構諸如『產品定位』、『戰略發展』、『市場狀況』、『商業模式』、『產品結構』等字眼。
+ 關於這樣的分析方法有不少問題。一方面是缺少足夠的信息來源。比如『商業模式』的決定是需要有不少的信息輸入作為參考的，而你又並非這個公司的人，憑著在網上搜刮的一點資料難道就可以做出決定嗎？另一方面時，研究一個產品的重心應該放在哪個方面？面面俱到的分析方法必然會失去重心。
+對於這個問題，我自己的結論是：分析一個產品無需宏大整體的架構，只需要把自己當成用戶，問自己幾個問題即可。
+這幾個問題是：
+ 你會繼續使用這個產品嗎？（ 第一關，該產品是否能繼續在該用戶的手機上存在。） 你會使用它的什麼功能？（ 該產品給用戶提供了什麼價值。） 如果跟XX 擺在一起， 你會選擇哪一個？（ 該產品的差異化優勢）  為什麼選擇這樣幾個問題而非宏觀地進行分析呢？這個問題可以從我們最近流行起來的幾個App看出端倪。無論是足跡和臉萌，都有一個很重要的特點，即它們的某一個功能很明顯地比其它功能要突出很多，甚至其它功能都不被用戶意識到，但是就這麼一個功能，就能使它們成為一個好的產品。也就是說，用戶在感知一個產品的時候，並不會去感知這個產品的整體，而只會關注一個問題：這個產品能幫助我什麼？如果這個產品的這個功能能夠為我帶來價值，就算其它功能都是雞肋，那留著也就留著吧，我不關心。
+大多數玩微信的人不玩遊戲，也不關心『我的錢包』裡面豐富的服務，但不妨礙他們成為微信的重度用戶。
+由此我們得出一個什麼結論呢？結論是：一個好產品可能并不遵守木桶理論，只要最長的那根木板足夠長，這個產品就足夠好。因此，當我們去分析一個產品的時候，我們應該分析這個產品的關鍵驅動因素是什麼？它最亮的那個亮點是什麼？它亮到什麼程度以至於我決定把這個產品給收下來而不是長按刪除。不要再寫那些長長的貌似很系統的分析報告了吧，我相信微信里的很多頁面你從沒進去過。
+内容摘自知乎：http://www.zhihu.com/question/19851117
+	</div>
+</article>
+</main>
+
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

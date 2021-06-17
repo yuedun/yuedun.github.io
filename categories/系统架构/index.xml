@@ -6,7 +6,22 @@
     <description>Recent content in 系统架构 on 月盾的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 17 Jul 2020 11:49:05 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jun 2021 15:38:31 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>博客迁移至hugo gitpage</title>
+      <link>https://www.yuedun.wang/2021/06/blog-move-to-gitpage/</link>
+      <pubDate>Thu, 17 Jun 2021 15:38:31 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2021/06/blog-move-to-gitpage/</guid>
+      <description>为什么迁移？ 6月初的时候，3年前买的阿里云服务器到期了，又买了其他服务器，但是只有1年期，于是进行了一番数据，应用迁移，这么一顿操作下来还是挺累的，尤其是在linux上安装mysql，mongodb。 安装后又是连接不上，挺烦的。再想到一年后又是一顿操作，不由得一个激灵。
+经过一番的思量后，决定将自建博客迁移至gitpage上。
+自建和gitpage优劣对比 首先列出自己博客具备的功能：
+ 首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链 目录 所有文章时间线 留言 自维护留言系统 微博 新浪微博，最近出问题不显示了 速记 简单记录 关于 自我介绍  整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。 在一些细节功能上面确实会有缺失，比如：
+ 评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。  整体来说，除了数据存储功能缺失外，其他都是可以实现的。
+迁移过程 将mongodb数据中的博客导出为本地markdown文件。
+// mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &amp;#39;_id&amp;#39;: -1 } }) .then(data =&amp;gt; { data.forEach((b) =&amp;gt; { debug(b) let tags = b.tags.split(&amp;#34;,&amp;#34;) let blog = `--- title: &amp;#34;${b.title}&amp;#34; description: &amp;#34;${b.content.replace(/&amp;lt;[^&amp;lt;&amp;gt;]+&amp;gt;/g, &amp;#34;&amp;#34;).replace(/\r\n/g, &amp;#34;&amp;#34;).replace(/\n/g, &amp;#34;&amp;#34;).</description>
+    </item>
+    
     <item>
       <title>让web项目不再502</title>
       <link>https://www.yuedun.wang/blogdetail/5f119031148c8850e521735f/</link>
@@ -207,6 +222,18 @@ upstream grpcservice {server localhost:50051;server localhost:50052;}server 
 这时消息系统已经不是当初简单的两个发布者订阅者了，而是一群人在参数，所谓的众口难调。此时弊端已现，无论哪一方有变化都势必牵连所有人。所以看出的出这种消息参数传递有其不合理的地方，那么怎么传递更合理？此处的MQ最开始已经说了，是为了解耦而引进，说明该MQ是多个系统的衔接者，而多个系统终究还是系统，不是简单的前端和后端接口调用，例如某个前端A也是由自己的接口提供服务系统的，MQ不是直接为前端A提供参数的。应该是由前端A自己的服务端A订阅消息，前端A需要什么参数就有服务A查询需要的参数即可，前端B需要什么参数由服务B查询提供。而发布者A，发布者B等只需要传递关键参数userId即可，其他姓名，性别，年龄什么的都不需要传。
 此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
 总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。</description>
+    </item>
+    
+    <item>
+      <title>在docker中运行nodejs</title>
+      <link>https://www.yuedun.wang/blogdetail/5a6021fa4bdc8ea471fd2db0/</link>
+      <pubDate>Thu, 18 Jan 2018 04:26:34 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/5a6021fa4bdc8ea471fd2db0/</guid>
+      <description>首先看项目目录： 再看Dockerfile文件内容：
+# 以最新的node为基础镜像FROM hub.c.163.com/library/node:latest# 工作目录为appWORKDIR /app# 拷贝当前所在项目根目录到app目录COPY . /app# 全局安装pm2RUN npm install pm2 -gEXPOSE 8081#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出CMD [&amp;quot;pm2-runtime&amp;quot;, &amp;quot;dest/server.js&amp;quot;, &amp;quot;--no-daemon&amp;quot;]# ENTRYPOINT [&amp;quot;node&amp;quot;, &amp;quot;server.js&amp;quot;]或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
+需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 </description>
     </item>
     
     <item>

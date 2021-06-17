@@ -127,6 +127,35 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e6c860e5bd8165f28d2210b/" rel="bookmark">
+			go-micro v2弃用了consul作为默认的服务发现
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-14T07:21:50Z">2020-03-14 07:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		很遗憾，go-micro v2版本不再使用consul作为服务发现中间件，官方文档也没有consul相关的文档，而是默认改用了mdns，生产推荐etcd。
+问题：I can&rsquo;t set registry with consul
+解答：《Deprecating Consul in favour of Etcd》
+ 超过4年的时间，Consul一直是Micro的默认服务发现系统之一，为我们提供了良好的服务。实际上，从一开始，它就是用于注册表的默认机制以及入门所需的唯一基础依赖项。
+  从那时起，世界在不断发展，原生云技术也在不断发展。我们发现了许多与使用Consul的方式有关的问题。这不是对Consul的打击，而是对我们的用例的反思，以及对继续前进的需求。
+  例如，我们将元数据和服务端点信息进行二进制编码，压缩和base64编码，然后再将它们存储为Consul标签，因为没有其他方法可以这样做。我们还非常严重地滥用Consul的分布式属性，这导致了许多关于raft共识的问题。
+  不幸的是，我们发现现在该继续前进了。
+  自2014年以来，Kubernetes真正成为了容器编排和基础服务平台中的一支计算力。因此，etcd成为了他们选择的键值存储的一种，它是基于raft共识构建的分布式键值存储。它已经发展到可以满足kubernetes的规模需求，并且已经以其他开源项目所没有的方式经过了实战测试。
+  Etcd还是用于二进制数据的非常标准的Get / Put / Delete存储，这意味着我们可以轻松地编码和存储服务元数据，而不会出现零问题。它对所存储数据的格式没有意见。
+  过去一周中，我们已将etcd迁移为Micro中的默认服务发现机制之一，并将在未来几周内弃用Consul。这是什么意思？好吧，我们将领事移交给我们社区维护的go-plugins存储库，并专注于支持etcd。
+  我们知道许多用户正在使用Consul，这可能会导致中断。对我们来说，这是通往v2的重大突破，因此我们的下一个发行版将被标记为v2。您可以放心，您的v1发行版将继续按原样运行，但希望我们发布的下一个发行版是micro v2.0.0。
+ 参考项目：micro-service
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e38ea905bd8165f28d1fc55/" rel="bookmark">
 			windows调整C盘大小
 			</a>
@@ -157,7 +186,7 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-16T14:28:04Z">2020-01-16 14:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">Golang</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-16T14:28:04Z">2020-01-16 14:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
@@ -334,7 +363,7 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019-11-18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019-11-18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
@@ -355,7 +384,7 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-10-23T11:47:00Z">2019-10-23 11:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81/" rel="category">产品</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-10-23T11:47:00Z">2019-10-23 11:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
 	</span>
 </div></div>
 	</header>
@@ -447,28 +476,6 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5d81a71a00f24e1fd556cc25/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5cc807d6effb223a816d9114/" rel="bookmark">
-			nestjs框架中使用nunjucks模板引擎
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-04-30T08:31:18Z">2019-04-30 08:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/nodejs/" rel="category">Nodejs</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		main.ts
-import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;; async function bootstrap() { const app = await NestFactory.create&lt;NestExpressApplication&gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;  app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&#39;views&#39;, { ext:&#39;njk&#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&gt; { }); } bootstrap(); app.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5cc807d6effb223a816d9114/">阅读全文…</a>
-	</div>
 </article>
 	</main>
 	
@@ -493,11 +500,11 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/60861bef54277a10496a54b6/">easy-monitor qps监控</a></li>
 		</ul>
 	</div>
 </div>
@@ -507,25 +514,16 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/bae/">BAE</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/docker/">docker</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/golang/">Golang</a>
-			</li>
-			<li class="widget__item">
 				<a class="widget__link" href="/categories/linux/">linux</a>
 			</li>
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/nodejs/">Nodejs</a>
-			</li>
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81/">产品</a>
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
@@ -566,7 +564,6 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/delete/" title="delete">delete</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
@@ -627,11 +624,12 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81/" title="产品">产品</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
@@ -640,7 +638,6 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5/" title="批量插入">批量插入</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>

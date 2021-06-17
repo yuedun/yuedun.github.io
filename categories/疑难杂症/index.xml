@@ -46,5 +46,28 @@
       <description>在项目中遇到过这种情况：请求发送后迟迟没有响应，但也并没有报错，在代码中一步步调试都没有发现问题，明明已经走到最后返回数据一步了客户端却没有返回。原因是在中间件中使用了redis或memcache缓存，然后连接缓存服务失败，然后就会一直等待，直到连接缓存超时才会继续执行后续操作。</description>
     </item>
     
+    <item>
+      <title>2014-11-11博客突然打不开</title>
+      <link>https://www.yuedun.wang/blogdetail/54618bc69579423b407522c8/</link>
+      <pubDate>Tue, 11 Nov 2014 04:08:38 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/54618bc69579423b407522c8/</guid>
+      <description> 今天早上起来还可以，中午突然就打不开，看了下日志有下面的错误：这是关于mongodb的错误，经过重启部署都每有解决，看后台输出数据库有连接上，但是每次刷新页面的时候就会报这个错误。打开数据库看了下，吓死我了，里面居然没数据了，难道又要经历和上次一样的问题？不能这么坑爹啊！只好无聊的不停刷新，无意间又好了。
+ 看来BAE还是存在问题，不够稳定。
+ at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/server.js:485:18 at Server.Base._callHandler (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/base.js:442:41) at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1806:9 at commandHandler (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:685:21) at Cursor.close (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:959:5) at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:685:39 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:159:22 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1542:30 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1404:28 at /home/bae/app/.bae/node_modules/connect-mongo/lib/connect-mongo.js:161:23 Error: Error setting TTL index on collection : sessions ^ throw message; /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/base.js:242  </description>
+    </item>
+    
+    <item>
+      <title>BAE上连接mongodb每隔十多小时就不能连接的问题(二)</title>
+      <link>https://www.yuedun.wang/blogdetail/5449dac894f76294f5e60fe1/</link>
+      <pubDate>Fri, 24 Oct 2014 04:51:20 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/5449dac894f76294f5e60fe1/</guid>
+      <description>前段时间写了《BAE上连接mongodb每隔十多小时就不能连接的问题(一)》之后暂时的解决了连不上的问题，每隔十小时重启一次，但是这个方法却没有彻底解决问题，偶尔还会出现三四小时就连不上，实在搞不懂问题到底出在哪，到底是bae的mongodb的问题还是mongoose中间件的问题，现象是有做open操作，但是却没有open事件发出，那么我想是不是mongoose存在bug，翻看了源码也没看出来个所以然，不过大概是觉得要重新打开需要保证连接已经关闭的，那么干脆在监听到error事件时就将状态直接改为disconnected，反正是要调用db.close()方法进行关闭连接的，可能close()方法不好使，没有完全关闭，如果我手动将状态设为disconnected，close方法中也会判断是否是这个状态，如果是就直接返回，省的多走其他步骤了。不过这样一来就不会有close事件发出了，根据我所写代码的逻辑，那就不会调用open()方法了，但实际情况确实程序可以正常运行，说明已经重连上了，原来在代码中添加了这个属性：
+Js代码 :
+var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: true }, user: username, pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
+不过由此看来，auto_reconect这个参数要起作用必须是在连接断开的情况下，说明close()方法有时候并没有完全断开连接。</description>
+    </item>
+    
   </channel>
 </rss>
