@@ -68,5 +68,23 @@ HOUR_MICROSECOND
 HOUR_SECOND</description>
     </item>
     
+    <item>
+      <title> mysql一个字段为空时使用另一个字段排序</title>
+      <link>https://www.yuedun.wang/blogdetail/5534d242cf68fa0beaf71cb9/</link>
+      <pubDate>Mon, 20 Apr 2015 10:17:38 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/5534d242cf68fa0beaf71cb9/</guid>
+      <description>表中有两个日期字段createDate，updateDate。其中updateDate可以为空，要求使用updateDate排序，如果updateDate为空则使用createDate排序，结果要顺序排下来。
+按照常规方法：
+select * from table order by updateDate desc;
+这样的结果是为空的数据排在了最下面，不符合要求。
+这样试试：
+select * from table order by updateDate desc, createDate desc;
+这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。
+正确方法：
+select * from table order by IFNULL(updateDate, createDate) desc;
+这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排。</description>
+    </item>
+    
   </channel>
 </rss>

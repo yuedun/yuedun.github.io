@@ -113,8 +113,7 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
       <guid>https://www.yuedun.wang/blogdetail/606d512c54277a10496a38ae/</guid>
       <description>上篇简单介绍了sapper和sveltekit的发展，目前sveltekit还只是Beta版本，有很多不确定因素存在，有可能会有大的变更，所以还不推荐在生产环境中使用，不过在个人项目和小项目中可以大胆尝试。
 今天我们就正式使用sveltekit开发一个web项目。
-第一步：创建项目
-mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
+第一步：创建项目 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问/blog路由，还需要创建index.svelte文件，内容如下：
 &amp;lt;script context=&amp;#34;module&amp;#34;&amp;gt; /** * @type {import(&amp;#39;@sveltejs/kit&amp;#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&amp;gt; r.json()) .then((posts) =&amp;gt; { console.log(posts); return { props: { posts } }; }); } &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; export let posts; &amp;lt;/script&amp;gt; &amp;lt;svelte:head&amp;gt; &amp;lt;title&amp;gt;Blog&amp;lt;/title&amp;gt; &amp;lt;/svelte:head&amp;gt; &amp;lt;h1&amp;gt;Recent posts&amp;lt;/h1&amp;gt; &amp;lt;ul&amp;gt; {#each posts as post} &amp;lt;!</description>
@@ -231,7 +230,7 @@ import path from &amp;#39;path&amp;#39;; import resolve from &amp;#39;@rollup/pl
       
       <guid>https://www.yuedun.wang/blogdetail/5fea9271de75f459aa011018/</guid>
       <description>svelte给dom对象绑定事件和vue框架类似。 定义函数：
-function handler(index){alert(&amp;quot;hello&amp;quot;, index);}绑定事件：
+function handler(index){ alert(&amp;#34;hello&amp;#34;, index); } 绑定事件：
 &amp;lt;button on:click={handler}&amp;gt;点击&amp;lt;/button&amp;gt;
 但是带参函数的使用就略有不同了，函数handler的参数index需要传入的时候，不能直接这样使用&amp;lt;button on:click={handler(123)}&amp;gt;点击&amp;lt;/button&amp;gt;,这样的写法会在页面打开时直接执行，而不是在点击按钮的时候执行。
 这是初学svelte的时候比较郁闷的事，官方文档中也没有明显的文档说明如何传参。 正确的传参方式是这样的： &amp;lt;button on:click={() =&amp;gt; handler(123)}&amp;gt;点击&amp;lt;/button&amp;gt; 将on:click的内容改写为匿名函数，在函数中调用。</description>
@@ -1213,15 +1212,16 @@ import(&amp;quot;fmt&amp;quot;)然后在代码里面可以通过如下的方�
       <pubDate>Fri, 02 Mar 2018 03:25:51 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5a98c43ff4583f741c210b89/</guid>
-      <description>nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量，可以临时设置
-设置方式一： linux：export NODE_ENV=development&amp;amp;&amp;amp; node app.js
+      <description>nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV。那么在生产环境中使用pm2如何设置环境变量？
+设置方式一：shell命令设置 linux：export NODE_ENV=development&amp;amp;&amp;amp; node app.js
 win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
-一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可，
-设置方式二： 而设置环境变量在pm2中可以轻松实现
+一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
+设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
  pm2 start pm2.json &amp;ndash;env production
- --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量
-//pm2.json{&amp;quot;apps&amp;quot; : [{&amp;quot;name&amp;quot;: &amp;quot;issue&amp;quot;,&amp;quot;cwd&amp;quot;: &amp;quot;dest&amp;quot;,&amp;quot;script&amp;quot; : &amp;quot;bin/www.js&amp;quot;,&amp;quot;instances&amp;quot; : &amp;quot;2&amp;quot;,&amp;quot;exec_mode&amp;quot; : &amp;quot;cluster&amp;quot;,&amp;quot;env&amp;quot;: {&amp;quot;NODE_ENV&amp;quot;: &amp;quot;development&amp;quot;,&amp;quot;PORT&amp;quot;: 3002},&amp;quot;env_production&amp;quot; : {&amp;quot;NODE_ENV&amp;quot;: &amp;quot;production&amp;quot;,&amp;quot;PORT&amp;quot;: 3003},&amp;quot;log_date_format&amp;quot;: &amp;quot;YYYY-MM-DD_HH:mm Z&amp;quot;,&amp;quot;merge_logs&amp;quot;: true}]}如果不加参数则默认使用
-&amp;quot;env&amp;quot;: {&amp;quot;NODE_ENV&amp;quot;: &amp;quot;development&amp;quot;,&amp;quot;PORT&amp;quot;: 3002}结果：NODE_ENV=development,PORT=3002</description>
+ --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
+pm2.json
+{ &amp;#34;apps&amp;#34; : [{ &amp;#34;name&amp;#34;: &amp;#34;issue&amp;#34;, &amp;#34;cwd&amp;#34;: &amp;#34;dest&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;bin/www.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;2&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;, &amp;#34;PORT&amp;#34;: 3002 }, &amp;#34;env_production&amp;#34; : { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;, &amp;#34;PORT&amp;#34;: 3003 }, &amp;#34;log_date_format&amp;#34;: &amp;#34;YYYY-MM-DD_HH:mm Z&amp;#34;, &amp;#34;merge_logs&amp;#34;: true }] } 如果不加参数则默认使用
+&amp;#34;env&amp;#34;: { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;, &amp;#34;PORT&amp;#34;: 3002 } 结果：NODE_ENV=development,PORT=3002</description>
     </item>
     
     <item>
@@ -2693,12 +2693,15 @@ header(&#39;Location: http://yuedun.duapp.com&#39;.$request_uri);
       
       <guid>https://www.yuedun.wang/blogdetail/5534d242cf68fa0beaf71cb9/</guid>
       <description>表中有两个日期字段createDate，updateDate。其中updateDate可以为空，要求使用updateDate排序，如果updateDate为空则使用createDate排序，结果要顺序排下来。
- 按照常规方法：
-Sql代码  select * from table order by update desc   这样的结果是为空的数据排在了最下面，不符合要求。
- 方法二：
-Sql代码  select * from table order by updateDate desc, createDate desc   这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。
- 方法三：
-Sql代码  select * from table order by IFNULL(updateDate, createDate) desc   这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排</description>
+按照常规方法：
+select * from table order by updateDate desc;
+这样的结果是为空的数据排在了最下面，不符合要求。
+这样试试：
+select * from table order by updateDate desc, createDate desc;
+这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。
+正确方法：
+select * from table order by IFNULL(updateDate, createDate) desc;
+这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排。</description>
     </item>
     
     <item>

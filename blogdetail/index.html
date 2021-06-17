@@ -36,7 +36,6 @@
 </script>
 
 
-
 <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
 <script>
   
@@ -44,9 +43,7 @@
   const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
   const appKey = "O1FUquffQDSOPso3gC4XkqbG";
   const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
-
   AV.init({ appId, appKey, serverURL });
-
   function updateCollect() {
     const collect = new AV.Query('Collect');
     const url = location.pathname;
@@ -286,8 +283,7 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 	<div class="content list__excerpt post__content clearfix">
 		上篇简单介绍了sapper和sveltekit的发展，目前sveltekit还只是Beta版本，有很多不确定因素存在，有可能会有大的变更，所以还不推荐在生产环境中使用，不过在个人项目和小项目中可以大胆尝试。
 今天我们就正式使用sveltekit开发一个web项目。
-第一步：创建项目
-mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
+第一步：创建项目 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问/blog路由，还需要创建index.svelte文件，内容如下：
 &lt;script context=&#34;module&#34;&gt; /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&gt; r.json()) .then((posts) =&gt; { console.log(posts); return { props: { posts } }; }); } &lt;/script&gt; &lt;script&gt; export let posts; &lt;/script&gt; &lt;svelte:head&gt; &lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt; &lt;h1&gt;Recent posts&lt;/h1&gt; &lt;ul&gt; {#each posts as post} &lt;!

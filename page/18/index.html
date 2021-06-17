@@ -37,7 +37,6 @@
 </script>
 
 
-
 <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
 <script>
   
@@ -45,9 +44,7 @@
   const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
   const appKey = "O1FUquffQDSOPso3gC4XkqbG";
   const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
-
   AV.init({ appId, appKey, serverURL });
-
   function updateCollect() {
     const collect = new AV.Query('Collect');
     const url = location.pathname;
@@ -144,12 +141,15 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		表中有两个日期字段createDate，updateDate。其中updateDate可以为空，要求使用updateDate排序，如果updateDate为空则使用createDate排序，结果要顺序排下来。
- 按照常规方法：
-Sql代码  select * from table order by update desc   这样的结果是为空的数据排在了最下面，不符合要求。
- 方法二：
-Sql代码  select * from table order by updateDate desc, createDate desc   这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。
- 方法三：
-Sql代码  select * from table order by IFNULL(updateDate, createDate) desc   这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排
+按照常规方法：
+select * from table order by updateDate desc;
+这样的结果是为空的数据排在了最下面，不符合要求。
+这样试试：
+select * from table order by updateDate desc, createDate desc;
+这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。
+正确方法：
+select * from table order by IFNULL(updateDate, createDate) desc;
+这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

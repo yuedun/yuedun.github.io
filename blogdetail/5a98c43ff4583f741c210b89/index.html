@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>pm2设置NODE_ENV环境变量 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量，可以临时设置### 设置方式一：**linux**：e">
+	<meta name="description" content="nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量">
 		<meta property="og:title" content="pm2设置NODE_ENV环境变量" />
-<meta property="og:description" content="nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量，可以临时设置### 设置方式一：**linux**：e" />
+<meta property="og:description" content="nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5a98c43ff4583f741c210b89/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2018-03-02T03:25:51&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="pm2设置NODE_ENV环境变量">
-<meta itemprop="description" content="nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量，可以临时设置### 设置方式一：**linux**：e"><meta itemprop="datePublished" content="2018-03-02T03:25:51&#43;00:00" />
+<meta itemprop="description" content="nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量"><meta itemprop="datePublished" content="2018-03-02T03:25:51&#43;00:00" />
 <meta itemprop="dateModified" content="2018-03-02T03:25:51&#43;00:00" />
 <meta itemprop="wordCount" content="80">
 <meta itemprop="keywords" content="pm2,NODE_ENV,环境变量," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="pm2设置NODE_ENV环境变量"/>
-<meta name="twitter:description" content="nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量，可以临时设置### 设置方式一：**linux**：e"/>
+<meta name="twitter:description" content="nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV，可以配置环境变量"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -40,7 +40,6 @@
 </script>
 
 
-
 <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
 <script>
   
@@ -48,9 +47,7 @@
   const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
   const appKey = "O1FUquffQDSOPso3gC4XkqbG";
   const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
-
   AV.init({ appId, appKey, serverURL });
-
   function updateCollect() {
     const collect = new AV.Query('Collect');
     const url = location.pathname;
@@ -149,8 +146,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#设置方式一">设置方式一：</a></li>
-        <li><a href="#设置方式二">设置方式二：</a></li>
+        <li><a href="#设置方式一shell命令设置">设置方式一：shell命令设置</a></li>
+        <li><a href="#设置方式二配置文件设置">设置方式二：配置文件设置</a></li>
       </ul>
     </li>
   </ul>
@@ -158,49 +155,49 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<p>nodejs中经常使用到环境变量，最常见的如：<code>process.env.NODE_ENV</code>，可以配置环境变量，可以临时设置</p>
-<h3 id="设置方式一">设置方式一：</h3>
+			<p>nodejs中经常使用到环境变量，最常见的如：<code>process.env.NODE_ENV</code>。那么在生产环境中使用pm2如何设置环境变量？</p>
+<h3 id="设置方式一shell命令设置">设置方式一：shell命令设置</h3>
 <p><strong>linux</strong>：<code>export NODE_ENV=development&amp;&amp; node app.js</code></p>
 <p><strong>win</strong>：<code>set NODE_ENV=development&amp;&amp; node app.js</code></p>
-<p>一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据<code>process.env.NODE_ENV</code>来运行不同逻辑即可，</p>
-<h3 id="设置方式二">设置方式二：</h3>
-<p>而设置环境变量在pm2中可以轻松实现</p>
+<p>一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据<code>process.env.NODE_ENV</code>来运行不同逻辑即可。</p>
+<h3 id="设置方式二配置文件设置">设置方式二：配置文件设置</h3>
+<p>要在pm2设置环境变量也很简单。</p>
 <blockquote>
 <p>pm2 start pm2.json &ndash;env production</p>
 </blockquote>
-<p><code>--env production</code>参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量</p>
-<pre><code>//pm2.json
-{
-  &quot;apps&quot; : [{
-    &quot;name&quot;: &quot;issue&quot;,
-    &quot;cwd&quot;: &quot;dest&quot;,
-    &quot;script&quot;    : &quot;bin/www.js&quot;,
-    &quot;instances&quot; : &quot;2&quot;,
-    &quot;exec_mode&quot; : &quot;cluster&quot;,
-    &quot;env&quot;: {
-      &quot;NODE_ENV&quot;: &quot;development&quot;,
-      &quot;PORT&quot;: 3002
+<p><code>--env production</code>参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。</p>
+<p><strong>pm2.json</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+  <span style="color:#e6db74">&#34;apps&#34;</span> <span style="color:#f92672">:</span> [{
+    <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;issue&#34;</span>,
+    <span style="color:#e6db74">&#34;cwd&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;dest&#34;</span>,
+    <span style="color:#e6db74">&#34;script&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bin/www.js&#34;</span>,
+    <span style="color:#e6db74">&#34;instances&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2&#34;</span>,
+    <span style="color:#e6db74">&#34;exec_mode&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cluster&#34;</span>,
+    <span style="color:#e6db74">&#34;env&#34;</span><span style="color:#f92672">:</span> {
+      <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+      <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3002</span>
     },
-    &quot;env_production&quot; : {
-       &quot;NODE_ENV&quot;: &quot;production&quot;,
-       &quot;PORT&quot;: 3003
+    <span style="color:#e6db74">&#34;env_production&#34;</span> <span style="color:#f92672">:</span> {
+       <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;production&#34;</span>,
+       <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3003</span>
     },
-    &quot;log_date_format&quot;: &quot;YYYY-MM-DD_HH:mm Z&quot;,
-    &quot;merge_logs&quot;: true
+    <span style="color:#e6db74">&#34;log_date_format&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;YYYY-MM-DD_HH:mm Z&#34;</span>,
+    <span style="color:#e6db74">&#34;merge_logs&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
   }]
 }
-</code></pre><p>如果不加参数则默认使用</p>
-<pre><code>&quot;env&quot;: {
-    &quot;NODE_ENV&quot;: &quot;development&quot;,
-    &quot;PORT&quot;: 3002
+</code></pre></div><p>如果不加参数则默认使用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#e6db74">&#34;env&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+    <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3002</span>
 }
-</code></pre><p>结果：<code>NODE_ENV=development</code>,<code>PORT=3002</code></p>
+</code></pre></div><p>结果：<code>NODE_ENV=development</code>,<code>PORT=3002</code></p>
 <p>加<code>--env production</code>则使用的是</p>
-<pre><code>&quot;env_production&quot; : {
-    &quot;NODE_ENV&quot;: &quot;production&quot;,
-    &quot;PORT&quot;: 3003
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#e6db74">&#34;env_production&#34;</span> <span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;production&#34;</span>,
+    <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3003</span>
 }
-</code></pre><p>结果：<code>NODE_ENV=production</code>,<code>PORT=3003</code></p>
+</code></pre></div><p>结果：<code>NODE_ENV=production</code>,<code>PORT=3003</code></p>
 
 		</div>
 		<footer class="post__footer">

@@ -18,8 +18,8 @@
 		<meta itemprop="name" content="git常用命令">
 <meta itemprop="description" content="查看、添加、提交、删除、找回，重置修改文件git help &amp;lt;command&amp;gt; # 显示command的helpgit show # 显示某次提交的"><meta itemprop="datePublished" content="2014-10-23T02:46:41&#43;00:00" />
 <meta itemprop="dateModified" content="2014-10-23T02:46:41&#43;00:00" />
-<meta itemprop="wordCount" content="495">
-<meta itemprop="keywords" content="" />
+<meta itemprop="wordCount" content="494">
+<meta itemprop="keywords" content="git," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="git常用命令"/>
 <meta name="twitter:description" content="查看、添加、提交、删除、找回，重置修改文件git help &amp;lt;command&amp;gt; # 显示command的helpgit show # 显示某次提交的"/>
@@ -40,7 +40,6 @@
 </script>
 
 
-
 <script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
 <script>
   
@@ -48,9 +47,7 @@
   const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
   const appKey = "O1FUquffQDSOPso3gC4XkqbG";
   const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
-
   AV.init({ appId, appKey, serverURL });
-
   function updateCollect() {
     const collect = new AV.Query('Collect');
     const url = location.pathname;
@@ -145,7 +142,25 @@
 <div class="post__toc toc">
 	<div class="toc__title">目录</div>
 	<div class="toc__menu">
-		<nav id="TableOfContents"></nav>
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#查看文件diff">查看文件diff</a></li>
+        <li><a href="#查看提交记录">查看提交记录</a></li>
+        <li><a href="#tig">tig</a></li>
+        <li><a href="#查看切换创建和删除分支">查看、切换、创建和删除分支</a></li>
+        <li><a href="#分支合并和rebase">分支合并和rebase</a></li>
+        <li><a href="#git补丁管理方便在多台机器上开发同步时用">Git补丁管理(方便在多台机器上开发同步时用)</a></li>
+        <li><a href="#git暂存管理">Git暂存管理</a></li>
+        <li><a href="#git远程分支管理">Git远程分支管理</a></li>
+        <li><a href="#git远程仓库管理">Git远程仓库管理</a></li>
+        <li><a href="#创建远程仓库">创建远程仓库</a></li>
+        <li><a href="#添加本地项目到github">添加本地项目到github</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
@@ -165,22 +180,22 @@
 <p>git ci &ndash;amend # 修改最后一次提交记录</p>
 <p>git revert &lt;$id&gt; # 恢复某次提交的状态，恢复动作本身也创建次提交对象</p>
 <p>git revert HEAD # 恢复最后一次提交的状态</p>
-<p><strong>查看文件diff</strong></p>
+<h3 id="查看文件diff">查看文件diff</h3>
 <p>git diff &lt;file&gt; # 比较当前文件和暂存区文件差异 git diff</p>
 <p>git diff &lt;$id1&gt; &lt;$id2&gt; # 比较两次提交之间的差异</p>
 <p>git diff &lt;branch1&gt;..&lt;branch2&gt; # 在两个分支之间比较</p>
 <p>git diff &ndash;staged # 比较暂存区和版本库差异</p>
 <p>git diff &ndash;cached # 比较暂存区和版本库差异</p>
 <p>git diff &ndash;stat # 仅仅比较统计信息</p>
-<p><strong>查看提交记录</strong></p>
+<h3 id="查看提交记录">查看提交记录</h3>
 <p>git log git log &lt;file&gt; # 查看该文件每次提交记录</p>
 <p>git log -p &lt;file&gt; # 查看每次详细修改内容的diff</p>
 <p>git log -p -2 # 查看最近两次详细修改内容的diff</p>
 <p>git log &ndash;stat #查看提交统计信息</p>
-<p><strong>tig</strong></p>
+<h3 id="tig">tig</h3>
 <p>Mac上可以使用tig代替diff和log，<code>brew install tig</code></p>
 <p><strong>Git 本地分支管理</strong></p>
-<p><strong>查看、切换、创建和删除分支</strong></p>
+<h3 id="查看切换创建和删除分支">查看、切换、创建和删除分支</h3>
 <p>git br -r # 查看远程分支</p>
 <p>git br &lt;new_branch&gt; # 创建新的分支</p>
 <p>git br -v # 查看各个分支最后提交信息</p>
@@ -193,20 +208,20 @@
 <p>git co $id -b &lt;new_branch&gt; # 把某次历史提交记录checkout出来，创建成一个分支</p>
 <p>git br -d &lt;branch&gt; # 删除某个分支</p>
 <p>git br -D &lt;branch&gt; # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)</p>
-<p><strong> 分支合并和rebase</strong></p>
+<h3 id="分支合并和rebase">分支合并和rebase</h3>
 <p>git merge &lt;branch&gt; # 将branch分支合并到当前分支</p>
 <p>git merge origin/master &ndash;no-ff # 不要Fast-Foward合并，这样可以生成merge提交</p>
 <p>git rebase master &lt;branch&gt; # 将master rebase到branch，相当于： git co &lt;branch&gt; &amp;&amp; git rebase master &amp;&amp; git co master &amp;&amp; git merge &lt;branch&gt;</p>
-<p><strong> Git补丁管理(方便在多台机器上开发同步时用)</strong></p>
+<h3 id="git补丁管理方便在多台机器上开发同步时用">Git补丁管理(方便在多台机器上开发同步时用)</h3>
 <p>git diff &gt; ../sync.patch # 生成补丁</p>
 <p>git apply ../sync.patch # 打补丁</p>
 <p>git apply &ndash;check ../sync.patch #测试补丁能否成功</p>
-<p><strong> Git暂存管理</strong></p>
+<h3 id="git暂存管理">Git暂存管理</h3>
 <p>git stash # 暂存</p>
 <p>git stash list # 列所有stash</p>
 <p>git stash apply # 恢复暂存的内容</p>
 <p>git stash drop # 删除暂存区</p>
-<p><strong>Git远程分支管理</strong></p>
+<h3 id="git远程分支管理">Git远程分支管理</h3>
 <p>git pull # 抓取远程仓库所有分支更新并合并到本地</p>
 <p>git pull &ndash;no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并</p>
 <p>git fetch origin # 抓取远程仓库更新</p>
@@ -219,13 +234,12 @@
 <p>git push origin &lt;local_branch&gt; # 创建远程分支， origin是远程仓库名</p>
 <p>git push origin &lt;local_branch&gt;:&lt;remote_branch&gt; # 创建远程分支</p>
 <p>git push origin :&lt;remote_branch&gt; #先删除本地分支(git br -d &lt;branch&gt;)，然后再push删除远程分支</p>
-<p><strong>Git远程仓库管理</strong></p>
-<p><em><a href="http://blog.jobbole.com/6492/">GitHub</a></em></p>
+<h3 id="git远程仓库管理">Git远程仓库管理</h3>
 <p>git remote -v # 查看远程服务器地址和仓库名称</p>
 <p>git remote show origin # 查看远程服务器仓库状态</p>
 <p>git remote add origin git@ github:robbin/robbin_site.git # 添加远程仓库地址</p>
 <p>git remote set-url origin git@ github.com:robbin/robbin_site.git # 设置远程仓库地址(用于修改远程仓库地址) git remote rm &lt;repository&gt; # 删除远程仓库</p>
-<p><strong>创建远程仓库</strong></p>
+<h3 id="创建远程仓库">创建远程仓库</h3>
 <p>git clone &ndash;bare robbin_site robbin_site.git # 用带版本的项目创建纯版本仓库</p>
 <p>scp -r my_project.git git@ git.csdn.net:~ # 将纯仓库上传到服务器上</p>
 <p>mkdir robbin_site.git &amp;&amp; cd robbin_site.git &amp;&amp; git &ndash;bare init # 在服务器创建纯仓库</p>
@@ -236,10 +250,21 @@
 <p>也可以命令设置跟踪远程库和本地库</p>
 <p>git branch &ndash;set-upstream master origin/master</p>
 <p>git branch &ndash;set-upstream develop origin/develop</p>
-<p><strong>添加本地项目到github</strong></p>
+<h3 id="添加本地项目到github">添加本地项目到github</h3>
 <p>首先在git bash命令行切换到本地项目目录，然后在github上创建资源库，复制地址。执行命令git init初始化git标记，此时本地文件目录会新增.git隐藏文件夹，删除这个文件夹就可以删除所有git标记。init以后只是创建了本地git资源，并未与github资源库关联。在git bash命令行添加远程资源库：git remote add name https://github.com/hpgt/name.git这样就关联起来了，然后在提交之前需要pull更新:git pull name master,接下来将本地文件add进索引：[git add .]添加所有，或者单独添加git add &lt;文件夹或文件&gt;，提交：git commit -m &quot;注释说明&quot;,提交到远程资源库：git push -u name master首次提交</p>
 
 		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/git/" rel="tag">git</a>
+		</li>
+	</ul>
+</div>
+		</footer>
 	</article>
 </main>
 
