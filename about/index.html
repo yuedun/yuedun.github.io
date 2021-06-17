@@ -50,7 +50,52 @@ QQ：438473005"/>
 
   gtag('config', 'G-9KRMQRCRDQ');
 </script>
+<!-- 引入存储 SDK -->
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage@5.0.0-beta.0/dist/browser/lc.min.js"></script>
+<script>
+    const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
+    const appKey = "O1FUquffQDSOPso3gC4XkqbG";
+    const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
+    LC.init({ appId, appKey, serverURL });
 
+    function releaseNewProduct() {
+        const url = location.pathname;
+        return LC.CLASS("Collect")
+            .add({
+                url: url,
+                pv: 12,
+                // owner: currentUser,
+            })
+            .then(() => {
+                return "null"
+            })
+            .catch(({ error }) => alert(error));
+    }
+
+
+    function setupData() {
+        return LC.CLASS("Collect")
+            .include("url", "pv")
+            .orderBy("createdAt", "desc")
+            .find()
+            .then((products) => {
+                products.forEach((product) => {
+                    const url = product.data.url;
+                    const pv = product.data.pv;
+
+                    console.log(url, pv);
+                    document.querySelector("#url").innerText = url;
+                    document.querySelector("#pv").innerText = pv;
+                });
+                return "null";
+            })
+            .catch((error) => alert(error.error));
+    }
+
+    releaseNewProduct().then(() => {
+        setupData()
+    })
+</script>
 
 </head>
 <body class="body">
