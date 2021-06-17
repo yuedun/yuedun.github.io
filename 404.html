@@ -35,6 +35,50 @@
 </script>
 
 
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
+<script>
+  
+  
+  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
+  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
+  const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
+
+  AV.init({ appId, appKey, serverURL });
+
+  function updateCollect() {
+    const collect = new AV.Query('Collect');
+    const url = location.pathname;
+    collect.select(['url', 'pv'])
+    collect.equalTo('url', url);
+    collect.first().then((col) => {
+      if (!col) {
+        
+        const Collect = AV.Object.extend('Collect');
+        
+        const collect = new Collect();
+        
+        collect.set('url', url);
+        collect.set('pv', 1);
+        collect.save()
+      } else {
+        col.increment('pv', 1)
+        col.save();
+
+        const context = document.querySelector('.post__meta.meta');
+        const pv = document.createElement('div');
+        pv.setAttribute('class', 'meta__item-author meta__item');
+        const span = document.createElement('span');
+        span.setAttribute('class', 'meta__text');
+        span.innerText = "浏览（" + col.get('pv') + "）";
+        pv.appendChild(span)
+        context.appendChild(pv)
+      }
+    });
+  }
+
+  updateCollect()
+</script>
 </head>
 <body class="body">
 		<header class="header">
