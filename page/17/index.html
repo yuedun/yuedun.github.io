@@ -141,8 +141,8 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		三月的时候做了一个简单的计划，主要是在前端知识方面的学习，包括HTML5，CSS3，bootstrap,angularjs。到目前的四个月时间里工作内容基本包揽了所有前端任务开发，从不会到会，到熟练，对于我来说痛并快乐着，学习过程虽然艰难，但是如果让我每天重复一样的工作内容真的会很烦躁，而现在连做梦都会梦到遇到的技术难题，想到解决办法就迫不及待第二天上班去解决。这样一路下来，除了angularjs不太熟练其他都可以轻松胜任，这是不是离全栈更近一步了。
- 虽然angularjs这个坑挖的越来越深，下一个2.0版本也不向后兼容，让人纠结该不该继续学习，不过其实大家都对它的先进性认可的，暂时不会放弃。No这样的话前端技术暂时没有要学习的，接下来就是要学习服务器方面的东西，Linux操作系统，Nginx服务器使用，MySQL数据库优化，NoSQL公司暂时没有使用就先不深入学习了，不过好在公司的技术使用上有决策权，如有必要还是希望能用上，从上次活动服务器挂掉得出结论，MySQL不作特别优化处理是有点难以支撑高并发，有点与nodejs不搭调。
- 总体来说，这几个月成长不少，除了自己努力之外还要感谢公司提供了我能够充分发挥的环境和前辈同事的指导和老板的信任。——不论公司最后成败，付出的努力不会付之东流。
+虽然angularjs这个坑挖的越来越深，下一个2.0版本也不向后兼容，让人纠结该不该继续学习，不过其实大家都对它的先进性认可的，暂时不会放弃。No这样的话前端技术暂时没有要学习的，接下来就是要学习服务器方面的东西，Linux操作系统，Nginx服务器使用，MySQL数据库优化，NoSQL公司暂时没有使用就先不深入学习了，不过好在公司的技术使用上有决策权，如有必要还是希望能用上，从上次活动服务器挂掉得出结论，MySQL不作特别优化处理是有点难以支撑高并发，有点与nodejs不搭调。
+总体来说，这几个月成长不少，除了自己努力之外还要感谢公司提供了我能够充分发挥的环境和前辈同事的指导和老板的信任。——不论公司最后成败，付出的努力不会付之东流。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -320,18 +320,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		sequelize定义实体对象
-var sequelize = require('../utils/sequelizeDB');//连接数据库 var Sequelize = require('sequelize'); var User = sequelize.define('User', {
-user_id:{ type: Sequelize.STRING, primaryKey: true},
-name: Sequelize.STRING,
-phone: Sequelize.STRING,
-create_date: Sequelize.DATE,
-update_date: Sequelize.DATE
-}, {
-freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步
-tableName: 'user',
-timestamps: false
-});
-define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt
+var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Sequelize = require(&#34;sequelize&#34;); var User = sequelize.define(&#34;User&#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &#34;user&#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt
 	</div>
 </article>
 	</main>
@@ -510,7 +499,6 @@ define函数的第一个参数’User’就是定义一个实体对象，名称�
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

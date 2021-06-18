@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>mongoose实现翻页 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="&amp;nbsp; &amp;nbsp; 随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找">
+	<meta name="description" content="随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找">
 		<meta property="og:title" content="mongoose实现翻页" />
-<meta property="og:description" content="&amp;nbsp; &amp;nbsp; 随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找" />
+<meta property="og:description" content="随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5440a294fea3dae97beee4f9/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2014-10-17T05:01:08&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="mongoose实现翻页">
-<meta itemprop="description" content="&amp;nbsp; &amp;nbsp; 随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找"><meta itemprop="datePublished" content="2014-10-17T05:01:08&#43;00:00" />
+<meta itemprop="description" content="随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找"><meta itemprop="datePublished" content="2014-10-17T05:01:08&#43;00:00" />
 <meta itemprop="dateModified" content="2014-10-17T05:01:08&#43;00:00" />
-<meta itemprop="wordCount" content="198">
-<meta itemprop="keywords" content="" />
+<meta itemprop="wordCount" content="168">
+<meta itemprop="keywords" content="mongoose,mongodb," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="mongoose实现翻页"/>
-<meta name="twitter:description" content="&amp;nbsp; &amp;nbsp; 随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找"/>
+<meta name="twitter:description" content="随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -146,72 +146,78 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<p>    随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。                               </p>
+			<p>随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。</p>
 <p>首先看下mongoose API，find方法源码：</p>
-<ol>
-<li><code>Model.find = function find (conditions, fields, options, callback){</code></li>
-<li><code>if(&amp;#39;function&amp;#39;==typeof conditions){</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; callback = conditions;</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; conditions ={};</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; fields = null;</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; options = null;</code></li>
-<li><code>}elseif(&amp;#39;function&amp;#39;==typeof fields){</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; callback = fields;</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; fields = null;</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; options = null;</code></li>
-<li><code>}elseif(&amp;#39;function&amp;#39;==typeof options){</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; callback = options;</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; options = null;</code></li>
-<li><code>}</code></li>
-<li><code>// get the raw mongodb collection object</code></li>
-<li><code>&amp;nbsp; var mq =newQuery({}, options,this,this.collection);</code></li>
-<li><code>&amp;nbsp; mq.select(fields);</code></li>
-<li><code>if(this.schema.discriminatorMapping &amp;amp;&amp;amp; mq._selectedInclusively()){</code></li>
-<li><code>&amp;nbsp; &amp;nbsp; mq.select(this.schema.options.discriminatorKey);</code></li>
-<li><code>}</code></li>
-<li><code>return mq.find(conditions, callback);</code></li>
-<li><code>};</code></li>
-</ol>
-<p> 其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：</p>
-<p>/**<br>
- * huopanpan<br>
- */</p>
-<p>router.get('/admin/blogList', function(req, res) {<br>
-    var user = req.session.user;<br>
-    var pageIndex = 1;<br>
-    var pageSize = 5;<br>
-    pageIndex = req.query.pageIndex == undefined ? pageIndex<br>
-            : req.query.pageIndex;<br>
-    pageSize = req.query.pageSize == undefined ? pageSize : req.query.pageSize;<br>
-    Blog.find({}, null, {<br>
-        sort : {<br>
-            '_id' : -1<br>
-        },<br>
-        skip : (pageIndex - 1) * pageSize,<br>
-        limit : pageSize<br>
-    }, function(err, docs) {<br>
-        if (err)<br>
-            res.send(err.message);<br>
-        res.render('admin/bloglist', {<br>
-            blogList : docs,<br>
-            user : user,<br>
-            pageIndex : pageIndex,<br>
-            pageCount : docs.length<br>
-        });<br>
-    });<br>
-});</p>
-<p>其中Blog.find({},null,{sort:{'_id':-1}, skip :( pageIndex -1)* pageSize, limit : pageSize },function)<br>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">Model</span>.<span style="color:#a6e22e">find</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">find</span> (<span style="color:#a6e22e">conditions</span>, <span style="color:#a6e22e">fields</span>, <span style="color:#a6e22e">options</span>, <span style="color:#a6e22e">callback</span>){
+<span style="color:#66d9ef">if</span>(<span style="color:#e6db74">&#34;function&#34;</span><span style="color:#f92672">==</span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">conditions</span>){
+    <span style="color:#a6e22e">callback</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">conditions</span>;
+    <span style="color:#a6e22e">conditions</span> <span style="color:#f92672">=</span>{};
+    <span style="color:#a6e22e">fields</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+    <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+}<span style="color:#a6e22e">elseif</span>(<span style="color:#e6db74">&#34;function&#34;</span><span style="color:#f92672">==</span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">fields</span>){
+    <span style="color:#a6e22e">callback</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fields</span>;
+    <span style="color:#a6e22e">fields</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+     <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+ }<span style="color:#a6e22e">elseif</span>(<span style="color:#e6db74">&#34;function&#34;</span><span style="color:#f92672">==</span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">options</span>){
+     <span style="color:#a6e22e">callback</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">options</span>;
+     <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+ }
+ <span style="color:#75715e">// get the raw mongodb collection object
+</span><span style="color:#75715e"></span>   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mq</span> <span style="color:#f92672">=</span><span style="color:#a6e22e">newQuery</span>({}, <span style="color:#a6e22e">options</span>,<span style="color:#66d9ef">this</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">collection</span>);
+   <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">fields</span>);
+ <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">discriminatorMapping</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>;<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>; <span style="color:#a6e22e">mq</span>.<span style="color:#ae81ff">_</span><span style="color:#a6e22e">selectedInclusively</span>()){
+     <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">select</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">discriminatorKey</span>);
+ }
+ <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">conditions</span>, <span style="color:#a6e22e">callback</span>);
+ };
+</code></pre></div><p>其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/admin/blogList&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {  
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">user</span>;  
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;  
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pageSize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;  
+    <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">pageIndex</span>  
+            <span style="color:#f92672">:</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">pageIndex</span>;  
+    <span style="color:#a6e22e">pageSize</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">pageSize</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">pageSize</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">pageSize</span>;  
+    <span style="color:#a6e22e">Blog</span>.<span style="color:#a6e22e">find</span>({}, <span style="color:#66d9ef">null</span>, {  
+        <span style="color:#a6e22e">sort</span> <span style="color:#f92672">:</span> {  
+            <span style="color:#e6db74">&#34;_id&#34;</span> <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  
+        },  
+        <span style="color:#a6e22e">skip</span> <span style="color:#f92672">:</span> (<span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">pageSize</span>,  
+        <span style="color:#a6e22e">limit</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">pageSize</span>  
+    }, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">docs</span>) {  
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)  
+            <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">message</span>);  
+        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#34;admin/bloglist&#34;</span>, {  
+            <span style="color:#a6e22e">blogList</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">docs</span>,  
+            <span style="color:#a6e22e">user</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">user</span>,  
+            <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">pageIndex</span>,  
+            <span style="color:#a6e22e">pageCount</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">docs</span>.<span style="color:#a6e22e">length</span>  
+        });  
+    });  
+});
+</code></pre></div><p>其中Blog.find({},null,{sort:{&quot;_id&quot;:-1}, skip :( pageIndex -1)* pageSize, limit : pageSize },function)<br>
 这一段第一个参数为空，意思查询所有，第二个参数null,查询所有字段，第三个参数有倒序，分页。<br>
 然后就是页面上两个翻页按钮：</p>
-<p>/**<br>
- * huopanpan<br>
- */</p>
-<p>&lt;ul class=&quot;pager&quot;&gt;<br>
-    &lt;li&gt;&lt;a href=&quot;/admin/blogList?pageIndex=&lt;%= pageIndex==1?1:parseInt(pageIndex)-1%&gt;&amp;pageSize=5&quot;&gt;← Older&lt;/a&gt;&lt;/li&gt;<br>
-    &lt;li&gt;&lt;a href=&quot;/admin/blogList?pageIndex=&lt;%= pageCount&lt;5?pageIndex:parseInt(pageIndex)+1%&gt;&amp;pageSize=5&quot;&gt;Newer →&lt;%= pageCount%&gt;&lt;/a&gt;&lt;/li&gt;<br>
-&lt;/ul&gt;);</p>
-
+<pre><code>&lt;ul class=&quot;pager&quot;&gt;  
+    &lt;li&gt;&lt;a href=&quot;/admin/blogList?pageIndex=&lt;%= pageIndex==1?1:parseInt(pageIndex)-1%&gt;&amp;amp;pageSize=5&quot;&gt;&amp;larr; Older&lt;/a&gt;&lt;/li&gt;  
+    &lt;li&gt;&lt;a href=&quot;/admin/blogList?pageIndex=&lt;%= pageCount&lt;5?pageIndex:parseInt(pageIndex)+1%&gt;&amp;amp;pageSize=5&quot;&gt;Newer &amp;rarr;&lt;%= pageCount%&gt;&lt;/a&gt;&lt;/li&gt;  
+&lt;/ul&gt;);
+</code></pre>
 		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mongoose/" rel="tag">mongoose</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mongodb/" rel="tag">mongodb</a>
+		</li>
+	</ul>
+</div>
+		</footer>
 	</article>
 </main>
 

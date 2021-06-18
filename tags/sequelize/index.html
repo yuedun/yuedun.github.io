@@ -151,6 +151,49 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/59f4a228f99acfed859c831e/" rel="bookmark">
+			typescript开发sequelize返回ModelInstance或null值无法获取属性值
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-28T15:28:40Z">2017-10-28 15:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		从图片中的代码可以看出 let userRecord = await item.getUser();获取到的是Bluebird&lt;UserInstance | null&gt;类型，然后在下面获取对象属性的时候报错，错误信息是：
+[ts] Object is possibly 'null'.let userRecord: UserInstance | null说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/59eab23989faeadc30eac826/" rel="bookmark">
+			sequelize.js不能将驼峰camelCased命名转化为下划线underscored命名
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-21T02:34:33Z">2017-10-21 02:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		定义Model的时候有这样两个参数： underscored,underscoredAll,
+ Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
+ 其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
+var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assistance&#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &#39;assistance&#39;, charset: &#39;utf8&#39;, collate: &#39;utf8_unicode_ci&#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/59eab23989faeadc30eac826/">阅读全文…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5967123a3d2aae2ccfdc61a3/" rel="bookmark">
 			Sequelize批量插入数据
 			</a>
@@ -185,48 +228,52 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 	<div class="content list__excerpt post__content clearfix">
 		js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {
-&amp;nbsp; prop: &amp;#39;delete me&amp;#39;
-};
-//或者这么声明的对象
-var objtest = new Array();
-objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;;
-//删除属性&amp;#39;prop&amp;#39;：
-delete objtest.prop;
-//或者
-delete objtest[&amp;#39;prop&amp;#39;];
-//还可以删除任意变量
-var numb = 17;
-delete numb;
-但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = {
-name:&quot;鸣人&quot;,
-age: 16,
-gender: &quot;男&quot;,
-friends: [
-{
-name:&quot;小樱&quot;,
-age:16,
-gender:&quot;女&quot;,
-friends:[
-{
-name:&quot;井野&quot;,
-age:16,
-gender:&quot;女&quot;
-}
-]
-},
-{
-name:&quot;佐助&quot;,
-age:16,
-gender:&quot;男&quot;
-}
-]
-}
-鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
-据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
-但是还是有办法的，可以这样删除
-user.getDataValue(&amp;quot;friends&amp;quot;)[0].setDataValue(&amp;quot;friends&amp;quot;, undefined)就是将属性设置为undefined，查询的时候就没有小樱的friends了。
+var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;：  delete objtest.prop; //或者  delete objtest[&#39;prop&#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/" rel="bookmark">
+			sequelizejs中where条件与order排序的使用
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-08-28T03:21:08Z">2015-08-28 03:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		最基本的where条件：
+Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({ where: { status: &#39;inactive&#39; } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/554ae5b3a07843eb8002a388/" rel="bookmark">
+			sequelize定义实体对象
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T04:10:27Z">2015-05-07 04:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		sequelize定义实体对象
+var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Sequelize = require(&#34;sequelize&#34;); var User = sequelize.define(&#34;User&#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &#34;user&#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt
 	</div>
 </article>
 </main>
@@ -400,7 +447,6 @@ user.getDataValue(&amp;quot;friends&amp;quot;)[0].setDataValue(&amp;quot;friends
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

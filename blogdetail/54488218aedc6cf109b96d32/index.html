@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="让你的Node.js应用跑得更快的10个技巧">
 <meta itemprop="description" content="Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那"><meta itemprop="datePublished" content="2014-10-23T04:20:40&#43;00:00" />
 <meta itemprop="dateModified" content="2014-10-23T04:20:40&#43;00:00" />
-<meta itemprop="wordCount" content="200">
+<meta itemprop="wordCount" content="199">
 <meta itemprop="keywords" content="nodejs," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="让你的Node.js应用跑得更快的10个技巧"/>
@@ -159,7 +159,7 @@
 <p>如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。</p>
 <p>我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0100/6207/18acd74d-711c-3596-9ac4-975b4bf75ea4.png" alt="" title="点击查看原始大小图片"></p>
-<p>如果你想更深入了解 async.js ，请移步它的 <a href="https://github.com/caolan/async">GitHub</a> 页面。</p>
+<p>如果你想更深入了解 async.js ，请移步它的 <a href="https://github.com/caolan/async">GitHub</a> 页面。</p>
 <p><strong>2. 异步</strong></p>
 <p>根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:<br>
 <img src="http://dl2.iteye.com/upload/attachment/0100/6209/84389e7a-1edb-30cc-8184-25c1fe067794.png" alt="" title="点击查看原始大小图片"></p>
@@ -179,7 +179,7 @@
 <p>看下我的这个<a href="http://www.sitepoint.com/creating-restful-apis-express-4/">教程</a>，它是关于怎样用 Express 4 公开一个 RESTful APIs的。我还写了另一篇<a href="http://www.sitepoint.com/creating-crud-app-minutes-angulars-resource/">教程</a>，演示了怎样把这些 APIs 和 AngularJS 结合起来。</p>
 <p><strong>6. 不要在 Sessions 存储太多数据</strong></p>
 <p>典型的 Express 页面应用， Session 数据默认是保存在内存中的。当你把太多数据保存在 Session 的时候，会导致服务器开销显著增大。所以，要么你切换到别的储存方式来保存 Session 数据，要么尽量减少存储在 Session 中的数据量。</p>
-<p>比如说，当用户登录到你的应用的时候，你可以只在 Session 中保存他们的 ID 而不是整个用户数据对象。还有，对于那些你能够从 id 拿到对象的查询，你应该会喜欢用  MongoDB 或者 Redis 来存储 session 数据。</p>
+<p>比如说，当用户登录到你的应用的时候，你可以只在 Session 中保存他们的 ID 而不是整个用户数据对象。还有，对于那些你能够从 id 拿到对象的查询，你应该会喜欢用  MongoDB 或者 Redis 来存储 session 数据。</p>
 <p><strong>7. 优化查询</strong></p>
 <p>假设你有个博客，你要在主页上显示最新帖子。你可能会通过 Mongoose 这样取数据：</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0100/6217/2391a8f3-0316-372e-b798-b1b75fb60573.png" alt="" title="点击查看原始大小图片"></p>
@@ -190,7 +190,7 @@
 <p><strong>9. 在 Node 前面用 Nginx</strong></p>
 <p>Nginx 是个微小型轻量 Web 服务器，用它可以降低你的 Node.js 服务器的负载。你可以把静态资源配置到 nginx 上，而不是在 Node 上。你可以在 nginx 上用 gzip 压缩响应，让所有的响应都变得更小。所以，如果你有个正在营运的产品，我觉得你应该会想用 nginx 来改善运行速度的。</p>
 <p><strong>10. 打包 JavaScript</strong></p>
-<p>最后，你还可以大大提高页面应用速度，通过把多个 JS 文件打包。当浏览器在页面渲染中碰到 &lt;script&gt; 元素的时候会被堵塞，直到拿到这个脚本才继续运行(除非设置了异步属性)。比如，如果你的页面有五个 JavaScript 文件，浏览器会发出五个独立的 HTTP 请求来获取他们。如果把这五个文件压缩打包成一个，整体性能将可以大幅提升。CSS 文件也是一样。你可以用诸如 Grunt/Gulp 这样的编译工具来打包你的资源文件。</p>
+<p>最后，你还可以大大提高页面应用速度，通过把多个 JS 文件打包。当浏览器在页面渲染中碰到 <!-- raw HTML omitted --> 元素的时候会被堵塞，直到拿到这个脚本才继续运行(除非设置了异步属性)。比如，如果你的页面有五个 JavaScript 文件，浏览器会发出五个独立的 HTTP 请求来获取他们。如果把这五个文件压缩打包成一个，整体性能将可以大幅提升。CSS 文件也是一样。你可以用诸如 Grunt/Gulp 这样的编译工具来打包你的资源文件。</p>
 <p>原文链接：http://www.iteye.com/news/29301</p>
 
 		</div>

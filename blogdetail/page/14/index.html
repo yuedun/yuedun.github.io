@@ -144,11 +144,7 @@
 	<div class="content list__excerpt post__content clearfix">
 		本想写篇vue.js的教程的，但牵扯的知识点比较多，最近又没时间，就记录下过程中遇到问题吧。开发过程中用的360极速浏览器，也没什么问题，但是其他人测试的时候用的是chrome浏览器，输入汉字的时候会连拼音也带进去，比如输入的是“你好”，结果却成了“nihao你好”。
 按理说360极速浏览器也用的是chrome内核，不应该出现这两种不同的情况，这个问题先不追究了。还是说说为什么vue.js的输入框会出现拼音的问题。我本以为是浏览器的差异造成这种现象，但是也不是所有输入框都会出现，那一定是程序的问题。
-&lt;input type=&quot;text&quot; v-model=&quot;msg&quot;&gt;
-&lt;p&gt;{{msg}}&lt;/p&gt;
 这是一种双向数据绑定常见写法，但是由于我的理解不够透彻，写成了这样：
-&lt;input type=&quot;text&quot; v-model=&quot;msg&quot; value=&quot;{{msg}}&quot;&gt;
-&lt;p&gt;{{msg}}&lt;/p&gt;
 我的理解是更新的时候要先显示数据，所以就在input里加了value来初始化数据，也是因为加了这个value导致输入汉字出现拼音，也与浏览器有点关系，就是输入的时候chrome浏览器会把输入的汉字拼音拼写也放进输入框，那么数据模型就接收了输入，敲击空格键的时候又输进了汉字，所以就都带进来了。但其实只需要v-model就能实现数据的接收和输出。
 	</div>
 </article><article class="list__item post">
@@ -169,48 +165,11 @@
 	<div class="content list__excerpt post__content clearfix">
 		js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {
-&amp;nbsp; prop: &amp;#39;delete me&amp;#39;
-};
-//或者这么声明的对象
-var objtest = new Array();
-objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;;
-//删除属性&amp;#39;prop&amp;#39;：
-delete objtest.prop;
-//或者
-delete objtest[&amp;#39;prop&amp;#39;];
-//还可以删除任意变量
-var numb = 17;
-delete numb;
-但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = {
-name:&quot;鸣人&quot;,
-age: 16,
-gender: &quot;男&quot;,
-friends: [
-{
-name:&quot;小樱&quot;,
-age:16,
-gender:&quot;女&quot;,
-friends:[
-{
-name:&quot;井野&quot;,
-age:16,
-gender:&quot;女&quot;
-}
-]
-},
-{
-name:&quot;佐助&quot;,
-age:16,
-gender:&quot;男&quot;
-}
-]
-}
-鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
-据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
-但是还是有办法的，可以这样删除
-user.getDataValue(&amp;quot;friends&amp;quot;)[0].setDataValue(&amp;quot;friends&amp;quot;, undefined)就是将属性设置为undefined，查询的时候就没有小樱的friends了。
+var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;：  delete objtest.prop; //或者  delete objtest[&#39;prop&#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -306,40 +265,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		js控制优酷视频播放暂停
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&quot;&gt;
-&lt;title&gt;js控制优酷视频播放&lt;/title&gt;
-&lt;script src=&quot;http://player.youku.com/jsapi&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-player = new YKU.Player('youkuplayer',{
-styleid: '0',
-client_id: 'd8781b239fdad45b',
-vid: 'XMjg1MTcyNDQ0',
-autoplay: false,
-show_related: true,
-events:{
-onPlayEnd: function(){ /*your code*/ },
-onPlayStart: function(){ /*your code*/ },
-onPlayerReady: function(){ /*your code*/ }
-}
-});
-function playVideo(){
-try{
-player.playVideo();
-} catch(err){
-alert(&quot;*&quot;+err);
-}
- }
-function pauseVideo(){
-player.pauseVideo();
- }
-function seekTo(s){
-player.seekTo(s);
-}
-function currentTime(){
+&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&#34;&gt; &lt;title&gt;js控制优酷视频播放&lt;/title&gt; &lt;script src=&#34;http://player.youku.com/jsapi&#34;&gt;&lt;/script&gt; &lt;script&gt; player = new YKU.Player(&#34;youkuplayer&#34;,{ styleid: &#34;0&#34;, client_id: &#34;d8781b239fdad45b&#34;, vid: &#34;XMjg1MTcyNDQ0&#34;, autoplay: false, show_related: true, events:{ onPlayEnd: function(){ /*your code*/ }, onPlayStart: function(){ /*your code*/ }, onPlayerReady: function(){ /*your code*/ } } }); function playVideo(){ try{ player.playVideo(); } catch(err){ alert(&#34;*&#34;+err); } } function pauseVideo(){ player.pauseVideo(); } function seekTo(s){ player.seekTo(s); } function currentTime(){ return player.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/564adbd591dccd315681abfe/">阅读全文…</a>
@@ -443,7 +369,7 @@ function currentTime(){
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		虽然出现git did not exit cleanly (exit code 128)的情况各有不同，不过其中一种是提交时的读写权限有问题，如果本地代码连接的是SSH仓库，那么可能是服务端没有配置SSH Key。github有两个地方配置sshkey，有一个是全局的，另一个是针对单个仓库的，如果给某个仓库配置了Deploy keys（其实和SSHkey一样），提交另一个代码时就会出现git did not exit cleanly。对于我这种不熟练的人来说就想着再添加一个Deploy keys，但是又提示Key already in use，这时就要看看是不是其他仓库单独配置了ssh key。如果仓库太多具体哪个配置了也不太清楚，有个简单快读的办法是在命令行执行 ssh -T -ai .\id_rsa git@github.com，会告诉你哪个仓库在使用本地的id_rsa内容。删掉Deploy keys，配置为全局SSH Keys就行了
+		虽然出现git did not exit cleanly (exit code 128)的情况各有不同，不过其中一种是提交时的读写权限有问题，如果本地代码连接的是SSH仓库，那么可能是服务端没有配置SSH Key。github有两个地方配置sshkey，有一个是全局的，另一个是针对单个仓库的，如果给某个仓库配置了Deploy keys（其实和SSHkey一样），提交另一个代码时就会出现git did not exit cleanly。对于我这种不熟练的人来说就想着再添加一个Deploy keys，但是又提示Key already in use，这时就要看看是不是其他仓库单独配置了ssh key。如果仓库太多具体哪个配置了也不太清楚，有个简单快读的办法是在命令行执行 ssh -T -ai .\id_rsa git@github.com，会告诉你哪个仓库在使用本地的id_rsa内容。删掉Deploy keys，配置为全局SSH Keys就行了
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -461,19 +387,14 @@ function currentTime(){
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		切换到C:\Users\&lt;username&gt;\.ssh
-执行命令：ssh-keygen -t rsa -C &quot;邮箱地址&quot;
+		切换到C:\Users\\.ssh
+执行命令：ssh-keygen -t rsa -C &ldquo;邮箱地址&rdquo;
 Generating public/private rsa key pair.
 Enter file in which to save the key (//.ssh/id_rsa):
 第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa
 Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下
 接下来两部是要求输入密码，不输入直接回车就完成了。
-PS C:\Users\admin\.ssh&amp;gt; ssh-keygen -t rsa -C &amp;quot;myemail@163.com&amp;quot;
-Generating public/private rsa key pair.
-Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in .
+PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Generating public/private rsa key pair. Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in .
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56400429c888d8070f145c35/">阅读全文…</a>
@@ -673,7 +594,6 @@ Your identification has been saved in .
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

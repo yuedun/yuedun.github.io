@@ -129,32 +129,6 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/blogdetail/590c93d3266e3f1c8fd4aa83/" rel="bookmark">
-			typescript泛型的使用方法
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T15:01:39Z">2017-05-05 15:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
-function a(args: number ): number {return args;}console.log(a(123));又有另外一个要求，参数为string类型，并且返回string
-function b(args: string ): string {return args;}console.log(b(&quot;sdg&quot;));如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
-function c(args: any ): any {return args;}console.log(c(&quot;sdg&quot;));这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
-function c(args: any ): any {let n = args + &quot;变成了字符串&quot;;//甚至更多的处理return n;}console.log(c(1));c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
-function d&lt;A&gt;(args: A ): A {let n = args + &quot;变成了字符串&quot;;//甚至更多的处理return n;}console.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/590c93d3266e3f1c8fd4aa83/">阅读全文…</a>
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
 			<a href="/blogdetail/58f8c22ae17cc00088e5ba4f/" rel="bookmark">
 			 error TS7010: skipTo, which lacks return-type annotation, implicitly has an any return type.
 			</a>
@@ -316,14 +290,32 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
-var request=require(&amp;#39;request&amp;#39;);var fs=require(&amp;#39;fs&amp;#39;);var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;gt; {res.setEncoding(&amp;#39;binary&amp;#39;);//二进制（binary）FS.writeFile(&amp;#39;out.png&amp;#39;, body, &amp;#39;binary&amp;#39;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;#39;file saved&amp;#39;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
+var request=require(&quot;request&quot;);var fs=require(&quot;fs&quot;);var url=&quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&quot;;HttpRequest.get(url, (err, res, body) =&gt; {res.setEncoding(&quot;binary&quot;);//二进制（binary）FS.writeFile(&quot;out.png&quot;, body, &quot;binary&quot;, function (err) {//以二进制格式保存if (err) throw err;console.log(&quot;file saved&quot;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
-var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;request(url).pipe(fs.createWriteStream(&amp;#39;out.png&amp;#39;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
+var url=&quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&quot;;request(url).pipe(fs.createWriteStream(&quot;out.png&quot;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？
 非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉
 有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，
-const http = require(&amp;#39;http&amp;#39;);var server = http.createServer( (req, res) =&amp;gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;#39;out.png&amp;#39;));,
+const http = require(&quot;http&quot;);var server = http.createServer( (req, res) =&gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&quot;out.png&quot;));,
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5745791ed5034dff53ec6aa4/" rel="bookmark">
+			nodejs中vm模块的作用
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-05-25T10:06:22Z">2016-05-25 10:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		vm提供了一个沙箱环境，什么叫沙箱环境？类似于一个独立的执行空间，什么时候会用到vm模块？就以我现在接触的需求来说，每个月都有运营活动，但是每次需求又不同，比如一些优惠规则不同，最后可能只需要得到一个结果，如果每次活动都去修改代码就会显得很麻烦，我们提供一个后台管理界面，或者直接在数据库里写入每次活动的不同计算规则，这些规则其实也是JavaScript代码，既然是代码就需要执行才行。这就形成了一种情况：在已有的程序中插入一段代码进行执行，这要怎么实现？如果觉得很容易插入的话，那么是不是黑客可以在你的程序中插入一段代码执行呢？这当然是不允许的，所以就需要提供一种安全环境来执行——就是沙箱了，而vm模块就是提供了这样一种执行环境。 http://www.cnblogs.com/softlover/archive/2012/10/03/2707144.html
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -370,48 +362,11 @@ function Person(name, age){this.name = name;this.age = age;}Person.getAge = 
 	<div class="content list__excerpt post__content clearfix">
 		js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {
-&amp;nbsp; prop: &amp;#39;delete me&amp;#39;
-};
-//或者这么声明的对象
-var objtest = new Array();
-objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;;
-//删除属性&amp;#39;prop&amp;#39;：
-delete objtest.prop;
-//或者
-delete objtest[&amp;#39;prop&amp;#39;];
-//还可以删除任意变量
-var numb = 17;
-delete numb;
-但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = {
-name:&quot;鸣人&quot;,
-age: 16,
-gender: &quot;男&quot;,
-friends: [
-{
-name:&quot;小樱&quot;,
-age:16,
-gender:&quot;女&quot;,
-friends:[
-{
-name:&quot;井野&quot;,
-age:16,
-gender:&quot;女&quot;
-}
-]
-},
-{
-name:&quot;佐助&quot;,
-age:16,
-gender:&quot;男&quot;
-}
-]
-}
-鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
-据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
-但是还是有办法的，可以这样删除
-user.getDataValue(&amp;quot;friends&amp;quot;)[0].setDataValue(&amp;quot;friends&amp;quot;, undefined)就是将属性设置为undefined，查询的时候就没有小樱的friends了。
+var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;：  delete objtest.prop; //或者  delete objtest[&#39;prop&#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
 	</div>
 </article>
 </main>
@@ -590,7 +545,6 @@ user.getDataValue(&amp;quot;friends&amp;quot;)[0].setDataValue(&amp;quot;friends
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

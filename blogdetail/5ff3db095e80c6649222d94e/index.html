@@ -170,7 +170,7 @@ converts px to rem
 
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">onwarn</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">warning</span>, <span style="color:#a6e22e">onwarn</span>) =&gt;
 	(<span style="color:#a6e22e">warning</span>.<span style="color:#a6e22e">code</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;MISSING_EXPORT&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">/&#39;preload&#39;/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">warning</span>.<span style="color:#a6e22e">message</span>)) <span style="color:#f92672">||</span>
-	(<span style="color:#a6e22e">warning</span>.<span style="color:#a6e22e">code</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;CIRCULAR_DEPENDENCY&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">/[/\\]@sapper[/\\]/</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">warning</span>.<span style="color:#a6e22e">message</span>)) <span style="color:#f92672">||</span>
+	(<span style="color:#a6e22e">warning</span>.<span style="color:#a6e22e">code</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;CIRCULAR_DEPENDENCY&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#960050;background-color:#1e0010">/[/\]@sapper[/\]/.test(warning.message)) ||</span>
 	<span style="color:#a6e22e">onwarn</span>(<span style="color:#a6e22e">warning</span>);
 
 <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {

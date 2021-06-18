@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>使用nodemailer发送邮件 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="var nodemailer = require(&amp;#39;nodemailer&amp;#39;);var transporter = nodemailer.crea">
+	<meta name="description" content="使用nodemailer发送邮件">
 		<meta property="og:title" content="使用nodemailer发送邮件" />
-<meta property="og:description" content="var nodemailer = require(&amp;#39;nodemailer&amp;#39;);var transporter = nodemailer.crea" />
+<meta property="og:description" content="使用nodemailer发送邮件" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/55e518e0db5ac9c2be76b2fa/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2015-09-01T03:17:52&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="使用nodemailer发送邮件">
-<meta itemprop="description" content="var nodemailer = require(&amp;#39;nodemailer&amp;#39;);var transporter = nodemailer.crea"><meta itemprop="datePublished" content="2015-09-01T03:17:52&#43;00:00" />
+<meta itemprop="description" content="使用nodemailer发送邮件"><meta itemprop="datePublished" content="2015-09-01T03:17:52&#43;00:00" />
 <meta itemprop="dateModified" content="2015-09-01T03:17:52&#43;00:00" />
 <meta itemprop="wordCount" content="59">
 <meta itemprop="keywords" content="nodejs,nodemailer,邮件," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用nodemailer发送邮件"/>
-<meta name="twitter:description" content="var nodemailer = require(&amp;#39;nodemailer&amp;#39;);var transporter = nodemailer.crea"/>
+<meta name="twitter:description" content="使用nodemailer发送邮件"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -146,51 +146,65 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<p><code>var nodemailer = require(&amp;#39;nodemailer&amp;#39;);</code></p>
-<p><code>var transporter = nodemailer.createTransport({</code></p>
-<p><code>service: &amp;#39;gmail&amp;#39;,</code></p>
-<p><code>auth: {</code></p>
-<p><code>user: &amp;#39;youname@gmail.com&amp;#39;,</code></p>
-<p><code>pass: &amp;#39;password&amp;#39;</code></p>
-<p><code>}</code></p>
-<p><code>});</code></p>
-<p><code>transporter.sendMail({</code></p>
-<p><code>from: &amp;#39;youname@gmail.com&amp;#39;,</code></p>
-<p><code>to: &amp;#39;username@qq.com&amp;#39;,</code></p>
-<p><code>subject: &amp;#39;hello&amp;#39;,</code></p>
-<p><code>text: &amp;#39;hello world!&amp;#39;</code></p>
-<p><code>});</code></p>
-<p>这是一个最基本的邮件发送程序，邮件服务商有以下：</p>
+			<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">nodemailer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;nodemailer&#34;</span>);
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">transporter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nodemailer</span>.<span style="color:#a6e22e">createTransport</span>({
+
+	<span style="color:#a6e22e">service</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;gmail&#34;</span>,
+
+	<span style="color:#a6e22e">auth</span><span style="color:#f92672">:</span> {
+
+		<span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;youname@gmail.com&#34;</span>,
+
+		<span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;password&#34;</span>
+
+	}
+
+});
+
+<span style="color:#a6e22e">transporter</span>.<span style="color:#a6e22e">sendMail</span>({
+
+	<span style="color:#a6e22e">from</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;youname@gmail.com&#34;</span>,
+
+	<span style="color:#a6e22e">to</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;username@qq.com&#34;</span>,
+
+	<span style="color:#a6e22e">subject</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hello&#34;</span>,
+
+	<span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hello world!&#34;</span>
+
+});
+
+</code></pre></div><p>这是一个最基本的邮件发送程序，邮件服务商有以下：</p>
 <ul>
-<li><strong>'1und1'</strong></li>
-<li><strong>'AOL'</strong></li>
-<li><strong>'DebugMail.io'</strong></li>
-<li><strong>'DynectEmail'</strong></li>
-<li><strong>'FastMail'</strong></li>
-<li><strong>'GandiMail'</strong></li>
-<li><strong>'Gmail'</strong></li>
-<li><strong>'Godaddy'</strong></li>
-<li><strong>'GodaddyAsia'</strong></li>
-<li><strong>'GodaddyEurope'</strong></li>
-<li><strong>'hot.ee'</strong></li>
-<li><strong>'Hotmail'</strong></li>
-<li><strong>'iCloud'</strong></li>
-<li><strong>'mail.ee'</strong></li>
-<li><strong>'Mail.ru'</strong></li>
-<li><strong>'Mailgun'</strong></li>
-<li><strong>'Mailjet'</strong></li>
-<li><strong>'Mandrill'</strong></li>
-<li><strong>'Naver'</strong></li>
-<li><strong>'Postmark'</strong></li>
-<li><strong>'QQ'</strong></li>
-<li><strong>'QQex'</strong></li>
-<li><strong>'SendCloud'</strong></li>
-<li><strong>'SendGrid'</strong></li>
-<li><strong>'SES'</strong></li>
-<li><strong>'Sparkpost'</strong></li>
-<li><strong>'Yahoo'</strong></li>
-<li><strong>'Yandex'</strong></li>
-<li><strong>'Zoho'</strong></li>
+<li><strong>&ldquo;1und1&rdquo;</strong></li>
+<li><strong>&ldquo;AOL&rdquo;</strong></li>
+<li><strong>&ldquo;DebugMail.io&rdquo;</strong></li>
+<li><strong>&ldquo;DynectEmail&rdquo;</strong></li>
+<li><strong>&ldquo;FastMail&rdquo;</strong></li>
+<li><strong>&ldquo;GandiMail&rdquo;</strong></li>
+<li><strong>&ldquo;Gmail&rdquo;</strong></li>
+<li><strong>&ldquo;Godaddy&rdquo;</strong></li>
+<li><strong>&ldquo;GodaddyAsia&rdquo;</strong></li>
+<li><strong>&ldquo;GodaddyEurope&rdquo;</strong></li>
+<li><strong>&ldquo;hot.ee&rdquo;</strong></li>
+<li><strong>&ldquo;Hotmail&rdquo;</strong></li>
+<li><strong>&ldquo;iCloud&rdquo;</strong></li>
+<li><strong>&ldquo;mail.ee&rdquo;</strong></li>
+<li><strong>&ldquo;Mail.ru&rdquo;</strong></li>
+<li><strong>&ldquo;Mailgun&rdquo;</strong></li>
+<li><strong>&ldquo;Mailjet&rdquo;</strong></li>
+<li><strong>&ldquo;Mandrill&rdquo;</strong></li>
+<li><strong>&ldquo;Naver&rdquo;</strong></li>
+<li><strong>&ldquo;Postmark&rdquo;</strong></li>
+<li><strong>&ldquo;QQ&rdquo;</strong></li>
+<li><strong>&ldquo;QQex&rdquo;</strong></li>
+<li><strong>&ldquo;SendCloud&rdquo;</strong></li>
+<li><strong>&ldquo;SendGrid&rdquo;</strong></li>
+<li><strong>&ldquo;SES&rdquo;</strong></li>
+<li><strong>&ldquo;Sparkpost&rdquo;</strong></li>
+<li><strong>&ldquo;Yahoo&rdquo;</strong></li>
+<li><strong>&ldquo;Yandex&rdquo;</strong></li>
+<li><strong>&ldquo;Zoho&rdquo;</strong></li>
 </ul>
 
 		</div>

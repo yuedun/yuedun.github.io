@@ -127,18 +127,6 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
     </item>
     
     <item>
-      <title>linux安装nodejs——快捷版</title>
-      <link>https://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4/</link>
-      <pubDate>Mon, 18 Nov 2019 06:17:47 +0000</pubDate>
-      
-      <guid>https://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4/</guid>
-      <description>前面写过一篇linux下安装nodejs，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。
-wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
-另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
-wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode</description>
-    </item>
-    
-    <item>
       <title>nestjs框架中使用nunjucks模板引擎</title>
       <link>https://www.yuedun.wang/blogdetail/5cc807d6effb223a816d9114/</link>
       <pubDate>Tue, 30 Apr 2019 08:31:18 +0000</pubDate>
@@ -367,8 +355,8 @@ package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type Use
       
       <guid>https://www.yuedun.wang/blogdetail/59278639c1abbe00911df03c/</guid>
       <description>原生的go推荐目录是
-├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
-.src\├─project1├─project2├─project3所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
+├─bin ├─pkg ├─src bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
+.src\ ├─project1 ├─project2 ├─project3 所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
 但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。</description>
     </item>
     
@@ -485,14 +473,23 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
       
       <guid>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</guid>
       <description>nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
-var request=require(&amp;amp;#39;request&amp;amp;#39;);var fs=require(&amp;amp;#39;fs&amp;amp;#39;);var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;amp;gt; {res.setEncoding(&amp;amp;#39;binary&amp;amp;#39;);//二进制（binary）FS.writeFile(&amp;amp;#39;out.png&amp;amp;#39;, body, &amp;amp;#39;binary&amp;amp;#39;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;amp;#39;file saved&amp;amp;#39;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
+var request=require(&amp;quot;request&amp;quot;);var fs=require(&amp;quot;fs&amp;quot;);var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;gt; {res.setEncoding(&amp;quot;binary&amp;quot;);//二进制（binary）FS.writeFile(&amp;quot;out.png&amp;quot;, body, &amp;quot;binary&amp;quot;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;quot;file saved&amp;quot;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
-var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;;request(url).pipe(fs.createWriteStream(&amp;amp;#39;out.png&amp;amp;#39;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
+var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？
 非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉
 有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，
-const http = require(&amp;amp;#39;http&amp;amp;#39;);var server = http.createServer( (req, res) =&amp;amp;gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;amp;#39;out.png&amp;amp;#39;));,
+const http = require(&amp;quot;http&amp;quot;);var server = http.createServer( (req, res) =&amp;gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));,
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。</description>
+    </item>
+    
+    <item>
+      <title>nodejs中vm模块的作用</title>
+      <link>https://www.yuedun.wang/blogdetail/5745791ed5034dff53ec6aa4/</link>
+      <pubDate>Wed, 25 May 2016 10:06:22 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/5745791ed5034dff53ec6aa4/</guid>
+      <description>vm提供了一个沙箱环境，什么叫沙箱环境？类似于一个独立的执行空间，什么时候会用到vm模块？就以我现在接触的需求来说，每个月都有运营活动，但是每次需求又不同，比如一些优惠规则不同，最后可能只需要得到一个结果，如果每次活动都去修改代码就会显得很麻烦，我们提供一个后台管理界面，或者直接在数据库里写入每次活动的不同计算规则，这些规则其实也是JavaScript代码，既然是代码就需要执行才行。这就形成了一种情况：在已有的程序中插入一段代码进行执行，这要怎么实现？如果觉得很容易插入的话，那么是不是黑客可以在你的程序中插入一段代码执行呢？这当然是不允许的，所以就需要提供一种安全环境来执行——就是沙箱了，而vm模块就是提供了这样一种执行环境。 http://www.cnblogs.com/softlover/archive/2012/10/03/2707144.html</description>
     </item>
     
     <item>
@@ -521,48 +518,8 @@ function Person(name, age){this.name = name;this.age = age;}Person.getAge = 
       <guid>https://www.yuedun.wang/blogdetail/5656ba78c72f59d15379b4ba/</guid>
       <description>js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {
-&amp;amp;nbsp; prop: &amp;amp;#39;delete me&amp;amp;#39;
-};
-//或者这么声明的对象
-var objtest = new Array();
-objtest[&amp;amp;#39;prop&amp;amp;#39;] = &amp;amp;#39;delete me&amp;amp;#39;;
-//删除属性&amp;amp;#39;prop&amp;amp;#39;：
-delete objtest.prop;
-//或者
-delete objtest[&amp;amp;#39;prop&amp;amp;#39;];
-//还可以删除任意变量
-var numb = 17;
-delete numb;
-但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = {
-name:&amp;quot;鸣人&amp;quot;,
-age: 16,
-gender: &amp;quot;男&amp;quot;,
-friends: [
-{
-name:&amp;quot;小樱&amp;quot;,
-age:16,
-gender:&amp;quot;女&amp;quot;,
-friends:[
-{
-name:&amp;quot;井野&amp;quot;,
-age:16,
-gender:&amp;quot;女&amp;quot;
-}
-]
-},
-{
-name:&amp;quot;佐助&amp;quot;,
-age:16,
-gender:&amp;quot;男&amp;quot;
-}
-]
-}
-鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
-据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
-但是还是有办法的，可以这样删除
-user.getDataValue(&amp;amp;quot;friends&amp;amp;quot;)[0].setDataValue(&amp;amp;quot;friends&amp;amp;quot;, undefined)就是将属性设置为undefined，查询的时候就没有小樱的friends了。</description>
+var objtest = { prop: &amp;#39;delete me&amp;#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;; //删除属性&amp;#39;prop&amp;#39;：  delete objtest.prop; //或者  delete objtest[&amp;#39;prop&amp;#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &amp;#39;鸣人&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39;, friends: [{ name: &amp;#39;小樱&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39;, friends: [{ name: &amp;#39;井野&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39; }] }, { name: &amp;#39;佐助&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.</description>
     </item>
     
     <item>
@@ -573,10 +530,7 @@ user.getDataValue(&amp;amp;quot;friends&amp;amp;quot;)[0].setDataValue(&amp;amp;
       <guid>https://www.yuedun.wang/blogdetail/5624482861248de07b01887a/</guid>
       <description>每次启动node服务都要先打开cmd命令行，或者在win8下先打开文件资源管理器&amp;gt;文件&amp;gt;打开命令提示符，然后执行node命令，这样的过程真的很烦人，当然需要一个简单粗暴的方式启动了，就像用bat文件双击启动。
 首先，建一个空白文件，输入以下内容：
-E:
-cd E:\NodejsWorkSpace\app-node
-nodemon ./bin/www
-就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
+E: cd E:\\NodejsWorkSpace\\app-node nodemon ./bin/www 就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
 E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon ./bin/www
 使用&amp;amp;符号连接各个命令也可以</description>
     </item>
@@ -590,7 +544,7 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       <description>先来一张效果图：
 
 由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。
-使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 
+使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 
 注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
 
 可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。</description>
@@ -602,22 +556,8 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       <pubDate>Tue, 01 Sep 2015 03:17:52 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/55e518e0db5ac9c2be76b2fa/</guid>
-      <description>var nodemailer = require(&amp;amp;#39;nodemailer&amp;amp;#39;);
-var transporter = nodemailer.createTransport({
-service: &amp;amp;#39;gmail&amp;amp;#39;,
-auth: {
-user: &amp;amp;#39;youname@gmail.com&amp;amp;#39;,
-pass: &amp;amp;#39;password&amp;amp;#39;
-}
-});
-transporter.sendMail({
-from: &amp;amp;#39;youname@gmail.com&amp;amp;#39;,
-to: &amp;amp;#39;username@qq.com&amp;amp;#39;,
-subject: &amp;amp;#39;hello&amp;amp;#39;,
-text: &amp;amp;#39;hello world!&amp;amp;#39;
-});
-这是一个最基本的邮件发送程序，邮件服务商有以下：
- &#39;1und1&#39; &#39;AOL&#39; &#39;DebugMail.io&#39; &#39;DynectEmail&#39; &#39;FastMail&#39; &#39;GandiMail&#39; &#39;Gmail&#39; &#39;Godaddy&#39; &#39;GodaddyAsia&#39; &#39;GodaddyEurope&#39; &#39;hot.ee&#39; &#39;Hotmail&#39; &#39;iCloud&#39; &#39;mail.ee&#39; &#39;Mail.ru&#39; &#39;Mailgun&#39; &#39;Mailjet&#39; &#39;Mandrill&#39; &#39;Naver&#39; &#39;Postmark&#39; &#39;QQ&#39; &#39;QQex&#39; &#39;SendCloud&#39; &#39;SendGrid&#39; &#39;SES&#39; &#39;Sparkpost&#39; &#39;Yahoo&#39; &#39;Yandex&#39; &#39;Zoho&#39;  </description>
+      <description>var nodemailer = require(&amp;#34;nodemailer&amp;#34;); var transporter = nodemailer.createTransport({ service: &amp;#34;gmail&amp;#34;, auth: { user: &amp;#34;youname@gmail.com&amp;#34;, pass: &amp;#34;password&amp;#34; } }); transporter.sendMail({ from: &amp;#34;youname@gmail.com&amp;#34;, to: &amp;#34;username@qq.com&amp;#34;, subject: &amp;#34;hello&amp;#34;, text: &amp;#34;hello world!&amp;#34; }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
+ &amp;ldquo;1und1&amp;rdquo; &amp;ldquo;AOL&amp;rdquo; &amp;ldquo;DebugMail.io&amp;rdquo; &amp;ldquo;DynectEmail&amp;rdquo; &amp;ldquo;FastMail&amp;rdquo; &amp;ldquo;GandiMail&amp;rdquo; &amp;ldquo;Gmail&amp;rdquo; &amp;ldquo;Godaddy&amp;rdquo; &amp;ldquo;GodaddyAsia&amp;rdquo; &amp;ldquo;GodaddyEurope&amp;rdquo; &amp;ldquo;hot.ee&amp;rdquo; &amp;ldquo;Hotmail&amp;rdquo; &amp;ldquo;iCloud&amp;rdquo; &amp;ldquo;mail.ee&amp;rdquo; &amp;ldquo;Mail.ru&amp;rdquo; &amp;ldquo;Mailgun&amp;rdquo; &amp;ldquo;Mailjet&amp;rdquo; &amp;ldquo;Mandrill&amp;rdquo; &amp;ldquo;Naver&amp;rdquo; &amp;ldquo;Postmark&amp;rdquo; &amp;ldquo;QQ&amp;rdquo; &amp;ldquo;QQex&amp;rdquo; &amp;ldquo;SendCloud&amp;rdquo; &amp;ldquo;SendGrid&amp;rdquo; &amp;ldquo;SES&amp;rdquo; &amp;ldquo;Sparkpost&amp;rdquo; &amp;ldquo;Yahoo&amp;rdquo; &amp;ldquo;Yandex&amp;rdquo; &amp;ldquo;Zoho&amp;rdquo;  </description>
     </item>
     
     <item>
@@ -626,12 +566,8 @@ text: &amp;amp;#39;hello world!&amp;amp;#39;
       <pubDate>Fri, 28 Aug 2015 03:21:08 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</guid>
-      <description>最基本的where条件： ```js Post.findAll({ where: { authorId: 2 } }); // SELECT * FROM post WHERE authorId = 2
-Post.findAll({ where: { authorId: 12, status: active } });
-// SELECT * FROM post WHERE authorId = 12 AND status = &amp;lsquo;active&amp;rsquo;;
-Post.destroy({ where: { status: &amp;lsquo;inactive&amp;rsquo; } }); // DELETE FROM post WHERE status = &amp;lsquo;inactive&amp;rsquo;;
-Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } });
-// UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; ``` 如果涉及到or的使用，sequelize也提供了很好的解决方案 ```js where: { rank: { $or: { $lt: 100, $eq: null } } }</description>
+      <description>最基本的where条件：
+Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &amp;#39;active&amp;#39;;  Post.destroy({ where: { status: &amp;#39;inactive&amp;#39; } }); // DELETE FROM post WHERE status = &amp;#39;inactive&amp;#39;;  Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案</description>
     </item>
     
     <item>
@@ -641,18 +577,7 @@ Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } });
       
       <guid>https://www.yuedun.wang/blogdetail/554ae5b3a07843eb8002a388/</guid>
       <description>sequelize定义实体对象
-var sequelize = require(&#39;../utils/sequelizeDB&#39;);//连接数据库 var Sequelize = require(&#39;sequelize&#39;); var User = sequelize.define(&#39;User&#39;, {
-user_id:{ type: Sequelize.STRING, primaryKey: true},
-name: Sequelize.STRING,
-phone: Sequelize.STRING,
-create_date: Sequelize.DATE,
-update_date: Sequelize.DATE
-}, {
-freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步
-tableName: &#39;user&#39;,
-timestamps: false
-});
-define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt</description>
+var sequelize = require(&amp;#34;../utils/sequelizeDB&amp;#34;);//连接数据库 var Sequelize = require(&amp;#34;sequelize&amp;#34;); var User = sequelize.define(&amp;#34;User&amp;#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &amp;#34;user&amp;#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt</description>
     </item>
     
     <item>
@@ -661,30 +586,8 @@ define函数的第一个参数’User’就是定义一个实体对象，名称�
       <pubDate>Sat, 29 Nov 2014 11:44:10 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5479b18a93ae2eb85f26b2d3/</guid>
-      <description>前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了
-/**
-* Created by huopanpan on 2014/10/10.
-*/
-var crypto = require(&#39;crypto&#39;);
-/**
-* 验证token
-* @param req
-* @param res
-*/
-function validateToken(req, res) {
-var query = req.query;
-var signature = query.signature;//微信服务器加密字符串
-var echostr = query.echostr;//随机字符串
-var timestamp = query[&#39;timestamp&#39;];//时间戳
-var nonce = query.nonce;//nonce
-var oriArray = new Array();
-oriArray[0] = nonce;
-oriArray[1] = timestamp;
-oriArray[2] = &amp;quot;hale&amp;quot;;//token
-oriArray.sort();
-var original = oriArray[0]+oriArray[1]+oriArray[2];
-console.log(&amp;quot;Original Str:&amp;quot;+original);
-console.log(&amp;quot;signature:&amp;quot;+signature);</description>
+      <description>前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了。
+/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&amp;#34;crypto&amp;#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) { var query = req.query; var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&amp;#34;timestamp&amp;#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array(); oriArray[0] = nonce; oriArray[1] = timestamp; oriArray[2] = &amp;#34;hale&amp;#34;;//token  oriArray.sort(); var original = oriArray[0]+oriArray[1]+oriArray[2]; console.</description>
     </item>
     
     <item>
@@ -694,12 +597,14 @@ console.log(&amp;quot;signature:&amp;quot;+signature);</description>
       
       <guid>https://www.yuedun.wang/blogdetail/5451f72e0eb53ef723e47bfe/</guid>
       <description>内容摘自《nodejs开发指南》
- util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能
-过于精简的不足。 util.inherits 
+util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能
+过于精简的不足。
+util.inherits
 util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
-在这里我们只介绍 util.inherits 的用法，示例如下： var util = require(&#39;util&#39;); function Base() { this.name = &#39;base&#39;; this.base = 1991;  this.sayHello = function() { console.log(&#39;Hello &#39; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#39;sub&#39;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.</description>
+在这里我们只介绍 util.inherits 的用法，示例如下：
+var util = require(&amp;#34;util&amp;#34;); function Base() { this.name = &amp;#34;base&amp;#34;; this.base = 1991; this.sayHello = function() { console.log(&amp;#34;Hello &amp;#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &amp;#34;sub&amp;#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.</description>
     </item>
     
     <item>
@@ -714,7 +619,7 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
  用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications().  为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
 如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
 我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
-如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
+如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
 2. 异步
 根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:
 不过要是你执行那种长时间的阻塞操作，主线程就会被阻塞到这些操作完成为止。这大大降低你应用的性能。所以，最好确保你的代码里用的都是异步版本 API，最起码你应该在性能节点异步。而且，你在选用第三方模块的时候也要很小心。因为当你想方设法把同步操作从你代码中剔除之后，一个外部库的同步调用会让你前功尽弃，降低你的应用性能。

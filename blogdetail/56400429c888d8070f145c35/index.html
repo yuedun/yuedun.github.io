@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Git SSH Key在windows下生成过程 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="&amp;nbsp;切换到C:Users&amp;lt;username&amp;gt;.ssh执行命令：ssh-keygen -t rsa -C &amp;quot;邮箱地址&amp;quot;Ge">
+	<meta name="description" content=" Git SSH Key在windows下生成过程">
 		<meta property="og:title" content="Git SSH Key在windows下生成过程" />
-<meta property="og:description" content="&amp;nbsp;切换到C:Users&amp;lt;username&amp;gt;.ssh执行命令：ssh-keygen -t rsa -C &amp;quot;邮箱地址&amp;quot;Ge" />
+<meta property="og:description" content=" Git SSH Key在windows下生成过程" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/56400429c888d8070f145c35/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2015-11-09T02:25:45&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="Git SSH Key在windows下生成过程">
-<meta itemprop="description" content="&amp;nbsp;切换到C:Users&amp;lt;username&amp;gt;.ssh执行命令：ssh-keygen -t rsa -C &amp;quot;邮箱地址&amp;quot;Ge"><meta itemprop="datePublished" content="2015-11-09T02:25:45&#43;00:00" />
+<meta itemprop="description" content=" Git SSH Key在windows下生成过程"><meta itemprop="datePublished" content="2015-11-09T02:25:45&#43;00:00" />
 <meta itemprop="dateModified" content="2015-11-09T02:25:45&#43;00:00" />
 <meta itemprop="wordCount" content="135">
 <meta itemprop="keywords" content="git,ssh-key," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git SSH Key在windows下生成过程"/>
-<meta name="twitter:description" content="&amp;nbsp;切换到C:Users&amp;lt;username&amp;gt;.ssh执行命令：ssh-keygen -t rsa -C &amp;quot;邮箱地址&amp;quot;Ge"/>
+<meta name="twitter:description" content=" Git SSH Key在windows下生成过程"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -146,35 +146,55 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<p> 切换到C:\Users\&lt;username&gt;\.ssh</p>
-<p>执行命令：ssh-keygen -t rsa -C &quot;邮箱地址&quot;</p>
+			<p>切换到C:\Users\<!-- raw HTML omitted -->\.ssh</p>
+<p>执行命令：ssh-keygen -t rsa -C &ldquo;邮箱地址&rdquo;</p>
 <p>Generating public/private rsa key pair.</p>
 <p>Enter file in which to save the key (//.ssh/id_rsa):</p>
 <p>第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa</p>
 <p>Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下</p>
 <p>接下来两部是要求输入密码，不输入直接回车就完成了。</p>
-<p><code>PS C:\Users\admin\.ssh&amp;gt; ssh-keygen -t rsa -C &amp;quot;myemail@163.com&amp;quot;</code></p>
-<p><code>Generating public/private rsa key pair.</code></p>
-<p><code>Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa</code></p>
-<p><code>Enter passphrase (empty for no passphrase):</code></p>
-<p><code>Enter same passphrase again:</code></p>
-<p><code>Your identification has been saved in ./id_rsa.</code></p>
-<p><code>Your public key has been saved in ./id_rsa.pub.</code></p>
-<p><code>The key fingerprint is:</code></p>
-<p><code>9c:cc:db:3e:72:82:73:2e:41:0e:17:f4:3c:ea:70:4a myemail@163.com</code></p>
-<p><code>The key&amp;#39;s randomart image is:</code></p>
-<p><code>+--[ RSA 2048]----+</code></p>
-<p><code>| .o |</code></p>
-<p><code>| + |</code></p>
-<p><code>| . o + |</code></p>
-<p><code>| O o . |</code></p>
-<p><code>| E S |</code></p>
-<p><code>| . = = |</code></p>
-<p><code>| . * = + |</code></p>
-<p><code>| = = . |</code></p>
-<p><code>| . |</code></p>
-<p><code>+-----------------+</code></p>
-<p>最后将.ssh目录下id_rsa.pub文件中的内容复制并添加到github或其他支持资源库中就可以使用ssh的协议clone资源了，没有添加进去是不能克隆的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\a</span>dmin<span style="color:#ae81ff">\.</span>ssh&gt; ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;myemail@163.com&#34;</span>
+
+Generating public/private rsa key pair.
+
+Enter file in which to save the key <span style="color:#f92672">(</span>//.ssh/id_rsa<span style="color:#f92672">)</span>: ./id_rsa
+
+Enter passphrase <span style="color:#f92672">(</span>empty <span style="color:#66d9ef">for</span> no passphrase<span style="color:#f92672">)</span>:
+
+Enter same passphrase again:
+
+Your identification has been saved in ./id_rsa.
+
+Your public key has been saved in ./id_rsa.pub.
+
+The key fingerprint is:
+
+9c:cc:db:3e:72:82:73:2e:41:0e:17:f4:3c:ea:70:4a myemail@163.com
+
+The key<span style="color:#e6db74">&#34;s randomart image is:
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">+--[ RSA 2048]----+
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| .o |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| + |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| . o + |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| O o . |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| E S |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| . = = |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| . * = + |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| = = . |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">| . |
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">+-----------------+
+</span></code></pre></div><p>最后将.ssh目录下id_rsa.pub文件中的内容复制并添加到github或其他支持资源库中就可以使用ssh的协议clone资源了，没有添加进去是不能克隆的。</p>
 <p>生成sshkey的命令：ssh-keygen是要在安装git后才能使用，在git的bin目录下有这个文件的，如果再cmd命令行下不能使用可以试试git-bash命令行模式下使用。</p>
 
 		</div>

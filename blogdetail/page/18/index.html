@@ -160,30 +160,8 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了
-/**
-* Created by huopanpan on 2014/10/10.
-*/
-var crypto = require('crypto');
-/**
-* 验证token
-* @param req
-* @param res
-*/
-function validateToken(req, res) {
-var query = req.query;
-var signature = query.signature;//微信服务器加密字符串
-var echostr = query.echostr;//随机字符串
-var timestamp = query['timestamp'];//时间戳
-var nonce = query.nonce;//nonce
-var oriArray = new Array();
-oriArray[0] = nonce;
-oriArray[1] = timestamp;
-oriArray[2] = &quot;hale&quot;;//token
-oriArray.sort();
-var original = oriArray[0]+oriArray[1]+oriArray[2];
-console.log(&quot;Original Str:&quot;+original);
-console.log(&quot;signature:&quot;+signature);
+		前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了。
+/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) { var query = req.query; var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&#34;timestamp&#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array(); oriArray[0] = nonce; oriArray[1] = timestamp; oriArray[2] = &#34;hale&#34;;//token  oriArray.sort(); var original = oriArray[0]+oriArray[1]+oriArray[2]; console.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5479b18a93ae2eb85f26b2d3/">阅读全文…</a>
@@ -207,7 +185,7 @@ console.log(&quot;signature:&quot;+signature);
 		在执行下面第一行启动mongodb服务的时候，命令行一闪而过，具体看了下输出内容看不出端倪来，不过解决办法却是有的，就是直接删除掉D:\Data\db下面的mongod.lock文件可以了
 C:\Program Files\MongoDB 2.6 Standard\bin&gt;mongod &ndash;dbpath=D:\Data\db
 2014-11-16T11:35:43.244+0800
-2014-11-16T11:35:43.252+0800 warning: 32-bit servers don't have journaling enabl
+2014-11-16T11:35:43.252+0800 warning: 32-bit servers don&quot;t have journaling enabl
 ed by default. Please use &ndash;journal if you want durability.
 2014-11-16T11:35:43.253+0800
 2014-11-16T11:35:43.282+0800 [initandlisten] MongoDB starting : pid=8272 port=27
@@ -215,9 +193,9 @@ ed by default. Please use &ndash;journal if you want durability.
 2014-11-16T11:35:43.283+0800 [initandlisten]
 2014-11-16T11:35:43.284+0800 [initandlisten] ** NOTE: This is a 32 bit MongoDB b
 inary.
-2014-11-16T11:35:43.284+0800 [initandlisten] ** 32 bit builds are limited
+2014-11-16T11:35:43.284+0800 [initandlisten] ** 32 bit builds are limited
 to less than 2GB of data (or less with &ndash;journal).
-2014-11-16T11:35:43.284+0800 [initandlisten] ** Note that journaling defau
+2014-11-16T11:35:43.284+0800 [initandlisten] ** Note that journaling defau
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/54681e1ee8183bcf964f88ec/">阅读全文…</a>
@@ -238,28 +216,7 @@ to less than 2GB of data (or less with &ndash;journal).
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。
- 由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/54618bc69579423b407522c8/" rel="bookmark">
-			2014-11-11博客突然打不开
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-11T04:08:38Z">2014-11-11 04:08</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		 今天早上起来还可以，中午突然就打不开，看了下日志有下面的错误：这是关于mongodb的错误，经过重启部署都每有解决，看后台输出数据库有连接上，但是每次刷新页面的时候就会报这个错误。打开数据库看了下，吓死我了，里面居然没数据了，难道又要经历和上次一样的问题？不能这么坑爹啊！只好无聊的不停刷新，无意间又好了。
- 看来BAE还是存在问题，不够稳定。
- at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/server.js:485:18 at Server.Base._callHandler (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/base.js:442:41) at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1806:9 at commandHandler (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:685:21) at Cursor.close (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:959:5) at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:685:39 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:159:22 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1542:30 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1404:28 at /home/bae/app/.bae/node_modules/connect-mongo/lib/connect-mongo.js:161:23 Error: Error setting TTL index on collection : sessions ^ throw message; /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/base.js:242  
+		由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。 
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -312,7 +269,7 @@ select count(*) from 表 where 性别 ＝ 男；select count(*) from 表 where 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		从开始学习nodejs就关注了前端方面的技术，主要就是HTML，css，现在还真有想法深入学习一下。以前一直从事着后端开发，到现在已有三年，但是感觉自己遇到了一下瓶颈，虽然在工作中没什么难倒的技术问题，但是做着重复的工作实在是没有提升。之前的公司没有值的学习的东西，现在的公司有东西可以学习，但是作为外包可能不会待太长时间，就现在来说，也没有做过核心的东西，所以感觉自己这样下去没有什么竞争力，于是决定从宽度上拓展，下决心学习了nodejs,当初为了学习不知不觉就建立了这个博客，由于没有前端功底，就照搬了一个模板，想要修改点样式却发现很吃力，再看看nodejs,就像是给前端开发的服务端语言，而我却不懂前端，就算学习了好像也派不上用场，好尴尬的存在啊，没办法，还是该学习一下前端知识，至少要能够轻松的修改一个已有的页面吧，要纯粹的搞设计估计还要重新来过，又要花个三五年时间，还是划不来，不过应该主攻后端，兼顾前端，前后通吃。那么我想就从HTML5，CSS3开始吧。
- 对于这些发点牢骚的内容就想在新浪博客上有个备份，复制一遍感觉好麻烦，新浪博客提供了对外接口，周末的时候看能不能对接一下
+对于这些发点牢骚的内容就想在新浪博客上有个备份，复制一遍感觉好麻烦，新浪博客提供了对外接口，周末的时候看能不能对接一下
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -331,12 +288,14 @@ select count(*) from 表 where 性别 ＝ 男；select count(*) from 表 where 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		内容摘自《nodejs开发指南》
- util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能
-过于精简的不足。 util.inherits 
+util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能
+过于精简的不足。
+util.inherits
 util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
-在这里我们只介绍 util.inherits 的用法，示例如下： var util = require('util'); function Base() { this.name = 'base'; this.base = 1991;  this.sayHello = function() { console.log('Hello ' + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = 'sub'; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.
+在这里我们只介绍 util.inherits 的用法，示例如下：
+var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;; this.base = 1991; this.sayHello = function() { console.log(&#34;Hello &#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#34;sub&#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5451f72e0eb53ef723e47bfe/">阅读全文…</a>
@@ -384,7 +343,7 @@ var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: 
  用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications().  为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
 如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
 我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
-如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
+如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
 2. 异步
 根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:
 不过要是你执行那种长时间的阻塞操作，主线程就会被阻塞到这些操作完成为止。这大大降低你应用的性能。所以，最好确保你的代码里用的都是异步版本 API，最起码你应该在性能节点异步。而且，你在选用第三方模块的时候也要很小心。因为当你想方设法把同步操作从你代码中剔除之后，一个外部库的同步调用会让你前功尽弃，降低你的应用性能。
@@ -397,6 +356,39 @@ var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: 
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/54488218aedc6cf109b96d32/">阅读全文…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/54486c117b1470fa64bb911a/" rel="bookmark">
+			git常用命令
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-23T02:46:41Z">2014-10-23 02:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		查看、添加、提交、删除、找回，重置修改文件
+git help # 显示command的help
+git show # 显示某次提交的内容 git show $id
+git co &ndash; # 抛弃工作区修改
+git co . # 抛弃工作区修改
+git add # 将工作文件修改提交到本地暂存区
+git add . # 将所有修改过的工作文件提交暂存区
+git rm # 从版本库中删除文件
+git rm &ndash;cached # 从版本库中删除文件，但不删除文件
+git reset # 从暂存区恢复到工作文件
+git reset &ndash; . # 从暂存区恢复到工作文件
+git reset &ndash;hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改
+git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做　git ci -am &ldquo;some comments&rdquo;
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/54486c117b1470fa64bb911a/">阅读全文…</a>
 	</div>
 </article>
 </main>
@@ -575,7 +567,6 @@ var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: 
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

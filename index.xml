@@ -1508,8 +1508,8 @@ package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type Use
       
       <guid>https://www.yuedun.wang/blogdetail/59278639c1abbe00911df03c/</guid>
       <description>原生的go推荐目录是
-├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
-.src\├─project1├─project2├─project3所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
+├─bin ├─pkg ├─src bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
+.src\ ├─project1 ├─project2 ├─project3 所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
 但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。</description>
     </item>
     
@@ -1519,7 +1519,7 @@ package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type Use
       <pubDate>Sun, 21 May 2017 13:28:30 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/592195fed65a0126c7cdf455/</guid>
-      <description>我女儿12个月开始学走路，由于她身高还很低，所以需要大人弯着腰搀扶着，时间长了大人的腰比较累，当时就在网上买了个绑带。  本以为能轻松点，结果发现排不上用场，因为实在不好用，宝宝根本不会老实的配合，她一感觉到胸前有个东西扶着她，就整个人爬下来了，所有重点都放在牵引绳上，所以大人就只能提着，而且由于刚学走路，也不能稳当的走，总是东倒西歪，牵引绳其实不能保证宝宝的平衡，反而会过于依赖绑带，结果就导致失去平衡类似于一只脚在地上一只脚翘起来打转，也容易勒到胳膊。
+      <description>我女儿12个月开始学走路，由于她身高还很低，所以需要大人弯着腰搀扶着，时间长了大人的腰比较累，当时就在网上买了个绑带。 本以为能轻松点，结果发现排不上用场，因为实在不好用，宝宝根本不会老实的配合，她一感觉到胸前有个东西扶着她，就整个人爬下来了，所有重点都放在牵引绳上，所以大人就只能提着，而且由于刚学走路，也不能稳当的走，总是东倒西歪，牵引绳其实不能保证宝宝的平衡，反而会过于依赖绑带，结果就导致失去平衡类似于一只脚在地上一只脚翘起来打转，也容易勒到胳膊。
 宝宝学走路一般一个月就能自己走了，所以我觉得没必要用这个。</description>
     </item>
     
@@ -1743,13 +1743,13 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
       
       <guid>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</guid>
       <description>nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
-var request=require(&amp;amp;#39;request&amp;amp;#39;);var fs=require(&amp;amp;#39;fs&amp;amp;#39;);var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;amp;gt; {res.setEncoding(&amp;amp;#39;binary&amp;amp;#39;);//二进制（binary）FS.writeFile(&amp;amp;#39;out.png&amp;amp;#39;, body, &amp;amp;#39;binary&amp;amp;#39;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;amp;#39;file saved&amp;amp;#39;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
+var request=require(&amp;quot;request&amp;quot;);var fs=require(&amp;quot;fs&amp;quot;);var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;gt; {res.setEncoding(&amp;quot;binary&amp;quot;);//二进制（binary）FS.writeFile(&amp;quot;out.png&amp;quot;, body, &amp;quot;binary&amp;quot;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;quot;file saved&amp;quot;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
-var url=&amp;amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;amp;quot;;request(url).pipe(fs.createWriteStream(&amp;amp;#39;out.png&amp;amp;#39;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
+var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？
 非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉
 有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，
-const http = require(&amp;amp;#39;http&amp;amp;#39;);var server = http.createServer( (req, res) =&amp;amp;gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;amp;#39;out.png&amp;amp;#39;));,
+const http = require(&amp;quot;http&amp;quot;);var server = http.createServer( (req, res) =&amp;gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));,
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。</description>
     </item>
     
@@ -1897,7 +1897,7 @@ v-on:click=&amp;quot;say(&#39;hello!&#39;, $event)&amp;quot;
       <pubDate>Tue, 12 Jan 2016 04:45:18 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/569484ded8e9ee3c03297d3a/</guid>
-      <description>在线示例：http://yuedun.github.io/address.html
+      <description>在线示例：http://www.yuedun.wang/views/address
 具体代码看页面源码</description>
     </item>
     
@@ -1941,11 +1941,7 @@ var webpack = require(&amp;#34;webpack&amp;#34;); module.exports = { entry: //&a
       <guid>https://www.yuedun.wang/blogdetail/568652c9db1fef9e0cda949d/</guid>
       <description>本想写篇vue.js的教程的，但牵扯的知识点比较多，最近又没时间，就记录下过程中遇到问题吧。开发过程中用的360极速浏览器，也没什么问题，但是其他人测试的时候用的是chrome浏览器，输入汉字的时候会连拼音也带进去，比如输入的是“你好”，结果却成了“nihao你好”。
 按理说360极速浏览器也用的是chrome内核，不应该出现这两种不同的情况，这个问题先不追究了。还是说说为什么vue.js的输入框会出现拼音的问题。我本以为是浏览器的差异造成这种现象，但是也不是所有输入框都会出现，那一定是程序的问题。
-&amp;lt;input type=&amp;quot;text&amp;quot; v-model=&amp;quot;msg&amp;quot;&amp;gt;
-&amp;lt;p&amp;gt;{{msg}}&amp;lt;/p&amp;gt;
 这是一种双向数据绑定常见写法，但是由于我的理解不够透彻，写成了这样：
-&amp;lt;input type=&amp;quot;text&amp;quot; v-model=&amp;quot;msg&amp;quot; value=&amp;quot;{{msg}}&amp;quot;&amp;gt;
-&amp;lt;p&amp;gt;{{msg}}&amp;lt;/p&amp;gt;
 我的理解是更新的时候要先显示数据，所以就在input里加了value来初始化数据，也是因为加了这个value导致输入汉字出现拼音，也与浏览器有点关系，就是输入的时候chrome浏览器会把输入的汉字拼音拼写也放进输入框，那么数据模型就接收了输入，敲击空格键的时候又输进了汉字，所以就都带进来了。但其实只需要v-model就能实现数据的接收和输出。</description>
     </item>
     
@@ -1957,48 +1953,8 @@ var webpack = require(&amp;#34;webpack&amp;#34;); module.exports = { entry: //&a
       <guid>https://www.yuedun.wang/blogdetail/5656ba78c72f59d15379b4ba/</guid>
       <description>js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {
-&amp;amp;nbsp; prop: &amp;amp;#39;delete me&amp;amp;#39;
-};
-//或者这么声明的对象
-var objtest = new Array();
-objtest[&amp;amp;#39;prop&amp;amp;#39;] = &amp;amp;#39;delete me&amp;amp;#39;;
-//删除属性&amp;amp;#39;prop&amp;amp;#39;：
-delete objtest.prop;
-//或者
-delete objtest[&amp;amp;#39;prop&amp;amp;#39;];
-//还可以删除任意变量
-var numb = 17;
-delete numb;
-但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = {
-name:&amp;quot;鸣人&amp;quot;,
-age: 16,
-gender: &amp;quot;男&amp;quot;,
-friends: [
-{
-name:&amp;quot;小樱&amp;quot;,
-age:16,
-gender:&amp;quot;女&amp;quot;,
-friends:[
-{
-name:&amp;quot;井野&amp;quot;,
-age:16,
-gender:&amp;quot;女&amp;quot;
-}
-]
-},
-{
-name:&amp;quot;佐助&amp;quot;,
-age:16,
-gender:&amp;quot;男&amp;quot;
-}
-]
-}
-鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
-据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
-但是还是有办法的，可以这样删除
-user.getDataValue(&amp;amp;quot;friends&amp;amp;quot;)[0].setDataValue(&amp;amp;quot;friends&amp;amp;quot;, undefined)就是将属性设置为undefined，查询的时候就没有小樱的friends了。</description>
+var objtest = { prop: &amp;#39;delete me&amp;#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;; //删除属性&amp;#39;prop&amp;#39;：  delete objtest.prop; //或者  delete objtest[&amp;#39;prop&amp;#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &amp;#39;鸣人&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39;, friends: [{ name: &amp;#39;小樱&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39;, friends: [{ name: &amp;#39;井野&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39; }] }, { name: &amp;#39;佐助&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.</description>
     </item>
     
     <item>
@@ -2052,40 +2008,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
       
       <guid>https://www.yuedun.wang/blogdetail/564adbd591dccd315681abfe/</guid>
       <description>js控制优酷视频播放暂停
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-&amp;lt;head&amp;gt;
-&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&amp;quot;&amp;gt;
-&amp;lt;title&amp;gt;js控制优酷视频播放&amp;lt;/title&amp;gt;
-&amp;lt;script src=&amp;quot;http://player.youku.com/jsapi&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script&amp;gt;
-player = new YKU.Player(&#39;youkuplayer&#39;,{
-styleid: &#39;0&#39;,
-client_id: &#39;d8781b239fdad45b&#39;,
-vid: &#39;XMjg1MTcyNDQ0&#39;,
-autoplay: false,
-show_related: true,
-events:{
-onPlayEnd: function(){ /*your code*/ },
-onPlayStart: function(){ /*your code*/ },
-onPlayerReady: function(){ /*your code*/ }
-}
-});
-function playVideo(){
-try{
-player.playVideo();
-} catch(err){
-alert(&amp;quot;*&amp;quot;+err);
-}
- }
-function pauseVideo(){
-player.pauseVideo();
- }
-function seekTo(s){
-player.seekTo(s);
-}
-function currentTime(){</description>
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;utf-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&amp;#34;&amp;gt; &amp;lt;title&amp;gt;js控制优酷视频播放&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;http://player.youku.com/jsapi&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; player = new YKU.Player(&amp;#34;youkuplayer&amp;#34;,{ styleid: &amp;#34;0&amp;#34;, client_id: &amp;#34;d8781b239fdad45b&amp;#34;, vid: &amp;#34;XMjg1MTcyNDQ0&amp;#34;, autoplay: false, show_related: true, events:{ onPlayEnd: function(){ /*your code*/ }, onPlayStart: function(){ /*your code*/ }, onPlayerReady: function(){ /*your code*/ } } }); function playVideo(){ try{ player.playVideo(); } catch(err){ alert(&amp;#34;*&amp;#34;+err); } } function pauseVideo(){ player.pauseVideo(); } function seekTo(s){ player.seekTo(s); } function currentTime(){ return player.</description>
     </item>
     
     <item>
@@ -2165,7 +2088,7 @@ function currentTime(){</description>
       <pubDate>Fri, 13 Nov 2015 03:11:58 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/564554fec888d8070f145c36/</guid>
-      <description>虽然出现git did not exit cleanly (exit code 128)的情况各有不同，不过其中一种是提交时的读写权限有问题，如果本地代码连接的是SSH仓库，那么可能是服务端没有配置SSH Key。github有两个地方配置sshkey，有一个是全局的，另一个是针对单个仓库的，如果给某个仓库配置了Deploy keys（其实和SSHkey一样），提交另一个代码时就会出现git did not exit cleanly。对于我这种不熟练的人来说就想着再添加一个Deploy keys，但是又提示Key already in use，这时就要看看是不是其他仓库单独配置了ssh key。如果仓库太多具体哪个配置了也不太清楚，有个简单快读的办法是在命令行执行 ssh -T -ai .\id_rsa git@github.com，会告诉你哪个仓库在使用本地的id_rsa内容。删掉Deploy keys，配置为全局SSH Keys就行了</description>
+      <description>虽然出现git did not exit cleanly (exit code 128)的情况各有不同，不过其中一种是提交时的读写权限有问题，如果本地代码连接的是SSH仓库，那么可能是服务端没有配置SSH Key。github有两个地方配置sshkey，有一个是全局的，另一个是针对单个仓库的，如果给某个仓库配置了Deploy keys（其实和SSHkey一样），提交另一个代码时就会出现git did not exit cleanly。对于我这种不熟练的人来说就想着再添加一个Deploy keys，但是又提示Key already in use，这时就要看看是不是其他仓库单独配置了ssh key。如果仓库太多具体哪个配置了也不太清楚，有个简单快读的办法是在命令行执行 ssh -T -ai .\id_rsa git@github.com，会告诉你哪个仓库在使用本地的id_rsa内容。删掉Deploy keys，配置为全局SSH Keys就行了</description>
     </item>
     
     <item>
@@ -2174,19 +2097,14 @@ function currentTime(){</description>
       <pubDate>Mon, 09 Nov 2015 02:25:45 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/56400429c888d8070f145c35/</guid>
-      <description>切换到C:\Users\&amp;lt;username&amp;gt;\.ssh
-执行命令：ssh-keygen -t rsa -C &amp;quot;邮箱地址&amp;quot;
+      <description>切换到C:\Users\\.ssh
+执行命令：ssh-keygen -t rsa -C &amp;ldquo;邮箱地址&amp;rdquo;
 Generating public/private rsa key pair.
 Enter file in which to save the key (//.ssh/id_rsa):
 第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa
 Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下
 接下来两部是要求输入密码，不输入直接回车就完成了。
-PS C:\Users\admin\.ssh&amp;amp;gt; ssh-keygen -t rsa -C &amp;amp;quot;myemail@163.com&amp;amp;quot;
-Generating public/private rsa key pair.
-Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in .</description>
+PS C:\Users\admin\.ssh&amp;gt; ssh-keygen -t rsa -C &amp;#34;myemail@163.com&amp;#34; Generating public/private rsa key pair. Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in .</description>
     </item>
     
     <item>
@@ -2208,23 +2126,10 @@ Your identification has been saved in .</description>
 首先看下面代码：
 var pageIndex = 2;
 (function loadmore() {
- //绑定滚动事件
-$(window).bind(&amp;quot;scroll&amp;quot;, function() {
- if ($(this).scrollTop() + $(window).height() + 40 &amp;gt;= $(document).height() &amp;amp;&amp;amp; $(this).scrollTop() &amp;gt;= 40) {
- $(window).unbind(&amp;quot;scroll&amp;quot;); //到底后先移除滚动事件
-$.get(&amp;quot;/portal/getTopic?pageIndex=&amp;quot; + pageIndex + &amp;quot;&amp;amp;pageSize=3&amp;quot;,
-function(data) {
- $(&amp;quot;#container&amp;quot;).append(data);
- pageIndex++;
- loadmore(); //数据加载成功重新绑定滚动事件
-},
-&amp;quot;html&amp;quot;);
- };
- });
-})();
+//绑定滚动事件 $(window).bind(&amp;quot;scroll&amp;quot;, function() {if ($(this).scrollTop() + $(window).height() + 40 &amp;gt;= $(document).height() &amp;amp;amp;&amp;amp;amp; $(this).scrollTop() &amp;gt;= 40) {$(window).unbind(&amp;quot;scroll&amp;quot;); //到底后先移除滚动事件 $.get(&amp;quot;/portal/getTopic?pageIndex=&amp;quot; + pageIndex + &amp;quot;&amp;amp;amp;pageSize=3&amp;quot;, function(data) {$(&amp;quot;#container&amp;quot;).append(data);pageIndex++;loadmore(); //数据加载成功重新绑定滚动事件 }, &amp;quot;html&amp;quot;);};}); })();
 没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。
-先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;amp;&amp;amp;amp; $(this).scrollTop() &amp;amp;gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
-已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&amp;amp;quot;scroll&amp;amp;quot;);等数据添加到页面以后再重新绑定滚动事件。</description>
+先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;amp;&amp;amp;amp; $(this).scrollTop() &amp;gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
+已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&amp;quot;scroll&amp;quot;);等数据添加到页面以后再重新绑定滚动事件。</description>
     </item>
     
     <item>
@@ -2269,7 +2174,7 @@ apiadmin=yuedun
 @admin=rw
 @apiadmin=rw
 可以编辑这个文件添加账号，然后添加密码，但是不能直接编辑dav_svn.passwd，这里面是加密数据，需要使用Apache的htpasswd命令添加。
-htpasswd /etc/subversion/dav_svn.passwd&amp;amp;nbsp; &amp;amp;lt;用户名&amp;amp;gt;
+htpasswd /etc/subversion/dav_svn.passwd &amp;lt;用户名&amp;gt;
 然后会提示输入密码，就此完成svn账号设置。</description>
     </item>
     
@@ -2299,13 +2204,9 @@ htpasswd /etc/subversion/dav_svn.passwd&amp;amp;nbsp; &amp;amp;lt;用户名&amp;
       
       <guid>https://www.yuedun.wang/blogdetail/56286643ce46c19e89132968/</guid>
       <description>开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
- 所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
-首先在uses.js文件中有一个函数
-//我是一个测试方法
-router.get(&amp;amp;#39;/commeHere&amp;amp;#39;, function(req, res) {
-});
-然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
-可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是&amp;lt;open folders&amp;gt;，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
+所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。 首先在uses.js文件中有一个函数
+//我是一个测试方法  router.get(&amp;#34;/commeHere&amp;#34;, function(req, res) { }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
+可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
 双击就可以跳转到对应的文件和行上。
 当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。</description>
     </item>
@@ -2318,10 +2219,7 @@ router.get(&amp;amp;#39;/commeHere&amp;amp;#39;, function(req, res) {
       <guid>https://www.yuedun.wang/blogdetail/5624482861248de07b01887a/</guid>
       <description>每次启动node服务都要先打开cmd命令行，或者在win8下先打开文件资源管理器&amp;gt;文件&amp;gt;打开命令提示符，然后执行node命令，这样的过程真的很烦人，当然需要一个简单粗暴的方式启动了，就像用bat文件双击启动。
 首先，建一个空白文件，输入以下内容：
-E:
-cd E:\NodejsWorkSpace\app-node
-nodemon ./bin/www
-就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
+E: cd E:\\NodejsWorkSpace\\app-node nodemon ./bin/www 就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
 E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon ./bin/www
 使用&amp;amp;符号连接各个命令也可以</description>
     </item>
@@ -2333,7 +2231,7 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       
       <guid>https://www.yuedun.wang/blogdetail/5620bcc461248de07b018879/</guid>
       <description>数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。这时就产生了矛盾，又要加又不能多加，到底想怎么样？
-数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&amp;lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &amp;hellip; where name=&#39;nginx.cn&#39; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &amp;hellip; where name=&#39;nginx.cn&#39; and age in(15,16,17) and id =&#39;3&#39;</description>
+数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&amp;lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &amp;hellip; where name=&amp;ldquo;nginx.cn&amp;rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &amp;hellip; where name=&amp;ldquo;nginx.cn&amp;rdquo; and age in(15,16,17) and id =&amp;ldquo;3&amp;rdquo;</description>
     </item>
     
     <item>
@@ -2400,10 +2298,7 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       <pubDate>Thu, 08 Oct 2015 14:04:07 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/561677d7bfae4b590b7a4aaa/</guid>
-      <description>以前找工作的时候总被面试到数据库方面的知识，尤其是数据库优化。当然在去面试之前先补习一下，背一些网上的概念来应付。现在想想，要考察一个开发者数据库优化方面的知识只需要问一下有没有做过数据库设计和优化就行，如果做过相关工作那么多少会总结出来一些，如果没做过说出再多也是概念而已。
-国庆节前韩豆咖派上线，然后这个节日就不会有好日子过了，上线三四天的时候很多用户反映帖子刷新不出来，登陆不了等问题，起初我以为是放假了大家回家网络不好导致的，后来测试了下接口花了一分多钟数据才返回，看来不是网络问题。查了下数据库帖子数量，居然达到6万了，想到以前背的概念，首先加索引试试，果然快了。但是节后数量达到12万的时候又出现了相同的问题，有点纳闷，索引页加了怎么还是慢呢？经过多次试验，分拆复杂查询后得出结论是由于查询语句中使用了left join自连接查询，通俗的说就是在12万数据中找出需要的数据，然后再在这12万中找出关联数据，光是这两个12万都够吓人了。最后还是把复杂的sql分解用程序控制查询子句，速度果然又提高了。
-得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片：
- 但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.</description>
+      <description>以前找工作的时候总被面试到数据库方面的知识，尤其是数据库优化。当然在去面试之前先补习一下，背一些网上的概念来应付。现在想想，要考察一个开发者数据库优化方面的知识只需要问一下有没有做过数据库设计和优化就行，如果做过相关工作那么多少会总结出来一些，如果没做过说出再多也是概念而已。 国庆节前韩豆咖派上线，然后这个节日就不会有好日子过了，上线三四天的时候很多用户反映帖子刷新不出来，登陆不了等问题，起初我以为是放假了大家回家网络不好导致的，后来测试了下接口花了一分多钟数据才返回，看来不是网络问题。查了下数据库帖子数量，居然达到6万了，想到以前背的概念，首先加索引试试，果然快了。但是节后数量达到12万的时候又出现了相同的问题，有点纳闷，索引页加了怎么还是慢呢？经过多次试验，分拆复杂查询后得出结论是由于查询语句中使用了left join自连接查询，通俗的说就是在12万数据中找出需要的数据，然后再在这12万中找出关联数据，光是这两个12万都够吓人了。最后还是把复杂的sql分解用程序控制查询子句，速度果然又提高了。 得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片： 但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了. </description>
     </item>
     
     <item>
@@ -2419,7 +2314,7 @@ SELECT CURDATE();-- 2015-09-28
 查询当天，格式为YYYY-MM-DD HH:mm:ss
 SELECT NOW();-- 2015-09-28 13:42:00
 查询当天0点，格式为YYYY-MM-DD HH:mm:ss
-SELECT DATE_FORMAT(CURDATE(),&amp;amp;#39;%Y-%m-%d %H:%i:%s&amp;amp;#39;);-- 2015-09-28 00:00:00
+SELECT DATE_FORMAT(CURDATE(),&amp;quot;%Y-%m-%d %H:%i:%s&amp;quot;);-- 2015-09-28 00:00:00
 查询当天早上9点，格式为YYYY-MM-DD HH:mm:ss
 SELECT DATE_ADD(CURDATE(), INTERVAL 9 HOUR);-- 2015-09-28 09:00:00
 查询昨天，格式为YYYY-MM-DD
@@ -2466,7 +2361,7 @@ HOUR_SECOND</description>
       <description>先来一张效果图：
 
 由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。
-使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 
+使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 
 注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
 
 可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。</description>
@@ -2499,22 +2394,8 @@ HOUR_SECOND</description>
       <pubDate>Tue, 01 Sep 2015 03:17:52 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/55e518e0db5ac9c2be76b2fa/</guid>
-      <description>var nodemailer = require(&amp;amp;#39;nodemailer&amp;amp;#39;);
-var transporter = nodemailer.createTransport({
-service: &amp;amp;#39;gmail&amp;amp;#39;,
-auth: {
-user: &amp;amp;#39;youname@gmail.com&amp;amp;#39;,
-pass: &amp;amp;#39;password&amp;amp;#39;
-}
-});
-transporter.sendMail({
-from: &amp;amp;#39;youname@gmail.com&amp;amp;#39;,
-to: &amp;amp;#39;username@qq.com&amp;amp;#39;,
-subject: &amp;amp;#39;hello&amp;amp;#39;,
-text: &amp;amp;#39;hello world!&amp;amp;#39;
-});
-这是一个最基本的邮件发送程序，邮件服务商有以下：
- &#39;1und1&#39; &#39;AOL&#39; &#39;DebugMail.io&#39; &#39;DynectEmail&#39; &#39;FastMail&#39; &#39;GandiMail&#39; &#39;Gmail&#39; &#39;Godaddy&#39; &#39;GodaddyAsia&#39; &#39;GodaddyEurope&#39; &#39;hot.ee&#39; &#39;Hotmail&#39; &#39;iCloud&#39; &#39;mail.ee&#39; &#39;Mail.ru&#39; &#39;Mailgun&#39; &#39;Mailjet&#39; &#39;Mandrill&#39; &#39;Naver&#39; &#39;Postmark&#39; &#39;QQ&#39; &#39;QQex&#39; &#39;SendCloud&#39; &#39;SendGrid&#39; &#39;SES&#39; &#39;Sparkpost&#39; &#39;Yahoo&#39; &#39;Yandex&#39; &#39;Zoho&#39;  </description>
+      <description>var nodemailer = require(&amp;#34;nodemailer&amp;#34;); var transporter = nodemailer.createTransport({ service: &amp;#34;gmail&amp;#34;, auth: { user: &amp;#34;youname@gmail.com&amp;#34;, pass: &amp;#34;password&amp;#34; } }); transporter.sendMail({ from: &amp;#34;youname@gmail.com&amp;#34;, to: &amp;#34;username@qq.com&amp;#34;, subject: &amp;#34;hello&amp;#34;, text: &amp;#34;hello world!&amp;#34; }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
+ &amp;ldquo;1und1&amp;rdquo; &amp;ldquo;AOL&amp;rdquo; &amp;ldquo;DebugMail.io&amp;rdquo; &amp;ldquo;DynectEmail&amp;rdquo; &amp;ldquo;FastMail&amp;rdquo; &amp;ldquo;GandiMail&amp;rdquo; &amp;ldquo;Gmail&amp;rdquo; &amp;ldquo;Godaddy&amp;rdquo; &amp;ldquo;GodaddyAsia&amp;rdquo; &amp;ldquo;GodaddyEurope&amp;rdquo; &amp;ldquo;hot.ee&amp;rdquo; &amp;ldquo;Hotmail&amp;rdquo; &amp;ldquo;iCloud&amp;rdquo; &amp;ldquo;mail.ee&amp;rdquo; &amp;ldquo;Mail.ru&amp;rdquo; &amp;ldquo;Mailgun&amp;rdquo; &amp;ldquo;Mailjet&amp;rdquo; &amp;ldquo;Mandrill&amp;rdquo; &amp;ldquo;Naver&amp;rdquo; &amp;ldquo;Postmark&amp;rdquo; &amp;ldquo;QQ&amp;rdquo; &amp;ldquo;QQex&amp;rdquo; &amp;ldquo;SendCloud&amp;rdquo; &amp;ldquo;SendGrid&amp;rdquo; &amp;ldquo;SES&amp;rdquo; &amp;ldquo;Sparkpost&amp;rdquo; &amp;ldquo;Yahoo&amp;rdquo; &amp;ldquo;Yandex&amp;rdquo; &amp;ldquo;Zoho&amp;rdquo;  </description>
     </item>
     
     <item>
@@ -2524,8 +2405,8 @@ text: &amp;amp;#39;hello world!&amp;amp;#39;
       
       <guid>https://www.yuedun.wang/blogdetail/55e3e840db5ac9c2be76b2f9/</guid>
       <description>公司之前的产品管理对于小编们的使用情况及其糟糕，每次打开一个页面都要等待好久，这也是由于时间紧张，开始做的时候就只管进度没有时间优化。我大概看了下，光是登录页和一个空白首页就有78个请求，1.1M的数据。其他功能页面不少于这个数，这是因为所有页面共用了一个头文件，而这个头文件把所有有用没有的css文件和js文件都加载进来了，所以这次做的新后台管理系统绝不能这么做了。
- 首先，css按需加载，当然有一些css是每个页面必须的就放到一个公共页面中include进来，对于一些新增的插件就在需要的时候添加到对应的页面。
- 其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式&amp;lt;script src=&amp;quot;/javascripts/main.js&amp;quot; defer async=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。
+首先，css按需加载，当然有一些css是每个页面必须的就放到一个公共页面中include进来，对于一些新增的插件就在需要的时候添加到对应的页面。
+其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。
 初步结果显示，所有页面加载速度平均在0.5秒，有些页面几乎看不出来重新加载过程，瞬间完成。优化也算是有一定的效果了。其中要说一下requirejs的一些优缺点，requirejs优点是可以实现js异步加载和模块化开发，不过让我有点不适应的是在HTML页面中不能使用onclick=func这种方式的事件处理，会提示找不到函数，只能在页面加载完成后用jquery进行事件监听，一些动态加载的页面数据也需要在加载以后重新绑定事件。
 2015-11-08日更新
 自从使用了requirejs后，凡是做页面需要js的时候首先想到的就是requirejs，感觉入坑跳不出来，反而弄巧成拙了。requirejs本意是异步加载多个js文件以防止页面阻塞，在一个网站或项目中也尽量合并多个文件里的内容以减少网络请求，一次加载一个大的文件比多次加载多个小文件来的划算的多，还有，requirejs虽然有好处但是并不是任何时候都有，比如页面很简单，js内容也很少的时候就完全不该用它。最后有一个不得不说的缺点，在上面已经提过，就是事件绑定，因为不能使用onclick=func()这种方式调用函数，只能用$(function(){})这种方式绑定事件，那么在网络不好的情况下，有些文件加载缓慢，导致不能绑定事件，如果一个按钮是这种方式绑定的事件，结果就是非要等到页面加载完才能点击，很让人着急。</description>
@@ -2537,12 +2418,8 @@ text: &amp;amp;#39;hello world!&amp;amp;#39;
       <pubDate>Fri, 28 Aug 2015 03:21:08 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</guid>
-      <description>最基本的where条件： ```js Post.findAll({ where: { authorId: 2 } }); // SELECT * FROM post WHERE authorId = 2
-Post.findAll({ where: { authorId: 12, status: active } });
-// SELECT * FROM post WHERE authorId = 12 AND status = &amp;lsquo;active&amp;rsquo;;
-Post.destroy({ where: { status: &amp;lsquo;inactive&amp;rsquo; } }); // DELETE FROM post WHERE status = &amp;lsquo;inactive&amp;rsquo;;
-Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } });
-// UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; ``` 如果涉及到or的使用，sequelize也提供了很好的解决方案 ```js where: { rank: { $or: { $lt: 100, $eq: null } } }</description>
+      <description>最基本的where条件：
+Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &amp;#39;active&amp;#39;;  Post.destroy({ where: { status: &amp;#39;inactive&amp;#39; } }); // DELETE FROM post WHERE status = &amp;#39;inactive&amp;#39;;  Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案</description>
     </item>
     
     <item>
@@ -2577,8 +2454,8 @@ var gulp = require(&amp;#39;gulp&amp;#39;); var jshint = require(&amp;#39;gulp-j
       
       <guid>https://www.yuedun.wang/blogdetail/559774527756526fccc59577/</guid>
       <description>三月的时候做了一个简单的计划，主要是在前端知识方面的学习，包括HTML5，CSS3，bootstrap,angularjs。到目前的四个月时间里工作内容基本包揽了所有前端任务开发，从不会到会，到熟练，对于我来说痛并快乐着，学习过程虽然艰难，但是如果让我每天重复一样的工作内容真的会很烦躁，而现在连做梦都会梦到遇到的技术难题，想到解决办法就迫不及待第二天上班去解决。这样一路下来，除了angularjs不太熟练其他都可以轻松胜任，这是不是离全栈更近一步了。
- 虽然angularjs这个坑挖的越来越深，下一个2.0版本也不向后兼容，让人纠结该不该继续学习，不过其实大家都对它的先进性认可的，暂时不会放弃。No这样的话前端技术暂时没有要学习的，接下来就是要学习服务器方面的东西，Linux操作系统，Nginx服务器使用，MySQL数据库优化，NoSQL公司暂时没有使用就先不深入学习了，不过好在公司的技术使用上有决策权，如有必要还是希望能用上，从上次活动服务器挂掉得出结论，MySQL不作特别优化处理是有点难以支撑高并发，有点与nodejs不搭调。
- 总体来说，这几个月成长不少，除了自己努力之外还要感谢公司提供了我能够充分发挥的环境和前辈同事的指导和老板的信任。——不论公司最后成败，付出的努力不会付之东流。</description>
+虽然angularjs这个坑挖的越来越深，下一个2.0版本也不向后兼容，让人纠结该不该继续学习，不过其实大家都对它的先进性认可的，暂时不会放弃。No这样的话前端技术暂时没有要学习的，接下来就是要学习服务器方面的东西，Linux操作系统，Nginx服务器使用，MySQL数据库优化，NoSQL公司暂时没有使用就先不深入学习了，不过好在公司的技术使用上有决策权，如有必要还是希望能用上，从上次活动服务器挂掉得出结论，MySQL不作特别优化处理是有点难以支撑高并发，有点与nodejs不搭调。
+总体来说，这几个月成长不少，除了自己努力之外还要感谢公司提供了我能够充分发挥的环境和前辈同事的指导和老板的信任。——不论公司最后成败，付出的努力不会付之东流。</description>
     </item>
     
     <item>
@@ -2672,18 +2549,7 @@ var gulp = require(&amp;#39;gulp&amp;#39;); var jshint = require(&amp;#39;gulp-j
       
       <guid>https://www.yuedun.wang/blogdetail/554ae5b3a07843eb8002a388/</guid>
       <description>sequelize定义实体对象
-var sequelize = require(&#39;../utils/sequelizeDB&#39;);//连接数据库 var Sequelize = require(&#39;sequelize&#39;); var User = sequelize.define(&#39;User&#39;, {
-user_id:{ type: Sequelize.STRING, primaryKey: true},
-name: Sequelize.STRING,
-phone: Sequelize.STRING,
-create_date: Sequelize.DATE,
-update_date: Sequelize.DATE
-}, {
-freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步
-tableName: &#39;user&#39;,
-timestamps: false
-});
-define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt</description>
+var sequelize = require(&amp;#34;../utils/sequelizeDB&amp;#34;);//连接数据库 var Sequelize = require(&amp;#34;sequelize&amp;#34;); var User = sequelize.define(&amp;#34;User&amp;#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &amp;#34;user&amp;#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt</description>
     </item>
     
     <item>
@@ -2719,30 +2585,8 @@ select * from table order by IFNULL(updateDate, createDate) desc;
       <pubDate>Sat, 29 Nov 2014 11:44:10 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5479b18a93ae2eb85f26b2d3/</guid>
-      <description>前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了
-/**
-* Created by huopanpan on 2014/10/10.
-*/
-var crypto = require(&#39;crypto&#39;);
-/**
-* 验证token
-* @param req
-* @param res
-*/
-function validateToken(req, res) {
-var query = req.query;
-var signature = query.signature;//微信服务器加密字符串
-var echostr = query.echostr;//随机字符串
-var timestamp = query[&#39;timestamp&#39;];//时间戳
-var nonce = query.nonce;//nonce
-var oriArray = new Array();
-oriArray[0] = nonce;
-oriArray[1] = timestamp;
-oriArray[2] = &amp;quot;hale&amp;quot;;//token
-oriArray.sort();
-var original = oriArray[0]+oriArray[1]+oriArray[2];
-console.log(&amp;quot;Original Str:&amp;quot;+original);
-console.log(&amp;quot;signature:&amp;quot;+signature);</description>
+      <description>前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了。
+/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&amp;#34;crypto&amp;#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) { var query = req.query; var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&amp;#34;timestamp&amp;#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array(); oriArray[0] = nonce; oriArray[1] = timestamp; oriArray[2] = &amp;#34;hale&amp;#34;;//token  oriArray.sort(); var original = oriArray[0]+oriArray[1]+oriArray[2]; console.</description>
     </item>
     
     <item>
@@ -2754,7 +2598,7 @@ console.log(&amp;quot;signature:&amp;quot;+signature);</description>
       <description>在执行下面第一行启动mongodb服务的时候，命令行一闪而过，具体看了下输出内容看不出端倪来，不过解决办法却是有的，就是直接删除掉D:\Data\db下面的mongod.lock文件可以了
 C:\Program Files\MongoDB 2.6 Standard\bin&amp;gt;mongod &amp;ndash;dbpath=D:\Data\db
 2014-11-16T11:35:43.244+0800
-2014-11-16T11:35:43.252+0800 warning: 32-bit servers don&#39;t have journaling enabl
+2014-11-16T11:35:43.252+0800 warning: 32-bit servers don&amp;quot;t have journaling enabl
 ed by default. Please use &amp;ndash;journal if you want durability.
 2014-11-16T11:35:43.253+0800
 2014-11-16T11:35:43.282+0800 [initandlisten] MongoDB starting : pid=8272 port=27
@@ -2762,9 +2606,9 @@ ed by default. Please use &amp;ndash;journal if you want durability.
 2014-11-16T11:35:43.283+0800 [initandlisten]
 2014-11-16T11:35:43.284+0800 [initandlisten] ** NOTE: This is a 32 bit MongoDB b
 inary.
-2014-11-16T11:35:43.284+0800 [initandlisten] ** 32 bit builds are limited
+2014-11-16T11:35:43.284+0800 [initandlisten] ** 32 bit builds are limited
 to less than 2GB of data (or less with &amp;ndash;journal).
-2014-11-16T11:35:43.284+0800 [initandlisten] ** Note that journaling defau</description>
+2014-11-16T11:35:43.284+0800 [initandlisten] ** Note that journaling defau</description>
     </item>
     
     <item>
@@ -2773,19 +2617,7 @@ to less than 2GB of data (or less with &amp;ndash;journal).
       <pubDate>Fri, 14 Nov 2014 16:21:07 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/54662bf3e8183bcf964f88eb/</guid>
-      <description>由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。
- 由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。</description>
-    </item>
-    
-    <item>
-      <title>2014-11-11博客突然打不开</title>
-      <link>https://www.yuedun.wang/blogdetail/54618bc69579423b407522c8/</link>
-      <pubDate>Tue, 11 Nov 2014 04:08:38 +0000</pubDate>
-      
-      <guid>https://www.yuedun.wang/blogdetail/54618bc69579423b407522c8/</guid>
-      <description> 今天早上起来还可以，中午突然就打不开，看了下日志有下面的错误：这是关于mongodb的错误，经过重启部署都每有解决，看后台输出数据库有连接上，但是每次刷新页面的时候就会报这个错误。打开数据库看了下，吓死我了，里面居然没数据了，难道又要经历和上次一样的问题？不能这么坑爹啊！只好无聊的不停刷新，无意间又好了。
- 看来BAE还是存在问题，不够稳定。
- at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/server.js:485:18 at Server.Base._callHandler (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/base.js:442:41) at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1806:9 at commandHandler (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:685:21) at Cursor.close (/home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:959:5) at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:685:39 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/cursor.js:159:22 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1542:30 at /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/db.js:1404:28 at /home/bae/app/.bae/node_modules/connect-mongo/lib/connect-mongo.js:161:23 Error: Error setting TTL index on collection : sessions ^ throw message; /home/bae/app/.bae/node_modules/connect-mongo/node_modules/mongodb/lib/mongodb/connection/base.js:242  </description>
+      <description>由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。 </description>
     </item>
     
     <item>
@@ -2817,7 +2649,7 @@ select count(*) from 表 where 性别 ＝ 男；select count(*) from 表 where 
       
       <guid>https://www.yuedun.wang/blogdetail/54525a36d477ceeba7b15d6b/</guid>
       <description>从开始学习nodejs就关注了前端方面的技术，主要就是HTML，css，现在还真有想法深入学习一下。以前一直从事着后端开发，到现在已有三年，但是感觉自己遇到了一下瓶颈，虽然在工作中没什么难倒的技术问题，但是做着重复的工作实在是没有提升。之前的公司没有值的学习的东西，现在的公司有东西可以学习，但是作为外包可能不会待太长时间，就现在来说，也没有做过核心的东西，所以感觉自己这样下去没有什么竞争力，于是决定从宽度上拓展，下决心学习了nodejs,当初为了学习不知不觉就建立了这个博客，由于没有前端功底，就照搬了一个模板，想要修改点样式却发现很吃力，再看看nodejs,就像是给前端开发的服务端语言，而我却不懂前端，就算学习了好像也派不上用场，好尴尬的存在啊，没办法，还是该学习一下前端知识，至少要能够轻松的修改一个已有的页面吧，要纯粹的搞设计估计还要重新来过，又要花个三五年时间，还是划不来，不过应该主攻后端，兼顾前端，前后通吃。那么我想就从HTML5，CSS3开始吧。
- 对于这些发点牢骚的内容就想在新浪博客上有个备份，复制一遍感觉好麻烦，新浪博客提供了对外接口，周末的时候看能不能对接一下</description>
+对于这些发点牢骚的内容就想在新浪博客上有个备份，复制一遍感觉好麻烦，新浪博客提供了对外接口，周末的时候看能不能对接一下</description>
     </item>
     
     <item>
@@ -2827,12 +2659,14 @@ select count(*) from 表 where 性别 ＝ 男；select count(*) from 表 where 
       
       <guid>https://www.yuedun.wang/blogdetail/5451f72e0eb53ef723e47bfe/</guid>
       <description>内容摘自《nodejs开发指南》
- util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能
-过于精简的不足。 util.inherits 
+util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能
+过于精简的不足。
+util.inherits
 util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
-在这里我们只介绍 util.inherits 的用法，示例如下： var util = require(&#39;util&#39;); function Base() { this.name = &#39;base&#39;; this.base = 1991;  this.sayHello = function() { console.log(&#39;Hello &#39; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#39;sub&#39;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.</description>
+在这里我们只介绍 util.inherits 的用法，示例如下：
+var util = require(&amp;#34;util&amp;#34;); function Base() { this.name = &amp;#34;base&amp;#34;; this.base = 1991; this.sayHello = function() { console.log(&amp;#34;Hello &amp;#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &amp;#34;sub&amp;#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.</description>
     </item>
     
     <item>
@@ -2859,7 +2693,7 @@ var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: 
  用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications().  为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
 如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
 我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
-如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
+如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
 2. 异步
 根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:
 不过要是你执行那种长时间的阻塞操作，主线程就会被阻塞到这些操作完成为止。这大大降低你应用的性能。所以，最好确保你的代码里用的都是异步版本 API，最起码你应该在性能节点异步。而且，你在选用第三方模块的时候也要很小心。因为当你想方设法把同步操作从你代码中剔除之后，一个外部库的同步调用会让你前功尽弃，降低你的应用性能。
@@ -2878,18 +2712,18 @@ var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: 
       
       <guid>https://www.yuedun.wang/blogdetail/54486c117b1470fa64bb911a/</guid>
       <description>查看、添加、提交、删除、找回，重置修改文件
-git help &amp;lt;command&amp;gt; # 显示command的help
+git help # 显示command的help
 git show # 显示某次提交的内容 git show $id
-git co &amp;ndash; &amp;lt;file&amp;gt; # 抛弃工作区修改
+git co &amp;ndash; # 抛弃工作区修改
 git co . # 抛弃工作区修改
-git add &amp;lt;file&amp;gt; # 将工作文件修改提交到本地暂存区
+git add # 将工作文件修改提交到本地暂存区
 git add . # 将所有修改过的工作文件提交暂存区
-git rm &amp;lt;file&amp;gt; # 从版本库中删除文件
-git rm &amp;lt;file&amp;gt; &amp;ndash;cached # 从版本库中删除文件，但不删除文件
-git reset &amp;lt;file&amp;gt; # 从暂存区恢复到工作文件
+git rm # 从版本库中删除文件
+git rm &amp;ndash;cached # 从版本库中删除文件，但不删除文件
+git reset # 从暂存区恢复到工作文件
 git reset &amp;ndash; . # 从暂存区恢复到工作文件
 git reset &amp;ndash;hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改
-git ci &amp;lt;file&amp;gt; git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做　git ci -am &amp;quot;some comments&amp;quot;</description>
+git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做　git ci -am &amp;ldquo;some comments&amp;rdquo;</description>
     </item>
     
     <item>
@@ -2898,8 +2732,10 @@ git ci &amp;lt;file&amp;gt; git ci . git ci -a # 将git add, git rm和git ci等�
       <pubDate>Fri, 17 Oct 2014 05:01:08 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5440a294fea3dae97beee4f9/</guid>
-      <description>随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。 首先看下mongoose API，find方法源码：
- Model.find = function find (conditions, fields, options, callback){ if(&amp;amp;#39;function&amp;amp;#39;==typeof conditions){ &amp;amp;nbsp; &amp;amp;nbsp; callback = conditions; &amp;amp;nbsp; &amp;amp;nbsp; conditions ={}; &amp;amp;nbsp; &amp;amp;nbsp; fields = null; &amp;amp;nbsp; &amp;amp;nbsp; options = null; }elseif(&amp;amp;#39;function&amp;amp;#39;==typeof fields){ &amp;amp;nbsp; &amp;amp;nbsp; callback = fields; &amp;amp;nbsp; &amp;amp;nbsp; fields = null; &amp;amp;nbsp; &amp;amp;nbsp; options = null; }elseif(&amp;amp;#39;function&amp;amp;#39;==typeof options){ &amp;amp;nbsp; &amp;amp;nbsp; callback = options; &amp;amp;nbsp; &amp;amp;nbsp; options = null; } // get the raw mongodb collection object &amp;amp;nbsp; var mq =newQuery({}, options,this,this.</description>
+      <description>随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。
+首先看下mongoose API，find方法源码：
+Model.find = function find (conditions, fields, options, callback){ if(&amp;#34;function&amp;#34;==typeof conditions){ callback = conditions; conditions ={}; fields = null; options = null; }elseif(&amp;#34;function&amp;#34;==typeof fields){ callback = fields; fields = null; options = null; }elseif(&amp;#34;function&amp;#34;==typeof options){ callback = options; options = null; } // get the raw mongodb collection object  var mq =newQuery({}, options,this,this.collection); mq.select(fields); if(this.schema.discriminatorMapping &amp;amp;amp;&amp;amp;amp; mq._selectedInclusively()){ mq.select(this.schema.options.discriminatorKey); } return mq.find(conditions, callback); }; 其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：
+router.get(&amp;#34;/admin/blogList&amp;#34;, function(req, res) { var user = req.</description>
     </item>
     
     <item>
@@ -2919,15 +2755,6 @@ git ci &amp;lt;file&amp;gt; git ci . git ci -a # 将git add, git rm和git ci等�
 如下一个test.html代码
 &amp;lt;form action=&amp;quot;/index&amp;quot; method=&amp;quot;get&amp;quot;&amp;gt;&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;login_name&amp;quot; /&amp;gt;&amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Sign In&amp;quot; /&amp;gt;&amp;lt;/form&amp;gt;在nodeJs中我们要自定义HTTP，因此创建index.js
 app.post(&amp;#39;/:key&amp;#39;, function(req, res) { console.log(req.params.key); //输出index  console.log(req.body.login_name); //输出表单post提交的login_name  res.send(&amp;#39;great you are right for post method!&amp;#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791</description>
-    </item>
-    
-    <item>
-      <title>百度CDN加速</title>
-      <link>https://www.yuedun.wang/blogdetail/543e3c886db08330a28e5ba0/</link>
-      <pubDate>Wed, 15 Oct 2014 09:21:12 +0000</pubDate>
-      
-      <guid>https://www.yuedun.wang/blogdetail/543e3c886db08330a28e5ba0/</guid>
-      <description>http://duxiulong.duapp.com/blog/index.html悟会的博客 百度CDN加速 ：http://cdn.code.baidu.com/</description>
     </item>
     
     <item>

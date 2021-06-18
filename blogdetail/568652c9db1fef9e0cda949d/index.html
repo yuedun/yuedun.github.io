@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="vue.js在chrome浏览器下输入汉字会带出拼音">
 <meta itemprop="description" content="本想写篇vue.js的教程的，但牵扯的知识点比较多，最近又没时间，就记录下过程中遇到问题吧。开发过程中用的360极速浏览器，也没什么问题，但是其他人测试的时候用"><meta itemprop="datePublished" content="2016-01-01T10:19:53&#43;00:00" />
 <meta itemprop="dateModified" content="2016-01-01T10:19:53&#43;00:00" />
-<meta itemprop="wordCount" content="13">
+<meta itemprop="wordCount" content="4">
 <meta itemprop="keywords" content="" />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="vue.js在chrome浏览器下输入汉字会带出拼音"/>
@@ -150,11 +150,9 @@
 <p><img src="http://hopefully-img.yuedun.wang/shurufa1.jpg" alt=""></p>
 <p><img src="http://hopefully-img.yuedun.wang/shurufa2.jpg" alt=""></p>
 <p>按理说360极速浏览器也用的是chrome内核，不应该出现这两种不同的情况，这个问题先不追究了。还是说说为什么vue.js的输入框会出现拼音的问题。我本以为是浏览器的差异造成这种现象，但是也不是所有输入框都会出现，那一定是程序的问题。</p>
-<p>&lt;input type=&quot;text&quot; v-model=&quot;msg&quot;&gt;<br>
-&lt;p&gt;{{msg}}&lt;/p&gt;</p>
+<!-- raw HTML omitted -->
 <p>这是一种双向数据绑定常见写法，但是由于我的理解不够透彻，写成了这样：</p>
-<p>&lt;input type=&quot;text&quot; v-model=&quot;msg&quot; value=&quot;{{msg}}&quot;&gt;<br>
-&lt;p&gt;{{msg}}&lt;/p&gt;</p>
+<!-- raw HTML omitted -->
 <p>我的理解是更新的时候要先显示数据，所以就在input里加了value来初始化数据，也是因为加了这个value导致输入汉字出现拼音，也与浏览器有点关系，就是输入的时候chrome浏览器会把输入的汉字拼音拼写也放进输入框，那么数据模型就接收了输入，敲击空格键的时候又输进了汉字，所以就都带进来了。但其实只需要v-model就能实现数据的接收和输出。</p>
 
 		</div>

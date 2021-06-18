@@ -157,15 +157,15 @@
 <p><code>/etc/subversion</code></p>
 <p><code>/usr/share/doc/subversion</code></p>
 <p>查找所得结果可以确定应该是在 /etc/subversion下，切换到subversion下有多个文件：</p>
-<p>config  config.dpkg-dist  dav_svn.authz  dav_svn.passwd   passwd  servers</p>
-<p>可能需要一一查看下都是什么内容，其实主要是dav_svn.authz  dav_svn.passwd这两个文件，一个存放用户名，一个存放密码，dav_svn.authz内容包含账号和权限：</p>
+<p>config  config.dpkg-dist  dav_svn.authz  dav_svn.passwd   passwd  servers</p>
+<p>可能需要一一查看下都是什么内容，其实主要是dav_svn.authz  dav_svn.passwd这两个文件，一个存放用户名，一个存放密码，dav_svn.authz内容包含账号和权限：</p>
 <p><code>[groups]</code></p>
 <p><code>apiadmin=yuedun</code></p>
 <p><code>[handou:/]</code></p>
 <p><code>@admin=rw</code></p>
 <p><code>@apiadmin=rw</code></p>
 <p>可以编辑这个文件添加账号，然后添加密码，但是不能直接编辑dav_svn.passwd，这里面是加密数据，需要使用Apache的htpasswd命令添加。</p>
-<p><code>htpasswd /etc/subversion/dav_svn.passwd&amp;nbsp; &amp;lt;用户名&amp;gt;</code></p>
+<p><code>htpasswd /etc/subversion/dav_svn.passwd  &lt;用户名&gt;</code></p>
 <p>然后会提示输入密码，就此完成svn账号设置。</p>
 
 		</div>

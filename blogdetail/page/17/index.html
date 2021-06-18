@@ -302,18 +302,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		sequelize定义实体对象
-var sequelize = require('../utils/sequelizeDB');//连接数据库 var Sequelize = require('sequelize'); var User = sequelize.define('User', {
-user_id:{ type: Sequelize.STRING, primaryKey: true},
-name: Sequelize.STRING,
-phone: Sequelize.STRING,
-create_date: Sequelize.DATE,
-update_date: Sequelize.DATE
-}, {
-freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步
-tableName: 'user',
-timestamps: false
-});
-define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt
+var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Sequelize = require(&#34;sequelize&#34;); var User = sequelize.define(&#34;User&#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &#34;user&#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -519,7 +508,6 @@ select * from table order by IFNULL(updateDate, createDate) desc;
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

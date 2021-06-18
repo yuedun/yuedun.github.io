@@ -144,11 +144,7 @@
 	<div class="content list__excerpt post__content clearfix">
 		本想写篇vue.js的教程的，但牵扯的知识点比较多，最近又没时间，就记录下过程中遇到问题吧。开发过程中用的360极速浏览器，也没什么问题，但是其他人测试的时候用的是chrome浏览器，输入汉字的时候会连拼音也带进去，比如输入的是“你好”，结果却成了“nihao你好”。
 按理说360极速浏览器也用的是chrome内核，不应该出现这两种不同的情况，这个问题先不追究了。还是说说为什么vue.js的输入框会出现拼音的问题。我本以为是浏览器的差异造成这种现象，但是也不是所有输入框都会出现，那一定是程序的问题。
-&lt;input type=&quot;text&quot; v-model=&quot;msg&quot;&gt;
-&lt;p&gt;{{msg}}&lt;/p&gt;
 这是一种双向数据绑定常见写法，但是由于我的理解不够透彻，写成了这样：
-&lt;input type=&quot;text&quot; v-model=&quot;msg&quot; value=&quot;{{msg}}&quot;&gt;
-&lt;p&gt;{{msg}}&lt;/p&gt;
 我的理解是更新的时候要先显示数据，所以就在input里加了value来初始化数据，也是因为加了这个value导致输入汉字出现拼音，也与浏览器有点关系，就是输入的时候chrome浏览器会把输入的汉字拼音拼写也放进输入框，那么数据模型就接收了输入，敲击空格键的时候又输进了汉字，所以就都带进来了。但其实只需要v-model就能实现数据的接收和输出。
 	</div>
 </article><article class="list__item post">
@@ -192,40 +188,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		js控制优酷视频播放暂停
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&quot;&gt;
-&lt;title&gt;js控制优酷视频播放&lt;/title&gt;
-&lt;script src=&quot;http://player.youku.com/jsapi&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-player = new YKU.Player('youkuplayer',{
-styleid: '0',
-client_id: 'd8781b239fdad45b',
-vid: 'XMjg1MTcyNDQ0',
-autoplay: false,
-show_related: true,
-events:{
-onPlayEnd: function(){ /*your code*/ },
-onPlayStart: function(){ /*your code*/ },
-onPlayerReady: function(){ /*your code*/ }
-}
-});
-function playVideo(){
-try{
-player.playVideo();
-} catch(err){
-alert(&quot;*&quot;+err);
-}
- }
-function pauseVideo(){
-player.pauseVideo();
- }
-function seekTo(s){
-player.seekTo(s);
-}
-function currentTime(){
+&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&#34;&gt; &lt;title&gt;js控制优酷视频播放&lt;/title&gt; &lt;script src=&#34;http://player.youku.com/jsapi&#34;&gt;&lt;/script&gt; &lt;script&gt; player = new YKU.Player(&#34;youkuplayer&#34;,{ styleid: &#34;0&#34;, client_id: &#34;d8781b239fdad45b&#34;, vid: &#34;XMjg1MTcyNDQ0&#34;, autoplay: false, show_related: true, events:{ onPlayEnd: function(){ /*your code*/ }, onPlayStart: function(){ /*your code*/ }, onPlayerReady: function(){ /*your code*/ } } }); function playVideo(){ try{ player.playVideo(); } catch(err){ alert(&#34;*&#34;+err); } } function pauseVideo(){ player.pauseVideo(); } function seekTo(s){ player.seekTo(s); } function currentTime(){ return player.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/564adbd591dccd315681abfe/">阅读全文…</a>
@@ -250,23 +213,10 @@ function currentTime(){
 首先看下面代码：
 var pageIndex = 2;
 (function loadmore() {
- //绑定滚动事件
-$(window).bind(&quot;scroll&quot;, function() {
- if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;&amp; $(this).scrollTop() &gt;= 40) {
- $(window).unbind(&quot;scroll&quot;); //到底后先移除滚动事件
-$.get(&quot;/portal/getTopic?pageIndex=&quot; + pageIndex + &quot;&amp;pageSize=3&quot;,
-function(data) {
- $(&quot;#container&quot;).append(data);
- pageIndex++;
- loadmore(); //数据加载成功重新绑定滚动事件
-},
-&quot;html&quot;);
- };
- });
-})();
+//绑定滚动事件 $(window).bind(&quot;scroll&quot;, function() {if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40) {$(window).unbind(&quot;scroll&quot;); //到底后先移除滚动事件 $.get(&quot;/portal/getTopic?pageIndex=&quot; + pageIndex + &quot;&amp;amp;pageSize=3&quot;, function(data) {$(&quot;#container&quot;).append(data);pageIndex++;loadmore(); //数据加载成功重新绑定滚动事件 }, &quot;html&quot;);};}); })();
 没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。
-先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;&amp;amp; $(this).scrollTop() &amp;gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
-已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&amp;quot;scroll&amp;quot;);等数据添加到页面以后再重新绑定滚动事件。
+先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
+已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&quot;scroll&quot;);等数据添加到页面以后再重新绑定滚动事件。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -285,8 +235,8 @@ function(data) {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		公司之前的产品管理对于小编们的使用情况及其糟糕，每次打开一个页面都要等待好久，这也是由于时间紧张，开始做的时候就只管进度没有时间优化。我大概看了下，光是登录页和一个空白首页就有78个请求，1.1M的数据。其他功能页面不少于这个数，这是因为所有页面共用了一个头文件，而这个头文件把所有有用没有的css文件和js文件都加载进来了，所以这次做的新后台管理系统绝不能这么做了。
- 首先，css按需加载，当然有一些css是每个页面必须的就放到一个公共页面中include进来，对于一些新增的插件就在需要的时候添加到对应的页面。
- 其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式&lt;script src=&quot;/javascripts/main.js&quot; defer async=&quot;true&quot;&gt;&lt;/script&gt; defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。
+首先，css按需加载，当然有一些css是每个页面必须的就放到一个公共页面中include进来，对于一些新增的插件就在需要的时候添加到对应的页面。
+其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。
 初步结果显示，所有页面加载速度平均在0.5秒，有些页面几乎看不出来重新加载过程，瞬间完成。优化也算是有一定的效果了。其中要说一下requirejs的一些优缺点，requirejs优点是可以实现js异步加载和模块化开发，不过让我有点不适应的是在HTML页面中不能使用onclick=func这种方式的事件处理，会提示找不到函数，只能在页面加载完成后用jquery进行事件监听，一些动态加载的页面数据也需要在加载以后重新绑定事件。
 2015-11-08日更新
 自从使用了requirejs后，凡是做页面需要js的时候首先想到的就是requirejs，感觉入坑跳不出来，反而弄巧成拙了。requirejs本意是异步加载多个js文件以防止页面阻塞，在一个网站或项目中也尽量合并多个文件里的内容以减少网络请求，一次加载一个大的文件比多次加载多个小文件来的划算的多，还有，requirejs虽然有好处但是并不是任何时候都有，比如页面很简单，js内容也很少的时候就完全不该用它。最后有一个不得不说的缺点，在上面已经提过，就是事件绑定，因为不能使用onclick=func()这种方式调用函数，只能用$(function(){})这种方式绑定事件，那么在网络不好的情况下，有些文件加载缓慢，导致不能绑定事件，如果一个按钮是这种方式绑定的事件，结果就是非要等到页面加载完才能点击，很让人着急。
@@ -313,24 +263,6 @@ function(data) {
 3.语法检查：这个功能一般会和下面第4条功能配合使用，当文件修改的时候检查是否有语法错误，并在命令行中输出错误信息。
 4.监听文件变化：监听某个目录下文件是否修改，修改的话就执行特定的操作，比如上面几个操作。 以上4点是比较常用的功能，更多功能根据自己需要添加
 var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名  // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); }); // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); }); // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); }); // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); 目录结构:
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/543e3c886db08330a28e5ba0/" rel="bookmark">
-			百度CDN加速
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-15T09:21:12Z">2014-10-15 09:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		http://duxiulong.duapp.com/blog/index.html悟会的博客 百度CDN加速 ：http://cdn.code.baidu.com/
 	</div>
 </article>
 </main>
@@ -508,7 +440,6 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>数据表索引如何建立？多列索引还是单列索引 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp; 数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好">
+	<meta name="description" content="    数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好">
 		<meta property="og:title" content="数据表索引如何建立？多列索引还是单列索引" />
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp; 数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好" />
+<meta property="og:description" content="    数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5620bcc461248de07b018879/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2015-10-16T09:00:52&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="数据表索引如何建立？多列索引还是单列索引">
-<meta itemprop="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp; 数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好"><meta itemprop="datePublished" content="2015-10-16T09:00:52&#43;00:00" />
+<meta itemprop="description" content="    数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好"><meta itemprop="datePublished" content="2015-10-16T09:00:52&#43;00:00" />
 <meta itemprop="dateModified" content="2015-10-16T09:00:52&#43;00:00" />
 <meta itemprop="wordCount" content="40">
 <meta itemprop="keywords" content="mysql,索引," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数据表索引如何建立？多列索引还是单列索引"/>
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp; 数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好"/>
+<meta name="twitter:description" content="    数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -146,8 +146,8 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<p>    数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。这时就产生了矛盾，又要加又不能多加，到底想怎么样？<br>
-    数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name='nginx.cn' and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name='nginx.cn' and age in(15,16,17) and id ='3'</p>
+			<p>数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。这时就产生了矛盾，又要加又不能多加，到底想怎么样？</p>
+<p>数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) and id =&ldquo;3&rdquo;</p>
 
 		</div>
 		<footer class="post__footer">

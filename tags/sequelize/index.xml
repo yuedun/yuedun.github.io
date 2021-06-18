@@ -18,6 +18,28 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
     </item>
     
     <item>
+      <title>typescript开发sequelize返回ModelInstance或null值无法获取属性值</title>
+      <link>https://www.yuedun.wang/blogdetail/59f4a228f99acfed859c831e/</link>
+      <pubDate>Sat, 28 Oct 2017 15:28:40 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/59f4a228f99acfed859c831e/</guid>
+      <description>从图片中的代码可以看出 let userRecord = await item.getUser();获取到的是Bluebird&amp;lt;UserInstance | null&amp;gt;类型，然后在下面获取对象属性的时候报错，错误信息是：
+[ts] Object is possibly &#39;null&#39;.let userRecord: UserInstance | null说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &amp;quot;strictNullChecks&amp;quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。</description>
+    </item>
+    
+    <item>
+      <title>sequelize.js不能将驼峰camelCased命名转化为下划线underscored命名</title>
+      <link>https://www.yuedun.wang/blogdetail/59eab23989faeadc30eac826/</link>
+      <pubDate>Sat, 21 Oct 2017 02:34:33 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/59eab23989faeadc30eac826/</guid>
+      <description>定义Model的时候有这样两个参数： underscored,underscoredAll,
+ Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
+ 其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
+var Model = sequelize.define&amp;lt;ModelInstance, ModelAttributes&amp;gt;( &amp;#39;Assistance&amp;#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &amp;#39;assistance&amp;#39;, charset: &amp;#39;utf8&amp;#39;, collate: &amp;#39;utf8_unicode_ci&amp;#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.</description>
+    </item>
+    
+    <item>
       <title>Sequelize批量插入数据</title>
       <link>https://www.yuedun.wang/blogdetail/5967123a3d2aae2ccfdc61a3/</link>
       <pubDate>Thu, 13 Jul 2017 06:24:58 +0000</pubDate>
@@ -35,48 +57,28 @@ User.bulkCreate([ { username: &amp;#39;barfooz&amp;#39;, isAdmin: true }, { user
       <guid>https://www.yuedun.wang/blogdetail/5656ba78c72f59d15379b4ba/</guid>
       <description>js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {
-&amp;amp;nbsp; prop: &amp;amp;#39;delete me&amp;amp;#39;
-};
-//或者这么声明的对象
-var objtest = new Array();
-objtest[&amp;amp;#39;prop&amp;amp;#39;] = &amp;amp;#39;delete me&amp;amp;#39;;
-//删除属性&amp;amp;#39;prop&amp;amp;#39;：
-delete objtest.prop;
-//或者
-delete objtest[&amp;amp;#39;prop&amp;amp;#39;];
-//还可以删除任意变量
-var numb = 17;
-delete numb;
-但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = {
-name:&amp;quot;鸣人&amp;quot;,
-age: 16,
-gender: &amp;quot;男&amp;quot;,
-friends: [
-{
-name:&amp;quot;小樱&amp;quot;,
-age:16,
-gender:&amp;quot;女&amp;quot;,
-friends:[
-{
-name:&amp;quot;井野&amp;quot;,
-age:16,
-gender:&amp;quot;女&amp;quot;
-}
-]
-},
-{
-name:&amp;quot;佐助&amp;quot;,
-age:16,
-gender:&amp;quot;男&amp;quot;
-}
-]
-}
-鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。
-据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。
-但是还是有办法的，可以这样删除
-user.getDataValue(&amp;amp;quot;friends&amp;amp;quot;)[0].setDataValue(&amp;amp;quot;friends&amp;amp;quot;, undefined)就是将属性设置为undefined，查询的时候就没有小樱的friends了。</description>
+var objtest = { prop: &amp;#39;delete me&amp;#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;; //删除属性&amp;#39;prop&amp;#39;：  delete objtest.prop; //或者  delete objtest[&amp;#39;prop&amp;#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &amp;#39;鸣人&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39;, friends: [{ name: &amp;#39;小樱&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39;, friends: [{ name: &amp;#39;井野&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39; }] }, { name: &amp;#39;佐助&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.</description>
+    </item>
+    
+    <item>
+      <title>sequelizejs中where条件与order排序的使用</title>
+      <link>https://www.yuedun.wang/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</link>
+      <pubDate>Fri, 28 Aug 2015 03:21:08 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</guid>
+      <description>最基本的where条件：
+Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &amp;#39;active&amp;#39;;  Post.destroy({ where: { status: &amp;#39;inactive&amp;#39; } }); // DELETE FROM post WHERE status = &amp;#39;inactive&amp;#39;;  Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案</description>
+    </item>
+    
+    <item>
+      <title>sequelize定义实体对象</title>
+      <link>https://www.yuedun.wang/blogdetail/554ae5b3a07843eb8002a388/</link>
+      <pubDate>Thu, 07 May 2015 04:10:27 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/554ae5b3a07843eb8002a388/</guid>
+      <description>sequelize定义实体对象
+var sequelize = require(&amp;#34;../utils/sequelizeDB&amp;#34;);//连接数据库 var Sequelize = require(&amp;#34;sequelize&amp;#34;); var User = sequelize.define(&amp;#34;User&amp;#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &amp;#34;user&amp;#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt</description>
     </item>
     
   </channel>

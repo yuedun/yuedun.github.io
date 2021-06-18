@@ -310,8 +310,8 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		原生的go推荐目录是
-├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
-.src\├─project1├─project2├─project3所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
+├─bin ├─pkg ├─src bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
+.src\ ├─project1 ├─project2 ├─project3 所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
 但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。
 	</div>
 </article><article class="list__item post">
@@ -330,7 +330,7 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		我女儿12个月开始学走路，由于她身高还很低，所以需要大人弯着腰搀扶着，时间长了大人的腰比较累，当时就在网上买了个绑带。  本以为能轻松点，结果发现排不上用场，因为实在不好用，宝宝根本不会老实的配合，她一感觉到胸前有个东西扶着她，就整个人爬下来了，所有重点都放在牵引绳上，所以大人就只能提着，而且由于刚学走路，也不能稳当的走，总是东倒西歪，牵引绳其实不能保证宝宝的平衡，反而会过于依赖绑带，结果就导致失去平衡类似于一只脚在地上一只脚翘起来打转，也容易勒到胳膊。
+		我女儿12个月开始学走路，由于她身高还很低，所以需要大人弯着腰搀扶着，时间长了大人的腰比较累，当时就在网上买了个绑带。 本以为能轻松点，结果发现排不上用场，因为实在不好用，宝宝根本不会老实的配合，她一感觉到胸前有个东西扶着她，就整个人爬下来了，所有重点都放在牵引绳上，所以大人就只能提着，而且由于刚学走路，也不能稳当的走，总是东倒西歪，牵引绳其实不能保证宝宝的平衡，反而会过于依赖绑带，结果就导致失去平衡类似于一只脚在地上一只脚翘起来打转，也容易勒到胳膊。
 宝宝学走路一般一个月就能自己走了，所以我觉得没必要用这个。
 	</div>
 </article>
@@ -510,7 +510,6 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

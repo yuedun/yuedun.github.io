@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Nodejs核心常用工具 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="内容摘自《nodejs开发指南》&amp;nbsp; &amp;nbsp; util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript ">
+	<meta name="description" content="内容摘自《nodejs开发指南》    util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript ">
 		<meta property="og:title" content="Nodejs核心常用工具" />
-<meta property="og:description" content="内容摘自《nodejs开发指南》&amp;nbsp; &amp;nbsp; util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript " />
+<meta property="og:description" content="内容摘自《nodejs开发指南》    util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5451f72e0eb53ef723e47bfe/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2014-10-30T08:30:38&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="Nodejs核心常用工具">
-<meta itemprop="description" content="内容摘自《nodejs开发指南》&amp;nbsp; &amp;nbsp; util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript "><meta itemprop="datePublished" content="2014-10-30T08:30:38&#43;00:00" />
+<meta itemprop="description" content="内容摘自《nodejs开发指南》    util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript "><meta itemprop="datePublished" content="2014-10-30T08:30:38&#43;00:00" />
 <meta itemprop="dateModified" content="2014-10-30T08:30:38&#43;00:00" />
 <meta itemprop="wordCount" content="247">
 <meta itemprop="keywords" content="nodejs," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nodejs核心常用工具"/>
-<meta name="twitter:description" content="内容摘自《nodejs开发指南》&amp;nbsp; &amp;nbsp; util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript "/>
+<meta name="twitter:description" content="内容摘自《nodejs开发指南》    util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript "/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -147,88 +147,100 @@
 </div>
 <div class="content post__content clearfix">
 			<p>内容摘自《nodejs开发指南》</p>
-<p>    util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能<br>
-过于精简的不足。 <br>
-<strong>util.inherits </strong><br>
-    util.inherits(constructor, superConstructor)是一个实现对象间原型继承<br>
+<p>util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能<br>
+过于精简的不足。<br>
+<strong>util.inherits</strong><br>
+util.inherits(constructor, superConstructor)是一个实现对象间原型继承<br>
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有<br>
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，<br>
-在这里我们只介绍 util.inherits 的用法，示例如下： <br>
-var util = require('util'); </p>
-<p>function Base() { <br>
-  this.name = 'base'; <br>
-  this.base = 1991; </p>
-<p>  this.sayHello = function() { <br>
-    console.log('Hello ' + this.name); <br>
-  }; <br>
-} </p>
-<p>Base.prototype.showName = function() { <br>
-  console.log(this.name); </p>
-<p>}; </p>
-<p>function Sub() { <br>
-  this.name = 'sub'; <br>
-} </p>
-<p>util.inherits(Sub, Base); </p>
-<p>var objBase = new Base(); <br>
-objBase.showName(); <br>
-objBase.sayHello(); <br>
-console.log(objBase); </p>
-<p>var objSub = new Sub(); <br>
-objSub.showName(); <br>
-//objSub.sayHello(); <br>
-console.log(objSub); <br>
-    我们定义了一个基础对象 Base 和一个继承自 Base 的 Sub，Base 有三个在构造函数<br>
-内定义的属性和一个原型中定义的函数，通过 util.inherits 实现继承。运行结果如下：  <br>
-base <br>
-Hello base <br>
-{ name: 'base', base: 1991, sayHello: [Function] } <br>
-sub <br>
-{ name: 'sub' } <br>
-注意，Sub 仅仅继承了 Base 在原型中定义的函数，而构造函数内部创造的 base 属<br>
+在这里我们只介绍 util.inherits 的用法，示例如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">util</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;util&#34;</span>);   
+  
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Base</span>() {   
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;base&#34;</span>;   
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">base</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1991</span>;   
+  
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sayHello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {   
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hello &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);   
+  };   
+}   
+  
+<span style="color:#a6e22e">Base</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">showName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {   
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);   
+  
+};   
+  
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Sub</span>() {   
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sub&#34;</span>;   
+}   
+  
+<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">inherits</span>(<span style="color:#a6e22e">Sub</span>, <span style="color:#a6e22e">Base</span>);   
+  
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">objBase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Base</span>();   
+<span style="color:#a6e22e">objBase</span>.<span style="color:#a6e22e">showName</span>();   
+<span style="color:#a6e22e">objBase</span>.<span style="color:#a6e22e">sayHello</span>();   
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">objBase</span>);   
+  
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">objSub</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Sub</span>();   
+<span style="color:#a6e22e">objSub</span>.<span style="color:#a6e22e">showName</span>();   
+<span style="color:#75715e">//objSub.sayHello();   
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">objSub</span>);  
+</code></pre></div><p>我们定义了一个基础对象 Base 和一个继承自 Base 的 Sub，Base 有三个在构造函数<br>
+内定义的属性和一个原型中定义的函数，通过 util.inherits 实现继承。运行结果如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">base</span>   
+<span style="color:#a6e22e">Hello</span> <span style="color:#a6e22e">base</span>   
+{ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;base&#34;</span>, <span style="color:#a6e22e">base</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1991</span>, <span style="color:#a6e22e">sayHello</span><span style="color:#f92672">:</span> [Function] }   
+<span style="color:#a6e22e">sub</span>   
+{ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sub&#34;</span> } 
+</code></pre></div><p>注意，Sub 仅仅继承了 Base 在原型中定义的函数，而构造函数内部创造的 base 属<br>
 性和 sayHello 函数都没有被 Sub 继承。同时，在原型中定义的属性不会被 console.log 作<br>
-为对象的属性输出。如果我们去掉 objSub.sayHello(); 这行的注释，将会看到： <br>
-node.js:201 <br>
-        throw e; // process.nextTick error, or 'error' event on first tick <br>
-              ^ TypeError: Object #&lt;Sub&gt; has no method 'sayHello' <br>
-    at Object.&lt;anonymous&gt; (/home/byvoid/utilinherits.js:29:8) <br>
-    at Module._compile (module.js:441:26) <br>
-    at Object..js (module.js:459:10) <br>
-    at Module.load (module.js:348:31) <br>
-    at Function._load (module.js:308:12) <br>
-    at Array.0 (module.js:479:10) <br>
-    at EventEmitter._tickCallback (node.js:192:40) <br>
-<strong>util.inspect</strong><br>
-    util.inspect(object,[showHidden],[depth],[colors])是一个将任意对象转换<br>
-为字符串的方法， 通常用于调试和错误输出。 它至少接受一个参数 object， 即要转换的对象。  </p>
-<p>showHidden 是一个可选参数，如果值为 true，将会输出更多隐藏信息。 <br>
+为对象的属性输出。如果我们去掉 objSub.sayHello(); 这行的注释，将会看到：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">node.js:201   
+        throw e; // process.nextTick error, or <span style="color:#e6db74">&#34;error&#34;</span> event on first tick   
+              ^ TypeError: Object <span style="color:#75715e">#&lt;Sub&gt; has no method &#34;sayHello&#34;   </span>
+    at Object.&lt;anonymous&gt; <span style="color:#f92672">(</span>/home/byvoid/utilinherits.js:29:8<span style="color:#f92672">)</span>   
+    at Module._compile <span style="color:#f92672">(</span>module.js:441:26<span style="color:#f92672">)</span>   
+    at Object..js <span style="color:#f92672">(</span>module.js:459:10<span style="color:#f92672">)</span>   
+    at Module.load <span style="color:#f92672">(</span>module.js:348:31<span style="color:#f92672">)</span>   
+    at Function._load <span style="color:#f92672">(</span>module.js:308:12<span style="color:#f92672">)</span>   
+    at Array.0 <span style="color:#f92672">(</span>module.js:479:10<span style="color:#f92672">)</span>   
+    at EventEmitter._tickCallback <span style="color:#f92672">(</span>node.js:192:40<span style="color:#f92672">)</span>  
+</code></pre></div><p><strong>util.inspect</strong><br>
+util.inspect(object,[showHidden],[depth],[colors])是一个将任意对象转换<br>
+为字符串的方法， 通常用于调试和错误输出。 它至少接受一个参数 object， 即要转换的对象。</p>
+<p>showHidden 是一个可选参数，如果值为 true，将会输出更多隐藏信息。<br>
 depth 表示最大递归的层数，如果对象很复杂，你可以指定层数以控制输出信息的多<br>
-少。如果不指定depth，默认会递归2层，指定为 null 表示将不限递归层数完整遍历对象。  <br>
+少。如果不指定depth，默认会递归2层，指定为 null 表示将不限递归层数完整遍历对象。 <br>
 如果color 值为 true，输出格式将会以 ANSI 颜色编码，通常用于在终端显示更漂亮<br>
-的效果。 <br>
+的效果。<br>
 特别要指出的是，util.inspect 并不会简单地直接把对象转换为字符串，即使该对<br>
-象定义了 toString 方法也不会调用。 <br>
-var util = require('util'); </p>
-<p>function Person() { <br>
-  this.name = 'byvoid'; </p>
-<p>  this.toString = function() { <br>
-    return this.name; <br>
-  }; <br>
-} </p>
-<p>var obj = new Person(); </p>
-<p>console.log(util.inspect(obj)); <br>
-console.log(util.inspect(obj, true)); <br>
-运行结果是： <br>
-{ name: 'byvoid', toString: [Function] } <br>
-{ toString: <br>
-   { [Function] <br>
-     [prototype]: { [constructor]: [Circular] }, <br>
-     [caller]: null, <br>
-     [length]: 0, <br>
-     [name]: '', <br>
-     [arguments]: null }, <br>
-  name: 'byvoid' } <br>
-除了以上我们介绍的几个函数之外， util还提供了util.isArray()、 util.isRegExp()、<br>
-util.isDate()、util.isError() 四个类型测试工具，以及 util.format()、util. <br>
+象定义了 toString 方法也不会调用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">util</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;util&#34;</span>);   
+  
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>() {   
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;byvoid&#34;</span>;   
+  
+  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">toString</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {   
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>;   
+  };   
+}   
+  
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>();   
+  
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">inspect</span>(<span style="color:#a6e22e">obj</span>));   
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">inspect</span>(<span style="color:#a6e22e">obj</span>, <span style="color:#66d9ef">true</span>));
+</code></pre></div><p>运行结果是：</p>
+<pre><code>{ name: &quot;byvoid&quot;, toString: [Function] }   
+{ toString:   
+   { [Function]   
+     [prototype]: { [constructor]: [Circular] },   
+     [caller]: null,   
+     [length]: 0,   
+     [name]: &quot;&quot;,   
+     [arguments]: null },   
+  name: &quot;byvoid&quot; } 
+</code></pre><p>除了以上我们介绍的几个函数之外， util还提供了util.isArray()、 util.isRegExp()、<br>
+util.isDate()、util.isError() 四个类型测试工具，以及 util.format()、util.<br>
 debug() 等工具。有兴趣的读者可以访问 <a href="http://nodejs.org/api/util.html">http://nodejs.org/api/util.html</a> 了解详细内容。</p>
 
 		</div>

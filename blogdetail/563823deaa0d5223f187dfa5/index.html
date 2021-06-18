@@ -150,23 +150,31 @@
 <p>首先看下面代码：</p>
 <p>var pageIndex = 2;</p>
 <p>(function loadmore() {</p>
-<p>    //绑定滚动事件<br>
-    $(window).bind(&quot;scroll&quot;,  function() {</p>
-<p>        if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;&amp; $(this).scrollTop() &gt;= 40) {</p>
-<p>            $(window).unbind(&quot;scroll&quot;); //到底后先移除滚动事件<br>
-            $.get(&quot;/portal/getTopic?pageIndex=&quot; + pageIndex + &quot;&amp;pageSize=3&quot;,<br>
-            function(data) {</p>
-<p>                $(&quot;#container&quot;).append(data);</p>
-<p>                pageIndex++;</p>
-<p>                loadmore(); //数据加载成功重新绑定滚动事件<br>
-            },<br>
-            &quot;html&quot;);</p>
-<p>        };</p>
-<p>    });</p>
+<pre><code>//绑定滚动事件  
+$(window).bind(&quot;scroll&quot;,  function() {
+
+    if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40) {
+
+        $(window).unbind(&quot;scroll&quot;); //到底后先移除滚动事件  
+        $.get(&quot;/portal/getTopic?pageIndex=&quot; + pageIndex + &quot;&amp;amp;pageSize=3&quot;,  
+        function(data) {
+
+            $(&quot;#container&quot;).append(data);
+
+            pageIndex++;
+
+            loadmore(); //数据加载成功重新绑定滚动事件  
+        },  
+        &quot;html&quot;);
+
+    };
+
+});
+</code></pre>
 <p>})();</p>
 <p>没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。</p>
-<p>先来说明如何判断页面是否滚动到最底部，<code>$(this).scrollTop()</code>用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是<code>$(this).scrollTop() + $(window).height()=$(document).height()</code>，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么<code>$(this).scrollTop() + $(window).height()</code>就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有<code>&amp;amp;&amp;amp; $(this).scrollTop() &amp;gt;= 40</code>是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。</p>
-<p>已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，<code>$(window).unbind(&amp;quot;scroll&amp;quot;);</code>等数据添加到页面以后再重新绑定滚动事件。</p>
+<p>先来说明如何判断页面是否滚动到最底部，<code>$(this).scrollTop()</code>用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是<code>$(this).scrollTop() + $(window).height()=$(document).height()</code>，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么<code>$(this).scrollTop() + $(window).height()</code>就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有<code>&amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40</code>是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。</p>
+<p>已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，<code>$(window).unbind(&quot;scroll&quot;);</code>等数据添加到页面以后再重新绑定滚动事件。</p>
 
 		</div>
 	</article>

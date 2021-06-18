@@ -162,23 +162,10 @@
 首先看下面代码：
 var pageIndex = 2;
 (function loadmore() {
- //绑定滚动事件
-$(window).bind(&quot;scroll&quot;, function() {
- if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;&amp; $(this).scrollTop() &gt;= 40) {
- $(window).unbind(&quot;scroll&quot;); //到底后先移除滚动事件
-$.get(&quot;/portal/getTopic?pageIndex=&quot; + pageIndex + &quot;&amp;pageSize=3&quot;,
-function(data) {
- $(&quot;#container&quot;).append(data);
- pageIndex++;
- loadmore(); //数据加载成功重新绑定滚动事件
-},
-&quot;html&quot;);
- };
- });
-})();
+//绑定滚动事件 $(window).bind(&quot;scroll&quot;, function() {if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40) {$(window).unbind(&quot;scroll&quot;); //到底后先移除滚动事件 $.get(&quot;/portal/getTopic?pageIndex=&quot; + pageIndex + &quot;&amp;amp;pageSize=3&quot;, function(data) {$(&quot;#container&quot;).append(data);pageIndex++;loadmore(); //数据加载成功重新绑定滚动事件 }, &quot;html&quot;);};}); })();
 没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。
-先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;&amp;amp; $(this).scrollTop() &amp;gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
-已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&amp;quot;scroll&amp;quot;);等数据添加到页面以后再重新绑定滚动事件。
+先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
+已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&quot;scroll&quot;);等数据添加到页面以后再重新绑定滚动事件。
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -241,7 +228,7 @@ apiadmin=yuedun
 @admin=rw
 @apiadmin=rw
 可以编辑这个文件添加账号，然后添加密码，但是不能直接编辑dav_svn.passwd，这里面是加密数据，需要使用Apache的htpasswd命令添加。
-htpasswd /etc/subversion/dav_svn.passwd&amp;nbsp; &amp;lt;用户名&amp;gt;
+htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 然后会提示输入密码，就此完成svn账号设置。
 	</div>
 </article><article class="list__item post">
@@ -298,13 +285,9 @@ htpasswd /etc/subversion/dav_svn.passwd&amp;nbsp; &amp;lt;用户名&amp;gt;
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
- 所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
-首先在uses.js文件中有一个函数
-//我是一个测试方法
-router.get(&amp;#39;/commeHere&amp;#39;, function(req, res) {
-});
-然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
-可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是&lt;open folders&gt;，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
+所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。 首先在uses.js文件中有一个函数
+//我是一个测试方法  router.get(&#34;/commeHere&#34;, function(req, res) { }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
+可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
 双击就可以跳转到对应的文件和行上。
 当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。
 	</div>
@@ -326,10 +309,7 @@ router.get(&amp;#39;/commeHere&amp;#39;, function(req, res) {
 	<div class="content list__excerpt post__content clearfix">
 		每次启动node服务都要先打开cmd命令行，或者在win8下先打开文件资源管理器&gt;文件&gt;打开命令提示符，然后执行node命令，这样的过程真的很烦人，当然需要一个简单粗暴的方式启动了，就像用bat文件双击启动。
 首先，建一个空白文件，输入以下内容：
-E:
-cd E:\NodejsWorkSpace\app-node
-nodemon ./bin/www
-就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
+E: cd E:\\NodejsWorkSpace\\app-node nodemon ./bin/www 就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
 E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 使用&amp;符号连接各个命令也可以
 	</div>
@@ -350,7 +330,7 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。这时就产生了矛盾，又要加又不能多加，到底想怎么样？
-数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name='nginx.cn' and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name='nginx.cn' and age in(15,16,17) and id ='3'
+数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) and id =&ldquo;3&rdquo;
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -599,7 +579,6 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A1%A8%E5%8D%95%E9%BB%98%E8%AE%A4%E5%80%BC/" title="表单默认值">表单默认值</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>

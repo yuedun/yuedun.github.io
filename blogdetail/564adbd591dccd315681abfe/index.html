@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>js控制优酷视频播放暂停 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="js控制优酷视频播放暂停&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;lt;head&amp;gt;&amp;nbs">
+	<meta name="description" content="js控制优酷视频播放暂停">
 		<meta property="og:title" content="js控制优酷视频播放暂停" />
-<meta property="og:description" content="js控制优酷视频播放暂停&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;lt;head&amp;gt;&amp;nbs" />
+<meta property="og:description" content="js控制优酷视频播放暂停" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/564adbd591dccd315681abfe/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2015-11-17T07:48:37&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="js控制优酷视频播放暂停">
-<meta itemprop="description" content="js控制优酷视频播放暂停&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;lt;head&amp;gt;&amp;nbs"><meta itemprop="datePublished" content="2015-11-17T07:48:37&#43;00:00" />
+<meta itemprop="description" content="js控制优酷视频播放暂停"><meta itemprop="datePublished" content="2015-11-17T07:48:37&#43;00:00" />
 <meta itemprop="dateModified" content="2015-11-17T07:48:37&#43;00:00" />
 <meta itemprop="wordCount" content="92">
 <meta itemprop="keywords" content="" />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="js控制优酷视频播放暂停"/>
-<meta name="twitter:description" content="js控制优酷视频播放暂停&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;lt;head&amp;gt;&amp;nbs"/>
+<meta name="twitter:description" content="js控制优酷视频播放暂停"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -147,52 +147,54 @@
 </div>
 <div class="content post__content clearfix">
 			<p>js控制优酷视频播放暂停</p>
-<p>&lt;!DOCTYPE html&gt;<br>
-&lt;html&gt;<br>
-    &lt;head&gt;<br>
-        &lt;meta charset=&quot;utf-8&quot;&gt;<br>
-        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&quot;&gt;<br>
-        &lt;title&gt;js控制优酷视频播放&lt;/title&gt;<br>
-        &lt;script src=&quot;http://player.youku.com/jsapi&quot;&gt;&lt;/script&gt;<br>
-        &lt;script&gt;<br>
-            player = new YKU.Player('youkuplayer',{<br>
-                styleid: '0',<br>
-                client_id: 'd8781b239fdad45b',<br>
-                vid: 'XMjg1MTcyNDQ0',<br>
-                autoplay: false,<br>
-                show_related: true,<br>
-                events:{<br>
-                    onPlayEnd: function(){ /*your code*/ },<br>
-                    onPlayStart: function(){ /*your code*/ },<br>
-                    onPlayerReady: function(){ /*your code*/ }<br>
-                }<br>
-            });<br>
-            function playVideo(){<br>
-                try{<br>
-                    player.playVideo();<br>
-                } catch(err){<br>
-                    alert(&quot;*&quot;+err);<br>
-                }</p>
-<p>            }<br>
-            function pauseVideo(){<br>
-                player.pauseVideo();</p>
-<p>            }<br>
-            function seekTo(s){<br>
-                player.seekTo(s);<br>
-            }<br>
-            function currentTime(){<br>
-                return player.currentTime();<br>
-            }<br>
-        &lt;/script&gt;<br>
-    &lt;/head&gt;<br>
-    &lt;body&gt;<br>
-        &lt;div id=&quot;youkuplayer&quot; style=&quot;width:100%;height:400px;&quot;&gt;&lt;/div&gt;<br>
-        &lt;br /&gt;<br>
-        &lt;input type=&quot;button&quot; onclick=&quot;playVideo();&quot; value=&quot;播放&quot; style=&quot;height:30px;width:50px;&quot;&gt;<br>
-        &lt;input type=&quot;button&quot; onclick=&quot;pauseVideo();&quot; value=&quot;暂停&quot; style=&quot;height:30px;width:50px;&quot;&gt;<br>
-    &lt;/body&gt;<br>
-&lt;/html&gt;</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>  
+&lt;<span style="color:#f92672">html</span>&gt;  
+    &lt;<span style="color:#f92672">head</span>&gt;  
+        &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;  
+        &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&#34;</span>&gt;  
+        &lt;<span style="color:#f92672">title</span>&gt;js控制优酷视频播放&lt;/<span style="color:#f92672">title</span>&gt;  
+        &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://player.youku.com/jsapi&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;  
+        &lt;<span style="color:#f92672">script</span>&gt;  
+            <span style="color:#a6e22e">player</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">YKU</span>.<span style="color:#a6e22e">Player</span>(<span style="color:#e6db74">&#34;youkuplayer&#34;</span>,{  
+                <span style="color:#a6e22e">styleid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,  
+                <span style="color:#a6e22e">client_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;d8781b239fdad45b&#34;</span>,  
+                <span style="color:#a6e22e">vid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;XMjg1MTcyNDQ0&#34;</span>,  
+                <span style="color:#a6e22e">autoplay</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,  
+                <span style="color:#a6e22e">show_related</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,  
+                <span style="color:#a6e22e">events</span><span style="color:#f92672">:</span>{  
+                    <span style="color:#a6e22e">onPlayEnd</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){ <span style="color:#75715e">/*your code*/</span> },  
+                    <span style="color:#a6e22e">onPlayStart</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){ <span style="color:#75715e">/*your code*/</span> },  
+                    <span style="color:#a6e22e">onPlayerReady</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){ <span style="color:#75715e">/*your code*/</span> }  
+                }  
+            });  
+            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">playVideo</span>(){  
+                <span style="color:#66d9ef">try</span>{  
+                    <span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">playVideo</span>();  
+                } <span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">err</span>){  
+                    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">err</span>);  
+                }  
+  
+            }  
+            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">pauseVideo</span>(){  
+                <span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">pauseVideo</span>();  
+  
+            }  
+            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">seekTo</span>(<span style="color:#a6e22e">s</span>){  
+                <span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">seekTo</span>(<span style="color:#a6e22e">s</span>);  
+            }  
+            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">currentTime</span>(){  
+                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">currentTime</span>();  
+            }  
+        &lt;/<span style="color:#f92672">script</span>&gt;  
+    &lt;/<span style="color:#f92672">head</span>&gt;  
+    &lt;<span style="color:#f92672">body</span>&gt;  
+        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;youkuplayer&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width:100%;height:400px;&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;  
+        &lt;<span style="color:#f92672">br</span> /&gt;  
+        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;playVideo();&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;播放&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height:30px;width:50px;&#34;</span>&gt;  
+        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pauseVideo();&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;暂停&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height:30px;width:50px;&#34;</span>&gt;  
+    &lt;/<span style="color:#f92672">body</span>&gt;  
+&lt;/<span style="color:#f92672">html</span>&gt;
+                    </code></pre></div>
 		</div>
 	</article>
 </main>

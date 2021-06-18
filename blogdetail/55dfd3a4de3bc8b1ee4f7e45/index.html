@@ -18,8 +18,8 @@
 		<meta itemprop="name" content="sequelizejs中where条件与order排序的使用">
 <meta itemprop="description" content="最基本的where条件：jsPost.findAll({    where: {        authorId: 2    }}); SELECT * FRO"><meta itemprop="datePublished" content="2015-08-28T03:21:08&#43;00:00" />
 <meta itemprop="dateModified" content="2015-08-28T03:21:08&#43;00:00" />
-<meta itemprop="wordCount" content="326">
-<meta itemprop="keywords" content="nodejs," />
+<meta itemprop="wordCount" content="312">
+<meta itemprop="keywords" content="nodejs,sequelize," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="sequelizejs中where条件与order排序的使用"/>
 <meta name="twitter:description" content="最基本的where条件：jsPost.findAll({    where: {        authorId: 2    }}); SELECT * FRO"/>
@@ -146,145 +146,144 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<p>最基本的where条件：
-```js
-Post.findAll({
-where: {
-authorId: 2
-}
+			<p>最基本的where条件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">Post</span>.<span style="color:#a6e22e">findAll</span>({
+    <span style="color:#a6e22e">where</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">authorId</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+    }
 });
-// SELECT * FROM post WHERE authorId = 2</p>
-<p>Post.findAll({
-where: {
-authorId: 12,
-status: active
-}
-});</p>
-<p>// SELECT * FROM post WHERE authorId = 12 AND status = &lsquo;active&rsquo;;</p>
-<p>Post.destroy({
-where: {
-status: &lsquo;inactive&rsquo;
-}
+<span style="color:#75715e">// SELECT \* FROM post WHERE authorId = 2
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">Post</span>.<span style="color:#a6e22e">findAll</span>({
+    <span style="color:#a6e22e">where</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">authorId</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">12</span>,
+        <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">active</span>
+    }
 });
-// DELETE FROM post WHERE status = &lsquo;inactive&rsquo;;</p>
-<p>Post.update({
-updatedAt: null,
+
+<span style="color:#75715e">// SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">Post</span>.<span style="color:#a6e22e">destroy</span>({
+    <span style="color:#a6e22e">where</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;inactive&#39;</span>
+    }
+});
+<span style="color:#75715e">// DELETE FROM post WHERE status = &#39;inactive&#39;;
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">Post</span>.<span style="color:#a6e22e">update</span>({
+    <span style="color:#a6e22e">updatedAt</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>,
 },
 {
-where: {
-deletedAt: {
-$ne: null
+    <span style="color:#a6e22e">where</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">deletedAt</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">$ne</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+        }
+    }
+});
+
+<span style="color:#75715e">// UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL;
+</span></code></pre></div><p>如果涉及到or的使用，sequelize也提供了很好的解决方案</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">where</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">rank</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">$or</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">$lt</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+            <span style="color:#a6e22e">$eq</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+        }
+    }
 }
+
+<span style="color:#75715e">// rank &lt; 1000 OR rank IS NULL
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">where</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">createdAt</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">$lt</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> Date(),
+        <span style="color:#a6e22e">$gt</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> Date(<span style="color:#66d9ef">new</span> Date() <span style="color:#f92672">-</span> <span style="color:#ae81ff">24</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span> <span style="color:#ae81ff">60</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span> <span style="color:#ae81ff">60</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>)
+    }
 }
-});</p>
-<p>// UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL;
-```
-如果涉及到or的使用，sequelize也提供了很好的解决方案
-```js
-where: {
-rank: {
-$or: {
-$lt: 100,
-$eq: null
+
+<span style="color:#75715e">// createdAt &lt; [timestamp] AND createdAt &gt; [timestamp]
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">where</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">$or</span><span style="color:#f92672">:</span> [
+    {
+        <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">$like</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Boat%&#39;</span>
+        }
+    },
+    {
+        <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">$like</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;%boat%&#39;</span>
+        }
+    }
+    ]
 }
+
+<span style="color:#75715e">// title LIKE &#39;Boat%&#39; OR description LIKE &#39;%boat%&#39;
+</span></code></pre></div><p>相同字段不同条件用</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">rank</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">$or</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">$lt</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span>,
+        <span style="color:#a6e22e">$eq</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+    }
 }
-}</p>
-<p>// rank &lt; 1000 OR rank IS NULL
-where: {
-createdAt: {
-$lt: new Date(),
-$gt: new Date(new Date() - 24 * 60 * 60 * 1000)
-}
-}</p>
-<p>// createdAt &lt; [timestamp] AND createdAt &gt; [timestamp]
-where: {
-$or: [
+
+<span style="color:#75715e">// rank &lt; 1000 OR rank IS NULL
+</span></code></pre></div><p>多个字段的or操作</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">$or</span><span style="color:#f92672">:</span> [
 {
-title: {
-$like: &lsquo;Boat%&rsquo;
-}
+    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">$like</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Boat%&#39;</span>
+    }
 },
 {
-description: {
-$like: &lsquo;%boat%&rsquo;
-}
+    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">$like</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;%boat%&#39;</span>
+    }
 }
 ]
-}</p>
-<p>// title LIKE &lsquo;Boat%&rsquo; OR description LIKE &lsquo;%boat%&rsquo;
-```
-相同字段不同条件用
-```js
-rank: {
-$or: {
-$lt: 100,
-$eq: null
-}
-}</p>
-<p>// rank &lt; 1000 OR rank IS NULL
-```
-多个字段的or操作
-```js
-$or: [
-{
-title: {
-$like: &lsquo;Boat%&rsquo;
-}
-},
-{
-description: {
-$like: &lsquo;%boat%&rsquo;
-}
-}
-]</p>
-<p>//title LIKE &lsquo;Boat%&rsquo; OR description LIKE &lsquo;%boat%&rsquo;
-```
-以下是sequelize的排序使用方法：
-```js 
-something.findOne({
-order: [
-[&lsquo;username&rsquo;, &lsquo;DESC&rsquo;],
-// Will order by max(age)
-sequelize.fn(&lsquo;max&rsquo;, sequelize.col(&lsquo;age&rsquo;)),</p>
-<pre><code>// Will order by max(age) DESC
-\[sequelize.fn('max', sequelize.col('age')), 'DESC'\],
 
-// Will order by otherfunction(\`col1\`, 12, 'lalala') DESC
-\[sequelize.fn('otherfunction', sequelize.col('col1'), 12, 'lalala'), 'DESC'\],
+<span style="color:#75715e">//title LIKE &#39;Boat%&#39; OR description LIKE &#39;%boat%&#39;
+</span></code></pre></div><p>以下是sequelize的排序使用方法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">something</span>.<span style="color:#a6e22e">findOne</span>({
+    <span style="color:#a6e22e">order</span><span style="color:#f92672">:</span> [
+    [<span style="color:#e6db74">&#39;username&#39;</span>, <span style="color:#e6db74">&#39;DESC&#39;</span>],
+    <span style="color:#75715e">// Will order by max(age)
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">fn</span>(<span style="color:#e6db74">&#39;max&#39;</span>, <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">col</span>(<span style="color:#e6db74">&#39;age&#39;</span>)),
 
-// Both the following statements will be treated literally so should be treated with care
-'name',
-'username DESC'
-\]
-</code></pre>
-<p>})
-```
-其中有一段需要特别说明一下：
-```js
-// Will order by otherfunction(`col1`, 12, &lsquo;lalala&rsquo;) DESC</p>
-<p>[sequelize.fn(&lsquo;otherfunction&rsquo;, sequelize.col(&lsquo;col1&rsquo;), 12, &lsquo;lalala&rsquo;), &lsquo;DESC&rsquo;],
-```
-这个otherfunction代表了其他更多函数，比如我使用的一段代码：
-```js
-where: {
-groupId: params.groupId,
-$or: [{
-state: params.state,
-releaseDate: {
-$eq: null
-}
+    <span style="color:#75715e">// Will order by max(age) DESC
+</span><span style="color:#75715e"></span>    [<span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">fn</span>(<span style="color:#e6db74">&#39;max&#39;</span>, <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">col</span>(<span style="color:#e6db74">&#39;age&#39;</span>)), <span style="color:#e6db74">&#39;DESC&#39;</span>],
+
+    <span style="color:#75715e">// Will order by otherfunction(\`col1\`, 12, &#39;lalala&#39;) DESC
+</span><span style="color:#75715e"></span>    [<span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">fn</span>(<span style="color:#e6db74">&#39;otherfunction&#39;</span>, <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">col</span>(<span style="color:#e6db74">&#39;col1&#39;</span>), <span style="color:#ae81ff">12</span>, <span style="color:#e6db74">&#39;lalala&#39;</span>), <span style="color:#e6db74">&#39;DESC&#39;</span>],
+
+    <span style="color:#75715e">// Both the following statements will be treated literally so should be treated with care
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#39;name&#39;</span>,
+    <span style="color:#e6db74">&#39;username DESC&#39;</span>
+    ]
+})
+</code></pre></div><p>其中有一段需要特别说明一下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// Will order by otherfunction(\`col1\`, 12, &#39;lalala&#39;) DESC
+</span><span style="color:#75715e"></span>
+[<span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">fn</span>(<span style="color:#e6db74">&#39;otherfunction&#39;</span>, <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">col</span>(<span style="color:#e6db74">&#39;col1&#39;</span>), <span style="color:#ae81ff">12</span>, <span style="color:#e6db74">&#39;lalala&#39;</span>), <span style="color:#e6db74">&#39;DESC&#39;</span>],
+</code></pre></div><p>这个otherfunction代表了其他更多函数，比如我使用的一段代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">where</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">groupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">groupId</span>,
+    <span style="color:#a6e22e">$or</span><span style="color:#f92672">:</span> [{
+        <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">state</span>,
+        <span style="color:#a6e22e">releaseDate</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">$eq</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+        }
+    },
+    {
+        <span style="color:#a6e22e">releaseDate</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">$lt</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> Date()
+        }
+    }
+    ]
 },
-{
-releaseDate: {
-$lt: new Date()
-}
-}
-]
-},</p>
-<p>order: [[sequelize.fn(&lsquo;ifnull&rsquo;, sequelize.col(&lsquo;releaseDate&rsquo;), sequelize.col(&lsquo;createDate&rsquo;)), &lsquo;DESC&rsquo;]]</p>
-<p>//ORDER BY ifnull(`releaseDate`,`createDate`) DESC;
-```
-需要排序的字段也要使用`sequelize.col(&lsquo;releaseDate&rsquo;)`处理，不过也不是必须的，这样是为了能使代码统一，否则就是这样：`ORDER BY ifnull(`releaseDate`, &lsquo;creat eDate&rsquo;) DESC;` `createDate`使用单引号包括的`releaseDate`使用反单引号包括的</p>
+
+<span style="color:#a6e22e">order</span><span style="color:#f92672">:</span> [[<span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">fn</span>(<span style="color:#e6db74">&#39;ifnull&#39;</span>, <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">col</span>(<span style="color:#e6db74">&#39;releaseDate&#39;</span>), <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">col</span>(<span style="color:#e6db74">&#39;createDate&#39;</span>)), <span style="color:#e6db74">&#39;DESC&#39;</span>]]
+
+<span style="color:#75715e">//ORDER BY ifnull(\`releaseDate\`,\`createDate\`) DESC;
+</span></code></pre></div><p>需要排序的字段也要使用`sequelize.col(&lsquo;releaseDate&rsquo;)`处理，不过也不是必须的，这样是为了能使代码统一，否则就是这样：`ORDER BY ifnull(`releaseDate`, &lsquo;creat eDate&rsquo;) DESC;` `createDate`使用单引号包括的`releaseDate`使用反单引号包括的</p>
 
 		</div>
 		<footer class="post__footer">
@@ -294,6 +293,9 @@ $lt: new Date()
 	<ul class="tags__list">
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/nodejs/" rel="tag">nodejs</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/sequelize/" rel="tag">sequelize</a>
 		</li>
 	</ul>
 </div>

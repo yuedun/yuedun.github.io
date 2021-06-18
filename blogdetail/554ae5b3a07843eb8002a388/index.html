@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>sequelize定义实体对象 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="sequelize定义实体对象var sequelize = require(&amp;#39;..utilssequelizeDB&amp;#39;);连接数据库 var S">
+	<meta name="description" content="sequelize定义实体对象var sequelize = require(&#39;..utilssequelizeDB&#39;);连接数据库 var S">
 		<meta property="og:title" content="sequelize定义实体对象" />
-<meta property="og:description" content="sequelize定义实体对象var sequelize = require(&amp;#39;..utilssequelizeDB&amp;#39;);连接数据库 var S" />
+<meta property="og:description" content="sequelize定义实体对象var sequelize = require(&#39;..utilssequelizeDB&#39;);连接数据库 var S" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/554ae5b3a07843eb8002a388/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2015-05-07T04:10:27&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="sequelize定义实体对象">
-<meta itemprop="description" content="sequelize定义实体对象var sequelize = require(&amp;#39;..utilssequelizeDB&amp;#39;);连接数据库 var S"><meta itemprop="datePublished" content="2015-05-07T04:10:27&#43;00:00" />
+<meta itemprop="description" content="sequelize定义实体对象var sequelize = require(&#39;..utilssequelizeDB&#39;);连接数据库 var S"><meta itemprop="datePublished" content="2015-05-07T04:10:27&#43;00:00" />
 <meta itemprop="dateModified" content="2015-05-07T04:10:27&#43;00:00" />
 <meta itemprop="wordCount" content="47">
-<meta itemprop="keywords" content="nodejs," />
+<meta itemprop="keywords" content="nodejs,sequelize," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="sequelize定义实体对象"/>
-<meta name="twitter:description" content="sequelize定义实体对象var sequelize = require(&amp;#39;..utilssequelizeDB&amp;#39;);连接数据库 var S"/>
+<meta name="twitter:description" content="sequelize定义实体对象var sequelize = require(&#39;..utilssequelizeDB&#39;);连接数据库 var S"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -147,18 +147,18 @@
 </div>
 <div class="content post__content clearfix">
 			<p>sequelize定义实体对象</p>
-<p>var sequelize = require('../utils/sequelizeDB');//连接数据库 var Sequelize = require('sequelize'); var User = sequelize.define('User', {<br>
-user_id:{ type: Sequelize.STRING, primaryKey: true},<br>
-name: Sequelize.STRING,<br>
-phone: Sequelize.STRING,<br>
-create_date: Sequelize.DATE,<br>
-update_date: Sequelize.DATE<br>
-}, {<br>
-freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步<br>
-tableName: 'user',<br>
-timestamps: false<br>
-});</p>
-<p>define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sequelize</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;../utils/sequelizeDB&#34;</span>);<span style="color:#75715e">//连接数据库 var Sequelize = require(&#34;sequelize&#34;); var User = sequelize.define(&#34;User&#34;, {  
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">user_id</span><span style="color:#f92672">:</span>{ <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>, <span style="color:#a6e22e">primaryKey</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},  
+<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>,  
+<span style="color:#a6e22e">phone</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>,  
+<span style="color:#a6e22e">create_date</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">DATE</span>,  
+<span style="color:#a6e22e">update_date</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">DATE</span>  
+}, {  
+<span style="color:#a6e22e">freezeTableName</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 默认false修改表名为复数，true不修改表名，与数据库表名同步  
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">tableName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>,  
+<span style="color:#a6e22e">timestamps</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>  
+});
+</code></pre></div><p>define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt</p>
 
 		</div>
 		<footer class="post__footer">
@@ -168,6 +168,9 @@ timestamps: false<br>
 	<ul class="tags__list">
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/nodejs/" rel="tag">nodejs</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/sequelize/" rel="tag">sequelize</a>
 		</li>
 	</ul>
 </div>
