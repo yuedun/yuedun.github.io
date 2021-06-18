@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="博客迁移至hugo gitpage">
 <meta itemprop="description" content="自建和gitpage优劣对比"><meta itemprop="datePublished" content="2021-06-17T19:38:31&#43;08:00" />
 <meta itemprop="dateModified" content="2021-06-17T19:38:31&#43;08:00" />
-<meta itemprop="wordCount" content="99">
+<meta itemprop="wordCount" content="100">
 <meta itemprop="keywords" content="博客,git," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="博客迁移至hugo gitpage"/>
@@ -60,6 +60,8 @@
         
         const collect = new Collect();
         
+        const title = document.title;
+        collect.set('title', title);
         collect.set('url', url);
         collect.set('pv', 1);
         collect.save()
@@ -182,6 +184,7 @@
 <li>目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。</li>
 <li>PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。</li>
 <li>自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。</li>
+<li>不能在线编辑。</li>
 </ul>
 <p>整体来说，除了数据存储功能缺失外，其他都是可以实现的。</p>
 <h3 id="迁移过程">迁移过程</h3>

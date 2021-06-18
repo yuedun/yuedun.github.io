@@ -60,6 +60,8 @@
         
         const collect = new Collect();
         
+        const title = document.title;
+        collect.set('title', title);
         collect.set('url', url);
         collect.set('pv', 1);
         collect.save()
@@ -171,21 +173,21 @@
 <p><code>*</code>代表匹配前面的模式 0或多次 {0,}</p>
 <p><code>&quot;</code>这是字符串最后一个字符</p>
 <p>在vscode中的效果如下：
-<img src="https://hopefully-img.yuedun.wang/vscode%E6%AD%A3%E5%88%99.png" alt="vscode正则" title="vscode正则">
+<img src="https://hopefully-img.yuedun.wang/vscode%E6%AD%A3%E5%88%99.png" alt="vscode正则查找替换" title="vscode正则查找替换">
 至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：</p>
 <h3 id="查找替换">查找替换</h3>
 <p>查找：<code>(onclick=.*&quot;)</code></p>
 <p>替换：<code>aaa($1)</code></p>
 <p>结果：</p>
-<p><img src="https://hopefully-img.yuedun.wang/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2.png" alt="正则替换" title="正则替换"></p>
+<p><img src="https://hopefully-img.yuedun.wang/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2.png" alt="vscode正则查找替换" title="vscode正则查找替换"></p>
 <h3 id="替换字符串两头保留中间">替换字符串两头，保留中间</h3>
-<p><img src="https://hopefully-img.yuedun.wang/vscodereplace.jpg" alt="正则替换"></p>
+<p><img src="https://hopefully-img.yuedun.wang/vscodereplace.jpg" alt="vscode正则查找替换" title="vscode正则查找替换"></p>
 <h3 id="两部分文字交换位置">两部分文字交换位置</h3>
 <p>相同模式的文字交换位置。</p>
 <p>查找：<code>(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))</code></p>
 <p>替换：<code>$2 $1</code></p>
 <p>结果：</p>
-<p><img src="https://hopefully-img.yuedun.wang/regular.gif" alt="正则替换" title="正则替换"></p>
+<p><img src="https://hopefully-img.yuedun.wang/regular.gif" alt="vscode正则查找替换" title="vscode正则查找替换"></p>
 <p>vscode中一对括号<code>()</code>代表一个变量。</p>
 <p>第一组正则 <code>(\(\d{4}-\d{1,2}-\d{2}\))</code> 对应 <code>$1</code>，</p>
 <p>第二组正则 <code>(\[.*\))</code>对应 <code>$2</code>，以此类推。</p>
