@@ -154,39 +154,39 @@
 </div>
 <div class="content post__content clearfix">
 			<p>不依赖jquery也可以实现图片预览功能：</p>
-<pre><code>&lt;!--图片放大后的div 开始  这块粘贴在你的html中最后body前 --&gt;
-&lt;div id=&quot;outerdiv&quot; style=&quot;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&quot;&gt;
-	&lt;img id=&quot;bigimg&quot; style=&quot;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&quot; src=&quot;&quot; /&gt;
-&lt;/div&gt;
-&lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt;
-</code></pre><pre><code>&lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-	//图片放大
-	document.querySelector(&quot;#outerdiv&quot;).style.display = &quot;none&quot;;
-	document.querySelectorAll(&quot;img&quot;).forEach(function (item) {
-		item.style.cursor = &quot;pointer&quot;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--图片放大后的div 开始  这块粘贴在你的html中最后body前 --&gt;</span>
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;outerdiv&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;</span>&gt;
+	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bigimg&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> /&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;
+<span style="color:#75715e">&lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt;</span>
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+	<span style="color:#75715e">//图片放大
+</span><span style="color:#75715e"></span>	document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+	document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;img&#34;</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">item</span>) {
+		<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">cursor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pointer&#34;</span>;
 	});
 
-	document.querySelectorAll(&quot;img&quot;).forEach(function (item) {
-		item.addEventListener(&quot;click&quot;, function () {
-			imgShow(&quot;#outerdiv&quot;, &quot;#bigimg&quot;, this);
+	document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;img&#34;</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">item</span>) {
+		<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> () {
+			<span style="color:#a6e22e">imgShow</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>, <span style="color:#e6db74">&#34;#bigimg&#34;</span>, <span style="color:#66d9ef">this</span>);
 		})
 	})
 
-	function imgShow(outerdiv, bigimg, _this) {
-		var src = _this.src;//获取当前点击的pimg元素中的src属性
-		document.querySelector('#outerdiv').style.display = &quot;block&quot;;
-		document.querySelector(bigimg).src = src;//设置#bigimg元素的src属性    
-	}
-	document.querySelector(&quot;#outerdiv&quot;).addEventListener(&quot;click&quot;, function () {
-	//再次点击淡出消失弹出层
-		document.querySelector('#outerdiv').style.display = &quot;none&quot;;
+	<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">imgShow</span>(<span style="color:#a6e22e">outerdiv</span>, <span style="color:#a6e22e">bigimg</span>, <span style="color:#ae81ff">_</span><span style="color:#66d9ef">this</span>) {
+		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">src</span>;<span style="color:#75715e">//获取当前点击的pimg元素中的src属性
+</span><span style="color:#75715e"></span>		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#outerdiv&#39;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;block&#34;</span>;
+		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#a6e22e">bigimg</span>).<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>;<span style="color:#75715e">//设置#bigimg元素的src属性
+</span><span style="color:#75715e"></span>	}
+	document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>).<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> () {
+	<span style="color:#75715e">//再次点击淡出消失弹出层
+</span><span style="color:#75715e"></span>		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#outerdiv&#39;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
 	});
-&lt;/script&gt;
-&lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt;
-</code></pre><p>整体代码量少，实现也简单。效果如下：
-<img src="https://hopefully-img.yuedun.wang/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88.jpg" alt="预览前" title="预览前">
-<img src="https://hopefully-img.yuedun.wang/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%882.jpg" alt="预览" title="预览"></p>
+&lt;/<span style="color:#f92672">script</span>&gt;
+<span style="color:#75715e">&lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt;</span>
+</code></pre></div><p>整体代码量少，实现也简单。效果如下：
+<img src="https://hopefully-img.yuedun.wang/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88.jpg" alt="预览前" title="预览前"></p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%882.jpg" alt="预览" title="预览"></p>
 
 		</div>
 		<footer class="post__footer">

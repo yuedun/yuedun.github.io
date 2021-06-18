@@ -155,23 +155,21 @@
 <div class="content post__content clearfix">
 			<p>Assistance.belongTo(User)会报以下错误：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>assistance<span style="color:#f92672">`</span> <span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#f92672">`</span>assistance_user_id_foreign_idx<span style="color:#f92672">`</span> <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>user_id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">REFERENCES</span> <span style="color:#f92672">`</span>users<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">NO</span> ACTION <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CASCADE</span>;
-
-Unhandled rejection SequelizeDatabaseError: Can<span style="color:#e6db74">&#39;t write; duplicate key in table &#39;</span><span style="color:#f92672">#</span><span style="color:#66d9ef">sql</span><span style="color:#f92672">-</span><span style="color:#ae81ff">454</span>_d<span style="color:#e6db74">&#39;
-</span><span style="color:#e6db74">    at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16)
-</span><span style="color:#e6db74">    at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23)
-</span><span style="color:#e6db74">    at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12)
-</span><span style="color:#e6db74">    at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28)
-</span><span style="color:#e6db74">    at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16)
-</span><span style="color:#e6db74">    at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14)
-</span><span style="color:#e6db74">    at Socket.&lt;anonymous&gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29)
-</span><span style="color:#e6db74">    at emitOne (events.js:115:13)
-</span><span style="color:#e6db74">    at Socket.emit (events.js:210:7)
-</span><span style="color:#e6db74">    at addChunk (_stream_readable.js:264:12)
-</span><span style="color:#e6db74">    at readableAddChunk (_stream_readable.js:251:11)
-</span><span style="color:#e6db74">    at Socket.Readable.push (_stream_readable.js:209:10)
-</span><span style="color:#e6db74">    at TCP.onread (net.js:587:20)
-</span><span style="color:#e6db74">
-</span></code></pre></div><p>原因是会在Assistance表中自动添加外键约束，如果不需要外键约束则可以这样设置：
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Unhandled rejection SequelizeDatabaseError: Can<span style="color:#e6db74">&#39;t write; duplicate key in table &#39;</span><span style="color:#75715e">#sql-454_d&#39;</span>
+    at Query.formatError <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16<span style="color:#f92672">)</span>
+    at Query.connection.query <span style="color:#f92672">[</span>as onResult<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23<span style="color:#f92672">)</span>
+    at Query.Command.execute <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12<span style="color:#f92672">)</span>
+    at Connection.handlePacket <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28<span style="color:#f92672">)</span>
+    at PacketParser.onPacket <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16<span style="color:#f92672">)</span>
+    at PacketParser.executeStart <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14<span style="color:#f92672">)</span>
+    at Socket.&lt;anonymous&gt; <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29<span style="color:#f92672">)</span>
+    at emitOne <span style="color:#f92672">(</span>events.js:115:13<span style="color:#f92672">)</span>
+    at Socket.emit <span style="color:#f92672">(</span>events.js:210:7<span style="color:#f92672">)</span>
+    at addChunk <span style="color:#f92672">(</span>_stream_readable.js:264:12<span style="color:#f92672">)</span>
+    at readableAddChunk <span style="color:#f92672">(</span>_stream_readable.js:251:11<span style="color:#f92672">)</span>
+    at Socket.Readable.push <span style="color:#f92672">(</span>_stream_readable.js:209:10<span style="color:#f92672">)</span>
+    at TCP.onread <span style="color:#f92672">(</span>net.js:587:20<span style="color:#f92672">)</span>
+</code></pre></div><p>原因是会在Assistance表中自动添加外键约束，如果不需要外键约束则可以这样设置：
 Assistance.belongsTo(User, { constraints: false });</p>
 
 		</div>

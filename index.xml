@@ -38,10 +38,11 @@ QQ：438473005</description>
       <description>为什么迁移？ 6月初的时候，3年前买的阿里云服务器到期了，又买了其他服务器，但是只有1年期，于是进行了一番数据，应用迁移，这么一顿操作下来还是挺累的，尤其是在linux上安装mysql，mongodb。 安装后又是连接不上，挺烦的。再想到一年后又是一顿操作，不由得一个激灵。
 经过一番的思量后，决定将自建博客迁移至gitpage上。
 自建和gitpage优劣对比 首先列出自己博客具备的功能：
- 首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链 目录 所有文章时间线 留言 自维护留言系统 微博 新浪微博，最近出问题不显示了 速记 简单记录 关于 自我介绍  整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。 在一些细节功能上面确实会有缺失，比如：
- 评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。  整体来说，除了数据存储功能缺失外，其他都是可以实现的。
+ 首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链 目录 所有文章时间线 留言 自维护留言系统 微博 新浪微博，最近出问题不显示了 速记 简单记录 关于 自我介绍  整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。
+劣势 在一些细节功能上面确实会有缺失，比如：
+ 评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。  优势  免费，没有服务器费用。 可以自定义域名，需要丁点儿的域名费用。 seo良好。 规范的书写格式，是文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于检索。 数据更保险，不易丢失。  整体来说，除了数据存储功能缺失外，其他都是可以实现的。
 迁移过程 将mongodb数据中的博客导出为本地markdown文件。
-// mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &amp;#39;_id&amp;#39;: -1 } }) .then(data =&amp;gt; { data.forEach((b) =&amp;gt; { debug(b) let tags = b.tags.split(&amp;#34;,&amp;#34;) let blog = `--- title: &amp;#34;${b.title}&amp;#34; description: &amp;#34;${b.content.replace(/&amp;lt;[^&amp;lt;&amp;gt;]+&amp;gt;/g, &amp;#34;&amp;#34;).replace(/\r\n/g, &amp;#34;&amp;#34;).</description>
+// mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &amp;#39;_id&amp;#39;: -1 } }) .then(data =&amp;gt; { data.forEach((b) =&amp;gt; { debug(b) let tags = b.</description>
     </item>
     
     <item>
@@ -420,7 +421,7 @@ this.$emit(&amp;quot;changeData&amp;quot;, &amp;quot;要修改的数据&amp;quot
       
       <guid>https://www.yuedun.wang/blogdetail/5f20f0c05981482973150396/</guid>
       <description>不依赖jquery也可以实现图片预览功能：
-&amp;lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&amp;gt;&amp;lt;div id=&amp;quot;outerdiv&amp;quot; style=&amp;quot;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&amp;quot;&amp;gt;&amp;lt;img id=&amp;quot;bigimg&amp;quot; style=&amp;quot;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&amp;quot; src=&amp;quot;&amp;quot; /&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&amp;gt;&amp;lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;//图片放大document.querySelector(&amp;quot;#outerdiv&amp;quot;).style.display = &amp;quot;none&amp;quot;;document.querySelectorAll(&amp;quot;img&amp;quot;).forEach(function (item) {item.style.cursor = &amp;quot;pointer&amp;quot;;});document.querySelectorAll(&amp;quot;img&amp;quot;).forEach(function (item) {item.addEventListener(&amp;quot;click&amp;quot;, function () {imgShow(&amp;quot;#outerdiv&amp;quot;, &amp;quot;#bigimg&amp;quot;, this);})})function imgShow(outerdiv, bigimg, _this) {var src = _this.</description>
+&amp;lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&amp;gt; &amp;lt;div id=&amp;#34;outerdiv&amp;#34; style=&amp;#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&amp;#34;&amp;gt; &amp;lt;img id=&amp;#34;bigimg&amp;#34; style=&amp;#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&amp;#34; src=&amp;#34;&amp;#34; /&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&amp;gt; &amp;lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34;&amp;gt; //图片放大 	document.querySelector(&amp;#34;#outerdiv&amp;#34;).style.display = &amp;#34;none&amp;#34;; document.querySelectorAll(&amp;#34;img&amp;#34;).forEach(function (item) { item.style.cursor = &amp;#34;pointer&amp;#34;; }); document.querySelectorAll(&amp;#34;img&amp;#34;).forEach(function (item) { item.addEventListener(&amp;#34;click&amp;#34;, function () { imgShow(&amp;#34;#outerdiv&amp;#34;, &amp;#34;#bigimg&amp;#34;, this); }) }) function imgShow(outerdiv, bigimg, _this) { var src = _this.</description>
     </item>
     
     <item>
@@ -1588,11 +1589,11 @@ array(&#39;title&#39;=&amp;gt; new MongoRegex(&amp;quot;/测试/i&amp;quot;))
       
       <guid>https://www.yuedun.wang/blogdetail/590c93d3266e3f1c8fd4aa83/</guid>
       <description>typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
-function a(args: number ): number {return args;}console.log(a(123));又有另外一个要求，参数为string类型，并且返回string
-function b(args: string ): string {return args;}console.log(b(&amp;quot;sdg&amp;quot;));如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
-function c(args: any ): any {return args;}console.log(c(&amp;quot;sdg&amp;quot;));这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
-function c(args: any ): any {let n = args + &amp;quot;变成了字符串&amp;quot;;//甚至更多的处理return n;}console.log(c(1));c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
-function d&amp;lt;A&amp;gt;(args: A ): A {let n = args + &amp;quot;变成了字符串&amp;quot;;//甚至更多的处理return n;}console.</description>
+function a(args: number ): number { return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
+function b(args: string ): string { return args; } console.log(b(&amp;#34;sdg&amp;#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
+function c(args: any ): any { return args; } console.log(c(&amp;#34;sdg&amp;#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
+function c(args: any ): any { let n = args + &amp;#34;变成了字符串&amp;#34;; //甚至更多的处理 	return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
+function d&amp;lt;A&amp;gt;(args: A ): A { let n = args + &amp;#34;变成了字符串&amp;#34;; //甚至更多的处理 	return n; } console.</description>
     </item>
     
     <item>
@@ -1683,7 +1684,7 @@ var a=&amp;quot;Nodejs&amp;quot; ;Article.find({ content: /a/i}, function (err,
 var text = &#39;Nodejs&#39;;//动态传入的变量Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {});$options选项值：
  i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串  其实$regex就是正则表达式的写法
 查找数组中的字段：
-contacts:{[{address: &amp;quot;address1&amp;quot;,name: &amp;quot;张三&amp;quot;},{address: &amp;quot;address2&amp;quot;,name: &amp;quot;李四&amp;quot;},.</description>
+contacts:{ [ { address: &amp;#34;address1&amp;#34;, name: &amp;#34;张三&amp;#34; }, { address: &amp;#34;address2&amp;#34;, name: &amp;#34;李四&amp;#34; }, .</description>
     </item>
     
     <item>
@@ -1777,13 +1778,13 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
       
       <guid>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</guid>
       <description>nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
-var request=require(&amp;quot;request&amp;quot;);var fs=require(&amp;quot;fs&amp;quot;);var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;HttpRequest.get(url, (err, res, body) =&amp;gt; {res.setEncoding(&amp;quot;binary&amp;quot;);//二进制（binary）FS.writeFile(&amp;quot;out.png&amp;quot;, body, &amp;quot;binary&amp;quot;, function (err) {//以二进制格式保存if (err) throw err;console.log(&amp;quot;file saved&amp;quot;);});});这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
+var request=require(&amp;#34;request&amp;#34;); var fs=require(&amp;#34;fs&amp;#34;); var url=&amp;#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;#34;; HttpRequest.get(url, (err, res, body) =&amp;gt; { res.setEncoding(&amp;#34;binary&amp;#34;);//二进制（binary）  FS.writeFile(&amp;#34;out.png&amp;#34;, body, &amp;#34;binary&amp;#34;, function (err) {//以二进制格式保存  if (err) throw err; console.log(&amp;#34;file saved&amp;#34;); }); }); 这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
-var url=&amp;quot;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;quot;;request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
+var url=&amp;#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;#34;; request(url).pipe(fs.createWriteStream(&amp;#34;out.png&amp;#34;)); 不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？
 非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉
 有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，
-const http = require(&amp;quot;http&amp;quot;);var server = http.createServer( (req, res) =&amp;gt; {}其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));,
+const http = require(&amp;#34;http&amp;#34;); var server = http.createServer( (req, res) =&amp;gt; { } 其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));,
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。</description>
     </item>
     
@@ -1908,7 +1909,7 @@ http://www.mydomain/?#!/index
       
       <guid>https://www.yuedun.wang/blogdetail/56a8db6abf2e89202c146370/</guid>
       <description>Vue.js可以传递$event对象
-&amp;lt;body id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;li v-on:click=&amp;quot;say(&#39;hello!&#39;, $event)&amp;quot;&amp;gt;点击当前行文本&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;li2&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;li3&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;&amp;lt;script&amp;gt;new Vue({el: &#39;#app&#39;,data: {message: &#39;Hello Vue.js!&#39;},methods: {say: function(msg, event) {//获取点击对象 var el = event.currentTarget;alert(&amp;quot;当前对象的内容：&amp;quot;+el.innerHTML);}}})&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;函数调用处传递$event
+&amp;lt;body id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;li v-on:click=&amp;quot;say(&#39;hello!&#39;, $event)&amp;quot;&amp;gt;点击当前行文本&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;li2&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;li3&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;&amp;lt;script&amp;gt;new Vue({el: &#39;#app&#39;,data: {message: &#39;Hello Vue.js!&#39;},methods: {say: function(msg, event) {//获取点击对象var el = event.currentTarget;alert(&amp;quot;当前对象的内容：&amp;quot;+el.innerHTML);}}})&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;函数调用处传递$event
 v-on:click=&amp;quot;say(&#39;hello!&#39;, $event)&amp;quot;
 函数中获取到的event.currentTarget对象就是当前元素
 在线示例
@@ -2158,10 +2159,7 @@ PS C:\Users\admin\.ssh&amp;gt; ssh-keygen -t rsa -C &amp;#34;myemail@163.com&amp
       <guid>https://www.yuedun.wang/blogdetail/563823deaa0d5223f187dfa5/</guid>
       <description>以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但是结果很不理想，waterfall的很多参数不管是什么用处，反正看着很头疼，最麻烦的是它会改变页面样式和布局，实在不想调整了，还是自己实现这个功能吧！
 首先看下面代码：
-var pageIndex = 2;
-(function loadmore() {
-//绑定滚动事件 $(window).bind(&amp;quot;scroll&amp;quot;, function() {if ($(this).scrollTop() + $(window).height() + 40 &amp;gt;= $(document).height() &amp;amp;amp;&amp;amp;amp; $(this).scrollTop() &amp;gt;= 40) {$(window).unbind(&amp;quot;scroll&amp;quot;); //到底后先移除滚动事件 $.get(&amp;quot;/portal/getTopic?pageIndex=&amp;quot; + pageIndex + &amp;quot;&amp;amp;amp;pageSize=3&amp;quot;, function(data) {$(&amp;quot;#container&amp;quot;).append(data);pageIndex++;loadmore(); //数据加载成功重新绑定滚动事件 }, &amp;quot;html&amp;quot;);};}); })();
-没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。
+var pageIndex = 2; (function loadmore() { //绑定滚动事件  $(window).bind(&amp;#34;scroll&amp;#34;, function() { if ($(this).scrollTop() + $(window).height() + 40 &amp;gt;= $(document).height() &amp;amp;amp;&amp;amp;amp; $(this).scrollTop() &amp;gt;= 40) { $(window).unbind(&amp;#34;scroll&amp;#34;); //到底后先移除滚动事件  $.get(&amp;#34;/portal/getTopic?pageIndex=&amp;#34; + pageIndex + &amp;#34;&amp;amp;amp;pageSize=3&amp;#34;, function(data) { $(&amp;#34;#container&amp;#34;).append(data); pageIndex++; loadmore(); //数据加载成功重新绑定滚动事件  }, &amp;#34;html&amp;#34;); }; }); })(); 没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。
 先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;amp;&amp;amp;amp; $(this).scrollTop() &amp;gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
 已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&amp;quot;scroll&amp;quot;);等数据添加到页面以后再重新绑定滚动事件。</description>
     </item>
@@ -2238,7 +2236,8 @@ htpasswd /etc/subversion/dav_svn.passwd &amp;lt;用户名&amp;gt;
       
       <guid>https://www.yuedun.wang/blogdetail/56286643ce46c19e89132968/</guid>
       <description>开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
-所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。 首先在uses.js文件中有一个函数
+所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
+首先在uses.js文件中有一个函数
 //我是一个测试方法  router.get(&amp;#34;/commeHere&amp;#34;, function(req, res) { }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
 可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
 双击就可以跳转到对应的文件和行上。
@@ -2332,7 +2331,10 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       <pubDate>Thu, 08 Oct 2015 14:04:07 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/561677d7bfae4b590b7a4aaa/</guid>
-      <description>以前找工作的时候总被面试到数据库方面的知识，尤其是数据库优化。当然在去面试之前先补习一下，背一些网上的概念来应付。现在想想，要考察一个开发者数据库优化方面的知识只需要问一下有没有做过数据库设计和优化就行，如果做过相关工作那么多少会总结出来一些，如果没做过说出再多也是概念而已。 国庆节前韩豆咖派上线，然后这个节日就不会有好日子过了，上线三四天的时候很多用户反映帖子刷新不出来，登陆不了等问题，起初我以为是放假了大家回家网络不好导致的，后来测试了下接口花了一分多钟数据才返回，看来不是网络问题。查了下数据库帖子数量，居然达到6万了，想到以前背的概念，首先加索引试试，果然快了。但是节后数量达到12万的时候又出现了相同的问题，有点纳闷，索引页加了怎么还是慢呢？经过多次试验，分拆复杂查询后得出结论是由于查询语句中使用了left join自连接查询，通俗的说就是在12万数据中找出需要的数据，然后再在这12万中找出关联数据，光是这两个12万都够吓人了。最后还是把复杂的sql分解用程序控制查询子句，速度果然又提高了。 得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片： 但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了. </description>
+      <description>以前找工作的时候总被面试到数据库方面的知识，尤其是数据库优化。当然在去面试之前先补习一下，背一些网上的概念来应付。现在想想，要考察一个开发者数据库优化方面的知识只需要问一下有没有做过数据库设计和优化就行，如果做过相关工作那么多少会总结出来一些，如果没做过说出再多也是概念而已。
+国庆节前韩豆咖派上线，然后这个节日就不会有好日子过了，上线三四天的时候很多用户反映帖子刷新不出来，登陆不了等问题，起初我以为是放假了大家回家网络不好导致的，后来测试了下接口花了一分多钟数据才返回，看来不是网络问题。查了下数据库帖子数量，居然达到6万了，想到以前背的概念，首先加索引试试，果然快了。但是节后数量达到12万的时候又出现了相同的问题，有点纳闷，索引页加了怎么还是慢呢？经过多次试验，分拆复杂查询后得出结论是由于查询语句中使用了left join自连接查询，通俗的说就是在12万数据中找出需要的数据，然后再在这12万中找出关联数据，光是这两个12万都够吓人了。最后还是把复杂的sql分解用程序控制查询子句，速度果然又提高了。
+得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片：
+但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.</description>
     </item>
     
     <item>

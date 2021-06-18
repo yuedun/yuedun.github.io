@@ -205,11 +205,11 @@
 </code></pre></div><p>其中Blog.find({},null,{sort:{&quot;_id&quot;:-1}, skip :( pageIndex -1)* pageSize, limit : pageSize },function)<br>
 这一段第一个参数为空，意思查询所有，第二个参数null,查询所有字段，第三个参数有倒序，分页。<br>
 然后就是页面上两个翻页按钮：</p>
-<pre><code>&lt;ul class=&quot;pager&quot;&gt;  
-    &lt;li&gt;&lt;a href=&quot;/admin/blogList?pageIndex=&lt;%= pageIndex==1?1:parseInt(pageIndex)-1%&gt;&amp;amp;pageSize=5&quot;&gt;&amp;larr; Older&lt;/a&gt;&lt;/li&gt;  
-    &lt;li&gt;&lt;a href=&quot;/admin/blogList?pageIndex=&lt;%= pageCount&lt;5?pageIndex:parseInt(pageIndex)+1%&gt;&amp;amp;pageSize=5&quot;&gt;Newer &amp;rarr;&lt;%= pageCount%&gt;&lt;/a&gt;&lt;/li&gt;  
-&lt;/ul&gt;);
-</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">ul</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pager&#34;</span>&gt;  
+    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/admin/blogList?pageIndex=&lt;%= pageIndex==1?1:parseInt(pageIndex)-1%&gt;&amp;amp;pageSize=5&#34;</span>&gt;&amp;larr; Older&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;  
+    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/admin/blogList?pageIndex=&lt;%= pageCount&lt;5?pageIndex:parseInt(pageIndex)+1%&gt;&amp;amp;pageSize=5&#34;</span>&gt;Newer &amp;rarr;<span style="color:#960050;background-color:#1e0010">&lt;</span>%= pageCount%&gt;&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;  
+&lt;/<span style="color:#f92672">ul</span>&gt;);
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
