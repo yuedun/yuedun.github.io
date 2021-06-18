@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>pm2的fork模式和cluster模式的区别 - 月盾的个人博客</title>
+	<title>pm2的fork模式和cluster模式的区别 - 月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="pm2的fork模式和cluster模式的区别## fork模式pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-">
 		<meta property="og:title" content="pm2的fork模式和cluster模式的区别" />
@@ -67,14 +67,19 @@
         col.increment('pv', 1)
         col.save();
 
-        const context = document.querySelector('.post__meta.meta');
-        const pv = document.createElement('div');
-        pv.setAttribute('class', 'meta__item-author meta__item');
-        const span = document.createElement('span');
-        span.setAttribute('class', 'meta__text');
-        span.innerText = "浏览（" + col.get('pv') + "）";
-        pv.appendChild(span)
-        context.appendChild(pv)
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
       }
     });
   }

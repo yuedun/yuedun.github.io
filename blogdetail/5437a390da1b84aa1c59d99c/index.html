@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>程序员如何留住健康？ - 月盾的个人博客</title>
+	<title>程序员如何留住健康？ - 月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="相信大家已经注意到了，程序员的大部分时间都花在电脑桌前编程，这会损害程序员的健康。其实不需要多么复杂的养生，你只需每天做一些小小的改变，就可以摆脱病痛、保持健康">
 		<meta property="og:title" content="程序员如何留住健康？" />
@@ -67,14 +67,19 @@
         col.increment('pv', 1)
         col.save();
 
-        const context = document.querySelector('.post__meta.meta');
-        const pv = document.createElement('div');
-        pv.setAttribute('class', 'meta__item-author meta__item');
-        const span = document.createElement('span');
-        span.setAttribute('class', 'meta__text');
-        span.innerText = "浏览（" + col.get('pv') + "）";
-        pv.appendChild(span)
-        context.appendChild(pv)
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
       }
     });
   }

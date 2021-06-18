@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>让代码配置化 - 月盾的个人博客</title>
+	<title>让代码配置化 - 月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有">
 		<meta property="og:title" content="让代码配置化" />
@@ -67,14 +67,19 @@
         col.increment('pv', 1)
         col.save();
 
-        const context = document.querySelector('.post__meta.meta');
-        const pv = document.createElement('div');
-        pv.setAttribute('class', 'meta__item-author meta__item');
-        const span = document.createElement('span');
-        span.setAttribute('class', 'meta__text');
-        span.innerText = "浏览（" + col.get('pv') + "）";
-        pv.appendChild(span)
-        context.appendChild(pv)
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
       }
     });
   }

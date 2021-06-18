@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>服务发现：Zookeeper vs etcd vs Consul  - 月盾的个人博客</title>
+	<title>服务发现：Zookeeper vs etcd vs Consul  - 月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="【编者的话】本文对比了Zookeeper、etcd和Consul三种服务发现工具，探讨了最佳的服务发现解决方案，仅供参考。如果使用预定义的端口，服务越多，发生冲">
 		<meta property="og:title" content="服务发现：Zookeeper vs etcd vs Consul " />
@@ -67,14 +67,19 @@
         col.increment('pv', 1)
         col.save();
 
-        const context = document.querySelector('.post__meta.meta');
-        const pv = document.createElement('div');
-        pv.setAttribute('class', 'meta__item-author meta__item');
-        const span = document.createElement('span');
-        span.setAttribute('class', 'meta__text');
-        span.innerText = "浏览（" + col.get('pv') + "）";
-        pv.appendChild(span)
-        context.appendChild(pv)
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
       }
     });
   }

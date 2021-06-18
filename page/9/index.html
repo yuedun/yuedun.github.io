@@ -5,25 +5,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>月盾的个人博客</title>
+	<title>月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构">
-		<meta property="og:title" content="月盾的个人博客" />
+		<meta property="og:title" content="月盾的博客" />
 <meta property="og:description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.yuedun.wang/" />
 
 
-		<meta itemprop="name" content="月盾的个人博客">
+		<meta itemprop="name" content="月盾的博客">
 <meta itemprop="description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构">
 		<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="月盾的个人博客"/>
+<meta name="twitter:title" content="月盾的博客"/>
 <meta name="twitter:description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的个人博客">
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
 		
@@ -64,14 +64,19 @@
         col.increment('pv', 1)
         col.save();
 
-        const context = document.querySelector('.post__meta.meta');
-        const pv = document.createElement('div');
-        pv.setAttribute('class', 'meta__item-author meta__item');
-        const span = document.createElement('span');
-        span.setAttribute('class', 'meta__text');
-        span.innerText = "浏览（" + col.get('pv') + "）";
-        pv.appendChild(span)
-        context.appendChild(pv)
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
       }
     });
   }
