@@ -192,7 +192,9 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
  在手里拿着锤子的人看来，所有的东西都会是钉子。
   因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。
  事出有因 这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。
-最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。 对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。 而我们一个移动端网站的资源居然能超过3M，究其原因：
+最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。
+对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。
+而我们一个移动端网站的资源居然能超过3M，究其原因：
  图片大 js大 css大  图片大是因为图片基本没任何大小控制，都是使用了最高标准原图。js和css大基本是属于架构问题，一个项目中包含的上百的页面每个页面600多k的js是绕不过去的（vendor.js,app.js等打包资源，不包含其他引入资源）。
 看到vendor.js,app.js这两个名称很多人应该想到了，这是vue（react）框架开发的网站。 是的，就是用vue开发的移动端网站，使用vue开发网站本身也不是什么大问题，毕竟有实力的公司不需要SEO，直接竞价排名就行。而我要说的问题是，不是什么网站都可以用vue来开发，不信请继续往下看。
 问题分析 我司的移动端网站作用并不仅仅是用来展示公司形象的，更重要的是用户转化的，就是让用户注册的。而且是要和很多第三方机构合作投放引流，经常需要分析页面UI的不同对转化率的影响，所以需要的页面不是几个，而是几十上百个，还在不停增加，每周都有三五个页面增加。 由于vue主要是以开发单页SPA应用为主的，在开发人员不考虑真实需求的情况下自然会使用流行的技术，最终把网站开发成一个单页应用。单页应用的特点就是单页，就是把不同的页面做成一个页面一次加载，加载完成后页面之间的切换就会很快，一般无需再加载资源，用户体验也会好很多，可以套用一句话：“一次等待，处处快速”。
@@ -219,8 +221,8 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.(found in &lt;Root&gt;)解决方案：与entry属性平级添加
-resolve: {alias: {'vue$': 'vue/dist/vue.esm.js'//该路径为node_modules下的vue目录}}// 需要编译器new Vue({template: '&lt;div&gt;{{ hi }}&lt;/div&gt;'})// 不需要编译器new Vue({render (h) {return h('div', this.hi)}})出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
+		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
+resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -249,6 +251,29 @@ http://www.mydomain/?#!/index
 </article><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/56a8db6abf2e89202c146370/" rel="bookmark">
+			vue.js click点击事件获取当前元素对象
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-27T14:59:54Z">2016-01-27 14:59</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Vue.js可以传递$event对象
+&lt;body id=&quot;app&quot;&gt;&lt;ul&gt;&lt;li v-on:click=&quot;say('hello!', $event)&quot;&gt;点击当前行文本&lt;/li&gt;&lt;li&gt;li2&lt;/li&gt;&lt;li&gt;li3&lt;/li&gt;&lt;/ul&gt;&lt;script&gt;new Vue({el: '#app',data: {message: 'Hello Vue.js!'},methods: {say: function(msg, event) {//获取点击对象 var el = event.currentTarget;alert(&quot;当前对象的内容：&quot;+el.innerHTML);}}})&lt;/script&gt;&lt;/body&gt;函数调用处传递$event
+v-on:click=&quot;say('hello!', $event)&quot;
+函数中获取到的event.currentTarget对象就是当前元素
+在线示例
+请查看HTML页面示例源码
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/56970097d8e9ee3c03297d3b/" rel="bookmark">
 			vue.js对表单值初始化
 			</a>
@@ -264,6 +289,48 @@ http://www.mydomain/?#!/index
 	<div class="content list__excerpt post__content clearfix">
 		新建表单有些input输入框需要默认值，比如性别需要一个男或女默认值。再比如一个日期选择框需要默认今天。如果按照HTML的方式设置不会起作用
 &lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;0&#34; checked=&#34;checked&#34; v-model=&#34;gender&#34;&gt;男&lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;1&#34; v-model=&#34;gender&#34;&gt;女&lt;/p&gt; &lt;input type=&#34;date&#34; value=&#34;2016-01-06&#34; v-model=&#34;date&#34;&gt;&lt;/p&gt; 在vue.js页面中上面这种设置方式是不会起作用的,性别不会选中，日期也不会有值。解决办法是对v-model属性设值，在初始化时给gender=0，那么默认会选中性别男，给date=&ldquo;2016-01-06&quot;日期控件也有值。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5691d933d8e9ee3c03297d39/" rel="bookmark">
+			vue.js中使用focus，blur事件
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-10T04:08:19Z">2016-01-10 04:08</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在线示例
+使用focus，blur可对表单进行验证，除了这两个事件，还有一个watch属性可监听data属性值得变化，具体可打开浏览器控制台看属性值得变化情况，代码可直接在浏览器中查看源码
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/568a088edb1fef9e0cda949e/" rel="bookmark">
+			vue.js开发gulp监听文件变化自动编译
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-04T05:52:14Z">2016-01-04 05:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		直接看代码：
+var gulp = require(&#39;gulp&#39;) var webpack = require(&#34;gulp-webpack&#34;); var webpackConfig = require(&#34;./webpack.config.js&#34;); // gulp.task(&#34;webpack&#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err)) // console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats) // if(err) throw new Error(&#34;webpack&#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&#34;webpack&#34;, function(){ return gulp.src(&#34;./app.js&#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&#34;./dist/&#34;)) }); gulp.watch(&#39;./views/*&#39;, [&#39;webpack&#39;]); webpack.config.js配置
+var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app.js&#34;,  { app:&#34;./app.js&#34; // vendor: [&#34;.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/568a088edb1fef9e0cda949e/">阅读全文…</a>
 	</div>
 </article>
 </main>
@@ -339,12 +406,9 @@ http://www.mydomain/?#!/index
 		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
@@ -352,23 +416,21 @@ http://www.mydomain/?#!/index
 		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
@@ -376,7 +438,6 @@ http://www.mydomain/?#!/index
 		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
@@ -387,7 +448,6 @@ http://www.mydomain/?#!/index
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -403,9 +463,9 @@ http://www.mydomain/?#!/index
 		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
@@ -422,7 +482,7 @@ http://www.mydomain/?#!/index
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
@@ -432,6 +492,7 @@ http://www.mydomain/?#!/index
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>

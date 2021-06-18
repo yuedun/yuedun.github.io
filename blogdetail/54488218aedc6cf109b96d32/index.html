@@ -19,7 +19,7 @@
 <meta itemprop="description" content="Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那"><meta itemprop="datePublished" content="2014-10-23T04:20:40&#43;00:00" />
 <meta itemprop="dateModified" content="2014-10-23T04:20:40&#43;00:00" />
 <meta itemprop="wordCount" content="199">
-<meta itemprop="keywords" content="nodejs," />
+<meta itemprop="keywords" content="nodejs,浏览器," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="让你的Node.js应用跑得更快的10个技巧"/>
 <meta name="twitter:description" content="Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那"/>
@@ -161,15 +161,15 @@
 <p><img src="http://dl2.iteye.com/upload/attachment/0100/6207/18acd74d-711c-3596-9ac4-975b4bf75ea4.png" alt="" title="点击查看原始大小图片"></p>
 <p>如果你想更深入了解 async.js ，请移步它的 <a href="https://github.com/caolan/async">GitHub</a> 页面。</p>
 <p><strong>2. 异步</strong></p>
-<p>根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:<br>
-<img src="http://dl2.iteye.com/upload/attachment/0100/6209/84389e7a-1edb-30cc-8184-25c1fe067794.png" alt="" title="点击查看原始大小图片"></p>
+<p>根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:</p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0100/6209/84389e7a-1edb-30cc-8184-25c1fe067794.png" alt="" title="点击查看原始大小图片"></p>
 <p>不过要是你执行那种长时间的阻塞操作，主线程就会被阻塞到这些操作完成为止。这大大降低你应用的性能。所以，最好确保你的代码里用的都是异步版本 API，最起码你应该在性能节点异步。而且，你在选用第三方模块的时候也要很小心。因为当你想方设法把同步操作从你代码中剔除之后，一个外部库的同步调用会让你前功尽弃，降低你的应用性能。</p>
 <p><strong>3. 缓存</strong></p>
-<p>如果你用到一些不经常变化的数据，你应该把它们缓存起来，改善性能。比如说，下面的代码是获取最新帖子并显示的例子:<br>
-<img src="http://dl2.iteye.com/upload/attachment/0100/6211/b7206f51-0ff9-3b01-96c2-ec7245db6a3c.png" alt="" title="点击查看原始大小图片"></p>
+<p>如果你用到一些不经常变化的数据，你应该把它们缓存起来，改善性能。比如说，下面的代码是获取最新帖子并显示的例子:</p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0100/6211/b7206f51-0ff9-3b01-96c2-ec7245db6a3c.png" alt="" title="点击查看原始大小图片"></p>
 <p>如果你不经常发贴的话，你可以把帖子列表缓存起来，然后一段时间之后再把它们清理掉。比如，我们可以用 Redis 模块来达到这个目的。当然，你必须在你的服务器上装 Redis。然后你可以用叫做 node_redis 的客户端来保存键/值对。下面的例子演示我们怎么缓存帖子：</p>
-<p><img src="http://dl2.iteye.com/upload/attachment/0100/6213/94b2e088-9264-3ac2-8da4-4a1ff8ced3be.png" alt="" title="点击查看原始大小图片"><br>
-看到了吧，我们首先检查 Redis 缓存，看看是否有帖子。如果有，我们从缓存中拿这些帖子列表。否则我们就检索数据库内容，然后把结果缓存。此外，一定时间之后，我们可以清理 Redis 缓存，这样就可以更新内容了。</p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0100/6213/94b2e088-9264-3ac2-8da4-4a1ff8ced3be.png" alt="" title="点击查看原始大小图片"></p>
+<p>看到了吧，我们首先检查 Redis 缓存，看看是否有帖子。如果有，我们从缓存中拿这些帖子列表。否则我们就检索数据库内容，然后把结果缓存。此外，一定时间之后，我们可以清理 Redis 缓存，这样就可以更新内容了。</p>
 <p><strong>4. gzip 压缩</strong></p>
 <p>开启 gzip 压缩对你的 Web 应用会产生巨大影响。当一个 gzip 压缩浏览器请求某些资源的时候，服务器会在响应返回给浏览器之前进行压缩。如果你不用 gzip 压缩你的静态资源，浏览器拿到它们可能会花费更长时间。</p>
 <p>在 Express 应用中，我们可以用内建 express.static() 中间件来处理静态内容。此外，还可以用 compression 中间件压缩和处理静态内容。下面是使用例:</p>
@@ -183,8 +183,8 @@
 <p><strong>7. 优化查询</strong></p>
 <p>假设你有个博客，你要在主页上显示最新帖子。你可能会通过 Mongoose 这样取数据：</p>
 <p><img src="http://dl2.iteye.com/upload/attachment/0100/6217/2391a8f3-0316-372e-b798-b1b75fb60573.png" alt="" title="点击查看原始大小图片"></p>
-<p>不过问题是 Mongoose 的 find() 方法会把对象的所有字段都查询出来，而许多字段在主页上并不要求。比如说，commentsis 保存的是特定帖子的回复。我们不需要显示文章回复，所以我们可以在查询的时候把它给剔除掉。这无疑会提高速度。可以像这样优化上面那条查询:<br>
-<img src="http://dl2.iteye.com/upload/attachment/0100/6219/aa747ee1-8ca3-3752-948e-e3a16df83b80.jpg" alt="" title="点击查看原始大小图片"></p>
+<p>不过问题是 Mongoose 的 find() 方法会把对象的所有字段都查询出来，而许多字段在主页上并不要求。比如说，commentsis 保存的是特定帖子的回复。我们不需要显示文章回复，所以我们可以在查询的时候把它给剔除掉。这无疑会提高速度。可以像这样优化上面那条查询:</p>
+<p><img src="http://dl2.iteye.com/upload/attachment/0100/6219/aa747ee1-8ca3-3752-948e-e3a16df83b80.jpg" alt="" title="点击查看原始大小图片"></p>
 <p><strong>8. 用标准的 V8 方法</strong></p>
 <p>集合上的一些操作，比如 map，reduce，和 forEach 不一定支持所有浏览器。我们可以通过前台的库解决部分浏览器兼容性问题。但对于 Node.js，你要确切知道 Google 的 V8 JavaScript 引擎支持哪些操作。这样，你就可以在服务端直接用这些内建方法来操作集合了。</p>
 <p><strong>9. 在 Node 前面用 Nginx</strong></p>
@@ -201,6 +201,9 @@
 	<ul class="tags__list">
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/nodejs/" rel="tag">nodejs</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a>
 		</li>
 	</ul>
 </div>

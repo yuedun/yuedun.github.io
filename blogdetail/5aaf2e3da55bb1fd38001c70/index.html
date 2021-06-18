@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Golang－ import 导入包的语法 - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="一、 包的导入语法     在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下">
+	<meta name="description" content="一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下">
 		<meta property="og:title" content="Golang－ import 导入包的语法" />
-<meta property="og:description" content="一、 包的导入语法     在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下" />
+<meta property="og:description" content="一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2018-03-19T03:27:57&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="Golang－ import 导入包的语法">
-<meta itemprop="description" content="一、 包的导入语法     在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下"><meta itemprop="datePublished" content="2018-03-19T03:27:57&#43;00:00" />
+<meta itemprop="description" content="一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下"><meta itemprop="datePublished" content="2018-03-19T03:27:57&#43;00:00" />
 <meta itemprop="dateModified" content="2018-03-19T03:27:57&#43;00:00" />
 <meta itemprop="wordCount" content="50">
 <meta itemprop="keywords" content="golang," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Golang－ import 导入包的语法"/>
-<meta name="twitter:description" content="一、 包的导入语法     在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下"/>
+<meta name="twitter:description" content="一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -148,10 +148,10 @@
 <div class="content post__content clearfix">
 			<p>一、 包的导入语法
 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：</p>
-<pre><code>import(
-	&quot;fmt&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span>(
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
 )
-</code></pre><p>然后在代码里面可以通过如下的方式调用
+</code></pre></div><p>然后在代码里面可以通过如下的方式调用
 <code>fmt.Println(&quot;hello world&quot;)</code></p>
 <p>上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：
 <strong>相对路径</strong>     <code>import   &quot;./model&quot;  //当前文件同一目录的model目录，但是不建议这种方式import</code>
@@ -171,8 +171,8 @@ _操作其实只是引入该包。当导入一个包时，它所有的init()函�
 </li>
 </ol>
 <p>二、 包的导入过程说明
-程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
-<a href="http://hopefully-img.yuedun.wang/20140511222515968.jpg" title="go包导入过程"><img src="http://hopefully-img.yuedun.wang/20140511222515968.jpg" alt="go包导入过程" title="go包导入过程"></a></p>
+程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：</p>
+<p><img src="https://hopefully-img.yuedun.wang/20140511222515968.jpg" alt="go包导入过程" title="go包导入过程"></p>
 <p>通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。</p>
 <p>原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457</p>
 

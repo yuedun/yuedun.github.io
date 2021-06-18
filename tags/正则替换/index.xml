@@ -39,7 +39,7 @@ vscode中一对括号()代表一个变量。
       
       <guid>https://www.yuedun.wang/blogdetail/5bb08746f846d21847dc2aef/</guid>
       <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;)db.getCollection(&#39;blogs&#39;).save(item)print(&amp;quot;&amp;gt;&amp;gt;&amp;quot;, item.content);})</description>
+db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &amp;#39;hopefully-img.yuedun.wang&amp;#39;) db.getCollection(&amp;#39;blogs&amp;#39;).save(item) print(&amp;#34;&amp;gt;&amp;gt;&amp;#34;, item.content); }) </description>
     </item>
     
   </channel>

@@ -150,41 +150,41 @@
 <p>由于javascript是动态语言，java是静态语言，所以两者在编写方式上有很大区别，主要是因为javascript没有类的概念，在ES6标准发布之前要构造一个对象需要用new关键字实例化一个function或者直接使用对象字面量。不过ES6标准的发布，使得javascript也可像java一样声明类了。</p>
 <p>在使用nodejs开发大型应用时需要到类的概念来封装一个复杂的逻辑，我们可以从现在开始逐步使用ES6开发，但是基于现有的支持环境，很多时候还得用ES5编写代码，那么这时候怎么来抽象一个类和实例化对象？</p>
 <p>以Java的思想方式来编写JavaScript，首先是一个构造函数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span>){
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span>){
 	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
 	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
 }
 </code></pre></div><p>这就像是Java的构造函数，可以new一个对象出来</p>
 <p><code>var tom = new Person(&quot;Tom&quot;,12);</code></p>
 <p>构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:</p>
-<pre><code class="language-jacascript" data-lang="jacascript">var tom = new Person();
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tom</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>();
 
-tom.name = &quot;Tom&quot;;
-tom.age = 13;
-</code></pre><p>有了构造函数，还要有普通函数：</p>
-<pre><code class="language-jacascript" data-lang="jacascript">tom.sayHello = function(){
+<span style="color:#a6e22e">tom</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tom&#34;</span>;
+<span style="color:#a6e22e">tom</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>;
+</code></pre></div><p>有了构造函数，还要有普通函数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">tom</span>.<span style="color:#a6e22e">sayHello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
 
-	console.log(&quot;my name is &quot;+this.name);//my name is Tom
-
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;my name is &#34;</span><span style="color:#f92672">+</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);<span style="color:#75715e">//my name is Tom
+</span><span style="color:#75715e"></span>
 }
-</code></pre><p>接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象</p>
-<pre><code class="language-jacascript" data-lang="jacascript">function Person(name, age){
-	this.name = name;
+</code></pre></div><p>接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Person</span>(<span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span>){
+	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
 
-	this.age = age;
-
-}
-
-Person.getAge = function(){
-
-	console.log(this.age);
+	<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
 
 }
 
-Person.age = 12;
+<span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">getAge</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
 
-Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age
-</code></pre><p>至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。</p>
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span>);
+
+}
+
+<span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>;
+
+<span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">getAge</span>();<span style="color:#75715e">//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age
+</span></code></pre></div><p>至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。</p>
 
 		</div>
 		<footer class="post__footer">

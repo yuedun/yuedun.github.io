@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="gRPC负载均衡">
 <meta itemprop="description" content="gRPC是谷歌开发的跨语言（C, C&#43;&#43;, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言"><meta itemprop="datePublished" content="2018-10-13T09:38:35&#43;00:00" />
 <meta itemprop="dateModified" content="2018-10-13T09:38:35&#43;00:00" />
-<meta itemprop="wordCount" content="36">
+<meta itemprop="wordCount" content="37">
 <meta itemprop="keywords" content="grpc,nginx,负载均衡," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="gRPC负载均衡"/>
@@ -163,12 +163,13 @@ server {
     grpc_connect_timeout 10;
 }
 </code></pre><p>配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。
-效果图：<img src="http://hopefully-img.yuedun.wang/grpc_nginx.gif" alt="grpc-nginx" title="grpc-nginx">
-可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。</p>
-<p>虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。
-<img src="http://hopefully-img.yuedun.wang/grpc_nginx2.gif" alt="grpc_nginx2" title="grpc_nginx2">
-原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了<code>grpc_connect_timeout</code>选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。
-<img src="http://hopefully-img.yuedun.wang/grpc_nginx3.gif" alt="grpc_nginx3" title="grpc_nginx3"></p>
+效果图：
+<img src="https://hopefully-img.yuedun.wang/grpc_nginx.gif" alt="grpc-nginx" title="grpc-nginx"></p>
+<p>可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。</p>
+<p>虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。</p>
+<p><img src="https://hopefully-img.yuedun.wang/grpc_nginx2.gif" alt="grpc_nginx2" title="grpc_nginx2"></p>
+<p>原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了<code>grpc_connect_timeout</code>选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。</p>
+<p><img src="https://hopefully-img.yuedun.wang/grpc_nginx3.gif" alt="grpc_nginx3" title="grpc_nginx3"></p>
 
 		</div>
 		<footer class="post__footer">

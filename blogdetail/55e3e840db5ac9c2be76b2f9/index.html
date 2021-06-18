@@ -19,7 +19,7 @@
 <meta itemprop="description" content="公司之前的产品管理对于小编们的使用情况及其糟糕，每次打开一个页面都要等待好久，这也是由于时间紧张，开始做的时候就只管进度没有时间优化"><meta itemprop="datePublished" content="2015-08-31T05:38:08&#43;00:00" />
 <meta itemprop="dateModified" content="2015-08-31T05:38:08&#43;00:00" />
 <meta itemprop="wordCount" content="6">
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="浏览器," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="一次简单的前端页面优化"/>
 <meta name="twitter:description" content="公司之前的产品管理对于小编们的使用情况及其糟糕，每次打开一个页面都要等待好久，这也是由于时间紧张，开始做的时候就只管进度没有时间优化"/>
@@ -147,15 +147,26 @@
 </div>
 <div class="content post__content clearfix">
 			<p>公司之前的产品管理对于小编们的使用情况及其糟糕，每次打开一个页面都要等待好久，这也是由于时间紧张，开始做的时候就只管进度没有时间优化。我大概看了下，光是登录页和一个空白首页就有78个请求，1.1M的数据。其他功能页面不少于这个数，这是因为所有页面共用了一个头文件，而这个头文件把所有有用没有的css文件和js文件都加载进来了，所以这次做的新后台管理系统绝不能这么做了。</p>
-<p><img src="http://hopefully-img.yuedun.wang/17240101628990.jpg" alt="前端性能优化"></p>
+<p><img src="https://hopefully-img.yuedun.wang/17240101628990.jpg" alt="前端性能优化"></p>
 <p>首先，css按需加载，当然有一些css是每个页面必须的就放到一个公共页面中include进来，对于一些新增的插件就在需要的时候添加到对应的页面。</p>
 <p>其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式<!-- raw HTML omitted --><!-- raw HTML omitted --> defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。</p>
-<p><img src="http://hopefully-img.yuedun.wang/17560216355333.jpg" alt="前端性能优化"><br>
-初步结果显示，所有页面加载速度平均在0.5秒，有些页面几乎看不出来重新加载过程，瞬间完成。优化也算是有一定的效果了。其中要说一下requirejs的一些优缺点，requirejs优点是可以实现js异步加载和模块化开发，不过让我有点不适应的是在HTML页面中不能使用onclick=func这种方式的事件处理，会提示找不到函数，只能在页面加载完成后用jquery进行事件监听，一些动态加载的页面数据也需要在加载以后重新绑定事件。</p>
+<p><img src="https://hopefully-img.yuedun.wang/17560216355333.jpg" alt="前端性能优化"></p>
+<p>初步结果显示，所有页面加载速度平均在0.5秒，有些页面几乎看不出来重新加载过程，瞬间完成。优化也算是有一定的效果了。其中要说一下requirejs的一些优缺点，requirejs优点是可以实现js异步加载和模块化开发，不过让我有点不适应的是在HTML页面中不能使用onclick=func这种方式的事件处理，会提示找不到函数，只能在页面加载完成后用jquery进行事件监听，一些动态加载的页面数据也需要在加载以后重新绑定事件。</p>
 <p>2015-11-08日更新</p>
 <p>自从使用了requirejs后，凡是做页面需要js的时候首先想到的就是requirejs，感觉入坑跳不出来，反而弄巧成拙了。requirejs本意是异步加载多个js文件以防止页面阻塞，在一个网站或项目中也尽量合并多个文件里的内容以减少网络请求，一次加载一个大的文件比多次加载多个小文件来的划算的多，还有，requirejs虽然有好处但是并不是任何时候都有，比如页面很简单，js内容也很少的时候就完全不该用它。最后有一个不得不说的缺点，在上面已经提过，就是事件绑定，因为不能使用onclick=func()这种方式调用函数，只能用$(function(){})这种方式绑定事件，那么在网络不好的情况下，有些文件加载缓慢，导致不能绑定事件，如果一个按钮是这种方式绑定的事件，结果就是非要等到页面加载完才能点击，很让人着急。</p>
 
 		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a>
+		</li>
+	</ul>
+</div>
+		</footer>
 	</article>
 </main>
 

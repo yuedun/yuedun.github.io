@@ -45,7 +45,9 @@ this.$emit(&amp;quot;changeData&amp;quot;, &amp;quot;要修改的数据&amp;quot
  在手里拿着锤子的人看来，所有的东西都会是钉子。
   因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。
  事出有因 这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。
-最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。 对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。 而我们一个移动端网站的资源居然能超过3M，究其原因：
+最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。
+对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。
+而我们一个移动端网站的资源居然能超过3M，究其原因：
  图片大 js大 css大  图片大是因为图片基本没任何大小控制，都是使用了最高标准原图。js和css大基本是属于架构问题，一个项目中包含的上百的页面每个页面600多k的js是绕不过去的（vendor.js,app.js等打包资源，不包含其他引入资源）。
 看到vendor.js,app.js这两个名称很多人应该想到了，这是vue（react）框架开发的网站。 是的，就是用vue开发的移动端网站，使用vue开发网站本身也不是什么大问题，毕竟有实力的公司不需要SEO，直接竞价排名就行。而我要说的问题是，不是什么网站都可以用vue来开发，不信请继续往下看。
 问题分析 我司的移动端网站作用并不仅仅是用来展示公司形象的，更重要的是用户转化的，就是让用户注册的。而且是要和很多第三方机构合作投放引流，经常需要分析页面UI的不同对转化率的影响，所以需要的页面不是几个，而是几十上百个，还在不停增加，每周都有三五个页面增加。 由于vue主要是以开发单页SPA应用为主的，在开发人员不考虑真实需求的情况下自然会使用流行的技术，最终把网站开发成一个单页应用。单页应用的特点就是单页，就是把不同的页面做成一个页面一次加载，加载完成后页面之间的切换就会很快，一般无需再加载资源，用户体验也会好很多，可以套用一句话：“一次等待，处处快速”。
@@ -63,8 +65,8 @@ this.$emit(&amp;quot;changeData&amp;quot;, &amp;quot;要修改的数据&amp;quot
       <pubDate>Fri, 16 Feb 2018 13:22:49 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5a86db29c3700db1c9ae7c55/</guid>
-      <description>bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.(found in &amp;lt;Root&amp;gt;)解决方案：与entry属性平级添加
-resolve: {alias: {&#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39;//该路径为node_modules下的vue目录}}// 需要编译器new Vue({template: &#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&#39;})// 不需要编译器new Vue({render (h) {return h(&#39;div&#39;, this.hi)}})出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释</description>
+      <description>bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &amp;lt;Root&amp;gt;) 解决方案：与entry属性平级添加
+resolve: { alias: { &amp;#39;vue$&amp;#39;: &amp;#39;vue/dist/vue.esm.js&amp;#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &amp;#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&amp;#39; }) // 不需要编译器 new Vue({ render (h) { return h(&amp;#39;div&amp;#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释</description>
     </item>
     
     <item>
@@ -83,6 +85,20 @@ http://www.mydomain/?#!/index
     </item>
     
     <item>
+      <title>vue.js click点击事件获取当前元素对象</title>
+      <link>https://www.yuedun.wang/blogdetail/56a8db6abf2e89202c146370/</link>
+      <pubDate>Wed, 27 Jan 2016 14:59:54 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/56a8db6abf2e89202c146370/</guid>
+      <description>Vue.js可以传递$event对象
+&amp;lt;body id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;li v-on:click=&amp;quot;say(&#39;hello!&#39;, $event)&amp;quot;&amp;gt;点击当前行文本&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;li2&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;li3&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;&amp;lt;script&amp;gt;new Vue({el: &#39;#app&#39;,data: {message: &#39;Hello Vue.js!&#39;},methods: {say: function(msg, event) {//获取点击对象 var el = event.currentTarget;alert(&amp;quot;当前对象的内容：&amp;quot;+el.innerHTML);}}})&amp;lt;/script&amp;gt;&amp;lt;/body&amp;gt;函数调用处传递$event
+v-on:click=&amp;quot;say(&#39;hello!&#39;, $event)&amp;quot;
+函数中获取到的event.currentTarget对象就是当前元素
+在线示例
+请查看HTML页面示例源码</description>
+    </item>
+    
+    <item>
       <title>vue.js对表单值初始化</title>
       <link>https://www.yuedun.wang/blogdetail/56970097d8e9ee3c03297d3b/</link>
       <pubDate>Thu, 14 Jan 2016 01:57:43 +0000</pubDate>
@@ -90,6 +106,27 @@ http://www.mydomain/?#!/index
       <guid>https://www.yuedun.wang/blogdetail/56970097d8e9ee3c03297d3b/</guid>
       <description>新建表单有些input输入框需要默认值，比如性别需要一个男或女默认值。再比如一个日期选择框需要默认今天。如果按照HTML的方式设置不会起作用
 &amp;lt;input type=&amp;#34;radio&amp;#34; name=&amp;#34;gender&amp;#34; value=&amp;#34;0&amp;#34; checked=&amp;#34;checked&amp;#34; v-model=&amp;#34;gender&amp;#34;&amp;gt;男&amp;lt;input type=&amp;#34;radio&amp;#34; name=&amp;#34;gender&amp;#34; value=&amp;#34;1&amp;#34; v-model=&amp;#34;gender&amp;#34;&amp;gt;女&amp;lt;/p&amp;gt; &amp;lt;input type=&amp;#34;date&amp;#34; value=&amp;#34;2016-01-06&amp;#34; v-model=&amp;#34;date&amp;#34;&amp;gt;&amp;lt;/p&amp;gt; 在vue.js页面中上面这种设置方式是不会起作用的,性别不会选中，日期也不会有值。解决办法是对v-model属性设值，在初始化时给gender=0，那么默认会选中性别男，给date=&amp;ldquo;2016-01-06&amp;quot;日期控件也有值。</description>
+    </item>
+    
+    <item>
+      <title>vue.js中使用focus，blur事件</title>
+      <link>https://www.yuedun.wang/blogdetail/5691d933d8e9ee3c03297d39/</link>
+      <pubDate>Sun, 10 Jan 2016 04:08:19 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/5691d933d8e9ee3c03297d39/</guid>
+      <description>在线示例
+使用focus，blur可对表单进行验证，除了这两个事件，还有一个watch属性可监听data属性值得变化，具体可打开浏览器控制台看属性值得变化情况，代码可直接在浏览器中查看源码</description>
+    </item>
+    
+    <item>
+      <title>vue.js开发gulp监听文件变化自动编译</title>
+      <link>https://www.yuedun.wang/blogdetail/568a088edb1fef9e0cda949e/</link>
+      <pubDate>Mon, 04 Jan 2016 05:52:14 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/568a088edb1fef9e0cda949e/</guid>
+      <description>直接看代码：
+var gulp = require(&amp;#39;gulp&amp;#39;) var webpack = require(&amp;#34;gulp-webpack&amp;#34;); var webpackConfig = require(&amp;#34;./webpack.config.js&amp;#34;); // gulp.task(&amp;#34;webpack&amp;#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;err:&amp;#34;+JSON.stringify(err)) // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;stats:&amp;#34;+stats) // if(err) throw new Error(&amp;#34;webpack&amp;#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&amp;#34;webpack&amp;#34;, function(){ return gulp.src(&amp;#34;./app.js&amp;#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&amp;#34;./dist/&amp;#34;)) }); gulp.watch(&amp;#39;./views/*&amp;#39;, [&amp;#39;webpack&amp;#39;]); webpack.config.js配置
+var webpack = require(&amp;#34;webpack&amp;#34;); module.exports = { entry: //&amp;#34;./app.js&amp;#34;,  { app:&amp;#34;./app.js&amp;#34; // vendor: [&amp;#34;.</description>
     </item>
     
   </channel>

@@ -144,21 +144,25 @@
 	<div class="toc__menu">
 		<nav id="TableOfContents">
   <ul>
-    <li><a href="#fork模式">fork模式</a></li>
-    <li><a href="#cluster模式">cluster模式</a></li>
+    <li>
+      <ul>
+        <li><a href="#fork模式">fork模式</a></li>
+        <li><a href="#cluster模式">cluster模式</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<p>pm2的fork模式和cluster模式的区别</p>
-<h2 id="fork模式">fork模式</h2>
+<h3 id="fork模式">fork模式</h3>
 <p>pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。
 参考：<a href="http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2">http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2</a>
 运行非js语言必须设置运行模式为<code>fork_mode</code></p>
-<h2 id="cluster模式">cluster模式</h2>
-<p>cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
-<img src="http://i.imgur.com/kTAowsL.png" alt=""></p>
+<h3 id="cluster模式">cluster模式</h3>
+<p>cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。</p>
+<p><img src="http://i.imgur.com/kTAowsL.png" alt=""></p>
 <p>** 使用方法 **
 <code>pm2 start app.js -i max</code>
 使用-i参数，max代表最大CPU进程数</p>

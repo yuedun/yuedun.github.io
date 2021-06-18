@@ -236,8 +236,8 @@
 	<span style="color:#a6e22e">elapsed</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Sub</span>(<span style="color:#a6e22e">start</span>)
 	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncChanFunc end:&#34;</span>, <span style="color:#a6e22e">elapsed</span>)
 }
-</code></pre></div><p>测试结果：
-<a href="http://hopefully-img.yuedun.wang/20180409190728.png" title="测试结果"><img src="http://hopefully-img.yuedun.wang/20180409190728.png" alt="测试结果" title="测试结果"></a></p>
+</code></pre></div><p>测试结果：</p>
+<p><img src="https://hopefully-img.yuedun.wang/20180409190728.png" alt="测试结果" title="测试结果"></p>
 <p>看完代码和执行结果再来详细说明一下，<code>time.Sleep(time.Second*1)</code>是用来模拟该段程序需要执行n秒，<code>syncFunc</code>函数是串行的，耗时6秒。<code>asyncFunc</code>和<code>asyncChanFunc</code>是并行的。耗时近乎3秒。而这两种模式略有不同，
 ** <code>asyncFunc</code>使用了<code>sync.WaitGroup</code>**</p>
 <blockquote>

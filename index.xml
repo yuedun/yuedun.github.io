@@ -91,7 +91,8 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &amp;
 基本流程如下：
  发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。  部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
 使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
-最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。 朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
+最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。
+朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
  朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统</description>
     </item>
     
@@ -104,7 +105,7 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &amp;
       <description>先看看一体LED可伸缩变焦手电筒长什么样子
 这种手电筒刚买回来几个月就不亮了，以为没电了，充电了也不行，想拆开看看却发现无从下手，手电筒是一体的，并没有地方可扭开。
 按钮部位看起来是可拆解的，想要转动一下，发现无法转动，最后抱着死马当活马医的心态，大不了拆坏了，随便用工具撬了下尾部凹槽部分，发现有活动迹象，然后就继续撬，果然是大力出奇迹。最后就是下面图展示的样子，有明显损坏痕迹，不过也没办法，实在不好拆。拆开后发现电池线断了，将就着接上后就好了。
-最后，虽然不建议买这种手电筒，但是既然您看到本文了，那也就有救了。 祝大家五一快乐！ </description>
+最后，虽然不建议买这种手电筒，但是既然您看到本文了，那也就有救了。 祝大家五一快乐！</description>
     </item>
     
     <item>
@@ -297,7 +298,8 @@ import { wrap } from &amp;#39;svelte-spa-router/wrap&amp;#39; import index from 
 如果有了远程开发环境，则能应对临时性工作，大大降低成本。
 用iPad写代码 如果你觉得vscode远程开发还不够酷？那在iPad中写代码呢？
 vscode远程开发虽好，但还有有局限性，毕竟还是需要一台可以安装vscode的电脑，还是不能随时随地的写代码。现在我要告诉你如何在iPad中写代码！
-code-server是一个可以运行在服务器上的web项目，这下我们可以在浏览器中使用vscode了，可以在浏览器中打开vscode的，自然就可以使用iPad来写代码了。 Eclipse Theia https://gitpod.io/#https://github.com/eclipse-theia/theia 额，希望苹果能给我广告费！
+code-server是一个可以运行在服务器上的web项目，这下我们可以在浏览器中使用vscode了，可以在浏览器中打开vscode的，自然就可以使用iPad来写代码了。 Eclipse Theia https://gitpod.io/#https://github.com/eclipse-theia/theia
+额，希望苹果能给我广告费！
 再或者使用使用codespaces也可以在线编辑代码，https://mp.weixin.qq.com/s/Eutjgbx_nofmuhU2yBGhxg
 最后 贴一篇带图的环境搭建教程真香！使用 VSCode 远程开发调试</description>
     </item>
@@ -308,7 +310,8 @@ code-server是一个可以运行在服务器上的web项目，这下我们可以
       <pubDate>Tue, 17 Nov 2020 02:04:55 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5fb32fc75edb9b37630b7a6a/</guid>
-      <description>MySQL常用的客户端是Navicat，SQLyog等，本文推荐另一款通用的客户端：DBeaver DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接 </description>
+      <description>MySQL常用的客户端是Navicat，SQLyog等，本文推荐另一款通用的客户端：DBeaver
+DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接</description>
     </item>
     
     <item>
@@ -365,7 +368,8 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 另外说明一下Jenkins。它应该是使用最多的发布系统了，Jenkins基于Java开发，它已经是成熟的系统了，成熟同时也代表着复杂，复杂代表修改困难，我想大家也不太会基于Jenkins定制开发。 然后是部署困难，相比较nodejs三条命令搞定linux安装nodejs——快捷版，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。
 于是下定决心自己开发一个发布系统，朱雀发布系统因此诞生。
 基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图：
-和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下： 项目地址：nodejs发布系统
+和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下：
+项目地址：nodejs发布系统
 朱雀发布系统支持scp（rsync）发布</description>
     </item>
     
@@ -449,8 +453,10 @@ this.$emit(&amp;quot;changeData&amp;quot;, &amp;quot;要修改的数据&amp;quot
 于是我问：“《西游记》动画片你都没看过，那你平时都看什么动画？”
 他说：“奥特曼，小猪佩奇，海绵宝宝，汪汪队，还有……”
 四大名著不知道，四个动漫说的很溜，而且好像都是国外动漫，我赶紧打断，说道：“行了，行了，从今天开始，在我家你不能看这些动画片了，我们从今天开始先从《西游记》看起。”
-他顿时有点不乐意了，但是也没办法。于是在吃饭时间我找到了《西游记》动画，结果看了两集他就直对我说好看。 此刻，我对国漫的现状感到悲哀，正好和最近多次在公众号上看到关于国漫被举报的话题相对应——“人物头发染成五颜六色，穿得花里胡哨，价值导向有问题”。 当时也只是感觉现在这家长真是闲的慌，自己的价值观是不是有问题，反而去举报动漫。动漫中的人物染五颜六色的头发也能成举报理由，我们从小看的动漫人物不都是这种造型吗？并没觉得有什么不妥，也没听说过有人因动漫人物造型问题而走上违法犯罪的道路。 现在摆在眼前的现实问题是：我们的孩子不只是没有国产动漫可以看，甚至连中国文化都开始丢弃，是因为中国文化不好吗？绝对不是！而是作为家长，作为长辈的我们都在排斥和诋毁中国文化。小时候看的一些优秀动画现在都已经看不到了，其中有不少是禁播了。老的动画禁播，新的动画审核不通过，剩下的只有国外入侵动漫，国外文化入侵。
-请问下面哪个是孙悟空？ 希望我们的后代还能分得清什么是中国的，什么是外国的。
+他顿时有点不乐意了，但是也没办法。于是在吃饭时间我找到了《西游记》动画，结果看了两集他就直对我说好看。 此刻，我对国漫的现状感到悲哀，正好和最近多次在公众号上看到关于国漫被举报的话题相对应——“人物头发染成五颜六色，穿得花里胡哨，价值导向有问题”。 当时也只是感觉现在这家长真是闲的慌，自己的价值观是不是有问题，反而去举报动漫。动漫中的人物染五颜六色的头发也能成举报理由，我们从小看的动漫人物不都是这种造型吗？并没觉得有什么不妥，也没听说过有人因动漫人物造型问题而走上违法犯罪的道路。
+现在摆在眼前的现实问题是：我们的孩子不只是没有国产动漫可以看，甚至连中国文化都开始丢弃，是因为中国文化不好吗？绝对不是！而是作为家长，作为长辈的我们都在排斥和诋毁中国文化。小时候看的一些优秀动画现在都已经看不到了，其中有不少是禁播了。老的动画禁播，新的动画审核不通过，剩下的只有国外入侵动漫，国外文化入侵。
+请问下面哪个是孙悟空？
+希望我们的后代还能分得清什么是中国的，什么是外国的。
 国产动画不乏有很多优秀作品，未来会有更多，希望能够理性的对待，而是总是在挑毛病。</description>
     </item>
     
@@ -519,7 +525,9 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
  在手里拿着锤子的人看来，所有的东西都会是钉子。
   因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。
  事出有因 这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。
-最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。 对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。 而我们一个移动端网站的资源居然能超过3M，究其原因：
+最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。
+对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。
+而我们一个移动端网站的资源居然能超过3M，究其原因：
  图片大 js大 css大  图片大是因为图片基本没任何大小控制，都是使用了最高标准原图。js和css大基本是属于架构问题，一个项目中包含的上百的页面每个页面600多k的js是绕不过去的（vendor.js,app.js等打包资源，不包含其他引入资源）。
 看到vendor.js,app.js这两个名称很多人应该想到了，这是vue（react）框架开发的网站。 是的，就是用vue开发的移动端网站，使用vue开发网站本身也不是什么大问题，毕竟有实力的公司不需要SEO，直接竞价排名就行。而我要说的问题是，不是什么网站都可以用vue来开发，不信请继续往下看。
 问题分析 我司的移动端网站作用并不仅仅是用来展示公司形象的，更重要的是用户转化的，就是让用户注册的。而且是要和很多第三方机构合作投放引流，经常需要分析页面UI的不同对转化率的影响，所以需要的页面不是几个，而是几十上百个，还在不停增加，每周都有三五个页面增加。 由于vue主要是以开发单页SPA应用为主的，在开发人员不考虑真实需求的情况下自然会使用流行的技术，最终把网站开发成一个单页应用。单页应用的特点就是单页，就是把不同的页面做成一个页面一次加载，加载完成后页面之间的切换就会很快，一般无需再加载资源，用户体验也会好很多，可以套用一句话：“一次等待，处处快速”。
@@ -537,9 +545,13 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
       <pubDate>Wed, 15 Apr 2020 11:36:56 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5e96f1d8bd7e796e7100a71a/</guid>
-      <description>为什么需要UI自动化？ 说起自动化，听着很厉害，可是也没见识过到底多厉害，基本是属于传说，没见过实战。但不能否认其价值，作者本人作为一个开发者也是偶然的机会接触到UI自动化，感受到了自动化的魅力，才不惜花时间来学习并使用在实际工作中。下面就来说一下为什么要做自动化。 自动化有很多种，单元测试，接口测试，UI测试。所有测试过程可以形成这样一个金字塔： （图片来自网络） （图片来自网络）
-从图中看出底层测试简单快速，每个单元相对独立，测试成本也较低。而最顶层的UI层聚合了底层的很多接口服务，一个测试流程相对更长更复杂，也就导致了速度慢，成本高的问题。如果由人工来完成，一个完整的测试流程往往需要几分钟，而且是不停的重复这样一个流程。所以很多开发都不愿意完整的测试自己所开发的一套业务，只能由测试人员不厌其烦的循环往复。此时如果有自动化的话就非常nice了。口说无凭，一图胜千言： 是不是还没看清？没错，平时人工测试一个报名表单需要15秒左右，而自动化后几乎一瞬间即可完成，速度提升不言而喻。如果您对UI自动化已产生兴趣，请继续往下看。
-哪些场景可以UI自动化？ UI自动化的目的不是为了自动化而自动化，也并不能覆盖所有测试。还是以测试金字塔来说明： UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越往顶层消耗的人力成本越高，如果底层测试不够充分就只能靠顶层测试来保证。自动化虽好，但需要满足特定的场景才行，那么什么样的场景可以做UI自动化？
+      <description>为什么需要UI自动化？ 说起自动化，听着很厉害，可是也没见识过到底多厉害，基本是属于传说，没见过实战。但不能否认其价值，作者本人作为一个开发者也是偶然的机会接触到UI自动化，感受到了自动化的魅力，才不惜花时间来学习并使用在实际工作中。下面就来说一下为什么要做自动化。 自动化有很多种，单元测试，接口测试，UI测试。所有测试过程可以形成这样一个金字塔：
+（图片来自网络）
+（图片来自网络）
+从图中看出底层测试简单快速，每个单元相对独立，测试成本也较低。而最顶层的UI层聚合了底层的很多接口服务，一个测试流程相对更长更复杂，也就导致了速度慢，成本高的问题。如果由人工来完成，一个完整的测试流程往往需要几分钟，而且是不停的重复这样一个流程。所以很多开发都不愿意完整的测试自己所开发的一套业务，只能由测试人员不厌其烦的循环往复。此时如果有自动化的话就非常nice了。口说无凭，一图胜千言：
+是不是还没看清？没错，平时人工测试一个报名表单需要15秒左右，而自动化后几乎一瞬间即可完成，速度提升不言而喻。如果您对UI自动化已产生兴趣，请继续往下看。
+哪些场景可以UI自动化？ UI自动化的目的不是为了自动化而自动化，也并不能覆盖所有测试。还是以测试金字塔来说明：
+UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越往顶层消耗的人力成本越高，如果底层测试不够充分就只能靠顶层测试来保证。自动化虽好，但需要满足特定的场景才行，那么什么样的场景可以做UI自动化？
  流程变化少。侧重UI的修改，而不是流程的修改。 频繁的回归测试。比如一个报名表单样式修改比较频繁，需要测试其报名是否可用。 界面稳定。样式可以频繁修改，但表单顺序和个数变化较少不能频繁变更。 维护周期长。如果只是使用一次那也不必自动化了，毕竟自动化是解决重复劳动。 开发与测试可相互配合。自动化需要程序有一定规范便于测试人员写测试程序。 测试人员具备编程能力。 如果满足了上述的场景，那么UI自动化在人力消耗和效率上就有很大的提升。正确性上更有保证，手工录入会有输错重输的情况，而自动化则不会出现。 再看一个流程比较长的页面：  上面动图并没与快进，一气呵成完成了一次下单流程，基本不需要停留即可进入下一步，相比起手动操作省时省力。
 为什么UI自动化普及率低？ 既然UI自动化能提高效率，但为什么却很少有人去使用？
  开发自动化程序对测试人员的编程水平有一定要求，很少有人愿意花时间去写这个程序。 对于互联网公司，大多数业务需要快速迭代，一个页面的生存周期很短，也可能只是一次性的，自动化测试没有存在的必要性。 测试人员没有切实的感受到效率提升。  其实说白了，就是大家觉得投入和产出不值得。如果是迫于领导压力要写自动化程序，就会不停的对程序修修补补，自己用的话有问题大不了不用自动化，手动测试一下通过就行，如果是给别人用就会不停收到反馈和吐槽，自然也就没有写下去的动力了。 所以个人觉得，自动化程序不应该成为一种流程和形式，而是应该由开发和测试人员自发的去将自身经常重复的工作做成自动化。因为自动化本身就不能覆盖所有场景，只有实际参与的人才能知道哪些是可以自动化的。
@@ -584,7 +596,8 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
       
       <guid>https://www.yuedun.wang/blogdetail/5e87e9ac75da9268a3e5993c/</guid>
       <description>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
-db.createUser( {user: &amp;quot;hp_website&amp;quot;,pwd: &amp;quot;xxxxxx&amp;quot;,roles: [ { role: &amp;quot;userAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbOwner&amp;quot;, db: &amp;quot;website&amp;quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
+db.createUser( {user: &amp;quot;hp_website&amp;quot;,pwd: &amp;quot;xxxxxx&amp;quot;,roles: [ { role: &amp;quot;userAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbOwner&amp;quot;, db: &amp;quot;website&amp;quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示
+虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
 use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。</description>
     </item>
     
@@ -648,9 +661,7 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
       <pubDate>Tue, 04 Feb 2020 03:52:48 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5e38ea905bd8165f28d1fc55/</guid>
-      <description>新买的windows笔记本一般会对磁盘进行分区，虽然有说法是现代电脑没必要分区，不过目前很多人还是有这样的习惯。 然而我们往往低估了软件的吃磁盘能力，会把C盘设置50G左右的大小，觉得C盘只是装个系统而已，会自觉把软件装到其他盘下，结果就是没用几个月C盘就满了。其实，虽然我们把软件装到了其他盘，但是软件本身会下载很多内容，比如数据保存，缓存，默认下载等等都会占用C盘。所以建议C盘设置100G比较合理。 关于已经分配好大小的磁盘也可以进行调整，需要借助一些软件来操作，本文作者使用的是Diskgenius。 
-
-
+      <description>新买的windows笔记本一般会对磁盘进行分区，虽然有说法是现代电脑没必要分区，不过目前很多人还是有这样的习惯。 然而我们往往低估了软件的吃磁盘能力，会把C盘设置50G左右的大小，觉得C盘只是装个系统而已，会自觉把软件装到其他盘下，结果就是没用几个月C盘就满了。其实，虽然我们把软件装到了其他盘，但是软件本身会下载很多内容，比如数据保存，缓存，默认下载等等都会占用C盘。所以建议C盘设置100G比较合理。 关于已经分配好大小的磁盘也可以进行调整，需要借助一些软件来操作，本文作者使用的是Diskgenius。
 很简单的三个步骤：
  选择需要扩容的磁盘右击“扩容分区” 选择缩容的磁盘，用于将缩容的磁盘分配给C盘。 选择需要缩容的大小。  确认开始大约需要十几分钟就可以了。</description>
     </item>
@@ -701,7 +712,8 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
       <pubDate>Mon, 06 Jan 2020 05:47:41 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5e12c9fd54cf7f406dcb2896/</guid>
-      <description>用过win10应该遇到过下图这个问题：  当你想拖动窗口的时候都不知道鼠标该放在哪里，窗口标题栏和网页颜色融为一体了。
+      <description>用过win10应该遇到过下图这个问题：
+当你想拖动窗口的时候都不知道鼠标该放在哪里，窗口标题栏和网页颜色融为一体了。
 设置颜色方法：桌面-右击-个性化</description>
     </item>
     
@@ -799,13 +811,13 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
       <pubDate>Wed, 23 Oct 2019 11:47:00 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5db03db400f24e1fd556cec4/</guid>
-      <description>面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。
-日常开发流程是这样的：
+      <description>背景 面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。
+原来 日常开发流程是这样的：
  开发 -&amp;gt; 合代码 -&amp;gt; 上测试环境 -&amp;gt; 测试 -&amp;gt; 合代码 -&amp;gt; 上uat环境 -&amp;gt; 测试 -&amp;gt; 合代码 -&amp;gt; 提发布申请 -&amp;gt; 发布 -&amp;gt; 验收
 就算是一个3分钟搞定的需求，流程也需要1天，因为中间有太多的环境切换和人员流转。
 这样的经历所有做过运营活动的童鞋或多或少都有体验，所以很多人也想过做一个编辑器，比如拖拉组件的方式实现一个页面。
 我们曾经有种设想是直接给运营做一个活动编辑器，让他们自己去修改，自己去做页面，自己发布。说实话这个也做过，但是没用起来，原因呢大概就是人性的贪婪与懒惰，当初做出第一版的时候觉得太简单，不能满足使用需求，第二版的时候功能倒是挺丰富，但是运营又不会用。想想那么多css样式，你以为图形化了他们就会用？太天真！干脆教他们写代码好了！
-所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。 这个平台最终流程变成了这样：
+现在 所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。 这个平台最终流程变成了这样：
 开发 -&amp;gt; 测试 -&amp;gt; 发布 -&amp;gt; 验收
 是的，由原来的11步直接变成了4步，其中开发和发布也比原来更简单了，你可以选择自己喜欢的编辑方式和开发框架，或vscode，或devtool,或工具提供的文本框，或jquery，或vue。可单独对css，js，html修改，将修改的内容直接提交即可看到效果。 为什么会减少这么多？因为没有了测试环境和uat环境的流转，直接在生产环境操作的。
 是不是会有疑问——直接在生产环境开发会不会有风险？ 答案是：不会！项目本身是分为两个环境，一个是开发环境，另一个是访问环境。开发环境是用于内部开发和测试使用，不对外开放，只有发布后才将开发数据同步到公开环境。
@@ -839,7 +851,8 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 各个犄角旮旯里死去的奶茶店数都数不清。
 如果是中心地带的话，那么你能保证拿下这块地吗？
 注意，拿下的前提是以合理的成本，如果成本失控，那么拿这块地也没意义。
-如果不能，你还是别来了，这个门槛对你高到能卡蛋的地步。 问题3，你有多少本钱可以烧掉不心疼？
+如果不能，你还是别来了，这个门槛对你高到能卡蛋的地步。
+问题3，你有多少本钱可以烧掉不心疼？
 这个问题本质上是问你的抗风险能力。
 我相信每个人做生意都不是为了赔钱的，但正因如此，才要给自己留足余地，因为生意这件事情，真的是说不好的。
 别总想着孤注一掷破釜沉舟，人类历史上成功的也就那么几个，绝大多数都是死的不要不要的没人知道，这叫做幸存者偏差。
@@ -915,7 +928,9 @@ import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdap
       
       <guid>https://www.yuedun.wang/blogdetail/5c735c58e4d2f35bdd267d22/</guid>
       <description>【编者的话】本文对比了Zookeeper、etcd和Consul三种服务发现工具，探讨了最佳的服务发现解决方案，仅供参考。
-如果使用预定义的端口，服务越多，发生冲突的可能性越大，毕竟，不可能有两个服务监听同一个端口。管理一个拥挤的比方说被几百个服务所使用的所有端口的列表，本身就是一个挑战，添加到该列表后，这些服务需要的数据库和数量会日益增多。因此我们应该部署无需指定端口的服务，并且让Docker为我们分配一个随机的端口。唯一的问题是我们需要发现端口号，并且让别人知道。 当我们开始在一个分布式系统上部署服务到其中一台服务器上时，事情会变得更加复杂，我们可以选择预先定义哪台服务器运行哪个服务的方式，但这会导致很多问题。我们应该尽我们所能尽量利用服务器资源，但是如果预先定义每个服务的部署位置，那么要实现尽量利用服务器资源是几乎不可能的。另一个问题是服务的自动伸缩将会非常困难，更不用说自动恢复了，比方说服务器故障。另一方面，如果我们将服务部署到某台只有最少数量的容器在运行的服务器上，我们需要添加IP地址到数据列表中，这些数据需要可以被发现并存储在某处。 当我们需要存储和发现一些与正在工作的服务相关的信息时，还有很多其他的例子。
+如果使用预定义的端口，服务越多，发生冲突的可能性越大，毕竟，不可能有两个服务监听同一个端口。管理一个拥挤的比方说被几百个服务所使用的所有端口的列表，本身就是一个挑战，添加到该列表后，这些服务需要的数据库和数量会日益增多。因此我们应该部署无需指定端口的服务，并且让Docker为我们分配一个随机的端口。唯一的问题是我们需要发现端口号，并且让别人知道。
+当我们开始在一个分布式系统上部署服务到其中一台服务器上时，事情会变得更加复杂，我们可以选择预先定义哪台服务器运行哪个服务的方式，但这会导致很多问题。我们应该尽我们所能尽量利用服务器资源，但是如果预先定义每个服务的部署位置，那么要实现尽量利用服务器资源是几乎不可能的。另一个问题是服务的自动伸缩将会非常困难，更不用说自动恢复了，比方说服务器故障。另一方面，如果我们将服务部署到某台只有最少数量的容器在运行的服务器上，我们需要添加IP地址到数据列表中，这些数据需要可以被发现并存储在某处。
+当我们需要存储和发现一些与正在工作的服务相关的信息时，还有很多其他的例子。
 为了能够定位服务，我们需要至少接下来的两个有用的步骤。 服务注册——该步骤存储的信息至少包括正在运行的服务的主机和端口信息 服务发现——该步骤允许其他用户可以发现在服务注册阶段存储的信息。
 除了上述的步骤，我们还需要考虑其他方面。如果一个服务停止工作并部署/注册了一个新的服务实例，那么该服务是否应该注销呢？当有相同服务的多个副本时咋办？我们该如何做负载均衡呢？如果一个服务器宕机了咋办？所有这些问题都与注册和发现阶段紧密关联。现在，我们限定只在服务发现的范围里（常见的名字，围绕上述步骤）以及用于服务发现任务的工具，它们中的大多数采用了高可用的分布式键/值存储。
 服务发现工具 服务发现工具的主要目标是用来服务查找和相互对话，为此该工具需要知道每个服务，这不是一个新概念，在Docker之前就已经存在很多类似的工具了，然而，容器带给了这些工具一个全新水平的需求。
@@ -930,21 +945,28 @@ Zookeeper Zookeeper是这种类型的项目中历史最悠久的之一，它起�
 Zookeeper的主要优势是其成熟、健壮以及丰富的特性，然而，它也有自己的缺点，其中采用Java开发以及复杂性是罪魁祸首。尽管Java在许多方面非常伟大，然后对于这种类型的工作还是太沉重了，Zookeeper使用Java以及相当数量的依赖使其对于资源竞争非常饥渴。因为上述的这些问题，Zookeeper变得非常复杂，维护它需要比我们期望从这种类型的应用程序中获得的收益更多的知识。这部分地是由于丰富的特性反而将其从优势转变为累赘。应用程序的特性功能越多，就会有越大的可能性不需要这些特性，因此，我们最终将会为这些不需要的特性付出复杂度方面的代价。
 Zookeeper为其他项目相当大的改进铺平了道路，“大数据玩家“在使用它，因为没有更好的选择。今天，Zookeeper已经老态龙钟了，我们有了更好的选择。
 etcd etcd是一个采用HTTP协议的健/值对存储系统，它是一个分布式和功能层次配置系统，可用于构建服务发现系统。其很容易部署、安装和使用，提供了可靠的数据持久化特性。它是安全的并且文档也十分齐全。
-etcd比Zookeeper是比更好的选择，因为它很简单，然而，它需要搭配一些第三方工具才可以提供服务发现功能。 现在，我们有一个地方来存储服务相关信息，我们还需要一个工具可以自动发送信息给etcd。但在这之后，为什么我们还需要手动把数据发送给etcd呢？即使我们希望手动将信息发送给etcd，我们通常情况下也不会知道是什么信息。记住这一点，服务可能会被部署到一台运行最少数量容器的服务器上，并且随机分配一个端口。理想情况下，这个工具应该监视所有节点上的Docker容器，并且每当有新容器运行或者现有的一个容器停止的时候更新etcd，其中的一个可以帮助我们达成目标的工具就是Registrator。
+etcd比Zookeeper是比更好的选择，因为它很简单，然而，它需要搭配一些第三方工具才可以提供服务发现功能。
+现在，我们有一个地方来存储服务相关信息，我们还需要一个工具可以自动发送信息给etcd。但在这之后，为什么我们还需要手动把数据发送给etcd呢？即使我们希望手动将信息发送给etcd，我们通常情况下也不会知道是什么信息。记住这一点，服务可能会被部署到一台运行最少数量容器的服务器上，并且随机分配一个端口。理想情况下，这个工具应该监视所有节点上的Docker容器，并且每当有新容器运行或者现有的一个容器停止的时候更新etcd，其中的一个可以帮助我们达成目标的工具就是Registrator。
 Registrator Registrator通过检查容器在线或者停止运行状态自动注册和去注册服务，它目前支持etcd、Consul和SkyDNS 2。
-Registrator与etcd是一个简单但是功能强大的组合，可以运行很多先进的技术。每当我们打开一个容器，所有数据将被存储在etcd并传播到集群中的所有节点。我们将决定什么信息是我们的。 上述的拼图游戏还缺少一块，我们需要一种方法来创建配置文件，与数据都存储在etcd，通过运行一些命令来创建这些配置文件。
-Confd Confd是一个轻量级的配置管理工具，常见的用法是通过使用存储在etcd、consul和其他一些数据登记处的数据保持配置文件的最新状态，它也可以用来在配置文件改变时重新加载应用程序。换句话说，我们可以用存储在etcd（或者其他注册中心）的信息来重新配置所有服务。 对于etcd、Registrator和Confd组合的最后的思考 当etcd、Registrator和Confd结合时，可以获得一个简单而强大的方法来自动化操作我们所有的服务发现和需要的配置。这个组合还展示了“小”工具正确组合的有效性，这三个小东西可以如我们所愿正好完成我们需要达到的目标，若范围稍微小一些，我们将无法完成我们面前的目标，而另一方面如果他们设计时考虑到更大的范围，我们将引入不必要的复杂性和服务器资源开销。
+Registrator与etcd是一个简单但是功能强大的组合，可以运行很多先进的技术。每当我们打开一个容器，所有数据将被存储在etcd并传播到集群中的所有节点。我们将决定什么信息是我们的。
+上述的拼图游戏还缺少一块，我们需要一种方法来创建配置文件，与数据都存储在etcd，通过运行一些命令来创建这些配置文件。
+Confd Confd是一个轻量级的配置管理工具，常见的用法是通过使用存储在etcd、consul和其他一些数据登记处的数据保持配置文件的最新状态，它也可以用来在配置文件改变时重新加载应用程序。换句话说，我们可以用存储在etcd（或者其他注册中心）的信息来重新配置所有服务。
+对于etcd、Registrator和Confd组合的最后的思考 当etcd、Registrator和Confd结合时，可以获得一个简单而强大的方法来自动化操作我们所有的服务发现和需要的配置。这个组合还展示了“小”工具正确组合的有效性，这三个小东西可以如我们所愿正好完成我们需要达到的目标，若范围稍微小一些，我们将无法完成我们面前的目标，而另一方面如果他们设计时考虑到更大的范围，我们将引入不必要的复杂性和服务器资源开销。
 在我们做出最后的判决之前，让我们看看另一个有相同目标的工具组合，毕竟，我们不应该满足于一些没有可替代方案的选择。
 Consul Consul是强一致性的数据存储，使用gossip形成动态集群。它提供分级键/值存储方式，不仅可以存储数据，而且可以用于注册器件事各种任务，从发送数据改变通知到运行健康检查和自定义命令，具体如何取决于它们的输出。
 与Zookeeper和etcd不一样，Consul内嵌实现了服务发现系统，所以这样就不需要构建自己的系统或使用第三方系统。这一发现系统除了上述提到的特性之外，还包括节点健康检查和运行在其上的服务。
 Zookeeper和etcd只提供原始的键/值队存储，要求应用程序开发人员构建他们自己的系统提供服务发现功能。而Consul提供了一个内置的服务发现的框架。客户只需要注册服务并通过DNS或HTTP接口执行服务发现。其他两个工具需要一个亲手制作的解决方案或借助于第三方工具。
-Consul为多种数据中心提供了开箱即用的原生支持，其中的gossip系统不仅可以工作在同一集群内部的各个节点，而且还可以跨数据中心工作。 Consul还有另一个不错的区别于其他工具的功能，它不仅可以用来发现已部署的服务以及其驻留的节点信息，还通过HTTP请求、TTLs（time-to-live）和自定义命令提供了易于扩展的健康检查特性。
+Consul为多种数据中心提供了开箱即用的原生支持，其中的gossip系统不仅可以工作在同一集群内部的各个节点，而且还可以跨数据中心工作。
+Consul还有另一个不错的区别于其他工具的功能，它不仅可以用来发现已部署的服务以及其驻留的节点信息，还通过HTTP请求、TTLs（time-to-live）和自定义命令提供了易于扩展的健康检查特性。
 Registrator Registrator有两个Consul协议，其中consulkv协议产生类似于etcd协议的结果。
-除了通常的IP和端口存储在etcd或consulkv协议中之外，Registrator consul协议存储了更多的信息，我们可以得到服务运行节点的信息，以及服务ID和名称。我们也可以借助于一些额外的环境变量按照一定的标记存储额外的信息。 Consul-template confd可以像和etce搭配一样用于Consul，不过Consul有自己的模板服务，其更适配Consul。
-通过从Consul获得的信息，Consul-template是一个非常方便的创建文件的途径，还有一个额外的好处就是在文件更新后可以运行任意命令，正如confd，Consul-template也可以使用 Go模板格式。 Consul健康检查、Web界面和数据中心 监控集群节点和服务的健康状态与测试和部署它们一样的重要。虽然我们应该向着拥有从来没有故障的稳定的环境努力，但我们也应该承认，随时会有意想不到的故障发生，时刻准备着采取相应的措施。例如我们可以监控内存使用情况，如果达到一定的阈值，那么迁移一些服务到集群中的另外一个节点，这将是在发生“灾难”前执行的一个预防措施。另一方面，并不是所有潜在的故障都可以被及时检测到并采取措施。单个服务可能会齿白，一个完整的节点也可能由于硬件故障而停止工作。在这种情况下我们应该准备尽快行动，例如一个节点替换为一个新的并迁移失败的服务。Consul有一个简单的、优雅的但功能强大的方式进行健康检查，当健康阀值达到一定数目时，帮助用户定义应该执行的操作。
+除了通常的IP和端口存储在etcd或consulkv协议中之外，Registrator consul协议存储了更多的信息，我们可以得到服务运行节点的信息，以及服务ID和名称。我们也可以借助于一些额外的环境变量按照一定的标记存储额外的信息。
+Consul-template confd可以像和etce搭配一样用于Consul，不过Consul有自己的模板服务，其更适配Consul。
+通过从Consul获得的信息，Consul-template是一个非常方便的创建文件的途径，还有一个额外的好处就是在文件更新后可以运行任意命令，正如confd，Consul-template也可以使用 Go模板格式。
+Consul健康检查、Web界面和数据中心 监控集群节点和服务的健康状态与测试和部署它们一样的重要。虽然我们应该向着拥有从来没有故障的稳定的环境努力，但我们也应该承认，随时会有意想不到的故障发生，时刻准备着采取相应的措施。例如我们可以监控内存使用情况，如果达到一定的阈值，那么迁移一些服务到集群中的另外一个节点，这将是在发生“灾难”前执行的一个预防措施。另一方面，并不是所有潜在的故障都可以被及时检测到并采取措施。单个服务可能会齿白，一个完整的节点也可能由于硬件故障而停止工作。在这种情况下我们应该准备尽快行动，例如一个节点替换为一个新的并迁移失败的服务。Consul有一个简单的、优雅的但功能强大的方式进行健康检查，当健康阀值达到一定数目时，帮助用户定义应该执行的操作。
 如果用户Google搜索“etcd ui”或者“etec dashboard”时，用户可能看到只有几个可用的解决方案，可能会问为什么我们还没有介绍给用户，这个原因很简单，etcd只是键/值对存储，仅此而已。通过一个UI呈现数据没有太多的用处，因为我们可以很容易地通过etcdctl获得这些数据。这并不意味着etcd UI是无用的，但鉴于其有限的使用范围，它不会产生多大影响。
 Consu不仅仅是一个简单的键/值对存储，正如我们已经看到的，除了存储简单的键/值对，它还有一个服务的概念以及所属的数据。它还可以执行健康检查，因此成为一个好的候选dashboard，在上面可以看到我们的节点的状态和运行的服务。最后，它支持了多数据中心的概念。所有这些特性的结合让我们从不同的角度看到引入dashboard的必要性。
-通过Consul Web界面，用户可以查看所有的服务和节点、监控健康检查状态以及通过切换数据中心读取设置键/值对数据。 对于Consul、Registrator、Template、健康检查和Web UI的最终思考 Consul以及上述我们一起探讨的工具在很多情况下提供了比etcd更好的解决方案。这是从内心深处为了服务架构和发现而设计的方案，简单而强大。它提供了一个完整的同时不失简洁的解决方案，在许多情况下，这是最佳的服务发现以及满足健康检查需求的工具。 结论 所有这些工具都是基于相似的原则和架构，它们在节点上运行，需要仲裁来运行，并且都是强一致性的，都提供某种形式的键/值对存储。
+通过Consul Web界面，用户可以查看所有的服务和节点、监控健康检查状态以及通过切换数据中心读取设置键/值对数据。
+对于Consul、Registrator、Template、健康检查和Web UI的最终思考 Consul以及上述我们一起探讨的工具在很多情况下提供了比etcd更好的解决方案。这是从内心深处为了服务架构和发现而设计的方案，简单而强大。它提供了一个完整的同时不失简洁的解决方案，在许多情况下，这是最佳的服务发现以及满足健康检查需求的工具。 结论 所有这些工具都是基于相似的原则和架构，它们在节点上运行，需要仲裁来运行，并且都是强一致性的，都提供某种形式的键/值对存储。
 Zookeeper是其中最老态龙钟的一个，使用年限显示出了其复杂性、资源利用和尽力达成的目标，它是为了与我们评估的其他工具所处的不同时代而设计的（即使它不是老得太多）。
 etcd、Registrator和Confd是一个非常简单但非常强大的组合，可以解决大部分问题，如果不是全部满足服务发现需要的话。它还展示了我们可以通过组合非常简单和特定的工具来获得强大的服务发现能力，它们中的每一个都执行一个非常具体的任务，通过精心设计的API进行通讯，具备相对自治工作的能力，从架构和功能途径方面都是微服务方式。
 Consul的不同之处在于无需第三方工具就可以原生支持多数据中心和健康检查，这并不意味着使用第三方工具不好。实际上，在这篇博客里我们通过选择那些表现更佳同时不会引入不必要的功能的的工具，尽力组合不同的工具。使用正确的工具可以获得最好的结果。如果工具引入了工作不需要的特性，那么工作效率反而会下降，另一方面，如果工具没有提供工作所需要的特性也是没有用的。Consul很好地权衡了权重，用尽量少的东西很好的达成了目标。
@@ -984,7 +1006,7 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
       <pubDate>Wed, 20 Feb 2019 02:40:41 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5c6cbe294a7b7e6cd80869e5/</guid>
-      <description>同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。  go占14.7M nodejs占122.2M</description>
+      <description>同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。 go占14.7M nodejs占122.2M</description>
     </item>
     
     <item>
@@ -994,7 +1016,7 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
       
       <guid>https://www.yuedun.wang/blogdetail/5c63b5334a7b7e6cd808697a/</guid>
       <description>一、安装gRPC  $ go get -u google.golang.org/grpc
- package google.golang.org/grpc: unrecognized import path &amp;quot;google.golang.org/grpc&amp;quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.)grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
+ package google.golang.org/grpc: unrecognized import path &amp;#34;google.golang.org/grpc&amp;#34; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
 git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.</description>
     </item>
     
@@ -1006,8 +1028,9 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
       <guid>https://www.yuedun.wang/blogdetail/5bc1bd1bf846d21847dc3014/</guid>
       <description>gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。
 在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
-upstream grpcservice {server localhost:50051;server localhost:50052;}server {listen 8080 http2;#需要加http2server_name localhost;location / {grpc_pass grpc://grpcservice;#以grpc为前缀}grpc_connect_timeout 10;}配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图：可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
-虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。 原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。 </description>
+upstream grpcservice {server localhost:50051;server localhost:50052;}server {listen 8080 http2;#需要加http2server_name localhost;location / {grpc_pass grpc://grpcservice;#以grpc为前缀}grpc_connect_timeout 10;}配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图： 可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
+虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。
+原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。</description>
     </item>
     
     <item>
@@ -1017,8 +1040,10 @@ upstream grpcservice {server localhost:50051;server localhost:50052;}server 
       
       <guid>https://www.yuedun.wang/blogdetail/5bbf2531f846d21847dc2fcc/</guid>
       <description>网上也找了很多方案结果就是奇葩的不成功，最后直接修改/etc/mysql/mysql.conf.d/mysqld.cnf成功了。 在该文件最后添加
-default-storage-engine=INNODBcharacter-set-server=utf8collation-server=utf8_general_ci重启成功。 这是本地虚拟机里的mysql
-mysql&amp;gt; show variables like &amp;quot;character%&amp;quot;;+--------------------------+----------------------------+| Variable_name | Value |+--------------------------+----------------------------+| character_set_client | utf8 || character_set_connection | utf8 || character_set_database | utf8 || character_set_filesystem | binary || character_set_results | utf8 || character_set_server | utf8 || character_set_system | utf8 || character_sets_dir | /usr/share/mysql/charsets/ |+--------------------------+----------------------------+完全正确，但是修改阿里云服务器以后还是有点小问题 character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。 </description>
+default-storage-engine=INNODB character-set-server=utf8 collation-server=utf8_general_ci 重启成功。
+这是本地虚拟机里的mysql
+mysql&amp;gt; show variables like &amp;#34;character%&amp;#34;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | utf8 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | utf8 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 完全正确，但是修改阿里云服务器以后还是有点小问题
+character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。</description>
     </item>
     
     <item>
@@ -1028,7 +1053,7 @@ mysql&amp;gt; show variables like &amp;quot;character%&amp;quot;;+-------------
       
       <guid>https://www.yuedun.wang/blogdetail/5bb08746f846d21847dc2aef/</guid>
       <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;)db.getCollection(&#39;blogs&#39;).save(item)print(&amp;quot;&amp;gt;&amp;gt;&amp;quot;, item.content);})</description>
+db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &amp;#39;hopefully-img.yuedun.wang&amp;#39;) db.getCollection(&amp;#39;blogs&amp;#39;).save(item) print(&amp;#34;&amp;gt;&amp;gt;&amp;#34;, item.content); }) </description>
     </item>
     
     <item>
@@ -1038,9 +1063,9 @@ db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}
       
       <guid>https://www.yuedun.wang/blogdetail/5b90f19bb1f3aa6dab14313d/</guid>
       <description>使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&#39;mongoose&#39;);mongoose.connect(&#39;mongodb://localhost/my_database&#39;);使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
-const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = conn.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 可以工作vs
-const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = mongoose.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 不能工作</description>
+const mongoose = require(&amp;#39;mongoose&amp;#39;); mongoose.connect(&amp;#39;mongodb://localhost/my_database&amp;#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = conn.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
+const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = mongoose.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 不能工作 </description>
     </item>
     
     <item>
@@ -1049,7 +1074,8 @@ const conn = mongoose.createConnection(&#39;your connection string&#39;);const 
       <pubDate>Tue, 04 Sep 2018 06:57:38 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5b8e2ce2b1f3aa6dab143109/</guid>
-      <description>无法重新声明块范围变量“onerror” 解决办法：打开tsconfig.json中的&amp;quot;lib&amp;quot;: [&amp;quot;es2015&amp;quot;, &amp;quot;es2016&amp;quot;, &amp;quot;es2017&amp;quot;]</description>
+      <description>无法重新声明块范围变量“onerror”
+解决办法：打开tsconfig.json中的&amp;quot;lib&amp;quot;: [&amp;quot;es2015&amp;quot;, &amp;quot;es2016&amp;quot;, &amp;quot;es2017&amp;quot;]</description>
     </item>
     
     <item>
@@ -1059,7 +1085,9 @@ const conn = mongoose.createConnection(&#39;your connection string&#39;);const 
       
       <guid>https://www.yuedun.wang/blogdetail/5b8b9d63b1f3aa6dab1430d2/</guid>
       <description>win10家庭版本身不支持组策略，但还是有办法让其支持。 复制下面内容到文本文件：
-@echo offpushd &amp;quot;%~dp0&amp;quot;dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &amp;gt;List.txtdir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &amp;gt;&amp;gt;List.txtfor /f %%i in (&#39;findstr /i . List.txt 2^&amp;gt;nul&#39;) do dism /online /norestart /add-package:&amp;quot;C:\Windows\servicing\Packages\%%i&amp;quot;pause后缀名保存为cmd,以管理员身份执行： 然后WIN+R中执行gpedit.msc即可打开组策略。 如此可以关闭占用CPU过高的Windows Defender。</description>
+@echo off pushd &amp;#34;%~dp0&amp;#34; dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &amp;gt;List.txt dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &amp;gt;&amp;gt;List.txt for /f %%i in (&amp;#39;findstr /i . List.txt 2^&amp;gt;nul&amp;#39;) do dism /online /norestart /add-package:&amp;#34;C:\Windows\servicing\Packages\%%i&amp;#34; pause 后缀名保存为cmd,以管理员身份执行：
+然后WIN+R中执行gpedit.msc即可打开组策略。
+如此可以关闭占用CPU过高的Windows Defender。</description>
     </item>
     
     <item>
@@ -1189,7 +1217,7 @@ package main import ( &amp;#34;sync&amp;#34; &amp;#34;time&amp;#34; &amp;#34;fmt
 测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
 func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
  func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
-gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.</description>
+// gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.</description>
     </item>
     
     <item>
@@ -1199,13 +1227,13 @@ gopl.io/ch11/word1 // Package word provides utilities for word games. package wo
       
       <guid>https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
       <description>一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import(&amp;quot;fmt&amp;quot;)然后在代码里面可以通过如下的方式调用 fmt.Println(&amp;quot;hello world&amp;quot;)
+import( &amp;#34;fmt&amp;#34; ) 然后在代码里面可以通过如下的方式调用 fmt.Println(&amp;quot;hello world&amp;quot;)
 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块： 相对路径 import &amp;quot;./model&amp;quot; //当前文件同一目录的model目录，但是不建议这种方式import 绝对路径 import &amp;quot;shorturl/model&amp;quot; //加载GOPATH/src/shorturl/model模块
 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
   点操作 有时候会看到如下的方式导入包import( . “fmt” ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的fmt.Println(“hello world”)可以省略的写成Println(“hello world”)
   别名操作 别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字import( f “fmt” )别名操作调用包函数时前缀变成了重命名的前缀，即f.Println(“hello world”)
   _操作 这个操作经常是让很多人费解的一个操作符，请看下面这个import import ( “database/sql” _ “github.com/ziutek/mymysql/godrv” ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
-  二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程： 
+  二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
 通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
 原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457</description>
     </item>
@@ -1245,8 +1273,8 @@ pm2.json
       <pubDate>Fri, 16 Feb 2018 13:22:49 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5a86db29c3700db1c9ae7c55/</guid>
-      <description>bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.(found in &amp;lt;Root&amp;gt;)解决方案：与entry属性平级添加
-resolve: {alias: {&#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39;//该路径为node_modules下的vue目录}}// 需要编译器new Vue({template: &#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&#39;})// 不需要编译器new Vue({render (h) {return h(&#39;div&#39;, this.hi)}})出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释</description>
+      <description>bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &amp;lt;Root&amp;gt;) 解决方案：与entry属性平级添加
+resolve: { alias: { &amp;#39;vue$&amp;#39;: &amp;#39;vue/dist/vue.esm.js&amp;#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &amp;#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&amp;#39; }) // 不需要编译器 new Vue({ render (h) { return h(&amp;#39;div&amp;#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释</description>
     </item>
     
     <item>
@@ -1280,7 +1308,8 @@ pm2-logrotate配置
       <pubDate>Fri, 19 Jan 2018 02:40:54 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5a615ab64bdc8ea471fd2ddd/</guid>
-      <description>从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧， 如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：
+      <description>从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧，
+如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：
  地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
  其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox</description>
     </item>
@@ -1291,8 +1320,9 @@ pm2-logrotate配置
       <pubDate>Thu, 18 Jan 2018 04:26:34 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5a6021fa4bdc8ea471fd2db0/</guid>
-      <description>首先看项目目录： 再看Dockerfile文件内容：
-# 以最新的node为基础镜像FROM hub.c.163.com/library/node:latest# 工作目录为appWORKDIR /app# 拷贝当前所在项目根目录到app目录COPY . /app# 全局安装pm2RUN npm install pm2 -gEXPOSE 8081#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出CMD [&amp;quot;pm2-runtime&amp;quot;, &amp;quot;dest/server.js&amp;quot;, &amp;quot;--no-daemon&amp;quot;]# ENTRYPOINT [&amp;quot;node&amp;quot;, &amp;quot;server.js&amp;quot;]或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+      <description>首先看项目目录：
+再看Dockerfile文件内容：
+# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&amp;#34;pm2-runtime&amp;#34;, &amp;#34;dest/server.js&amp;#34;, &amp;#34;--no-daemon&amp;#34;] # ENTRYPOINT [&amp;#34;node&amp;#34;, &amp;#34;server.js&amp;#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 </description>
     </item>
@@ -1305,7 +1335,8 @@ pm2-logrotate配置
       <guid>https://www.yuedun.wang/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</guid>
       <description>pm2的fork模式和cluster模式的区别
 fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。 参考：http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2 运行非js语言必须设置运行模式为fork_mode
-cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。 ** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
+cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
+** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
 也可以使用文件方式： processes.json文件：
 { &amp;#34;apps&amp;#34; : [{ &amp;#34;script&amp;#34; : &amp;#34;api.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;max&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34; }] } pm2 start processes.json</description>
     </item>
@@ -1531,10 +1562,12 @@ package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type Use
       <guid>https://www.yuedun.wang/blogdetail/591ea6966af6717b614f9b2b/</guid>
       <description>RockMongo是一个PHP5写的MongoDB管理工具。
  鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
-查询操作 点击某个collection后的默认画面： 
-查询界面很简单，关键是怎么写查询语句？ 点击文本可以查看所有数据字段，查询title为“测试”文档：
+查询操作 点击某个collection后的默认画面：
+查询界面很简单，关键是怎么写查询语句？
+点击文本可以查看所有数据字段，查询title为“测试”文档：
 array(&#39;title&#39; =&amp;gt; &#39;测试&#39;)模糊查询：
-array(&#39;title&#39;=&amp;gt; new MongoRegex(&amp;quot;/测试/i&amp;quot;))字段名要加引号，中间使用=&amp;gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据 修改操作 动作中选择“modify” 再查询一下 基本操作就是这样，删除操作不用说也应该能知道怎么做了。</description>
+array(&#39;title&#39;=&amp;gt; new MongoRegex(&amp;quot;/测试/i&amp;quot;))字段名要加引号，中间使用=&amp;gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据 修改操作 动作中选择“modify”
+再查询一下 基本操作就是这样，删除操作不用说也应该能知道怎么做了。</description>
     </item>
     
     <item>
@@ -1581,7 +1614,8 @@ function d&amp;lt;A&amp;gt;(args: A ): A {let n = args + &amp;quot;变成了字
 以iPhone为例，一般都会设置“查找我的iPhone”功能，由于iPhone有GPS定位功能，小偷如果偷到手机不关机的话，会被GPS定位追踪，因此绝大多数小偷拿到手机后做的第一件事情往往是关机，这正好让指纹锁屏密码和SIM卡PIN码发挥最大作用：如果重新开机，必须要输入手机密码才能开机，同时，SIM卡处于锁定状态，需要输入PIN码才能正常通信，输错3次PIN码后就只能用PUK码来解锁，把SIM卡拔出来查到别的手机上，也需要输入SIM卡PIN码才能通讯，也就是说，不知道PIN码，这个SIM卡就无法接收短信和拨打电话，因此小偷就无法通过这个SIM卡来盗取用户的网银、支付宝、微信上的财产，甚至，小偷连这个手机的手机号码都无法获得，更不用说盗取微信和QQ密码了。
 当然，丢失iPhone手机的用户还需要补SIM卡和设置远程抹除iPhone内容最安全，千万不要关闭“查找我的iPhone”功能，忽略那些以苹果名义发来的钓鱼邮件和短信。
 以下是iPhone指纹解锁功能设置方法和iPhone的修改SIM卡密码的方法：
-指纹密码 指纹天生就是一种个人认证工具，虽然人人都有指纹，但各不相同，据说，现在还没有发现两个指纹完全相同的人。随着年龄的增长，指纹的纹样不会发生变化。因此，使用指纹做为身份验证是非常理想的。 iPhone指纹解锁功能设置
+指纹密码 指纹天生就是一种个人认证工具，虽然人人都有指纹，但各不相同，据说，现在还没有发现两个指纹完全相同的人。随着年龄的增长，指纹的纹样不会发生变化。因此，使用指纹做为身份验证是非常理想的。
+iPhone指纹解锁功能设置
 iPhone设置指纹密码的具体方法是：
 第一步：依次进入iPhone的“设置”，然后再找到，并点击进入“Touch ID与密码”设置。
 第二步：接下来需要输入一次四位数字的iPhone6手机密码，这个密码就是手机解锁密码，输入密码后，就可以进入iPhone指纹识别设置界面了。然后我们就可以开始录入指纹了，点击下方的“添加指纹”开始添加。
@@ -1828,9 +1862,9 @@ ln -s /usr/local/node/bin/npm /usr/local/bin/npm这样就可以在任意目录�
 function Person(name, age){ this.name = name; this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
 var tom = new Person(&amp;quot;Tom&amp;quot;,12);
 构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:
-var tom = new Person();tom.name = &amp;quot;Tom&amp;quot;;tom.age = 13;有了构造函数，还要有普通函数：
-tom.sayHello = function(){console.log(&amp;quot;my name is &amp;quot;+this.name);//my name is Tom}接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
-function Person(name, age){this.name = name;this.age = age;}Person.getAge = function(){console.log(this.age);}Person.age = 12;Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。</description>
+var tom = new Person(); tom.name = &amp;#34;Tom&amp;#34;; tom.age = 13; 有了构造函数，还要有普通函数：
+tom.sayHello = function(){ console.log(&amp;#34;my name is &amp;#34;+this.name);//my name is Tom  } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
+function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。</description>
     </item>
     
     <item>
@@ -2347,7 +2381,6 @@ HOUR_SECOND</description>
       
       <guid>https://www.yuedun.wang/blogdetail/55fe24c7079f8670036cbeb6/</guid>
       <description>我是做技术的，平时也有喜欢写写博客，但是由于自己作文水平有限，又比较懒，所以很少写大篇幅的内容，也很少为了写一篇文章而到处收集资料，毕竟不是专业写手，就是为了记录一下工作遇到的问题，虽然写的时候本着一颗能帮助他人的心，希望自己写的东西有助于其他人参考，但是通过平时查找资料的观察发现，有时在看别人文章的容总是很难读懂，或者写的不够详细，然后又找了很多资料后终于搞懂了。事后一想，还是自己写一篇更易懂的博客吧！
-
 听说优秀的博客都要有配图
 然后花了点时间把自己理解的整理出来，很有成就感的发表出去，可谁又能想到其实自己也可能重蹈覆辙，走了前人的路，在别人看来同样晦涩难懂。造成这种情况的原因其实与作者有关与读者也有关，作者不能全方位的表达出思想，读者又不能百分之百的理解作者的意图，然后就形成了后浪推前浪的补充风波，或许知识就是这样不断翻新传播的</description>
     </item>
@@ -2359,11 +2392,10 @@ HOUR_SECOND</description>
       
       <guid>https://www.yuedun.wang/blogdetail/55f2670ce893a5b0008e57fa/</guid>
       <description>先来一张效果图：
-
+](https://hopefully-img.yuedun.wang/172722906.png)
 由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。
 使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 
 注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
-
 可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。</description>
     </item>
     
@@ -2430,7 +2462,8 @@ Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId 
       <guid>https://www.yuedun.wang/blogdetail/55ab0f6ed366f15412cbf596/</guid>
       <description>做微信开发的时候，在开发者中心需要进行服务器配置，这里的配置是一个可以公网访问的地址，如果是产品上线的话肯定有公网地址，但是在开发过程中需要本地测试，总不能开发一点部署到服务器测试。这时候我们就需要从公网访问本地服务器。
 这已经是设置好的，服务器端口是指公网地址的端口，就以80端口来好了，这样公网地址可以省略端口，内部服务器端口就是本地服务器端口，Java程序一般是8080这样的端口，IP地址就是本地服务器在局域网中的ip，协议选ALL，状态：生效。常用服务器端口可以不选。
-然后启动本地服务器就可以通过路由器的公网IP访问本地服务了 但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”： 当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了 </description>
+然后启动本地服务器就可以通过路由器的公网IP访问本地服务了
+但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”： 当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了 </description>
     </item>
     
     <item>

@@ -69,7 +69,7 @@ import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdap
       <pubDate>Wed, 20 Feb 2019 02:40:41 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5c6cbe294a7b7e6cd80869e5/</guid>
-      <description>同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。  go占14.7M nodejs占122.2M</description>
+      <description>同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。 go占14.7M nodejs占122.2M</description>
     </item>
     
     <item>
@@ -78,7 +78,8 @@ import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdap
       <pubDate>Tue, 04 Sep 2018 06:57:38 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5b8e2ce2b1f3aa6dab143109/</guid>
-      <description>无法重新声明块范围变量“onerror” 解决办法：打开tsconfig.json中的&amp;quot;lib&amp;quot;: [&amp;quot;es2015&amp;quot;, &amp;quot;es2016&amp;quot;, &amp;quot;es2017&amp;quot;]</description>
+      <description>无法重新声明块范围变量“onerror”
+解决办法：打开tsconfig.json中的&amp;quot;lib&amp;quot;: [&amp;quot;es2015&amp;quot;, &amp;quot;es2016&amp;quot;, &amp;quot;es2017&amp;quot;]</description>
     </item>
     
     <item>
@@ -130,8 +131,9 @@ pm2-logrotate配置
       <pubDate>Thu, 18 Jan 2018 04:26:34 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5a6021fa4bdc8ea471fd2db0/</guid>
-      <description>首先看项目目录： 再看Dockerfile文件内容：
-# 以最新的node为基础镜像FROM hub.c.163.com/library/node:latest# 工作目录为appWORKDIR /app# 拷贝当前所在项目根目录到app目录COPY . /app# 全局安装pm2RUN npm install pm2 -gEXPOSE 8081#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出CMD [&amp;quot;pm2-runtime&amp;quot;, &amp;quot;dest/server.js&amp;quot;, &amp;quot;--no-daemon&amp;quot;]# ENTRYPOINT [&amp;quot;node&amp;quot;, &amp;quot;server.js&amp;quot;]或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+      <description>首先看项目目录：
+再看Dockerfile文件内容：
+# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&amp;#34;pm2-runtime&amp;#34;, &amp;#34;dest/server.js&amp;#34;, &amp;#34;--no-daemon&amp;#34;] # ENTRYPOINT [&amp;#34;node&amp;#34;, &amp;#34;server.js&amp;#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 </description>
     </item>
@@ -144,7 +146,8 @@ pm2-logrotate配置
       <guid>https://www.yuedun.wang/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</guid>
       <description>pm2的fork模式和cluster模式的区别
 fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。 参考：http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2 运行非js语言必须设置运行模式为fork_mode
-cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。 ** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
+cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
+** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
 也可以使用文件方式： processes.json文件：
 { &amp;#34;apps&amp;#34; : [{ &amp;#34;script&amp;#34; : &amp;#34;api.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;max&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34; }] } pm2 start processes.json</description>
     </item>
@@ -356,9 +359,9 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
 function Person(name, age){ this.name = name; this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
 var tom = new Person(&amp;quot;Tom&amp;quot;,12);
 构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:
-var tom = new Person();tom.name = &amp;quot;Tom&amp;quot;;tom.age = 13;有了构造函数，还要有普通函数：
-tom.sayHello = function(){console.log(&amp;quot;my name is &amp;quot;+this.name);//my name is Tom}接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
-function Person(name, age){this.name = name;this.age = age;}Person.getAge = function(){console.log(this.age);}Person.age = 12;Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。</description>
+var tom = new Person(); tom.name = &amp;#34;Tom&amp;#34;; tom.age = 13; 有了构造函数，还要有普通函数：
+tom.sayHello = function(){ console.log(&amp;#34;my name is &amp;#34;+this.name);//my name is Tom  } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
+function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。</description>
     </item>
     
     <item>
@@ -407,11 +410,10 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       
       <guid>https://www.yuedun.wang/blogdetail/55f2670ce893a5b0008e57fa/</guid>
       <description>先来一张效果图：
-
+](https://hopefully-img.yuedun.wang/172722906.png)
 由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。
 使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 
 注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
-
 可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。</description>
     </item>
     

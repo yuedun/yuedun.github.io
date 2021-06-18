@@ -35,7 +35,8 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
       
       <guid>https://www.yuedun.wang/blogdetail/5e87e9ac75da9268a3e5993c/</guid>
       <description>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
-db.createUser( {user: &amp;quot;hp_website&amp;quot;,pwd: &amp;quot;xxxxxx&amp;quot;,roles: [ { role: &amp;quot;userAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbOwner&amp;quot;, db: &amp;quot;website&amp;quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
+db.createUser( {user: &amp;quot;hp_website&amp;quot;,pwd: &amp;quot;xxxxxx&amp;quot;,roles: [ { role: &amp;quot;userAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbOwner&amp;quot;, db: &amp;quot;website&amp;quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示
+虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
 use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。</description>
     </item>
     
@@ -46,8 +47,10 @@ use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxx
       
       <guid>https://www.yuedun.wang/blogdetail/5bbf2531f846d21847dc2fcc/</guid>
       <description>网上也找了很多方案结果就是奇葩的不成功，最后直接修改/etc/mysql/mysql.conf.d/mysqld.cnf成功了。 在该文件最后添加
-default-storage-engine=INNODBcharacter-set-server=utf8collation-server=utf8_general_ci重启成功。 这是本地虚拟机里的mysql
-mysql&amp;gt; show variables like &amp;quot;character%&amp;quot;;+--------------------------+----------------------------+| Variable_name | Value |+--------------------------+----------------------------+| character_set_client | utf8 || character_set_connection | utf8 || character_set_database | utf8 || character_set_filesystem | binary || character_set_results | utf8 || character_set_server | utf8 || character_set_system | utf8 || character_sets_dir | /usr/share/mysql/charsets/ |+--------------------------+----------------------------+完全正确，但是修改阿里云服务器以后还是有点小问题 character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。 </description>
+default-storage-engine=INNODB character-set-server=utf8 collation-server=utf8_general_ci 重启成功。
+这是本地虚拟机里的mysql
+mysql&amp;gt; show variables like &amp;#34;character%&amp;#34;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | utf8 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | utf8 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 完全正确，但是修改阿里云服务器以后还是有点小问题
+character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。</description>
     </item>
     
     <item>
@@ -57,7 +60,7 @@ mysql&amp;gt; show variables like &amp;quot;character%&amp;quot;;+-------------
       
       <guid>https://www.yuedun.wang/blogdetail/5bb08746f846d21847dc2aef/</guid>
       <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;)db.getCollection(&#39;blogs&#39;).save(item)print(&amp;quot;&amp;gt;&amp;gt;&amp;quot;, item.content);})</description>
+db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &amp;#39;hopefully-img.yuedun.wang&amp;#39;) db.getCollection(&amp;#39;blogs&amp;#39;).save(item) print(&amp;#34;&amp;gt;&amp;gt;&amp;#34;, item.content); }) </description>
     </item>
     
     <item>
@@ -67,9 +70,9 @@ db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}
       
       <guid>https://www.yuedun.wang/blogdetail/5b90f19bb1f3aa6dab14313d/</guid>
       <description>使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&#39;mongoose&#39;);mongoose.connect(&#39;mongodb://localhost/my_database&#39;);使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
-const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = conn.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 可以工作vs
-const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = mongoose.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 不能工作</description>
+const mongoose = require(&amp;#39;mongoose&amp;#39;); mongoose.connect(&amp;#39;mongodb://localhost/my_database&amp;#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = conn.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
+const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = mongoose.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 不能工作 </description>
     </item>
     
     <item>

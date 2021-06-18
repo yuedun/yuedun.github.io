@@ -14,8 +14,10 @@
       
       <guid>https://www.yuedun.wang/blogdetail/5bbf2531f846d21847dc2fcc/</guid>
       <description>网上也找了很多方案结果就是奇葩的不成功，最后直接修改/etc/mysql/mysql.conf.d/mysqld.cnf成功了。 在该文件最后添加
-default-storage-engine=INNODBcharacter-set-server=utf8collation-server=utf8_general_ci重启成功。 这是本地虚拟机里的mysql
-mysql&amp;gt; show variables like &amp;quot;character%&amp;quot;;+--------------------------+----------------------------+| Variable_name | Value |+--------------------------+----------------------------+| character_set_client | utf8 || character_set_connection | utf8 || character_set_database | utf8 || character_set_filesystem | binary || character_set_results | utf8 || character_set_server | utf8 || character_set_system | utf8 || character_sets_dir | /usr/share/mysql/charsets/ |+--------------------------+----------------------------+完全正确，但是修改阿里云服务器以后还是有点小问题 character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。 </description>
+default-storage-engine=INNODB character-set-server=utf8 collation-server=utf8_general_ci 重启成功。
+这是本地虚拟机里的mysql
+mysql&amp;gt; show variables like &amp;#34;character%&amp;#34;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | utf8 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | utf8 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 完全正确，但是修改阿里云服务器以后还是有点小问题
+character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。</description>
     </item>
     
     <item>

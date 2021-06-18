@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="go测试函数的编写及运行">
 <meta itemprop="description" content="go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内，所有以_test.go为后缀名的源文件并不是go build构建包的一部分，它们是"><meta itemprop="datePublished" content="2018-04-05T02:21:56&#43;00:00" />
 <meta itemprop="dateModified" content="2018-04-05T02:21:56&#43;00:00" />
-<meta itemprop="wordCount" content="507">
+<meta itemprop="wordCount" content="509">
 <meta itemprop="keywords" content="golang," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="go测试函数的编写及运行"/>
@@ -142,14 +142,22 @@
 <div class="post__toc toc">
 	<div class="toc__title">目录</div>
 	<div class="toc__menu">
-		<nav id="TableOfContents"></nav>
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#测试函数">测试函数</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
 			<p>go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内，所有以_test.go为后缀名的源文件并不是go build构建包的一部分，它们是go test测试的一部分。
 在<code>\*_test.go</code>文件中，有三种类型的函数：测试函数、基准测试函数、示例函数。一个测试函数是以<strong>Test为函数名前缀的函数</strong>，用于测试程序的一些逻辑行为是否正确；
 <code>go test</code>命令会调用这些测试函数并报告测试结果是PASS或FAIL。基准测试函数是以Benchmark为函数名前缀的函数，它们用于衡量一些函数的性能；<code>go test</code>命令会多次运行基准函数以计算一个平均的执行时间。示例函数是以Example为函数名前缀的函数，提供一个由编译器保证正确性的示例文档。</p>
-<h1 id="测试函数">测试函数</h1>
+<h3 id="测试函数">测试函数</h3>
 <p>每个测试函数必须导入testing包。测试函数有如下的签名：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestName</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
 <span style="color:#75715e">// ...
@@ -161,8 +169,8 @@
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestCos</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) { <span style="color:#75715e">/* ... */</span> }
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestLog</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) { <span style="color:#75715e">/* ... */</span> }
 </code></pre></div><p>其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包<code>gopl.io/ch11/word1</code>，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">gopl</span>.<span style="color:#a6e22e">io</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ch11</span><span style="color:#f92672">/</span><span style="color:#a6e22e">word1</span>
-<span style="color:#75715e">// Package word provides utilities for word games.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// gopl.io/ch11/word1
+</span><span style="color:#75715e">// Package word provides utilities for word games.
 </span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">word</span>
 
 <span style="color:#75715e">// IsPalindrome reports whether s reads the same forward and backward.
@@ -195,9 +203,9 @@
 	}
 }
 </code></pre></div><p><code>go test</code> 命令如果没有参数指定包那么将默认采用当前目录对应的包（和 go build 命令一样）。我们可以用下面的命令构建和运行测试。</p>
-<pre><code>$ cd $GOPATH/src/gopl.io/ch11/word1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd $GOPATH/src/gopl.io/ch11/word1
 $ go test ok gopl.io/ch11/word1 0.008s
-</code></pre><p>结果还比较满意，我们运行了这个程序， 不过没有提前退出是因为还没有遇到BUG报告。不过一个法国名为“Noelle Eve Elleon”的用户会抱怨IsPalindrome函数不能识别“été”。另外一个来自美国中部用户的抱怨则是不能识别“A man, a plan, a canal: Panama.”。执行特殊和小的BUG报告为我们提供了新的更自然的测试用例。</p>
+</code></pre></div><p>结果还比较满意，我们运行了这个程序， 不过没有提前退出是因为还没有遇到BUG报告。不过一个法国名为“Noelle Eve Elleon”的用户会抱怨IsPalindrome函数不能识别“été”。另外一个来自美国中部用户的抱怨则是不能识别“A man, a plan, a canal: Panama.”。执行特殊和小的BUG报告为我们提供了新的更自然的测试用例。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestFrenchPalindrome</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
     <span style="color:#66d9ef">if</span> ! <span style="color:#a6e22e">IsPalindrome</span>(<span style="color:#e6db74">&#34;été&#34;</span>) {
         <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">`IsPalindrome(&#34;été&#34;) = false`</span>)
@@ -209,42 +217,42 @@ $ go test ok gopl.io/ch11/word1 0.008s
         <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">`IsPalindrome( % q) = false`</span>, <span style="color:#a6e22e">input</span>)
     }
 }
-</code></pre></div><p>为了避免两次输入较长的字符串，我们使用了提供了有类似Printf格式化功能的 Errorf函数来汇报错误结果。当添加了这两个测试用例之后， <code>go test</code> 返回了测试失败的信息</p>
-<pre><code>$ go test
---- FAIL: TestFrenchPalindrome (0.00s)
-word_test.go:28: IsPalindrome(&quot;été&quot;) = false--- 
-FAIL: TestCanalPalindrome (0.00s)
-word_test.go:35: IsPalindrome(&quot;A man, a plan, a canal: Panama&quot;) = falseFAILFAIL gopl.io/ch11/word1 0.014s
-</code></pre><p>先编写测试用例并观察到测试用例触发了和用户报告的错误相同的描述是一个好的测试习惯。只有这样，我们才能定位我们要真正解决的问题。先写测试用例的另外的好处是，运行测试通常会比手工描述报告的处理更快，这让我们可以进行快速地迭代。如果测试集有很多运行缓慢的测试，我们可以通过只选择运行某些特定的测试来加快测试速度。参数 -v 可用于打印每个测试函数的名字和运行时间：</p>
-<pre><code>$ go test -v
-=== RUN TestPalindrome--- 
-PASS: TestPalindrome (0.00s)
-=== RUN TestNonPalindrome
---- PASS: TestNonPalindrome (0.00s)
-=== RUN TestFrenchPalindrome
---- FAIL: TestFrenchPalindrome (0.00s)
-word_test.go:28: IsPalindrome(&quot;été&quot;) = false
-=== RUN TestCanalPalindrome--- 
-FAIL: TestCanalPalindrome (0.00s)
-word_test.go:35: IsPalindrome(&quot;A man, a plan, a canal: Panama&quot;) = falseFAIL
+</code></pre></div><p>为了避免两次输入较长的字符串，我们使用了提供了有类似Printf格式化功能的 Errorf函数来汇报错误结果。当添加了这两个测试用例之后， <code>go test</code> 返回了测试失败的信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go test
+--- FAIL: TestFrenchPalindrome <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+word_test.go:28: IsPalindrome<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;été&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span> false--- 
+FAIL: TestCanalPalindrome <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+word_test.go:35: IsPalindrome<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;A man, a plan, a canal: Panama&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span> falseFAILFAIL gopl.io/ch11/word1 0.014s
+</code></pre></div><p>先编写测试用例并观察到测试用例触发了和用户报告的错误相同的描述是一个好的测试习惯。只有这样，我们才能定位我们要真正解决的问题。先写测试用例的另外的好处是，运行测试通常会比手工描述报告的处理更快，这让我们可以进行快速地迭代。如果测试集有很多运行缓慢的测试，我们可以通过只选择运行某些特定的测试来加快测试速度。参数 -v 可用于打印每个测试函数的名字和运行时间：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go test -v
+<span style="color:#f92672">===</span> RUN TestPalindrome--- 
+PASS: TestPalindrome <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+<span style="color:#f92672">===</span> RUN TestNonPalindrome
+--- PASS: TestNonPalindrome <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+<span style="color:#f92672">===</span> RUN TestFrenchPalindrome
+--- FAIL: TestFrenchPalindrome <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+word_test.go:28: IsPalindrome<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;été&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span> false
+<span style="color:#f92672">===</span> RUN TestCanalPalindrome--- 
+FAIL: TestCanalPalindrome <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+word_test.go:35: IsPalindrome<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;A man, a plan, a canal: Panama&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span> falseFAIL
 exit status 1FAIL gopl.io/ch11/word1 0.017s
-</code></pre><blockquote>
+</code></pre></div><blockquote>
 <p>参数 -run 对应一个正则表达式，只有测试函数名被它正确匹配的测试函数才会被 go test 测试命令运行：</p>
 </blockquote>
-<pre><code>$ go test -v -run=&quot;French|Canal&quot;
-=== RUN TestFrenchPalindrome
---- FAIL: TestFrenchPalindrome (0.00s)
-word_test.go:28: IsPalindrome(&quot;été&quot;) = false
-=== RUN TestCanalPalindrome
---- FAIL: TestCanalPalindrome (0.00s)
-word_test.go:35: IsPalindrome(&quot;A man, a plan, a canal: Panama&quot;) = false
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go test -v -run<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;French|Canal&#34;</span>
+<span style="color:#f92672">===</span> RUN TestFrenchPalindrome
+--- FAIL: TestFrenchPalindrome <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+word_test.go:28: IsPalindrome<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;été&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span> false
+<span style="color:#f92672">===</span> RUN TestCanalPalindrome
+--- FAIL: TestCanalPalindrome <span style="color:#f92672">(</span>0.00s<span style="color:#f92672">)</span>
+word_test.go:35: IsPalindrome<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;A man, a plan, a canal: Panama&#34;</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span> false
 FAIL
 exit status 1FAIL gopl.io/ch11/word1 0.014s
-</code></pre><p>当然，一旦我们已经修复了失败的测试用例，在我们提交代码更新之前，我们应该以不带参数的 <code>go test</code>命令运行全部的测试用例，以确保修复失败测试的同时没有引入新的问题。我们现在的任务就是修复这些错误。简要分析后发现第一个BUG的原因是我们采用了 byte而不是run
+</code></pre></div><p>当然，一旦我们已经修复了失败的测试用例，在我们提交代码更新之前，我们应该以不带参数的 <code>go test</code>命令运行全部的测试用例，以确保修复失败测试的同时没有引入新的问题。我们现在的任务就是修复这些错误。简要分析后发现第一个BUG的原因是我们采用了 byte而不是run
 列，所以像“été”中的é等非ASCII字符不能正确处理。第二个BUG是因为没有忽略空格和字母的大小写导致的。
 针对上述两个BUG，我们仔细重写了函数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">gopl</span>.<span style="color:#a6e22e">io</span><span style="color:#f92672">/</span><span style="color:#a6e22e">ch11</span><span style="color:#f92672">/</span><span style="color:#a6e22e">word2</span>
-<span style="color:#75715e">// Package word provides utilities for word games.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// gopl.io/ch11/word2
+</span><span style="color:#75715e">// Package word provides utilities for word games.
 </span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">word</span>
 
 <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;unicode&#34;</span>
@@ -265,37 +273,36 @@ exit status 1FAIL gopl.io/ch11/word1 0.014s
 	}
 	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
 }
-
 </code></pre></div><p>同时我们也将之前的所有测试数据合并到了一个测试中的表格中。</p>
-<pre><code>func TestIsPalindrome(t *testing.T) {
-	var tests = []struct {
-		input string
-		want  bool
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestIsPalindrome</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tests</span> = []<span style="color:#66d9ef">struct</span> {
+		<span style="color:#a6e22e">input</span> <span style="color:#66d9ef">string</span>
+		<span style="color:#a6e22e">want</span>  <span style="color:#66d9ef">bool</span>
 	}{
-		{&quot;&quot;, true},
-		{&quot;a&quot;, true},
-		{&quot;aa&quot;, true},
-		{&quot;ab&quot;, false},
-		{&quot;kayak&quot;, true},
-		{&quot;detartrated&quot;, true},
-		{&quot;A man, a plan, a canal: Panama&quot;, true},
-		{&quot;Evil I did dwell; lewd did I live.&quot;, true},
-		{&quot;Able was I ere I saw Elba&quot;, true},
-		{&quot;été&quot;, true},
-		{&quot;Et se resservir, ivresse reste.&quot;, true},
-		{&quot;palindrome&quot;, false}, // non-palindrome
-		{&quot;desserts&quot;, false},   // semi-palindrome
-	}
-	for _, test := range tests {
-		if got := IsPalindrome(test.input); got != test.want {
-			t.Errorf(&quot;IsPalindrome(%q) = %v&quot;, test.input, got)
+		{<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;aa&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;ab&#34;</span>, <span style="color:#66d9ef">false</span>},
+		{<span style="color:#e6db74">&#34;kayak&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;detartrated&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;A man, a plan, a canal: Panama&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;Evil I did dwell; lewd did I live.&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;Able was I ere I saw Elba&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;été&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;Et se resservir, ivresse reste.&#34;</span>, <span style="color:#66d9ef">true</span>},
+		{<span style="color:#e6db74">&#34;palindrome&#34;</span>, <span style="color:#66d9ef">false</span>}, <span style="color:#75715e">// non-palindrome
+</span><span style="color:#75715e"></span>		{<span style="color:#e6db74">&#34;desserts&#34;</span>, <span style="color:#66d9ef">false</span>},   <span style="color:#75715e">// semi-palindrome
+</span><span style="color:#75715e"></span>	}
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">test</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">tests</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">got</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">IsPalindrome</span>(<span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">input</span>); <span style="color:#a6e22e">got</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">want</span> {
+			<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;IsPalindrome(%q) = %v&#34;</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">input</span>, <span style="color:#a6e22e">got</span>)
 		}
 	}
 }
-</code></pre><p>现在我们的新测试阿都通过了：</p>
-<pre><code>$ go test gopl.io/ch11/word2
+</code></pre></div><p>现在我们的新测试阿都通过了：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go test gopl.io/ch11/word2
 ok gopl.io/ch11/word2 0.015s
-</code></pre><p>这种表格驱动的测试在Go语言中很常见的。我们很容易向表格添加新的测试数据，并且后面的测试逻辑也没有冗余，这样我们可以有更多的精力地完善错误信息。失败测试的输出并不包括调用t.Errorf时刻的堆栈调用信息。和其他编程语言或测试框架的assert断言不同，t.Errorf调用也没有引起panic异常或停止测试的执行。即使表格中前面的数据导致了测试的失败，表格后面的测试数据依然会运行测试，因此在一个测试中我们可能了解多个失败的信息。如果我们真的需要停止测试，或许是因为初始化失败或可能是早先的错误导致了后续错误等原因，我们可以使用t.Fatal或t.Fatalf停止当前测试函数。它们必须在和测试函数同一个goroutine内调用。测试失败的信息一般的形式是“f(x) = y, want z”，其中f(x)解释了失败的操作和对应的输出，y是实际的运行结果，z是期望的正确的结果。就像前面检查回文字符串的例子，实际的函数用于f(x)部分。如果显示x是表格驱动型测试中比较重要的部分，因为同一个断言可能对应不同的表格项执行多次。要避免无用和冗余的信息。在测试类似IsPalindrome返回布尔类型的函数时，可以忽略并没有额外信息的z部分。如果x、
+</code></pre></div><p>这种表格驱动的测试在Go语言中很常见的。我们很容易向表格添加新的测试数据，并且后面的测试逻辑也没有冗余，这样我们可以有更多的精力地完善错误信息。失败测试的输出并不包括调用t.Errorf时刻的堆栈调用信息。和其他编程语言或测试框架的assert断言不同，t.Errorf调用也没有引起panic异常或停止测试的执行。即使表格中前面的数据导致了测试的失败，表格后面的测试数据依然会运行测试，因此在一个测试中我们可能了解多个失败的信息。如果我们真的需要停止测试，或许是因为初始化失败或可能是早先的错误导致了后续错误等原因，我们可以使用t.Fatal或t.Fatalf停止当前测试函数。它们必须在和测试函数同一个goroutine内调用。测试失败的信息一般的形式是“f(x) = y, want z”，其中f(x)解释了失败的操作和对应的输出，y是实际的运行结果，z是期望的正确的结果。就像前面检查回文字符串的例子，实际的函数用于f(x)部分。如果显示x是表格驱动型测试中比较重要的部分，因为同一个断言可能对应不同的表格项执行多次。要避免无用和冗余的信息。在测试类似IsPalindrome返回布尔类型的函数时，可以忽略并没有额外信息的z部分。如果x、
 y或z是y的长度，输出一个相关部分的简明总结即可。测试的作者应该要努力帮助程序员诊断测试失败的原因。</p>
 <blockquote>
 <p>摘自《go语言圣经》</p>

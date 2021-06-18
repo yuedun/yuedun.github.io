@@ -148,12 +148,12 @@
 <div class="content post__content clearfix">
 			<p>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。
 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。</p>
-<pre><code>db.getCollection('blogs').find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){
-    item.content = item.content.replace(/hopefully.qiniudn.com/g, 'hopefully-img.yuedun.wang')
-    db.getCollection('blogs').save(item)
-	print(&quot;&gt;&gt;&quot;, item.content);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">find</span>({<span style="color:#a6e22e">content</span><span style="color:#f92672">:</span>{<span style="color:#a6e22e">$regex</span><span style="color:#f92672">:</span><span style="color:#e6db74">/hopefully.qiniudn.com/</span>}}).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">item</span>){
+    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;hopefully-img.yuedun.wang&#39;</span>)
+    <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">save</span>(<span style="color:#a6e22e">item</span>)
+	<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;&gt;&gt;&#34;</span>, <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>);
 })
-</code></pre>
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

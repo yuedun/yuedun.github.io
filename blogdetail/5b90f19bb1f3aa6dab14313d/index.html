@@ -147,20 +147,20 @@
 </div>
 <div class="content post__content clearfix">
 			<p>使用mongoose建立了连接以后，通过model查询数据，如：<code>testModel.find()</code>,既不报错又不返回数据。</p>
-<pre><code>const mongoose = require('mongoose');
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mongoose</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;mongoose&#39;</span>);
 
-mongoose.connect('mongodb://localhost/my_database');
-</code></pre><p>使用<code>mongoose.connect</code>连接产生在<code>mongoose.connection</code>上，使用<code>mongoose.createConnection</code>是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用<code>mongoose.model</code>是无效的。</p>
-<pre><code>const conn = mongoose.createConnection('your connection string');
-const MyModel = conn.model('ModelName', schema);
-const m = new MyModel;
-m.save(); // 可以工作
-</code></pre><p>vs</p>
-<pre><code>const conn = mongoose.createConnection('your connection string');
-const MyModel = mongoose.model('ModelName', schema);
-const m = new MyModel;
-m.save(); // 不能工作
-</code></pre>
+<span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#e6db74">&#39;mongodb://localhost/my_database&#39;</span>);
+</code></pre></div><p>使用<code>mongoose.connect</code>连接产生在<code>mongoose.connection</code>上，使用<code>mongoose.createConnection</code>是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用<code>mongoose.model</code>是无效的。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">conn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">createConnection</span>(<span style="color:#e6db74">&#39;your connection string&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MyModel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">model</span>(<span style="color:#e6db74">&#39;ModelName&#39;</span>, <span style="color:#a6e22e">schema</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyModel</span>;
+<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">save</span>(); <span style="color:#75715e">// 可以工作
+</span></code></pre></div><p>vs</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">conn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">createConnection</span>(<span style="color:#e6db74">&#39;your connection string&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MyModel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">model</span>(<span style="color:#e6db74">&#39;ModelName&#39;</span>, <span style="color:#a6e22e">schema</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyModel</span>;
+<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">save</span>(); <span style="color:#75715e">// 不能工作
+</span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

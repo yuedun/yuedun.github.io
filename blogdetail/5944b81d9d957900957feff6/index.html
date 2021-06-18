@@ -184,16 +184,16 @@
 </span><span style="color:#75715e">//user.createdAt 2017-06-17 10:39:29.5294 +0800 CST
 </span><span style="color:#75715e">//userpj.createdAt 2017-06-17 10:39:29
 </span></code></pre></div><p>在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：</p>
-<p><img src="http://hopefully-img.yuedun.wang/go_extends_20180328182436.png" alt="http://hopefully-img.yuedun.wang/go_extends_20180328182436.pn"></p>
+<p><img src="https://hopefully-img.yuedun.wang/go_extends_20180328182436.png" alt="https://hopefully-img.yuedun.wang/go_extends_20180328182436.pn"></p>
 <pre><code># command-line-arguments
 .\test.go:17:7: unknown field 'Name' in struct literal of type Cat
 .\test.go:18:8: unknown field 'Color' in struct literal of type Cat
 </code></pre><p>换一种方式还是有问题：</p>
-<p><img src="http://hopefully-img.yuedun.wang/go_extends_20180328183611.png" alt="http://hopefully-img.yuedun.wang/go_extends_20180328183611.png"></p>
+<p><img src="https://hopefully-img.yuedun.wang/go_extends_20180328183611.png" alt="https://hopefully-img.yuedun.wang/go_extends_20180328183611.png"></p>
 <pre><code># command-line-arguments
 .\test.go:17:9: mixture of field:value and value initializers
 </code></pre><p>这个错误的意思是“属性：值”和“值”两种赋值方法不能混合使用，Cat继承Animal的时候只有“Animal”类型，没有显式的属性名。</p>
-<p><img src="http://hopefully-img.yuedun.wang/go_extends_20180328184430.png" alt="http://hopefully-img.yuedun.wang/go_extends_20180328184430.png"></p>
+<p><img src="https://hopefully-img.yuedun.wang/go_extends_20180328184430.png" alt="https://hopefully-img.yuedun.wang/go_extends_20180328184430.png"></p>
 <p>全部省略属性名的方式则没问题，另外一种则是先声明变量，再对变量属性赋值：</p>
 <pre><code>user := new(User)
 user.name=&quot;张三&quot;

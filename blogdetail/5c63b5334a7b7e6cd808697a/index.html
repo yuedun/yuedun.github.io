@@ -160,10 +160,10 @@
 <blockquote>
 <p>$ go get -u google.golang.org/grpc</p>
 </blockquote>
-<pre><code>package google.golang.org/grpc: unrecognized import path &quot;google.golang.org/grpc&quot; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.)
-</code></pre><p>grpc的源码库迁移到了github上，所以需要手动下载了。<a href="https://github.com/grpc/grpc-go">grpc-go</a>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">package google.golang.org/grpc: unrecognized import path <span style="color:#e6db74">&#34;google.golang.org/grpc&#34;</span> <span style="color:#f92672">(</span>https fetch: Get https://google.golang.org/grpc?go-get<span style="color:#f92672">=</span>1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.<span style="color:#f92672">)</span>
+</code></pre></div><p>grpc的源码库迁移到了github上，所以需要手动下载了。<a href="https://github.com/grpc/grpc-go">grpc-go</a>
 正常情况下按照以下方式就可安装完成</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
 
 git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net
 
@@ -196,7 +196,7 @@ fatal: unable to access 'https://github.com/grpc/grpc-go.git/': OpenSSL SSL_conn
 <h3 id="二安装protoc编译器">二、安装protoc编译器</h3>
 <p>从<a href="https://github.com/google/protobuf/releases">protobuf</a>下载对应平台的编译器： protoc-<!-- raw HTML omitted -->-<!-- raw HTML omitted -->.zip
 比如我下载文件名为：<strong>protoc-3.7.0-rc-2-win64.zip</strong>，解压后的目录为：</p>
-<pre><code>E:.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">E:.
 │  readme.txt
 │
 ├─bin
@@ -218,14 +218,14 @@ fatal: unable to access 'https://github.com/grpc/grpc-go.git/': OpenSSL SSL_conn
             │  wrappers.proto
             │
             └─compiler
-                    plugin.proto
-</code></pre><p>复制protoc.exe文件到GOPATH的bin目录下。这时就可以执行<code>protoc</code>命令了</p>
-<pre><code>$ protoc.exe -h
-Usage: E:\go-work\bin\protoc.exe [OPTION] PROTO_FILES
+plugin.proto
+</code></pre></div><p>复制protoc.exe文件到GOPATH的bin目录下。这时就可以执行<code>protoc</code>命令了</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ protoc.exe -h
+Usage: E:<span style="color:#ae81ff">\g</span>o-work<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\p</span>rotoc.exe <span style="color:#f92672">[</span>OPTION<span style="color:#f92672">]</span> PROTO_FILES
 Parse PROTO_FILES and generate output based on the options given:
-  -IPATH, --proto_path=PATH   Specify the directory in which to search for
-                              imports.  May be specified multiple times;
-</code></pre><p>但是还需要安装<strong>protoc-gen-go</strong>插件，可以产生go相关代码， 除上述序列化和反序列化代码之外， 还增加了一些通信公共库。</p>
+  -IPATH, --proto_path<span style="color:#f92672">=</span>PATH   Specify the directory in which to search <span style="color:#66d9ef">for</span>
+  imports.  May be specified multiple times;
+</code></pre></div><p>但是还需要安装<strong>protoc-gen-go</strong>插件，可以产生go相关代码， 除上述序列化和反序列化代码之外， 还增加了一些通信公共库。</p>
 <blockquote>
 <p>$ go get -u github.com/golang/protobuf/protoc-gen-go</p>
 </blockquote>
@@ -242,10 +242,10 @@ Parse PROTO_FILES and generate output based on the options given:
 <h3 id="三安装protoc-gen-micro">三、安装protoc-gen-micro</h3>
 <p><code>go get github.com/micro/protoc-gen-micro/v2</code>
 倒霉的我又是那么不顺，显示出一下结果：</p>
-<pre><code>go: downloading github.com/micro/protoc-gen-micro/v2 v2.0.0
-go get github.com/micro/protoc-gen-micro/v2: github.com/micro/protoc-gen-micro/v2@v2.0.0: verifying module: github.com/micro/protoc-gen-micro/v2@v2.0.0: Get &quot;https://sum.golang.org/lookup/github.com/micro/protoc-gen-micro/v2@v2.0.0&quot;: dial tcp 172.217.160.113:443: c
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go: downloading github.com/micro/protoc-gen-micro/v2 v2.0.0
+go get github.com/micro/protoc-gen-micro/v2: github.com/micro/protoc-gen-micro/v2@v2.0.0: verifying module: github.com/micro/protoc-gen-micro/v2@v2.0.0: Get <span style="color:#e6db74">&#34;https://sum.golang.org/lookup/github.com/micro/protoc-gen-micro/v2@v2.0.0&#34;</span>: dial tcp 172.217.160.113:443: c
 onnectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
-</code></pre><p>遇到这种情况一般是网络原因，死皮赖脸的不断重试就行，要么也是手动下载。
+</code></pre></div><p>遇到这种情况一般是网络原因，死皮赖脸的不断重试就行，要么也是手动下载。
 按照非官网做法，说是会有<code>protoc-gen-micro(.exe)</code>文件生成，可在<code>$GOBIN</code>下查看，亦或是<code>$GOPATH\BIN</code></p>
 
 		</div>

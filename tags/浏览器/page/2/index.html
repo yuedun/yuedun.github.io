@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>浏览器 - 月盾的个人博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="浏览器" />
+<meta property="og:description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.yuedun.wang/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" />
+
+
+		<meta itemprop="name" content="浏览器">
+<meta itemprop="description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构">
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="浏览器"/>
+<meta name="twitter:description" content="月盾的博客，分享golang，nodejs，前端，生活感想，系统架构"/>
+
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="alternate" type="application/rss+xml" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/index.xml" title="月盾的个人博客">
+
+	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
+
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
+<script>
+  
+  
+  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
+  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
+  const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
+  AV.init({ appId, appKey, serverURL });
+  function updateCollect() {
+    const collect = new AV.Query('Collect');
+    const url = location.pathname;
+    collect.select(['url', 'pv'])
+    collect.equalTo('url', url);
+    collect.first().then((col) => {
+      if (!col) {
+        
+        const Collect = AV.Object.extend('Collect');
+        
+        const collect = new Collect();
+        
+        collect.set('url', url);
+        collect.set('pv', 1);
+        collect.save()
+      } else {
+        col.increment('pv', 1)
+        col.save();
+
+        const context = document.querySelector('.post__meta.meta');
+        const pv = document.createElement('div');
+        pv.setAttribute('class', 'meta__item-author meta__item');
+        const span = document.createElement('span');
+        span.setAttribute('class', 'meta__text');
+        span.innerText = "浏览（" + col.get('pv') + "）";
+        pv.appendChild(span)
+        context.appendChild(pv)
+      }
+    });
+  }
+
+  updateCollect()
+</script>
+</head>
+<body class="body">
+		<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+		<div class="container wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">浏览器</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/56551ce4c72f59d15379b4b8/" rel="bookmark">
+			js prototype的理解【转】
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T02:28:52Z">2015-11-25 02:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototype属性，可以给类动态地添加方法，以便在JavaScript中实现“ 继承”的效果。
+具体来说，prototype 是在 IE 4 及其以后版本引入的一个针对于某一类的对象的方法，当你用prototype编写一个类后，如果new一个新的对象，浏览器会自动把prototype中 的内容替你附加在对象上。这样，通过利用prototype就可以在JavaScript中实现成员函数的定义，甚至是“继承”的效果。
+对于javascript本身而言是基于对象的，任何元素都可以看成对象。然而类型和对象是不同的，而我们所讲的prototype属性即是基于类型的一 种属性。对于prototype的基本使用就如对象的创建及属性赋值一样的简单。直接通过赋值操作即可完成属性的创建。
+/** * 关于prototype, 理解这个很有必要 可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 JS中允许的类型有Array, Boolean, Date, Enumerator, Error, Function, Number, Object, RegExp, String 以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例 */ Object.prototype.name = &#34;zhangsan&#34;; Object.prototype.nihao = function () { alert(&#34;i can method name is &#34; + this.name); } var obj = new Object(); obj.nihao(); alert(obj.name); // 在实例上不能使用prototype，否则会发生编译错误  obj.prototype.sex = &#34;男&#34;; //error,无法给一个实例prototype var o = { name: &#34;zhangsan&#34; } o.prototype.age = 30; //error,无法给一个实例prototype //可以为类型定义“静态”的属性和方法，直接在类型上调用即可 alert(Object.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/56551ce4c72f59d15379b4b8/">阅读全文…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/563069efaa0d5223f187dfa4/" rel="bookmark">
+			检测网站中未使用的css样式
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-28T06:23:43Z">2015-10-28 06:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		网站的css样式文件在多次修改后会有很多样式废弃不再使用，使得维护起来困难，还可能出现重名样式，后面的覆盖掉前面的效果，所以有必要清除掉不再使用的样式。可以使用的工具很多，不过在使用了Dust-Me Selectors觉得足够了。
+https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/
+打开上面网址安装
+直接点击这个小扫把会检测当前页面没有使用的样式，不过这样的结果还不是我们想要的，因为当前页面没有使用不代表其他页面也没有使用。我们更需要的是找出整个网站中未使用的样式。
+选择第一项“Spider Sitemap”，就像是百度蜘蛛爬取整个网站数据一样。
+输入网址，本地网址和网络地址都可以检测，点击“Start”后很快就有结果了，如果页面较多会费时些。
+可以看到有橘黄色部分就是没有使用的样式，但是这也不能完全代表就是没有使用过，上面三个未使用的样式是我对于博客内容的图片和引用块使用的样式，因为本地的测试内容中的确没有使用这三个样式，但是线上的网站却使用了，遇到这种情况就需要仔细甄别了。
+再看一下扫描的页面日志
+基本的页面都有扫描过了。此时可以手动删除掉没有使用的样式，这个插件对于简单的网站够用了，但是大型网站就不准确了，当然有些其他工具还可以导出检测后的结果。有必要的可以去下载。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/55e3e840db5ac9c2be76b2f9/" rel="bookmark">
+			一次简单的前端页面优化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-08-31T05:38:08Z">2015-08-31 05:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		公司之前的产品管理对于小编们的使用情况及其糟糕，每次打开一个页面都要等待好久，这也是由于时间紧张，开始做的时候就只管进度没有时间优化。我大概看了下，光是登录页和一个空白首页就有78个请求，1.1M的数据。其他功能页面不少于这个数，这是因为所有页面共用了一个头文件，而这个头文件把所有有用没有的css文件和js文件都加载进来了，所以这次做的新后台管理系统绝不能这么做了。
+首先，css按需加载，当然有一些css是每个页面必须的就放到一个公共页面中include进来，对于一些新增的插件就在需要的时候添加到对应的页面。
+其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。
+初步结果显示，所有页面加载速度平均在0.5秒，有些页面几乎看不出来重新加载过程，瞬间完成。优化也算是有一定的效果了。其中要说一下requirejs的一些优缺点，requirejs优点是可以实现js异步加载和模块化开发，不过让我有点不适应的是在HTML页面中不能使用onclick=func这种方式的事件处理，会提示找不到函数，只能在页面加载完成后用jquery进行事件监听，一些动态加载的页面数据也需要在加载以后重新绑定事件。
+2015-11-08日更新
+自从使用了requirejs后，凡是做页面需要js的时候首先想到的就是requirejs，感觉入坑跳不出来，反而弄巧成拙了。requirejs本意是异步加载多个js文件以防止页面阻塞，在一个网站或项目中也尽量合并多个文件里的内容以减少网络请求，一次加载一个大的文件比多次加载多个小文件来的划算的多，还有，requirejs虽然有好处但是并不是任何时候都有，比如页面很简单，js内容也很少的时候就完全不该用它。最后有一个不得不说的缺点，在上面已经提过，就是事件绑定，因为不能使用onclick=func()这种方式调用函数，只能用$(function(){})这种方式绑定事件，那么在网络不好的情况下，有些文件加载缓慢，导致不能绑定事件，如果一个按钮是这种方式绑定的事件，结果就是非要等到页面加载完才能点击，很让人着急。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/559bd64ad366f15412cbf594/" rel="bookmark">
+			前端工具gulp的用途和使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-07T13:38:18Z">2015-07-07 13:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在接触前端开始就听说过grunt和gulp是很叼的前端构建工具，但不知道到底有多叼，只是听说可以自动编译less，sass为css，目前还没有使用less和sass，所以也就没有尝试使用grunt和gulp。但是作为一个技术爱好者还是经不住诱惑，照着网上的教程简单使用了一下，总算是知道有什么用处了，因为都说gulp比grunt更简单好用，就以gulp的使用方法为例来说明一下。
+文件合并：关于文件合并很多人存在这样的疑惑，在前端开发中到底该把所有js和css写在一个文件里还是各个页面分开写，我的建议是开发的时候分开写，上线的时候合并为一个，这样的好处是对于浏览器来说，不同页面中相同的文件默认会请求一次缓存下来，其他页面请求相同文件时就直接从缓存中读取，减少文件的网络请求可以提高网页速度，所以文件合并的是很有必要的。
+2.文件压缩：既然都合并了，何不再压缩一下呢
+3.语法检查：这个功能一般会和下面第4条功能配合使用，当文件修改的时候检查是否有语法错误，并在命令行中输出错误信息。
+4.监听文件变化：监听某个目录下文件是否修改，修改的话就执行特定的操作，比如上面几个操作。 以上4点是比较常用的功能，更多功能根据自己需要添加
+var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名  // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); }); // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); }); // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); }); // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); 目录结构:
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/54488218aedc6cf109b96d32/" rel="bookmark">
+			让你的Node.js应用跑得更快的10个技巧
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-23T04:20:40Z">2014-10-23 04:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那么你就应该无所不用，让你的应用更快，异常的快。本文将介绍10条经过检验得知可大大提高Node速度的应用技巧。废话不多说，让我们逐条来看看。
+**1.**并行
+创建 Web 应用的时候，你可能要多次调用内部 API 来获取各种数据。比如说，假设在 Dashboard 页面上，你要执行下面这几个调用：
+ 用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications().  为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
+如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
+我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
+如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
+2. 异步
+根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:
+不过要是你执行那种长时间的阻塞操作，主线程就会被阻塞到这些操作完成为止。这大大降低你应用的性能。所以，最好确保你的代码里用的都是异步版本 API，最起码你应该在性能节点异步。而且，你在选用第三方模块的时候也要很小心。因为当你想方设法把同步操作从你代码中剔除之后，一个外部库的同步调用会让你前功尽弃，降低你的应用性能。
+3. 缓存
+如果你用到一些不经常变化的数据，你应该把它们缓存起来，改善性能。比如说，下面的代码是获取最新帖子并显示的例子:
+如果你不经常发贴的话，你可以把帖子列表缓存起来，然后一段时间之后再把它们清理掉。比如，我们可以用 Redis 模块来达到这个目的。当然，你必须在你的服务器上装 Redis。然后你可以用叫做 node_redis 的客户端来保存键/值对。下面的例子演示我们怎么缓存帖子：
+看到了吧，我们首先检查 Redis 缓存，看看是否有帖子。如果有，我们从缓存中拿这些帖子列表。否则我们就检索数据库内容，然后把结果缓存。此外，一定时间之后，我们可以清理 Redis 缓存，这样就可以更新内容了。
+4. gzip 压缩
+开启 gzip 压缩对你的 Web 应用会产生巨大影响。当一个 gzip 压缩浏览器请求某些资源的时候，服务器会在响应返回给浏览器之前进行压缩。如果你不用 gzip 压缩你的静态资源，浏览器拿到它们可能会花费更长时间。
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/54488218aedc6cf109b96d32/">阅读全文…</a>
+	</div>
+</article>
+</main>
+
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">«</a>
+	<span class="pagination__item pagination__item--current">2/2</span>
+</div>
+
+			</div>
+			
+<aside class="sidebar sidebar--left"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">近期文章</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
+			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="widget-categories widget">
+	<h4 class="widget__title">分类</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/linux/">linux</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">疑难杂症</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E8%BF%90%E8%90%A5/">运营</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">标签</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvl/" title="nvl">nvl</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+	</div>
+</div>
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">社交</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/yuedun" target="_blank">
+				<svg class="widget-social__link-icon icon icon-github" width="24" height="24" viewBox="0 0 384 374"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="悠哉" rel="noopener noreferrer" href="https://y00z.github.io/" target="_blank">
+				<span>悠哉</span>
+			</a>
+		</div>
+		
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="golang网站" rel="noopener noreferrer" href="http://www.hopefly.top" target="_blank">
+				<span>golang网站</span>
+			</a>
+		</div>
+		
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+	</div>
+</footer>
+
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+
+</body>
+</html>

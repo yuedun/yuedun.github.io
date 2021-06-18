@@ -148,9 +148,9 @@
 <div class="content post__content clearfix">
 			<p>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website</p>
 <pre><code>db.createUser( {user: &quot;hp_website&quot;,pwd: &quot;xxxxxx&quot;,roles: [ { role: &quot;userAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbAdmin&quot;, db: &quot;website&quot; },{ role: &quot;dbOwner&quot;, db: &quot;website&quot; } ]})
-</code></pre><p>退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户<code>db.getUsers()</code>显示
-<img src="http://hopefully-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200404094439043.jpg" alt="">
-虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用<code>use website</code>后创建用户也是不对。
+</code></pre><p>退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户<code>db.getUsers()</code>显示</p>
+<p><img src="https://hopefully-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200404094439043.jpg" alt=""></p>
+<p>虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用<code>use website</code>后创建用户也是不对。
 正确的做法是关闭数据库认证，使用不带<code>--auth</code>启动数据库，使用命令行来创建</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">use website
 

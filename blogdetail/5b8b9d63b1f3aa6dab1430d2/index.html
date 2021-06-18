@@ -148,17 +148,17 @@
 <div class="content post__content clearfix">
 			<p>win10家庭版本身不支持组策略，但还是有办法让其支持。
 复制下面内容到文本文件：</p>
-<pre><code>@echo off
-pushd &quot;%~dp0&quot;
-dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt
-dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt
-for /f %%i in ('findstr /i . List.txt 2^&gt;nul') do dism /online /norestart /add-package:&quot;C:\Windows\servicing\Packages\%%i&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">@echo off
+pushd <span style="color:#e6db74">&#34;%~dp0&#34;</span>
+dir /b C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ervicing<span style="color:#ae81ff">\P</span>ackages<span style="color:#ae81ff">\M</span>icrosoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt
+dir /b C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ervicing<span style="color:#ae81ff">\P</span>ackages<span style="color:#ae81ff">\M</span>icrosoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt
+<span style="color:#66d9ef">for</span> /f %%i in <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;findstr /i . List.txt 2^&gt;nul&#39;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> dism /online /norestart /add-package:<span style="color:#e6db74">&#34;C:\Windows\servicing\Packages\%%i&#34;</span>
 pause
-</code></pre><p>后缀名保存为<code>cmd</code>,以管理员身份执行：
-<img src="http://hopefully-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902160354.png" alt="">
-然后<code>WIN+R</code>中执行<code>gpedit.msc</code>即可打开组策略。
-<img src="http://hopefully-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902161900.png" alt="">
-如此可以关闭占用CPU过高的Windows Defender。</p>
+</code></pre></div><p>后缀名保存为<code>cmd</code>,以管理员身份执行：</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902160354.png" alt=""></p>
+<p>然后<code>WIN+R</code>中执行<code>gpedit.msc</code>即可打开组策略。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902161900.png" alt=""></p>
+<p>如此可以关闭占用CPU过高的Windows Defender。</p>
 
 		</div>
 	</article>

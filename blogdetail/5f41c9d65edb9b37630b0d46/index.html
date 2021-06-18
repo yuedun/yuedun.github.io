@@ -157,12 +157,12 @@
 然后是部署困难，相比较nodejs三条命令搞定<a href="http://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4">linux安装nodejs——快捷版</a>，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。</p>
 <p>于是下定决心自己开发一个发布系统，<strong>朱雀发布系统</strong>因此诞生。</p>
 <p>基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图：</p>
-<p><img src="http://hopefully-img.yuedun.wang/zhuque.jpg" alt="架构图"></p>
+<p><img src="https://hopefully-img.yuedun.wang/zhuque.jpg" alt="架构图"></p>
 <p>和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。
 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。
 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。
-放一张图来看一下：
-<img src="http://hopefully-img.yuedun.wang/%E6%9C%B1%E9%9B%80%E5%8F%91%E5%B8%83%E7%95%8C%E9%9D%A2.jpg" alt="朱雀发布系统"></p>
+放一张图来看一下：</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E6%9C%B1%E9%9B%80%E5%8F%91%E5%B8%83%E7%95%8C%E9%9D%A2.jpg" alt="朱雀发布系统"></p>
 <p>项目地址：<a href="https://github.com/yuedun/zhuque">nodejs发布系统</a></p>
 <p><a href="https://www.yuedun.wang/blogdetail/60950c9ee76f307341586548">朱雀发布系统支持scp（rsync）发布</a></p>
 

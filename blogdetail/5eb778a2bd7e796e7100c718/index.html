@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>你是拿锤子的前端开发吗？ - 月盾的个人博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="## 前言接上篇《[说道说道前后端分离](http:www.yuedun.wangblogdetail5b66733ae7e37a672f015c10)》今天再">
+	<meta name="description" content="前言接上篇《[说道说道前后端分离](http:www.yuedun.wangblogdetail5b66733ae7e37a672f015c10)》今天再">
 		<meta property="og:title" content="你是拿锤子的前端开发吗？" />
-<meta property="og:description" content="## 前言接上篇《[说道说道前后端分离](http:www.yuedun.wangblogdetail5b66733ae7e37a672f015c10)》今天再" />
+<meta property="og:description" content="前言接上篇《[说道说道前后端分离](http:www.yuedun.wangblogdetail5b66733ae7e37a672f015c10)》今天再" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5eb778a2bd7e796e7100c718/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2020-05-10T03:44:34&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="你是拿锤子的前端开发吗？">
-<meta itemprop="description" content="## 前言接上篇《[说道说道前后端分离](http:www.yuedun.wangblogdetail5b66733ae7e37a672f015c10)》今天再"><meta itemprop="datePublished" content="2020-05-10T03:44:34&#43;00:00" />
+<meta itemprop="description" content="前言接上篇《[说道说道前后端分离](http:www.yuedun.wangblogdetail5b66733ae7e37a672f015c10)》今天再"><meta itemprop="datePublished" content="2020-05-10T03:44:34&#43;00:00" />
 <meta itemprop="dateModified" content="2020-05-10T03:44:34&#43;00:00" />
 <meta itemprop="wordCount" content="32">
-<meta itemprop="keywords" content="前端,性能,vue," />
+<meta itemprop="keywords" content="前端,性能,vue,javascript," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="你是拿锤子的前端开发吗？"/>
-<meta name="twitter:description" content="## 前言接上篇《[说道说道前后端分离](http:www.yuedun.wangblogdetail5b66733ae7e37a672f015c10)》今天再"/>
+<meta name="twitter:description" content="前言接上篇《[说道说道前后端分离](http:www.yuedun.wangblogdetail5b66733ae7e37a672f015c10)》今天再"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -144,16 +144,20 @@
 	<div class="toc__menu">
 		<nav id="TableOfContents">
   <ul>
-    <li><a href="#前言">前言</a></li>
-    <li><a href="#事出有因">事出有因</a></li>
-    <li><a href="#问题分析">问题分析</a></li>
-    <li><a href="#结论">结论</a></li>
+    <li>
+      <ul>
+        <li><a href="#前言">前言</a></li>
+        <li><a href="#事出有因">事出有因</a></li>
+        <li><a href="#问题分析">问题分析</a></li>
+        <li><a href="#结论">结论</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<h2 id="前言">前言</h2>
+			<h3 id="前言">前言</h3>
 <p>接上篇《<a href="http://www.yuedun.wang/blogdetail/5b66733ae7e37a672f015c10">说道说道前后端分离</a>》今天再次对前端现状作一次分析（吐槽）。</p>
 <p>再次引用一句《穷查理宝典》中的理论：</p>
 <blockquote>
@@ -162,13 +166,13 @@
 <blockquote>
 <p>因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。</p>
 </blockquote>
-<h2 id="事出有因">事出有因</h2>
+<h3 id="事出有因">事出有因</h3>
 <p>这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。</p>
-<p>最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。
-<img src="http://hopefully-img.yuedun.wang/1%E5%AF%B91M%E7%AB%99%E4%BC%98%E5%8C%96%E5%89%8D.jpg" alt="">
-对以上问题分析得出结论之一：<strong>资源过大</strong>，有兴趣的可以打开<a href="http://www.taobao.wang">淘宝网</a>看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。
-<img src="http://hopefully-img.yuedun.wang/taobao.jpg" alt="">
-而我们一个移动端网站的资源居然能超过3M，究其原因：</p>
+<p>最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。</p>
+<p><img src="https://hopefully-img.yuedun.wang/1%E5%AF%B91M%E7%AB%99%E4%BC%98%E5%8C%96%E5%89%8D.jpg" alt=""></p>
+<p>对以上问题分析得出结论之一：<strong>资源过大</strong>，有兴趣的可以打开<a href="http://www.taobao.wang">淘宝网</a>看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。</p>
+<p><img src="https://hopefully-img.yuedun.wang/taobao.jpg" alt=""></p>
+<p>而我们一个移动端网站的资源居然能超过3M，究其原因：</p>
 <ul>
 <li>图片大</li>
 <li>js大</li>
@@ -177,13 +181,13 @@
 <p>图片大是因为图片基本没任何大小控制，都是使用了最高标准原图。js和css大基本是属于架构问题，一个项目中包含的上百的页面每个页面600多k的js是绕不过去的（vendor.js,app.js等打包资源，不包含其他引入资源）。</p>
 <p>看到<code>vendor.js</code>,<code>app.js</code>这两个名称很多人应该想到了，这是vue（react）框架开发的网站。
 是的，就是用vue开发的移动端网站，使用vue开发网站本身也不是什么大问题，毕竟有实力的公司不需要SEO，直接竞价排名就行。而我要说的问题是，不是什么网站都可以用vue来开发，不信请继续往下看。</p>
-<h2 id="问题分析">问题分析</h2>
+<h3 id="问题分析">问题分析</h3>
 <p>我司的移动端网站作用并不仅仅是用来展示公司形象的，更重要的是用户转化的，就是让用户注册的。而且是要和很多第三方机构合作投放引流，经常需要分析页面UI的不同对转化率的影响，所以需要的页面不是几个，而是几十上百个，还在不停增加，每周都有三五个页面增加。
 由于vue主要是以开发单页SPA应用为主的，在开发人员不考虑真实需求的情况下自然会使用流行的技术，最终把网站开发成一个单页应用。单页应用的特点就是<strong>单页</strong>，就是把不同的页面做成一个页面一次加载，加载完成后页面之间的切换就会很快，一般无需再加载资源，用户体验也会好很多，可以套用一句话：“一次等待，处处快速”。</p>
 <p>这个特点在管理后台项目中很合适，但是在只需要展示一次的项目中也合适吗？不合适。</p>
 <p>我们的网站项目是用来做很多落地页的，各个落地页之间没有关联性，不会A页面跳到B页面，从B页面跳到C页面，A页面中不需要B页面的资源，B页面也不需要C页面的资源。然而vue项目打包的时候会把每个页面独有的一些资源都融合在一起，形成公共资源。结果就显而易见了，一个页面总要加载一堆无关资源，不仅资源大，还有很长的白屏时间，用户体验下降。</p>
 <p>还有一点不该使用单页应用的原因是我们的页面是纯展示的页面，不需要很多数据交互，vue能起到什么作用？操作数据？驱动UI？模块化？通通不需要。现代html可以不借助第三方库和框架的情况下完全能实现。</p>
-<h2 id="结论">结论</h2>
+<h3 id="结论">结论</h3>
 <blockquote>
 <p>JavaScript 的最大优势之一是它不需要编译，所以可以在浏览器中直接运行。这样你就可以立刻获得编码的反馈。入门门槛很低；你只需一个文本编辑器和一个浏览器就能编写软件了。
 不幸的是，这种简单性和可访问性已被称为过度工具链的风气破坏了。这种风气已经将 JavaScript 的开发工作变成了一场噩梦。我甚至看过一整套关于配置 Webpack 的课程。这种乱象需要有个尽头——生命苦短啊。</p>
@@ -205,6 +209,9 @@
 		</li>
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/vue/" rel="tag">vue</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/javascript/" rel="tag">javascript</a>
 		</li>
 	</ul>
 </div>

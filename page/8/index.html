@@ -166,7 +166,7 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
 func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
  func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
-gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.
+// gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ac588446a513c7b8bfd72e6/">阅读全文…</a>
@@ -188,13 +188,13 @@ gopl.io/ch11/word1 // Package word provides utilities for word games. package wo
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import(&quot;fmt&quot;)然后在代码里面可以通过如下的方式调用 fmt.Println(&quot;hello world&quot;)
+import( &#34;fmt&#34; ) 然后在代码里面可以通过如下的方式调用 fmt.Println(&quot;hello world&quot;)
 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块： 相对路径 import &quot;./model&quot; //当前文件同一目录的model目录，但是不建议这种方式import 绝对路径 import &quot;shorturl/model&quot; //加载GOPATH/src/shorturl/model模块
 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
   点操作 有时候会看到如下的方式导入包import( . “fmt” ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的fmt.Println(“hello world”)可以省略的写成Println(“hello world”)
   别名操作 别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字import( f “fmt” )别名操作调用包函数时前缀变成了重命名的前缀，即f.Println(“hello world”)
   _操作 这个操作经常是让很多人费解的一个操作符，请看下面这个import import ( “database/sql” _ “github.com/ziutek/mymysql/godrv” ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
-  二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程： 
+  二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
 通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
 原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457
 	</div>
@@ -264,8 +264,8 @@ pm2.json
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.(found in &lt;Root&gt;)解决方案：与entry属性平级添加
-resolve: {alias: {'vue$': 'vue/dist/vue.esm.js'//该路径为node_modules下的vue目录}}// 需要编译器new Vue({template: '&lt;div&gt;{{ hi }}&lt;/div&gt;'})// 不需要编译器new Vue({render (h) {return h('div', this.hi)}})出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
+		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
+resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -329,7 +329,8 @@ pm2-logrotate配置
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧， 如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：
+		从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧，
+如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：
  地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
  其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox
 	</div>
@@ -349,8 +350,9 @@ pm2-logrotate配置
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		首先看项目目录： 再看Dockerfile文件内容：
-# 以最新的node为基础镜像FROM hub.c.163.com/library/node:latest# 工作目录为appWORKDIR /app# 拷贝当前所在项目根目录到app目录COPY . /app# 全局安装pm2RUN npm install pm2 -gEXPOSE 8081#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出CMD [&quot;pm2-runtime&quot;, &quot;dest/server.js&quot;, &quot;--no-daemon&quot;]# ENTRYPOINT [&quot;node&quot;, &quot;server.js&quot;]或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+		首先看项目目录：
+再看Dockerfile文件内容：
+# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&#34;pm2-runtime&#34;, &#34;dest/server.js&#34;, &#34;--no-daemon&#34;] # ENTRYPOINT [&#34;node&#34;, &#34;server.js&#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
 	</div>
@@ -433,12 +435,9 @@ pm2-logrotate配置
 		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
@@ -446,23 +445,21 @@ pm2-logrotate配置
 		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
@@ -470,7 +467,6 @@ pm2-logrotate配置
 		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
@@ -481,7 +477,6 @@ pm2-logrotate配置
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -497,9 +492,9 @@ pm2-logrotate配置
 		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
@@ -516,7 +511,7 @@ pm2-logrotate配置
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
@@ -526,6 +521,7 @@ pm2-logrotate配置
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>

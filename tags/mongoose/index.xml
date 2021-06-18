@@ -14,9 +14,9 @@
       
       <guid>https://www.yuedun.wang/blogdetail/5b90f19bb1f3aa6dab14313d/</guid>
       <description>使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&#39;mongoose&#39;);mongoose.connect(&#39;mongodb://localhost/my_database&#39;);使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
-const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = conn.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 可以工作vs
-const conn = mongoose.createConnection(&#39;your connection string&#39;);const MyModel = mongoose.model(&#39;ModelName&#39;, schema);const m = new MyModel;m.save(); // 不能工作</description>
+const mongoose = require(&amp;#39;mongoose&amp;#39;); mongoose.connect(&amp;#39;mongodb://localhost/my_database&amp;#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = conn.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
+const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = mongoose.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 不能工作 </description>
     </item>
     
     <item>

@@ -19,7 +19,7 @@
 <meta itemprop="description" content="# gorm概述- 全功能ORM（几乎）- 关联（包含一个，包含多个，属于，多对多，多种包含）- Callbacks（创建保存更新删除查找之前之后）- 预加载（"><meta itemprop="datePublished" content="2020-03-30T02:29:13&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-30T02:29:13&#43;00:00" />
 <meta itemprop="wordCount" content="84">
-<meta itemprop="keywords" content="golang," />
+<meta itemprop="keywords" content="golang,gorm," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="gorm模糊查询和分页查询同时查总条数"/>
 <meta name="twitter:description" content="# gorm概述- 全功能ORM（几乎）- 关联（包含一个，包含多个，属于，多对多，多种包含）- Callbacks（创建保存更新删除查找之前之后）- 预加载（"/>
@@ -182,9 +182,9 @@
 用于查询数据列表，</p>
 <p>4.<code>.Offset(-1).Limit(-1).Count(&amp;count)</code>用户查询条数，Offset(-1)和Limit(-1)很重要，不加的话会在统计条数后也加上offset和limit，导致查不到条数。
 查询结果：</p>
-<pre><code>SELECT * FROM `user`   LIMIT 10 OFFSET 0;
-SELECT count(*) FROM `user`;
-</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">user</span><span style="color:#f92672">`</span>   <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">OFFSET</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">user</span><span style="color:#f92672">`</span>;
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -193,6 +193,9 @@ SELECT count(*) FROM `user`;
 	<ul class="tags__list">
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/golang/" rel="tag">golang</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/gorm/" rel="tag">gorm</a>
 		</li>
 	</ul>
 </div>

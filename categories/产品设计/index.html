@@ -142,13 +142,13 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。
-日常开发流程是这样的：
+		背景 面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。
+原来 日常开发流程是这样的：
  开发 -&gt; 合代码 -&gt; 上测试环境 -&gt; 测试 -&gt; 合代码 -&gt; 上uat环境 -&gt; 测试 -&gt; 合代码 -&gt; 提发布申请 -&gt; 发布 -&gt; 验收
 就算是一个3分钟搞定的需求，流程也需要1天，因为中间有太多的环境切换和人员流转。
 这样的经历所有做过运营活动的童鞋或多或少都有体验，所以很多人也想过做一个编辑器，比如拖拉组件的方式实现一个页面。
 我们曾经有种设想是直接给运营做一个活动编辑器，让他们自己去修改，自己去做页面，自己发布。说实话这个也做过，但是没用起来，原因呢大概就是人性的贪婪与懒惰，当初做出第一版的时候觉得太简单，不能满足使用需求，第二版的时候功能倒是挺丰富，但是运营又不会用。想想那么多css样式，你以为图形化了他们就会用？太天真！干脆教他们写代码好了！
-所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。 这个平台最终流程变成了这样：
+现在 所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。 这个平台最终流程变成了这样：
 开发 -&gt; 测试 -&gt; 发布 -&gt; 验收
 是的，由原来的11步直接变成了4步，其中开发和发布也比原来更简单了，你可以选择自己喜欢的编辑方式和开发框架，或vscode，或devtool,或工具提供的文本框，或jquery，或vue。可单独对css，js，html修改，将修改的内容直接提交即可看到效果。 为什么会减少这么多？因为没有了测试环境和uat环境的流转，直接在生产环境操作的。
 是不是会有疑问——直接在生产环境开发会不会有风险？ 答案是：不会！项目本身是分为两个环境，一个是开发环境，另一个是访问环境。开发环境是用于内部开发和测试使用，不对外开放，只有发布后才将开发数据同步到公开环境。
@@ -290,12 +290,9 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/blur/" title="blur">blur</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cmder/" title="cmder">cmder</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/conemu/" title="conemu">conemu</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/createconnection/" title="createConnection">createConnection</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/decode/" title="decode">decode</a>
@@ -303,23 +300,21 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/firefox-quantum/" title="Firefox Quantum">Firefox Quantum</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/focus/" title="focus">focus</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/fs/" title="fs">fs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git-bash/" title="git bash">git bash</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go%E7%BB%A7%E6%89%BF/" title="go继承">go继承</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/go%E9%87%8D%E5%86%99/" title="go重写">go重写</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/led%E6%89%8B%E7%94%B5%E7%AD%92/" title="led手电筒">led手电筒</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
@@ -327,7 +322,6 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/node_env/" title="NODE_ENV">NODE_ENV</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
@@ -338,7 +332,6 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pocket/" title="pocket">pocket</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -354,9 +347,9 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue.js/" title="vue.js">vue.js</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/waitgroup/" title="WaitGroup">WaitGroup</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/xl4g/" title="xl4g">xl4g</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
@@ -373,7 +366,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8B%86%E8%A7%A3/" title="拆解">拆解</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98/" title="数据库优">数据库优</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
@@ -383,6 +376,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>

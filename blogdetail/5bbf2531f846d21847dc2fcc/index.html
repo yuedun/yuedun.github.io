@@ -148,13 +148,13 @@
 <div class="content post__content clearfix">
 			<p>网上也找了很多方案结果就是奇葩的不成功，最后直接修改<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>成功了。
 在该文件最后添加</p>
-<pre><code>default-storage-engine=INNODB
-character-set-server=utf8
-collation-server=utf8_general_ci
-</code></pre><p>重启成功。
-<img src="http://hopefully-img.yuedun.wang/20181011181909.png" alt="">
-这是本地虚拟机里的mysql</p>
-<pre><code>mysql&gt; show variables like &quot;character%&quot;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">default-storage-engine<span style="color:#f92672">=</span>INNODB
+character-set-server<span style="color:#f92672">=</span>utf8
+collation-server<span style="color:#f92672">=</span>utf8_general_ci
+</code></pre></div><p>重启成功。</p>
+<p><img src="https://hopefully-img.yuedun.wang/20181011181909.png" alt=""></p>
+<p>这是本地虚拟机里的mysql</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mysql&gt; show variables like <span style="color:#e6db74">&#34;character%&#34;</span>;
 +--------------------------+----------------------------+
 | Variable_name            | Value                      |
 +--------------------------+----------------------------+
@@ -167,11 +167,11 @@ collation-server=utf8_general_ci
 | character_set_system     | utf8                       |
 | character_sets_dir       | /usr/share/mysql/charsets/ |
 +--------------------------+----------------------------+
-</code></pre><p>完全正确，但是修改阿里云服务器以后还是有点小问题
-<img src="http://hopefully-img.yuedun.wang/20181011182126.png" alt="">
-<code>character_set_database</code>这一项还是<code>latin1</code>,不过似乎并不影响。
-友情提示：纠正了mysql字符集发现新建的表还是<code>latin1</code>字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。
-<img src="http://hopefully-img.yuedun.wang/20181011182445.png" alt=""></p>
+</code></pre></div><p>完全正确，但是修改阿里云服务器以后还是有点小问题</p>
+<p><img src="https://hopefully-img.yuedun.wang/20181011182126.png" alt=""></p>
+<p><code>character_set_database</code>这一项还是<code>latin1</code>,不过似乎并不影响。
+友情提示：纠正了mysql字符集发现新建的表还是<code>latin1</code>字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。</p>
+<p><img src="https://hopefully-img.yuedun.wang/20181011182445.png" alt=""></p>
 
 		</div>
 		<footer class="post__footer">
