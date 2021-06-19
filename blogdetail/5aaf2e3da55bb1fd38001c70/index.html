@@ -160,23 +160,26 @@
 )
 </code></pre></div><p>然后在代码里面可以通过如下的方式调用
 <code>fmt.Println(&quot;hello world&quot;)</code></p>
-<p>上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：
-<strong>相对路径</strong>     <code>import   &quot;./model&quot;  //当前文件同一目录的model目录，但是不建议这种方式import</code>
-<strong>绝对路径</strong>    <code>import   &quot;shorturl/model&quot;  //加载GOPATH/src/shorturl/model模块</code></p>
+<p>上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：</p>
+<p><strong>相对路径</strong></p>
+<p><code>import   &quot;./model&quot;  //当前文件同一目录的model目录，但是不建议这种方式import</code></p>
+<p><strong>绝对路径</strong></p>
+<p><code>import   &quot;shorturl/model&quot;  //加载GOPATH/src/shorturl/model模块</code></p>
 <p>上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。</p>
 <ol>
-<li>
-<p><strong>点操作</strong>   有时候会看到如下的方式导入包<code>import( . “fmt” )</code> 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的<code>fmt.Println(“hello world”)</code>可以省略的写成<code>Println(“hello world”)</code></p>
-</li>
-<li>
-<p><strong>别名操作</strong>   别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字<code>import( f “fmt” )</code>别名操作调用包函数时前缀变成了重命名的前缀，即<code>f.Println(“hello world”)</code></p>
-</li>
-<li>
-<p><strong>_操作</strong>   这个操作经常是让很多人费解的一个操作符，请看下面这个import
+<li><strong>点操作</strong></li>
+</ol>
+<p>有时候会看到如下的方式导入包<code>import( . “fmt” )</code> 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的<code>fmt.Println(“hello world”)</code>可以省略的写成<code>Println(“hello world”)</code></p>
+<ol start="2">
+<li><strong>别名操作</strong></li>
+</ol>
+<p>别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字<code>import( f “fmt” )</code>别名操作调用包函数时前缀变成了重命名的前缀，即<code>f.Println(“hello world”)</code></p>
+<ol start="3">
+<li><strong>_操作</strong></li>
+</ol>
+<p>这个操作经常是让很多人费解的一个操作符，请看下面这个import
 <code>import ( “database/sql” _ “github.com/ziutek/mymysql/godrv” )</code>
 _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。</p>
-</li>
-</ol>
 <p>二、 包的导入过程说明
 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：</p>
 <p><img src="https://hopefully-img.yuedun.wang/20140511222515968.jpg" alt="go包导入过程" title="go包导入过程"></p>

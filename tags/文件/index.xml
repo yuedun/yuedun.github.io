@@ -6,7 +6,19 @@
     <description>Recent content in 文件 on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Sep 2016 09:17:36 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/%E6%96%87%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Nov 2017 15:31:19 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/%E6%96%87%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>读写数据库与读写文件哪个更快？</title>
+      <link>https://www.yuedun.wang/blogdetail/5a1d8147da5c711b612f4d88/</link>
+      <pubDate>Tue, 28 Nov 2017 15:31:19 +0000</pubDate>
+      
+      <guid>https://www.yuedun.wang/blogdetail/5a1d8147da5c711b612f4d88/</guid>
+      <description>由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故，我们本文还是来实测一下，由于时间关系，VC还没装，书生先用PHP测试了一下，下次有时间在C/C++上补充测试到本文来，因为 PHP的底层解析应该也是基于C的，所以估计两者环境测试结果差不多，小问题大收获，现在就来看一下测试过程及结果。
+测试程序如下： //说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。
+//说明2：测试两次一次是4K数据，一次是整形数据
+set_time_limit(0); function fnGet($filename) { $content = file_get_contents($filename); return $content; } function fnGetContent($filename) { $content = fnGet($filename); return $content; } $times=100000; echo &amp;#39;数据库查询结果：&amp;lt;br/&amp;gt;&amp;#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&amp;lt;$times;$i++) { $res=$dbcon-&amp;gt;mydb_query(&amp;#34;SELECT log_Content FROM blog WHERE log_ID=&amp;#39;1&amp;#39;&amp;#34;); $row=$dbcon-&amp;gt;mydb_fetch_row($res); $content=$row[0]; } echo &amp;#39;fetch_row &amp;#39;.$times.&amp;#39; 次时间：&amp;lt;font color=red&amp;gt;&amp;#39;.(fnGetMicroTime()-$begin).&amp;#39;&amp;lt;/font&amp;gt;秒&amp;lt;br/&amp;gt;&amp;#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&amp;lt;$times;$i++) { $res=$dbcon-&amp;gt;mydb_query(&amp;#34;SELECT log_Content FROM blog WHERE log_ID=&amp;#39;1&amp;#39;&amp;#34;); $row=$dbcon-&amp;gt;mydb_fetch_array($res); $content=$row[&amp;#39;log_Content&amp;#39;]; } echo &amp;#39;fetch_array &amp;#39;.$times.&amp;#39; 次时间：&amp;lt;font color=red&amp;gt;&amp;#39;.(fnGetMicroTime()-$begin).&amp;#39;&amp;lt;/font&amp;gt;秒&amp;lt;br/&amp;gt;&amp;#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&amp;lt;$times;$i++) { $res=$dbcon-&amp;gt;mydb_query(&amp;#34;SELECT log_Content FROM blog WHERE log_ID=&amp;#39;1&amp;#39;&amp;#34;); $row=$dbcon-&amp;gt;mydb_fetch_object($res); $content=$row-&amp;gt;log_Content; } echo &amp;#39;fetch_object &amp;#39;.</description>
+    </item>
+    
     <item>
       <title>nodejs请求网络资源写到本地</title>
       <link>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</link>

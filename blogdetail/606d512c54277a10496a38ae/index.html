@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="使用sveltekit开发一个服务端渲染（SSR）项目">
 <meta itemprop="description" content="上篇简单介绍了[sapper和sveltekit的发展](https:www.yuedun.wangblogdetail60628dfa8f0b5a024068"><meta itemprop="datePublished" content="2021-04-07T06:29:00&#43;00:00" />
 <meta itemprop="dateModified" content="2021-04-07T06:29:00&#43;00:00" />
-<meta itemprop="wordCount" content="454">
+<meta itemprop="wordCount" content="456">
 <meta itemprop="keywords" content="svelte,sveltekit," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用sveltekit开发一个服务端渲染（SSR）项目"/>
@@ -175,10 +175,10 @@ npm init svelte@next
 npm install
 
 npm run dev
-</code></pre></div><p>这样就可以创建一个简陋的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。</p>
+</code></pre></div><p>这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。</p>
 <h3 id="第二步路由">第二步：路由</h3>
 <p>和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是<code>src/routes</code>，当然，这个也是可配置的，按照自己的需求修改<code>svelte.config.cjs</code>，参考文档：<a href="https://kit.svelte.dev/docs#configuration">https://kit.svelte.dev/docs#configuration</a>。</p>
-<p>我们以一个博客系统为例，在<code>scr/routes</code>下创建<code>blog</code>目录，光有目录还不行，如果想要访问/blog路由，还需要创建<code>index.svelte</code>文件，内容如下：</p>
+<p>我们以一个博客系统为例，在<code>scr/routes</code>下创建<code>blog</code>目录，光有目录还不行，如果想要访问 <strong>/blog</strong> 路由，还需要创建<code>index.svelte</code>文件，内容如下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">context</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;module&#34;</span>&gt;
     <span style="color:#75715e">/**
 </span><span style="color:#75715e">	 * @type {import(&#39;@sveltejs/kit&#39;).Load}
@@ -232,29 +232,49 @@ npm run dev
 <li>contenxt</li>
 </ul>
 <h3 id="方法说明">方法说明</h3>
+<blockquote>
 <h4 id="page">page</h4>
+<blockquote>
 <p>page是一个对象，包含{ host, path, params, query }，用户获取请求参数。</p>
+</blockquote>
 <h4 id="fetch">fetch</h4>
+<blockquote>
 <p>fetch是用于服务端，客户端发送请求。</p>
+</blockquote>
 <h4 id="session">session</h4>
+<blockquote>
 <p>session是用户会话，用于从服务端传递与当前请求相关的数据。</p>
+</blockquote>
 <h4 id="context">context</h4>
-<p>上下文从布局组件传递到子布局和页面组件。为了根$layout.svelte组件，它等于{}，但如果该组件的加载函数返回一个具有上下文属性的对象，则该对象将可供后续加载函数使用。</p>
-<p>有输入，也有输出，<code>load</code>函数输出以下数据：</p>
+<blockquote>
+<p>上下文从布局组件传递到子布局和页面组件。为了根$layout.svelte组件，它等于{}，但如果该组件的加载函数返回一个具有上下文属性的对象，则该对象将可供后续加载函数使用。有输入，也有输出，<code>load</code>函数输出以下数据：</p>
+</blockquote>
 <h4 id="status">status</h4>
+<blockquote>
 <p>http状态码，如果返回错误，则必须是4xx或5xx。重定向是3xx，默认是200。</p>
+</blockquote>
 <h4 id="error">error</h4>
+<blockquote>
 <p>如果在加载过程中出错，则返回一个错误对象或描述错误的字符串以及4xx或5xx状态代码。</p>
+</blockquote>
 <h4 id="redirect">redirect</h4>
+<blockquote>
 <p>如果该页应该重定向（因为该页已被弃用，或者用户需要登录，或者其他原因），则返回一个字符串，其中包含应重定向到的位置以及3xx状态码。</p>
+</blockquote>
 <h4 id="maxage">maxage</h4>
-<p>要使页面被缓存，请返回一个数字，该数字描述页面的最大使用时间（以秒为单位）。如果在呈现页面时涉及到用户数据（通过会话，或者因为在加载函数中进行了认证获取），则生成的缓存头将包括private，否则将包括public，以便cdn可以缓存它。</p>
-<p>这只适用于页面组件，而不适用于布局组件。</p>
+<blockquote>
+<p>要使页面被缓存，请返回一个数字，该数字描述页面的最大使用时间（以秒为单位）。如果在呈现页面时涉及到用户数据（通过会话，或者因为在加载函数中进行了认证获取），则生成的缓存&gt; 头将包括private，否则将包括public，以便cdn可以缓存它。
+这只适用于页面组件，而不适用于布局组件。</p>
+</blockquote>
 <h4 id="props">props</h4>
+<blockquote>
 <p>如果load函数返回一个props对象，则在呈现时props将传递给组件。</p>
+</blockquote>
 <h4 id="context-1">context</h4>
-<p>这将与任何现有上下文合并，并传递给后续布局和页面组件的加载函数。
-这只适用于布局组件，而不适用于页面组件。</p>
+<blockquote>
+<p>这将与任何现有上下文合并，并传递给后续布局和页面组件的加载函数。 这只适用于布局组件，而不适用于页面组件。</p>
+</blockquote>
+</blockquote>
 <p>index.svelte中请求了一个url：<code>blog.json</code>，所以需要创建index.json.js，此处可能稍微难以理解，主要你理解了blog目录和index.svelte文件的关系也就解释的通了。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// index.json.js
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">db</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;$lib/database&#39;</span>;
