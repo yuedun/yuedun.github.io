@@ -134,6 +134,29 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/559bd64ad366f15412cbf594/" rel="bookmark">
+			前端工具gulp的用途和使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-07T13:38:18Z">2015-07-07 13:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在接触前端开始就听说过grunt和gulp是很叼的前端构建工具，但不知道到底有多叼，只是听说可以自动编译less，sass为css，目前还没有使用less和sass，所以也就没有尝试使用grunt和gulp。但是作为一个技术爱好者还是经不住诱惑，照着网上的教程简单使用了一下，总算是知道有什么用处了，因为都说gulp比grunt更简单好用，就以gulp的使用方法为例来说明一下。
+文件合并：关于文件合并很多人存在这样的疑惑，在前端开发中到底该把所有js和css写在一个文件里还是各个页面分开写，我的建议是开发的时候分开写，上线的时候合并为一个，这样的好处是对于浏览器来说，不同页面中相同的文件默认会请求一次缓存下来，其他页面请求相同文件时就直接从缓存中读取，减少文件的网络请求可以提高网页速度，所以文件合并的是很有必要的。
+2.文件压缩：既然都合并了，何不再压缩一下呢
+3.语法检查：这个功能一般会和下面第4条功能配合使用，当文件修改的时候检查是否有语法错误，并在命令行中输出错误信息。
+4.监听文件变化：监听某个目录下文件是否修改，修改的话就执行特定的操作，比如上面几个操作。 以上4点是比较常用的功能，更多功能根据自己需要添加
+var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名  // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); }); // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); }); // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); }); // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); 目录结构:
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/559774527756526fccc59577/" rel="bookmark">
 			年中总结
 			</a>
@@ -310,25 +333,6 @@
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/554aff409ddef487a8b23409/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/554ae5b3a07843eb8002a388/" rel="bookmark">
-			sequelize定义实体对象
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T04:10:27Z">2015-05-07 04:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		sequelize定义实体对象
-var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Sequelize = require(&#34;sequelize&#34;); var User = sequelize.define(&#34;User&#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &#34;user&#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt
-	</div>
 </article>
 	</main>
 	
@@ -353,11 +357,11 @@ var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Se
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
 		</ul>
 	</div>
 </div>

@@ -134,6 +134,26 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/568b2d05db1fef9e0cda949f/" rel="bookmark">
+			webuploader模态框按钮不起作用或每次打开都会变大
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-05T02:40:05Z">2016-01-05 02:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在bootstra模态框中放置webuploader上传控件，每次打开模态框按钮都会成倍放大，原因是每次打开模态框都会进行一次初始化，在原来按钮的基础上又加了一层样式，那么初始化一次应该可以吧。
+修改后的确不会再放大了，可以又有新问题出现了，就是不能点击上传文件了。
+上传实例初始化一次，先然按钮正常显示， var uploader = WebUploader.create({})， 再通过uploader提供的API重新添加一个按钮uploader.addButton({})，这样类似于将前一个按钮覆盖了。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/568a088edb1fef9e0cda949e/" rel="bookmark">
 			vue.js开发gulp监听文件变化自动编译
 			</a>
@@ -399,34 +419,6 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 	<div class="content list__excerpt post__content clearfix">
 		虽然出现git did not exit cleanly (exit code 128)的情况各有不同，不过其中一种是提交时的读写权限有问题，如果本地代码连接的是SSH仓库，那么可能是服务端没有配置SSH Key。github有两个地方配置sshkey，有一个是全局的，另一个是针对单个仓库的，如果给某个仓库配置了Deploy keys（其实和SSHkey一样），提交另一个代码时就会出现git did not exit cleanly。对于我这种不熟练的人来说就想着再添加一个Deploy keys，但是又提示Key already in use，这时就要看看是不是其他仓库单独配置了ssh key。如果仓库太多具体哪个配置了也不太清楚，有个简单快读的办法是在命令行执行 ssh -T -ai .\id_rsa git@github.com，会告诉你哪个仓库在使用本地的id_rsa内容。删掉Deploy keys，配置为全局SSH Keys就行了
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/56400429c888d8070f145c35/" rel="bookmark">
-			Git SSH Key在windows下生成过程
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-09T02:25:45Z">2015-11-09 02:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		切换到C:\Users\\.ssh
-执行命令：ssh-keygen -t rsa -C &ldquo;邮箱地址&rdquo;
-Generating public/private rsa key pair.
-Enter file in which to save the key (//.ssh/id_rsa):
-第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa
-Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下
-接下来两部是要求输入密码，不输入直接回车就完成了。
-PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Generating public/private rsa key pair. Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in .
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56400429c888d8070f145c35/">阅读全文…</a>
-	</div>
 </article>
 	</main>
 	
@@ -451,11 +443,11 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
 		</ul>
 	</div>
 </div>

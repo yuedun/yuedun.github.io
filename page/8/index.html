@@ -134,6 +134,31 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ad46aebb9be3f8e30daaea8/" rel="bookmark">
+			beego注解路由404
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-15T13:21:36Z">2018-04-15 13:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		beego注解路由匹配不到，返回404页面 router.go使用了两种方式注册路由：
+ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;controllers.UserController{}, &#34;get:Welcome&#34;), beego.NSInclude( &amp;controllers.UserController{}, ), controller中的路由注解设置：
+// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.Data[&#34;json&#34;] = users c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
+最终结果显示上面的注解路由时错误的，下面是正确的注册方式： 问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。 即/admin为命名空间，注解中只需写/user/get-all-user，不能这样写/admin/user/get-all-user
+// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ad46aebb9be3f8e30daaea8/">阅读全文…</a>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5acb49ba45213aca5fde59e1/" rel="bookmark">
 			go并发获取数据
 			</a>
@@ -341,28 +366,6 @@ pm2-logrotate配置
  地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
  其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a6021fa4bdc8ea471fd2db0/" rel="bookmark">
-			在docker中运行nodejs
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-18T04:26:34Z">2018-01-18 04:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		首先看项目目录：
-再看Dockerfile文件内容：
-# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&#34;pm2-runtime&#34;, &#34;dest/server.js&#34;, &#34;--no-daemon&#34;] # ENTRYPOINT [&#34;node&#34;, &#34;server.js&#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
-如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
-需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
-	</div>
 </article>
 	</main>
 	
@@ -387,11 +390,11 @@ pm2-logrotate配置
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
 		</ul>
 	</div>
 </div>

@@ -134,6 +134,36 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f119031148c8850e521735f/" rel="bookmark">
+			让web项目不再502
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-17T11:49:05Z">2020-07-17 11:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前后端分离 近几年比较流行的web项目开发架构是前后端分离，前后端分离架构在系统稳定性方面非常有优势，其中一点优势主要体现在用户感知上，即使服务端发生错误也不会展现在视图层，一般情况下用户是可以继续浏览网页，不会很突兀的显示这样的信息： 502 bad gateway
+在接口发生错误时虽然可能会获取不到一些数据，但是在用户体验上比直接显示502错误要好。
+部署也相对安全和方便。
+前后端分离架构虽好，但不是”银弹”，不是所有网站都能使用前后端分离架构来做。
+服务端渲染 至于分不分离都有诸多的优缺点，可根据实际场景选择，本文要说的是不分离情况下文章开始所提到的问题——难看的502，500错误。
+本文我将使用“服务端渲染”来代替不分离的架构。
+由于服务端渲染的所有数据处理都在服务端进行，发生任何错误都可能引起500错误，这种错误会直接体现在视图层，用户看到这样的信息很不友好。 500 Internal Server Error
+遇到这种错误，可以使用适当的措施来弥补，带来的效果却非常良好。开发web最多遇到的错误码有：404，500，502。
+404错误很多网站都有默认页面，像这样的：
+但是500，502错误却鲜有默认页面，我们何不也搞一个呢？
+500错误 首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。
+502错误 再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。
+server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/html; } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5eec6fd5e8775d3b7f2ee79c/" rel="bookmark">
 			go mongo-driver动态条件
 			</a>
@@ -356,30 +386,6 @@ func (u *userService) GetuserList(offset, limit int, search User) (users []User,
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e815979c9109f0f909b4cdd/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5e709b485bd8165f28d22394/" rel="bookmark">
-			go-micro线上部署，注册服务到etcd
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-17T09:41:28Z">2020-03-17 09:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		线上部署 在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。 linux系统需要这样编译：GOOS=linux go build -o service main.go，就是在windows系统上进行交叉编译，可根据自己服务器情况修改参数。
-go build -o service main.go go build -o api api/api.go 线上的restful api也不能使用micro api了。需要选择适合自己的web服务框架，在web服务中调用api服务。
-etcd启动 线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。
-$ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04:42 Starting [service] go.micro.srv.user 2020-03-17 17:04:42 Server [grpc] Listening on [::]:48493 2020-03-17 17:04:42 Registry [etcd] Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395 {&#34;level&#34;:&#34;warn&#34;,&#34;ts&#34;:&#34;2020-03-17T17:04:47.849+0800&#34;,&#34;caller&#34;:&#34;clientv3/retry_interceptor.go:61&#34;,&#34;msg&#34;:&#34;retrying of unary invoker failed&#34;,&#34;target&#34;:&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;,&#34;attempt&#34;:0,&#34;error&#34;:&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5e709b485bd8165f28d22394/">阅读全文…</a>
-	</div>
 </article>
 	</main>
 	
@@ -404,11 +410,11 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/608eb0b254277a10496a5f56/">一体LED可伸缩变焦手电筒拆解</a></li>
 		</ul>
 	</div>
 </div>

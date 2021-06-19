@@ -6,7 +6,20 @@
     <description>Recent content in 系统架构 on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 17 Jun 2021 19:38:31 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Jun 2021 20:03:41 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gitpage Hugo统计每一篇文章浏览量</title>
+      <link>https://www.yuedun.wang/2021/06/gitpage-hugo-page-view/</link>
+      <pubDate>Fri, 18 Jun 2021 20:03:41 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2021/06/gitpage-hugo-page-view/</guid>
+      <description>接上篇《博客迁移至hugo gitpage》后，因为缺失了每一篇文章的浏览量，而hugo又不具备这样的功能，原因还是gitpage不具备数据存储能力，自然就没办法统计每一篇文章的浏览量了。原本想使用自己服务器提供一个接口来记录，但发现https协议不支持调用http协议的接口，会出现block:mixed-content错误。
+ 错误：https页面去发送http请求报错(浏览器阻止https发送http请求)
+ 问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。
+后来想到了leancloud，直接在前端调用api，将数据存储在云端。
+&amp;lt;script src=&amp;#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003  // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086  const appId = &amp;#34;xxx&amp;#34;; const appKey = &amp;#34;xxx&amp;#34;; const serverURL = &amp;#34;xxx&amp;#34;; AV.init({ appId, appKey, serverURL }); function updateCollect() { const collect = new AV.Query(&amp;#39;Collect&amp;#39;); const url = location.pathname; collect.select([&amp;#39;url&amp;#39;, &amp;#39;pv&amp;#39;]) collect.equalTo(&amp;#39;url&amp;#39;, url); collect.first().then((col) =&amp;gt; { if (!col) { // 声明 class  const Collect = AV.Object.extend(&amp;#39;Collect&amp;#39;); // 构建对象  const collect = new Collect(); // 为属性赋值  collect.</description>
+    </item>
+    
     <item>
       <title>博客迁移至hugo gitpage</title>
       <link>https://www.yuedun.wang/2021/06/blog-move-to-gitpage/</link>
