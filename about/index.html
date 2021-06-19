@@ -58,7 +58,7 @@ QQ：438473005"/>
   
   const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
   const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
+  const serverURL = "https://api.yuedun.wang";
   AV.init({ appId, appKey, serverURL });
   function updateCollect() {
     const collect = new AV.Query('Collect');
@@ -80,7 +80,6 @@ QQ：438473005"/>
       } else {
         col.increment('pv', 1)
         col.save();
-
         
         try {
           const context = document.querySelector('.post__meta.meta');

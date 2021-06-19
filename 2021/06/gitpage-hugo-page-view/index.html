@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="gitpage Hugo统计每一篇文章浏览量">
 <meta itemprop="description" content="gitpage Hugo统计每一篇文章浏览量"><meta itemprop="datePublished" content="2021-06-18T20:03:41&#43;08:00" />
 <meta itemprop="dateModified" content="2021-06-18T20:03:41&#43;08:00" />
-<meta itemprop="wordCount" content="121">
+<meta itemprop="wordCount" content="123">
 <meta itemprop="keywords" content="git,博客," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="gitpage Hugo统计每一篇文章浏览量"/>
@@ -46,7 +46,7 @@
   
   const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
   const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://6d7lcvxu.lc-cn-n1-shared.com";
+  const serverURL = "https://api.yuedun.wang";
   AV.init({ appId, appKey, serverURL });
   function updateCollect() {
     const collect = new AV.Query('Collect');
@@ -68,7 +68,6 @@
       } else {
         col.increment('pv', 1)
         col.save();
-
         
         try {
           const context = document.querySelector('.post__meta.meta');
@@ -207,6 +206,9 @@
 &lt;/<span style="color:#f92672">script</span>&gt;
 </code></pre></div><p>因为hugo-dpsg主题没有浏览量字段，所以通过js在对应的位置插入浏览量字段即可。</p>
 <p>一直觉得leancloud这种在前端配置账号的方式不安全，但是也无所谓了，不是什么核心应用，数据也不重要，就这么使用也无妨。</p>
+<p>当然，为了更进一步的安全，可以绑定域名。</p>
+<p><img src="https://hopefully-img.yuedun.wang/3c4fa6c1e9880131e59ec901db844b78" alt=""></p>
+<p>在域名服务商那里设置一个三级域名，CNAME指向leancloud提供的CDN域名。绑定时间可能有点长，大概需要一天。</p>
 
 		</div>
 		<footer class="post__footer">
