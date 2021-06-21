@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/%E7%B4%A2%E5%BC%95/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/%E7%B4%A2%E5%BC%95/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">索引</h1>
@@ -159,11 +161,12 @@
 数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) and id =&ldquo;3&rdquo;
 	</div>
 </article>
+
 </main>
 
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -354,8 +357,8 @@
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -363,11 +366,14 @@
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

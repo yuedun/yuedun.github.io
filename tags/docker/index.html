@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/docker/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/docker/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">docker</h1>
@@ -159,7 +161,8 @@
 没有pm2如何开启多进程 使用pm2可以开启多node进程，并且自带负载均衡，但是有个限制，pm2可以开启的进程数是CPU最大核心数。而使用docker的话就不会受限于此了，开启几十个上百个node服务都可以，然后通过nginx实现负载均衡。不过要手动开启几十上百个docker容器那怎么行？让我手动开启3个都很烦了，这时候就需要用到docker编排工具了，比如：Docker Swarm、Kubernetes、docker compose等，可以一键开启多个容器。但是使用编排工具启动docker端口就不确定了，是由编排工具随机开启服务端口的，这又要做到服务注册发现，所以这些工具结合起来使用。
 哪一种部署方式支持并发高？ 使用jmeter在本机上进行了简单的并发测试，服务端进行简单的10万次hash计算，使用pm2开启4个实例，docker开启5个实例。docker使用Nginx做负载均衡，单次访问响应时间在1.2s~1.4s之间不等，在200个并发的情况下，两种模式响应时间相差不大，docker模式响应时间略占优势，大概快了0.1s。当并发数在300以上时两者的响应时间都有增加，此时docker部署方式出现了响应失败的情况，pm2就比较稳定了，虽然响应时间增加，但是并未出现过响应失败。 所以在单机上低并发docker还是有点优势，如果在高并发情况下还是pm2更稳定一些。（以上测试是单机上进行，准确性并不高）
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a6021fa4bdc8ea471fd2db0/" rel="bookmark">
@@ -181,7 +184,8 @@
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a1be456da5c711b612f4d39/" rel="bookmark">
@@ -202,11 +206,12 @@ FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm install
  CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &quot;/bin/sh -c '/usr/...&quot; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
 	</div>
 </article>
+
 </main>
 
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -397,8 +402,8 @@ FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm install
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -406,11 +411,14 @@ FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm install
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

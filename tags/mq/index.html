@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/mq/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/mq/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">MQ</h1>
@@ -163,7 +165,8 @@
 此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
 总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a584429752e661009178c06/" rel="bookmark">
@@ -183,11 +186,12 @@
  打开advertised.listeners=PLAINTEXT://ip:9092配置，ip为kafka服务ip
 	</div>
 </article>
+
 </main>
 
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -378,8 +382,8 @@
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -387,11 +391,14 @@
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

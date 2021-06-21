@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">系统架构</h1>
@@ -164,7 +166,8 @@
 针对性优化 在避免过度设计的情况下才进行针对性优化。性能问题的出现并不是经常性的，而是在某个访问高峰期出现，这时候影响范围还不是很大，但是该考虑进行优化了，如果是经常性突发并发数增加可以考虑缓存数据库。如果是日常单机承载能力高可以进行一定压力测试，评估并发压力增加合适的服务器。随着企业发展，数据量不断累积，此时数据库成为主要压力，此时对数据库索引，SQL进行优化，往往能有立竿见影的效果。
 总结：没有针对性的性能优化，只是按照假象场景来设计，最后不但不能起到优化作用反而为后期优化带来累赘。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5b1d2d8f2c36bd008e01f5a3/" rel="bookmark">
@@ -188,7 +191,8 @@
 此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
 总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a6021fa4bdc8ea471fd2db0/" rel="bookmark">
@@ -210,7 +214,8 @@
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.yuedun.wang/blogdetail/5a375f52e9a4cf008860c09b/">
 			<img src="https://hopefully-img.yuedun.wang/104432cjc7c8tx7xxqqkgq.jpg?imageMogr2/thumbnail/!20p/" alt="为什么需要RPC，而不是简单的HTTP接口" />
@@ -248,6 +253,7 @@ RPC是一个软件结构概念，是构建分布式应用的理论基础。就�
 转自：https://www.cnblogs.com/winner-0715/p/5847638.html
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -255,8 +261,8 @@ RPC是一个软件结构概念，是构建分布式应用的理论基础。就�
 	<span class="pagination__item pagination__item--current">2/2</span>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -447,8 +453,8 @@ RPC是一个软件结构概念，是构建分布式应用的理论基础。就�
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -456,11 +462,14 @@ RPC是一个软件结构概念，是构建分布式应用的理论基础。就�
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

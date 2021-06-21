@@ -82,7 +82,7 @@ const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;)
       
       <guid>https://www.yuedun.wang/blogdetail/5996a2dc9205bd72e7290ebb/</guid>
       <description>`open()` is deprecated in mongoose &amp;gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;const opts = {// autoReconnect: false,//默认true// reconnectTries: 30,//尝试重连，默认30次// reconnectInterval: 1000, //重连间隔，默认1000毫秒loggerLevel: &amp;quot;warn&amp;quot;, //error/warn/info/debuguseMongoClient: true};mongoose.</description>
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &amp;#34;warn&amp;#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.</description>
     </item>
     
     <item>

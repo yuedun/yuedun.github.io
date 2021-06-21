@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">数据库</h1>
@@ -158,7 +160,8 @@
 		多人协作开发过程中会遇到一些字段设置默认值的情况，但是这个默认值到底该由哪一阶段来设置？比如有三个阶段:前端或移动端，接口程序，数据库。说个具体场景，APP上有个医生需要显示挂号费，这个挂号费是由后台管理系统添加的，但是在添加医生这个过程不是一次性完成的，先是添加员工信息，角色为医生，这个挂号费是添加完成员工信息以后在医生管理里设置的，那么在完成添加员工后还没来得及设置挂号费医生就显示到了APP中，由于这个医生没有挂号费，就会导致用户误解或者APP程序报错。这时候问题来了，挂号费该有个默认值吧！但是这个默认值由谁来设置呢？尤其是程序上线以后出现问题大家都不想背这个黑锅，移动端问接口，你要传个默认值给我，接口对后台管理说你怎么没传个默认值给我？后台管理说，就不能在数据库设置吗，没有值我干嘛还要传？究竟该由谁来设置这个默认值，好像谁都可以，但是有很多字段要设置的时候就有很多工作量要做了，需要判断用户有没有填，没有填就设置默认值。一堆的if判断，很不明智的做法，而且也不能保证万无一失。
 最后总结：默认值由数据库来设置，这是最简单的方法，可以为程序省去很多判断，而且数据库不为null的设置可以为索引字段带来好处，节省空间。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5620bcc461248de07b018879/" rel="bookmark">
@@ -177,7 +180,8 @@
 		数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。这时就产生了矛盾，又要加又不能多加，到底想怎么样？
 数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。 mysql多列索引适合的场景 1.全字段匹配 2.匹配部分最左前缀 3.匹配第一列 4.匹配第一列范围查询(可用用like a%,但不能使用like %b) 5.精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) and id =&ldquo;3&rdquo;
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/561677d7bfae4b590b7a4aaa/" rel="bookmark">
@@ -198,7 +202,8 @@
 得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片：
 但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5608dbb10adc9cf12635ebbb/" rel="bookmark">
@@ -249,7 +254,8 @@ HOUR_SECOND
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5608dbb10adc9cf12635ebbb/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/55e91db7db5ac9c2be76b2fb/" rel="bookmark">
@@ -279,7 +285,8 @@ HOUR_SECOND
 就目前mysql的使用来说，大多数人在数据库引擎上会选择InnoDB，也总是有人建议这么做，主要目的是为了支持事务。但同样有人认为MyISAM读取性能比InnoDB强很多，会选择使用MyISAM。所以说具体选择哪种引擎类型依据业务实际情况决定。根据我们的项目实际使用情况，我最后选择了MyISAM作为数据库引擎。
 前一个项目使用java开发，MySQL数据库InnoDB，确实也出现一些问题，在某次活动时200左右的并发量下不仅服务器宕机，连另一台数据库服务器在连接数暴增的情况下读取性能骤降，从而导致java服务器不能及时响应。这次开发语言选择了nodejs，经测试发现，可以支撑的并发量在2000多近3000的样子，所以就要求数据库能尽快读取数据，再加上目前业务中不要求事务，那么MyISAM就成了不二之选。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/554aff409ddef487a8b23409/" rel="bookmark">
@@ -300,7 +307,8 @@ HOUR_SECOND
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/554aff409ddef487a8b23409/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5534d242cf68fa0beaf71cb9/" rel="bookmark">
@@ -327,7 +335,8 @@ select * from table order by updateDate desc, createDate desc;
 select * from table order by IFNULL(updateDate, createDate) desc;
 这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/54681e1ee8183bcf964f88ec/" rel="bookmark">
@@ -361,7 +370,8 @@ to less than 2GB of data (or less with &ndash;journal).
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/54681e1ee8183bcf964f88ec/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5459dcd3bf93a1aa252561fe/" rel="bookmark">
@@ -395,7 +405,8 @@ select count(*) from 表 where 性别 ＝ 男；select count(*) from 表 where 
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5459dcd3bf93a1aa252561fe/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5440a294fea3dae97beee4f9/" rel="bookmark">
@@ -420,6 +431,7 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 		<a class="list__footer-readmore btn" href="/blogdetail/5440a294fea3dae97beee4f9/">阅读全文…</a>
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -427,8 +439,8 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 	<span class="pagination__item pagination__item--current">2/2</span>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -619,8 +631,8 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -628,11 +640,14 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

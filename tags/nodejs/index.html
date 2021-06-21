@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/nodejs/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/nodejs/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">nodejs</h1>
@@ -162,7 +164,8 @@
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ffffe3d3f518207e7235250/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e85a563c9109f0f909b52bf/" rel="bookmark">
@@ -183,7 +186,8 @@
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e85a563c9109f0f909b52bf/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5df30ce58803fb4044fa0651/" rel="bookmark">
@@ -206,7 +210,8 @@
 技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
 这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5dd2378b00f24e1fd556d0c4/" rel="bookmark">
@@ -227,7 +232,8 @@ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm insta
 另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
 wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5cc807d6effb223a816d9114/" rel="bookmark">
@@ -249,7 +255,8 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5cc807d6effb223a816d9114/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5c6cbe294a7b7e6cd80869e5/" rel="bookmark">
@@ -267,7 +274,8 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 	<div class="content list__excerpt post__content clearfix">
 		同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。 go占14.7M nodejs占122.2M
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5b8e2ce2b1f3aa6dab143109/" rel="bookmark">
@@ -286,7 +294,8 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 		无法重新声明块范围变量“onerror”
 解决办法：打开tsconfig.json中的&quot;lib&quot;: [&quot;es2015&quot;, &quot;es2016&quot;, &quot;es2017&quot;]
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a98c43ff4583f741c210b89/" rel="bookmark">
@@ -316,7 +325,8 @@ pm2.json
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a6ab02e260a5391e91a525f/" rel="bookmark">
@@ -336,7 +346,8 @@ pm2.json
 没有pm2如何开启多进程 使用pm2可以开启多node进程，并且自带负载均衡，但是有个限制，pm2可以开启的进程数是CPU最大核心数。而使用docker的话就不会受限于此了，开启几十个上百个node服务都可以，然后通过nginx实现负载均衡。不过要手动开启几十上百个docker容器那怎么行？让我手动开启3个都很烦了，这时候就需要用到docker编排工具了，比如：Docker Swarm、Kubernetes、docker compose等，可以一键开启多个容器。但是使用编排工具启动docker端口就不确定了，是由编排工具随机开启服务端口的，这又要做到服务注册发现，所以这些工具结合起来使用。
 哪一种部署方式支持并发高？ 使用jmeter在本机上进行了简单的并发测试，服务端进行简单的10万次hash计算，使用pm2开启4个实例，docker开启5个实例。docker使用Nginx做负载均衡，单次访问响应时间在1.2s~1.4s之间不等，在200个并发的情况下，两种模式响应时间相差不大，docker模式响应时间略占优势，大概快了0.1s。当并发数在300以上时两者的响应时间都有增加，此时docker部署方式出现了响应失败的情况，pm2就比较稳定了，虽然响应时间增加，但是并未出现过响应失败。 所以在单机上低并发docker还是有点优势，如果在高并发情况下还是pm2更稳定一些。（以上测试是单机上进行，准确性并不高）
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a69a8301f395d7179259c45/" rel="bookmark">
@@ -363,6 +374,7 @@ pm2-logrotate配置
 		<a class="list__footer-readmore btn" href="/blogdetail/5a69a8301f395d7179259c45/">阅读全文…</a>
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -370,8 +382,8 @@ pm2-logrotate配置
 	<a class="pagination__item pagination__item--next btn" href="/tags/nodejs/page/2/">»</a>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -562,8 +574,8 @@ pm2-logrotate配置
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -571,11 +583,14 @@ pm2-logrotate配置
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

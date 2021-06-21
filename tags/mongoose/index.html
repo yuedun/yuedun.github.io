@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/mongoose/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/mongoose/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">mongoose</h1>
@@ -160,7 +162,8 @@ const mongoose = require(&#39;mongoose&#39;); mongoose.connect(&#39;mongodb://lo
 const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = conn.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
 const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = mongoose.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 不能工作 
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5996a2dc9205bd72e7290ebb/" rel="bookmark">
@@ -177,12 +180,13 @@ const conn = mongoose.createConnection(&#39;your connection string&#39;); const 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;const opts = {// autoReconnect: false,//默认true// reconnectTries: 30,//尝试重连，默认30次// reconnectInterval: 1000, //重连间隔，默认1000毫秒loggerLevel: &quot;warn&quot;, //error/warn/info/debuguseMongoClient: true};mongoose.
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &#34;warn&#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/593b6b37b787b03177cfff16/" rel="bookmark">
@@ -200,7 +204,8 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	<div class="content list__excerpt post__content clearfix">
 		export var CommentSchema: Schema = new Schema({ Id: String, content: String, status: { type: Boolean, default: true } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/581d736c43c18f1b7ae3e3ff/" rel="bookmark">
@@ -229,7 +234,8 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/581d736c43c18f1b7ae3e3ff/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5819b2b7c4d0a377509b8f1a/" rel="bookmark">
@@ -254,7 +260,8 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(er
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5819b2b7c4d0a377509b8f1a/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5440a294fea3dae97beee4f9/" rel="bookmark">
@@ -279,11 +286,12 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 		<a class="list__footer-readmore btn" href="/blogdetail/5440a294fea3dae97beee4f9/">阅读全文…</a>
 	</div>
 </article>
+
 </main>
 
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -474,8 +482,8 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -483,11 +491,14 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

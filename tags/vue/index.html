@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/vue/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/vue/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">vue</h1>
@@ -162,7 +164,8 @@ export default { components: true } 设置为true或使用对象时，它将包�
 components/ ComponentFoo.vue ComponentBar.vue 使用
 &lt;template&gt; &lt;ComponentFoo /&gt; &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5f24e2665edb9b37630af3bb/" rel="bookmark">
@@ -184,7 +187,8 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 &lt;mycomponent :json=&quot;JsonData&quot; @changeData=&quot;changeData&quot;&gt;&lt;/mycomponent&gt;data(){return {JsonData:{}}}methods:{changeData(newData){this.JsonData = newData;}}子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5eb778a2bd7e796e7100c718/" rel="bookmark">
@@ -218,7 +222,8 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
  VUE，React这类框架用于构建应用方面很合适，但不太适合构建网站。应用是需要有较多的UI和数据方面的交互，而网站则更多的是信息展示，你可能根本不需要JavaScript（框架）。
 追求新技术可以让我们获得新奇感，成就感，解决老问题，而不是带来新问题。复杂性才是造成软件问题的根本原因。——试问：离开框架的你还会开发网站吗？
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a86db29c3700db1c9ae7c55/" rel="bookmark">
@@ -237,7 +242,8 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
 resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/56b304d2bf2e89202c146371/" rel="bookmark">
@@ -261,7 +267,8 @@ http://www.mydomain/?#!/index
 在#!前面自动加了?，导致页面刷新一遍，这样第一次搜索就没意义了.
 经过初步排查后发现点击其他按钮不会改变URL地址，对比后发现搜索按钮的type=&ldquo;submit&rdquo;，可能是提交表单导致跳转了，那么将type改为button或者直接去掉试试，结果还是不行，干脆也改为标签（加了bootstrap按钮样式），结果好了。为什么将button type改为button不行呢，原因是在标签内标签type会被默认当做submit，（IE浏览器默认type=button）
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/56a8db6abf2e89202c146370/" rel="bookmark">
@@ -284,7 +291,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 在线示例
 请查看HTML页面示例源码
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/56970097d8e9ee3c03297d3b/" rel="bookmark">
@@ -303,7 +311,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 		新建表单有些input输入框需要默认值，比如性别需要一个男或女默认值。再比如一个日期选择框需要默认今天。如果按照HTML的方式设置不会起作用
 &lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;0&#34; checked=&#34;checked&#34; v-model=&#34;gender&#34;&gt;男&lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;1&#34; v-model=&#34;gender&#34;&gt;女&lt;/p&gt; &lt;input type=&#34;date&#34; value=&#34;2016-01-06&#34; v-model=&#34;date&#34;&gt;&lt;/p&gt; 在vue.js页面中上面这种设置方式是不会起作用的,性别不会选中，日期也不会有值。解决办法是对v-model属性设值，在初始化时给gender=0，那么默认会选中性别男，给date=&ldquo;2016-01-06&quot;日期控件也有值。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5691d933d8e9ee3c03297d39/" rel="bookmark">
@@ -322,7 +331,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 		在线示例
 使用focus，blur可对表单进行验证，除了这两个事件，还有一个watch属性可监听data属性值得变化，具体可打开浏览器控制台看属性值得变化情况，代码可直接在浏览器中查看源码
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/568a088edb1fef9e0cda949e/" rel="bookmark">
@@ -346,11 +356,12 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 		<a class="list__footer-readmore btn" href="/blogdetail/568a088edb1fef9e0cda949e/">阅读全文…</a>
 	</div>
 </article>
+
 </main>
 
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -541,8 +552,8 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -550,11 +561,14 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

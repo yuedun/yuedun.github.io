@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/nodejs/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/nodejs/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">nodejs</h1>
@@ -161,7 +163,8 @@
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a5f5bff4bdc8ea471fd2d9e/" rel="bookmark">
@@ -184,7 +187,8 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
 也可以使用文件方式： processes.json文件：
 { &#34;apps&#34; : [{ &#34;script&#34; : &#34;api.js&#34;, &#34;instances&#34; : &#34;max&#34;, &#34;exec_mode&#34; : &#34;cluster&#34; }] } pm2 start processes.json
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a430ce84aa3290e95cb0e67/" rel="bookmark">
@@ -207,7 +211,8 @@ ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是�
 远程调用RPC 通俗的来讲就是两台服务器A和B，A服务器直接调用B服务器上的函数，如果没有一个具体事例很难理解A服务器怎么可能调用到B服务器的函数，感兴趣可下载尝试：https://github.com/yuedun/nodejs-grpc 那么为什么要用rpc呢？A服务器要调用B服务的资源直接用http提供接口不就行了吗？其实http也算是一种远程调用，而且也比较简单直观，但是其效率较低，调用成本高，三次握手耗时，甚至请求头的数据量比请求体还大。那么就需要一种更高效的调用协议了——rpc。为什么需要RPC，而不是简单的HTTP接口
 总结：以上的这些工具和技术和语言并没有绑定，java可以使用，nodejs也可以使用，推荐理由：投入成本小，使用收益高。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a24ed6c2d700330ae669e89/" rel="bookmark">
@@ -225,7 +230,8 @@ ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是�
 	<div class="content list__excerpt post__content clearfix">
 		在项目中遇到过这种情况：请求发送后迟迟没有响应，但也并没有报错，在代码中一步步调试都没有发现问题，明明已经走到最后返回数据一步了客户端却没有返回。原因是在中间件中使用了redis或memcache缓存，然后连接缓存服务失败，然后就会一直等待，直到连接缓存超时才会继续执行后续操作。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a06d5989f088c0683b93d26/" rel="bookmark">
@@ -247,7 +253,8 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a06d5989f088c0683b93d26/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/59f4a228f99acfed859c831e/" rel="bookmark">
@@ -266,7 +273,8 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 		从图片中的代码可以看出 let userRecord = await item.getUser();获取到的是Bluebird&lt;UserInstance | null&gt;类型，然后在下面获取对象属性的时候报错，错误信息是：
 [ts] Object is possibly 'null'.let userRecord: UserInstance | null说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/59eab23989faeadc30eac826/" rel="bookmark">
@@ -290,7 +298,8 @@ var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assista
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/59eab23989faeadc30eac826/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/599cf46c1bffdb00880597b3/" rel="bookmark">
@@ -311,7 +320,8 @@ var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assista
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/599cf46c1bffdb00880597b3/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5967123a3d2aae2ccfdc61a3/" rel="bookmark">
@@ -330,7 +340,8 @@ var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assista
 		sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
 User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to...  return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/591c5eac35b6751981e4681e/" rel="bookmark">
@@ -354,6 +365,7 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 		<a class="list__footer-readmore btn" href="/blogdetail/591c5eac35b6751981e4681e/">阅读全文…</a>
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -362,8 +374,8 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 	<a class="pagination__item pagination__item--next btn" href="/tags/nodejs/page/3/">»</a>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -554,8 +566,8 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -563,11 +575,14 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

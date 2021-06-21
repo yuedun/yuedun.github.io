@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">工具使用</h1>
@@ -174,7 +176,8 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e96f1d8bd7e796e7100a71a/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e38ea905bd8165f28d1fc55/" rel="bookmark">
@@ -194,7 +197,8 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
 很简单的三个步骤：
  选择需要扩容的磁盘右击“扩容分区” 选择缩容的磁盘，用于将缩容的磁盘分配给C盘。 选择需要缩容的大小。  确认开始大约需要十几分钟就可以了。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a6ab02e260a5391e91a525f/" rel="bookmark">
@@ -214,7 +218,8 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
 没有pm2如何开启多进程 使用pm2可以开启多node进程，并且自带负载均衡，但是有个限制，pm2可以开启的进程数是CPU最大核心数。而使用docker的话就不会受限于此了，开启几十个上百个node服务都可以，然后通过nginx实现负载均衡。不过要手动开启几十上百个docker容器那怎么行？让我手动开启3个都很烦了，这时候就需要用到docker编排工具了，比如：Docker Swarm、Kubernetes、docker compose等，可以一键开启多个容器。但是使用编排工具启动docker端口就不确定了，是由编排工具随机开启服务端口的，这又要做到服务注册发现，所以这些工具结合起来使用。
 哪一种部署方式支持并发高？ 使用jmeter在本机上进行了简单的并发测试，服务端进行简单的10万次hash计算，使用pm2开启4个实例，docker开启5个实例。docker使用Nginx做负载均衡，单次访问响应时间在1.2s~1.4s之间不等，在200个并发的情况下，两种模式响应时间相差不大，docker模式响应时间略占优势，大概快了0.1s。当并发数在300以上时两者的响应时间都有增加，此时docker部署方式出现了响应失败的情况，pm2就比较稳定了，虽然响应时间增加，但是并未出现过响应失败。 所以在单机上低并发docker还是有点优势，如果在高并发情况下还是pm2更稳定一些。（以上测试是单机上进行，准确性并不高）
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a615ab64bdc8ea471fd2ddd/" rel="bookmark">
@@ -235,7 +240,8 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
  地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
  其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a584429752e661009178c06/" rel="bookmark">
@@ -254,7 +260,8 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
 		Hostname and port the broker will advertise to producers and consumers. If not set, it uses the value for &ldquo;listeners&rdquo; if configured. Otherwise, it will use the value returned from java.net.InetAddress.getCanonicalHostName(). advertised.listeners=PLAINTEXT://ip:9092
  打开advertised.listeners=PLAINTEXT://ip:9092配置，ip为kafka服务ip
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a430ce84aa3290e95cb0e67/" rel="bookmark">
@@ -277,7 +284,8 @@ ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是�
 远程调用RPC 通俗的来讲就是两台服务器A和B，A服务器直接调用B服务器上的函数，如果没有一个具体事例很难理解A服务器怎么可能调用到B服务器的函数，感兴趣可下载尝试：https://github.com/yuedun/nodejs-grpc 那么为什么要用rpc呢？A服务器要调用B服务的资源直接用http提供接口不就行了吗？其实http也算是一种远程调用，而且也比较简单直观，但是其效率较低，调用成本高，三次握手耗时，甚至请求头的数据量比请求体还大。那么就需要一种更高效的调用协议了——rpc。为什么需要RPC，而不是简单的HTTP接口
 总结：以上的这些工具和技术和语言并没有绑定，java可以使用，nodejs也可以使用，推荐理由：投入成本小，使用收益高。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a1be456da5c711b612f4d39/" rel="bookmark">
@@ -297,7 +305,8 @@ ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是�
 FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm installEXPOSE 3000# CMD [&quot;npm&quot;, &quot;start&quot;]ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;] docker ps:
  CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &quot;/bin/sh -c '/usr/...&quot; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/598aaf0525207f400eeb1b87/" rel="bookmark">
@@ -318,7 +327,8 @@ FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm install
 第一步: 第二步： 配置本地git bash地址（此步骤可适当配置 第三步： 设置ConEmu启动即打开bash而非windows cmd 第四步： 如果前面都没问题，可以设置自动保存打开的窗口，以便下次打开即可使用 最后： 根据个人喜好修改字体等 这样就可以完美使用git bash，不论是自动补全还是颜色主题都和git bash无异。
 另外cmder其实也是我使用过的一个不错的工具，同时推荐试用。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/59532a3233c3c869639761db/" rel="bookmark">
@@ -340,7 +350,8 @@ npm ERR! Windows_NT 6.1.7601npm ERR! argv &quot;D:\\Program Files\\nodejs\\node
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/59532a3233c3c869639761db/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/591ea6966af6717b614f9b2b/" rel="bookmark">
@@ -366,6 +377,7 @@ array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引�
 再查询一下 基本操作就是这样，删除操作不用说也应该能知道怎么做了。
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -374,8 +386,8 @@ array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引�
 	<a class="pagination__item pagination__item--next btn" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/page/3/">»</a>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -566,8 +578,8 @@ array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引�
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -575,11 +587,14 @@ array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引�
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

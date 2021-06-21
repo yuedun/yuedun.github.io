@@ -26,9 +26,11 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
+		<link rel="stylesheet" href="/css/custom.css">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -89,7 +91,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -127,7 +129,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -137,9 +139,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
@@ -151,14 +153,7 @@
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-18T08:18:36Z">2017-08-18 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">目录</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents"></nav>
-	</div>
-</div>
-<div class="content post__content clearfix">
+		</header><div class="content post__content clearfix">
 			<pre><code>`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, 
 or set the `useMongoClient` option if using `connect()` or `createConnection()`. 
 See http://mongoosejs.com/docs/connections.html#use-mongo-client
@@ -167,17 +162,17 @@ release 3.x as MongoDB 3.6 will only allow auth against users in the admin db
 and will no longer allow multiple credentials on a socket. 
 Please authenticate using MongoClient.connect with auth credentials.
 </code></pre><p>修改连接参数：</p>
-<pre><code>url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`mongodb://</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">password</span><span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">host</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dbName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
 
-const opts = {
-	// autoReconnect: false,//默认true
-	// reconnectTries: 30,//尝试重连，默认30次
-	// reconnectInterval: 1000, //重连间隔，默认1000毫秒
-	loggerLevel: &quot;warn&quot;, //error/warn/info/debug
-	useMongoClient: true
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">opts</span> <span style="color:#f92672">=</span> {
+	<span style="color:#75715e">// autoReconnect: false,//默认true
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// reconnectTries: 30,//尝试重连，默认30次
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// reconnectInterval: 1000, //重连间隔，默认1000毫秒
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">loggerLevel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;warn&#34;</span>, <span style="color:#75715e">//error/warn/info/debug
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">useMongoClient</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
 };
-mongoose.connect(this.url, opts);
-</code></pre><p>如果在原有参数的基础上加了<code>userMongoClient</code>以后有如下警告：</p>
+<span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">opts</span>);
+</code></pre></div><p>如果在原有参数的基础上加了<code>userMongoClient</code>以后有如下警告：</p>
 <pre><code>[poolSize,ssl,sslValidate,sslCA,sslCert,sslKey,sslPass,sslCRL,autoReconnect,
 noDelay,keepAlive,connectTimeoutMS,family,socketTimeoutMS,reconnectTries,
 reconnectInterval,ha,haInterval,replicaSet,secondaryAcceptableLatencyMS,
@@ -222,17 +217,6 @@ keepAliveInitialDelay,checkServerIdentity,validateOptions,appname,auth]
 	</article>
 </main>
 
-<div class="authorbox clearfix">
-	<figure class="authorbox__avatar">
-		<img alt="月盾 avatar" src="https://hopefully-img.yuedun.wang/a33dcc4522bda4777f0de35387d00083" class="avatar" height="90" width="90">
-	</figure>
-	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
-	</div>
-	<div class="authorbox__description">
-		这是我的微信，需要联系请扫码添加
-	</div>
-</div>
 
 <nav class="pager flex">
 	<div class="pager__item pager__item--prev">
@@ -274,10 +258,10 @@ keepAliveInitialDelay,checkServerIdentity,validateOptions,appname,auth]
 </section>
 
 
-			</div>
-			
 		</div>
-		<footer class="footer">
+		
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -285,11 +269,14 @@ keepAliveInitialDelay,checkServerIdentity,validateOptions,appname,auth]
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

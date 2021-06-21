@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/blogdetail/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/blogdetail/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">Blogdetails</h1>
@@ -166,7 +168,8 @@ var tom = new Person(); tom.name = &#34;Tom&#34;; tom.age = 13; 有了构造函�
 tom.sayHello = function(){ console.log(&#34;my name is &#34;+this.name);//my name is Tom  } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
 function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/56f1498b3823e4e62593d4e1/" rel="bookmark">
@@ -184,7 +187,8 @@ function Person(name, age){ this.name = name; this.age = age; } Person.getAge = 
 	<div class="content list__excerpt post__content clearfix">
 		$(&#39;#calendar&#39;).fullCalendar({ lang: &#34;zh-cn&#34;, header: { left: &#39;prev, next, today&#39;, center: &#39;title&#39;, right: &#39;month&#39; }, height: 500, dayClick: function(date, jsEvent, view) { //点击空白日期调用  }, eventClick: function(calEvent, jsEvent, view) { //点击已有数据的日期调用  }, defaultDate: moment(),//默认日期  events:function(start, end, callback){ //点击prev上一月, next下一月等事件时调用  } }); 
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/56c1b67cbf2e89202c146372/" rel="bookmark">
@@ -203,7 +207,8 @@ function Person(name, age){ this.name = name; this.age = age; } Person.getAge = 
 		多人协作开发过程中会遇到一些字段设置默认值的情况，但是这个默认值到底该由哪一阶段来设置？比如有三个阶段:前端或移动端，接口程序，数据库。说个具体场景，APP上有个医生需要显示挂号费，这个挂号费是由后台管理系统添加的，但是在添加医生这个过程不是一次性完成的，先是添加员工信息，角色为医生，这个挂号费是添加完成员工信息以后在医生管理里设置的，那么在完成添加员工后还没来得及设置挂号费医生就显示到了APP中，由于这个医生没有挂号费，就会导致用户误解或者APP程序报错。这时候问题来了，挂号费该有个默认值吧！但是这个默认值由谁来设置呢？尤其是程序上线以后出现问题大家都不想背这个黑锅，移动端问接口，你要传个默认值给我，接口对后台管理说你怎么没传个默认值给我？后台管理说，就不能在数据库设置吗，没有值我干嘛还要传？究竟该由谁来设置这个默认值，好像谁都可以，但是有很多字段要设置的时候就有很多工作量要做了，需要判断用户有没有填，没有填就设置默认值。一堆的if判断，很不明智的做法，而且也不能保证万无一失。
 最后总结：默认值由数据库来设置，这是最简单的方法，可以为程序省去很多判断，而且数据库不为null的设置可以为索引字段带来好处，节省空间。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/56b304d2bf2e89202c146371/" rel="bookmark">
@@ -227,7 +232,8 @@ http://www.mydomain/?#!/index
 在#!前面自动加了?，导致页面刷新一遍，这样第一次搜索就没意义了.
 经过初步排查后发现点击其他按钮不会改变URL地址，对比后发现搜索按钮的type=&ldquo;submit&rdquo;，可能是提交表单导致跳转了，那么将type改为button或者直接去掉试试，结果还是不行，干脆也改为标签（加了bootstrap按钮样式），结果好了。为什么将button type改为button不行呢，原因是在标签内标签type会被默认当做submit，（IE浏览器默认type=button）
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/56a8db6abf2e89202c146370/" rel="bookmark">
@@ -250,7 +256,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 在线示例
 请查看HTML页面示例源码
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/56970097d8e9ee3c03297d3b/" rel="bookmark">
@@ -269,7 +276,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 		新建表单有些input输入框需要默认值，比如性别需要一个男或女默认值。再比如一个日期选择框需要默认今天。如果按照HTML的方式设置不会起作用
 &lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;0&#34; checked=&#34;checked&#34; v-model=&#34;gender&#34;&gt;男&lt;input type=&#34;radio&#34; name=&#34;gender&#34; value=&#34;1&#34; v-model=&#34;gender&#34;&gt;女&lt;/p&gt; &lt;input type=&#34;date&#34; value=&#34;2016-01-06&#34; v-model=&#34;date&#34;&gt;&lt;/p&gt; 在vue.js页面中上面这种设置方式是不会起作用的,性别不会选中，日期也不会有值。解决办法是对v-model属性设值，在初始化时给gender=0，那么默认会选中性别男，给date=&ldquo;2016-01-06&quot;日期控件也有值。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/569484ded8e9ee3c03297d3a/" rel="bookmark">
@@ -288,7 +296,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 		在线示例：http://www.yuedun.wang/views/address
 具体代码看页面源码
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5691d933d8e9ee3c03297d39/" rel="bookmark">
@@ -307,7 +316,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 		在线示例
 使用focus，blur可对表单进行验证，除了这两个事件，还有一个watch属性可监听data属性值得变化，具体可打开浏览器控制台看属性值得变化情况，代码可直接在浏览器中查看源码
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/568b2d05db1fef9e0cda949f/" rel="bookmark">
@@ -327,7 +337,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 修改后的确不会再放大了，可以又有新问题出现了，就是不能点击上传文件了。
 上传实例初始化一次，先然按钮正常显示， var uploader = WebUploader.create({})， 再通过uploader提供的API重新添加一个按钮uploader.addButton({})，这样类似于将前一个按钮覆盖了。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/568a088edb1fef9e0cda949e/" rel="bookmark">
@@ -351,6 +362,7 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 		<a class="list__footer-readmore btn" href="/blogdetail/568a088edb1fef9e0cda949e/">阅读全文…</a>
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -359,8 +371,8 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 	<a class="pagination__item pagination__item--next btn" href="/blogdetail/page/14/">»</a>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -551,8 +563,8 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -560,11 +572,14 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

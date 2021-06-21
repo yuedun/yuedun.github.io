@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">系统架构</h1>
@@ -164,7 +166,8 @@
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/06/gitpage-hugo-page-view/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/2021/06/blog-move-to-gitpage/" rel="bookmark">
@@ -192,7 +195,8 @@
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/06/blog-move-to-gitpage/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5f119031148c8850e521735f/" rel="bookmark">
@@ -222,7 +226,8 @@
 502错误 再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。
 server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/html; } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5eb778a2bd7e796e7100c718/" rel="bookmark">
@@ -256,7 +261,8 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
  VUE，React这类框架用于构建应用方面很合适，但不太适合构建网站。应用是需要有较多的UI和数据方面的交互，而网站则更多的是信息展示，你可能根本不需要JavaScript（框架）。
 追求新技术可以让我们获得新奇感，成就感，解决老问题，而不是带来新问题。复杂性才是造成软件问题的根本原因。——试问：离开框架的你还会开发网站吗？
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e183a7a54cf7f406dcb28f5/" rel="bookmark">
@@ -293,7 +299,8 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e183a7a54cf7f406dcb28f5/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5df30ce58803fb4044fa0651/" rel="bookmark">
@@ -316,7 +323,8 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
 这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5c739d01e4d2f35bdd267d2d/" rel="bookmark">
@@ -348,7 +356,8 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 来源：CSDN
 原文：https://blog.csdn.net/bbwangj/article/details/81116505
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5c735c58e4d2f35bdd267d22/" rel="bookmark">
@@ -413,7 +422,8 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5c735c58e4d2f35bdd267d22/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5c6cbe294a7b7e6cd80869e5/" rel="bookmark">
@@ -431,7 +441,8 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 	<div class="content list__excerpt post__content clearfix">
 		同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。 go占14.7M nodejs占122.2M
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5bc1bd1bf846d21847dc3014/" rel="bookmark">
@@ -454,6 +465,7 @@ upstream grpcservice {server localhost:50051;server localhost:50052;}server 
 原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -461,8 +473,8 @@ upstream grpcservice {server localhost:50051;server localhost:50052;}server 
 	<a class="pagination__item pagination__item--next btn" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/page/2/">»</a>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -653,8 +665,8 @@ upstream grpcservice {server localhost:50051;server localhost:50052;}server 
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -662,11 +674,14 @@ upstream grpcservice {server localhost:50051;server localhost:50052;}server 
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

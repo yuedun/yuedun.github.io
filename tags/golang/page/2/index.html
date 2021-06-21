@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/golang/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/golang/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">golang</h1>
@@ -162,7 +164,8 @@ package main import ( &#34;log&#34; &#34;net/http&#34; &#34;fmt&#34; ) func hell
  godoc -http=:8082
  
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5ad46aebb9be3f8e30daaea8/" rel="bookmark">
@@ -187,7 +190,8 @@ ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;cont
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ad46aebb9be3f8e30daaea8/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5acb49ba45213aca5fde59e1/" rel="bookmark">
@@ -209,7 +213,8 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5acb49ba45213aca5fde59e1/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5ac588446a513c7b8bfd72e6/" rel="bookmark">
@@ -234,7 +239,8 @@ func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ac588446a513c7b8bfd72e6/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5aaf2e3da55bb1fd38001c70/" rel="bookmark">
@@ -265,7 +271,8 @@ _操作  这个操作经常是让很多人费解的一个操作符，请看下�
 通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
 原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5944b81d9d957900957feff6/" rel="bookmark">
@@ -288,7 +295,8 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5944b81d9d957900957feff6/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/59278639c1abbe00911df03c/" rel="bookmark">
@@ -309,7 +317,8 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 .src\ ├─project1 ├─project2 ├─project3 所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
 但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/57d6aaa7471c11fa271ed1bb/" rel="bookmark">
@@ -334,6 +343,7 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 		<a class="list__footer-readmore btn" href="/blogdetail/57d6aaa7471c11fa271ed1bb/">阅读全文…</a>
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -341,8 +351,8 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 	<span class="pagination__item pagination__item--current">2/2</span>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -533,8 +543,8 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -542,11 +552,14 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

@@ -22,10 +22,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -86,7 +88,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -124,7 +126,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -134,9 +136,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -162,7 +164,8 @@ ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;cont
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ad46aebb9be3f8e30daaea8/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5acb49ba45213aca5fde59e1/" rel="bookmark">
@@ -184,7 +187,8 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5acb49ba45213aca5fde59e1/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5ac588446a513c7b8bfd72e6/" rel="bookmark">
@@ -209,7 +213,8 @@ func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ac588446a513c7b8bfd72e6/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5aaf2e3da55bb1fd38001c70/" rel="bookmark">
@@ -240,7 +245,8 @@ _操作  这个操作经常是让很多人费解的一个操作符，请看下�
 通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
 原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5aaf2794a55bb1fd38001c63/" rel="bookmark">
@@ -260,7 +266,8 @@ _操作  这个操作经常是让很多人费解的一个操作符，请看下�
  右上角头像-settings-emails-Add email address
  验证邮箱后就会立马重新统计
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a98c43ff4583f741c210b89/" rel="bookmark">
@@ -290,7 +297,8 @@ pm2.json
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a86db29c3700db1c9ae7c55/" rel="bookmark">
@@ -309,7 +317,8 @@ pm2.json
 		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
 resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a6ab02e260a5391e91a525f/" rel="bookmark">
@@ -329,7 +338,8 @@ resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为
 没有pm2如何开启多进程 使用pm2可以开启多node进程，并且自带负载均衡，但是有个限制，pm2可以开启的进程数是CPU最大核心数。而使用docker的话就不会受限于此了，开启几十个上百个node服务都可以，然后通过nginx实现负载均衡。不过要手动开启几十上百个docker容器那怎么行？让我手动开启3个都很烦了，这时候就需要用到docker编排工具了，比如：Docker Swarm、Kubernetes、docker compose等，可以一键开启多个容器。但是使用编排工具启动docker端口就不确定了，是由编排工具随机开启服务端口的，这又要做到服务注册发现，所以这些工具结合起来使用。
 哪一种部署方式支持并发高？ 使用jmeter在本机上进行了简单的并发测试，服务端进行简单的10万次hash计算，使用pm2开启4个实例，docker开启5个实例。docker使用Nginx做负载均衡，单次访问响应时间在1.2s~1.4s之间不等，在200个并发的情况下，两种模式响应时间相差不大，docker模式响应时间略占优势，大概快了0.1s。当并发数在300以上时两者的响应时间都有增加，此时docker部署方式出现了响应失败的情况，pm2就比较稳定了，虽然响应时间增加，但是并未出现过响应失败。 所以在单机上低并发docker还是有点优势，如果在高并发情况下还是pm2更稳定一些。（以上测试是单机上进行，准确性并不高）
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a69a8301f395d7179259c45/" rel="bookmark">
@@ -355,7 +365,8 @@ pm2-logrotate配置
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a69a8301f395d7179259c45/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a615ab64bdc8ea471fd2ddd/" rel="bookmark">
@@ -377,17 +388,17 @@ pm2-logrotate配置
  其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox
 	</div>
 </article>
-	</main>
-	
+
+		
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/page/7/">«</a>
 	<span class="pagination__item pagination__item--current">8/19</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/9/">»</a>
 </div>
-	
+</main>
 
-			</div>
-			<aside class="sidebar"><div class="widget-search widget">
+		</div>
+		<aside class="sidebar"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
@@ -577,8 +588,8 @@ pm2-logrotate配置
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -586,11 +597,14 @@ pm2-logrotate配置
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

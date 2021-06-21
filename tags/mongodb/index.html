@@ -21,10 +21,12 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/mongodb/index.xml" title="月盾的博客">
+		<link rel="stylesheet" href="/css/custom.css">
+		<link rel="alternate" type="application/rss+xml" href="/tags/mongodb/index.xml" title="月盾的博客">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -85,7 +87,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -123,7 +125,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -133,9 +135,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main list" role="main">
 	<header class="main__header">
 		<h1 class="main__title">mongodb</h1>
@@ -159,7 +161,8 @@
 //构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;condition) log.Println(condition) if err = this.mongo.Collection(&#34;user&#34;).FindOne(context.TODO(), condition).Decode(&amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
 search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e8bf346bd7e796e7100a03c/" rel="bookmark">
@@ -178,7 +181,8 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
 		mongodb提供了免费的mongdb集群可用于学习使用 https://www.mongodb.com/cloud 并且有3个节点 mongodb Atlas免费集群存储空间为512M，这对于个人项目来说足够使用（本博客运行6年使用空间8M）。
 本地客户端连接mongo Atlas 复制了连接字符串后直接粘贴到客户端中，替换,点击From SRV,会自动拉取集群配置，点击Test测试连接是否成功。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e8b4742bd7e796e71009fcc/" rel="bookmark">
@@ -207,7 +211,8 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e8b4742bd7e796e71009fcc/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e87e9ac75da9268a3e5993c/" rel="bookmark">
@@ -228,7 +233,8 @@ db.createUser( {user: &quot;hp_website&quot;,pwd: &quot;xxxxxx&quot;,roles: [ { 
 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
 use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5bb08746f846d21847dc2aef/" rel="bookmark">
@@ -247,7 +253,8 @@ use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles
 		最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
 db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;) db.getCollection(&#39;blogs&#39;).save(item) print(&#34;&gt;&gt;&#34;, item.content); }) 
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5b90f19bb1f3aa6dab14313d/" rel="bookmark">
@@ -268,7 +275,8 @@ const mongoose = require(&#39;mongoose&#39;); mongoose.connect(&#39;mongodb://lo
 const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = conn.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
 const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = mongoose.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 不能工作 
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5b21fc996699964267f5e168/" rel="bookmark">
@@ -304,7 +312,8 @@ mongodb导入数据 启动：
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5b21fc996699964267f5e168/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5996a2dc9205bd72e7290ebb/" rel="bookmark">
@@ -321,12 +330,13 @@ mongodb导入数据 启动：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;const opts = {// autoReconnect: false,//默认true// reconnectTries: 30,//尝试重连，默认30次// reconnectInterval: 1000, //重连间隔，默认1000毫秒loggerLevel: &quot;warn&quot;, //error/warn/info/debuguseMongoClient: true};mongoose.
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &#34;warn&#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/593b6b37b787b03177cfff16/" rel="bookmark">
@@ -344,7 +354,8 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	<div class="content list__excerpt post__content clearfix">
 		export var CommentSchema: Schema = new Schema({ Id: String, content: String, status: { type: Boolean, default: true } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
 	</div>
-</article><article class="list__item post">
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/581d736c43c18f1b7ae3e3ff/" rel="bookmark">
@@ -374,6 +385,7 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 		<a class="list__footer-readmore btn" href="/blogdetail/581d736c43c18f1b7ae3e3ff/">阅读全文…</a>
 	</div>
 </article>
+
 </main>
 
 <div class="pagination">
@@ -381,8 +393,8 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 	<a class="pagination__item pagination__item--next btn" href="/tags/mongodb/page/2/">»</a>
 </div>
 
-			</div>
-			
+		</div>
+		
 <aside class="sidebar sidebar--left"><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
 		<label>
@@ -573,8 +585,8 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 	</div>
 </div>
 </aside>
-		</div>
-		<footer class="footer">
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -582,11 +594,14 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>

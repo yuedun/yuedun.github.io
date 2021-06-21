@@ -26,9 +26,11 @@
 
 
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/custom.css">
+		<link rel="stylesheet" href="/css/custom.css">
 
 	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
 		
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
 <script>
@@ -89,7 +91,7 @@
 </script>
 </head>
 <body class="body">
-		<header class="header">
+	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
@@ -127,7 +129,7 @@
 			<li class="menu__item">
 				<a class="menu__link" href="/about/">
 					
-					<span class="menu__text">关于我</span>
+					<span class="menu__text">关于</span>
 					
 				</a>
 			</li>
@@ -137,9 +139,9 @@
 
 
 
-		<div class="container wrapper flex">
-			<div class="primary">
-			
+	<div class="container wrapper flex">
+		<div class="primary">
+		
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
@@ -151,14 +153,7 @@
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-08-23T01:43:50Z">2020-08-23 01:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">目录</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents"></nav>
-	</div>
-</div>
-<div class="content post__content clearfix">
+		</header><div class="content post__content clearfix">
 			<p>Nodejs项目部署到服务器以后接下来做的最多的操作就是上线发布了。因为nodejs的语言特性决定了其开发效率高，发布自然就频繁，每个公司或个人都有自己的发布方式。</p>
 <p>有的公司会有严格的流程，必须通过CI/CD工具进行发布，有可能使用现成的工具，如：jenkins。有可能是自研发布系统。</p>
 <p>有的公司会通过FTP上传代码到服务器发布。</p>
@@ -168,7 +163,7 @@
 <p>而关于nodejs的发布方式，本人也是也是多种方式都有使用，公司项目也经历过多次变迁。公司最开始是直接登录服务器拉代码发布，后来有了运维团队，领导说开发自己发布不安全，于是就由运维搭建了Jenkins环境来发布，但是每次发布都需要走流程，后来因为发布太频繁，每1-2天要发布一次，又要灰度发布，运维也会觉得烦。于是开发就搭建了某个发布系统自己来发布，不过这个发布系统有个缺点，就是发布集群的时候是串行的，每次发布要十几分钟。</p>
 <p>另外说明一下Jenkins。它应该是使用最多的发布系统了，Jenkins基于Java开发，它已经是成熟的系统了，成熟同时也代表着复杂，复杂代表修改困难，我想大家也不太会基于Jenkins定制开发。
 然后是部署困难，相比较nodejs三条命令搞定<a href="http://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4">linux安装nodejs——快捷版</a>，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。</p>
-<p>于是下定决心自己开发一个发布系统，<strong>朱雀发布系统</strong>因此诞生。</p>
+<p>于是下定决心自己开发一个发布系统，<a href="/zhuque/">朱雀发布系统</a>因此诞生。</p>
 <p>基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图：</p>
 <p><img src="https://hopefully-img.yuedun.wang/zhuque.jpg" alt="架构图"></p>
 <p>和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。
@@ -194,17 +189,6 @@
 	</article>
 </main>
 
-<div class="authorbox clearfix">
-	<figure class="authorbox__avatar">
-		<img alt="月盾 avatar" src="https://hopefully-img.yuedun.wang/a33dcc4522bda4777f0de35387d00083" class="avatar" height="90" width="90">
-	</figure>
-	<div class="authorbox__header">
-		<span class="authorbox__name"></span>
-	</div>
-	<div class="authorbox__description">
-		这是我的微信，需要联系请扫码添加
-	</div>
-</div>
 
 <nav class="pager flex">
 	<div class="pager__item pager__item--prev">
@@ -246,10 +230,10 @@
 </section>
 
 
-			</div>
-			
 		</div>
-		<footer class="footer">
+		
+	</div>
+	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
@@ -257,11 +241,14 @@
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
+		
+
 	</div>
 </footer>
 
-<script async defer src="/js/menu.js"></script>
-<script src="/js/custom.js"></script>
-
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
 </body>
 </html>
