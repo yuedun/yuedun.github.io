@@ -4,25 +4,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>go语言开发grpc——安装grpc - 月盾的博客</title>
+	<title>go语言开发grpc之安装grpc - 月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="### 一、安装gRPC&gt; $ go get -u google.golang.orggrpcpackage google.golang.orggrpc: un">
-		<meta property="og:title" content="go语言开发grpc——安装grpc" />
-<meta property="og:description" content="### 一、安装gRPC&gt; $ go get -u google.golang.orggrpcpackage google.golang.orggrpc: un" />
+	<meta name="description" content="一、安装gRPC&gt; $ go get -u google.golang.orggrpcpackage google.golang.orggrpc: un">
+		<meta property="og:title" content="go语言开发grpc之安装grpc" />
+<meta property="og:description" content="一、安装gRPC&gt; $ go get -u google.golang.orggrpcpackage google.golang.orggrpc: un" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5c63b5334a7b7e6cd808697a/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2019-02-12T14:12:03&#43;00:00" />
 <meta property="article:modified_time" content="2019-02-12T14:12:03&#43;00:00" />
 
 
-		<meta itemprop="name" content="go语言开发grpc——安装grpc">
-<meta itemprop="description" content="### 一、安装gRPC&gt; $ go get -u google.golang.orggrpcpackage google.golang.orggrpc: un"><meta itemprop="datePublished" content="2019-02-12T14:12:03&#43;00:00" />
+		<meta itemprop="name" content="go语言开发grpc之安装grpc">
+<meta itemprop="description" content="一、安装gRPC&gt; $ go get -u google.golang.orggrpcpackage google.golang.orggrpc: un"><meta itemprop="datePublished" content="2019-02-12T14:12:03&#43;00:00" />
 <meta itemprop="dateModified" content="2019-02-12T14:12:03&#43;00:00" />
 <meta itemprop="wordCount" content="274">
 <meta itemprop="keywords" content="golang,grpc," />
 		<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="go语言开发grpc——安装grpc"/>
-<meta name="twitter:description" content="### 一、安装gRPC&gt; $ go get -u google.golang.orggrpcpackage google.golang.orggrpc: un"/>
+<meta name="twitter:title" content="go语言开发grpc之安装grpc"/>
+<meta name="twitter:description" content="一、安装gRPC&gt; $ go get -u google.golang.orggrpcpackage google.golang.orggrpc: un"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -145,7 +145,7 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">go语言开发grpc——安装grpc</h1>
+			<h1 class="post__title">go语言开发grpc之安装grpc</h1>
 			<div class="post__meta meta"><div class="meta__item-author meta__item">
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
@@ -172,10 +172,8 @@
 </div>
 <div class="content post__content clearfix">
 			<h3 id="一安装grpc">一、安装gRPC</h3>
-<blockquote>
-<p>$ go get -u google.golang.org/grpc</p>
-</blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">package google.golang.org/grpc: unrecognized import path <span style="color:#e6db74">&#34;google.golang.org/grpc&#34;</span> <span style="color:#f92672">(</span>https fetch: Get https://google.golang.org/grpc?go-get<span style="color:#f92672">=</span>1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.<span style="color:#f92672">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go get -u google.golang.org/grpc  
+package google.golang.org/grpc: unrecognized import path <span style="color:#e6db74">&#34;google.golang.org/grpc&#34;</span> <span style="color:#f92672">(</span>https fetch: Get https://google.golang.org/grpc?go-get<span style="color:#f92672">=</span>1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.<span style="color:#f92672">)</span>
 </code></pre></div><p>grpc的源码库迁移到了github上，所以需要手动下载了。<a href="https://github.com/grpc/grpc-go">grpc-go</a>
 正常情况下按照以下方式就可安装完成</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
@@ -192,23 +190,20 @@ cd $GOPATH/src/
 
 go install google.golang.org/grpc
 </code></pre></div><p>但是在某些情况可能连<code>git clone</code>都不行。就像下面这样的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$  git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$  git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto
 Cloning into <span style="color:#e6db74">&#39;E:\go-work/src/google.golang.org/genproto&#39;</span>...
 fatal: unable to access <span style="color:#e6db74">&#39;https://github.com/google/go-genproto.git/&#39;</span>: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
 </code></pre></div><p>这种情况自带梯子可以，如果没有梯子不能通过<code>git clone</code>的话就download吧！</p>
-<pre><code>$ git clone https://github.com/grpc/grpc-go.git grpc
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone https://github.com/grpc/grpc-go.git grpc
 
-Cloning into 'grpc'...
-fatal: unable to access 'https://github.com/grpc/grpc-go.git/': OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
-</code></pre><p>虽然grpc源码迁到了github上，但是包名并未随着修改，使用的还是<strong>google.golang.org</strong>，所以需要在<strong>src</strong>目录下新建google.golang.org目录，并把下载的<strong>grpc-go-master.zip</strong>解压到google.golang.org目录下，重命名为<strong>grpc</strong></p>
+Cloning into <span style="color:#e6db74">&#39;grpc&#39;</span>...
+fatal: unable to access <span style="color:#e6db74">&#39;https://github.com/grpc/grpc-go.git/&#39;</span>: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
+</code></pre></div><p>虽然grpc源码迁到了github上，但是包名并未随着修改，使用的还是<strong>google.golang.org</strong>，所以需要在<strong>src</strong>目录下新建google.golang.org目录，并把下载的<strong>grpc-go-master.zip</strong>解压到google.golang.org目录下，重命名为<strong>grpc</strong></p>
 <p>grpc包依赖<a href="https://github.com/google/go-genproto">genproto</a>，下载解压后放在grpc同级目录，报名重命名为<strong>genproto</strong></p>
-<blockquote>
-<p>git clone <a href="https://github.com/golang/net.git">https://github.com/golang/net.git</a> $GOPATH/src/golang.org/x/net</p>
-</blockquote>
-<blockquote>
-<p>git clone <a href="https://github.com/golang/text.git">https://github.com/golang/text.git</a> $GOPATH/src/golang.org/x/text</p>
-</blockquote>
-<h3 id="二安装protoc编译器">二、安装protoc编译器</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net
+
+git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text
+</code></pre></div><h3 id="二安装protoc编译器">二、安装protoc编译器</h3>
 <p>从<a href="https://github.com/google/protobuf/releases">protobuf</a>下载对应平台的编译器： protoc-<!-- raw HTML omitted -->-<!-- raw HTML omitted -->.zip
 比如我下载文件名为：<strong>protoc-3.7.0-rc-2-win64.zip</strong>，解压后的目录为：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">E:.
@@ -241,22 +236,17 @@ Parse PROTO_FILES and generate output based on the options given:
   -IPATH, --proto_path<span style="color:#f92672">=</span>PATH   Specify the directory in which to search <span style="color:#66d9ef">for</span>
   imports.  May be specified multiple times;
 </code></pre></div><p>但是还需要安装<strong>protoc-gen-go</strong>插件，可以产生go相关代码， 除上述序列化和反序列化代码之外， 还增加了一些通信公共库。</p>
-<blockquote>
-<p>$ go get -u github.com/golang/protobuf/protoc-gen-go</p>
-</blockquote>
-<p>还是不能正常下载的话，那就老办法，手动下载<a href="https://github.com/golang/protobuf">protoc-gen-go</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ go get -u github.com/golang/protobuf/protoc-gen-go
+</code></pre></div><p>还是不能正常下载的话，那就老办法，手动下载<a href="https://github.com/golang/protobuf">protoc-gen-go</a></p>
 <p>解压后将<strong>protoc-gen-go</strong>目录复制到src/github.com/目录下。</p>
-<blockquote>
-<p>$ cd protoc-gen-go</p>
-</blockquote>
-<blockquote>
-<p>$ go install</p>
-</blockquote>
-<p>会在$GOPATH/bin目录下生成protoc-gen-go文件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cd protoc-gen-go
+
+$ go install 
+</code></pre></div><p>会在$GOPATH/bin目录下生成protoc-gen-go文件。</p>
 <p>到此，go语言开发grpc所需的工具已经安装完成。</p>
 <h3 id="三安装protoc-gen-micro">三、安装protoc-gen-micro</h3>
-<p><code>go get github.com/micro/protoc-gen-micro/v2</code>
-倒霉的我又是那么不顺，显示出一下结果：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go get github.com/micro/protoc-gen-micro/v2
+</code></pre></div><p>倒霉的我又是那么不顺，显示出一下结果：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go: downloading github.com/micro/protoc-gen-micro/v2 v2.0.0
 go get github.com/micro/protoc-gen-micro/v2: github.com/micro/protoc-gen-micro/v2@v2.0.0: verifying module: github.com/micro/protoc-gen-micro/v2@v2.0.0: Get <span style="color:#e6db74">&#34;https://sum.golang.org/lookup/github.com/micro/protoc-gen-micro/v2@v2.0.0&#34;</span>: dial tcp 172.217.160.113:443: c
 onnectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
