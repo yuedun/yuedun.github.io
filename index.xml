@@ -1615,7 +1615,7 @@ array(&#39;title&#39;=&amp;gt; new MongoRegex(&amp;quot;/测试/i&amp;quot;))
       <pubDate>Wed, 17 May 2017 14:31:08 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/591c5eac35b6751981e4681e/</guid>
-      <description>nodejs中promise的if流程控制 Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
+      <description>Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
  假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
  var fs = require(&amp;#34;fs&amp;#34;); function queue(){ return new Promise((resolve, reject)=&amp;gt;{ fs.readFile(&amp;#34;../queue.txt&amp;#34;, &amp;#34;utf8&amp;#34;, (err, data)=&amp;gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&amp;gt;{ fs.writeFile(&amp;#39;../account.txt&amp;#39;, id+&amp;#39;一个新账户&amp;#39;, (err) =&amp;gt; { if (err) reject(err); console.log(&amp;#39;办卡成功!&amp;#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&amp;gt;{ fs.writeFile(&amp;#39;../money.txt&amp;#39;, id+&amp;#39;存了10万&amp;#39;, (err) =&amp;gt; { if (err) reject(err); console.log(&amp;#39;存款成功!&amp;#39;); resolve(); }); }) } //入口 function enter(id) { Promise.</description>
     </item>
