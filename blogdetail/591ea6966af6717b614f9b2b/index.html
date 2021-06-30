@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>RockMongo使用方法 - 月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="&gt; RockMongo是一个PHP5写的MongoDB管理工具。鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。#### 查">
+	<meta name="description" content="RockMongo是一个PHP5写的MongoDB管理工具。鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。">
 		<meta property="og:title" content="RockMongo使用方法" />
-<meta property="og:description" content="&gt; RockMongo是一个PHP5写的MongoDB管理工具。鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。#### 查" />
+<meta property="og:description" content="RockMongo是一个PHP5写的MongoDB管理工具。鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/591ea6966af6717b614f9b2b/" /><meta property="article:section" content="blogdetail" />
 <meta property="article:published_time" content="2017-05-19T08:02:30&#43;00:00" />
@@ -16,13 +16,13 @@
 
 
 		<meta itemprop="name" content="RockMongo使用方法">
-<meta itemprop="description" content="&gt; RockMongo是一个PHP5写的MongoDB管理工具。鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。#### 查"><meta itemprop="datePublished" content="2017-05-19T08:02:30&#43;00:00" />
+<meta itemprop="description" content="RockMongo是一个PHP5写的MongoDB管理工具。鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。"><meta itemprop="datePublished" content="2017-05-19T08:02:30&#43;00:00" />
 <meta itemprop="dateModified" content="2017-05-19T08:02:30&#43;00:00" />
 <meta itemprop="wordCount" content="22">
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="mongodb," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="RockMongo使用方法"/>
-<meta name="twitter:description" content="&gt; RockMongo是一个PHP5写的MongoDB管理工具。鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。#### 查"/>
+<meta name="twitter:description" content="RockMongo是一个PHP5写的MongoDB管理工具。鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。"/>
 
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -176,9 +176,9 @@
 <p>鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。</p>
 <h3 id="查询操作">查询操作</h3>
 <p>点击某个collection后的默认画面：</p>
-<p><img src="https://hopefully-img.yuedun.wang/rockmongo1.png" alt=""></p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo1.png" alt="rockmongo"></p>
 <p>查询界面很简单，关键是怎么写查询语句？</p>
-<p><img src="https://hopefully-img.yuedun.wang/rockmongo2.png" alt=""></p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo2.png" alt="rockmongo"></p>
 <p>点击文本可以查看所有数据字段，查询title为“测试”文档：</p>
 <pre><code>array(
 	'title' =&gt; '测试'
@@ -187,16 +187,27 @@
 <pre><code>array(
 	'title'=&gt; new MongoRegex(&quot;/测试/i&quot;)
 )
-</code></pre><p>字段名要加引号，中间使用<code>=&gt;</code>而不是使用<code>:</code>分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
-<img src="https://hopefully-img.yuedun.wang/rockmongo3.png" alt=""></p>
+</code></pre><p>字段名要加引号，中间使用<code>=&gt;</code>而不是使用<code>:</code>分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据</p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo3.png" alt="rockmongo"></p>
 <h3 id="修改操作">修改操作</h3>
 <p>动作中选择“modify”</p>
-<p><img src="https://hopefully-img.yuedun.wang/rockmongo4.png" alt=""></p>
-<p>再查询一下
-<img src="https://hopefully-img.yuedun.wang/rockmongo5.png" alt=""></p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo4.png" alt="rockmongo"></p>
+<p>再查询一下</p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo5.png" alt="rockmongo"></p>
 <p>基本操作就是这样，删除操作不用说也应该能知道怎么做了。</p>
 
 		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mongodb/" rel="tag">mongodb</a>
+		</li>
+	</ul>
+</div>
+		</footer>
 	</article>
 </main>
 
