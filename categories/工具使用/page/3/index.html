@@ -144,6 +144,34 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/591ea6966af6717b614f9b2b/" rel="bookmark">
+			RockMongo使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-19T08:02:30Z">2017-05-19 08:02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		RockMongo是一个PHP5写的MongoDB管理工具。
+ 鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
+查询操作 点击某个collection后的默认画面：
+查询界面很简单，关键是怎么写查询语句？
+点击文本可以查看所有数据字段，查询title为“测试”文档：
+array('title' =&gt; '测试')模糊查询：
+array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引号，中间使用=&gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
+修改操作 动作中选择“modify”
+再查询一下
+基本操作就是这样，删除操作不用说也应该能知道怎么做了。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5742d3bb44b00beb2d26238d/" rel="bookmark">
 			VMware重新安装VMware Tool
 			</a>
@@ -364,25 +392,6 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”： 当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了 
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/54662bf3e8183bcf964f88eb/" rel="bookmark">
-			搞懂了七牛文件存储
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-14T16:21:07Z">2014-11-14 16:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。 
-	</div>
-</article>
 
 </main>
 
@@ -407,11 +416,11 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/07/qiuniu-image-preivew/">七牛在线管理图片预览chrome插件</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
 		</ul>
 	</div>
 </div>
@@ -538,6 +547,7 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>

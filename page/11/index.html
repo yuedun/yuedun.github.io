@@ -142,6 +142,28 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/59278639c1abbe00911df03c/" rel="bookmark">
+			基于beego框架的go项目目录结构
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-25T15:34:49Z">2017-05-25 15:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		原生的go推荐目录是
+├─bin ├─pkg ├─src bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。
+.src\ ├─project1 ├─project2 ├─project3 所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。
+但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/592195fed65a0126c7cdf455/" rel="bookmark">
 			婴儿学步牵引绳需不需要？
 			</a>
@@ -385,32 +407,6 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 		<a class="list__footer-readmore btn" href="/blogdetail/581d736c43c18f1b7ae3e3ff/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5819b2b7c4d0a377509b8f1a/" rel="bookmark">
-			Mongodb和mongoose聚合查询
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016-11-02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		mongdb查询某一字段sum值  需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
- mongodb中查询
-select sum(pv) from articles;db.articles.aggregate([{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 2 }select sum(pv) from articles where createDate &lt;= '2016-10-20';db.articles.aggregate([{$match:{createDate:{$lte:&quot;2016-10-20&quot;}}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 9 }select sum(pv) from articles where category = 'Nodejs';db.articles.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 7 }需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
-mongoose实现方式，与上面sql的顺序对应：
-Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(err, doc) {console.log(&quot;1&quot;, doc);});Article.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5819b2b7c4d0a377509b8f1a/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -434,11 +430,11 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(er
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/07/qiuniu-image-preivew/">七牛在线管理图片预览chrome插件</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
 		</ul>
 	</div>
 </div>
@@ -565,6 +561,7 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(er
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>

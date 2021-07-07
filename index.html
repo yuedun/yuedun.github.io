@@ -142,6 +142,34 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2021/07/qiuniu-image-preivew/" rel="bookmark">
+			七牛在线管理图片预览chrome插件
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-06T19:32:15&#43;08:00">2021-07-06 19:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>, <a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。
+vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
+可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也买有时间排序，只有名称排序，真的是很难用。
+为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
+关于chrome插件开发的细节本文暂不细说，直接上代码。
+代码展示 manifest.json
+{ &#34;manifest_version&#34;: 2, &#34;name&#34;: &#34;chome-plugin&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;description&#34;: &#34;chrome示例插件&#34;, &#34;icons&#34;: { &#34;16&#34;: &#34;images/icon-16x16.png&#34;, &#34;48&#34;: &#34;images/icon-48x48.png&#34;, &#34;128&#34;: &#34;images/icon-128x128.png&#34; }, &#34;page_action&#34;: { &#34;default_icon&#34;: { &#34;48&#34;: &#34;images/icon-48x48.png&#34; }, &#34;default_popup&#34;: &#34;html/popup.html&#34;, &#34;default_title&#34;: &#34;Hello yuedun&#34; }, &#34;author&#34;: &#34;yuedun&#34;, &#34;background&#34;: { &#34;scripts&#34;: [ &#34;scripts/jquery.min.js&#34;, &#34;scripts/background.js&#34; ] }, &#34;devtools_page&#34;: &#34;html/devtools-page.html&#34;, &#34;content_scripts&#34;: [ { &#34;js&#34;: [ &#34;scripts/jquery.min.js&#34;, &#34;scripts/content.js&#34; ], &#34;css&#34;: [ &#34;styles/yuedun-insert.css&#34; ], &#34;matches&#34;: [ &#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&#34; ], &#34;run_at&#34;: &#34;document_start&#34; } ], &#34;permissions&#34;: [ &#34;cookies&#34;, &#34;*://*/*&#34;, &#34;webRequest&#34; ], &#34;homepage_url&#34;: &#34;https://www.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2021/07/qiuniu-image-preivew/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2021/06/gitpage-hugo-page-view/" rel="bookmark">
 			gitpage Hugo统计每一篇文章浏览量
 			</a>
@@ -405,38 +433,6 @@ $ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app 
 		<a class="list__footer-readmore btn" href="/blogdetail/60628dfa8f0b5a0240684581/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/60459dcf8e743369d9dd5a8f/" rel="bookmark">
-			/bin/rm: argument list too long
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-08T03:45:19Z">2021-03-08 03:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		有人在服务器上不小心执行了rm -fr /*，而我想在删除某个文件夹下面的文件却遇到/bin/rm: argument list too long。
-意思是我删除的文件太多了，这倒有点稀奇。
-那怎么才能删除呢？
-试着直接删除目录也不行，这问题能难倒我，但难不倒百度。
-使用ls | xargs -n 1000 rm -fr ls删除，可是一直在输出错误提示：
-rm: invalid option -- &#39;s&#39; Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
-删除方式是：
-rm -- -foo 或 rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
-ls | xargs -n 1000 rm -frv ls
-rm命令加个参数v，用来显示删除信息。
-最终会输出这样的提示信息，
-removed ‘zMJ1MgKdzgbjNsWawUcX7OO3WspyxZEU.json’
-为了让它在后台执行可以这样：
-ls | xargs -n 1000 rm -frv ls &amp;
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -459,11 +455,11 @@ ls | xargs -n 1000 rm -frv ls &amp;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/07/qiuniu-image-preivew/">七牛在线管理图片预览chrome插件</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/60950c9ee76f307341586548/">朱雀发布系统支持scp（rsync）发布</a></li>
 		</ul>
 	</div>
 </div>
@@ -590,6 +586,7 @@ ls | xargs -n 1000 rm -frv ls &amp;
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>

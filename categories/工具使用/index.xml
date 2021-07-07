@@ -6,7 +6,22 @@
     <description>Recent content in 工具使用 on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Jun 2021 10:40:52 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jul 2021 19:32:15 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>七牛在线管理图片预览chrome插件</title>
+      <link>https://www.yuedun.wang/2021/07/qiuniu-image-preivew/</link>
+      <pubDate>Tue, 06 Jul 2021 19:32:15 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2021/07/qiuniu-image-preivew/</guid>
+      <description>七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。
+vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
+可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也买有时间排序，只有名称排序，真的是很难用。
+为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
+关于chrome插件开发的细节本文暂不细说，直接上代码。
+代码展示 manifest.json
+{ &amp;#34;manifest_version&amp;#34;: 2, &amp;#34;name&amp;#34;: &amp;#34;chome-plugin&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;chrome示例插件&amp;#34;, &amp;#34;icons&amp;#34;: { &amp;#34;16&amp;#34;: &amp;#34;images/icon-16x16.png&amp;#34;, &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;, &amp;#34;128&amp;#34;: &amp;#34;images/icon-128x128.png&amp;#34; }, &amp;#34;page_action&amp;#34;: { &amp;#34;default_icon&amp;#34;: { &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34; }, &amp;#34;default_popup&amp;#34;: &amp;#34;html/popup.html&amp;#34;, &amp;#34;default_title&amp;#34;: &amp;#34;Hello yuedun&amp;#34; }, &amp;#34;author&amp;#34;: &amp;#34;yuedun&amp;#34;, &amp;#34;background&amp;#34;: { &amp;#34;scripts&amp;#34;: [ &amp;#34;scripts/jquery.min.js&amp;#34;, &amp;#34;scripts/background.js&amp;#34; ] }, &amp;#34;devtools_page&amp;#34;: &amp;#34;html/devtools-page.html&amp;#34;, &amp;#34;content_scripts&amp;#34;: [ { &amp;#34;js&amp;#34;: [ &amp;#34;scripts/jquery.min.js&amp;#34;, &amp;#34;scripts/content.js&amp;#34; ], &amp;#34;css&amp;#34;: [ &amp;#34;styles/yuedun-insert.css&amp;#34; ], &amp;#34;matches&amp;#34;: [ &amp;#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&amp;#34; ], &amp;#34;run_at&amp;#34;: &amp;#34;document_start&amp;#34; } ], &amp;#34;permissions&amp;#34;: [ &amp;#34;cookies&amp;#34;, &amp;#34;*://*/*&amp;#34;, &amp;#34;webRequest&amp;#34; ], &amp;#34;homepage_url&amp;#34;: &amp;#34;https://www.</description>
+    </item>
+    
     <item>
       <title>vscode正则查找替换</title>
       <link>https://www.yuedun.wang/blogdetail/5e5a3fb45bd8165f28d21307/</link>

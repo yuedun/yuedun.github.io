@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>七牛在线管理图片预览chrome插件 - 月盾的博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="七牛在线管理图片预览chrome插件">
+		<meta property="og:title" content="七牛在线管理图片预览chrome插件" />
+<meta property="og:description" content="七牛在线管理图片预览chrome插件" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.yuedun.wang/2021/07/qiuniu-image-preivew/" /><meta property="article:section" content="2021" />
+<meta property="article:published_time" content="2021-07-06T19:32:15&#43;08:00" />
+<meta property="article:modified_time" content="2021-07-06T19:32:15&#43;08:00" />
+
+
+		<meta itemprop="name" content="七牛在线管理图片预览chrome插件">
+<meta itemprop="description" content="七牛在线管理图片预览chrome插件"><meta itemprop="datePublished" content="2021-07-06T19:32:15&#43;08:00" />
+<meta itemprop="dateModified" content="2021-07-06T19:32:15&#43;08:00" />
+<meta itemprop="wordCount" content="160">
+<meta itemprop="keywords" content="浏览器,插件,vscode," />
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="七牛在线管理图片预览chrome插件"/>
+<meta name="twitter:description" content="七牛在线管理图片预览chrome插件"/>
+
+
+	<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
+
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
+<script>
+  
+  
+  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
+  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
+  const serverURL = "https://api.yuedun.wang";
+  AV.init({ appId, appKey, serverURL });
+  function updateCollect() {
+    const collect = new AV.Query('Collect');
+    const url = location.pathname;
+    collect.select(['url', 'pv'])
+    collect.equalTo('url', url);
+    collect.first().then((col) => {
+      if (!col) {
+        
+        const Collect = AV.Object.extend('Collect');
+        
+        const collect = new Collect();
+        
+        const title = document.title;
+        collect.set('title', title);
+        collect.set('url', url);
+        collect.set('pv', 1);
+        collect.save()
+      } else {
+        col.increment('pv', 1)
+        col.save();
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    });
+  }
+
+  updateCollect()
+</script>
+</head>
+<body class="body">
+	<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/quicknote/">
+					
+					<span class="menu__text">速记</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+	<div class="container wrapper flex">
+		<div class="primary">
+		
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">七牛在线管理图片预览chrome插件</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-06T19:32:15&#43;08:00">2021-07-06 19:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>, <a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	</span>
+</div></div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">目录</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#vscode插件上传图片到七牛">vscode插件上传图片到七牛</a></li>
+        <li><a href="#代码展示">代码展示</a></li>
+        <li><a href="#效果展示">效果展示</a></li>
+        <li><a href="#原理">原理</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			<p>七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。</p>
+<h3 id="vscode插件上传图片到七牛">vscode插件上传图片到七牛</h3>
+<p><img src="https://hopefully-img.yuedun.wang/86280fa92e90030b55a1b6899cfef927" alt="vscode插件上传图片到七牛" title="vscode插件上传图片到七牛"></p>
+<p>vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。<!-- raw HTML omitted --></p>
+<p>上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。</p>
+<p><img src="https://hopefully-img.yuedun.wang/8e7ce912394747e8e72c8972d458be9a" alt=""></p>
+<p>可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也买有时间排序，只有名称排序，真的是很难用。</p>
+<p>为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。</p>
+<p>关于chrome插件开发的细节本文暂不细说，直接上代码。</p>
+<h3 id="代码展示">代码展示</h3>
+<p><strong>manifest.json</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+  <span style="color:#e6db74">&#34;manifest_version&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+  <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;chome-plugin&#34;</span>,
+  <span style="color:#e6db74">&#34;version&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.0.1&#34;</span>,
+  <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;chrome示例插件&#34;</span>,
+  <span style="color:#e6db74">&#34;icons&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;16&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/icon-16x16.png&#34;</span>,
+    <span style="color:#e6db74">&#34;48&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/icon-48x48.png&#34;</span>,
+    <span style="color:#e6db74">&#34;128&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/icon-128x128.png&#34;</span>
+  },
+  <span style="color:#e6db74">&#34;page_action&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;default_icon&#34;</span><span style="color:#f92672">:</span> {
+      <span style="color:#e6db74">&#34;48&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/icon-48x48.png&#34;</span>
+    },
+    <span style="color:#e6db74">&#34;default_popup&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;html/popup.html&#34;</span>,
+    <span style="color:#e6db74">&#34;default_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello yuedun&#34;</span>
+  },
+  <span style="color:#e6db74">&#34;author&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;yuedun&#34;</span>,
+  <span style="color:#e6db74">&#34;background&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> [
+      <span style="color:#e6db74">&#34;scripts/jquery.min.js&#34;</span>,
+      <span style="color:#e6db74">&#34;scripts/background.js&#34;</span>
+    ]
+  },
+  <span style="color:#e6db74">&#34;devtools_page&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;html/devtools-page.html&#34;</span>,
+  <span style="color:#e6db74">&#34;content_scripts&#34;</span><span style="color:#f92672">:</span> [
+    {
+      <span style="color:#e6db74">&#34;js&#34;</span><span style="color:#f92672">:</span> [
+        <span style="color:#e6db74">&#34;scripts/jquery.min.js&#34;</span>,
+        <span style="color:#e6db74">&#34;scripts/content.js&#34;</span>
+      ],
+      <span style="color:#e6db74">&#34;css&#34;</span><span style="color:#f92672">:</span> [
+        <span style="color:#e6db74">&#34;styles/yuedun-insert.css&#34;</span>
+      ],
+      <span style="color:#e6db74">&#34;matches&#34;</span><span style="color:#f92672">:</span> [
+        <span style="color:#e6db74">&#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&#34;</span>
+      ],
+      <span style="color:#e6db74">&#34;run_at&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;document_start&#34;</span>
+    }
+  ],
+  <span style="color:#e6db74">&#34;permissions&#34;</span><span style="color:#f92672">:</span> [
+    <span style="color:#e6db74">&#34;cookies&#34;</span>,
+    <span style="color:#e6db74">&#34;*://*/*&#34;</span>,
+    <span style="color:#e6db74">&#34;webRequest&#34;</span>
+  ],
+  <span style="color:#e6db74">&#34;homepage_url&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.yuedun.wang&#34;</span>
+}
+</code></pre></div><p><strong>background.js</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">webRequest</span>.<span style="color:#a6e22e">onCompleted</span>.<span style="color:#a6e22e">addListener</span>(
+    <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">details</span>) {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">details</span>);
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">details</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>) {
+            <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">tabs</span>.<span style="color:#a6e22e">sendMessage</span>(<span style="color:#a6e22e">details</span>.<span style="color:#a6e22e">tabId</span>, <span style="color:#e6db74">&#34;message&#34;</span>, <span style="color:#a6e22e">res</span> =&gt; {
+                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;bg=&gt;content&#39;</span>)
+                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">res</span>)
+              })
+        }
+    },
+
+    { <span style="color:#a6e22e">urls</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;https://portal.qiniu.com/api/kodov2/rsf/list*&#34;</span>] }  <span style="color:#75715e">//监听页面请求,你也可以通过*来匹配。
+</span><span style="color:#75715e"></span>);
+</code></pre></div><p><strong>content.js</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">runtime</span>.<span style="color:#a6e22e">onMessage</span>.<span style="color:#a6e22e">addListener</span>((<span style="color:#a6e22e">message</span>, <span style="color:#a6e22e">sender</span>, <span style="color:#a6e22e">sendResponse</span>) =&gt; {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">message</span>)
+    <span style="color:#75715e">// 这里是返回给bg的内容
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">trs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;.ant-table-tbody tr td:nth-child(2)&#39;</span>);
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">trs</span>.<span style="color:#a6e22e">size</span>();
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">newTrs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">makeArray</span>(<span style="color:#a6e22e">trs</span>).<span style="color:#a6e22e">splice</span>(<span style="color:#a6e22e">size</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>)
+    <span style="color:#a6e22e">newTrs</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">element</span> =&gt; {
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">td</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">element</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;.editCell_f2UJB &gt; .content_3-COB &gt; .formatted_2iUZF&#34;</span>)
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">td</span>.<span style="color:#a6e22e">html</span>());
+        <span style="color:#a6e22e">td</span>.<span style="color:#a6e22e">after</span>(<span style="color:#e6db74">&#39;&lt;img src=&#34;https://hopefully-img.yuedun.wang/&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">td</span>.<span style="color:#a6e22e">html</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;?imageMogr2/thumbnail/!20p/&#34; style=&#34;width:100px;&#34;&gt;&#39;</span>)
+    });
+    <span style="color:#a6e22e">sendResponse</span>(<span style="color:#e6db74">&#39;get the message&#39;</span>)
+})
+</code></pre></div><h3 id="效果展示">效果展示</h3>
+<p><img src="https://hopefully-img.yuedun.wang/cb72e1e3f3168b8ff951cee79b9686f7" alt=""></p>
+<h3 id="原理">原理</h3>
+<p>利用插件监听七牛接口请求，请求完成后进行dom操作，获取到图片名称，拼接出图片地址，在需要的地方插入一个img标签，这样就实现了简易的七牛图片预览功能。</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag">浏览器</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" rel="tag">插件</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/vscode/" rel="tag">vscode</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2021/06/gitpage-hugo-page-view/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">gitpage Hugo统计每一篇文章浏览量</p>
+		</a>
+	</div>
+</nav>
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "www-yuedun-wang" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+		</div>
+		
+	</div>
+	<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+		
+
+	</div>
+</footer>
+
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
+</body>
+</html>
