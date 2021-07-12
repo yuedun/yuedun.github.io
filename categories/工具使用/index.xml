@@ -6,7 +6,24 @@
     <description>Recent content in 工具使用 on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 06 Jul 2021 19:32:15 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Jul 2021 20:15:08 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chrome插件hook Ajax</title>
+      <link>https://www.yuedun.wang/2021/07/chrome-extensions-hook-ajax/</link>
+      <pubDate>Sat, 10 Jul 2021 20:15:08 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2021/07/chrome-extensions-hook-ajax/</guid>
+      <description>如何Hook Ajax请求 现在很多网站都使用Ajax作为数据接口，这样其实也方便爬虫爬取数据，但是，如果站点对IP，访问频率做 了限制，或者网站定位就是搜索类，无法遍历完所有页面，或者是数据实时变化，无法预期的。这样就可能需要 直接在浏览器中模拟人的行为，对于这样的网站(使用Ajax作数据接口，有一定防范措施) ，如果我们可以通过hook得到Ajax请求，就可以搞定它的数据了。
+单页面Web应用 对于单页面的Web应用，在console中使用如下代码，就能在浏览器进行Ajax请求时候，得到返回内容， 然后在post给存储接口就好了:
+(function() { var origOpen = XMLHttpRequest.prototype.open; XMLHttpRequest.prototype.open = function() { // console.log(&amp;#39;request started!&amp;#39;);  this.addEventListener(&amp;#39;load&amp;#39;, function() { console.log(this.responseText); // 得到Ajax的返回内容  }); origOpen.apply(this, arguments); }; })(); 比如百度图片:
+我们可以看到请求图片的路径，这段代码 直接使用了一个匿名函数，重写了Ajax请求的open方法，给load事件加上一个事件监听器，从而把内容得到:
+对于单页面的Web应用，基本可以满足需求，但是如果翻页的话，每次翻页上一页的代码就失效了， 不可能每页都把这段代码复制进console中，还是需要使用类似Chrome插件的方式才能实现。
+翻页Web应用 有了上面的代码，如果我们把它直接丢到Chrome插件的JS文件里面(官方叫Content Scripts)，发现是无法执行的，XMLHttpRequest.prototype.open 还是浏览器自身的代码。
+这样看来，就无法实现自动翻页，自动获取ajax请求内容了。
+Chrome官方说法如下:
+ Content scripts execute in a special environment called an isolated world. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.</description>
+    </item>
+    
     <item>
       <title>七牛在线管理图片预览chrome插件</title>
       <link>https://www.yuedun.wang/2021/07/qiuniu-image-preivew/</link>

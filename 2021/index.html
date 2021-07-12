@@ -144,6 +144,36 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2021/07/chrome-extensions-hook-ajax/" rel="bookmark">
+			Chrome插件hook Ajax
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-10T20:15:08&#43;08:00">2021-07-10 20:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		如何Hook Ajax请求 现在很多网站都使用Ajax作为数据接口，这样其实也方便爬虫爬取数据，但是，如果站点对IP，访问频率做 了限制，或者网站定位就是搜索类，无法遍历完所有页面，或者是数据实时变化，无法预期的。这样就可能需要 直接在浏览器中模拟人的行为，对于这样的网站(使用Ajax作数据接口，有一定防范措施) ，如果我们可以通过hook得到Ajax请求，就可以搞定它的数据了。
+单页面Web应用 对于单页面的Web应用，在console中使用如下代码，就能在浏览器进行Ajax请求时候，得到返回内容， 然后在post给存储接口就好了:
+(function() { var origOpen = XMLHttpRequest.prototype.open; XMLHttpRequest.prototype.open = function() { // console.log(&#39;request started!&#39;);  this.addEventListener(&#39;load&#39;, function() { console.log(this.responseText); // 得到Ajax的返回内容  }); origOpen.apply(this, arguments); }; })(); 比如百度图片:
+我们可以看到请求图片的路径，这段代码 直接使用了一个匿名函数，重写了Ajax请求的open方法，给load事件加上一个事件监听器，从而把内容得到:
+对于单页面的Web应用，基本可以满足需求，但是如果翻页的话，每次翻页上一页的代码就失效了， 不可能每页都把这段代码复制进console中，还是需要使用类似Chrome插件的方式才能实现。
+翻页Web应用 有了上面的代码，如果我们把它直接丢到Chrome插件的JS文件里面(官方叫Content Scripts)，发现是无法执行的，XMLHttpRequest.prototype.open 还是浏览器自身的代码。
+这样看来，就无法实现自动翻页，自动获取ajax请求内容了。
+Chrome官方说法如下:
+ Content scripts execute in a special environment called an isolated world. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2021/07/chrome-extensions-hook-ajax/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2021/07/qiuniu-image-preivew/" rel="bookmark">
 			七牛在线管理图片预览chrome插件
 			</a>
@@ -244,11 +274,11 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/qiuniu-image-preivew/">七牛在线管理图片预览chrome插件</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 		</ul>
 	</div>
 </div>

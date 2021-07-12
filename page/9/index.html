@@ -142,6 +142,33 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a69a8301f395d7179259c45/" rel="bookmark">
+			pm2日志记录和日志分割
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-25T09:49:36Z">2018-01-25 09:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		pm2介绍 pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。 最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。 总体来说就是有性能监控、自动重启、负载均衡的作用。
+pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路径：
+error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
+安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
+pm2-logrotate配置
+ max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a69a8301f395d7179259c45/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a615ab64bdc8ea471fd2ddd/" rel="bookmark">
 			最新版火狐Firefox Quantum 57没有pocket按钮
 			</a>
@@ -355,29 +382,6 @@ FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm install
  CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &quot;/bin/sh -c '/usr/...&quot; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a06d5989f088c0683b93d26/" rel="bookmark">
-			sequelize外键关联报错SequelizeDatabaseError: Cant write; duplicate key in table #sql-454_d
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-11T10:48:56Z">2017-11-11 10:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Assistance.belongTo(User)会报以下错误：
-ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&#39;t write; duplicate key in table &#39;#sql-454_d&#39; at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16) at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23) at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12) at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28) at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16) at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14) at Socket.&lt;anonymous&gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29) at emitOne (events.js:115:13) at Socket.emit (events.js:210:7) at addChunk (_stream_readable.js:264:12) at readableAddChunk (_stream_readable.js:251:11) at Socket.Readable.push (_stream_readable.js:209:10) at TCP.onread (net.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a06d5989f088c0683b93d26/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -401,11 +405,11 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/qiuniu-image-preivew/">七牛在线管理图片预览chrome插件</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 			<li class="widget__item"><a class="widget__link" href="/blogdetail/5e5a3fb45bd8165f28d21307/">vscode正则查找替换</a></li>
-			<li class="widget__item"><a class="widget__link" href="/blogdetail/60b48e405caa4b4dc69e3abf/">typescript不检查node_moduls</a></li>
 		</ul>
 	</div>
 </div>
