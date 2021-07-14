@@ -6,7 +6,24 @@
     <description>Recent content in golang on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 02 Dec 2020 06:20:13 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Jul 2021 20:51:21 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gorm Model Find First Where等查询函数的区别</title>
+      <link>https://www.yuedun.wang/2021/07/gorm-model-find-first/</link>
+      <pubDate>Tue, 13 Jul 2021 20:51:21 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2021/07/gorm-model-find-first/</guid>
+      <description>gorm是一款优秀的国产golang orm关系型数据库框架，在国内外使用比较广泛。它的链式调用还算是一种符合人类思维的风格。
+不过在使用过程中也遇到一些困扰，比如：Model, Find, First, Where这些函数该什么时候使用，有时候会有边界不清楚，使用混乱的情况。
+以下代码示例使用v2版本，v1和v2大体上相同，有些细微的不同
+Where和Find search := User{UserName:&amp;#34;月盾&amp;#34;} db.Find(&amp;amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &amp;#39;月盾&amp;#39;  db.Where(search).Find(&amp;amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &amp;#39;月盾&amp;#39; 以上两种查询方式结果一样。
+Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是数据接收者，conds是查询条件。所以Find也是可以代替Where来传入条件的。
+Where的参数主要分为两类：String，Struct&amp;amp;Map。还有其他不常用类型。
+String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
+Struct&amp;amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
+db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE name = &amp;#34;jinzhu&amp;#34; AND age = 0; db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&#39;&#39;、false 或其他 零值，该字段不会被用于构建查询条件，例如：</description>
+    </item>
+    
     <item>
       <title>go单元测试初始化</title>
       <link>https://www.yuedun.wang/blogdetail/5fc7321dc0ec0c27f57ace6e/</link>

@@ -6,7 +6,24 @@
     <description>Recent content in 2021s on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 10 Jul 2021 20:15:08 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/2021/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Jul 2021 20:51:21 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/2021/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gorm Model Find First Where等查询函数的区别</title>
+      <link>https://www.yuedun.wang/2021/07/gorm-model-find-first/</link>
+      <pubDate>Tue, 13 Jul 2021 20:51:21 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2021/07/gorm-model-find-first/</guid>
+      <description>gorm是一款优秀的国产golang orm关系型数据库框架，在国内外使用比较广泛。它的链式调用还算是一种符合人类思维的风格。
+不过在使用过程中也遇到一些困扰，比如：Model, Find, First, Where这些函数该什么时候使用，有时候会有边界不清楚，使用混乱的情况。
+以下代码示例使用v2版本，v1和v2大体上相同，有些细微的不同
+Where和Find search := User{UserName:&amp;#34;月盾&amp;#34;} db.Find(&amp;amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &amp;#39;月盾&amp;#39;  db.Where(search).Find(&amp;amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &amp;#39;月盾&amp;#39; 以上两种查询方式结果一样。
+Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是数据接收者，conds是查询条件。所以Find也是可以代替Where来传入条件的。
+Where的参数主要分为两类：String，Struct&amp;amp;Map。还有其他不常用类型。
+String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
+Struct&amp;amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
+db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE name = &amp;#34;jinzhu&amp;#34; AND age = 0; db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&#39;&#39;、false 或其他 零值，该字段不会被用于构建查询条件，例如：</description>
+    </item>
+    
     <item>
       <title>Chrome插件hook Ajax</title>
       <link>https://www.yuedun.wang/2021/07/chrome-extensions-hook-ajax/</link>
@@ -32,7 +49,7 @@ Chrome官方说法如下:
       <guid>https://www.yuedun.wang/2021/07/qiuniu-image-preivew/</guid>
       <description>七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。
 vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
-可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也买有时间排序，只有名称排序，真的是很难用。
+可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也没有时间排序，只有名称排序，真的是很难用。
 为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
 关于chrome插件开发的细节本文暂不细说，直接上代码。
 代码展示 manifest.json
@@ -64,7 +81,7 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 自建和gitpage优劣对比 首先列出自己博客具备的功能：
  首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链 目录 所有文章时间线 留言 自维护留言系统 微博 新浪微博，最近出问题不显示了 速记 简单记录 关于 自我介绍  整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。所以迁移到gitpage上也不会有什么问题。
 劣势 静态博客在一些细节功能上面确实会有缺失，比如：
- 评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。  优势  免费，没有服务器费用。 可以自定义域名，只需要一丁点儿的域名费用。 seo良好。 规范的书写格式，使文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于本地检索。 数据更保险，不易丢失。  整体来说，除了数据存储功能缺失外，其他都是可以实现的。
+ 评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。  优势  免费，没有服务器费用。 可以自定义域名，只需要一丁点儿的域名费用。 seo良好。 规范的书写格式，使文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于本地检索。 数据更保险，不易丢失。 安全，静态博客可以避免一些网络攻击。  整体来说，除了数据存储功能缺失外，其他都是可以实现的。
 迁移过程 将mongodb数据中的博客导出为本地markdown文件。
 // mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &amp;#39;_id&amp;#39;: -1 } }) .then(data =&amp;gt; { data.forEach((b) =&amp;gt; { debug(b) let tags = b.</description>
     </item>
