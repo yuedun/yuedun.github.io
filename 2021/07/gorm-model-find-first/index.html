@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="Gorm Model Find First Where等查询函数的区别">
 <meta itemprop="description" content="Gorm Model Find First Where等查询函数的区别，它们的顺序是怎么样的？"><meta itemprop="datePublished" content="2021-07-13T20:51:21+08:00" />
 <meta itemprop="dateModified" content="2021-07-13T20:51:21+08:00" />
-<meta itemprop="wordCount" content="208">
+<meta itemprop="wordCount" content="212">
 <meta itemprop="keywords" content="gorm,golang," />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Gorm Model Find First Where等查询函数的区别"/>
@@ -217,10 +217,14 @@ db.<span style="color:#66d9ef">Where</span>(<span style="color:#f92672">&amp;</s
 </code></pre></div><p>在使用Raw自定义SQL查询时，使用Scan来接收数据，虽然Find也是可以接收的，但是Find主要还是用来带条件查询的，链接到Raw后面时条件是不起作用的。所以用Scan函数单纯的接收数据就行了。</p>
 <h3 id="model函数什么时候用">Model()函数什么时候用？</h3>
 <p>对于查询来说，一般使用Find，First就够了。当查询链中没有用到Find，First等函数时，这时就无法指定要查询的表了，此时就要用Model来指定表。
-另外的场景就是更新操作中使用。
-<code>Update(column string, value interface{})</code>更新函数的参数是(字段，值)，没有能够确定表的参数，所以更新操作需要用到Model。
-举例：<code>db.Model(&amp;User{ID: 1}).Updates(User{Mobile: &quot;13333333333&quot;})</code>，此时使用Model不仅可以指定表，还可以指定查询条件，但是这个条件却只能是id，不能使用其他条件。
-像这样是不行的：<code>db.Model(&amp;User{UserName: &quot;月盾&quot;}).Updates(User{Mobile: &quot;13333333333&quot;})</code>
+另外的场景就是更新操作中使用。<br>
+<code>Update(column string, value interface{})</code><br>
+更新函数的参数是(字段，值)，没有能够确定表的参数，所以更新操作需要用到Model。<br>
+举例：
+<code>db.Model(&amp;User{ID: 1}).Updates(User{Mobile: &quot;13333333333&quot;})</code><br>
+此时使用Model不仅可以指定表，还可以指定查询条件，但是这个条件却只能是id，不能使用其他条件。<br>
+像这样是不行的：<br>
+<code>db.Model(&amp;User{UserName: &quot;月盾&quot;}).Updates(User{Mobile: &quot;13333333333&quot;})</code>
 所以要使用其他条件就要用到Where函数了。</p>
 <h3 id="函数顺序">函数顺序</h3>
 <p>官网文档的示例中展示的例子都是这种格式：</p>
