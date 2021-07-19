@@ -142,6 +142,31 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5fc7321dc0ec0c27f57ace6e/" rel="bookmark">
+			go单元测试初始化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-12-02T06:20:13Z">2020-12-02 06:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		go单元测试会遇到这样的场景： 写好了service层函数getUser()。然后测试测试getUser函数。有个问题是，函数中使用了数据库连接，如果直接测试的话会报错误，比如空指针错误。
+ panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
+ 如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
+func TestMain(m *testing.M) { fmt.Println(&#34;begin&#34;) dba, err := gorm.Open(&#34;sqlite3&#34;, &#34;../../website.db&#34;) db.SQLLite = dba if err != nil { panic(err) } m.Run() fmt.Println(&#34;end&#34;) } func TestProjectUsers(t *testing.T) { userService := user.NewService(db.SQLLite) users, err := userService.GetProjectUsers(25) if err != nil { t.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5fc7321dc0ec0c27f57ace6e/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5fc1f965c0ec0c27f57ac7c9/" rel="bookmark">
 			Svelte3路由
 			</a>
@@ -389,29 +414,6 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 &lt;mycomponent :json=&quot;JsonData&quot; @changeData=&quot;changeData&quot;&gt;&lt;/mycomponent&gt;data(){return {JsonData:{}}}methods:{changeData(newData){this.JsonData = newData;}}子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5f20f0c05981482973150396/" rel="bookmark">
-			原生js实现图片预览
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-29T03:45:04Z">2020-07-29 03:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		不依赖jquery也可以实现图片预览功能：
-&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; &lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; //图片放大 	document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.style.cursor = &#34;pointer&#34;; }); document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.addEventListener(&#34;click&#34;, function () { imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); }) }) function imgShow(outerdiv, bigimg, _this) { var src = _this.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5f20f0c05981482973150396/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -435,11 +437,11 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/qiuniu-image-preivew/">七牛在线管理图片预览chrome插件</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/06/blog-move-to-gitpage/">博客迁移至hugo gitpage</a></li>
 		</ul>
 	</div>
 </div>
@@ -581,6 +583,7 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
