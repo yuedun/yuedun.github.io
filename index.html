@@ -142,6 +142,47 @@
 <main class="main list" role="main"><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2021/07/event-message-data-driven/" rel="bookmark">
+			事件驱动编程、消息驱动编程、数据驱动编程
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-23T14:31:17&#43;08:00">2021-07-23 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		事件驱动 事件驱动机制就是：
+让驴拉磨，它不拉，你用鞭抽一下，它就开始拉了。然后又停了，你再抽一下，它又继续拉了
+这叫用“鞭”驱动“驴”拉磨
+在程序里，程序停止在那不动，你点击一个按钮，它就有反应了，过一会，又没反应了，你再点一下，它又继续运行。
+这叫用“事件”驱动“程序”运行
+0. 基本概念 窗口/组件 事件 消息(队列) 事件响应(服务处理程序) 调度算法 进程/线程 非阻塞I/O 程序的执行可以看成对CPU,内存,IO资源一次占用 现代操作系统支持多任务,可以分时复用上述资源.  1. 为什么采用事件驱动模型? 事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：
+首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）； 当目标发送改变（发布），观察者（订阅者）就可以接收到改变； 观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。  2. 代码执行流程 在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。 在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。
+3. 事件驱动模型 在UI编程中，常常要对鼠标点击进行相应，首先如何获得鼠标点击呢？
+方式一：创建一个线程，该线程一直循环检测是否有鼠标点击，那么这个方式有以下几个缺点：
+CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？ 如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘； 如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。  方式二：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：
+有一个事件（消息）队列； 鼠标按下时，往这个队列中增加一个点击事件（消息）； 有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等； 事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图:  4. 事件驱动处理库 select poll epoll libev  消息驱动 事件驱动机制跟消息驱动机制相比
+消息驱动和事件驱动很类似，都是先有一个事件，然后产生一个相应的消息，再把消息放入消息队列，由需要的项目获取。他们的区别是消息是谁产生的
+消息驱动：鼠标管自己点击不需要和系统有过多的交互，消息由系统（第三方）循环检测，来捕获并放入消息队列。消息对于点击事件来说是被动产生的，高内聚。
+事件驱动：鼠标点击产生点击事件后要向系统发送消息“我点击了”的消息，消息是主动产生的。再发送到消息队列中。
+事件：按下鼠标，按下键盘，按下游戏手柄，将U盘插入USB接口，都将产生事件。比如说按下鼠标左键，将产生鼠标左键被按下的事件。
+消息：当鼠标被按下，产生了鼠标按下事件，windows侦测到这一事件的发生，随即发出鼠标被按下的消息到消息队列中，这消息附带了一系列相关的事件信息，比如鼠标哪个键被按了，在哪个窗口被按的，按下点的坐标是多少？如此等等。
+ 要理解事件驱动和程序，就需要与非事件驱动的程序进行比较。实际上，现代的程序大多是事件驱动的，比如多线程的程序，肯定是事件驱动的。早期则存在许多非事件驱动的程序，这样的程序，在需要等待某个条件触发时，会不断地检查这个条件，直到条件满足，这是很浪费cpu时间的。而事件驱动的程序，则有机会释放cpu从而进入睡眠态（注意是有机会，当然程序也可自行决定不释放cpu），当事件触发时被操作系统唤醒，这样就能更加有效地使用cpu. 再说什么是事件驱动的程序。一个典型的事件驱动的程序，就是一个死循环，并以一个线程的形式存在，这个死循环包括两个部分，第一个部分是按照一定的条件接收并选择一个要处理的事件，第二个部分就是事件的处理过程。程序的执行过程就是选择事件和处理事件，而当没有任何事件触发时，程序会因查询事件队列失败而进入睡眠状态，从而释放cpu。 事件驱动的程序，必定会直接或者间接拥有一个事件队列，用于存储未能及时处理的事件。 事件驱动的程序的行为，完全受外部输入的事件控制，所以，事件驱动的系统中，存在大量这种程序，并以事件作为主要的通信方式。 事件驱动的程序，还有一个最大的好处，就是可以按照一定的顺序处理队列中的事件，而这个顺序则是由事件的触发顺序决定的，这一特性往往被用于保证某些过程的原子化。 目前windows,linux,nucleus,vxworks都是事件驱动的，只有一些单片机可能是非事件驱动的。  事件模式耦合高，同模块内好用；消息模式耦合低，跨模块好用。事件模式集成其它语言比较繁琐，消息模式集成其他语言比较轻松。事件是侵入式设计，霸占你的主循环；消息是非侵入式设计，将主循环该怎样设计的自由留给用户。如果你在设计一个东西举棋不定，那么你可以参考win32的GetMessage，本身就是一个藕合度极低的接口，又足够自由，接口任何语言都很方便，具体应用场景再在其基础上封装成事件并不是难事，接口耦合较低，即便哪天事件框架调整，修改外层即可，不会伤经动骨。而如果直接实现成事件，那就完全反过来了。
+什么是数据驱动编程 最近在学习《Unix编程艺术》。以前粗略的翻过，以为是介绍unix工具的。现在认真的看了下，原来是介绍设计原则的。它的核心就是第一章介绍的unix的哲学以及17个设计原则，而后面的内容就是围绕它来展开的。以前说过，要学习适合自己的资料，而判断是否适合的一个方法就是看你是否能够读得下去。我对这本书有一种相见恨晚的感觉。推荐有4~6年工作经验的朋友可以读一下。
+正题：
+作者在介绍Unix设计原则时，其中有一条为“表示原则：把知识叠入数据以求逻辑质朴而健壮”。结合之前自己的一些经验，我对这个原则很有共鸣，所以先学习了数据驱动编程相关的内容，这里和大家分享出来和大家一起讨论。
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2021/07/event-message-data-driven/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2021/07/dianjia/" rel="bookmark">
 			为什么夜间电费只收半价？
 			</a>
@@ -401,33 +442,6 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
  朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统
 	</div>
 </article>
-<article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.yuedun.wang/blogdetail/608eb0b254277a10496a5f56/">
-			<img src="https://hopefully-img.yuedun.wang/led%E6%89%8B%E7%94%B5%E7%AD%92.jpg?imageMogr2/thumbnail/!20p/" alt="一体LED可伸缩变焦手电筒拆解" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/608eb0b254277a10496a5f56/" rel="bookmark">
-			一体LED可伸缩变焦手电筒拆解
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-05-02T14:01:22Z">2021-05-02 14:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		先看看一体LED可伸缩变焦手电筒长什么样子
-这种手电筒刚买回来几个月就不亮了，以为没电了，充电了也不行，想拆开看看却发现无从下手，手电筒是一体的，并没有地方可扭开。
-按钮部位看起来是可拆解的，想要转动一下，发现无法转动，最后抱着死马当活马医的心态，大不了拆坏了，随便用工具撬了下尾部凹槽部分，发现有活动迹象，然后就继续撬，果然是大力出奇迹。最后就是下面图展示的样子，有明显损坏痕迹，不过也没办法，实在不好拆。拆开后发现电池线断了，将就着接上后就好了。
-最后，虽然不建议买这种手电筒，但是既然您看到本文了，那也就有救了。 祝大家五一快乐！
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -450,11 +464,11 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/qiuniu-image-preivew/">七牛在线管理图片预览chrome插件</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/06/gitpage-hugo-page-view/">gitpage Hugo统计每一篇文章浏览量</a></li>
 		</ul>
 	</div>
 </div>
@@ -529,7 +543,6 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
@@ -573,7 +586,6 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AE%89%E8%A3%85/" title="安装">安装</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
