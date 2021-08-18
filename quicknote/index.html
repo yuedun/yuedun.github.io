@@ -18,7 +18,7 @@
 		<meta itemprop="name" content="速记">
 <meta itemprop="description" content="记录一些简单的内容"><meta itemprop="datePublished" content="2021-06-20T19:25:42+08:00" />
 <meta itemprop="dateModified" content="2021-06-20T19:25:42+08:00" />
-<meta itemprop="wordCount" content="239">
+<meta itemprop="wordCount" content="262">
 <meta itemprop="keywords" content="" />
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="速记"/>
@@ -153,6 +153,17 @@
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-20T19:25:42&#43;08:00">2021-06-20 19:25</time></div></div>
 		</header><div class="content post__content clearfix">
 			<hr>
+<p>input和datalist结合使用不提示！</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;form-control&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;art_category&#34;</span> <span style="color:#a6e22e">list</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;catelist&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.article.Category}}&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;分类&#34;</span>&gt;
+&lt;<span style="color:#f92672">datalist</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;catelist&#34;</span>&gt;
+    &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;选择&lt;/<span style="color:#f92672">option</span>&gt;
+    {{range $index, $item := .categories}}
+    &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{$item.Name}}&#34;</span>&gt;
+    {{end}}
+&lt;/<span style="color:#f92672">datalist</span>&gt;
+</code></pre></div><p>原因：<code>list=&quot;catelist&quot;</code>对应的应该是<code>id=&quot;catelist&quot;</code>，上面代码使用的是<code>name=&quot;catelist&quot;</code>，是错误的写法</p>
+<p>2021-08-18</p>
+<hr>
 <p>Unexpected identifier in D:\workspace\yuedun_ts\build\views\article\index.html while compiling ejs If the above error is not helpful, you may want to try EJS-Lint: <a href="https://github.com/RyanZim/EJS-Lint">https://github.com/RyanZim/EJS-Lint</a> Or, if you meant to create an async function, pass <code>async: true</code> as an option. &lt;% include header.html %&gt;改为&lt;%- include(&lsquo;header.html&rsquo;)%&gt;</p>
 <p>2020-05-29 15:39:32</p>
 <hr>
