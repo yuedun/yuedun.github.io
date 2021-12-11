@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.85.0" />
+	<meta name="generator" content="Hugo 0.83.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+		
 		<meta property="og:title" content="月盾的博客" />
 <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
 <meta property="og:type" content="website" />
@@ -16,6 +17,7 @@
 
 		<meta itemprop="name" content="月盾的博客">
 <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+		
 		<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="月盾的博客"/>
 <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。"/>
@@ -139,7 +141,48 @@
 	<div class="container wrapper flex">
 		<div class="primary">
 		
-<main class="main list" role="main"><article class="list__item post">
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">月盾的博客</h1>
+	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.yuedun.wang/blogdetail/5a375f52e9a4cf008860c09b/">
+			<img src="https://hopefully-img.yuedun.wang/104432cjc7c8tx7xxqqkgq.jpg?imageMogr2/thumbnail/!20p/" alt="为什么需要RPC，而不是简单的HTTP接口" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a375f52e9a4cf008860c09b/" rel="bookmark">
+			为什么需要RPC，而不是简单的HTTP接口
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-12-18T06:25:22Z">2017-12-18 06:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		目前有很多Java的RPC框架，有基于Json的，有基于XML，也有基于二进制对象的。
+论复杂度，RPC框架肯定是高于简单的HTTP接口的。但毋庸置疑，HTTP接口由于受限于HTTP协议，需要带HTTP请求头，导致传输起来效率或者说安全性不如RPC。
+现在问题是，遇到怎样的瓶颈了才需要或者说更适合用RPC（比如像阿里这么大的请求并发量，简单的HTTP肯定达不到预期），但问题是大家所在的公司，要有像阿里这么大的量是比较少的，甚至说1/1000的量可能都没有，那我们还需要使用RPC吗？
+技术应该不是为了使用新技术而去使用，而应该是旧技术存在某些瓶颈，存在难以支撑或者扩展性越老越差等问题暴露出来之后，用新技术来进行解决。
+那RPC最大的优点，或者说它相比简单的HTTP接口，它的优势、更适合它的业务场景是怎样呢？简单的HTTP又哪里不足，哪些场景明显不太适合呢？
+RPC=Remote Produce Call 是一种技术的概念名词. HTTP是一种协议,RPC可以通过HTTP来实现,也可以通过Socket自己实现一套协议来实现.所以楼主可以换一个问法,为何RPC还有除HTTP 之外的实现法,有何必要.毕竟除了HTTP实现外,私有协议不具备通用性.那么我想唯一的答案就在于HTTP不能满足其业务场景的地方,所以这个就要具体 案例具体分析了.
+http接口是在接口不多、系统与系统交互较少的情况下，解决信息孤岛初期常使用的一种通信手段；优点就是简单、直接、开发方便。利用现成的http协议 进行传输。但是如果是一个大型的网站，内部子系统较多、接口非常多的情况下，RPC框架的好处就显示出来了，首先就是长链接，不必每次通信都要像http 一样去3次握手什么的，减少了网络开销；其次就是RPC框架一般都有注册中心，有丰富的监控管理；发布、下线接口、动态扩展等，对调用方来说是无感知、统 一化的操作。第三个来说就是安全性。最后就是最近流行的服务化架构、服务化治理，RPC框架是一个强力的支撑。
+rpc是一种概念，http也是rpc实现的一种方式。论复杂度，dubbo/hessian用起来是超级简单的。最近用dubbo和hessian比较多，http的几乎都被废弃了。
+至于为什么用，其实很简单，业务场景不一样。我最早的单位所有的代码都在一个工程里，一次要发布几百m的代码。这种架构是非常有利于小程序的。但是我们为什么要应用rpc层呢，一个功能，一套代码下来不就解决了么？我觉得有几个好处：
+1 灵活部署 2 解耦 至于为什么，当你用到的时候，你会体会。
+系统做大了，肯定是需要做微服务的。 现在我们做电商就是这样，单独有一个订单系统，支付系统，商品系统，用户系统。都是分开部署，单独上线的。 但我们交互是用HTTP接口来交互的，我想转用RPC，但问题是我现在还没发现为什么需要用RPC，我还没能理解它的作用和意义。
+用http交互其实就已经属于rpc了。
+RPC:远程过程调用。RPC的核心并不在于使用什么协议。RPC的目的是让你在本地调用远程的方法，而对你来说这个调用是透明的，你并不知道这个调用的方法是部署哪里。通过RPC能解耦服务，这才是使用RPC的真正目的。RPC的原理主要用到了动态代理模式，至于http协议，只是传输协议而已。简单的实现可以参考spring remoting，复杂的实现可以参考dubbo。
+RPC是一个软件结构概念，是构建分布式应用的理论基础。就好比为啥你家可以用到发电厂发出来的电？是因为电是可以传输的。至于用铜线还是用铁丝还是其他 种类的导线，也就是用http还是用其他协议的问题了。这个要看什么场景，对性能要求怎么样。比如在java中的最基本的就是RMI技术，它是java原 生的应用层分布式技术。我们可以肯定的是在传输性能方面，RMI的性能是优于HTTP的。那为啥很少用到这个技术？那是因为用这个有很多局限性，首先它要 保证传输的两端都要要用java实现，且两边需要有相同的对象类型和代理接口，不需要容器，但是加大了编程的难度，在应用内部的各个子系统之间还是会看到 他的身影，比如EJB就是基于rmi技术的。这就与目前的bs架构的软件大相径庭。用http必须要服务端位于http容器里面，这样减少了网络传输方面 的开发，只需要关注业务开发即可。所以在架构一个软件的时候，不能一定根据需求选定技术。
+转自：https://www.cnblogs.com/winner-0715/p/5847638.html
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a24ed6c2d700330ae669e89/" rel="bookmark">
@@ -339,31 +382,11 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 另外cmder其实也是我使用过的一个不错的工具，同时推荐试用。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5967123a3d2aae2ccfdc61a3/" rel="bookmark">
-			Sequelize批量插入数据
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-07-13T06:24:58Z">2017-07-13 06:24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
-User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to...  return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
-	</div>
-</article>
 
 		
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/page/9/">«</a>
-	<span class="pagination__item pagination__item--current">10/19</span>
+	<span class="pagination__item pagination__item--current">10/20</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/11/">»</a>
 </div>
 </main>
@@ -382,14 +405,15 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/qiuniu-image-preivew/">七牛在线管理图片预览chrome插件</a></li>
 		</ul>
 	</div>
 </div>
+
 
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
@@ -527,10 +551,12 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
 	</div>
 </div>
 <div class="widget-social widget">
