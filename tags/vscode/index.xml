@@ -19,32 +19,7 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
 关于chrome插件开发的细节本文暂不细说，直接上代码。
 代码展示 manifest.json
-{ &amp;#34;manifest_version&amp;#34;: 2, &amp;#34;name&amp;#34;: &amp;#34;chome-plugin&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;chrome示例插件&amp;#34;, &amp;#34;icons&amp;#34;: { &amp;#34;16&amp;#34;: &amp;#34;images/icon-16x16.png&amp;#34;, &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;, &amp;#34;128&amp;#34;: &amp;#34;images/icon-128x128.png&amp;#34; }, &amp;#34;page_action&amp;#34;: { &amp;#34;default_icon&amp;#34;: { &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34; }, &amp;#34;default_popup&amp;#34;: &amp;#34;html/popup.html&amp;#34;, &amp;#34;default_title&amp;#34;: &amp;#34;Hello yuedun&amp;#34; }, &amp;#34;author&amp;#34;: &amp;#34;yuedun&amp;#34;, &amp;#34;background&amp;#34;: { &amp;#34;scripts&amp;#34;: [ &amp;#34;scripts/jquery.min.js&amp;#34;, &amp;#34;scripts/background.js&amp;#34; ] }, &amp;#34;devtools_page&amp;#34;: &amp;#34;html/devtools-page.html&amp;#34;, &amp;#34;content_scripts&amp;#34;: [ { &amp;#34;js&amp;#34;: [ &amp;#34;scripts/jquery.min.js&amp;#34;, &amp;#34;scripts/content.js&amp;#34; ], &amp;#34;css&amp;#34;: [ &amp;#34;styles/yuedun-insert.css&amp;#34; ], &amp;#34;matches&amp;#34;: [ &amp;#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&amp;#34; ], &amp;#34;run_at&amp;#34;: &amp;#34;document_start&amp;#34; } ], &amp;#34;permissions&amp;#34;: [ &amp;#34;cookies&amp;#34;, &amp;#34;*://*/*&amp;#34;, &amp;#34;webRequest&amp;#34; ], &amp;#34;homepage_url&amp;#34;: &amp;#34;https://www.</description>
-    </item>
-    
-    <item>
-      <title>vscode正则查找替换</title>
-      <link>https://www.yuedun.wang/blogdetail/5e5a3fb45bd8165f28d21307/</link>
-      <pubDate>Mon, 14 Jun 2021 10:40:52 +0000</pubDate>
-      
-      <guid>https://www.yuedun.wang/blogdetail/5e5a3fb45bd8165f28d21307/</guid>
-      <description>查找某一类型字符串： 正则表达式onclick=.*&amp;quot; 会查找到所有： onclick=&amp;quot;_msq.push([&#39;trackEvent&#39;, &#39;210074305d6b0409-09c7759e04e98528&#39;, &#39;&#39;pcpid&#39;, &#39;&#39;]);&amp;quot;
-onclick=是固定一样的字符，
-.代表除\r和\n之外的任意字符，等价于[^\r\n]
-*代表匹配前面的模式 0或多次 {0,}
-&amp;quot;这是字符串最后一个字符
-在vscode中的效果如下： 至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：
-查找替换 查找：(onclick=.*&amp;quot;)
-替换：aaa($1)
-结果：
-替换字符串两头，保留中间 两部分文字交换位置 相同模式的文字交换位置。
-查找：(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))
-替换：$2 $1
-结果：
-vscode中一对括号()代表一个变量。
-第一组正则 (\(\d{4}-\d{1,2}-\d{2}\)) 对应 $1，
-第二组正则 (\[.*\))对应 $2，以此类推。
-所以，可以查找多组数据，在替换部分将两个对应变量交换位置即可。</description>
+{  &amp;#34;manifest_version&amp;#34;: 2,  &amp;#34;name&amp;#34;: &amp;#34;chome-plugin&amp;#34;,  &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;,  &amp;#34;description&amp;#34;: &amp;#34;chrome示例插件&amp;#34;,  &amp;#34;icons&amp;#34;: {  &amp;#34;16&amp;#34;: &amp;#34;images/icon-16x16.png&amp;#34;,  &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;,  &amp;#34;128&amp;#34;: &amp;#34;images/icon-128x128.png&amp;#34;  },  &amp;#34;page_action&amp;#34;: {  &amp;#34;default_icon&amp;#34;: {  &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;  },  &amp;#34;default_popup&amp;#34;: &amp;#34;html/popup.html&amp;#34;,  &amp;#34;default_title&amp;#34;: &amp;#34;Hello yuedun&amp;#34;  },  &amp;#34;author&amp;#34;: &amp;#34;yuedun&amp;#34;,  &amp;#34;background&amp;#34;: {  &amp;#34;scripts&amp;#34;: [  &amp;#34;scripts/jquery.min.js&amp;#34;,  &amp;#34;scripts/background.js&amp;#34;  ]  },  &amp;#34;devtools_page&amp;#34;: &amp;#34;html/devtools-page.</description>
     </item>
     
   </channel>
