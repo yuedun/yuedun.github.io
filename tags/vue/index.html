@@ -161,10 +161,10 @@
 	<div class="content list__excerpt post__content clearfix">
 		Nuxt.js 2.13+可以扫描并自动导入您的组件，不再需要在该script部分中手动导入它们！
 nuxt.config配置：
-export default { components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
+export default {  components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
 组件目录：
-components/ ComponentFoo.vue ComponentBar.vue 使用
-&lt;template&gt; &lt;ComponentFoo /&gt; &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
+components/  ComponentFoo.vue  ComponentBar.vue 使用
+&lt;template&gt;  &lt;ComponentFoo /&gt;  &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
 	</div>
 </article>
 <article class="list__item post">
@@ -186,8 +186,8 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 		vue在子组件中直接修改父组件传递下来的数据会报错： Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: &quot;json&quot;
 原因是vue子组件不能直接修改父组件的数据，可以使用this.$emit发送通知，让父组件来修改。 示例代码：
 子组件：
-this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
-&lt;mycomponent :json=&quot;JsonData&quot; @changeData=&quot;changeData&quot;&gt;&lt;/mycomponent&gt;data(){return {JsonData:{}}}methods:{changeData(newData){this.JsonData = newData;}}子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
+this.$emit(&#34;changeData&#34;, &#34;要修改的数据&#34;); 父组件：
+&lt;mycomponent :json=&#34;JsonData&#34; @changeData=&#34;changeData&#34;&gt;&lt;/mycomponent&gt; data(){ return { JsonData:{} } } methods:{ changeData(newData){ this.JsonData = newData; } } 子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
 	</div>
 </article>
 <article class="list__item post">
@@ -241,8 +241,11 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
-resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
+		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.  (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
+resolve: {  alias: {  &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; 	//该路径为node_modules下的vue目录  }  } // 需要编译器 new Vue({  template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; })  // 不需要编译器 new Vue({  render (h) {  return h(&#39;div&#39;, this.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a86db29c3700db1c9ae7c55/">阅读全文…</a>
 	</div>
 </article>
 <article class="list__item post">
@@ -287,7 +290,7 @@ http://www.mydomain/?#!/index
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Vue.js可以传递$event对象
-&lt;body id=&#34;app&#34;&gt; &lt;ul&gt; &lt;li v-on:click=&#34;say(&#39;hello!&#39;, $event)&#34;&gt;点击当前行文本&lt;/li&gt; &lt;li&gt;li2&lt;/li&gt; &lt;li&gt;li3&lt;/li&gt; &lt;/ul&gt; &lt;script&gt; new Vue({ el: &#39;#app&#39;, data: { message: &#39;Hello Vue.js!&#39; }, methods: { say: function(msg, event) { //获取点击对象 	var el = event.currentTarget; alert(&#34;当前对象的内容：&#34;+el.innerHTML); } } }) &lt;/script&gt; &lt;/body&gt; 函数调用处传递$event
+&lt;body id=&#34;app&#34;&gt;  &lt;ul&gt; 	&lt;li v-on:click=&#34;say(&#39;hello!&#39;, $event)&#34;&gt;点击当前行文本&lt;/li&gt; 	&lt;li&gt;li2&lt;/li&gt; 	&lt;li&gt;li3&lt;/li&gt;  &lt;/ul&gt;  &lt;script&gt;  new Vue({ 	el: &#39;#app&#39;, 	data: { 	message: &#39;Hello Vue.js!&#39; 	}, 	methods: { 	say: function(msg, event) { 	//获取点击对象 	var el = event.currentTarget; 	alert(&#34;当前对象的内容：&#34;+el.innerHTML); 	} 	}  })  &lt;/script&gt;  &lt;/body&gt; 函数调用处传递$event
 v-on:click=&quot;say('hello!', $event)&quot;
 函数中获取到的event.currentTarget对象就是当前元素
 在线示例
@@ -351,8 +354,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		直接看代码：
-var gulp = require(&#39;gulp&#39;) var webpack = require(&#34;gulp-webpack&#34;); var webpackConfig = require(&#34;./webpack.config.js&#34;); // gulp.task(&#34;webpack&#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err)) // console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats) // if(err) throw new Error(&#34;webpack&#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&#34;webpack&#34;, function(){ return gulp.src(&#34;./app.js&#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&#34;./dist/&#34;)) }); gulp.watch(&#39;./views/*&#39;, [&#39;webpack&#39;]); webpack.config.js配置
-var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app.js&#34;,  { app:&#34;./app.js&#34; // vendor: [&#34;.
+var gulp = require(&#39;gulp&#39;) var webpack = require(&#34;gulp-webpack&#34;); var webpackConfig = require(&#34;./webpack.config.js&#34;); // gulp.task(&#34;webpack&#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err)) // console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats) // if(err) throw new Error(&#34;webpack&#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&#34;webpack&#34;, function(){  return gulp.src(&#34;./app.js&#34;)  .pipe(webpack(Object.create(webpackConfig)))  .pipe(gulp.dest(&#34;./dist/&#34;)) });  gulp.watch(&#39;./views/*&#39;, [&#39;webpack&#39;]); webpack.config.js配置
+var webpack = require(&#34;webpack&#34;); module.exports = {  entry: //&#34;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/568a088edb1fef9e0cda949e/">阅读全文…</a>
@@ -377,11 +380,11 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -434,6 +437,7 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -473,6 +477,7 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -562,7 +567,7 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

@@ -183,8 +183,8 @@
 	<div class="content list__excerpt post__content clearfix">
 		js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;：  delete objtest.prop; //或者  delete objtest[&#39;prop&#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
+var objtest = {   prop: &#39;delete me&#39;  };  //或者这么声明的对象  var objtest = new Array();  objtest[&#39;prop&#39;] = &#39;delete me&#39;;  //删除属性&#39;prop&#39;：  delete objtest.prop;  //或者  delete objtest[&#39;prop&#39;];  //还可以删除任意变量  var numb = 17;  delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { 	name: &#39;鸣人&#39;, 	age: 16, 	gender: &#39;男&#39;, 	friends: [{ 	name: &#39;小樱&#39;, 	age: 16, 	gender: &#39;女&#39;, 	friends: [{ 	name: &#39;井野&#39;, 	age: 16, 	gender: &#39;女&#39; 	}] 	}, 	{ 	name: &#39;佐助&#39;, 	age: 16, 	gender: &#39;男&#39; 	}] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
@@ -217,7 +217,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 原生http请求获取参数   获取URL参数
   url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
   go返回json数据
-  type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&#34;a&#34;] = &#34;aaaaaa&#34; ress := &amp;ResObj{ Code: 0, Data: m} byt, _ := json.
+  type ResObj struct {  Code int  Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) {  m := make(map[string]string)  m[&#34;a&#34;] = &#34;aaaaaa&#34;  ress := &amp;ResObj{  Code: 0,  Data: m}  byt, _ := json.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56556da1c72f59d15379b4b9/">阅读全文…</a>
@@ -242,7 +242,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 		prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototype属性，可以给类动态地添加方法，以便在JavaScript中实现“ 继承”的效果。
 具体来说，prototype 是在 IE 4 及其以后版本引入的一个针对于某一类的对象的方法，当你用prototype编写一个类后，如果new一个新的对象，浏览器会自动把prototype中 的内容替你附加在对象上。这样，通过利用prototype就可以在JavaScript中实现成员函数的定义，甚至是“继承”的效果。
 对于javascript本身而言是基于对象的，任何元素都可以看成对象。然而类型和对象是不同的，而我们所讲的prototype属性即是基于类型的一 种属性。对于prototype的基本使用就如对象的创建及属性赋值一样的简单。直接通过赋值操作即可完成属性的创建。
-/** * 关于prototype, 理解这个很有必要 可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 JS中允许的类型有Array, Boolean, Date, Enumerator, Error, Function, Number, Object, RegExp, String 以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例 */ Object.prototype.name = &#34;zhangsan&#34;; Object.prototype.nihao = function () { alert(&#34;i can method name is &#34; + this.name); } var obj = new Object(); obj.nihao(); alert(obj.name); // 在实例上不能使用prototype，否则会发生编译错误  obj.prototype.sex = &#34;男&#34;; //error,无法给一个实例prototype var o = { name: &#34;zhangsan&#34; } o.prototype.age = 30; //error,无法给一个实例prototype //可以为类型定义“静态”的属性和方法，直接在类型上调用即可 alert(Object.
+ /** * 关于prototype, 理解这个很有必要 可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 JS中允许的类型有Array, Boolean, Date, Enumerator, Error, Function, Number, Object, RegExp, String 以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例 */ Object.prototype.name = &#34;zhangsan&#34;;  Object.prototype.nihao = function () {   alert(&#34;i can method name is &#34; + this.name);  }  var obj = new Object();  obj.nihao();  alert(obj.name);    // 在实例上不能使用prototype，否则会发生编译错误  obj.prototype.sex = &#34;男&#34;; //error,无法给一个实例prototype var o = {   name: &#34;zhangsan&#34;  }  o.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56551ce4c72f59d15379b4b8/">阅读全文…</a>
@@ -287,7 +287,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		js控制优酷视频播放暂停
-&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&#34;&gt; &lt;title&gt;js控制优酷视频播放&lt;/title&gt; &lt;script src=&#34;http://player.youku.com/jsapi&#34;&gt;&lt;/script&gt; &lt;script&gt; player = new YKU.Player(&#34;youkuplayer&#34;,{ styleid: &#34;0&#34;, client_id: &#34;d8781b239fdad45b&#34;, vid: &#34;XMjg1MTcyNDQ0&#34;, autoplay: false, show_related: true, events:{ onPlayEnd: function(){ /*your code*/ }, onPlayStart: function(){ /*your code*/ }, onPlayerReady: function(){ /*your code*/ } } }); function playVideo(){ try{ player.playVideo(); } catch(err){ alert(&#34;*&#34;+err); } } function pauseVideo(){ player.pauseVideo(); } function seekTo(s){ player.seekTo(s); } function currentTime(){ return player.
+&lt;!DOCTYPE html&gt; &lt;html&gt;  &lt;head&gt;  &lt;meta charset=&#34;utf-8&#34;&gt;  &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&#34;&gt;  &lt;title&gt;js控制优酷视频播放&lt;/title&gt;  &lt;script src=&#34;http://player.youku.com/jsapi&#34;&gt;&lt;/script&gt;  &lt;script&gt;  player = new YKU.Player(&#34;youkuplayer&#34;,{  styleid: &#34;0&#34;,  client_id: &#34;d8781b239fdad45b&#34;,  vid: &#34;XMjg1MTcyNDQ0&#34;,  autoplay: false,  show_related: true,  events:{  onPlayEnd: function(){ /*your code*/ },  onPlayStart: function(){ /*your code*/ },  onPlayerReady: function(){ /*your code*/ }  }  });  function playVideo(){  try{  player.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/564adbd591dccd315681abfe/">阅读全文…</a>
@@ -419,7 +419,7 @@ Enter file in which to save the key (//.ssh/id_rsa):
 第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa
 Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下
 接下来两部是要求输入密码，不输入直接回车就完成了。
-PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Generating public/private rsa key pair. Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in .
+PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34;  Generating public/private rsa key pair.  Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa  Enter passphrase (empty for no passphrase):  Enter same passphrase again:  Your identification has been saved in .
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56400429c888d8070f145c35/">阅读全文…</a>
@@ -468,11 +468,11 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -525,6 +525,7 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -564,6 +565,7 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -653,7 +655,7 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

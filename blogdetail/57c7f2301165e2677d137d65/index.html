@@ -12,13 +12,13 @@
 <meta property="og:description" content="nodejs请求网络资源写到本地有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2016-09-01T09:17:36&#43;00:00" />
-<meta property="article:modified_time" content="2016-09-01T09:17:36&#43;00:00" />
+<meta property="article:published_time" content="2016-09-01T09:17:36+00:00" />
+<meta property="article:modified_time" content="2016-09-01T09:17:36+00:00" />
 
 
 		<meta itemprop="name" content="nodejs请求网络资源写到本地">
-<meta itemprop="description" content="nodejs请求网络资源写到本地有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写"><meta itemprop="datePublished" content="2016-09-01T09:17:36&#43;00:00" />
-<meta itemprop="dateModified" content="2016-09-01T09:17:36&#43;00:00" />
+<meta itemprop="description" content="nodejs请求网络资源写到本地有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写"><meta itemprop="datePublished" content="2016-09-01T09:17:36+00:00" />
+<meta itemprop="dateModified" content="2016-09-01T09:17:36+00:00" />
 <meta itemprop="wordCount" content="57">
 <meta itemprop="keywords" content="nodejs,fs,request,文件," />
 		
@@ -173,31 +173,31 @@
 <div class="content post__content clearfix">
 			<h3 id="nodejs请求网络资源写到本地">nodejs请求网络资源写到本地</h3>
 <p>有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">request</span><span style="color:#f92672">=</span><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;request&#34;</span>);
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fs</span><span style="color:#f92672">=</span><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;fs&#34;</span>);
-
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&#34;</span>;
-<span style="color:#a6e22e">HttpRequest</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">url</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">body</span>) =&gt; {
-    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">setEncoding</span>(<span style="color:#e6db74">&#34;binary&#34;</span>);<span style="color:#75715e">//二进制（binary）
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">FS</span>.<span style="color:#a6e22e">writeFile</span>(<span style="color:#e6db74">&#34;out.png&#34;</span>, <span style="color:#a6e22e">body</span>, <span style="color:#e6db74">&#34;binary&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">err</span>) {<span style="color:#75715e">//以二进制格式保存
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">err</span>;
-        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;file saved&#34;</span>);
-    });
-});
-</code></pre></div><p>这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">request</span><span style="color:#f92672">=</span><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;request&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fs</span><span style="color:#f92672">=</span><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;fs&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">HttpRequest</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">url</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">body</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">setEncoding</span>(<span style="color:#e6db74">&#34;binary&#34;</span>);<span style="color:#75715e">//二进制（binary）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">FS</span>.<span style="color:#a6e22e">writeFile</span>(<span style="color:#e6db74">&#34;out.png&#34;</span>, <span style="color:#a6e22e">body</span>, <span style="color:#e6db74">&#34;binary&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">err</span>) {<span style="color:#75715e">//以二进制格式保存
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">err</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;file saved&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……</p>
 <p>还好，有另一种方法可行，而且看起来代码量也少了很多。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&#34;</span>;
-<span style="color:#a6e22e">request</span>(<span style="color:#a6e22e">url</span>).<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">createWriteStream</span>(<span style="color:#e6db74">&#34;out.png&#34;</span>));
-</code></pre></div><p>不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">url</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">request</span>(<span style="color:#a6e22e">url</span>).<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">createWriteStream</span>(<span style="color:#e6db74">&#34;out.png&#34;</span>));
+</span></span></code></pre></div><p>不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。<br>
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？</p>
 <p><em>非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉</em></p>
 <p>有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;http&#34;</span>);
-
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>( (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
-
-}
-</code></pre></div><p>其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看<code>request(url).pipe(fs.createWriteStream(&quot;out.png&quot;));</code>,<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">http</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;http&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">createServer</span>( (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看<code>request(url).pipe(fs.createWriteStream(&quot;out.png&quot;));</code>,<br>
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。</p>
 
 		</div>
@@ -249,7 +249,7 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

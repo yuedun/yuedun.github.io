@@ -161,8 +161,7 @@
 	<div class="content list__excerpt post__content clearfix">
 		随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。
 首先看下mongoose API，find方法源码：
-Model.find = function find (conditions, fields, options, callback){ if(&#34;function&#34;==typeof conditions){ callback = conditions; conditions ={}; fields = null; options = null; }elseif(&#34;function&#34;==typeof fields){ callback = fields; fields = null; options = null; }elseif(&#34;function&#34;==typeof options){ callback = options; options = null; } // get the raw mongodb collection object  var mq =newQuery({}, options,this,this.collection); mq.select(fields); if(this.schema.discriminatorMapping &amp;amp;&amp;amp; mq._selectedInclusively()){ mq.select(this.schema.options.discriminatorKey); } return mq.find(conditions, callback); }; 其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：
-router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
+Model.find = function find (conditions, fields, options, callback){ if(&#34;function&#34;==typeof conditions){  callback = conditions;  conditions ={};  fields = null;  options = null; }elseif(&#34;function&#34;==typeof fields){  callback = fields;  fields = null;  options = null;  }elseif(&#34;function&#34;==typeof options){  callback = options;  options = null;  }  // get the raw mongodb collection object  var mq =newQuery({}, options,this,this.collection);  mq.select(fields);  if(this.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5440a294fea3dae97beee4f9/">阅读全文…</a>
@@ -193,8 +192,8 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 3、例如：127.0.0.1：300/index，然后post了一个id=2的值，这种方式是获取客户端post过来的数据，可以通过req.body.id获取，类似于PHP的post方法；
 下面举例介绍下这三个方法：
 如下一个test.html代码
-&lt;form action=&quot;/index&quot; method=&quot;get&quot;&gt;&lt;input type=&quot;text&quot; name=&quot;login_name&quot; /&gt;&lt;input type=&quot;submit&quot; value=&quot;Sign In&quot; /&gt;&lt;/form&gt;在nodeJs中我们要自定义HTTP，因此创建index.js
-app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //输出index  console.log(req.body.login_name); //输出表单post提交的login_name  res.send(&#39;great you are right for post method!&#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791
+&lt;form action=&#34;/index&#34; method=&#34;get&#34;&gt; &lt;input type=&#34;text&#34; name=&#34;login_name&#34; /&gt; &lt;input type=&#34;submit&#34; value=&#34;Sign In&#34; /&gt; &lt;/form&gt; 在nodeJs中我们要自定义HTTP，因此创建index.js
+app.post(&#39;/:key&#39;, function(req, res) {  console.log(req.params.key); //输出index  console.log(req.body.login_name); //输出表单post提交的login_name  res.send(&#39;great you are right for post method!&#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791
 	</div>
 </article>
 <article class="list__item post">
@@ -267,11 +266,11 @@ app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -324,6 +323,7 @@ app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -363,6 +363,7 @@ app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -452,7 +453,7 @@ app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

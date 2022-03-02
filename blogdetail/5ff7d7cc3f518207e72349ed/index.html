@@ -12,13 +12,13 @@
 <meta property="og:description" content="npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持hist" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5ff7d7cc3f518207e72349ed/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2021-01-08T03:55:56&#43;00:00" />
-<meta property="article:modified_time" content="2021-01-08T03:55:56&#43;00:00" />
+<meta property="article:published_time" content="2021-01-08T03:55:56+00:00" />
+<meta property="article:modified_time" content="2021-01-08T03:55:56+00:00" />
 
 
 		<meta itemprop="name" content="svelte history路由刷新后404">
-<meta itemprop="description" content="npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持hist"><meta itemprop="datePublished" content="2021-01-08T03:55:56&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-08T03:55:56&#43;00:00" />
+<meta itemprop="description" content="npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持hist"><meta itemprop="datePublished" content="2021-01-08T03:55:56+00:00" />
+<meta itemprop="dateModified" content="2021-01-08T03:55:56+00:00" />
 <meta itemprop="wordCount" content="310">
 <meta itemprop="keywords" content="svelte," />
 		
@@ -173,94 +173,94 @@
 <p>在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip;
 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用<code>@spaceavocado/svelte-router</code>包实现了history路由的时候我还是满心欢喜。</p>
 <p><strong>使用方法：</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">//App.svelte
-&lt;<span style="color:#f92672">script</span>&gt;
-	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">RouterView</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router/component/view&#39;</span>;
-	<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">routes</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./router.js&#39;</span>
-&lt;/<span style="color:#f92672">script</span>&gt;
-
-&lt;<span style="color:#f92672">RouterView</span> /&gt;
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//router.js
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">createRouter</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">index</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./index/index.svelte&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./a/a.svelte&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">b</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./b/b.svelte&#39;</span>;
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">routes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createRouter</span>({
-    <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;HISTORY&#34;</span>,
-    <span style="color:#a6e22e">routes</span><span style="color:#f92672">:</span> [
-        {
-            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/&#39;</span>,
-            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;HOME&#39;</span>,
-            <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">index</span>,
-        },
-        {
-            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/a&#39;</span>,
-            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>,
-            <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">a</span>,
-        },
-        {
-            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/b&#39;</span>,
-            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;b&#39;</span>,
-            <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">b</span>,
-        },
-        {
-            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;*&#39;</span>,
-            <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">index</span>,
-        },
-    ],
-});
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">// index.svelte
-&lt;<span style="color:#f92672">script</span>&gt;
-	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">RouterLink</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router/component/link&#39;</span>;
-&lt;/<span style="color:#f92672">script</span>&gt;
-
-&lt;<span style="color:#f92672">main</span>&gt;
-	&lt;<span style="color:#f92672">h1</span>&gt;Hello {name}!&lt;/<span style="color:#f92672">h1</span>&gt;
-	&lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/a&#34;</span>&gt;a页面&lt;/<span style="color:#f92672">RouterLink</span>&gt;
-	&lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/b&#34;</span>&gt;b页面&lt;/<span style="color:#f92672">RouterLink</span>&gt;
-&lt;/<span style="color:#f92672">main</span>&gt;
-</code></pre></div><p>可是一刷新就嗝屁了，依旧出现404.无意中就试了一下之前使用其他路由包使用的一种rollup配置方法。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>//App.svelte
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">RouterView</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router/component/view&#39;</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">routes</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./router.js&#39;</span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">RouterView</span> /&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//router.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">createRouter</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">index</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./index/index.svelte&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./a/a.svelte&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">b</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./b/b.svelte&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">routes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createRouter</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;HISTORY&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">routes</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;HOME&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">index</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/a&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">a</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/b&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;b&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">b</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;*&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">index</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>// index.svelte
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">RouterLink</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@spaceavocado/svelte-router/component/link&#39;</span>;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">main</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">h1</span>&gt;Hello {name}!&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/a&#34;</span>&gt;a页面&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/b&#34;</span>&gt;b页面&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">main</span>&gt;
+</span></span></code></pre></div><p>可是一刷新就嗝屁了，依旧出现404.无意中就试了一下之前使用其他路由包使用的一种rollup配置方法。
 package.json中的start命令：
 <code>sirv public -s</code>加了<code>-s</code>参数就好了。</p>
 <p><code>sirv-cli</code>是一个提供静态文件服务命令行工具。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"> $ sirv --help
-
-  Description
-    Run a static file server
-
-  Usage
-    $ sirv <span style="color:#f92672">[</span>dir<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
-
-  Options
-    -D, --dev          Enable <span style="color:#e6db74">&#34;dev&#34;</span> mode
-    -e, --etag         Enable <span style="color:#e6db74">&#34;ETag&#34;</span> header
-    -d, --dotfiles     Enable dotfile asset requests
-    -c, --cors         Enable <span style="color:#e6db74">&#34;CORS&#34;</span> headers to allow any origin requestor
-    -G, --gzip         Send precompiled <span style="color:#e6db74">&#34;*.gz&#34;</span> files when <span style="color:#e6db74">&#34;gzip&#34;</span> is supported  <span style="color:#f92672">(</span>default true<span style="color:#f92672">)</span>
-    -B, --brotli       Send precompiled <span style="color:#e6db74">&#34;*.br&#34;</span> files when <span style="color:#e6db74">&#34;brotli&#34;</span> is supported  <span style="color:#f92672">(</span>default true<span style="color:#f92672">)</span>
-    -m, --maxage       Enable <span style="color:#e6db74">&#34;Cache-Control&#34;</span> header &amp; define its <span style="color:#e6db74">&#34;max-age&#34;</span> value <span style="color:#f92672">(</span>sec<span style="color:#f92672">)</span>
-    -i, --immutable    Enable the <span style="color:#e6db74">&#34;immutable&#34;</span> directive <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#34;Cache-Control&#34;</span> header
-    -k, --http2        Enable the HTTP/2 protocol. Requires Node.js 8.4.0+
-    -C, --cert         Path to certificate file <span style="color:#66d9ef">for</span> HTTP/2 server
-    -K, --key          Path to certificate key <span style="color:#66d9ef">for</span> HTTP/2 server
-    -P, --pass         Passphrase to decrypt a certificate key
-    -s, --single       Serve as single-page application with <span style="color:#e6db74">&#34;index.html&#34;</span> fallback
-    -I, --ignores      Any URL pattern<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> to ignore <span style="color:#e6db74">&#34;index.html&#34;</span> assumptions
-    -q, --quiet        Disable logging to terminal
-    -H, --host         Hostname to bind  <span style="color:#f92672">(</span>default localhost<span style="color:#f92672">)</span>
-    -p, --port         Port to bind  <span style="color:#f92672">(</span>default 5000<span style="color:#f92672">)</span>
-    -v, --version      Displays current version
-    -h, --help         Displays this message
-
-  Examples
-    $ sirv build --cors --port <span style="color:#ae81ff">8080</span>
-    $ sirv public --quiet --etag --maxage <span style="color:#ae81ff">31536000</span> --immutable
-    $ sirv public --http2 --key priv.pem --cert cert.pem
-    $ sirv public -qeim <span style="color:#ae81ff">31536000</span>
-    $ sirv --port <span style="color:#ae81ff">8080</span> --etag
-    $ sirv --host --dev
-</code></pre></div><p>功能还是蛮丰富的，其中<code>-s</code>参数是专门用户单页应用的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> $ sirv --help
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Description
+</span></span><span style="display:flex;"><span>    Run a static file server
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Usage
+</span></span><span style="display:flex;"><span>    $ sirv <span style="color:#f92672">[</span>dir<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Options
+</span></span><span style="display:flex;"><span>    -D, --dev          Enable <span style="color:#e6db74">&#34;dev&#34;</span> mode
+</span></span><span style="display:flex;"><span>    -e, --etag         Enable <span style="color:#e6db74">&#34;ETag&#34;</span> header
+</span></span><span style="display:flex;"><span>    -d, --dotfiles     Enable dotfile asset requests
+</span></span><span style="display:flex;"><span>    -c, --cors         Enable <span style="color:#e6db74">&#34;CORS&#34;</span> headers to allow any origin requestor
+</span></span><span style="display:flex;"><span>    -G, --gzip         Send precompiled <span style="color:#e6db74">&#34;*.gz&#34;</span> files when <span style="color:#e6db74">&#34;gzip&#34;</span> is supported  <span style="color:#f92672">(</span>default true<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    -B, --brotli       Send precompiled <span style="color:#e6db74">&#34;*.br&#34;</span> files when <span style="color:#e6db74">&#34;brotli&#34;</span> is supported  <span style="color:#f92672">(</span>default true<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    -m, --maxage       Enable <span style="color:#e6db74">&#34;Cache-Control&#34;</span> header &amp; define its <span style="color:#e6db74">&#34;max-age&#34;</span> value <span style="color:#f92672">(</span>sec<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    -i, --immutable    Enable the <span style="color:#e6db74">&#34;immutable&#34;</span> directive <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#34;Cache-Control&#34;</span> header
+</span></span><span style="display:flex;"><span>    -k, --http2        Enable the HTTP/2 protocol. Requires Node.js 8.4.0+
+</span></span><span style="display:flex;"><span>    -C, --cert         Path to certificate file <span style="color:#66d9ef">for</span> HTTP/2 server
+</span></span><span style="display:flex;"><span>    -K, --key          Path to certificate key <span style="color:#66d9ef">for</span> HTTP/2 server
+</span></span><span style="display:flex;"><span>    -P, --pass         Passphrase to decrypt a certificate key
+</span></span><span style="display:flex;"><span>    -s, --single       Serve as single-page application with <span style="color:#e6db74">&#34;index.html&#34;</span> fallback
+</span></span><span style="display:flex;"><span>    -I, --ignores      Any URL pattern<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> to ignore <span style="color:#e6db74">&#34;index.html&#34;</span> assumptions
+</span></span><span style="display:flex;"><span>    -q, --quiet        Disable logging to terminal
+</span></span><span style="display:flex;"><span>    -H, --host         Hostname to bind  <span style="color:#f92672">(</span>default localhost<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    -p, --port         Port to bind  <span style="color:#f92672">(</span>default 5000<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    -v, --version      Displays current version
+</span></span><span style="display:flex;"><span>    -h, --help         Displays this message
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Examples
+</span></span><span style="display:flex;"><span>    $ sirv build --cors --port <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>    $ sirv public --quiet --etag --maxage <span style="color:#ae81ff">31536000</span> --immutable
+</span></span><span style="display:flex;"><span>    $ sirv public --http2 --key priv.pem --cert cert.pem
+</span></span><span style="display:flex;"><span>    $ sirv public -qeim <span style="color:#ae81ff">31536000</span>
+</span></span><span style="display:flex;"><span>    $ sirv --port <span style="color:#ae81ff">8080</span> --etag
+</span></span><span style="display:flex;"><span>    $ sirv --host --dev
+</span></span></code></pre></div><p>功能还是蛮丰富的，其中<code>-s</code>参数是专门用户单页应用的。</p>
 <p>总结：不怕困难多，只要肯折腾！</p>
 
 		</div>
@@ -303,7 +303,7 @@ package.json中的start命令：
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

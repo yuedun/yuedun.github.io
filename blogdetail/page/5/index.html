@@ -183,10 +183,10 @@
 		beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。 常用的模块有以下这些：
  session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块  本文要讲解的是httplib客户端请求的使用。
 日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用httplib。
-基本使用方法 import ( &#34;github.com/astaxie/beego/httplib&#34; ) 然后初始化请求方法，返回对象
+基本使用方法 import (  &#34;github.com/astaxie/beego/httplib&#34; ) 然后初始化请求方法，返回对象
 req := httplib.Get(&#34;http://beego.me/&#34;) 然后我们就可以获取数据了
-str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
-获取body信息 func RequestByAjax3(region, language string) { req := httplib.Get(fmt.Sprintf(&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;, url.QueryEscape(region), language)) req.Header(&#34;Referer&#34;, &#34;https://m.lagou.com/search.html&#34;) req.Header(&#34;Cookie&#34;, &#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;) req.Header(&#34;Host&#34;, &#34;m.lagou.com&#34;) req.Header(&#34;User-Agent&#34;, &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.
+str, err := req.String() if err != nil {  t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
+获取body信息 func RequestByAjax3(region, language string) {  req := httplib.Get(fmt.Sprintf(&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;, url.QueryEscape(region), language))  req.Header(&#34;Referer&#34;, &#34;https://m.lagou.com/search.html&#34;)  req.Header(&#34;Cookie&#34;, &#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;)  req.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e216204567cde49c49187f1/">阅读全文…</a>
@@ -492,7 +492,7 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		main.ts
-import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;; async function bootstrap() { const app = await NestFactory.create&lt;NestExpressApplication&gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;  app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&#39;views&#39;, { ext:&#39;njk&#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&gt; { }); } bootstrap(); app.
+import { NestFactory } from &#39;@nestjs/core&#39;; import {  ExpressAdapter,  NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;;  async function bootstrap() {  const app = await NestFactory.create&lt;NestExpressApplication&gt;(  AppModule,  new ExpressAdapter(),  );  app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;  app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&#39;views&#39;, {  ext:&#39;njk&#39;,  autoescape: true,  express: app,  watch: true,  });  await app.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5cc807d6effb223a816d9114/">阅读全文…</a>
@@ -522,11 +522,11 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -579,6 +579,7 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -618,6 +619,7 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -707,7 +709,7 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

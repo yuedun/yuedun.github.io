@@ -12,13 +12,13 @@
 <meta property="og:description" content="open() is deprecated in mongoose &gt;= 4.11.0, use openUri() instead, or set the us" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5996a2dc9205bd72e7290ebb/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2017-08-18T08:18:36&#43;00:00" />
-<meta property="article:modified_time" content="2017-08-18T08:18:36&#43;00:00" />
+<meta property="article:published_time" content="2017-08-18T08:18:36+00:00" />
+<meta property="article:modified_time" content="2017-08-18T08:18:36+00:00" />
 
 
 		<meta itemprop="name" content="open() is deprecated in mongoose &gt;= 4.11.0, use openUri()">
-<meta itemprop="description" content="open() is deprecated in mongoose &gt;= 4.11.0, use openUri() instead, or set the us"><meta itemprop="datePublished" content="2017-08-18T08:18:36&#43;00:00" />
-<meta itemprop="dateModified" content="2017-08-18T08:18:36&#43;00:00" />
+<meta itemprop="description" content="open() is deprecated in mongoose &gt;= 4.11.0, use openUri() instead, or set the us"><meta itemprop="datePublished" content="2017-08-18T08:18:36+00:00" />
+<meta itemprop="dateModified" content="2017-08-18T08:18:36+00:00" />
 <meta itemprop="wordCount" content="127">
 <meta itemprop="keywords" content="mongodb,mongoose," />
 		
@@ -156,7 +156,7 @@
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
-			<pre><code>`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, 
+			<pre tabindex="0"><code>`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, 
 or set the `useMongoClient` option if using `connect()` or `createConnection()`. 
 See http://mongoosejs.com/docs/connections.html#use-mongo-client
 Db.prototype.authenticate method will no longer be available in the next major 
@@ -164,18 +164,18 @@ release 3.x as MongoDB 3.6 will only allow auth against users in the admin db
 and will no longer allow multiple credentials on a socket. 
 Please authenticate using MongoClient.connect with auth credentials.
 </code></pre><p>修改连接参数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`mongodb://</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">password</span><span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">host</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dbName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">opts</span> <span style="color:#f92672">=</span> {
-	<span style="color:#75715e">// autoReconnect: false,//默认true
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// reconnectTries: 30,//尝试重连，默认30次
-</span><span style="color:#75715e"></span>	<span style="color:#75715e">// reconnectInterval: 1000, //重连间隔，默认1000毫秒
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">loggerLevel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;warn&#34;</span>, <span style="color:#75715e">//error/warn/info/debug
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">useMongoClient</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-};
-<span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">opts</span>);
-</code></pre></div><p>如果在原有参数的基础上加了<code>userMongoClient</code>以后有如下警告：</p>
-<pre><code>[poolSize,ssl,sslValidate,sslCA,sslCert,sslKey,sslPass,sslCRL,autoReconnect,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`mongodb://</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">password</span><span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">host</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dbName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">opts</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// autoReconnect: false,//默认true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// reconnectTries: 30,//尝试重连，默认30次
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// reconnectInterval: 1000, //重连间隔，默认1000毫秒
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">loggerLevel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;warn&#34;</span>, <span style="color:#75715e">//error/warn/info/debug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">useMongoClient</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">opts</span>);
+</span></span></code></pre></div><p>如果在原有参数的基础上加了<code>userMongoClient</code>以后有如下警告：</p>
+<pre tabindex="0"><code>[poolSize,ssl,sslValidate,sslCA,sslCert,sslKey,sslPass,sslCRL,autoReconnect,
 noDelay,keepAlive,connectTimeoutMS,family,socketTimeoutMS,reconnectTries,
 reconnectInterval,ha,haInterval,replicaSet,secondaryAcceptableLatencyMS,
 acceptableLatencyMS,connectWithNoPrimary,authSource,w,wtimeout,j,
@@ -184,23 +184,23 @@ readPreference,pkFactory,promiseLibrary,readConcern,maxStalenessSeconds,
 loggerLevel,logger,promoteValues,promoteBuffers,promoteLongs,domainsEnabled,
 keepAliveInitialDelay,checkServerIdentity,validateOptions,appname,auth]
 </code></pre><p>是因为不支持下面这种配置，将上面的<code>poolSize,ssl,sslValidate...</code>这些参数直接提升到第一级，将下面配置：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">url</span>, {
-	<span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> {
-		<span style="color:#a6e22e">native_parser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-	},
-	<span style="color:#a6e22e">server</span><span style="color:#f92672">:</span> {
-		<span style="color:#a6e22e">poolSize</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,<span style="color:#75715e">//默认为5
-</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">auto_reconnect</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-	}<span style="color:#960050;background-color:#1e0010">，</span>
-	<span style="color:#a6e22e">useMongoClient</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-})
-</code></pre></div><p>改为这种方式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">url</span>, {
-    <span style="color:#a6e22e">poolSize</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>,
-    <span style="color:#a6e22e">autoReconnect</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span><span style="color:#960050;background-color:#1e0010">，</span>
-    <span style="color:#a6e22e">useMongoClient</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
-})
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">url</span>, {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">native_parser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">server</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">poolSize</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>,<span style="color:#75715e">//默认为5
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">auto_reconnect</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>	}<span style="color:#960050;background-color:#1e0010">，</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">useMongoClient</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>改为这种方式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">url</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">poolSize</span><span style="color:#f92672">:</span><span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">autoReconnect</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span><span style="color:#960050;background-color:#1e0010">，</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">useMongoClient</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -244,7 +244,7 @@ keepAliveInitialDelay,checkServerIdentity,validateOptions,appname,auth]
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

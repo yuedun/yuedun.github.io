@@ -200,7 +200,7 @@ vscode中一对括号()代表一个变量。
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
-node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 118 touch: (sid: string, session: Express.
+node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.  113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~  node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.  114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;  ~~~~~~~~~~~  node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/60b48e405caa4b4dc69e3abf/">阅读全文…</a>
@@ -285,7 +285,7 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 Easy-Monitor主要提供以下的功能：
  找出执行时长耗费最久的5个或者更多的函数 找出那些执行时间超出预期的函数 找出v8引擎无法优化的函数  Easy-Monitor的特点：
  轻量级：非传统C/S物理分离模式，require 后即可使用，没有额外的监控server/agent部署成本。 运行时：针对的是运行时的函数性能以及内存细节进行处理展示，可用于线上生产环境项目。 无状态：永远展示的是开发者访问时的业务进程状态  关于监控qps，作者在文档中并没有提到qps这样的关键字，很多人也不知道怎么监控qps。 不过在监控界面中有这样的指标数据： 所以我从源码入手，找到了该数据指标的源头是这样的：
-const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_memory_percent * 100).toFixed(2)), maxDisk: max_disk_usage, disks: disks_json, load1: Number(load1.toFixed(2)), load5: Number(load5.toFixed(2)), load15: Number(load15.toFixed(2)), nodeCount: node_count, scavengeTotal: total_scavange_duration, scavengeAverage: scavange_duration_last_record, marksweepTotal: total_marksweep_duration, marksweepAverage: marksweep_duration_last_record, qps: Number((http_response_sent / 60).toFixed(2)), rtExpired: http_patch_timeout, rtAverage: http_rt, }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
+const data = {  osCpu: Number((used_cpu * 100).toFixed(2)),  osMem: Number((used_memory_percent * 100).toFixed(2)),  maxDisk: max_disk_usage,  disks: disks_json,  load1: Number(load1.toFixed(2)),  load5: Number(load5.toFixed(2)),  load15: Number(load15.toFixed(2)),  nodeCount: node_count,  scavengeTotal: total_scavange_duration,  scavengeAverage: scavange_duration_last_record,  marksweepTotal: total_marksweep_duration,  marksweepAverage: marksweep_duration_last_record,  qps: Number((http_response_sent / 60).toFixed(2)),  rtExpired: http_patch_timeout,  rtAverage: http_rt,  }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
 	</div>
 </article>
 <article class="list__item post">
@@ -306,10 +306,10 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 	<div class="content list__excerpt post__content clearfix">
 		上篇简单介绍了sapper和sveltekit的发展，目前sveltekit还只是Beta版本，有很多不确定因素存在，有可能会有大的变更，所以还不推荐在生产环境中使用，不过在个人项目和小项目中可以大胆尝试。
 今天我们就正式使用sveltekit开发一个web项目。
-第一步：创建项目 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
+第一步：创建项目 mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问 /blog 路由，还需要创建index.svelte文件，内容如下：
-&lt;script context=&#34;module&#34;&gt; /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&gt; r.json()) .then((posts) =&gt; { console.log(posts); return { props: { posts } }; }); } &lt;/script&gt; &lt;script&gt; export let posts; &lt;/script&gt; &lt;svelte:head&gt; &lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt; &lt;h1&gt;Recent posts&lt;/h1&gt; &lt;ul&gt; {#each posts as post} &lt;!
+&lt;script context=&#34;module&#34;&gt;  /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ 	export async function load({ page, fetch, session, context }) { 	return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&gt; r.json()) 	.then((posts) =&gt; { 	console.log(posts); 	return { 	props: { 	posts 	} 	}; 	}); 	} &lt;/script&gt;  &lt;script&gt; 	export let posts; &lt;/script&gt;  &lt;svelte:head&gt; 	&lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt;  &lt;h1&gt;Recent posts&lt;/h1&gt;  &lt;ul&gt; 	{#each posts as post} 	&lt;!
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/606d512c54277a10496a38ae/">阅读全文…</a>
@@ -346,8 +346,8 @@ sveltekit包含的功能有：
   serverless
   vite打包
   可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
-创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
-$ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &gt; svelte-kit dev &#34;--open&#34; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import &#39;./dist/cli.js&#39;; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.Module._extensions..js (internal/modules/cjs/loader.
+创建sveltekit的方法：  mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
+ $ npm run dev -- --open   &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app  &gt; svelte-kit dev &#34;--open&#34;  D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2  import &#39;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/60628dfa8f0b5a0240684581/">阅读全文…</a>
@@ -374,9 +374,9 @@ $ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app 
 那怎么才能删除呢？
 试着直接删除目录也不行，这问题能难倒我，但难不倒百度。
 使用ls | xargs -n 1000 rm -fr ls删除，可是一直在输出错误提示：
-rm: invalid option -- &#39;s&#39; Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
+ rm: invalid option -- &#39;s&#39;  Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
 删除方式是：
-rm -- -foo 或 rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
+ rm -- -foo  或  rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
 ls | xargs -n 1000 rm -frv ls
 rm命令加个参数v，用来显示删除信息。
 最终会输出这样的提示信息，
@@ -424,7 +424,7 @@ ls | xargs -n 1000 rm -frv ls &amp;
 	<div class="content list__excerpt post__content clearfix">
 		nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
 集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
-// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;); async function bootstrap() { try { const root = join(__dirname, &#39;../&#39;); let envFile = join(root, &#39;.env&#39;) dotenv.config({ &#34;path&#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.
+// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;);  async function bootstrap() {  try {  const root = join(__dirname, &#39;../&#39;);  let envFile = join(root, &#39;.env&#39;)  dotenv.config({ &#34;path&#34;: envFile })  const {  APOLLO_APPID,  APOLLO_ENV,  APOLLO_HOST,  APOLLO_NAMESPACE,  APOLLO_PORT,  APOLLO_TOKEN,  APOLLO_ClUSTER  } = process.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ffffe3d3f518207e7235250/">阅读全文…</a>
@@ -453,11 +453,11 @@ ls | xargs -n 1000 rm -frv ls &amp;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -510,6 +510,7 @@ ls | xargs -n 1000 rm -frv ls &amp;
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -549,6 +550,7 @@ ls | xargs -n 1000 rm -frv ls &amp;
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -638,7 +640,7 @@ ls | xargs -n 1000 rm -frv ls &amp;
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

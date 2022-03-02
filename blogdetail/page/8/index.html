@@ -163,7 +163,7 @@
 测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
 func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
  func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
-// gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.
+// gopl.io/ch11/word1 // Package word provides utilities for word games. package word  // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ac588446a513c7b8bfd72e6/">阅读全文…</a>
@@ -186,18 +186,18 @@ func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( &#34;fmt&#34; ) 然后在代码里面可以通过如下的方式调用
+import( 	&#34;fmt&#34; ) 然后在代码里面可以通过如下的方式调用
 fmt.Println(&#34;hello world&#34;) 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：
 相对路径
 import &#34;./model&#34; //当前文件同一目录的model目录，但是不建议这种方式import` 绝对路径
 import &#34;shorturl/model&#34; //加载GOPATH/src/shorturl/model模块` 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
  点操作  有时候会看到如下的方式导入包
-import( . &#34;fmt&#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
+import(  . &#34;fmt&#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
 fmt.Println(&#34;hello world&#34;) 可以省略的写成
 Println(&#34;hello world&#34;) 别名操作  别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字
-import( f &#34;fmt&#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
+import(  f &#34;fmt&#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
 f.Println(&#34;hello world&#34;) _操作  这个操作经常是让很多人费解的一个操作符，请看下面这个import
-import ( &#34;database/sql&#34; _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
+import (  &#34;database/sql&#34;  _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
 二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
 通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
 原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457
@@ -248,8 +248,7 @@ win：set NODE_ENV=development&amp;&amp; node app.js
  pm2 start pm2.json &ndash;env production
  --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
 pm2.json
-{ &#34;apps&#34; : [{ &#34;name&#34;: &#34;issue&#34;, &#34;cwd&#34;: &#34;dest&#34;, &#34;script&#34; : &#34;bin/www.js&#34;, &#34;instances&#34; : &#34;2&#34;, &#34;exec_mode&#34; : &#34;cluster&#34;, &#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 }, &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34;, &#34;PORT&#34;: 3003 }, &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;, &#34;merge_logs&#34;: true }] } 如果不加参数则默认使用
-&#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
+{  &#34;apps&#34; : [{  &#34;name&#34;: &#34;issue&#34;,  &#34;cwd&#34;: &#34;dest&#34;,  &#34;script&#34; : &#34;bin/www.js&#34;,  &#34;instances&#34; : &#34;2&#34;,  &#34;exec_mode&#34; : &#34;cluster&#34;,  &#34;env&#34;: {  &#34;NODE_ENV&#34;: &#34;development&#34;,  &#34;PORT&#34;: 3002  },  &#34;env_production&#34; : {  &#34;NODE_ENV&#34;: &#34;production&#34;,  &#34;PORT&#34;: 3003  },  &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;,  &#34;merge_logs&#34;: true  }] } 如果不加参数则默认使用
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
@@ -271,8 +270,11 @@ pm2.json
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
-resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
+		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.  (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
+resolve: {  alias: {  &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; 	//该路径为node_modules下的vue目录  }  } // 需要编译器 new Vue({  template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; })  // 不需要编译器 new Vue({  render (h) {  return h(&#39;div&#39;, this.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5a86db29c3700db1c9ae7c55/">阅读全文…</a>
 	</div>
 </article>
 <article class="list__item post">
@@ -363,7 +365,7 @@ pm2-logrotate配置
 	<div class="content list__excerpt post__content clearfix">
 		首先看项目目录：
 再看Dockerfile文件内容：
-# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&#34;pm2-runtime&#34;, &#34;dest/server.js&#34;, &#34;--no-daemon&#34;] # ENTRYPOINT [&#34;node&#34;, &#34;server.js&#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g  EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&#34;pm2-runtime&#34;, &#34;dest/server.js&#34;, &#34;--no-daemon&#34;] # ENTRYPOINT [&#34;node&#34;, &#34;server.js&#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 
 	</div>
@@ -389,7 +391,7 @@ fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，�
 cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
 ** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
 也可以使用文件方式： processes.json文件：
-{ &#34;apps&#34; : [{ &#34;script&#34; : &#34;api.js&#34;, &#34;instances&#34; : &#34;max&#34;, &#34;exec_mode&#34; : &#34;cluster&#34; }] } pm2 start processes.json
+{  &#34;apps&#34; : [{  &#34;script&#34; : &#34;api.js&#34;,  &#34;instances&#34; : &#34;max&#34;,  &#34;exec_mode&#34; : &#34;cluster&#34;  }] } pm2 start processes.json
 	</div>
 </article>
 
@@ -416,11 +418,11 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -473,6 +475,7 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -512,6 +515,7 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -601,7 +605,7 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

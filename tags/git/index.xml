@@ -17,7 +17,7 @@
  错误：https页面去发送http请求报错(浏览器阻止https发送http请求)
  问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。
 后来想到了leancloud，直接在前端调用api，将数据存储在云端。
-&amp;lt;script src=&amp;#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003  // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086  const appId = &amp;#34;xxx&amp;#34;; const appKey = &amp;#34;xxx&amp;#34;; const serverURL = &amp;#34;xxx&amp;#34;; AV.init({ appId, appKey, serverURL }); function updateCollect() { const collect = new AV.Query(&amp;#39;Collect&amp;#39;); const url = location.pathname; collect.select([&amp;#39;url&amp;#39;, &amp;#39;pv&amp;#39;]) collect.equalTo(&amp;#39;url&amp;#39;, url); collect.first().then((col) =&amp;gt; { if (!col) { // 声明 class  const Collect = AV.Object.extend(&amp;#39;Collect&amp;#39;); // 构建对象  const collect = new Collect(); // 为属性赋值  collect.</description>
+&amp;lt;script src=&amp;#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;  // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003  // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086  const appId = &amp;#34;xxx&amp;#34;;  const appKey = &amp;#34;xxx&amp;#34;;  const serverURL = &amp;#34;xxx&amp;#34;;  AV.init({ appId, appKey, serverURL });  function updateCollect() {  const collect = new AV.Query(&amp;#39;Collect&amp;#39;);  const url = location.pathname;  collect.select([&amp;#39;url&amp;#39;, &amp;#39;pv&amp;#39;])  collect.equalTo(&amp;#39;url&amp;#39;, url);  collect.first().then((col) =&amp;gt; {  if (!col) {  // 声明 class  const Collect = AV.</description>
     </item>
     
     <item>
@@ -34,7 +34,7 @@
 劣势 静态博客在一些细节功能上面确实会有缺失，比如：
  评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。  优势  免费，没有服务器费用。 可以自定义域名，只需要一丁点儿的域名费用。 seo良好。 规范的书写格式，使文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于本地检索。 数据更保险，不易丢失。 安全，静态博客可以避免一些网络攻击。  整体来说，除了数据存储功能缺失外，其他都是可以实现的。
 迁移过程 将mongodb数据中的博客导出为本地markdown文件。
-// mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &amp;#39;_id&amp;#39;: -1 } }) .then(data =&amp;gt; { data.forEach((b) =&amp;gt; { debug(b) let tags = b.</description>
+// mongodb数据转markdown function genMd() { 	return Blog.find({ status: 1 }, null, { sort: { &amp;#39;_id&amp;#39;: -1 } }) 	.then(data =&amp;gt; { 	data.forEach((b) =&amp;gt; { 	debug(b) 	let tags = b.</description>
     </item>
     
     <item>
@@ -71,7 +71,7 @@ Enter file in which to save the key (//.ssh/id_rsa):
 第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa
 Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下
 接下来两部是要求输入密码，不输入直接回车就完成了。
-PS C:\Users\admin\.ssh&amp;gt; ssh-keygen -t rsa -C &amp;#34;myemail@163.com&amp;#34; Generating public/private rsa key pair. Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in .</description>
+PS C:\Users\admin\.ssh&amp;gt; ssh-keygen -t rsa -C &amp;#34;myemail@163.com&amp;#34;  Generating public/private rsa key pair.  Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa  Enter passphrase (empty for no passphrase):  Enter same passphrase again:  Your identification has been saved in .</description>
     </item>
     
     <item>

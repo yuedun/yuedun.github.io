@@ -168,7 +168,7 @@
  最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
  服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试）  可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
 遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
-import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.com&#39;, pathRewrite: { &#39;^/api&#39;: &#39;&#39; }, secure: false, changeOrigin: true, })) .
+import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;;  const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;;  polka() 	// 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ff449035e80c6649222da2c/">阅读全文…</a>
@@ -193,11 +193,11 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -250,6 +250,7 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -289,6 +290,7 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -378,7 +380,7 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

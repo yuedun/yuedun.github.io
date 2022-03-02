@@ -167,7 +167,7 @@ Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是�
 Where的参数主要分为两类：String，Struct&amp;Map。还有其他不常用类型。
 String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
 Struct&amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
-db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE name = &#34;jinzhu&#34; AND age = 0; db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、''、false 或其他 零值，该字段不会被用于构建查询条件，例如：
+db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE name = &#34;jinzhu&#34; AND age = 0;  db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&rsquo;&rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/07/gorm-model-find-first/">阅读全文…</a>
@@ -191,7 +191,7 @@ db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(
 	<div class="content list__excerpt post__content clearfix">
 		nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
 集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
-// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;); async function bootstrap() { try { const root = join(__dirname, &#39;../&#39;); let envFile = join(root, &#39;.env&#39;) dotenv.config({ &#34;path&#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.
+// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;);  async function bootstrap() {  try {  const root = join(__dirname, &#39;../&#39;);  let envFile = join(root, &#39;.env&#39;)  dotenv.config({ &#34;path&#34;: envFile })  const {  APOLLO_APPID,  APOLLO_ENV,  APOLLO_HOST,  APOLLO_NAMESPACE,  APOLLO_PORT,  APOLLO_TOKEN,  APOLLO_ClUSTER  } = process.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ffffe3d3f518207e7235250/">阅读全文…</a>
@@ -216,7 +216,7 @@ db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(
 		go单元测试会遇到这样的场景： 写好了service层函数getUser()。然后测试测试getUser函数。有个问题是，函数中使用了数据库连接，如果直接测试的话会报错误，比如空指针错误。
  panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
  如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
-func TestMain(m *testing.M) { fmt.Println(&#34;begin&#34;) dba, err := gorm.Open(&#34;sqlite3&#34;, &#34;../../website.db&#34;) db.SQLLite = dba if err != nil { panic(err) } m.Run() fmt.Println(&#34;end&#34;) } func TestProjectUsers(t *testing.T) { userService := user.NewService(db.SQLLite) users, err := userService.GetProjectUsers(25) if err != nil { t.
+func TestMain(m *testing.M) { 	fmt.Println(&#34;begin&#34;) 	dba, err := gorm.Open(&#34;sqlite3&#34;, &#34;../../website.db&#34;) 	db.SQLLite = dba 	if err != nil { 	panic(err) 	} 	m.Run() 	fmt.Println(&#34;end&#34;) }  func TestProjectUsers(t *testing.T) { 	userService := user.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5fc7321dc0ec0c27f57ace6e/">阅读全文…</a>
@@ -288,7 +288,7 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  { // Applications part  &#34;apps&#34; : [{ &#34;name&#34; : &#34;API&#34;, &#34;script&#34; : &#34;app.js&#34;, &#34;env&#34;: { &#34;COMMON_VARIABLE&#34;: &#34;true&#34; }, // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34; } },{ &#34;name&#34; : &#34;WEB&#34;, &#34;script&#34; : &#34;web.js&#34; }], // 部署部分  // Here you describe each environment  &#34;deploy&#34; : { &#34;production&#34; : { &#34;user&#34; : &#34;node&#34;, // 多主机配置  &#34;host&#34; : [&#34;212.
+		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  {  // Applications part  &#34;apps&#34; : [{  &#34;name&#34; : &#34;API&#34;,  &#34;script&#34; : &#34;app.js&#34;,  &#34;env&#34;: {  &#34;COMMON_VARIABLE&#34;: &#34;true&#34;  },  // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &#34;env_production&#34; : {  &#34;NODE_ENV&#34;: &#34;production&#34;  }  },{  &#34;name&#34; : &#34;WEB&#34;,  &#34;script&#34; : &#34;web.js&#34;  }],  // 部署部分  // Here you describe each environment  &#34;deploy&#34; : {  &#34;production&#34; : {  &#34;user&#34; : &#34;node&#34;,  // 多主机配置  &#34;host&#34; : [&#34;212.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e85a563c9109f0f909b52bf/">阅读全文…</a>
@@ -311,10 +311,7 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		gorm概述  全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好  已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
-func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { if search.Name != &#34;&#34; { u.mysql = u.mysql.Where(&#34;name LIKE ?&#34;, search.Name+&#34;%&#34;) } if search.Category != &#34;&#34; { u.mysql = u.mysql.Where(&#34;age =?&#34;, search.Age) } err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
-1.if代码是动态组装条件。
-2.err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error
-这行代码包含了数据列表查询和数据条数。
+func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { 	if search.Name != &#34;&#34; { 	u.mysql = u.mysql.Where(&#34;name LIKE ?&#34;, search.Name+&#34;%&#34;) 	} 	if search.Category != &#34;&#34; { 	u.mysql = u.mysql.Where(&#34;age =?&#34;, search.Age) 	}  	err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error 	return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e815979c9109f0f909b4cdd/">阅读全文…</a>
@@ -394,10 +391,10 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
 		beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。 常用的模块有以下这些：
  session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块  本文要讲解的是httplib客户端请求的使用。
 日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用httplib。
-基本使用方法 import ( &#34;github.com/astaxie/beego/httplib&#34; ) 然后初始化请求方法，返回对象
+基本使用方法 import (  &#34;github.com/astaxie/beego/httplib&#34; ) 然后初始化请求方法，返回对象
 req := httplib.Get(&#34;http://beego.me/&#34;) 然后我们就可以获取数据了
-str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
-获取body信息 func RequestByAjax3(region, language string) { req := httplib.Get(fmt.Sprintf(&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;, url.QueryEscape(region), language)) req.Header(&#34;Referer&#34;, &#34;https://m.lagou.com/search.html&#34;) req.Header(&#34;Cookie&#34;, &#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;) req.Header(&#34;Host&#34;, &#34;m.lagou.com&#34;) req.Header(&#34;User-Agent&#34;, &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.
+str, err := req.String() if err != nil {  t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
+获取body信息 func RequestByAjax3(region, language string) {  req := httplib.Get(fmt.Sprintf(&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;, url.QueryEscape(region), language))  req.Header(&#34;Referer&#34;, &#34;https://m.lagou.com/search.html&#34;)  req.Header(&#34;Cookie&#34;, &#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;)  req.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e216204567cde49c49187f1/">阅读全文…</a>
@@ -426,11 +423,11 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -483,6 +480,7 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -522,6 +520,7 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -611,7 +610,7 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

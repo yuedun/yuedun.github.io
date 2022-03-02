@@ -160,7 +160,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		main.ts
-import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;; async function bootstrap() { const app = await NestFactory.create&lt;NestExpressApplication&gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;  app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&#39;views&#39;, { ext:&#39;njk&#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&gt; { }); } bootstrap(); app.
+import { NestFactory } from &#39;@nestjs/core&#39;; import {  ExpressAdapter,  NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;;  async function bootstrap() {  const app = await NestFactory.create&lt;NestExpressApplication&gt;(  AppModule,  new ExpressAdapter(),  );  app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;  app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&#39;views&#39;, {  ext:&#39;njk&#39;,  autoescape: true,  express: app,  watch: true,  });  await app.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5cc807d6effb223a816d9114/">阅读全文…</a>
@@ -210,7 +210,7 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、安装gRPC $ go get -u google.golang.org/grpc package google.golang.org/grpc: unrecognized import path &#34;google.golang.org/grpc&#34; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
-git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto cd $GOPATH/src/ go install google.
+git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc  git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net  git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text  go get -u github.com/golang/protobuf/{proto,protoc-gen-go}  git clone https://github.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5c63b5334a7b7e6cd808697a/">阅读全文…</a>
@@ -253,7 +253,7 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		go可以很容易实现一个文件服务器，只需要使用函数 func ServeFile(w ResponseWriter, r *Request, name string)即可。
-package main import ( &#34;log&#34; &#34;net/http&#34; &#34;fmt&#34; ) func helloHandler(res http.ResponseWriter, req *http.Request) { http.ServeFile(res, req, &#34;E:/go-work/src/go-learning/foo.xlsx&#34;) } func main() { fmt.Println(&#34;web服务启动成功，可在浏览器中访问：localhost:8081&#34;) http.HandleFunc(&#34;/file&#34;, helloHandler) http.Handle(&#34;/&#34;, http.FileServer(http.Dir(&#34;E:/go-work/src/go-learning/&#34;))) err := http.ListenAndServe(&#34;:8081&#34;, nil) if err != nil { log.Fatal(&#34;ListenAndServe:&#34;, err.Error()) } } 查看go文档除了翻墙访问https://golang.org
+package main  import ( 	&#34;log&#34; 	&#34;net/http&#34; 	&#34;fmt&#34; )  func helloHandler(res http.ResponseWriter, req *http.Request) { 	http.ServeFile(res, req, &#34;E:/go-work/src/go-learning/foo.xlsx&#34;) } func main() { 	fmt.Println(&#34;web服务启动成功，可在浏览器中访问：localhost:8081&#34;) 	http.HandleFunc(&#34;/file&#34;, helloHandler) 	http.Handle(&#34;/&#34;, http.FileServer(http.Dir(&#34;E:/go-work/src/go-learning/&#34;))) 	err := http.ListenAndServe(&#34;:8081&#34;, nil) 	if err != nil { 	log.Fatal(&#34;ListenAndServe:&#34;, err.Error()) 	} } 查看go文档除了翻墙访问https://golang.org
 还可以访问国内镜像：https://golang.google.cn/
 最简单快速的访问，直接在本地起服务：
  godoc -http=:8082
@@ -277,10 +277,10 @@ package main import ( &#34;log&#34; &#34;net/http&#34; &#34;fmt&#34; ) func hell
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		beego注解路由匹配不到，返回404页面 router.go使用了两种方式注册路由：
-ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;controllers.UserController{}, &#34;get:Welcome&#34;), beego.NSInclude( &amp;controllers.UserController{}, ), controller中的路由注解设置：
-// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.Data[&#34;json&#34;] = users c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
+ns := beego.NewNamespace(&#34;/admin&#34;, 	beego.NSRouter(&#34;/&#34;, &amp;controllers.UserController{}, &#34;get:Welcome&#34;), 	beego.NSInclude( 	&amp;controllers.UserController{}, 	), controller中的路由注解设置：
+// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { 	user := new(User) 	users, err := user.GetUserList() 	if nil != err { 	c.Data[&#34;json&#34;] = ErrorMsg(err) 	} 	c.Data[&#34;json&#34;] = users 	c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
 最终结果显示上面的注解路由时错误的，下面是正确的注册方式： 问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。 即/admin为命名空间，注解中只需写/user/get-all-user，不能这样写/admin/user/get-all-user
-// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.
+// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { 	user := new(User) 	users, err := user.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ad46aebb9be3f8e30daaea8/">阅读全文…</a>
@@ -303,7 +303,7 @@ ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;cont
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
-package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() { syncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&#34;syncFunc start:&#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&#34;syncFunc end:&#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.
+package main  import ( 	&#34;sync&#34; 	&#34;time&#34; 	&#34;fmt&#34; ) func main() { 	syncFunc() 	fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) 	asyncFunc() 	fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) 	asyncChanFunc() } // 串行执行 func syncFunc() { 	var n,m,x int 	start := time.Now() 	fmt.Println(&#34;syncFunc start:&#34;,start) 	func () { 	time.Sleep(time.Second*1) 	n = 1 	}() 	func () { 	time.Sleep(time.Second*2) 	m = 2 	}() 	func () { 	time.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5acb49ba45213aca5fde59e1/">阅读全文…</a>
@@ -329,7 +329,7 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
 func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
  func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
-// gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.
+// gopl.io/ch11/word1 // Package word provides utilities for word games. package word  // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ac588446a513c7b8bfd72e6/">阅读全文…</a>
@@ -352,18 +352,18 @@ func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( &#34;fmt&#34; ) 然后在代码里面可以通过如下的方式调用
+import( 	&#34;fmt&#34; ) 然后在代码里面可以通过如下的方式调用
 fmt.Println(&#34;hello world&#34;) 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：
 相对路径
 import &#34;./model&#34; //当前文件同一目录的model目录，但是不建议这种方式import` 绝对路径
 import &#34;shorturl/model&#34; //加载GOPATH/src/shorturl/model模块` 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
  点操作  有时候会看到如下的方式导入包
-import( . &#34;fmt&#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
+import(  . &#34;fmt&#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
 fmt.Println(&#34;hello world&#34;) 可以省略的写成
 Println(&#34;hello world&#34;) 别名操作  别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字
-import( f &#34;fmt&#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
+import(  f &#34;fmt&#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
 f.Println(&#34;hello world&#34;) _操作  这个操作经常是让很多人费解的一个操作符，请看下面这个import
-import ( &#34;database/sql&#34; _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
+import (  &#34;database/sql&#34;  _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
 二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
 通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
 原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457
@@ -393,8 +393,7 @@ win：set NODE_ENV=development&amp;&amp; node app.js
  pm2 start pm2.json &ndash;env production
  --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
 pm2.json
-{ &#34;apps&#34; : [{ &#34;name&#34;: &#34;issue&#34;, &#34;cwd&#34;: &#34;dest&#34;, &#34;script&#34; : &#34;bin/www.js&#34;, &#34;instances&#34; : &#34;2&#34;, &#34;exec_mode&#34; : &#34;cluster&#34;, &#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 }, &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34;, &#34;PORT&#34;: 3003 }, &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;, &#34;merge_logs&#34;: true }] } 如果不加参数则默认使用
-&#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
+{  &#34;apps&#34; : [{  &#34;name&#34;: &#34;issue&#34;,  &#34;cwd&#34;: &#34;dest&#34;,  &#34;script&#34; : &#34;bin/www.js&#34;,  &#34;instances&#34; : &#34;2&#34;,  &#34;exec_mode&#34; : &#34;cluster&#34;,  &#34;env&#34;: {  &#34;NODE_ENV&#34;: &#34;development&#34;,  &#34;PORT&#34;: 3002  },  &#34;env_production&#34; : {  &#34;NODE_ENV&#34;: &#34;production&#34;,  &#34;PORT&#34;: 3003  },  &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;,  &#34;merge_logs&#34;: true  }] } 如果不加参数则默认使用
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
@@ -424,11 +423,11 @@ pm2.json
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -481,6 +480,7 @@ pm2.json
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -520,6 +520,7 @@ pm2.json
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -609,7 +610,7 @@ pm2.json
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

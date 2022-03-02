@@ -12,13 +12,13 @@
 <meta property="og:description" content="gitpage Hugo统计每一篇文章浏览量" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/2021/06/gitpage-hugo-page-view/" /><meta property="article:section" content="2021" />
-<meta property="article:published_time" content="2021-06-18T20:03:41&#43;08:00" />
-<meta property="article:modified_time" content="2021-06-18T20:03:41&#43;08:00" />
+<meta property="article:published_time" content="2021-06-18T20:03:41+08:00" />
+<meta property="article:modified_time" content="2021-06-18T20:03:41+08:00" />
 
 
 		<meta itemprop="name" content="gitpage Hugo统计每一篇文章浏览量">
-<meta itemprop="description" content="gitpage Hugo统计每一篇文章浏览量"><meta itemprop="datePublished" content="2021-06-18T20:03:41&#43;08:00" />
-<meta itemprop="dateModified" content="2021-06-18T20:03:41&#43;08:00" />
+<meta itemprop="description" content="gitpage Hugo统计每一篇文章浏览量"><meta itemprop="datePublished" content="2021-06-18T20:03:41+08:00" />
+<meta itemprop="dateModified" content="2021-06-18T20:03:41+08:00" />
 <meta itemprop="wordCount" content="123">
 <meta itemprop="keywords" content="git,博客," />
 		
@@ -162,53 +162,53 @@
 </blockquote>
 <p>问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。</p>
 <p>后来想到了leancloud，直接在前端调用api，将数据存储在云端。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
-&lt;<span style="color:#f92672">script</span>&gt;
-  <span style="color:#75715e">// https://leancloud.cn/docs/sdk_setup-js.html#hash14962003 
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">// https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">appId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">appKey</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">serverURL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
-  <span style="color:#a6e22e">AV</span>.<span style="color:#a6e22e">init</span>({ <span style="color:#a6e22e">appId</span>, <span style="color:#a6e22e">appKey</span>, <span style="color:#a6e22e">serverURL</span> });
-  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateCollect</span>() {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">collect</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AV</span>.<span style="color:#a6e22e">Query</span>(<span style="color:#e6db74">&#39;Collect&#39;</span>);
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">pathname</span>;
-    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">select</span>([<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#e6db74">&#39;pv&#39;</span>])
-    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">equalTo</span>(<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#a6e22e">url</span>);
-    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">first</span>().<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">col</span>) =&gt; {
-      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">col</span>) {
-        <span style="color:#75715e">// 声明 class
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Collect</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">AV</span>.Object.<span style="color:#a6e22e">extend</span>(<span style="color:#e6db74">&#39;Collect&#39;</span>);
-        <span style="color:#75715e">// 构建对象
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">collect</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Collect</span>();
-        <span style="color:#75715e">// 为属性赋值
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#a6e22e">url</span>);
-        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;pv&#39;</span>, <span style="color:#ae81ff">1</span>);
-        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">save</span>()
-      } <span style="color:#66d9ef">else</span> {
-        <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">increment</span>(<span style="color:#e6db74">&#39;pv&#39;</span>, <span style="color:#ae81ff">1</span>)
-        <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">save</span>();
-
-        <span style="color:#75715e">// 元素不存在的情况
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">try</span> {
-          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.post__meta.meta&#39;</span>);
-          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pv</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
-          <span style="color:#a6e22e">pv</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;meta__item-author meta__item&#39;</span>);
-          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">span</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;span&#39;</span>);
-          <span style="color:#a6e22e">span</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;meta__text&#39;</span>);
-          <span style="color:#a6e22e">span</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;浏览（&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;pv&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;）&#34;</span>;
-          <span style="color:#a6e22e">pv</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">span</span>)
-          <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">pv</span>)
-        } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
-        }
-      }
-    });
-  }
-
-  <span style="color:#a6e22e">updateCollect</span>()
-&lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div><p>因为hugo-dpsg主题没有浏览量字段，所以通过js在对应的位置插入浏览量字段即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// https://leancloud.cn/docs/sdk_setup-js.html#hash14962003 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">appId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">appKey</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">serverURL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">AV</span>.<span style="color:#a6e22e">init</span>({ <span style="color:#a6e22e">appId</span>, <span style="color:#a6e22e">appKey</span>, <span style="color:#a6e22e">serverURL</span> });
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateCollect</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">collect</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AV</span>.<span style="color:#a6e22e">Query</span>(<span style="color:#e6db74">&#39;Collect&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">pathname</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">select</span>([<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#e6db74">&#39;pv&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">equalTo</span>(<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#a6e22e">url</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">first</span>().<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">col</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">col</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 声明 class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Collect</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">AV</span>.Object.<span style="color:#a6e22e">extend</span>(<span style="color:#e6db74">&#39;Collect&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 构建对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">collect</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Collect</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 为属性赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#a6e22e">url</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;pv&#39;</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">save</span>()
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">increment</span>(<span style="color:#e6db74">&#39;pv&#39;</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">save</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 元素不存在的情况
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.post__meta.meta&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pv</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">pv</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;meta__item-author meta__item&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">span</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;span&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">span</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;meta__text&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">span</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;浏览（&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;pv&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;）&#34;</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">pv</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">span</span>)
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">pv</span>)
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">updateCollect</span>()
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>因为hugo-dpsg主题没有浏览量字段，所以通过js在对应的位置插入浏览量字段即可。</p>
 <p>一直觉得leancloud这种在前端配置账号的方式不安全，但是也无所谓了，不是什么核心应用，数据也不重要，就这么使用也无妨。</p>
 <p>当然，为了更进一步的安全，可以绑定域名。</p>
 <p><img src="https://hopefully-img.yuedun.wang/3c4fa6c1e9880131e59ec901db844b78" alt=""></p>
@@ -257,7 +257,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

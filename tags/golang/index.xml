@@ -21,7 +21,7 @@ Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是�
 Where的参数主要分为两类：String，Struct&amp;amp;Map。还有其他不常用类型。
 String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
 Struct&amp;amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
-db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE name = &amp;#34;jinzhu&amp;#34; AND age = 0; db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&#39;&#39;、false 或其他 零值，该字段不会被用于构建查询条件，例如：</description>
+db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE name = &amp;#34;jinzhu&amp;#34; AND age = 0;  db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&amp;rsquo;&amp;rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：</description>
     </item>
     
     <item>
@@ -33,7 +33,7 @@ db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, 
       <description>go单元测试会遇到这样的场景： 写好了service层函数getUser()。然后测试测试getUser函数。有个问题是，函数中使用了数据库连接，如果直接测试的话会报错误，比如空指针错误。
  panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
  如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
-func TestMain(m *testing.M) { fmt.Println(&amp;#34;begin&amp;#34;) dba, err := gorm.Open(&amp;#34;sqlite3&amp;#34;, &amp;#34;../../website.db&amp;#34;) db.SQLLite = dba if err != nil { panic(err) } m.Run() fmt.Println(&amp;#34;end&amp;#34;) } func TestProjectUsers(t *testing.T) { userService := user.NewService(db.SQLLite) users, err := userService.GetProjectUsers(25) if err != nil { t.</description>
+func TestMain(m *testing.M) { 	fmt.Println(&amp;#34;begin&amp;#34;) 	dba, err := gorm.Open(&amp;#34;sqlite3&amp;#34;, &amp;#34;../../website.db&amp;#34;) 	db.SQLLite = dba 	if err != nil { 	panic(err) 	} 	m.Run() 	fmt.Println(&amp;#34;end&amp;#34;) }  func TestProjectUsers(t *testing.T) { 	userService := user.</description>
     </item>
     
     <item>
@@ -53,8 +53,8 @@ func TestMain(m *testing.M) { fmt.Println(&amp;#34;begin&amp;#34;) dba, err := g
       
       <guid>https://www.yuedun.wang/blogdetail/5eec6fd5e8775d3b7f2ee79c/</guid>
       <description>在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&amp;ldquo;someKey&amp;rdquo;]=&amp;ldquo;someValue&amp;rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
-//构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) log.Println(condition) if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), condition).Decode(&amp;amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
-search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
+//构造一个查询结构体 search := User{ 	ID: id, 	Name: name, 	Age: age, 	} //构造一个条件变量 	condition := bson.M{} 	//将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) 	if err != nil { 	return user, err 	} 	//将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) 	log.Println(condition) 	if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), 	condition).Decode(&amp;amp;user); err != nil { 	return user, err 	} 以上基本就实现了动态条件查询的效果，其中：
+search := User{ 	ID: id, 	Name: name, 	Age: age, 	} search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
     </item>
     
     <item>
@@ -81,10 +81,7 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
       
       <guid>https://www.yuedun.wang/blogdetail/5e815979c9109f0f909b4cdd/</guid>
       <description>gorm概述  全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好  已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
-func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { if search.Name != &amp;#34;&amp;#34; { u.mysql = u.mysql.Where(&amp;#34;name LIKE ?&amp;#34;, search.Name+&amp;#34;%&amp;#34;) } if search.Category != &amp;#34;&amp;#34; { u.mysql = u.mysql.Where(&amp;#34;age =?&amp;#34;, search.Age) } err = u.mysql.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
-1.if代码是动态组装条件。
-2.err = u.mysql.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error
-这行代码包含了数据列表查询和数据条数。</description>
+func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { 	if search.Name != &amp;#34;&amp;#34; { 	u.mysql = u.mysql.Where(&amp;#34;name LIKE ?&amp;#34;, search.Name+&amp;#34;%&amp;#34;) 	} 	if search.Category != &amp;#34;&amp;#34; { 	u.mysql = u.mysql.Where(&amp;#34;age =?&amp;#34;, search.Age) 	}  	err = u.mysql.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error 	return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。</description>
     </item>
     
     <item>
@@ -128,10 +125,10 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
       <description>beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。 常用的模块有以下这些：
  session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块  本文要讲解的是httplib客户端请求的使用。
 日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用httplib。
-基本使用方法 import ( &amp;#34;github.com/astaxie/beego/httplib&amp;#34; ) 然后初始化请求方法，返回对象
+基本使用方法 import (  &amp;#34;github.com/astaxie/beego/httplib&amp;#34; ) 然后初始化请求方法，返回对象
 req := httplib.Get(&amp;#34;http://beego.me/&amp;#34;) 然后我们就可以获取数据了
-str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
-获取body信息 func RequestByAjax3(region, language string) { req := httplib.Get(fmt.Sprintf(&amp;#34;https://m.lagou.com/search.json?city=%s&amp;amp;positionName=%s&amp;amp;pageNo=1&amp;amp;pageSize=1&amp;#34;, url.QueryEscape(region), language)) req.Header(&amp;#34;Referer&amp;#34;, &amp;#34;https://m.lagou.com/search.html&amp;#34;) req.Header(&amp;#34;Cookie&amp;#34;, &amp;#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&amp;#34;) req.Header(&amp;#34;Host&amp;#34;, &amp;#34;m.lagou.com&amp;#34;) req.Header(&amp;#34;User-Agent&amp;#34;, &amp;#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.</description>
+str, err := req.String() if err != nil {  t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
+获取body信息 func RequestByAjax3(region, language string) {  req := httplib.Get(fmt.Sprintf(&amp;#34;https://m.lagou.com/search.json?city=%s&amp;amp;positionName=%s&amp;amp;pageNo=1&amp;amp;pageSize=1&amp;#34;, url.QueryEscape(region), language))  req.Header(&amp;#34;Referer&amp;#34;, &amp;#34;https://m.lagou.com/search.html&amp;#34;)  req.Header(&amp;#34;Cookie&amp;#34;, &amp;#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&amp;#34;)  req.</description>
     </item>
     
     <item>
@@ -158,7 +155,7 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
       
       <guid>https://www.yuedun.wang/blogdetail/5c63b5334a7b7e6cd808697a/</guid>
       <description>一、安装gRPC $ go get -u google.golang.org/grpc package google.golang.org/grpc: unrecognized import path &amp;#34;google.golang.org/grpc&amp;#34; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
-git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto cd $GOPATH/src/ go install google.</description>
+git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc  git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net  git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text  go get -u github.com/golang/protobuf/{proto,protoc-gen-go}  git clone https://github.</description>
     </item>
     
     <item>
@@ -168,7 +165,7 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
       
       <guid>https://www.yuedun.wang/blogdetail/5b3604876b5bf65ca5031db7/</guid>
       <description>go可以很容易实现一个文件服务器，只需要使用函数 func ServeFile(w ResponseWriter, r *Request, name string)即可。
-package main import ( &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;fmt&amp;#34; ) func helloHandler(res http.ResponseWriter, req *http.Request) { http.ServeFile(res, req, &amp;#34;E:/go-work/src/go-learning/foo.xlsx&amp;#34;) } func main() { fmt.Println(&amp;#34;web服务启动成功，可在浏览器中访问：localhost:8081&amp;#34;) http.HandleFunc(&amp;#34;/file&amp;#34;, helloHandler) http.Handle(&amp;#34;/&amp;#34;, http.FileServer(http.Dir(&amp;#34;E:/go-work/src/go-learning/&amp;#34;))) err := http.ListenAndServe(&amp;#34;:8081&amp;#34;, nil) if err != nil { log.Fatal(&amp;#34;ListenAndServe:&amp;#34;, err.Error()) } } 查看go文档除了翻墙访问https://golang.org
+package main  import ( 	&amp;#34;log&amp;#34; 	&amp;#34;net/http&amp;#34; 	&amp;#34;fmt&amp;#34; )  func helloHandler(res http.ResponseWriter, req *http.Request) { 	http.ServeFile(res, req, &amp;#34;E:/go-work/src/go-learning/foo.xlsx&amp;#34;) } func main() { 	fmt.Println(&amp;#34;web服务启动成功，可在浏览器中访问：localhost:8081&amp;#34;) 	http.HandleFunc(&amp;#34;/file&amp;#34;, helloHandler) 	http.Handle(&amp;#34;/&amp;#34;, http.FileServer(http.Dir(&amp;#34;E:/go-work/src/go-learning/&amp;#34;))) 	err := http.ListenAndServe(&amp;#34;:8081&amp;#34;, nil) 	if err != nil { 	log.Fatal(&amp;#34;ListenAndServe:&amp;#34;, err.Error()) 	} } 查看go文档除了翻墙访问https://golang.org
 还可以访问国内镜像：https://golang.google.cn/
 最简单快速的访问，直接在本地起服务：
  godoc -http=:8082
@@ -182,10 +179,10 @@ package main import ( &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;
       
       <guid>https://www.yuedun.wang/blogdetail/5ad46aebb9be3f8e30daaea8/</guid>
       <description>beego注解路由匹配不到，返回404页面 router.go使用了两种方式注册路由：
-ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, beego.NSRouter(&amp;#34;/&amp;#34;, &amp;amp;controllers.UserController{}, &amp;#34;get:Welcome&amp;#34;), beego.NSInclude( &amp;amp;controllers.UserController{}, ), controller中的路由注解设置：
-// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&amp;#34;json&amp;#34;] = ErrorMsg(err) } c.Data[&amp;#34;json&amp;#34;] = users c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
+ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, 	beego.NSRouter(&amp;#34;/&amp;#34;, &amp;amp;controllers.UserController{}, &amp;#34;get:Welcome&amp;#34;), 	beego.NSInclude( 	&amp;amp;controllers.UserController{}, 	), controller中的路由注解设置：
+// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { 	user := new(User) 	users, err := user.GetUserList() 	if nil != err { 	c.Data[&amp;#34;json&amp;#34;] = ErrorMsg(err) 	} 	c.Data[&amp;#34;json&amp;#34;] = users 	c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
 最终结果显示上面的注解路由时错误的，下面是正确的注册方式： 问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。 即/admin为命名空间，注解中只需写/user/get-all-user，不能这样写/admin/user/get-all-user
-// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&amp;#34;json&amp;#34;] = ErrorMsg(err) } c.</description>
+// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { 	user := new(User) 	users, err := user.</description>
     </item>
     
     <item>
@@ -195,7 +192,7 @@ ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, beego.NSRouter(&amp;#34;/&amp
       
       <guid>https://www.yuedun.wang/blogdetail/5acb49ba45213aca5fde59e1/</guid>
       <description>go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
-package main import ( &amp;#34;sync&amp;#34; &amp;#34;time&amp;#34; &amp;#34;fmt&amp;#34; ) func main() { syncFunc() fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) asyncFunc() fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&amp;#34;syncFunc start:&amp;#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&amp;#34;syncFunc end:&amp;#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.</description>
+package main  import ( 	&amp;#34;sync&amp;#34; 	&amp;#34;time&amp;#34; 	&amp;#34;fmt&amp;#34; ) func main() { 	syncFunc() 	fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) 	asyncFunc() 	fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) 	asyncChanFunc() } // 串行执行 func syncFunc() { 	var n,m,x int 	start := time.Now() 	fmt.Println(&amp;#34;syncFunc start:&amp;#34;,start) 	func () { 	time.Sleep(time.Second*1) 	n = 1 	}() 	func () { 	time.Sleep(time.Second*2) 	m = 2 	}() 	func () { 	time.</description>
     </item>
     
     <item>
@@ -208,7 +205,7 @@ package main import ( &amp;#34;sync&amp;#34; &amp;#34;time&amp;#34; &amp;#34;fmt
 测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
 func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
  func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
-// gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.</description>
+// gopl.io/ch11/word1 // Package word provides utilities for word games. package word  // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.</description>
     </item>
     
     <item>
@@ -218,18 +215,18 @@ func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头
       
       <guid>https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
       <description>一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( &amp;#34;fmt&amp;#34; ) 然后在代码里面可以通过如下的方式调用
+import( 	&amp;#34;fmt&amp;#34; ) 然后在代码里面可以通过如下的方式调用
 fmt.Println(&amp;#34;hello world&amp;#34;) 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：
 相对路径
 import &amp;#34;./model&amp;#34; //当前文件同一目录的model目录，但是不建议这种方式import` 绝对路径
 import &amp;#34;shorturl/model&amp;#34; //加载GOPATH/src/shorturl/model模块` 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
  点操作  有时候会看到如下的方式导入包
-import( . &amp;#34;fmt&amp;#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
+import(  . &amp;#34;fmt&amp;#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
 fmt.Println(&amp;#34;hello world&amp;#34;) 可以省略的写成
 Println(&amp;#34;hello world&amp;#34;) 别名操作  别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字
-import( f &amp;#34;fmt&amp;#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
+import(  f &amp;#34;fmt&amp;#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
 f.Println(&amp;#34;hello world&amp;#34;) _操作  这个操作经常是让很多人费解的一个操作符，请看下面这个import
-import ( &amp;#34;database/sql&amp;#34; _ &amp;#34;github.com/ziutek/mymysql/godrv&amp;#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
+import (  &amp;#34;database/sql&amp;#34;  _ &amp;#34;github.com/ziutek/mymysql/godrv&amp;#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
 二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
 通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
 原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457</description>
@@ -242,8 +239,7 @@ import ( &amp;#34;database/sql&amp;#34; _ &amp;#34;github.com/ziutek/mymysql/god
       
       <guid>https://www.yuedun.wang/blogdetail/5944b81d9d957900957feff6/</guid>
       <description>以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
-package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&amp;#34;获取用户名：&amp;#34;, user.name) } func main() { user := new(User) user.name=&amp;#34;张三&amp;#34; user.age=26 user.createdAt=time.Now() fmt.Println(&amp;#34;user.createdAt&amp;#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) fmt.Println(&amp;#34;userpj.createdAt&amp;#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
-# command-line-arguments.</description>
+package main  import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34;  type User struct {  name string  age int  createdAt time.Time }  type UserPojo struct {  User  createdAt string }  func (user *User) getName(){  fmt.Println(&amp;#34;获取用户名：&amp;#34;, user.name) }  func main() {  user := new(User)  user.name=&amp;#34;张三&amp;#34;  user.age=26  user.createdAt=time.Now()  fmt.Println(&amp;#34;user.createdAt&amp;#34;,user.createdAt)   userpj := new(UserPojo)  userpj.User = *user  userpj.</description>
     </item>
     
     <item>
@@ -266,8 +262,8 @@ package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type Use
       <guid>https://www.yuedun.wang/blogdetail/57d6aaa7471c11fa271ed1bb/</guid>
       <description>为了获取json类型的参数煞费苦心，差点不再爱了。
 前端请求代码：
-$.ajax({ url: &amp;#34;/user&amp;#34;, type: &amp;#34;post&amp;#34;, data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &amp;#34;json&amp;#34; }).done(function(res) { if(res.result){ alert(&amp;#34;成功&amp;#34;) } }); 后端接收代码：
-func (this *UserController) Post() { var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;amp;ob)//解析二进制json，把结果放进ob中  user := &amp;amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数  if nil != err { this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: false, &amp;#34;msg&amp;#34;: err} } else { this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;新增成功&amp;#34;} } this.ServeJSON() } this.</description>
+$.ajax({  url: &amp;#34;/user&amp;#34;,  type: &amp;#34;post&amp;#34;,  data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}),  //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &amp;#34;json&amp;#34; }).done(function(res) {  if(res.result){  alert(&amp;#34;成功&amp;#34;)  }  }); 后端接收代码：
+func (this *UserController) Post() {  var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;amp;ob)//解析二进制json，把结果放进ob中  user := &amp;amp;User{Username: ob.UserName, Mobile: ob.Mobile}  err := user.AddUser()//这是添加用户函数  if nil != err {  this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: false, &amp;#34;msg&amp;#34;: err}  } else {  this.</description>
     </item>
     
   </channel>

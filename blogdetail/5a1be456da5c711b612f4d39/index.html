@@ -12,13 +12,13 @@
 <meta property="og:description" content="DockerfileFROM hub.c.163.compublicnodejs:6.11.0WORKDIR appCOPY . appRUN npm inst" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5a1be456da5c711b612f4d39/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2017-11-27T10:09:26&#43;00:00" />
-<meta property="article:modified_time" content="2017-11-27T10:09:26&#43;00:00" />
+<meta property="article:published_time" content="2017-11-27T10:09:26+00:00" />
+<meta property="article:modified_time" content="2017-11-27T10:09:26+00:00" />
 
 
 		<meta itemprop="name" content="Dockerfile CMD命令没有执行npm start">
-<meta itemprop="description" content="DockerfileFROM hub.c.163.compublicnodejs:6.11.0WORKDIR appCOPY . appRUN npm inst"><meta itemprop="datePublished" content="2017-11-27T10:09:26&#43;00:00" />
-<meta itemprop="dateModified" content="2017-11-27T10:09:26&#43;00:00" />
+<meta itemprop="description" content="DockerfileFROM hub.c.163.compublicnodejs:6.11.0WORKDIR appCOPY . appRUN npm inst"><meta itemprop="datePublished" content="2017-11-27T10:09:26+00:00" />
+<meta itemprop="dateModified" content="2017-11-27T10:09:26+00:00" />
 <meta itemprop="wordCount" content="40">
 <meta itemprop="keywords" content="docker," />
 		
@@ -164,7 +164,7 @@
 </div>
 <div class="content post__content clearfix">
 			<p>Dockerfile</p>
-<pre><code>FROM hub.c.163.com/public/nodejs:6.11.0
+<pre tabindex="0"><code>FROM hub.c.163.com/public/nodejs:6.11.0
 
 WORKDIR /app
 
@@ -174,13 +174,13 @@ RUN npm install
 
 EXPOSE 3000
 
-# CMD [&quot;npm&quot;, &quot;start&quot;]
-ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]
+# CMD [&#34;npm&#34;, &#34;start&#34;]
+ENTRYPOINT [&#34;npm&#34;, &#34;start&#34;]
 </code></pre><blockquote>
 <p>docker ps:</p>
 </blockquote>
-<pre><code>CONTAINER ID    IMAGE  COMMAND                  
-59988bd90894    myfd   &quot;/bin/sh -c '/usr/...&quot;   
+<pre tabindex="0"><code>CONTAINER ID    IMAGE  COMMAND                  
+59988bd90894    myfd   &#34;/bin/sh -c &#39;/usr/...&#34;   
 </code></pre><p>在Dockerfile中配置了<code>CMD [&quot;npm&quot;, &quot;start&quot;]</code>,<code>docker ps</code>后显示COMMAND为<code>&quot;/bin/sh -c '/usr/...&quot;</code>
 改为<code>ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]</code>就可以了</p>
 
@@ -224,7 +224,7 @@ ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

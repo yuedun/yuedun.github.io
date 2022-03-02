@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.83.1" />
+	<meta name="generator" content="Hugo 0.93.0" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,6 +147,79 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5608dbb10adc9cf12635ebbb/" rel="bookmark">
+			MySQL查询当天0点，昨天
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-28T06:18:25Z">2015-09-28 06:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		今天是
+SELECT NOW();-- 2015-09-28 13:48:12 
+查询当天，格式为YYYY-MM-DD
+SELECT CURDATE();-- 2015-09-28
+查询当天，格式为YYYY-MM-DD HH:mm:ss
+SELECT NOW();-- 2015-09-28 13:42:00
+查询当天0点，格式为YYYY-MM-DD HH:mm:ss
+SELECT DATE_FORMAT(CURDATE(),&quot;%Y-%m-%d %H:%i:%s&quot;);-- 2015-09-28 00:00:00
+查询当天早上9点，格式为YYYY-MM-DD HH:mm:ss
+SELECT DATE_ADD(CURDATE(), INTERVAL 9 HOUR);-- 2015-09-28 09:00:00
+查询昨天，格式为YYYY-MM-DD
+SELECT DATE_SUB(CURDATE(),INTERVAL 1 DAY);-- 2015-09-27
+查询昨天早上9点
+SELECT DATE_ADD(DATE_SUB(CURDATE(),INTERVAL 1 DAY),INTERVAL 9 HOUR);-- 2015-09-27 09:00:00
+DATE_ADD(date,INTERVAL expr type) 参数是合法的日期表达式。expr 参数是您希望增加的时间。
+type 参数可以是下列值：
+Type 值
+MICROSECOND
+SECOND
+MINUTE
+HOUR
+DAY
+WEEK
+MONTH
+QUARTER
+YEAR
+SECOND_MICROSECOND
+MINUTE_MICROSECOND
+MINUTE_SECOND
+HOUR_MICROSECOND
+HOUR_SECOND
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5608dbb10adc9cf12635ebbb/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/55fe24c7079f8670036cbeb6/" rel="bookmark">
+			关于写博客的一些奇怪事情
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-20T03:15:19Z">2015-09-20 03:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		我是做技术的，平时也有喜欢写写博客，但是由于自己作文水平有限，又比较懒，所以很少写大篇幅的内容，也很少为了写一篇文章而到处收集资料，毕竟不是专业写手，就是为了记录一下工作遇到的问题，虽然写的时候本着一颗能帮助他人的心，希望自己写的东西有助于其他人参考，但是通过平时查找资料的观察发现，有时在看别人文章的容总是很难读懂，或者写的不够详细，然后又找了很多资料后终于搞懂了。事后一想，还是自己写一篇更易懂的博客吧！
+听说优秀的博客都要有配图
+然后花了点时间把自己理解的整理出来，很有成就感的发表出去，可谁又能想到其实自己也可能重蹈覆辙，走了前人的路，在别人看来同样晦涩难懂。造成这种情况的原因其实与作者有关与读者也有关，作者不能全方位的表达出思想，读者又不能百分之百的理解作者的意图，然后就形成了后浪推前浪的补充风波，或许知识就是这样不断翻新传播的
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/55f2670ce893a5b0008e57fa/" rel="bookmark">
 			pm2在线监控
 			</a>
@@ -215,7 +288,7 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		var nodemailer = require(&#34;nodemailer&#34;); var transporter = nodemailer.createTransport({ service: &#34;gmail&#34;, auth: { user: &#34;youname@gmail.com&#34;, pass: &#34;password&#34; } }); transporter.sendMail({ from: &#34;youname@gmail.com&#34;, to: &#34;username@qq.com&#34;, subject: &#34;hello&#34;, text: &#34;hello world!&#34; }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
+		var nodemailer = require(&#34;nodemailer&#34;);  var transporter = nodemailer.createTransport({  	service: &#34;gmail&#34;,  	auth: {  	user: &#34;youname@gmail.com&#34;,  	pass: &#34;password&#34;  	}  });  transporter.sendMail({  	from: &#34;youname@gmail.com&#34;,  	to: &#34;username@qq.com&#34;,  	subject: &#34;hello&#34;,  	text: &#34;hello world!&#34;  }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
  &ldquo;1und1&rdquo; &ldquo;AOL&rdquo; &ldquo;DebugMail.io&rdquo; &ldquo;DynectEmail&rdquo; &ldquo;FastMail&rdquo; &ldquo;GandiMail&rdquo; &ldquo;Gmail&rdquo; &ldquo;Godaddy&rdquo; &ldquo;GodaddyAsia&rdquo; &ldquo;GodaddyEurope&rdquo; &ldquo;hot.ee&rdquo; &ldquo;Hotmail&rdquo; &ldquo;iCloud&rdquo; &ldquo;mail.ee&rdquo; &ldquo;Mail.ru&rdquo; &ldquo;Mailgun&rdquo; &ldquo;Mailjet&rdquo; &ldquo;Mandrill&rdquo; &ldquo;Naver&rdquo; &ldquo;Postmark&rdquo; &ldquo;QQ&rdquo; &ldquo;QQex&rdquo; &ldquo;SendCloud&rdquo; &ldquo;SendGrid&rdquo; &ldquo;SES&rdquo; &ldquo;Sparkpost&rdquo; &ldquo;Yahoo&rdquo; &ldquo;Yandex&rdquo; &ldquo;Zoho&rdquo;  
 	</div>
 </article>
@@ -260,7 +333,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最基本的where条件：
-Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({ where: { status: &#39;inactive&#39; } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
+Post.findAll({  where: {  authorId: 2  } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({  where: {  authorId: 12,  status: active  } });  // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({  where: {  status: &#39;inactive&#39;  } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({  updatedAt: null, }, {  where: {  deletedAt: {  $ne: null  }  } });  // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
@@ -309,7 +382,10 @@ Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId 
 2.文件压缩：既然都合并了，何不再压缩一下呢
 3.语法检查：这个功能一般会和下面第4条功能配合使用，当文件修改的时候检查是否有语法错误，并在命令行中输出错误信息。
 4.监听文件变化：监听某个目录下文件是否修改，修改的话就执行特定的操作，比如上面几个操作。 以上4点是比较常用的功能，更多功能根据自己需要添加
-var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名  // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); }); // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); }); // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); }); // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); 目录结构:
+var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名  // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); });  // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); });  // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); });  // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/559bd64ad366f15412cbf594/">阅读全文…</a>
 	</div>
 </article>
 <article class="list__item post">
@@ -331,49 +407,6 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 		三月的时候做了一个简单的计划，主要是在前端知识方面的学习，包括HTML5，CSS3，bootstrap,angularjs。到目前的四个月时间里工作内容基本包揽了所有前端任务开发，从不会到会，到熟练，对于我来说痛并快乐着，学习过程虽然艰难，但是如果让我每天重复一样的工作内容真的会很烦躁，而现在连做梦都会梦到遇到的技术难题，想到解决办法就迫不及待第二天上班去解决。这样一路下来，除了angularjs不太熟练其他都可以轻松胜任，这是不是离全栈更近一步了。
 虽然angularjs这个坑挖的越来越深，下一个2.0版本也不向后兼容，让人纠结该不该继续学习，不过其实大家都对它的先进性认可的，暂时不会放弃。No这样的话前端技术暂时没有要学习的，接下来就是要学习服务器方面的东西，Linux操作系统，Nginx服务器使用，MySQL数据库优化，NoSQL公司暂时没有使用就先不深入学习了，不过好在公司的技术使用上有决策权，如有必要还是希望能用上，从上次活动服务器挂掉得出结论，MySQL不作特别优化处理是有点难以支撑高并发，有点与nodejs不搭调。
 总体来说，这几个月成长不少，除了自己努力之外还要感谢公司提供了我能够充分发挥的环境和前辈同事的指导和老板的信任。——不论公司最后成败，付出的努力不会付之东流。
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/556a58ca4739f4caa5d24f88/" rel="bookmark">
-			旅行有什么意义？
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-31T00:41:46Z">2015-05-31 00:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		在网上到处都能看见诸如：“世界那么大，我想去看看”，“来一场说走就走的旅行”,“年轻人最值得去的N的地方”，“再不出发你就老了，年轻人”等等。不知道从什么时候开始出去旅游成了年轻人必干之事。给自己的理由是：“给心灵放个假”，“从不同角度去看看这个世界，在一个地方呆久了会被周围环境禁锢的”，“增加自己的眼界，开阔自己的胸襟”，“年轻时不去，老了就去不了了”，总能给自己找一个很充分的理由把自己都感动了。
-但是我想站在一个反面的位置来说说旅行到对于很多人来说其实没什么意义： 首先是旅游是一件耗费时间和金钱的事，没有充裕的时间和金钱想要去旅行着实困难，也有人说可以穷游，是啊，当然可以，不过如果你没有做好风餐露宿，忍饥挨饿，跑断腿的心理准备就暂且打消这个念头，否则就准备好帐篷睡袋睡桥洞下吧，一个月后回来连亲妈都不认识你了。在时间上来说，除非你放下工作，不然只有周末的时间是没法去远处旅行的，如果只是在周围的小圈子里转还能算旅行吗？所以我说的旅行是指去有着不同文化的地域和国家。
-其次是旅游是否具有放松心情的功能，说旅游是为了暂时抛开工作去放松一下，可是如果工作上还有很多事需要做，还能好好旅行吗？如果你的工作很轻松，那么还真该去旅游，因为你太闲了，你的工作太乏味太无聊了，只能用旅游去打发时间，我觉得就算是有钱的老板也不可能不关心工作而只想着去哪旅行的。不过事实确实是只有工作轻松无聊的人旅行的比较多吧！对于普通人来说旅游应该是有目的的，比如工作太累，心情不好，这时一次旅游可以分散注意力，改变心情。如果纯粹是为了旅游而旅游，那么这能得到什么？只不过是去别的地方消费而已。在国内出去旅行看到最多的还是人。
-我开始怀疑那些年轻人该出去旅游的话是出自何人之口？是年轻人本身吗？你凭什么说年轻时候该出去旅行而不是踏实的工作学习，多读几本书！你确定旅行能长见识而不会影响工作学习？又不是什么作家诗人画家的需要出去找灵感，如果是靠旅行来增加工作激情，那么只能说你还不适合工作或者这份工作不适合你。是老一辈人说的？那他有没有说他自己因为旅行获得什么益处，可能是他后悔年轻时没有旅行，那么你的父母爷爷辈的有没有经常教导你说:年轻人不要光埋头工作，要经常出去玩玩，到处走走，增长点见识，免得老了和我一样后悔。那么话说回来，为什么是年轻的时候该出去旅行呢？有这么几种解释:年轻的时候有时间，没有家庭负担，增加阅历。说的好有道理，谁能不服，所以就有很多人都这么说这么做了。那么我想问，你旅行的次数和回家看父母的次数哪个多，一年全国各地，甚至满世界的跑，有没有回家看过？你说年轻时没有家庭负担，有没有想过还有父母呢，怎么不带他们也去玩，他们年轻时可能为了你而没时间去玩，现在你有时间金钱去玩怎么不带上他们！
-我倒是为了写这篇文章搜索了下关于旅行的内容，鼓励出去玩的大多是旅行社，旅游网站发的，个人发的却又没说旅行能获得多少好处，他也不反对旅行，让你自己体会去，当你体会了以后别人问的时候是不是也用同样的话去回答？这样旅行的结果是多了谈资，晒照片去了哪哪哪，吃了什么美食，一大把各地门票，出国签证，还有账单。旅游真有那么多好处你倒是这个总结让大家也学习学习，不要只让我自己体会。
-旅游有时候确实可以改变一些事，只不过很多人被网络上的话给洗脑了，盲目跟风。读万卷书，行万里路，没有读万卷书，只行万里路一样是无知。世界那么大，宇宙那么浩瀚，人生只不多短短的几十年怎么可能了解全部，想要自己人生有意义最好的办法应该是让今天比昨天更好。
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5567d4328b7f4aa8a0d1d3f4/" rel="bookmark">
-			高级运营与初级运营【图】
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-29T02:51:30Z">2015-05-29 02:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E8%BF%90%E8%90%A5/" rel="category">运营</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		
 	</div>
 </article>
 
@@ -399,11 +432,11 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -456,6 +489,7 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -495,6 +529,7 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -584,7 +619,7 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

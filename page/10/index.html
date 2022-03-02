@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.83.1" />
+	<meta name="generator" content="Hugo 0.93.0" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -145,6 +145,50 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a584429752e661009178c06/" rel="bookmark">
+			本地producer和consumer连接不上远程kafka服务
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-12T05:14:17Z">2018-01-12 05:14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Hostname and port the broker will advertise to producers and consumers. If not set, it uses the value for &ldquo;listeners&rdquo; if configured. Otherwise, it will use the value returned from java.net.InetAddress.getCanonicalHostName(). advertised.listeners=PLAINTEXT://ip:9092
+ 打开advertised.listeners=PLAINTEXT://ip:9092配置，ip为kafka服务ip
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a430ce84aa3290e95cb0e67/" rel="bookmark">
+			推荐在Nodejs使用的java常用技术和工具
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-12-26T15:24:12Z">2017-12-26 15:24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		作为Nodejs开发者可能会对java中常用的一些技术工具不太关心，主要原因大概除了语言级别的间隙就是Nodejs相对于java来说比较轻量级，大多用来开发简单系统，用不到其他工具。根据经验来说，开发相同功能的系统，Nodejs的开发周期和代码体量上也会比Java少太多，毕竟java出生年代长，生态丰富，如果不使用几个框架都感觉不是在开发系统。而Nodejs要开发一个web系统基本使用express或koa就差不多够了。所以对于Nodejs开发者来说，分布式，消息队列，远程调用等技术接触就少些。当然，不用这些技术其实也不会有太大影响，但是对于一个有追求有理想的码农来说我们的眼界不应该局限于系统能运行就行。 下面就来介绍一些可以在nodejs中使用的JAVA常用工具和技术。
+elasticsearch ElasticSearch（以下简称ES）是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。看见了吧，这就是一个使用JAVA开发的全文搜索引擎，到底有什么用呢？就是可以提供像google和百度一样的搜索功能，就算不需要这样功能，也可以用于管理后台的字段搜索，大家知道数据库的搜索效率比较差，有索引的字段还好，没有的就很慢了，这时ES就可以派上用场了，把数据同步进ES,不论查询列表还是以字段搜索都是极快的，是redis缓存的很好补充。
+ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是一款轻量级的日志搜集处理框架，可以方便的把分散的、多样化的日志搜集起来，并进行自定义的处理，然后传输到指定的位置，比如某个服务器或者文件。 Kibana是一个使用nodejs开发的web应用，用于查询和操作ES，就是一个ES的图形界面。 如果nodejs系统布署在多台服务器，那么查看日志是件很头疼的事，你不知道请求发送到哪一台服务器，需要挨个查看，如果服务超过5台，这绝对是噩梦。这时候ELK就是很好的解决方案，LogStash收集每一台服务器的日志统一存到ES中，利用ES的优点，查询任何关键字都很快很方便。
+消息中间件（kafka） 拿用户注册为例，需要发送邮件，短信，这两个服务之间本没有关联关系，但我们的一贯作风是用户注册的时候调用邮件服务，短信服务，严谨一点会放在事务中操作，假如一个服务失败可能会让事务回滚，所有操作都失败。这是一种情况，另一种情况是如果要再注册后加积分，那么就得改代码，要是有更多服务要添加就得每次改代码发布，启停服务，不送积分了又要删代码，这就是耦合度太高导致的结果。使用消息中间件不仅能保证服务完整性还可以有效解耦，有兴趣可以去了解kafka,rabbitMQ,roketMQ等消息中间件。
+远程调用RPC 通俗的来讲就是两台服务器A和B，A服务器直接调用B服务器上的函数，如果没有一个具体事例很难理解A服务器怎么可能调用到B服务器的函数，感兴趣可下载尝试：https://github.com/yuedun/nodejs-grpc 那么为什么要用rpc呢？A服务器要调用B服务的资源直接用http提供接口不就行了吗？其实http也算是一种远程调用，而且也比较简单直观，但是其效率较低，调用成本高，三次握手耗时，甚至请求头的数据量比请求体还大。那么就需要一种更高效的调用协议了——rpc。为什么需要RPC，而不是简单的HTTP接口
+总结：以上的这些工具和技术和语言并没有绑定，java可以使用，nodejs也可以使用，推荐理由：投入成本小，使用收益高。
+	</div>
+</article>
+<article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.yuedun.wang/blogdetail/5a375f52e9a4cf008860c09b/">
 			<img src="https://hopefully-img.yuedun.wang/104432cjc7c8tx7xxqqkgq.jpg?imageMogr2/thumbnail/!20p/" alt="为什么需要RPC，而不是简单的HTTP接口" />
@@ -220,7 +264,7 @@ RPC是一个软件结构概念，是构建分布式应用的理论基础。就�
 		由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故，我们本文还是来实测一下，由于时间关系，VC还没装，书生先用PHP测试了一下，下次有时间在C/C++上补充测试到本文来，因为 PHP的底层解析应该也是基于C的，所以估计两者环境测试结果差不多，小问题大收获，现在就来看一下测试过程及结果。
 测试程序如下： //说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。
 //说明2：测试两次一次是4K数据，一次是整形数据
-set_time_limit(0); function fnGet($filename) { $content = file_get_contents($filename); return $content; } function fnGetContent($filename) { $content = fnGet($filename); return $content; } $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_row($res); $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_array($res); $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_object($res); $content=$row-&gt;log_Content; } echo &#39;fetch_object &#39;.
+set_time_limit(0); function fnGet($filename) {  $content = file_get_contents($filename);  return $content; }  function fnGetContent($filename) {  $content = fnGet($filename);  return $content; }  $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) {  $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;);  $row=$dbcon-&gt;mydb_fetch_row($res);  $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) {  $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;);  $row=$dbcon-&gt;mydb_fetch_array($res);  $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a1d8147da5c711b612f4d88/">阅读全文…</a>
@@ -243,8 +287,8 @@ set_time_limit(0); function fnGet($filename) { $content = file_get_contents($fil
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Dockerfile
-FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm installEXPOSE 3000# CMD [&quot;npm&quot;, &quot;start&quot;]ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;] docker ps:
- CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &quot;/bin/sh -c '/usr/...&quot; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
+FROM hub.c.163.com/public/nodejs:6.11.0 WORKDIR /app COPY . /app RUN npm install EXPOSE 3000 # CMD [&#34;npm&#34;, &#34;start&#34;] ENTRYPOINT [&#34;npm&#34;, &#34;start&#34;]  docker ps:
+ CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &#34;/bin/sh -c &#39;/usr/...&#34; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
 	</div>
 </article>
 <article class="list__item post">
@@ -264,7 +308,7 @@ FROM hub.c.163.com/public/nodejs:6.11.0WORKDIR /appCOPY . /appRUN npm install
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Assistance.belongTo(User)会报以下错误：
-ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&#39;t write; duplicate key in table &#39;#sql-454_d&#39; at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16) at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23) at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12) at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28) at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16) at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14) at Socket.&lt;anonymous&gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29) at emitOne (events.js:115:13) at Socket.emit (events.js:210:7) at addChunk (_stream_readable.js:264:12) at readableAddChunk (_stream_readable.js:251:11) at Socket.Readable.push (_stream_readable.js:209:10) at TCP.onread (net.
+ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&#39;t write; duplicate key in table &#39;#sql-454_d&#39;  at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16)  at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23)  at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12)  at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28)  at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16)  at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14)  at Socket.&lt;anonymous&gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29)  at emitOne (events.js:115:13)  at Socket.emit (events.js:210:7)  at addChunk (_stream_readable.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a06d5989f088c0683b93d26/">阅读全文…</a>
@@ -287,7 +331,7 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		从图片中的代码可以看出 let userRecord = await item.getUser();获取到的是Bluebird&lt;UserInstance | null&gt;类型，然后在下面获取对象属性的时候报错，错误信息是：
-[ts] Object is possibly 'null'.let userRecord: UserInstance | null说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
+[ts] Object is possibly &#39;null&#39;. let userRecord: UserInstance | null 说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
 	</div>
 </article>
 <article class="list__item post">
@@ -309,7 +353,7 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 		定义Model的时候有这样两个参数： underscored,underscoredAll,
  Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
  其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
-var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assistance&#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &#39;assistance&#39;, charset: &#39;utf8&#39;, collate: &#39;utf8_unicode_ci&#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
+var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;(  &#39;Assistance&#39;, {  title: Sequelize.STRING,  description: Sequelize.STRING,  fullName: Sequelize.STRING  }, {  underscored: true,  tableName: &#39;assistance&#39;,  charset: &#39;utf8&#39;,  collate: &#39;utf8_unicode_ci&#39;  } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/59eab23989faeadc30eac826/">阅读全文…</a>
@@ -331,55 +375,10 @@ var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assista
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Unhandled rejection CastError: Cast to ObjectId failed for value &quot;catalog&quot; at path &quot;_id&quot; for model &quot;Blog&quot;at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11)at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13)at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15)at ObjectId.castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:189:15)at ObjectId.SchemaType.castForQueryWrapper (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1021:15)at cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\cast.js:269:32)at Query.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:3103:12)at Query._castConditions (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1144:10)at Query._findOne (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1346:8)at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:250:8at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:23:7at nextTickCallbackWith0Args (node.js:489:9)at process._tickCallback (node.js:418:13)From previous event:at Query.exec (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2897:17)at Query.then (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2945:15)at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10)at e:\workspace\yuedun_ts\app.ts:53:14at Layer.
+		Unhandled rejection CastError: Cast to ObjectId failed for value &#34;catalog&#34; at path &#34;_id&#34; for model &#34;Blog&#34; at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11) at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13) at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15) at ObjectId.castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:189:15) at ObjectId.SchemaType.castForQueryWrapper (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1021:15) at cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\cast.js:269:32) at Query.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:3103:12) at Query._castConditions (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1144:10) at Query._findOne (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1346:8) at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:250:8 at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:23:7 at nextTickCallbackWith0Args (node.js:489:9) at process._tickCallback (node.js:418:13) From previous event: at Query.exec (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2897:17) at Query.then (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2945:15) at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10) at e:\workspace\yuedun_ts\app.ts:53:14 at Layer.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/599cf46c1bffdb00880597b3/">阅读全文…</a>
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5996a2dc9205bd72e7290ebb/" rel="bookmark">
-			open() is deprecated in mongoose &gt;= 4.11.0, use openUri()
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-18T08:18:36Z">2017-08-18 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &#34;warn&#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/598aaf0525207f400eeb1b87/" rel="bookmark">
-			windows好用的bash工具——ConEmu
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-09T06:43:17Z">2017-08-09 06:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		其实git-bash-for-windows这个git bash工具已经很好用了，不过对于平时需要开3-5的bash窗口的我来说就比较烦了，一直要不停的切换窗口，所以想找一款像linux terminal一样可以多开的工具，幸好有这样的工具，那就是ConEmu。
-使用前需要一些配置，不配置也没关系，就是使用起来不方便，我是按照的习惯完全配置成了git bash的使用方式。
-第一步: 第二步： 配置本地git bash地址（此步骤可适当配置 第三步： 设置ConEmu启动即打开bash而非windows cmd 第四步： 如果前面都没问题，可以设置自动保存打开的窗口，以便下次打开即可使用 最后： 根据个人喜好修改字体等 这样就可以完美使用git bash，不论是自动补全还是颜色主题都和git bash无异。
-另外cmder其实也是我使用过的一个不错的工具，同时推荐试用。
 	</div>
 </article>
 
@@ -405,11 +404,11 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -462,6 +461,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -501,6 +501,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -590,7 +591,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

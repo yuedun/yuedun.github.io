@@ -146,6 +146,49 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a1be456da5c711b612f4d39/" rel="bookmark">
+			Dockerfile CMD命令没有执行npm start
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-27T10:09:26Z">2017-11-27 10:09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Dockerfile
+FROM hub.c.163.com/public/nodejs:6.11.0 WORKDIR /app COPY . /app RUN npm install EXPOSE 3000 # CMD [&#34;npm&#34;, &#34;start&#34;] ENTRYPOINT [&#34;npm&#34;, &#34;start&#34;]  docker ps:
+ CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &#34;/bin/sh -c &#39;/usr/...&#34; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/598aaf0525207f400eeb1b87/" rel="bookmark">
+			windows好用的bash工具——ConEmu
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-09T06:43:17Z">2017-08-09 06:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		其实git-bash-for-windows这个git bash工具已经很好用了，不过对于平时需要开3-5的bash窗口的我来说就比较烦了，一直要不停的切换窗口，所以想找一款像linux terminal一样可以多开的工具，幸好有这样的工具，那就是ConEmu。
+使用前需要一些配置，不配置也没关系，就是使用起来不方便，我是按照的习惯完全配置成了git bash的使用方式。
+第一步: 第二步： 配置本地git bash地址（此步骤可适当配置 第三步： 设置ConEmu启动即打开bash而非windows cmd 第四步： 如果前面都没问题，可以设置自动保存打开的窗口，以便下次打开即可使用 最后： 根据个人喜好修改字体等 这样就可以完美使用git bash，不论是自动补全还是颜色主题都和git bash无异。
+另外cmder其实也是我使用过的一个不错的工具，同时推荐试用。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/59532a3233c3c869639761db/" rel="bookmark">
 			npm ERR! Error: EPERM: operation not permitted
 			</a>
@@ -160,7 +203,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		windows下npm install安装依赖的时候出现下面的错误：
-npm ERR! Windows_NT 6.1.7601npm ERR! argv &quot;D:\\Program Files\\nodejs\\node.exe&quot; &quot;D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&quot; &quot;install&quot; &quot;yog2@1.0.0&quot;npm ERR! node v4.8.0npm ERR! npm v2.15.11npm ERR! path C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925npm ERR! code EPERMnpm ERR! errno -4048npm ERR! syscall renamenpm ERR! Error: EPERM: operation not permitted, rename 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925' -&gt; 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz'npm ERR! at Error (native)npm ERR! { [Error: EPERM: operation not permitted, rename 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925' -&gt; 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz']npm ERR! errno: -4048,npm ERR!
+npm ERR! Windows_NT 6.1.7601 npm ERR! argv &#34;D:\\Program Files\\nodejs\\node.exe&#34; &#34;D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&#34; &#34;install&#34; &#34;yog2@1.0.0&#34; npm ERR! node v4.8.0 npm ERR! npm v2.15.11 npm ERR! path C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925 npm ERR! code EPERM npm ERR! errno -4048 npm ERR! syscall rename npm ERR! Error: EPERM: operation not permitted, rename &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925&#39; -&gt; &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz&#39; npm ERR! at Error (native) npm ERR! { [Error: EPERM: operation not permitted, rename &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925&#39; -&gt; &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz&#39;] npm ERR! errno: -4048, npm ERR!
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/59532a3233c3c869639761db/">阅读全文…</a>
@@ -187,8 +230,8 @@ npm ERR! Windows_NT 6.1.7601npm ERR! argv &quot;D:\\Program Files\\nodejs\\node
 查询操作 点击某个collection后的默认画面：
 查询界面很简单，关键是怎么写查询语句？
 点击文本可以查看所有数据字段，查询title为“测试”文档：
-array('title' =&gt; '测试')模糊查询：
-array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引号，中间使用=&gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
+array( &#39;title&#39; =&gt; &#39;测试&#39; ) 模糊查询：
+array( &#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;) ) 字段名要加引号，中间使用=&gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
 修改操作 动作中选择“modify”
 再查询一下
 基本操作就是这样，删除操作不用说也应该能知道怎么做了。
@@ -279,7 +322,7 @@ Enter file in which to save the key (//.ssh/id_rsa):
 第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa
 Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下
 接下来两部是要求输入密码，不输入直接回车就完成了。
-PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Generating public/private rsa key pair. Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in .
+PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34;  Generating public/private rsa key pair.  Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa  Enter passphrase (empty for no passphrase):  Enter same passphrase again:  Your identification has been saved in .
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56400429c888d8070f145c35/">阅读全文…</a>
@@ -351,50 +394,6 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 然后会提示输入密码，就此完成svn账号设置。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/56286fd6ce46c19e89132969/" rel="bookmark">
-			手机和PC联机调试Debugging Firefox for Android with WebIDE
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T05:10:46Z">2015-10-22 05:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Firefox提供了在PC端调试手机端页面的工具，详情查看： https://developer.mozilla.org/zh-CN/docs/Tools/Remote_Debugging/Debugging_Firefox_for_Android_with_WebIDE
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/56286643ce46c19e89132968/" rel="bookmark">
-			使用sublime开发node.js快速跳转到变量函数声明处
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T04:29:55Z">2015-10-22 04:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
-所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
-首先在uses.js文件中有一个函数
-//我是一个测试方法  router.get(&#34;/commeHere&#34;, function(req, res) { }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
-可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
-双击就可以跳转到对应的文件和行上。
-当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。
-	</div>
-</article>
 
 </main>
 
@@ -419,11 +418,11 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -476,6 +475,7 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -515,6 +515,7 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -604,7 +605,7 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

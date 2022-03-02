@@ -287,7 +287,7 @@ HOUR_SECOND
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		var nodemailer = require(&#34;nodemailer&#34;); var transporter = nodemailer.createTransport({ service: &#34;gmail&#34;, auth: { user: &#34;youname@gmail.com&#34;, pass: &#34;password&#34; } }); transporter.sendMail({ from: &#34;youname@gmail.com&#34;, to: &#34;username@qq.com&#34;, subject: &#34;hello&#34;, text: &#34;hello world!&#34; }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
+		var nodemailer = require(&#34;nodemailer&#34;);  var transporter = nodemailer.createTransport({  	service: &#34;gmail&#34;,  	auth: {  	user: &#34;youname@gmail.com&#34;,  	pass: &#34;password&#34;  	}  });  transporter.sendMail({  	from: &#34;youname@gmail.com&#34;,  	to: &#34;username@qq.com&#34;,  	subject: &#34;hello&#34;,  	text: &#34;hello world!&#34;  }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
  &ldquo;1und1&rdquo; &ldquo;AOL&rdquo; &ldquo;DebugMail.io&rdquo; &ldquo;DynectEmail&rdquo; &ldquo;FastMail&rdquo; &ldquo;GandiMail&rdquo; &ldquo;Gmail&rdquo; &ldquo;Godaddy&rdquo; &ldquo;GodaddyAsia&rdquo; &ldquo;GodaddyEurope&rdquo; &ldquo;hot.ee&rdquo; &ldquo;Hotmail&rdquo; &ldquo;iCloud&rdquo; &ldquo;mail.ee&rdquo; &ldquo;Mail.ru&rdquo; &ldquo;Mailgun&rdquo; &ldquo;Mailjet&rdquo; &ldquo;Mandrill&rdquo; &ldquo;Naver&rdquo; &ldquo;Postmark&rdquo; &ldquo;QQ&rdquo; &ldquo;QQex&rdquo; &ldquo;SendCloud&rdquo; &ldquo;SendGrid&rdquo; &ldquo;SES&rdquo; &ldquo;Sparkpost&rdquo; &ldquo;Yahoo&rdquo; &ldquo;Yandex&rdquo; &ldquo;Zoho&rdquo;  
 	</div>
 </article>
@@ -332,7 +332,7 @@ HOUR_SECOND
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最基本的where条件：
-Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({ where: { status: &#39;inactive&#39; } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
+Post.findAll({  where: {  authorId: 2  } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({  where: {  authorId: 12,  status: active  } });  // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({  where: {  status: &#39;inactive&#39;  } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({  updatedAt: null, }, {  where: {  deletedAt: {  $ne: null  }  } });  // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
@@ -381,7 +381,10 @@ Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId 
 2.文件压缩：既然都合并了，何不再压缩一下呢
 3.语法检查：这个功能一般会和下面第4条功能配合使用，当文件修改的时候检查是否有语法错误，并在命令行中输出错误信息。
 4.监听文件变化：监听某个目录下文件是否修改，修改的话就执行特定的操作，比如上面几个操作。 以上4点是比较常用的功能，更多功能根据自己需要添加
-var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名  // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); }); // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); }); // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); }); // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); 目录结构:
+var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名  // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); });  // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); });  // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); });  // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/559bd64ad366f15412cbf594/">阅读全文…</a>
 	</div>
 </article>
 <article class="list__item post">
@@ -429,11 +432,11 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -486,6 +489,7 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -525,6 +529,7 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -614,7 +619,7 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

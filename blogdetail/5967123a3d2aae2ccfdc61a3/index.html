@@ -12,13 +12,13 @@
 <meta property="og:description" content="sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。jsUser.bulkCreate([  { usernam" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5967123a3d2aae2ccfdc61a3/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2017-07-13T06:24:58&#43;00:00" />
-<meta property="article:modified_time" content="2017-07-13T06:24:58&#43;00:00" />
+<meta property="article:published_time" content="2017-07-13T06:24:58+00:00" />
+<meta property="article:modified_time" content="2017-07-13T06:24:58+00:00" />
 
 
 		<meta itemprop="name" content="Sequelize批量插入数据">
-<meta itemprop="description" content="sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。jsUser.bulkCreate([  { usernam"><meta itemprop="datePublished" content="2017-07-13T06:24:58&#43;00:00" />
-<meta itemprop="dateModified" content="2017-07-13T06:24:58&#43;00:00" />
+<meta itemprop="description" content="sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。jsUser.bulkCreate([  { usernam"><meta itemprop="datePublished" content="2017-07-13T06:24:58+00:00" />
+<meta itemprop="dateModified" content="2017-07-13T06:24:58+00:00" />
 <meta itemprop="wordCount" content="55">
 <meta itemprop="keywords" content="nodejs,sequelize," />
 		
@@ -164,16 +164,16 @@
 </div>
 <div class="content post__content clearfix">
 			<p>sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">bulkCreate</span>([
-  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;barfooz&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> },
-  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;foo&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> },
-  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bar&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> }
-]).<span style="color:#a6e22e">then</span>(() =&gt; { <span style="color:#75715e">// Notice: There are no arguments here, as of right now you&#39;ll have to...
-</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">findAll</span>();
-}).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">users</span> =&gt; {
-  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">users</span>) <span style="color:#75715e">// ... in order to get the array of user objects
-</span><span style="color:#75715e"></span>})
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">bulkCreate</span>([
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;barfooz&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> },
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;foo&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> },
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bar&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> }
+</span></span><span style="display:flex;"><span>]).<span style="color:#a6e22e">then</span>(() =&gt; { <span style="color:#75715e">// Notice: There are no arguments here, as of right now you&#39;ll have to...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">findAll</span>();
+</span></span><span style="display:flex;"><span>}).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">users</span> =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">users</span>) <span style="color:#75715e">// ... in order to get the array of user objects
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span></code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -217,7 +217,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

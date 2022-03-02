@@ -162,7 +162,7 @@
 		由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故，我们本文还是来实测一下，由于时间关系，VC还没装，书生先用PHP测试了一下，下次有时间在C/C++上补充测试到本文来，因为 PHP的底层解析应该也是基于C的，所以估计两者环境测试结果差不多，小问题大收获，现在就来看一下测试过程及结果。
 测试程序如下： //说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。
 //说明2：测试两次一次是4K数据，一次是整形数据
-set_time_limit(0); function fnGet($filename) { $content = file_get_contents($filename); return $content; } function fnGetContent($filename) { $content = fnGet($filename); return $content; } $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_row($res); $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_array($res); $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_object($res); $content=$row-&gt;log_Content; } echo &#39;fetch_object &#39;.
+set_time_limit(0); function fnGet($filename) {  $content = file_get_contents($filename);  return $content; }  function fnGetContent($filename) {  $content = fnGet($filename);  return $content; }  $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) {  $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;);  $row=$dbcon-&gt;mydb_fetch_row($res);  $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) {  $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;);  $row=$dbcon-&gt;mydb_fetch_array($res);  $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a1d8147da5c711b612f4d88/">阅读全文…</a>
@@ -353,7 +353,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 原生http请求获取参数   获取URL参数
   url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
   go返回json数据
-  type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&#34;a&#34;] = &#34;aaaaaa&#34; ress := &amp;ResObj{ Code: 0, Data: m} byt, _ := json.
+  type ResObj struct {  Code int  Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) {  m := make(map[string]string)  m[&#34;a&#34;] = &#34;aaaaaa&#34;  ress := &amp;ResObj{  Code: 0,  Data: m}  byt, _ := json.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56556da1c72f59d15379b4b9/">阅读全文…</a>
@@ -489,11 +489,11 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -546,6 +546,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -585,6 +586,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -674,7 +676,7 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

@@ -161,10 +161,10 @@
 	<div class="content list__excerpt post__content clearfix">
 		Nuxt.js 2.13+可以扫描并自动导入您的组件，不再需要在该script部分中手动导入它们！
 nuxt.config配置：
-export default { components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
+export default {  components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
 组件目录：
-components/ ComponentFoo.vue ComponentBar.vue 使用
-&lt;template&gt; &lt;ComponentFoo /&gt; &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
+components/  ComponentFoo.vue  ComponentBar.vue 使用
+&lt;template&gt;  &lt;ComponentFoo /&gt;  &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
 	</div>
 </article>
 <article class="list__item post">
@@ -262,8 +262,8 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 		vue在子组件中直接修改父组件传递下来的数据会报错： Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: &quot;json&quot;
 原因是vue子组件不能直接修改父组件的数据，可以使用this.$emit发送通知，让父组件来修改。 示例代码：
 子组件：
-this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
-&lt;mycomponent :json=&quot;JsonData&quot; @changeData=&quot;changeData&quot;&gt;&lt;/mycomponent&gt;data(){return {JsonData:{}}}methods:{changeData(newData){this.JsonData = newData;}}子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
+this.$emit(&#34;changeData&#34;, &#34;要修改的数据&#34;); 父组件：
+&lt;mycomponent :json=&#34;JsonData&#34; @changeData=&#34;changeData&#34;&gt;&lt;/mycomponent&gt; data(){ return { JsonData:{} } } methods:{ changeData(newData){ this.JsonData = newData; } } 子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。
 	</div>
 </article>
 <article class="list__item post">
@@ -283,7 +283,7 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		不依赖jquery也可以实现图片预览功能：
-&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; &lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; //图片放大 	document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.style.cursor = &#34;pointer&#34;; }); document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.addEventListener(&#34;click&#34;, function () { imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); }) }) function imgShow(outerdiv, bigimg, _this) { var src = _this.
+&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; 	&lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; 	//图片放大 	document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; 	document.querySelectorAll(&#34;img&#34;).forEach(function (item) { 	item.style.cursor = &#34;pointer&#34;; 	});  	document.querySelectorAll(&#34;img&#34;).forEach(function (item) { 	item.addEventListener(&#34;click&#34;, function () { 	imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); 	}) 	})  	function imgShow(outerdiv, bigimg, _this) { 	var src = _this.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5f20f0c05981482973150396/">阅读全文…</a>
@@ -397,7 +397,7 @@ this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);父组件：
 但是500，502错误却鲜有默认页面，我们何不也搞一个呢？
 500错误 首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。
 502错误 再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。
-server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/html; } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
+server{  error_page 502 /502.html;  location = /502.html {  root /usr/share/nginx/html;  } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
 	</div>
 </article>
 <article class="list__item post">
@@ -417,8 +417,8 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&ldquo;someKey&rdquo;]=&ldquo;someValue&rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
-//构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;condition) log.Println(condition) if err = this.mongo.Collection(&#34;user&#34;).FindOne(context.TODO(), condition).Decode(&amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
-search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
+//构造一个查询结构体 search := User{ 	ID: id, 	Name: name, 	Age: age, 	} //构造一个条件变量 	condition := bson.M{} 	//将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) 	if err != nil { 	return user, err 	} 	//将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;condition) 	log.Println(condition) 	if err = this.mongo.Collection(&#34;user&#34;).FindOne(context.TODO(), 	condition).Decode(&amp;user); err != nil { 	return user, err 	} 以上基本就实现了动态条件查询的效果，其中：
+search := User{ 	ID: id, 	Name: name, 	Age: age, 	} search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
 	</div>
 </article>
 
@@ -445,11 +445,11 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -502,6 +502,7 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -541,6 +542,7 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -630,7 +632,7 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

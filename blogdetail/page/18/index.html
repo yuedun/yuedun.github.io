@@ -179,7 +179,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了。
-/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) { var query = req.query; var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&#34;timestamp&#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array(); oriArray[0] = nonce; oriArray[1] = timestamp; oriArray[2] = &#34;hale&#34;;//token  oriArray.sort(); var original = oriArray[0]+oriArray[1]+oriArray[2]; console.
+/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) {  var query = req.query;  var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&#34;timestamp&#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array();  oriArray[0] = nonce;  oriArray[1] = timestamp;  oriArray[2] = &#34;hale&#34;;//token  oriArray.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5479b18a93ae2eb85f26b2d3/">阅读全文…</a>
@@ -236,7 +236,7 @@ to less than 2GB of data (or less with &ndash;journal).
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。 
+		由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。 由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。  
 	</div>
 </article>
 <article class="list__item post">
@@ -258,17 +258,17 @@ to less than 2GB of data (or less with &ndash;journal).
 		Oracle 中 decode 函数用法
 含义解释： decode(条件,值1,返回值1,值2,返回值2,&hellip;值n,返回值n,缺省值)
 该函数的含义如下：
-IF 条件=值1 THENRETURN(翻译值1)ELSIF 条件=值2 THENRETURN(翻译值2)......ELSIF 条件=值n THENRETURN(翻译值n)ELSERETURN(缺省值)END IFdecode(字段或字段的运算，值1，值2，值3）
+IF 条件=值1 THEN RETURN(翻译值1) ELSIF 条件=值2 THEN RETURN(翻译值2) ...... ELSIF 条件=值n THEN RETURN(翻译值n) ELSE RETURN(缺省值) END IF decode(字段或字段的运算，值1，值2，值3）
 这个函数运行的结果是，当字段或字段的运算的值等于值1时，该函数返回值2，否则返回值3 当然值1，值2，值3也可以是表达式，这个函数使得某些sql语句简单了许多
 使用方法： 1、比较大小 select decode(sign(变量1-变量2),-1,变量1,变量2) from dual; --取较小值 sign()函数根据某个值是0、正数还是负数，分别返回0、1、-1 例如： 变量1=10，变量2=20 则sign(变量1-变量2)返回-1，decode解码结果为“变量1”，达到了取较小值的目的。
 2、此函数用在SQL语句中，功能介绍如下：
 Decode函数与一系列嵌套的 IF-THEN-ELSE语句相似。base_exp与compare1,compare2等等依次进行比较。如果base_exp和 第i 个compare项匹配，就返回第i 个对应的value 。如果base_exp与任何的compare值都不匹配，则返回default。每个compare值顺次求值，如果发现一个匹配，则剩下的compare值（如果还有的话）就都不再求值。一个为NULL的base_exp被认为和NULL compare值等价。如果需要的话，每一个compare值都被转换成和第一个compare 值相同的数据类型，这个数据类型也是返回值的类型。
 Decode函数在实际开发中非常的有用
 结合Lpad函数，如何使主键的值自动加1并在前面补0 select LPAD(decode(count(记录编号),0,1,max(to_number(记录编号)+1)),14,'0') 记录编号 from tetdmis
-eg:select decode(dir,1,0,1) from a1_intervaldir 的值是1变为0，是0则变为1
+eg: select decode(dir,1,0,1) from a1_interval dir 的值是1变为0，是0则变为1
 比如我要查询某班男生和女生的数量分别是多少?
 通常我们这么写:
-select count(*) from 表 where 性别 ＝ 男；select count(*) from 表 where 性别 ＝ 女；要想显示到一起还要union一下，太麻烦了
+select count(*) from 表 where 性别 ＝ 男； select count(*) from 表 where 性别 ＝ 女； 要想显示到一起还要union一下，太麻烦了
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5459dcd3bf93a1aa252561fe/">阅读全文…</a>
@@ -318,7 +318,7 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
 在这里我们只介绍 util.inherits 的用法，示例如下：
-var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;; this.base = 1991; this.sayHello = function() { console.log(&#34;Hello &#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#34;sub&#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.
+var util = require(&#34;util&#34;);  function Base() {  this.name = &#34;base&#34;;  this.base = 1991;   this.sayHello = function() {  console.log(&#34;Hello &#34; + this.name);  }; }  Base.prototype.showName = function() {  console.log(this.name);  };  function Sub() {  this.name = &#34;sub&#34;; }  util.inherits(Sub, Base);  var objBase = new Base(); objBase.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5451f72e0eb53ef723e47bfe/">阅读全文…</a>
@@ -342,7 +342,7 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 	<div class="content list__excerpt post__content clearfix">
 		前段时间写了《BAE上连接mongodb每隔十多小时就不能连接的问题(一)》之后暂时的解决了连不上的问题，每隔十小时重启一次，但是这个方法却没有彻底解决问题，偶尔还会出现三四小时就连不上，实在搞不懂问题到底出在哪，到底是bae的mongodb的问题还是mongoose中间件的问题，现象是有做open操作，但是却没有open事件发出，那么我想是不是mongoose存在bug，翻看了源码也没看出来个所以然，不过大概是觉得要重新打开需要保证连接已经关闭的，那么干脆在监听到error事件时就将状态直接改为disconnected，反正是要调用db.close()方法进行关闭连接的，可能close()方法不好使，没有完全关闭，如果我手动将状态设为disconnected，close方法中也会判断是否是这个状态，如果是就直接返回，省的多走其他步骤了。不过这样一来就不会有close事件发出了，根据我所写代码的逻辑，那就不会调用open()方法了，但实际情况确实程序可以正常运行，说明已经重连上了，原来在代码中添加了这个属性：
 Js代码 :
-var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: true }, user: username, pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
+var opts = { db: {  native_parser: true }, server: {  poolSize:4,  auto_reconnect: true }, user: username,  pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
 不过由此看来，auto_reconect这个参数要起作用必须是在连接断开的情况下，说明close()方法有时候并没有完全断开连接。
 	</div>
 </article>
@@ -441,11 +441,11 @@ git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -498,6 +498,7 @@ git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -537,6 +538,7 @@ git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -626,7 +628,7 @@ git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

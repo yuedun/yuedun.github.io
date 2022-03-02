@@ -12,13 +12,13 @@
 <meta property="og:description" content="不依赖jquery也可以实现图片预览功能：		图片放大	document.querySelector(#outerdiv).style.display = no" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5f20f0c05981482973150396/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2020-07-29T03:45:04&#43;00:00" />
-<meta property="article:modified_time" content="2020-07-29T03:45:04&#43;00:00" />
+<meta property="article:published_time" content="2020-07-29T03:45:04+00:00" />
+<meta property="article:modified_time" content="2020-07-29T03:45:04+00:00" />
 
 
 		<meta itemprop="name" content="原生js实现图片预览">
-<meta itemprop="description" content="不依赖jquery也可以实现图片预览功能：		图片放大	document.querySelector(#outerdiv).style.display = no"><meta itemprop="datePublished" content="2020-07-29T03:45:04&#43;00:00" />
-<meta itemprop="dateModified" content="2020-07-29T03:45:04&#43;00:00" />
+<meta itemprop="description" content="不依赖jquery也可以实现图片预览功能：		图片放大	document.querySelector(#outerdiv).style.display = no"><meta itemprop="datePublished" content="2020-07-29T03:45:04+00:00" />
+<meta itemprop="dateModified" content="2020-07-29T03:45:04+00:00" />
 <meta itemprop="wordCount" content="92">
 <meta itemprop="keywords" content="javascript," />
 		
@@ -164,37 +164,37 @@
 </div>
 <div class="content post__content clearfix">
 			<p>不依赖jquery也可以实现图片预览功能：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--图片放大后的div 开始  这块粘贴在你的html中最后body前 --&gt;</span>
-&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;outerdiv&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;</span>&gt;
-	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bigimg&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> /&gt;
-&lt;/<span style="color:#f92672">div</span>&gt;
-<span style="color:#75715e">&lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt;</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt;</span>
-&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
-	<span style="color:#75715e">//图片放大
-</span><span style="color:#75715e"></span>	document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
-	document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;img&#34;</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">item</span>) {
-		<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">cursor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pointer&#34;</span>;
-	});
-
-	document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;img&#34;</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">item</span>) {
-		<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> () {
-			<span style="color:#a6e22e">imgShow</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>, <span style="color:#e6db74">&#34;#bigimg&#34;</span>, <span style="color:#66d9ef">this</span>);
-		})
-	})
-
-	<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">imgShow</span>(<span style="color:#a6e22e">outerdiv</span>, <span style="color:#a6e22e">bigimg</span>, <span style="color:#ae81ff">_</span><span style="color:#66d9ef">this</span>) {
-		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">_</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">src</span>;<span style="color:#75715e">//获取当前点击的pimg元素中的src属性
-</span><span style="color:#75715e"></span>		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#outerdiv&#39;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;block&#34;</span>;
-		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#a6e22e">bigimg</span>).<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>;<span style="color:#75715e">//设置#bigimg元素的src属性
-</span><span style="color:#75715e"></span>	}
-	document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>).<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> () {
-	<span style="color:#75715e">//再次点击淡出消失弹出层
-</span><span style="color:#75715e"></span>		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#outerdiv&#39;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
-	});
-&lt;/<span style="color:#f92672">script</span>&gt;
-<span style="color:#75715e">&lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt;</span>
-</code></pre></div><p>整体代码量少，实现也简单。效果如下：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--图片放大后的div 开始  这块粘贴在你的html中最后body前 --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;outerdiv&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bigimg&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//图片放大
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+</span></span><span style="display:flex;"><span>	document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;img&#34;</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">item</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">cursor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pointer&#34;</span>;
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;img&#34;</span>).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">item</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">imgShow</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>, <span style="color:#e6db74">&#34;#bigimg&#34;</span>, <span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>		})
+</span></span><span style="display:flex;"><span>	})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">imgShow</span>(<span style="color:#a6e22e">outerdiv</span>, <span style="color:#a6e22e">bigimg</span>, <span style="color:#a6e22e">_this</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_this</span>.<span style="color:#a6e22e">src</span>;<span style="color:#75715e">//获取当前点击的pimg元素中的src属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#outerdiv&#39;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;block&#34;</span>;
+</span></span><span style="display:flex;"><span>		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#a6e22e">bigimg</span>).<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>;<span style="color:#75715e">//设置#bigimg元素的src属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}
+</span></span><span style="display:flex;"><span>	document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;#outerdiv&#34;</span>).<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//再次点击淡出消失弹出层
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#outerdiv&#39;</span>).<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt;</span>
+</span></span></code></pre></div><p>整体代码量少，实现也简单。效果如下：
 <img src="https://hopefully-img.yuedun.wang/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88.jpg" alt="预览前" title="预览前"></p>
 <p><img src="https://hopefully-img.yuedun.wang/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%882.jpg" alt="预览" title="预览"></p>
 
@@ -238,7 +238,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

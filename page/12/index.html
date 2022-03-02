@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.83.1" />
+	<meta name="generator" content="Hugo 0.93.0" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,6 +147,57 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/591c5eac35b6751981e4681e/" rel="bookmark">
+			nodejs中promise的if流程控制
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-17T14:31:08Z">2017-05-17 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
+ 假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
+ var fs = require(&#34;fs&#34;);  function queue(){ 	return new Promise((resolve, reject)=&gt;{ 	fs.readFile(&#34;../queue.txt&#34;, &#34;utf8&#34;, (err, data)=&gt;{ 	if (err) reject(err); 	console.log(data.toString()); 	resolve(data.toString()); 	}) 	}) } function account(id){ 	return new Promise((resolve, reject)=&gt;{ 	fs.writeFile(&#39;../account.txt&#39;, id+&#39;一个新账户&#39;, (err) =&gt; { 	if (err) reject(err); 	console.log(&#39;办卡成功!&#39;); 	resolve(); 	}); 	}) } function money(id){ 	return new Promise((resolve, reject)=&gt;{ 	fs.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/591c5eac35b6751981e4681e/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/590c93d3266e3f1c8fd4aa83/" rel="bookmark">
+			typescript泛型的使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T15:01:39Z">2017-05-05 15:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
+function a(args: number ): number { 	return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
+function b(args: string ): string { 	return args; } console.log(b(&#34;sdg&#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
+function c(args: any ): any { 	return args; } console.log(c(&#34;sdg&#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
+function c(args: any ): any {  let n = args + &#34;变成了字符串&#34;;  //甚至更多的处理 	return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
+function d&lt;A&gt;(args: A ): A {  let n = args + &#34;变成了字符串&#34;;  //甚至更多的处理 	return n; } console.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/590c93d3266e3f1c8fd4aa83/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/58f8c22ae17cc00088e5ba4f/" rel="bookmark">
 			 error TS7010: skipTo, which lacks return-type annotation, implicitly has an any return type.
 			</a>
@@ -160,7 +211,7 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: 'skipTo', which lacks return-type annotation, implicitly has an 'any' return type.缺少返回类型的注释，隐含地具有&rsquo;any&rsquo;返回类型。 tsconfig.json配置文件中noImplicitAny设置为false,该选项的意思是：在表达式和声明上有隐含的&rsquo;any&rsquo;类型时报错。
+		node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: &#39;skipTo&#39;, which lacks return-type annotation, implicitly has an &#39;any&#39; return type. 缺少返回类型的注释，隐含地具有&rsquo;any&rsquo;返回类型。 tsconfig.json配置文件中noImplicitAny设置为false,该选项的意思是：在表达式和声明上有隐含的&rsquo;any&rsquo;类型时报错。
 	</div>
 </article>
 <article class="list__item post">
@@ -230,10 +281,10 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 	<div class="content list__excerpt post__content clearfix">
 		完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
 typescript编译配置
-{ &#34;compilerOptions&#34;: { &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  }, &#34;include&#34;: [ &#34;*/**/*.ts&#34; ], &#34;exclude&#34;: [ //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
+{  &#34;compilerOptions&#34;: {  &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  },  &#34;include&#34;: [  &#34;*/**/*.ts&#34;  ],  &#34;exclude&#34;: [  //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
 选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
 vscode编译typescript配置
-{ // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.json format  &#34;version&#34;: &#34;0.
+{  // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/58243e338fa26c04fd124ee6/">阅读全文…</a>
@@ -280,12 +331,12 @@ vscode编译typescript配置
 		需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
  以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
 mongodb中查询
-select * from articles where content like '%Nodejs%';db.articles.find( { content: /Nodejs/i } )Article.find({ content: /Nodejs/i}, function (err, docs) {});这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
-var a=&quot;Nodejs&quot; ;Article.find({ content: /a/i}, function (err, docs) {});此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
-var text = 'Nodejs';//动态传入的变量Article.find({ content: { $regex: text, $options: 'i' }}, function (err, docs) {});$options选项值：
+select * from articles where content like &#39;%Nodejs%&#39;; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
+var a=&#34;Nodejs&#34; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
+var text = &#39;Nodejs&#39;;//动态传入的变量 Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {}); $options选项值：
  i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串  其实$regex就是正则表达式的写法
 查找数组中的字段：
-contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address: &#34;address2&#34;, name: &#34;李四&#34; }, .
+contacts:{  [  {  address: &#34;address1&#34;,  name: &#34;张三&#34;  },  {  address: &#34;address2&#34;,  name: &#34;李四&#34;  },  .
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/581d736c43c18f1b7ae3e3ff/">阅读全文…</a>
@@ -309,9 +360,9 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 	<div class="content list__excerpt post__content clearfix">
 		mongdb查询某一字段sum值  需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
  mongodb中查询
-select sum(pv) from articles;db.articles.aggregate([{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 2 }select sum(pv) from articles where createDate &lt;= '2016-10-20';db.articles.aggregate([{$match:{createDate:{$lte:&quot;2016-10-20&quot;}}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 9 }select sum(pv) from articles where category = 'Nodejs';db.articles.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 7 }需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
+select sum(pv) from articles; db.articles.aggregate([{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 2 } select sum(pv) from articles where createDate &lt;= &#39;2016-10-20&#39;; db.articles.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 9 } select sum(pv) from articles where category = &#39;Nodejs&#39;; db.articles.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 7 } 需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
 mongoose实现方式，与上面sql的顺序对应：
-Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(err, doc) {console.log(&quot;1&quot;, doc);});Article.
+Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) { console.log(&#34;1&#34;, doc); }); Article.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5819b2b7c4d0a377509b8f1a/">阅读全文…</a>
@@ -337,9 +388,9 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(er
 命令行编译
  tsc --target ES5 --experimentalDecorators /test.ts
 tsconfig.json:
-&quot;compilerOptions&quot;: {&quot;experimentalDecorators&quot;: true}}那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
-//test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&#34;hello&#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name); } } 生成的js代码：
-//test.js var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.
+&#34;compilerOptions&#34;: { &#34;experimentalDecorators&#34;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
+//test.ts class Route {  greeting: string;  constructor(greet: string){  this.greeting = greet;  }   @route(&#34;hello&#34;)  default(): any {  console.log(this.greeting);  } }  function route(name: string) {  return function (target: Object, value: string, desc: PropertyDescriptor) {  console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name);  } } 生成的js代码：
+//test.js var __decorate = (this &amp;&amp; this.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/58037ab767a381257039c926/">阅读全文…</a>
@@ -378,52 +429,6 @@ tsconfig.json:
 		<a class="list__footer-readmore btn" href="/blogdetail/57fcf50869c8bf6e323dff48/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/57fb9d3169c8bf6e323dff46/" rel="bookmark">
-			使用半年TypeScript后的感受
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-10T13:52:49Z">2016-10-10 13:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		初识TypeScript 从入职新公司开始算，使用typescript已经有半年多了，这是一个创业公司使用nodejs开发的后台业务管理系统，已经做的很大了，支撑着公司每月千万人民币的业务处理。很多怀疑nodejs是否可以开发后台管理，作为一个过来人告诉你可以放心使用，现在的javascript早已不是10年前用来写前端特效的js了。美中不足的是nodejs对报表这类数据处理量较大的功能有点力不从心，经常拖垮系统，当然也不是完全不能用nodejs来处理报表，可以合理的使用子进程单独处理数据而不影响主进程。但还是不推荐。
-使用感受 其实起初对于typescript开发nodejs我是拒绝的，原因是建立起这个项目的人都走了，而这个项目结构实在是复杂，在windows下环境搭建费了好大精力，尤其是为了使用一个bcrypt加密包，需要安装Python,C++来编译，还不能使用nodejs0.12以上版本，最烦人的是每次修改文件后编译速度非常慢，这让我重新体验了开发JAVA时期的痛苦。而且服务启动方法也是前人自己编写shell脚本来同时编译前端文件和后端文件。并没有使用nodemon,supervisor这种监控工具。后来折腾发现可以直接使用vscode单独编译ts文件，一般12秒就编译完成，这与我之前的项目1秒修改重启相比还是慢了很多，不过也免强只能接受，此时只觉得如此麻烦和JAVA开发有什么区别！所以基于这些不好的体验我很不喜欢typescript。
-重新认识 最近又折腾了下我用纯nodejs开发的博客，突然发现，写起来确实不如typescript爽，主要是纯nodejs在webstorm和vscode上语法提示和错误提示较弱，而typescript则可以很好的提示并且在开发过程中就能发现一些很低级错误，不用等到运行时才发现。尤其是对ES6的支持比较完整，甚至可以使用async,await这些ES7提案中的特性。虽然现在高版本的nodejs已经支持一些新特性，但是并不是所有项目都可以使用高版本。如果说为什么要使用typescript，那就是typescript集合了js的快速和强类型语言的安全稳定，用于开发一些较大的项目绝对利大于弊。 尤其是对于一些多人合作的项目来说，typescript的强类型能够很好约束对象属性，参数传递，对后续的重构也起到至关重要的作用。 有人可能会担心降低开发效率，这一点大可不必担心，你定义类型消耗的时间会从强类型提示上补回来的。 接下来会写一篇完整的环境搭建教程：使用typescript开发nodejs的环境搭建（一）
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/57d6aaa7471c11fa271ed1bb/" rel="bookmark">
-			beego post请求获取request body参数
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-09-12T13:16:23Z">2016-09-12 13:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		为了获取json类型的参数煞费苦心，差点不再爱了。
-前端请求代码：
-$.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 后端接收代码：
-func (this *UserController) Post() { var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;ob)//解析二进制json，把结果放进ob中  user := &amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数  if nil != err { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } this.ServeJSON() } this.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/57d6aaa7471c11fa271ed1bb/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -447,11 +452,11 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -504,6 +509,7 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -543,6 +549,7 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -632,7 +639,7 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

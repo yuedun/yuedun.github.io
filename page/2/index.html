@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.83.1" />
+	<meta name="generator" content="Hugo 0.93.0" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -146,6 +146,69 @@
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.yuedun.wang/blogdetail/5e5a3fb45bd8165f28d21307/">
+			<img src="https://hopefully-img.yuedun.wang/vscode%E6%AD%A3%E5%88%99.png?imageMogr2/thumbnail/!20p/" alt="vscode正则查找替换" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e5a3fb45bd8165f28d21307/" rel="bookmark">
+			vscode正则查找替换
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-14T10:40:52Z">2021-06-14 10:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		查找某一类型字符串： 正则表达式onclick=.*&quot; 会查找到所有： onclick=&quot;_msq.push(['trackEvent', '210074305d6b0409-09c7759e04e98528', ''pcpid', '']);&quot;
+onclick=是固定一样的字符，
+.代表除\r和\n之外的任意字符，等价于[^\r\n]
+*代表匹配前面的模式 0或多次 {0,}
+&quot;这是字符串最后一个字符
+在vscode中的效果如下： 至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：
+查找替换 查找：(onclick=.*&quot;)
+替换：aaa($1)
+结果：
+替换字符串两头，保留中间 两部分文字交换位置 相同模式的文字交换位置。
+查找：(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))
+替换：$2 $1
+结果：
+vscode中一对括号()代表一个变量。
+第一组正则 (\(\d{4}-\d{1,2}-\d{2}\)) 对应 $1，
+第二组正则 (\[.*\))对应 $2，以此类推。
+所以，可以查找多组数据，在替换部分将两个对应变量交换位置即可。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/60b48e405caa4b4dc69e3abf/" rel="bookmark">
+			typescript不检查node_moduls
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-11T14:16:17&#43;08:00">2021-06-11 14:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
+node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.  113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~  node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.  114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;  ~~~~~~~~~~~  node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/60b48e405caa4b4dc69e3abf/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.yuedun.wang/blogdetail/60950c9ee76f307341586548/">
 			<img src="https://hopefully-img.yuedun.wang/zhuque1.jpg?imageMogr2/thumbnail/!20p/" alt="朱雀发布系统支持scp（rsync）发布" />
 		</a>
@@ -223,7 +286,7 @@
 Easy-Monitor主要提供以下的功能：
  找出执行时长耗费最久的5个或者更多的函数 找出那些执行时间超出预期的函数 找出v8引擎无法优化的函数  Easy-Monitor的特点：
  轻量级：非传统C/S物理分离模式，require 后即可使用，没有额外的监控server/agent部署成本。 运行时：针对的是运行时的函数性能以及内存细节进行处理展示，可用于线上生产环境项目。 无状态：永远展示的是开发者访问时的业务进程状态  关于监控qps，作者在文档中并没有提到qps这样的关键字，很多人也不知道怎么监控qps。 不过在监控界面中有这样的指标数据： 所以我从源码入手，找到了该数据指标的源头是这样的：
-const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_memory_percent * 100).toFixed(2)), maxDisk: max_disk_usage, disks: disks_json, load1: Number(load1.toFixed(2)), load5: Number(load5.toFixed(2)), load15: Number(load15.toFixed(2)), nodeCount: node_count, scavengeTotal: total_scavange_duration, scavengeAverage: scavange_duration_last_record, marksweepTotal: total_marksweep_duration, marksweepAverage: marksweep_duration_last_record, qps: Number((http_response_sent / 60).toFixed(2)), rtExpired: http_patch_timeout, rtAverage: http_rt, }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
+const data = {  osCpu: Number((used_cpu * 100).toFixed(2)),  osMem: Number((used_memory_percent * 100).toFixed(2)),  maxDisk: max_disk_usage,  disks: disks_json,  load1: Number(load1.toFixed(2)),  load5: Number(load5.toFixed(2)),  load15: Number(load15.toFixed(2)),  nodeCount: node_count,  scavengeTotal: total_scavange_duration,  scavengeAverage: scavange_duration_last_record,  marksweepTotal: total_marksweep_duration,  marksweepAverage: marksweep_duration_last_record,  qps: Number((http_response_sent / 60).toFixed(2)),  rtExpired: http_patch_timeout,  rtAverage: http_rt,  }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
 	</div>
 </article>
 <article class="list__item post">
@@ -244,10 +307,10 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 	<div class="content list__excerpt post__content clearfix">
 		上篇简单介绍了sapper和sveltekit的发展，目前sveltekit还只是Beta版本，有很多不确定因素存在，有可能会有大的变更，所以还不推荐在生产环境中使用，不过在个人项目和小项目中可以大胆尝试。
 今天我们就正式使用sveltekit开发一个web项目。
-第一步：创建项目 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
+第一步：创建项目 mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问 /blog 路由，还需要创建index.svelte文件，内容如下：
-&lt;script context=&#34;module&#34;&gt; /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&gt; r.json()) .then((posts) =&gt; { console.log(posts); return { props: { posts } }; }); } &lt;/script&gt; &lt;script&gt; export let posts; &lt;/script&gt; &lt;svelte:head&gt; &lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt; &lt;h1&gt;Recent posts&lt;/h1&gt; &lt;ul&gt; {#each posts as post} &lt;!
+&lt;script context=&#34;module&#34;&gt;  /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ 	export async function load({ page, fetch, session, context }) { 	return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&gt; r.json()) 	.then((posts) =&gt; { 	console.log(posts); 	return { 	props: { 	posts 	} 	}; 	}); 	} &lt;/script&gt;  &lt;script&gt; 	export let posts; &lt;/script&gt;  &lt;svelte:head&gt; 	&lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt;  &lt;h1&gt;Recent posts&lt;/h1&gt;  &lt;ul&gt; 	{#each posts as post} 	&lt;!
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/606d512c54277a10496a38ae/">阅读全文…</a>
@@ -284,8 +347,8 @@ sveltekit包含的功能有：
   serverless
   vite打包
   可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
-创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
-$ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &gt; svelte-kit dev &#34;--open&#34; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import &#39;./dist/cli.js&#39;; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.Module._extensions..js (internal/modules/cjs/loader.
+创建sveltekit的方法：  mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
+ $ npm run dev -- --open   &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app  &gt; svelte-kit dev &#34;--open&#34;  D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2  import &#39;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/60628dfa8f0b5a0240684581/">阅读全文…</a>
@@ -312,9 +375,9 @@ $ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app 
 那怎么才能删除呢？
 试着直接删除目录也不行，这问题能难倒我，但难不倒百度。
 使用ls | xargs -n 1000 rm -fr ls删除，可是一直在输出错误提示：
-rm: invalid option -- &#39;s&#39; Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
+ rm: invalid option -- &#39;s&#39;  Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
 删除方式是：
-rm -- -foo 或 rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
+ rm -- -foo  或  rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
 ls | xargs -n 1000 rm -frv ls
 rm命令加个参数v，用来显示删除信息。
 最终会输出这样的提示信息，
@@ -362,66 +425,10 @@ ls | xargs -n 1000 rm -frv ls &amp;
 	<div class="content list__excerpt post__content clearfix">
 		nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
 集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
-// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;); async function bootstrap() { try { const root = join(__dirname, &#39;../&#39;); let envFile = join(root, &#39;.env&#39;) dotenv.config({ &#34;path&#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.
+// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;);  async function bootstrap() {  try {  const root = join(__dirname, &#39;../&#39;);  let envFile = join(root, &#39;.env&#39;)  dotenv.config({ &#34;path&#34;: envFile })  const {  APOLLO_APPID,  APOLLO_ENV,  APOLLO_HOST,  APOLLO_NAMESPACE,  APOLLO_PORT,  APOLLO_TOKEN,  APOLLO_ClUSTER  } = process.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ffffe3d3f518207e7235250/">阅读全文…</a>
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5ff7d7cc3f518207e72349ed/" rel="bookmark">
-			svelte history路由刷新后404
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-08T03:55:56Z">2021-01-08 03:55</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持history模式的使用上也不是很方便，试用过五六个支持history的路由后最终@spaceavocado/svelte-router算是满足了要求。
- 使用简单 功能丰富 支持history和hash 我也是够难伺候的。  在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
-使用方法：
-//App.svelte &lt;script&gt; import RouterView from &#39;@spaceavocado/svelte-router/component/view&#39;; import { routes } from &#39;./router.js&#39; &lt;/script&gt; &lt;RouterView /&gt; //router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = createRouter({ mode: &#34;HISTORY&#34;, routes: [ { path: &#39;/&#39;, name: &#39;HOME&#39;, component: index, }, { path: &#39;/a&#39;, name: &#39;a&#39;, component: a, }, { path: &#39;/b&#39;, name: &#39;b&#39;, component: b, }, { path: &#39;*&#39;, component: index, }, ], }); // index.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5ff7d7cc3f518207e72349ed/">阅读全文…</a>
-	</div>
-</article>
-<article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.yuedun.wang/blogdetail/5ff449035e80c6649222da2c/">
-			<img src="https://hopefully-img.yuedun.wang/svelte.jpg" alt="基于sapper开发svelte项目配置本地代理" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5ff449035e80c6649222da2c/" rel="bookmark">
-			基于sapper开发svelte项目配置本地代理
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-05T11:09:55Z">2021-01-05 11:09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		sapper可能被放弃更新，如果您要继续使用svelte，可以考虑使用sveltekit
- 最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
- 服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试）  可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
-遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
-import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.com&#39;, pathRewrite: { &#39;^/api&#39;: &#39;&#39; }, secure: false, changeOrigin: true, })) .
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5ff449035e80c6649222da2c/">阅读全文…</a>
 	</div>
 </article>
 
@@ -447,11 +454,11 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -504,6 +511,7 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -543,6 +551,7 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -632,7 +641,7 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

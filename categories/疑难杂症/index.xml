@@ -13,7 +13,7 @@
       <pubDate>Mon, 15 Jun 2020 04:36:50 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5ee6fae2e8775d3b7f2ee0c6/</guid>
-      <description>(node:9828) UnhandledPromiseRejectionWarning: TypeError: text is not iterable at Keyboard.type (D:\workspace\auto-ui\node_modules\puppeteer-core\lib\Input.js:160:24) at Keyboard.&amp;lt;anonymous&amp;gt; (D:\workspace\auto-ui\node_modules\puppeteer-core\lib\helper.js:112:23) at openBrowser (D:\workspace\auto-ui\test-email\index.js:106:25) at process._tickCallback (internal/process/next_tick.js:68:7) (node:9828) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 3) (node:9828) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.</description>
+      <description>(node:9828) UnhandledPromiseRejectionWarning: TypeError: text is not iterable  at Keyboard.type (D:\workspace\auto-ui\node_modules\puppeteer-core\lib\Input.js:160:24)  at Keyboard.&amp;lt;anonymous&amp;gt; (D:\workspace\auto-ui\node_modules\puppeteer-core\lib\helper.js:112:23)  at openBrowser (D:\workspace\auto-ui\test-email\index.js:106:25)  at process._tickCallback (internal/process/next_tick.js:68:7) (node:9828) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 3) (node:9828) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.</description>
     </item>
     
     <item>
@@ -56,7 +56,7 @@
       <guid>https://www.yuedun.wang/blogdetail/5449dac894f76294f5e60fe1/</guid>
       <description>前段时间写了《BAE上连接mongodb每隔十多小时就不能连接的问题(一)》之后暂时的解决了连不上的问题，每隔十小时重启一次，但是这个方法却没有彻底解决问题，偶尔还会出现三四小时就连不上，实在搞不懂问题到底出在哪，到底是bae的mongodb的问题还是mongoose中间件的问题，现象是有做open操作，但是却没有open事件发出，那么我想是不是mongoose存在bug，翻看了源码也没看出来个所以然，不过大概是觉得要重新打开需要保证连接已经关闭的，那么干脆在监听到error事件时就将状态直接改为disconnected，反正是要调用db.close()方法进行关闭连接的，可能close()方法不好使，没有完全关闭，如果我手动将状态设为disconnected，close方法中也会判断是否是这个状态，如果是就直接返回，省的多走其他步骤了。不过这样一来就不会有close事件发出了，根据我所写代码的逻辑，那就不会调用open()方法了，但实际情况确实程序可以正常运行，说明已经重连上了，原来在代码中添加了这个属性：
 Js代码 :
-var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: true }, user: username, pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
+var opts = { db: {  native_parser: true }, server: {  poolSize:4,  auto_reconnect: true }, user: username,  pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
 不过由此看来，auto_reconect这个参数要起作用必须是在连接断开的情况下，说明close()方法有时候并没有完全断开连接。</description>
     </item>
     

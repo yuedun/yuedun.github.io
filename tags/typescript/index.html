@@ -160,7 +160,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
-node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 118 touch: (sid: string, session: Express.
+node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.  113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~  node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.  114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;  ~~~~~~~~~~~  node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/60b48e405caa4b4dc69e3abf/">阅读全文…</a>
@@ -197,8 +197,8 @@ sveltekit包含的功能有：
   serverless
   vite打包
   可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
-创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
-$ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &gt; svelte-kit dev &#34;--open&#34; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import &#39;./dist/cli.js&#39;; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.Module._extensions..js (internal/modules/cjs/loader.
+创建sveltekit的方法：  mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
+ $ npm run dev -- --open   &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app  &gt; svelte-kit dev &#34;--open&#34;  D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2  import &#39;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/60628dfa8f0b5a0240684581/">阅读全文…</a>
@@ -241,7 +241,7 @@ $ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		从图片中的代码可以看出 let userRecord = await item.getUser();获取到的是Bluebird&lt;UserInstance | null&gt;类型，然后在下面获取对象属性的时候报错，错误信息是：
-[ts] Object is possibly 'null'.let userRecord: UserInstance | null说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
+[ts] Object is possibly &#39;null&#39;. let userRecord: UserInstance | null 说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
 	</div>
 </article>
 <article class="list__item post">
@@ -261,11 +261,11 @@ $ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
-function a(args: number ): number { return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
-function b(args: string ): string { return args; } console.log(b(&#34;sdg&#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
-function c(args: any ): any { return args; } console.log(c(&#34;sdg&#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
-function c(args: any ): any { let n = args + &#34;变成了字符串&#34;; //甚至更多的处理 	return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
-function d&lt;A&gt;(args: A ): A { let n = args + &#34;变成了字符串&#34;; //甚至更多的处理 	return n; } console.
+function a(args: number ): number { 	return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
+function b(args: string ): string { 	return args; } console.log(b(&#34;sdg&#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
+function c(args: any ): any { 	return args; } console.log(c(&#34;sdg&#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
+function c(args: any ): any {  let n = args + &#34;变成了字符串&#34;;  //甚至更多的处理 	return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
+function d&lt;A&gt;(args: A ): A {  let n = args + &#34;变成了字符串&#34;;  //甚至更多的处理 	return n; } console.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/590c93d3266e3f1c8fd4aa83/">阅读全文…</a>
@@ -289,10 +289,10 @@ function d&lt;A&gt;(args: A ): A { let n = args + &#34;变成了字符串&#34;; 
 	<div class="content list__excerpt post__content clearfix">
 		完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
 typescript编译配置
-{ &#34;compilerOptions&#34;: { &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  }, &#34;include&#34;: [ &#34;*/**/*.ts&#34; ], &#34;exclude&#34;: [ //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
+{  &#34;compilerOptions&#34;: {  &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  },  &#34;include&#34;: [  &#34;*/**/*.ts&#34;  ],  &#34;exclude&#34;: [  //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
 选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
 vscode编译typescript配置
-{ // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.json format  &#34;version&#34;: &#34;0.
+{  // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/58243e338fa26c04fd124ee6/">阅读全文…</a>
@@ -318,9 +318,9 @@ vscode编译typescript配置
 命令行编译
  tsc --target ES5 --experimentalDecorators /test.ts
 tsconfig.json:
-&quot;compilerOptions&quot;: {&quot;experimentalDecorators&quot;: true}}那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
-//test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&#34;hello&#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name); } } 生成的js代码：
-//test.js var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.
+&#34;compilerOptions&#34;: { &#34;experimentalDecorators&#34;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
+//test.ts class Route {  greeting: string;  constructor(greet: string){  this.greeting = greet;  }   @route(&#34;hello&#34;)  default(): any {  console.log(this.greeting);  } }  function route(name: string) {  return function (target: Object, value: string, desc: PropertyDescriptor) {  console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name);  } } 生成的js代码：
+//test.js var __decorate = (this &amp;&amp; this.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/58037ab767a381257039c926/">阅读全文…</a>
@@ -399,11 +399,11 @@ tsconfig.json:
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -456,6 +456,7 @@ tsconfig.json:
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -495,6 +496,7 @@ tsconfig.json:
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -584,7 +586,7 @@ tsconfig.json:
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

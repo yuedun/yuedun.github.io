@@ -12,13 +12,13 @@
 <meta property="og:description" content="typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/590c93d3266e3f1c8fd4aa83/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2017-05-05T15:01:39&#43;00:00" />
-<meta property="article:modified_time" content="2017-05-05T15:01:39&#43;00:00" />
+<meta property="article:published_time" content="2017-05-05T15:01:39+00:00" />
+<meta property="article:modified_time" content="2017-05-05T15:01:39+00:00" />
 
 
 		<meta itemprop="name" content="typescript泛型的使用方法">
-<meta itemprop="description" content="typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点"><meta itemprop="datePublished" content="2017-05-05T15:01:39&#43;00:00" />
-<meta itemprop="dateModified" content="2017-05-05T15:01:39&#43;00:00" />
+<meta itemprop="description" content="typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点"><meta itemprop="datePublished" content="2017-05-05T15:01:39+00:00" />
+<meta itemprop="dateModified" content="2017-05-05T15:01:39+00:00" />
 <meta itemprop="wordCount" content="103">
 <meta itemprop="keywords" content="nodejs,typescript," />
 		
@@ -165,49 +165,49 @@
 <div class="content post__content clearfix">
 			<p>typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）
 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> {
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
-}
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>(<span style="color:#ae81ff">123</span>));
-</code></pre></div><p>又有另外一个要求，参数为string类型，并且返回string</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">b</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> {
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
-}
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>(<span style="color:#e6db74">&#34;sdg&#34;</span>));
-</code></pre></div><p>如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> {
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
-}
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;sdg&#34;</span>));
-</code></pre></div><p>这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的<code>c</code>函数稍作修改：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> {
-    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
-    <span style="color:#75715e">//甚至更多的处理
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
-}
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>));
-</code></pre></div><p><code>c</code>函数参数是数字，返回的可能是其他类型。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>(<span style="color:#ae81ff">123</span>));
+</span></span></code></pre></div><p>又有另外一个要求，参数为string类型，并且返回string</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">b</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>(<span style="color:#e6db74">&#34;sdg&#34;</span>));
+</span></span></code></pre></div><p>如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;sdg&#34;</span>));
+</span></span></code></pre></div><p>这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的<code>c</code>函数稍作修改：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//甚至更多的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>));
+</span></span></code></pre></div><p><code>c</code>函数参数是数字，返回的可能是其他类型。
 知道前面几种写法的不足再对比一下泛型的写法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">A</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">A</span> {
-    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
-    <span style="color:#75715e">//甚至更多的处理
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
-}
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">1</span>));
-</code></pre></div><p><img src="https://hopefully-img.yuedun.wang/FhO7R54TnMePUhwcnry3fo8AJz7_" alt="FhO7R54TnMePUhwcnry3fo8AJz7_">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">A</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">A</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//甚至更多的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">1</span>));
+</span></span></code></pre></div><p><img src="https://hopefully-img.yuedun.wang/FhO7R54TnMePUhwcnry3fo8AJz7_" alt="FhO7R54TnMePUhwcnry3fo8AJz7_">
 <code>d</code>函数要求参数是A类型，并且返回A类型，但是实际返回的类型可能由number类型变成了string类型，所以提示错误。其中<code>&lt;&gt;</code>中可以是任意大小写的英文，中文也行，但数字不行，比如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span>&lt;<span style="color:#f92672">Az</span>&gt;(<span style="color:#a6e22e">args</span>: <span style="color:#66d9ef">Az</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">Az</span> {
-    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
-    <span style="color:#75715e">//甚至更多的处理
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
-}
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">1</span>));
-</code></pre></div><p><code>&lt;&gt;</code>中的值是指代某种基础类型或任何自定义类型，它只是一种形式。也可以有下面的形式：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ts" data-lang="ts"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span>&lt;<span style="color:#f92672">T</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">U</span>&gt;(<span style="color:#a6e22e">args</span>: <span style="color:#66d9ef">T</span>,<span style="color:#a6e22e">ar</span>: <span style="color:#66d9ef">U</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">U</span> {
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ar</span>;
-}
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;aaaa&#34;</span>))
-</code></pre></div><p>其实就是提供一种形式供后面代码使用，没有提供就不能使用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span>&lt;<span style="color:#f92672">Az</span>&gt;(<span style="color:#a6e22e">args</span>: <span style="color:#66d9ef">Az</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">Az</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//甚至更多的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">1</span>));
+</span></span></code></pre></div><p><code>&lt;&gt;</code>中的值是指代某种基础类型或任何自定义类型，它只是一种形式。也可以有下面的形式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span>&lt;<span style="color:#f92672">T</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">U</span>&gt;(<span style="color:#a6e22e">args</span>: <span style="color:#66d9ef">T</span>,<span style="color:#a6e22e">ar</span>: <span style="color:#66d9ef">U</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">U</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ar</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;aaaa&#34;</span>))
+</span></span></code></pre></div><p>其实就是提供一种形式供后面代码使用，没有提供就不能使用。</p>
 
 		</div>
 		<footer class="post__footer">
@@ -252,7 +252,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

@@ -163,12 +163,15 @@
 由于javascript是动态语言，java是静态语言，所以两者在编写方式上有很大区别，主要是因为javascript没有类的概念，在ES6标准发布之前要构造一个对象需要用new关键字实例化一个function或者直接使用对象字面量。不过ES6标准的发布，使得javascript也可像java一样声明类了。
 在使用nodejs开发大型应用时需要到类的概念来封装一个复杂的逻辑，我们可以从现在开始逐步使用ES6开发，但是基于现有的支持环境，很多时候还得用ES5编写代码，那么这时候怎么来抽象一个类和实例化对象？
 以Java的思想方式来编写JavaScript，首先是一个构造函数：
-function Person(name, age){ this.name = name; this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
+function Person(name, age){ 	this.name = name; 	this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
 var tom = new Person(&quot;Tom&quot;,12);
 构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:
-var tom = new Person(); tom.name = &#34;Tom&#34;; tom.age = 13; 有了构造函数，还要有普通函数：
-tom.sayHello = function(){ console.log(&#34;my name is &#34;+this.name);//my name is Tom  } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
-function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。
+var tom = new Person();  tom.name = &#34;Tom&#34;; tom.age = 13; 有了构造函数，还要有普通函数：
+tom.sayHello = function(){  	console.log(&#34;my name is &#34;+this.name);//my name is Tom  } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
+function Person(name, age){ 	this.name = name;  	this.age = age;  }  Person.getAge = function(){  	console.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/56f15a4a3823e4e62593d4e2/">阅读全文…</a>
 	</div>
 </article>
 <article class="list__item post">
@@ -189,8 +192,8 @@ function Person(name, age){ this.name = name; this.age = age; } Person.getAge = 
 	<div class="content list__excerpt post__content clearfix">
 		js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;：  delete objtest.prop; //或者  delete objtest[&#39;prop&#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
+var objtest = {   prop: &#39;delete me&#39;  };  //或者这么声明的对象  var objtest = new Array();  objtest[&#39;prop&#39;] = &#39;delete me&#39;;  //删除属性&#39;prop&#39;：  delete objtest.prop;  //或者  delete objtest[&#39;prop&#39;];  //还可以删除任意变量  var numb = 17;  delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { 	name: &#39;鸣人&#39;, 	age: 16, 	gender: &#39;男&#39;, 	friends: [{ 	name: &#39;小樱&#39;, 	age: 16, 	gender: &#39;女&#39;, 	friends: [{ 	name: &#39;井野&#39;, 	age: 16, 	gender: &#39;女&#39; 	}] 	}, 	{ 	name: &#39;佐助&#39;, 	age: 16, 	gender: &#39;男&#39; 	}] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
@@ -215,7 +218,7 @@ var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{
 		开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
 所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
 首先在uses.js文件中有一个函数
-//我是一个测试方法  router.get(&#34;/commeHere&#34;, function(req, res) { }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
+//我是一个测试方法  router.get(&#34;/commeHere&#34;, function(req, res) {  }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
 可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
 双击就可以跳转到对应的文件和行上。
 当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。
@@ -284,7 +287,7 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		var nodemailer = require(&#34;nodemailer&#34;); var transporter = nodemailer.createTransport({ service: &#34;gmail&#34;, auth: { user: &#34;youname@gmail.com&#34;, pass: &#34;password&#34; } }); transporter.sendMail({ from: &#34;youname@gmail.com&#34;, to: &#34;username@qq.com&#34;, subject: &#34;hello&#34;, text: &#34;hello world!&#34; }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
+		var nodemailer = require(&#34;nodemailer&#34;);  var transporter = nodemailer.createTransport({  	service: &#34;gmail&#34;,  	auth: {  	user: &#34;youname@gmail.com&#34;,  	pass: &#34;password&#34;  	}  });  transporter.sendMail({  	from: &#34;youname@gmail.com&#34;,  	to: &#34;username@qq.com&#34;,  	subject: &#34;hello&#34;,  	text: &#34;hello world!&#34;  }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
  &ldquo;1und1&rdquo; &ldquo;AOL&rdquo; &ldquo;DebugMail.io&rdquo; &ldquo;DynectEmail&rdquo; &ldquo;FastMail&rdquo; &ldquo;GandiMail&rdquo; &ldquo;Gmail&rdquo; &ldquo;Godaddy&rdquo; &ldquo;GodaddyAsia&rdquo; &ldquo;GodaddyEurope&rdquo; &ldquo;hot.ee&rdquo; &ldquo;Hotmail&rdquo; &ldquo;iCloud&rdquo; &ldquo;mail.ee&rdquo; &ldquo;Mail.ru&rdquo; &ldquo;Mailgun&rdquo; &ldquo;Mailjet&rdquo; &ldquo;Mandrill&rdquo; &ldquo;Naver&rdquo; &ldquo;Postmark&rdquo; &ldquo;QQ&rdquo; &ldquo;QQex&rdquo; &ldquo;SendCloud&rdquo; &ldquo;SendGrid&rdquo; &ldquo;SES&rdquo; &ldquo;Sparkpost&rdquo; &ldquo;Yahoo&rdquo; &ldquo;Yandex&rdquo; &ldquo;Zoho&rdquo;  
 	</div>
 </article>
@@ -305,7 +308,7 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最基本的where条件：
-Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({ where: { status: &#39;inactive&#39; } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
+Post.findAll({  where: {  authorId: 2  } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({  where: {  authorId: 12,  status: active  } });  // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({  where: {  status: &#39;inactive&#39;  } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({  updatedAt: null, }, {  where: {  deletedAt: {  $ne: null  }  } });  // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
@@ -348,7 +351,7 @@ var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Se
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了。
-/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) { var query = req.query; var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&#34;timestamp&#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array(); oriArray[0] = nonce; oriArray[1] = timestamp; oriArray[2] = &#34;hale&#34;;//token  oriArray.sort(); var original = oriArray[0]+oriArray[1]+oriArray[2]; console.
+/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) {  var query = req.query;  var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&#34;timestamp&#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array();  oriArray[0] = nonce;  oriArray[1] = timestamp;  oriArray[2] = &#34;hale&#34;;//token  oriArray.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5479b18a93ae2eb85f26b2d3/">阅读全文…</a>
@@ -378,7 +381,7 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
 在这里我们只介绍 util.inherits 的用法，示例如下：
-var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;; this.base = 1991; this.sayHello = function() { console.log(&#34;Hello &#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#34;sub&#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.
+var util = require(&#34;util&#34;);  function Base() {  this.name = &#34;base&#34;;  this.base = 1991;   this.sayHello = function() {  console.log(&#34;Hello &#34; + this.name);  }; }  Base.prototype.showName = function() {  console.log(this.name);  };  function Sub() {  this.name = &#34;sub&#34;; }  util.inherits(Sub, Base);  var objBase = new Base(); objBase.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5451f72e0eb53ef723e47bfe/">阅读全文…</a>
@@ -408,11 +411,11 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -465,6 +468,7 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -504,6 +508,7 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -593,7 +598,7 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

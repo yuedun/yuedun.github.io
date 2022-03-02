@@ -12,13 +12,13 @@
 <meta property="og:description" content="win10家庭版本身不支持组策略，但还是有办法让其支持。复制下面内容到文本文件：@echo offpushd %~dp0dir b C:Windowsservi" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5b8b9d63b1f3aa6dab1430d2/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2018-09-02T08:20:51&#43;00:00" />
-<meta property="article:modified_time" content="2018-09-02T08:20:51&#43;00:00" />
+<meta property="article:published_time" content="2018-09-02T08:20:51+00:00" />
+<meta property="article:modified_time" content="2018-09-02T08:20:51+00:00" />
 
 
 		<meta itemprop="name" content="win10家庭版组策略">
-<meta itemprop="description" content="win10家庭版本身不支持组策略，但还是有办法让其支持。复制下面内容到文本文件：@echo offpushd %~dp0dir b C:Windowsservi"><meta itemprop="datePublished" content="2018-09-02T08:20:51&#43;00:00" />
-<meta itemprop="dateModified" content="2018-09-02T08:20:51&#43;00:00" />
+<meta itemprop="description" content="win10家庭版本身不支持组策略，但还是有办法让其支持。复制下面内容到文本文件：@echo offpushd %~dp0dir b C:Windowsservi"><meta itemprop="datePublished" content="2018-09-02T08:20:51+00:00" />
+<meta itemprop="dateModified" content="2018-09-02T08:20:51+00:00" />
 <meta itemprop="wordCount" content="33">
 <meta itemprop="keywords" content="windows," />
 		
@@ -165,13 +165,13 @@
 <div class="content post__content clearfix">
 			<p>win10家庭版本身不支持组策略，但还是有办法让其支持。
 复制下面内容到文本文件：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">@echo off
-pushd <span style="color:#e6db74">&#34;%~dp0&#34;</span>
-dir /b C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ervicing<span style="color:#ae81ff">\P</span>ackages<span style="color:#ae81ff">\M</span>icrosoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt
-dir /b C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ervicing<span style="color:#ae81ff">\P</span>ackages<span style="color:#ae81ff">\M</span>icrosoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt
-<span style="color:#66d9ef">for</span> /f %%i in <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;findstr /i . List.txt 2^&gt;nul&#39;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> dism /online /norestart /add-package:<span style="color:#e6db74">&#34;C:\Windows\servicing\Packages\%%i&#34;</span>
-pause
-</code></pre></div><p>后缀名保存为<code>cmd</code>,以管理员身份执行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>@echo off
+</span></span><span style="display:flex;"><span>pushd <span style="color:#e6db74">&#34;%~dp0&#34;</span>
+</span></span><span style="display:flex;"><span>dir /b C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ervicing<span style="color:#ae81ff">\P</span>ackages<span style="color:#ae81ff">\M</span>icrosoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt
+</span></span><span style="display:flex;"><span>dir /b C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ervicing<span style="color:#ae81ff">\P</span>ackages<span style="color:#ae81ff">\M</span>icrosoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> /f %%i in <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;findstr /i . List.txt 2^&gt;nul&#39;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> dism /online /norestart /add-package:<span style="color:#e6db74">&#34;C:\Windows\servicing\Packages\%%i&#34;</span>
+</span></span><span style="display:flex;"><span>pause
+</span></span></code></pre></div><p>后缀名保存为<code>cmd</code>,以管理员身份执行：</p>
 <p><img src="https://hopefully-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902160354.png" alt=""></p>
 <p>然后<code>WIN+R</code>中执行<code>gpedit.msc</code>即可打开组策略。</p>
 <p><img src="https://hopefully-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902161900.png" alt=""></p>
@@ -217,7 +217,7 @@ pause
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

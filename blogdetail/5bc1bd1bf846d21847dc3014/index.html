@@ -12,13 +12,13 @@
 <meta property="og:description" content="gRPC是谷歌开发的跨语言（C, C&#43;&#43;, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5bc1bd1bf846d21847dc3014/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2018-10-13T09:38:35&#43;00:00" />
-<meta property="article:modified_time" content="2018-10-13T09:38:35&#43;00:00" />
+<meta property="article:published_time" content="2018-10-13T09:38:35+00:00" />
+<meta property="article:modified_time" content="2018-10-13T09:38:35+00:00" />
 
 
 		<meta itemprop="name" content="gRPC负载均衡">
-<meta itemprop="description" content="gRPC是谷歌开发的跨语言（C, C&#43;&#43;, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言"><meta itemprop="datePublished" content="2018-10-13T09:38:35&#43;00:00" />
-<meta itemprop="dateModified" content="2018-10-13T09:38:35&#43;00:00" />
+<meta itemprop="description" content="gRPC是谷歌开发的跨语言（C, C&#43;&#43;, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言"><meta itemprop="datePublished" content="2018-10-13T09:38:35+00:00" />
+<meta itemprop="dateModified" content="2018-10-13T09:38:35+00:00" />
 <meta itemprop="wordCount" content="37">
 <meta itemprop="keywords" content="grpc,nginx,负载均衡," />
 		
@@ -165,7 +165,7 @@
 <div class="content post__content clearfix">
 			<p>gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。</p>
 <p>在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：</p>
-<pre><code>upstream grpcservice {
+<pre tabindex="0"><code>upstream grpcservice {
     server localhost:50051;
     server localhost:50052;
 }
@@ -234,7 +234,7 @@ server {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

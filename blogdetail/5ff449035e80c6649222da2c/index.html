@@ -12,13 +12,13 @@
 <meta property="og:description" content="基于sapper开发svelte项目配置本地代理" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5ff449035e80c6649222da2c/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2021-01-05T11:09:55&#43;00:00" />
-<meta property="article:modified_time" content="2021-01-05T11:09:55&#43;00:00" />
+<meta property="article:published_time" content="2021-01-05T11:09:55+00:00" />
+<meta property="article:modified_time" content="2021-01-05T11:09:55+00:00" />
 
 
 		<meta itemprop="name" content="基于sapper开发svelte项目配置本地代理">
-<meta itemprop="description" content="基于sapper开发svelte项目配置本地代理"><meta itemprop="datePublished" content="2021-01-05T11:09:55&#43;00:00" />
-<meta itemprop="dateModified" content="2021-01-05T11:09:55&#43;00:00" />
+<meta itemprop="description" content="基于sapper开发svelte项目配置本地代理"><meta itemprop="datePublished" content="2021-01-05T11:09:55+00:00" />
+<meta itemprop="dateModified" content="2021-01-05T11:09:55+00:00" />
 <meta itemprop="wordCount" content="95">
 <meta itemprop="keywords" content="svelte,sapper,本地代理," />
 		<meta property="twitter:image" content="https://hopefully-img.yuedun.wang/svelte.jpg" />
@@ -182,28 +182,27 @@
 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是<code>polka</code>，而不是express，不过没关系，其实可以相互替换。
 最关键的是增加了<code>http-proxy-middleware</code>中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。
 完整代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">sirv</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;sirv&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">polka</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;polka&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">compression</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;compression&#39;</span>;
-<span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">sapper</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@sapper/server&#39;</span>;
-<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createProxyMiddleware</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;http-proxy-middleware&#39;</span>;
-
-<span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">PORT</span>, <span style="color:#a6e22e">NODE_ENV</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>;
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dev</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">NODE_ENV</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;development&#39;</span>;
-
-<span style="color:#a6e22e">polka</span>()
-	<span style="color:#75715e">// 需要放在最前面，否则接口404，secure参数解决调用https问题
-</span><span style="color:#75715e"></span>	.<span style="color:#a6e22e">use</span>(<span style="color:#e6db74">&#39;/api&#39;</span>, <span style="color:#a6e22e">createProxyMiddleware</span>({ <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://example.com&#39;</span>, <span style="color:#a6e22e">pathRewrite</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;^/api&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span> }, <span style="color:#a6e22e">secure</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">changeOrigin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, }))
-	.<span style="color:#a6e22e">use</span>(
-		<span style="color:#a6e22e">compression</span>({ <span style="color:#a6e22e">threshold</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span> }),
-		<span style="color:#a6e22e">sirv</span>(<span style="color:#e6db74">&#39;static&#39;</span>, { <span style="color:#a6e22e">dev</span> }),
-		<span style="color:#a6e22e">sapper</span>.<span style="color:#a6e22e">middleware</span>()
-	)
-	.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">PORT</span>, <span style="color:#a6e22e">err</span> =&gt; {
-		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">err</span>);
-	});
-
-</code></pre></div><p><strong>总结：</strong>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">sirv</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;sirv&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">polka</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;polka&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">compression</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;compression&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">sapper</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@sapper/server&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createProxyMiddleware</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;http-proxy-middleware&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">PORT</span>, <span style="color:#a6e22e">NODE_ENV</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dev</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">NODE_ENV</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;development&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">polka</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 需要放在最前面，否则接口404，secure参数解决调用https问题
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	.<span style="color:#a6e22e">use</span>(<span style="color:#e6db74">&#39;/api&#39;</span>, <span style="color:#a6e22e">createProxyMiddleware</span>({ <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://example.com&#39;</span>, <span style="color:#a6e22e">pathRewrite</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;^/api&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span> }, <span style="color:#a6e22e">secure</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">changeOrigin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, }))
+</span></span><span style="display:flex;"><span>	.<span style="color:#a6e22e">use</span>(
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">compression</span>({ <span style="color:#a6e22e">threshold</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span> }),
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">sirv</span>(<span style="color:#e6db74">&#39;static&#39;</span>, { <span style="color:#a6e22e">dev</span> }),
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">sapper</span>.<span style="color:#a6e22e">middleware</span>()
+</span></span><span style="display:flex;"><span>	)
+</span></span><span style="display:flex;"><span>	.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">PORT</span>, <span style="color:#a6e22e">err</span> =&gt; {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>	});
+</span></span></code></pre></div><p><strong>总结：</strong>
 总体来说，使用svelte开发的确没有vue顺畅，但遇到的问题都有解决方案，对于一些非核心项目还是可以使用的，粗略的对比老项目，在性能上有50%的提升。如果你不想使用回最原始的开发方式来提升性能，那么svelte是个不错的备选方案。</p>
 
 		</div>
@@ -252,7 +251,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

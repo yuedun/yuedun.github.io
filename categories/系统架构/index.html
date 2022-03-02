@@ -164,12 +164,12 @@
 这叫用“鞭”驱动“驴”拉磨
 在程序里，程序停止在那不动，你点击一个按钮，它就有反应了，过一会，又没反应了，你再点一下，它又继续运行。
 这叫用“事件”驱动“程序”运行
-0. 基本概念 窗口/组件事件消息(队列)事件响应(服务处理程序)调度算法进程/线程非阻塞I/O程序的执行可以看成对CPU,内存,IO资源一次占用现代操作系统支持多任务,可以分时复用上述资源. 1. 为什么采用事件驱动模型? 事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：
-首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）；当目标发送改变（发布），观察者（订阅者）就可以接收到改变；观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。 2. 代码执行流程 在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。 在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。
+0. 基本概念 窗口/组件 事件 消息(队列) 事件响应(服务处理程序) 调度算法 进程/线程 非阻塞I/O 程序的执行可以看成对CPU,内存,IO资源一次占用 现代操作系统支持多任务,可以分时复用上述资源.  1. 为什么采用事件驱动模型? 事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：
+首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）； 当目标发送改变（发布），观察者（订阅者）就可以接收到改变； 观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。  2. 代码执行流程 在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。 在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。
 3. 事件驱动模型 在UI编程中，常常要对鼠标点击进行相应，首先如何获得鼠标点击呢？
 方式一：创建一个线程，该线程一直循环检测是否有鼠标点击，那么这个方式有以下几个缺点：
-CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘；如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。 方式二：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：
-有一个事件（消息）队列；鼠标按下时，往这个队列中增加一个点击事件（消息）；有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等；事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图: 4. 事件驱动处理库 selectpollepolllibev 消息驱动 事件驱动机制跟消息驱动机制相比
+CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？ 如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘； 如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。  方式二：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：
+有一个事件（消息）队列； 鼠标按下时，往这个队列中增加一个点击事件（消息）； 有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等； 事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图:  4. 事件驱动处理库 select poll epoll libev  消息驱动 事件驱动机制跟消息驱动机制相比
 消息驱动和事件驱动很类似，都是先有一个事件，然后产生一个相应的消息，再把消息放入消息队列，由需要的项目获取。他们的区别是消息是谁产生的
 消息驱动：鼠标管自己点击不需要和系统有过多的交互，消息由系统（第三方）循环检测，来捕获并放入消息队列。消息对于点击事件来说是被动产生的，高内聚。
 事件驱动：鼠标点击产生点击事件后要向系统发送消息“我点击了”的消息，消息是主动产生的。再发送到消息队列中。
@@ -204,7 +204,7 @@ CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还�
  错误：https页面去发送http请求报错(浏览器阻止https发送http请求)
  问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。
 后来想到了leancloud，直接在前端调用api，将数据存储在云端。
-&lt;script src=&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;&gt;&lt;/script&gt; &lt;script&gt; // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003  // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086  const appId = &#34;xxx&#34;; const appKey = &#34;xxx&#34;; const serverURL = &#34;xxx&#34;; AV.init({ appId, appKey, serverURL }); function updateCollect() { const collect = new AV.Query(&#39;Collect&#39;); const url = location.pathname; collect.select([&#39;url&#39;, &#39;pv&#39;]) collect.equalTo(&#39;url&#39;, url); collect.first().then((col) =&gt; { if (!col) { // 声明 class  const Collect = AV.Object.extend(&#39;Collect&#39;); // 构建对象  const collect = new Collect(); // 为属性赋值  collect.
+&lt;script src=&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;&gt;&lt;/script&gt; &lt;script&gt;  // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003  // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086  const appId = &#34;xxx&#34;;  const appKey = &#34;xxx&#34;;  const serverURL = &#34;xxx&#34;;  AV.init({ appId, appKey, serverURL });  function updateCollect() {  const collect = new AV.Query(&#39;Collect&#39;);  const url = location.pathname;  collect.select([&#39;url&#39;, &#39;pv&#39;])  collect.equalTo(&#39;url&#39;, url);  collect.first().then((col) =&gt; {  if (!col) {  // 声明 class  const Collect = AV.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/06/gitpage-hugo-page-view/">阅读全文…</a>
@@ -234,7 +234,7 @@ CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还�
 劣势 静态博客在一些细节功能上面确实会有缺失，比如：
  评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。  优势  免费，没有服务器费用。 可以自定义域名，只需要一丁点儿的域名费用。 seo良好。 规范的书写格式，使文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于本地检索。 数据更保险，不易丢失。 安全，静态博客可以避免一些网络攻击。  整体来说，除了数据存储功能缺失外，其他都是可以实现的。
 迁移过程 将mongodb数据中的博客导出为本地markdown文件。
-// mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &#39;_id&#39;: -1 } }) .then(data =&gt; { data.forEach((b) =&gt; { debug(b) let tags = b.
+// mongodb数据转markdown function genMd() { 	return Blog.find({ status: 1 }, null, { sort: { &#39;_id&#39;: -1 } }) 	.then(data =&gt; { 	data.forEach((b) =&gt; { 	debug(b) 	let tags = b.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/06/blog-move-to-gitpage/">阅读全文…</a>
@@ -268,7 +268,7 @@ CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还�
 但是500，502错误却鲜有默认页面，我们何不也搞一个呢？
 500错误 首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。
 502错误 再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。
-server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/html; } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
+server{  error_page 502 /502.html;  location = /502.html {  root /usr/share/nginx/html;  } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
 	</div>
 </article>
 <article class="list__item post">
@@ -509,11 +509,11 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -566,6 +566,7 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -605,6 +606,7 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -694,7 +696,7 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

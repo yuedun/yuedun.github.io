@@ -12,13 +12,13 @@
 <meta property="og:description" content="线上部署在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。linux系统需要这样编译：GOOS=linux go buil" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5e709b485bd8165f28d22394/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2020-03-17T09:41:28&#43;00:00" />
-<meta property="article:modified_time" content="2020-03-17T09:41:28&#43;00:00" />
+<meta property="article:published_time" content="2020-03-17T09:41:28+00:00" />
+<meta property="article:modified_time" content="2020-03-17T09:41:28+00:00" />
 
 
 		<meta itemprop="name" content="go-micro线上部署，注册服务到etcd">
-<meta itemprop="description" content="线上部署在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。linux系统需要这样编译：GOOS=linux go buil"><meta itemprop="datePublished" content="2020-03-17T09:41:28&#43;00:00" />
-<meta itemprop="dateModified" content="2020-03-17T09:41:28&#43;00:00" />
+<meta itemprop="description" content="线上部署在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。linux系统需要这样编译：GOOS=linux go buil"><meta itemprop="datePublished" content="2020-03-17T09:41:28+00:00" />
+<meta itemprop="dateModified" content="2020-03-17T09:41:28+00:00" />
 <meta itemprop="wordCount" content="102">
 <meta itemprop="keywords" content="golang,go-micro,etcd,windows," />
 		
@@ -175,21 +175,21 @@
 			<h3 id="线上部署">线上部署</h3>
 <p>在线上部署就不能使用<code>go run main.go</code>命令了，需要打包编译成可执行文件。
 linux系统需要这样编译：<code>GOOS=linux go build -o service main.go</code>，就是在windows系统上进行交叉编译，可根据自己服务器情况修改参数。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -o service main.go
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go build -o api api/api.go
-</code></pre></div><p>线上的restful api也不能使用<code>micro api</code>了。需要选择适合自己的web服务框架，在web服务中调用api服务。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go build -o service main.go
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go build -o api api/api.go
+</span></span></code></pre></div><p>线上的restful api也不能使用<code>micro api</code>了。需要选择适合自己的web服务框架，在web服务中调用api服务。</p>
 <h3 id="etcd启动">etcd启动</h3>
 <p>线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ./service --registry<span style="color:#f92672">=</span>etcd --registry_address<span style="color:#f92672">=</span>xx.xx.xx.xx:2379
-2020-03-17 17:04:42 Starting <span style="color:#f92672">[</span>service<span style="color:#f92672">]</span> go.micro.srv.user
-2020-03-17 17:04:42 Server <span style="color:#f92672">[</span>grpc<span style="color:#f92672">]</span> Listening on <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:48493
-2020-03-17 17:04:42 Registry <span style="color:#f92672">[</span>etcd<span style="color:#f92672">]</span> Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395
-<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;warn&#34;</span>,<span style="color:#e6db74">&#34;ts&#34;</span>:<span style="color:#e6db74">&#34;2020-03-17T17:04:47.849+0800&#34;</span>,<span style="color:#e6db74">&#34;caller&#34;</span>:<span style="color:#e6db74">&#34;clientv3/retry_interceptor.go:61&#34;</span>,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;retrying of unary invoker failed&#34;</span>,<span style="color:#e6db74">&#34;target&#34;</span>:<span style="color:#e6db74">&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;</span>,<span style="color:#e6db74">&#34;attempt&#34;</span>:0,<span style="color:#e6db74">&#34;error&#34;</span>:<span style="color:#e6db74">&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.xx.xx.xx:2379: connect: connection refused\&#34;&#34;</span><span style="color:#f92672">}</span>
-2020-03-17 17:04:47 Server register error: %!<span style="color:#f92672">(</span>EXTRA context.deadlineExceededError<span style="color:#f92672">=</span>context deadline exceeded<span style="color:#f92672">)</span>
-</code></pre></div><p>这就是错误示例。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ ./service --registry<span style="color:#f92672">=</span>etcd --registry_address<span style="color:#f92672">=</span>xx.xx.xx.xx:2379
+</span></span><span style="display:flex;"><span>2020-03-17 17:04:42 Starting <span style="color:#f92672">[</span>service<span style="color:#f92672">]</span> go.micro.srv.user
+</span></span><span style="display:flex;"><span>2020-03-17 17:04:42 Server <span style="color:#f92672">[</span>grpc<span style="color:#f92672">]</span> Listening on <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:48493
+</span></span><span style="display:flex;"><span>2020-03-17 17:04:42 Registry <span style="color:#f92672">[</span>etcd<span style="color:#f92672">]</span> Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;warn&#34;</span>,<span style="color:#e6db74">&#34;ts&#34;</span>:<span style="color:#e6db74">&#34;2020-03-17T17:04:47.849+0800&#34;</span>,<span style="color:#e6db74">&#34;caller&#34;</span>:<span style="color:#e6db74">&#34;clientv3/retry_interceptor.go:61&#34;</span>,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;retrying of unary invoker failed&#34;</span>,<span style="color:#e6db74">&#34;target&#34;</span>:<span style="color:#e6db74">&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;</span>,<span style="color:#e6db74">&#34;attempt&#34;</span>:0,<span style="color:#e6db74">&#34;error&#34;</span>:<span style="color:#e6db74">&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.xx.xx.xx:2379: connect: connection refused\&#34;&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>2020-03-17 17:04:47 Server register error: %!<span style="color:#f92672">(</span>EXTRA context.deadlineExceededError<span style="color:#f92672">=</span>context deadline exceeded<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>这就是错误示例。
 为了能顺利看到胜利的结果，需要这样启动etcd:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ./etcd --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://0.0.0.0:2379 --listen-peer-urls http://0.0.0.0:2380 --initial-advertise-peer-urls http://0.0.0.0:2380  --initial-cluster my-etcd-1<span style="color:#f92672">=</span>http://0.0.0.0:2380
-</code></pre></div><p>将ip为0.0.0.0可以理解为不限制连接机器（真正的生产不推荐这样设置）。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ ./etcd --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://0.0.0.0:2379 --listen-peer-urls http://0.0.0.0:2380 --initial-advertise-peer-urls http://0.0.0.0:2380  --initial-cluster my-etcd-1<span style="color:#f92672">=</span>http://0.0.0.0:2380
+</span></span></code></pre></div><p>将ip为0.0.0.0可以理解为不限制连接机器（真正的生产不推荐这样设置）。
 服务启动参数<code>--registry_address=xx.xx.xx.xx:2379</code>不能带<code>http://</code>。</p>
 <p>项目地址：<a href="https://github.com/yuedun/micro-service">https://github.com/yuedun/micro-service</a></p>
 
@@ -242,7 +242,7 @@ linux系统需要这样编译：<code>GOOS=linux go build -o service main.go</co
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

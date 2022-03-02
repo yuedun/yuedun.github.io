@@ -12,13 +12,13 @@
 <meta property="og:description" content="Assistance.belongTo(User)会报以下错误：sqlALTER TABLE assistance ADD CONSTRAINT assista" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5a06d5989f088c0683b93d26/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2017-11-11T10:48:56&#43;00:00" />
-<meta property="article:modified_time" content="2017-11-11T10:48:56&#43;00:00" />
+<meta property="article:published_time" content="2017-11-11T10:48:56+00:00" />
+<meta property="article:modified_time" content="2017-11-11T10:48:56+00:00" />
 
 
 		<meta itemprop="name" content="sequelize外键关联报错SequelizeDatabaseError: Cant write; duplicate key in table #sql-454_d">
-<meta itemprop="description" content="Assistance.belongTo(User)会报以下错误：sqlALTER TABLE assistance ADD CONSTRAINT assista"><meta itemprop="datePublished" content="2017-11-11T10:48:56&#43;00:00" />
-<meta itemprop="dateModified" content="2017-11-11T10:48:56&#43;00:00" />
+<meta itemprop="description" content="Assistance.belongTo(User)会报以下错误：sqlALTER TABLE assistance ADD CONSTRAINT assista"><meta itemprop="datePublished" content="2017-11-11T10:48:56+00:00" />
+<meta itemprop="dateModified" content="2017-11-11T10:48:56+00:00" />
 <meta itemprop="wordCount" content="77">
 <meta itemprop="keywords" content="nodejs,sequelize," />
 		
@@ -164,22 +164,22 @@
 </div>
 <div class="content post__content clearfix">
 			<p>Assistance.belongTo(User)会报以下错误：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>assistance<span style="color:#f92672">`</span> <span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#f92672">`</span>assistance_user_id_foreign_idx<span style="color:#f92672">`</span> <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>user_id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">REFERENCES</span> <span style="color:#f92672">`</span>users<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">NO</span> ACTION <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CASCADE</span>;
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Unhandled rejection SequelizeDatabaseError: Can<span style="color:#e6db74">&#39;t write; duplicate key in table &#39;</span><span style="color:#75715e">#sql-454_d&#39;</span>
-    at Query.formatError <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16<span style="color:#f92672">)</span>
-    at Query.connection.query <span style="color:#f92672">[</span>as onResult<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23<span style="color:#f92672">)</span>
-    at Query.Command.execute <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12<span style="color:#f92672">)</span>
-    at Connection.handlePacket <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28<span style="color:#f92672">)</span>
-    at PacketParser.onPacket <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16<span style="color:#f92672">)</span>
-    at PacketParser.executeStart <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14<span style="color:#f92672">)</span>
-    at Socket.&lt;anonymous&gt; <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29<span style="color:#f92672">)</span>
-    at emitOne <span style="color:#f92672">(</span>events.js:115:13<span style="color:#f92672">)</span>
-    at Socket.emit <span style="color:#f92672">(</span>events.js:210:7<span style="color:#f92672">)</span>
-    at addChunk <span style="color:#f92672">(</span>_stream_readable.js:264:12<span style="color:#f92672">)</span>
-    at readableAddChunk <span style="color:#f92672">(</span>_stream_readable.js:251:11<span style="color:#f92672">)</span>
-    at Socket.Readable.push <span style="color:#f92672">(</span>_stream_readable.js:209:10<span style="color:#f92672">)</span>
-    at TCP.onread <span style="color:#f92672">(</span>net.js:587:20<span style="color:#f92672">)</span>
-</code></pre></div><p>原因是会在Assistance表中自动添加外键约束，如果不需要外键约束则可以这样设置：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>assistance<span style="color:#f92672">`</span> <span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#f92672">`</span>assistance_user_id_foreign_idx<span style="color:#f92672">`</span> <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>user_id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">REFERENCES</span> <span style="color:#f92672">`</span>users<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">NO</span> ACTION <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CASCADE</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Unhandled rejection SequelizeDatabaseError: Can<span style="color:#e6db74">&#39;t write; duplicate key in table &#39;</span><span style="color:#75715e">#sql-454_d&#39;</span>
+</span></span><span style="display:flex;"><span>    at Query.formatError <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Query.connection.query <span style="color:#f92672">[</span>as onResult<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Query.Command.execute <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Connection.handlePacket <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at PacketParser.onPacket <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at PacketParser.executeStart <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Socket.&lt;anonymous&gt; <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at emitOne <span style="color:#f92672">(</span>events.js:115:13<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Socket.emit <span style="color:#f92672">(</span>events.js:210:7<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at addChunk <span style="color:#f92672">(</span>_stream_readable.js:264:12<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at readableAddChunk <span style="color:#f92672">(</span>_stream_readable.js:251:11<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Socket.Readable.push <span style="color:#f92672">(</span>_stream_readable.js:209:10<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at TCP.onread <span style="color:#f92672">(</span>net.js:587:20<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>原因是会在Assistance表中自动添加外键约束，如果不需要外键约束则可以这样设置：
 Assistance.belongsTo(User, { constraints: false });</p>
 
 		</div>
@@ -225,7 +225,7 @@ Assistance.belongsTo(User, { constraints: false });</p>
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

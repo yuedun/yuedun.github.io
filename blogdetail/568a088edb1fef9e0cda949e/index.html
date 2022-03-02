@@ -12,13 +12,13 @@
 <meta property="og:description" content="直接看代码：jsvar gulp = require(gulp)var webpack = require(gulp-webpack);var webpackC" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/568a088edb1fef9e0cda949e/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2016-01-04T05:52:14&#43;00:00" />
-<meta property="article:modified_time" content="2016-01-04T05:52:14&#43;00:00" />
+<meta property="article:published_time" content="2016-01-04T05:52:14+00:00" />
+<meta property="article:modified_time" content="2016-01-04T05:52:14+00:00" />
 
 
 		<meta itemprop="name" content="vue.js开发gulp监听文件变化自动编译">
-<meta itemprop="description" content="直接看代码：jsvar gulp = require(gulp)var webpack = require(gulp-webpack);var webpackC"><meta itemprop="datePublished" content="2016-01-04T05:52:14&#43;00:00" />
-<meta itemprop="dateModified" content="2016-01-04T05:52:14&#43;00:00" />
+<meta itemprop="description" content="直接看代码：jsvar gulp = require(gulp)var webpack = require(gulp-webpack);var webpackC"><meta itemprop="datePublished" content="2016-01-04T05:52:14+00:00" />
+<meta itemprop="dateModified" content="2016-01-04T05:52:14+00:00" />
 <meta itemprop="wordCount" content="132">
 <meta itemprop="keywords" content="vue,gulp,webpack," />
 		
@@ -164,61 +164,61 @@
 </div>
 <div class="content post__content clearfix">
 			<p>直接看代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">gulp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;gulp&#39;</span>)
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">webpack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;gulp-webpack&#34;</span>);
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">webpackConfig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;./webpack.config.js&#34;</span>);
-<span style="color:#75715e">// gulp.task(&#34;webpack&#34;, function(callback) {
-</span><span style="color:#75715e">//   var myConfig = Object.create(webpackConfig);
-</span><span style="color:#75715e">//   webpack(myConfig, function(err, stats) {
-</span><span style="color:#75715e">//           console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err))
-</span><span style="color:#75715e">//           console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats)
-</span><span style="color:#75715e">//         if(err) throw new Error(&#34;webpack&#34;, err);
-</span><span style="color:#75715e">//         callback();
-</span><span style="color:#75715e">//     });
-</span><span style="color:#75715e">// });
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/**
-</span><span style="color:#75715e"> * 编译时有错误提示
-</span><span style="color:#75715e"> */</span>
-<span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">task</span>(<span style="color:#e6db74">&#34;webpack&#34;</span>, <span style="color:#66d9ef">function</span>(){
-    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">src</span>(<span style="color:#e6db74">&#34;./app.js&#34;</span>)
-    .<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">webpack</span>(Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">webpackConfig</span>)))
-    .<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">dest</span>(<span style="color:#e6db74">&#34;./dist/&#34;</span>))
-});
-
-<span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">watch</span>(<span style="color:#e6db74">&#39;./views/*&#39;</span>, [<span style="color:#e6db74">&#39;webpack&#39;</span>]);
-</code></pre></div><p><code>webpack.config.js</code>配置</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">webpack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;webpack&#34;</span>);
-<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#75715e">//&#34;./app.js&#34;,
-</span><span style="color:#75715e"></span>        {
-            <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;./app.js&#34;</span>
-            <span style="color:#75715e">// vendor: [&#34;./javascripts/test&#34;]
-</span><span style="color:#75715e"></span>        },
-    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
-        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">__</span><span style="color:#a6e22e">dirname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/dist/&#34;</span>,
-        <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bundle.js&#34;</span>
-    },
-    <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
-        <span style="color:#a6e22e">loaders</span><span style="color:#f92672">:</span> [
-            {
-                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.scss$/</span>,
-                <span style="color:#a6e22e">loaders</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;style&#39;</span>, <span style="color:#e6db74">&#39;css&#39;</span>, <span style="color:#e6db74">&#39;sass&#39;</span>]
-            },
-            <span style="color:#75715e">//{ test: /\.css$/, loader: &#34;style!css&#34; },
-</span><span style="color:#75715e"></span>            { <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.vue$/</span>, <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vue-loader&#39;</span>},
-            { <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.(jpg|png|gif)$/</span>, <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;file-loader?name=images/[hash].[ext]&#34;</span>}
-        ]
-    },
-    <span style="color:#75715e">// devtool: &#39;#source-map&#39;,
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// plugins:[
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">//     new webpack.optimize.CommonsChunkPlugin({
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">//         name: &#34;vendor&#34;,//和上面配置的入口对应
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">//         filename: &#34;common.js&#34;//导出的文件的名称
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">//     })
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">// ]
-</span><span style="color:#75715e"></span>};
-</code></pre></div><p>不得不承认自己还是有很多不知道的配置，刚发表完本文就得知一种更高效的方式：直接用webpack自带的监听参数：&gt;webpack -w即可实现，并且编译速度更快，从几秒降到了毫秒。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">gulp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;gulp&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">webpack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;gulp-webpack&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">webpackConfig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;./webpack.config.js&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// gulp.task(&#34;webpack&#34;, function(callback) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   var myConfig = Object.create(webpackConfig);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//   webpack(myConfig, function(err, stats) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//           console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err))
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//           console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//         if(err) throw new Error(&#34;webpack&#34;, err);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//         callback();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//     });
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// });
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 编译时有错误提示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">task</span>(<span style="color:#e6db74">&#34;webpack&#34;</span>, <span style="color:#66d9ef">function</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">src</span>(<span style="color:#e6db74">&#34;./app.js&#34;</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">webpack</span>(Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">webpackConfig</span>)))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">dest</span>(<span style="color:#e6db74">&#34;./dist/&#34;</span>))
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">watch</span>(<span style="color:#e6db74">&#39;./views/*&#39;</span>, [<span style="color:#e6db74">&#39;webpack&#39;</span>]);
+</span></span></code></pre></div><p><code>webpack.config.js</code>配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">webpack</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;webpack&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#75715e">//&#34;./app.js&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">app</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;./app.js&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// vendor: [&#34;./javascripts/test&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">__dirname</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/dist/&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">filename</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bundle.js&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">module</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">loaders</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.scss$/</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">loaders</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;style&#39;</span>, <span style="color:#e6db74">&#39;css&#39;</span>, <span style="color:#e6db74">&#39;sass&#39;</span>]
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//{ test: /\.css$/, loader: &#34;style!css&#34; },
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            { <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.vue$/</span>, <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vue-loader&#39;</span>},
+</span></span><span style="display:flex;"><span>            { <span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> <span style="color:#e6db74">/\.(jpg|png|gif)$/</span>, <span style="color:#a6e22e">loader</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;file-loader?name=images/[hash].[ext]&#34;</span>}
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// devtool: &#39;#source-map&#39;,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// plugins:[
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//     new webpack.optimize.CommonsChunkPlugin({
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//         name: &#34;vendor&#34;,//和上面配置的入口对应
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//         filename: &#34;common.js&#34;//导出的文件的名称
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//     })
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// ]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><p>不得不承认自己还是有很多不知道的配置，刚发表完本文就得知一种更高效的方式：直接用webpack自带的监听参数：&gt;webpack -w即可实现，并且编译速度更快，从几秒降到了毫秒。</p>
 
 		</div>
 		<footer class="post__footer">
@@ -266,7 +266,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

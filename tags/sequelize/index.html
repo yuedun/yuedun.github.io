@@ -160,7 +160,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Assistance.belongTo(User)会报以下错误：
-ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&#39;t write; duplicate key in table &#39;#sql-454_d&#39; at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16) at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23) at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12) at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28) at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16) at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14) at Socket.&lt;anonymous&gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29) at emitOne (events.js:115:13) at Socket.emit (events.js:210:7) at addChunk (_stream_readable.js:264:12) at readableAddChunk (_stream_readable.js:251:11) at Socket.Readable.push (_stream_readable.js:209:10) at TCP.onread (net.
+ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&#39;t write; duplicate key in table &#39;#sql-454_d&#39;  at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16)  at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23)  at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12)  at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28)  at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16)  at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14)  at Socket.&lt;anonymous&gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29)  at emitOne (events.js:115:13)  at Socket.emit (events.js:210:7)  at addChunk (_stream_readable.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a06d5989f088c0683b93d26/">阅读全文…</a>
@@ -183,7 +183,7 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		从图片中的代码可以看出 let userRecord = await item.getUser();获取到的是Bluebird&lt;UserInstance | null&gt;类型，然后在下面获取对象属性的时候报错，错误信息是：
-[ts] Object is possibly 'null'.let userRecord: UserInstance | null说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
+[ts] Object is possibly &#39;null&#39;. let userRecord: UserInstance | null 说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
 	</div>
 </article>
 <article class="list__item post">
@@ -205,7 +205,7 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 		定义Model的时候有这样两个参数： underscored,underscoredAll,
  Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
  其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
-var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assistance&#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &#39;assistance&#39;, charset: &#39;utf8&#39;, collate: &#39;utf8_unicode_ci&#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
+var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;(  &#39;Assistance&#39;, {  title: Sequelize.STRING,  description: Sequelize.STRING,  fullName: Sequelize.STRING  }, {  underscored: true,  tableName: &#39;assistance&#39;,  charset: &#39;utf8&#39;,  collate: &#39;utf8_unicode_ci&#39;  } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/59eab23989faeadc30eac826/">阅读全文…</a>
@@ -228,7 +228,7 @@ var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assista
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
-User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to...  return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
+User.bulkCreate([  { username: &#39;barfooz&#39;, isAdmin: true },  { username: &#39;foo&#39;, isAdmin: true },  { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to...  return User.findAll(); }).then(users =&gt; {  console.log(users) // ... in order to get the array of user objects }) 
 	</div>
 </article>
 <article class="list__item post">
@@ -249,8 +249,8 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 	<div class="content list__excerpt post__content clearfix">
 		js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象  var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;：  delete objtest.prop; //或者  delete objtest[&#39;prop&#39;]; //还可以删除任意变量  var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
+var objtest = {   prop: &#39;delete me&#39;  };  //或者这么声明的对象  var objtest = new Array();  objtest[&#39;prop&#39;] = &#39;delete me&#39;;  //删除属性&#39;prop&#39;：  delete objtest.prop;  //或者  delete objtest[&#39;prop&#39;];  //还可以删除任意变量  var numb = 17;  delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { 	name: &#39;鸣人&#39;, 	age: 16, 	gender: &#39;男&#39;, 	friends: [{ 	name: &#39;小樱&#39;, 	age: 16, 	gender: &#39;女&#39;, 	friends: [{ 	name: &#39;井野&#39;, 	age: 16, 	gender: &#39;女&#39; 	}] 	}, 	{ 	name: &#39;佐助&#39;, 	age: 16, 	gender: &#39;男&#39; 	}] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
@@ -273,7 +273,7 @@ var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最基本的where条件：
-Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({ where: { status: &#39;inactive&#39; } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
+Post.findAll({  where: {  authorId: 2  } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({  where: {  authorId: 12,  status: active  } });  // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({  where: {  status: &#39;inactive&#39;  } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({  updatedAt: null, }, {  where: {  deletedAt: {  $ne: null  }  } });  // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
@@ -318,11 +318,11 @@ var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Se
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -375,6 +375,7 @@ var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Se
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -414,6 +415,7 @@ var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Se
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -503,7 +505,7 @@ var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Se
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.83.1" />
+	<meta name="generator" content="Hugo 0.93.0" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,6 +147,58 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/563823deaa0d5223f187dfa5/" rel="bookmark">
+			无插件实现动态瀑布流加载数据
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-03T03:02:54Z">2015-11-03 03:02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但是结果很不理想，waterfall的很多参数不管是什么用处，反正看着很头疼，最麻烦的是它会改变页面样式和布局，实在不想调整了，还是自己实现这个功能吧！
+首先看下面代码：
+var pageIndex = 2;  (function loadmore() {   //绑定滚动事件  $(window).bind(&#34;scroll&#34;, function() {   if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40) {   $(window).unbind(&#34;scroll&#34;); //到底后先移除滚动事件  $.get(&#34;/portal/getTopic?pageIndex=&#34; + pageIndex + &#34;&amp;amp;pageSize=3&#34;,  function(data) {   $(&#34;#container&#34;).append(data);   pageIndex++;   loadmore(); //数据加载成功重新绑定滚动事件  },  &#34;html&#34;);   };   });  })(); 没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。
+先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/563823deaa0d5223f187dfa5/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/563069efaa0d5223f187dfa4/" rel="bookmark">
+			检测网站中未使用的css样式
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-28T06:23:43Z">2015-10-28 06:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		网站的css样式文件在多次修改后会有很多样式废弃不再使用，使得维护起来困难，还可能出现重名样式，后面的覆盖掉前面的效果，所以有必要清除掉不再使用的样式。可以使用的工具很多，不过在使用了Dust-Me Selectors觉得足够了。
+https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/
+打开上面网址安装
+直接点击这个小扫把会检测当前页面没有使用的样式，不过这样的结果还不是我们想要的，因为当前页面没有使用不代表其他页面也没有使用。我们更需要的是找出整个网站中未使用的样式。
+选择第一项“Spider Sitemap”，就像是百度蜘蛛爬取整个网站数据一样。
+输入网址，本地网址和网络地址都可以检测，点击“Start”后很快就有结果了，如果页面较多会费时些。
+可以看到有橘黄色部分就是没有使用的样式，但是这也不能完全代表就是没有使用过，上面三个未使用的样式是我对于博客内容的图片和引用块使用的样式，因为本地的测试内容中的确没有使用这三个样式，但是线上的网站却使用了，遇到这种情况就需要仔细甄别了。
+再看一下扫描的页面日志
+基本的页面都有扫描过了。此时可以手动删除掉没有使用的样式，这个插件对于简单的网站够用了，但是大型网站就不准确了，当然有些其他工具还可以导出检测后的结果。有必要的可以去下载。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/562d9ca9c6ed32d312337025/" rel="bookmark">
 			linux下添加svn用户名密码
 			</a>
@@ -241,7 +293,7 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 		开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
 所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
 首先在uses.js文件中有一个函数
-//我是一个测试方法  router.get(&#34;/commeHere&#34;, function(req, res) { }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
+//我是一个测试方法  router.get(&#34;/commeHere&#34;, function(req, res) {  }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
 可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
 双击就可以跳转到对应的文件和行上。
 当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。
@@ -346,9 +398,9 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 6、其他途径：至少，您可以向工商部门投诉非法经营。前面已经说了，以我的判断全国这类停车场90没有营业执照，100没有收费许可证或者收费项目不包含停车费，注意这里的停车费是指交警扣车发生的，不是自愿停车发生的。如果你耗不起车辆被扣时间，也可以在交费后，拿票据向工商投诉非法经营和强制交易（你与停车场没有合同关系），如果没有票据或票据有瑕疵还可以向税务投诉，很多投诉都只要打个电话不会很难。
 第二篇 保险赔偿:事故责任认定复核 7月6日下午，交警通知我去拿事故责任认定书，交警以“对道路的交通动态注意不够，忽视安全”“违反《中华人民共和国道路交通安全法》第二十二条第一款”为由，认定我负次要责任，很是无语，中国法律中口袋罪很多，对执法者的限定很少，好在我有准备，写好复核申请，9号上午就交去支队事故科。事故科的人说会把受理通知和结果寄给我，正好要上山度假1个月，也就不去管它，期间木有任何关于交通事故的电话给我。
 道路交通事故认定复核申请书
-申请人：，男，19年月日生，住址：赣州市章贡区红旗大道**，身份证号：****，电话：****
+申请人：，男，19年月日生，住址：赣州市章贡区红旗大道**，身份证号：，电话：
 被申请人：赣州市公安局交通警察支队直属大队，地址：赣州市东郊路，电话：8123138
-第三人： 陈XX，女，19年月日生，住址：赣州市章贡区贸易广场西区* ，身份证号：***，电话：***
+第三人： 陈XX，女，19年月日生，住址：赣州市章贡区贸易广场西区* ，身份证号：，电话：
 申请人因为不服赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，申请复核。
 复核请求
 依法撤销赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，对本起交通事故重新作出责任认定，认定申请人不承担本次事故的责任。
@@ -387,79 +439,6 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5608dbb10adc9cf12635ebbb/" rel="bookmark">
-			MySQL查询当天0点，昨天
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-28T06:18:25Z">2015-09-28 06:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		今天是
-SELECT NOW();-- 2015-09-28 13:48:12 
-查询当天，格式为YYYY-MM-DD
-SELECT CURDATE();-- 2015-09-28
-查询当天，格式为YYYY-MM-DD HH:mm:ss
-SELECT NOW();-- 2015-09-28 13:42:00
-查询当天0点，格式为YYYY-MM-DD HH:mm:ss
-SELECT DATE_FORMAT(CURDATE(),&quot;%Y-%m-%d %H:%i:%s&quot;);-- 2015-09-28 00:00:00
-查询当天早上9点，格式为YYYY-MM-DD HH:mm:ss
-SELECT DATE_ADD(CURDATE(), INTERVAL 9 HOUR);-- 2015-09-28 09:00:00
-查询昨天，格式为YYYY-MM-DD
-SELECT DATE_SUB(CURDATE(),INTERVAL 1 DAY);-- 2015-09-27
-查询昨天早上9点
-SELECT DATE_ADD(DATE_SUB(CURDATE(),INTERVAL 1 DAY),INTERVAL 9 HOUR);-- 2015-09-27 09:00:00
-DATE_ADD(date,INTERVAL expr type) 参数是合法的日期表达式。expr 参数是您希望增加的时间。
-type 参数可以是下列值：
-Type 值
-MICROSECOND
-SECOND
-MINUTE
-HOUR
-DAY
-WEEK
-MONTH
-QUARTER
-YEAR
-SECOND_MICROSECOND
-MINUTE_MICROSECOND
-MINUTE_SECOND
-HOUR_MICROSECOND
-HOUR_SECOND
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5608dbb10adc9cf12635ebbb/">阅读全文…</a>
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/55fe24c7079f8670036cbeb6/" rel="bookmark">
-			关于写博客的一些奇怪事情
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-20T03:15:19Z">2015-09-20 03:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		我是做技术的，平时也有喜欢写写博客，但是由于自己作文水平有限，又比较懒，所以很少写大篇幅的内容，也很少为了写一篇文章而到处收集资料，毕竟不是专业写手，就是为了记录一下工作遇到的问题，虽然写的时候本着一颗能帮助他人的心，希望自己写的东西有助于其他人参考，但是通过平时查找资料的观察发现，有时在看别人文章的容总是很难读懂，或者写的不够详细，然后又找了很多资料后终于搞懂了。事后一想，还是自己写一篇更易懂的博客吧！
-听说优秀的博客都要有配图
-然后花了点时间把自己理解的整理出来，很有成就感的发表出去，可谁又能想到其实自己也可能重蹈覆辙，走了前人的路，在别人看来同样晦涩难懂。造成这种情况的原因其实与作者有关与读者也有关，作者不能全方位的表达出思想，读者又不能百分之百的理解作者的意图，然后就形成了后浪推前浪的补充风波，或许知识就是这样不断翻新传播的
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -483,11 +462,11 @@ HOUR_SECOND
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -540,6 +519,7 @@ HOUR_SECOND
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -579,6 +559,7 @@ HOUR_SECOND
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -668,7 +649,7 @@ HOUR_SECOND
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

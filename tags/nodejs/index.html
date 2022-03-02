@@ -164,12 +164,12 @@
 这叫用“鞭”驱动“驴”拉磨
 在程序里，程序停止在那不动，你点击一个按钮，它就有反应了，过一会，又没反应了，你再点一下，它又继续运行。
 这叫用“事件”驱动“程序”运行
-0. 基本概念 窗口/组件事件消息(队列)事件响应(服务处理程序)调度算法进程/线程非阻塞I/O程序的执行可以看成对CPU,内存,IO资源一次占用现代操作系统支持多任务,可以分时复用上述资源. 1. 为什么采用事件驱动模型? 事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：
-首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）；当目标发送改变（发布），观察者（订阅者）就可以接收到改变；观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。 2. 代码执行流程 在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。 在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。
+0. 基本概念 窗口/组件 事件 消息(队列) 事件响应(服务处理程序) 调度算法 进程/线程 非阻塞I/O 程序的执行可以看成对CPU,内存,IO资源一次占用 现代操作系统支持多任务,可以分时复用上述资源.  1. 为什么采用事件驱动模型? 事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：
+首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）； 当目标发送改变（发布），观察者（订阅者）就可以接收到改变； 观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。  2. 代码执行流程 在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。 在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。
 3. 事件驱动模型 在UI编程中，常常要对鼠标点击进行相应，首先如何获得鼠标点击呢？
 方式一：创建一个线程，该线程一直循环检测是否有鼠标点击，那么这个方式有以下几个缺点：
-CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘；如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。 方式二：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：
-有一个事件（消息）队列；鼠标按下时，往这个队列中增加一个点击事件（消息）；有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等；事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图: 4. 事件驱动处理库 selectpollepolllibev 消息驱动 事件驱动机制跟消息驱动机制相比
+CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？ 如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘； 如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。  方式二：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：
+有一个事件（消息）队列； 鼠标按下时，往这个队列中增加一个点击事件（消息）； 有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等； 事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图:  4. 事件驱动处理库 select poll epoll libev  消息驱动 事件驱动机制跟消息驱动机制相比
 消息驱动和事件驱动很类似，都是先有一个事件，然后产生一个相应的消息，再把消息放入消息队列，由需要的项目获取。他们的区别是消息是谁产生的
 消息驱动：鼠标管自己点击不需要和系统有过多的交互，消息由系统（第三方）循环检测，来捕获并放入消息队列。消息对于点击事件来说是被动产生的，高内聚。
 事件驱动：鼠标点击产生点击事件后要向系统发送消息“我点击了”的消息，消息是主动产生的。再发送到消息队列中。
@@ -202,7 +202,7 @@ CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还�
 	<div class="content list__excerpt post__content clearfix">
 		nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
 集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
-// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;); async function bootstrap() { try { const root = join(__dirname, &#39;../&#39;); let envFile = join(root, &#39;.env&#39;) dotenv.config({ &#34;path&#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.
+// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;);  async function bootstrap() {  try {  const root = join(__dirname, &#39;../&#39;);  let envFile = join(root, &#39;.env&#39;)  dotenv.config({ &#34;path&#34;: envFile })  const {  APOLLO_APPID,  APOLLO_ENV,  APOLLO_HOST,  APOLLO_NAMESPACE,  APOLLO_PORT,  APOLLO_TOKEN,  APOLLO_ClUSTER  } = process.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ffffe3d3f518207e7235250/">阅读全文…</a>
@@ -224,7 +224,7 @@ CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还�
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  { // Applications part  &#34;apps&#34; : [{ &#34;name&#34; : &#34;API&#34;, &#34;script&#34; : &#34;app.js&#34;, &#34;env&#34;: { &#34;COMMON_VARIABLE&#34;: &#34;true&#34; }, // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34; } },{ &#34;name&#34; : &#34;WEB&#34;, &#34;script&#34; : &#34;web.js&#34; }], // 部署部分  // Here you describe each environment  &#34;deploy&#34; : { &#34;production&#34; : { &#34;user&#34; : &#34;node&#34;, // 多主机配置  &#34;host&#34; : [&#34;212.
+		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  {  // Applications part  &#34;apps&#34; : [{  &#34;name&#34; : &#34;API&#34;,  &#34;script&#34; : &#34;app.js&#34;,  &#34;env&#34;: {  &#34;COMMON_VARIABLE&#34;: &#34;true&#34;  },  // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &#34;env_production&#34; : {  &#34;NODE_ENV&#34;: &#34;production&#34;  }  },{  &#34;name&#34; : &#34;WEB&#34;,  &#34;script&#34; : &#34;web.js&#34;  }],  // 部署部分  // Here you describe each environment  &#34;deploy&#34; : {  &#34;production&#34; : {  &#34;user&#34; : &#34;node&#34;,  // 多主机配置  &#34;host&#34; : [&#34;212.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e85a563c9109f0f909b52bf/">阅读全文…</a>
@@ -293,7 +293,7 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		main.ts
-import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;; async function bootstrap() { const app = await NestFactory.create&lt;NestExpressApplication&gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;  app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&#39;views&#39;, { ext:&#39;njk&#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&gt; { }); } bootstrap(); app.
+import { NestFactory } from &#39;@nestjs/core&#39;; import {  ExpressAdapter,  NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;;  async function bootstrap() {  const app = await NestFactory.create&lt;NestExpressApplication&gt;(  AppModule,  new ExpressAdapter(),  );  app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;  app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&#39;views&#39;, {  ext:&#39;njk&#39;,  autoescape: true,  express: app,  watch: true,  });  await app.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5cc807d6effb223a816d9114/">阅读全文…</a>
@@ -362,8 +362,7 @@ win：set NODE_ENV=development&amp;&amp; node app.js
  pm2 start pm2.json &ndash;env production
  --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
 pm2.json
-{ &#34;apps&#34; : [{ &#34;name&#34;: &#34;issue&#34;, &#34;cwd&#34;: &#34;dest&#34;, &#34;script&#34; : &#34;bin/www.js&#34;, &#34;instances&#34; : &#34;2&#34;, &#34;exec_mode&#34; : &#34;cluster&#34;, &#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 }, &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34;, &#34;PORT&#34;: 3003 }, &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;, &#34;merge_logs&#34;: true }] } 如果不加参数则默认使用
-&#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
+{  &#34;apps&#34; : [{  &#34;name&#34;: &#34;issue&#34;,  &#34;cwd&#34;: &#34;dest&#34;,  &#34;script&#34; : &#34;bin/www.js&#34;,  &#34;instances&#34; : &#34;2&#34;,  &#34;exec_mode&#34; : &#34;cluster&#34;,  &#34;env&#34;: {  &#34;NODE_ENV&#34;: &#34;development&#34;,  &#34;PORT&#34;: 3002  },  &#34;env_production&#34; : {  &#34;NODE_ENV&#34;: &#34;production&#34;,  &#34;PORT&#34;: 3003  },  &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;,  &#34;merge_logs&#34;: true  }] } 如果不加参数则默认使用
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
@@ -413,11 +412,11 @@ pm2.json
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -470,6 +469,7 @@ pm2.json
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -509,6 +509,7 @@ pm2.json
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -598,7 +599,7 @@ pm2.json
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

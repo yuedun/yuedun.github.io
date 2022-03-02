@@ -159,8 +159,8 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &#34;warn&#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.
+		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;  const opts = { 	// autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &#34;warn&#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
@@ -205,7 +205,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
-User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to...  return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
+User.bulkCreate([  { username: &#39;barfooz&#39;, isAdmin: true },  { username: &#39;foo&#39;, isAdmin: true },  { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to...  return User.findAll(); }).then(users =&gt; {  console.log(users) // ... in order to get the array of user objects }) 
 	</div>
 </article>
 <article class="list__item post">
@@ -225,7 +225,7 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		windows下npm install安装依赖的时候出现下面的错误：
-npm ERR! Windows_NT 6.1.7601npm ERR! argv &quot;D:\\Program Files\\nodejs\\node.exe&quot; &quot;D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&quot; &quot;install&quot; &quot;yog2@1.0.0&quot;npm ERR! node v4.8.0npm ERR! npm v2.15.11npm ERR! path C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925npm ERR! code EPERMnpm ERR! errno -4048npm ERR! syscall renamenpm ERR! Error: EPERM: operation not permitted, rename 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925' -&gt; 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz'npm ERR! at Error (native)npm ERR! { [Error: EPERM: operation not permitted, rename 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925' -&gt; 'C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz']npm ERR! errno: -4048,npm ERR!
+npm ERR! Windows_NT 6.1.7601 npm ERR! argv &#34;D:\\Program Files\\nodejs\\node.exe&#34; &#34;D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&#34; &#34;install&#34; &#34;yog2@1.0.0&#34; npm ERR! node v4.8.0 npm ERR! npm v2.15.11 npm ERR! path C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925 npm ERR! code EPERM npm ERR! errno -4048 npm ERR! syscall rename npm ERR! Error: EPERM: operation not permitted, rename &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925&#39; -&gt; &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz&#39; npm ERR! at Error (native) npm ERR! { [Error: EPERM: operation not permitted, rename &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925&#39; -&gt; &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz&#39;] npm ERR! errno: -4048, npm ERR!
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/59532a3233c3c869639761db/">阅读全文…</a>
@@ -272,8 +272,7 @@ npm ERR! Windows_NT 6.1.7601npm ERR! argv &quot;D:\\Program Files\\nodejs\\node
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
-package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&#34;获取用户名：&#34;, user.name) } func main() { user := new(User) user.name=&#34;张三&#34; user.age=26 user.createdAt=time.Now() fmt.Println(&#34;user.createdAt&#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&#34;2006-01-02 15:04:05&#34;) fmt.Println(&#34;userpj.createdAt&#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
-# command-line-arguments.
+package main  import &#34;fmt&#34; import &#34;time&#34;  type User struct {  name string  age int  createdAt time.Time }  type UserPojo struct {  User  createdAt string }  func (user *User) getName(){  fmt.Println(&#34;获取用户名：&#34;, user.name) }  func main() {  user := new(User)  user.name=&#34;张三&#34;  user.age=26  user.createdAt=time.Now()  fmt.Println(&#34;user.createdAt&#34;,user.createdAt)   userpj := new(UserPojo)  userpj.User = *user  userpj.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5944b81d9d957900957feff6/">阅读全文…</a>
@@ -295,7 +294,7 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		export var CommentSchema: Schema = new Schema({ Id: String, content: String, status: { type: Boolean, default: true } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
+		export var CommentSchema: Schema = new Schema({  Id: String,  content: String,  status: {  type: Boolean,  default: true  } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
 	</div>
 </article>
 <article class="list__item post">
@@ -361,8 +360,8 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 查询操作 点击某个collection后的默认画面：
 查询界面很简单，关键是怎么写查询语句？
 点击文本可以查看所有数据字段，查询title为“测试”文档：
-array('title' =&gt; '测试')模糊查询：
-array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引号，中间使用=&gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
+array( &#39;title&#39; =&gt; &#39;测试&#39; ) 模糊查询：
+array( &#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;) ) 字段名要加引号，中间使用=&gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
 修改操作 动作中选择“modify”
 再查询一下
 基本操作就是这样，删除操作不用说也应该能知道怎么做了。
@@ -392,11 +391,11 @@ array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -449,6 +448,7 @@ array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引�
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -488,6 +488,7 @@ array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引�
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -577,7 +578,7 @@ array('title'=&gt; new MongoRegex(&quot;/测试/i&quot;))字段名要加引�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

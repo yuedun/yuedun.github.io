@@ -14,8 +14,8 @@
       
       <guid>https://www.yuedun.wang/blogdetail/5eec6fd5e8775d3b7f2ee79c/</guid>
       <description>在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&amp;ldquo;someKey&amp;rdquo;]=&amp;ldquo;someValue&amp;rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
-//构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 	condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) log.Println(condition) if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), condition).Decode(&amp;amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
-search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
+//构造一个查询结构体 search := User{ 	ID: id, 	Name: name, 	Age: age, 	} //构造一个条件变量 	condition := bson.M{} 	//将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) 	if err != nil { 	return user, err 	} 	//将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) 	log.Println(condition) 	if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), 	condition).Decode(&amp;amp;user); err != nil { 	return user, err 	} 以上基本就实现了动态条件查询的效果，其中：
+search := User{ 	ID: id, 	Name: name, 	Age: age, 	} search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
     </item>
     
     <item>
@@ -52,9 +52,9 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
       
       <guid>https://www.yuedun.wang/blogdetail/5e87e9ac75da9268a3e5993c/</guid>
       <description>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
-db.createUser( {user: &amp;quot;hp_website&amp;quot;,pwd: &amp;quot;xxxxxx&amp;quot;,roles: [ { role: &amp;quot;userAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbAdmin&amp;quot;, db: &amp;quot;website&amp;quot; },{ role: &amp;quot;dbOwner&amp;quot;, db: &amp;quot;website&amp;quot; } ]})退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示
+db.createUser( {user: &amp;#34;hp_website&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示
 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
-use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。</description>
+use website  db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。</description>
     </item>
     
     <item>
@@ -64,7 +64,7 @@ use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxx
       
       <guid>https://www.yuedun.wang/blogdetail/5bb08746f846d21847dc2aef/</guid>
       <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &amp;#39;hopefully-img.yuedun.wang&amp;#39;) db.getCollection(&amp;#39;blogs&amp;#39;).save(item) print(&amp;#34;&amp;gt;&amp;gt;&amp;#34;, item.content); }) </description>
+db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){  item.content = item.content.replace(/hopefully.qiniudn.com/g, &amp;#39;hopefully-img.yuedun.wang&amp;#39;)  db.getCollection(&amp;#39;blogs&amp;#39;).save(item) 	print(&amp;#34;&amp;gt;&amp;gt;&amp;#34;, item.content); }) </description>
     </item>
     
     <item>
@@ -74,7 +74,7 @@ db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniu
       
       <guid>https://www.yuedun.wang/blogdetail/5b90f19bb1f3aa6dab14313d/</guid>
       <description>使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&amp;#39;mongoose&amp;#39;); mongoose.connect(&amp;#39;mongodb://localhost/my_database&amp;#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const mongoose = require(&amp;#39;mongoose&amp;#39;);  mongoose.connect(&amp;#39;mongodb://localhost/my_database&amp;#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
 const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = conn.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
 const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = mongoose.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 不能工作 </description>
     </item>
@@ -109,8 +109,8 @@ mongodb导入数据 启动：
       <pubDate>Fri, 18 Aug 2017 08:18:36 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5996a2dc9205bd72e7290ebb/</guid>
-      <description>`open()` is deprecated in mongoose &amp;gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-clientDb.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials.修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &amp;#34;warn&amp;#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.</description>
+      <description>`open()` is deprecated in mongoose &amp;gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;  const opts = { 	// autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &amp;#34;warn&amp;#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.</description>
     </item>
     
     <item>
@@ -119,7 +119,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
       <pubDate>Sat, 10 Jun 2017 04:44:55 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/593b6b37b787b03177cfff16/</guid>
-      <description>export var CommentSchema: Schema = new Schema({ Id: String, content: String, status: { type: Boolean, default: true } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:&#39;created_at&#39;, updatedAt:&#39;updated_at&#39;}}</description>
+      <description>export var CommentSchema: Schema = new Schema({  Id: String,  content: String,  status: {  type: Boolean,  default: true  } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:&#39;created_at&#39;, updatedAt:&#39;updated_at&#39;}}</description>
     </item>
     
     <item>
@@ -133,8 +133,8 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 查询操作 点击某个collection后的默认画面：
 查询界面很简单，关键是怎么写查询语句？
 点击文本可以查看所有数据字段，查询title为“测试”文档：
-array(&#39;title&#39; =&amp;gt; &#39;测试&#39;)模糊查询：
-array(&#39;title&#39;=&amp;gt; new MongoRegex(&amp;quot;/测试/i&amp;quot;))字段名要加引号，中间使用=&amp;gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
+array( &amp;#39;title&amp;#39; =&amp;gt; &amp;#39;测试&amp;#39; ) 模糊查询：
+array( &amp;#39;title&amp;#39;=&amp;gt; new MongoRegex(&amp;#34;/测试/i&amp;#34;) ) 字段名要加引号，中间使用=&amp;gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
 修改操作 动作中选择“modify”
 再查询一下
 基本操作就是这样，删除操作不用说也应该能知道怎么做了。</description>
@@ -149,12 +149,12 @@ array(&#39;title&#39;=&amp;gt; new MongoRegex(&amp;quot;/测试/i&amp;quot;))
       <description>需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
  以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
 mongodb中查询
-select * from articles where content like &#39;%Nodejs%&#39;;db.articles.find( { content: /Nodejs/i } )Article.find({ content: /Nodejs/i}, function (err, docs) {});这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
-var a=&amp;quot;Nodejs&amp;quot; ;Article.find({ content: /a/i}, function (err, docs) {});此时会把&amp;quot;a&amp;quot;当做要查询的关键字而不是&amp;quot;Nodejs&amp;quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
-var text = &#39;Nodejs&#39;;//动态传入的变量Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {});$options选项值：
+select * from articles where content like &amp;#39;%Nodejs%&amp;#39;; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
+var a=&amp;#34;Nodejs&amp;#34; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&amp;quot;a&amp;quot;当做要查询的关键字而不是&amp;quot;Nodejs&amp;quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
+var text = &amp;#39;Nodejs&amp;#39;;//动态传入的变量 Article.find({ content: { $regex: text, $options: &amp;#39;i&amp;#39; }}, function (err, docs) {}); $options选项值：
  i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串  其实$regex就是正则表达式的写法
 查找数组中的字段：
-contacts:{ [ { address: &amp;#34;address1&amp;#34;, name: &amp;#34;张三&amp;#34; }, { address: &amp;#34;address2&amp;#34;, name: &amp;#34;李四&amp;#34; }, .</description>
+contacts:{  [  {  address: &amp;#34;address1&amp;#34;,  name: &amp;#34;张三&amp;#34;  },  {  address: &amp;#34;address2&amp;#34;,  name: &amp;#34;李四&amp;#34;  },  .</description>
     </item>
     
     <item>
@@ -165,9 +165,9 @@ contacts:{ [ { address: &amp;#34;address1&amp;#34;, name: &amp;#34;张三&amp;#3
       <guid>https://www.yuedun.wang/blogdetail/5819b2b7c4d0a377509b8f1a/</guid>
       <description>mongdb查询某一字段sum值  需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
  mongodb中查询
-select sum(pv) from articles;db.articles.aggregate([{$group:{_id:null,pv:{$sum:&amp;quot;$pv&amp;quot;}}}]);结果：{ &amp;quot;_id&amp;quot; : null, &amp;quot;pv&amp;quot; : 2 }select sum(pv) from articles where createDate &amp;lt;= &#39;2016-10-20&#39;;db.articles.aggregate([{$match:{createDate:{$lte:&amp;quot;2016-10-20&amp;quot;}}},{$group:{_id:null,pv:{$sum:&amp;quot;$pv&amp;quot;}}}]);结果：{ &amp;quot;_id&amp;quot; : null, &amp;quot;pv&amp;quot; : 9 }select sum(pv) from articles where category = &#39;Nodejs&#39;;db.articles.aggregate([{$match:{category:&amp;quot;Nodejs&amp;quot;}},{$group:{_id:null,pv:{$sum:&amp;quot;$pv&amp;quot;}}}]);结果：{ &amp;quot;_id&amp;quot; : null, &amp;quot;pv&amp;quot; : 7 }需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
+select sum(pv) from articles; db.articles.aggregate([{$group:{_id:null,pv:{$sum:&amp;#34;$pv&amp;#34;}}}]); 结果：{ &amp;#34;_id&amp;#34; : null, &amp;#34;pv&amp;#34; : 2 } select sum(pv) from articles where createDate &amp;lt;= &amp;#39;2016-10-20&amp;#39;; db.articles.aggregate([{$match:{createDate:{$lte:&amp;#34;2016-10-20&amp;#34;}}},{$group:{_id:null,pv:{$sum:&amp;#34;$pv&amp;#34;}}}]); 结果：{ &amp;#34;_id&amp;#34; : null, &amp;#34;pv&amp;#34; : 9 } select sum(pv) from articles where category = &amp;#39;Nodejs&amp;#39;; db.articles.aggregate([{$match:{category:&amp;#34;Nodejs&amp;#34;}},{$group:{_id:null,pv:{$sum:&amp;#34;$pv&amp;#34;}}}]); 结果：{ &amp;#34;_id&amp;#34; : null, &amp;#34;pv&amp;#34; : 7 } 需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
 mongoose实现方式，与上面sql的顺序对应：
-Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) {console.log(&amp;quot;1&amp;quot;, doc);});Article.</description>
+Article.aggregate({ $group: { _id: null, pvCount: { $sum: &amp;#39;$pv&amp;#39; }}}, function(err, doc) { console.log(&amp;#34;1&amp;#34;, doc); }); Article.</description>
     </item>
     
     <item>
@@ -178,7 +178,7 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, fun
       <guid>https://www.yuedun.wang/blogdetail/5449dac894f76294f5e60fe1/</guid>
       <description>前段时间写了《BAE上连接mongodb每隔十多小时就不能连接的问题(一)》之后暂时的解决了连不上的问题，每隔十小时重启一次，但是这个方法却没有彻底解决问题，偶尔还会出现三四小时就连不上，实在搞不懂问题到底出在哪，到底是bae的mongodb的问题还是mongoose中间件的问题，现象是有做open操作，但是却没有open事件发出，那么我想是不是mongoose存在bug，翻看了源码也没看出来个所以然，不过大概是觉得要重新打开需要保证连接已经关闭的，那么干脆在监听到error事件时就将状态直接改为disconnected，反正是要调用db.close()方法进行关闭连接的，可能close()方法不好使，没有完全关闭，如果我手动将状态设为disconnected，close方法中也会判断是否是这个状态，如果是就直接返回，省的多走其他步骤了。不过这样一来就不会有close事件发出了，根据我所写代码的逻辑，那就不会调用open()方法了，但实际情况确实程序可以正常运行，说明已经重连上了，原来在代码中添加了这个属性：
 Js代码 :
-var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: true }, user: username, pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
+var opts = { db: {  native_parser: true }, server: {  poolSize:4,  auto_reconnect: true }, user: username,  pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
 不过由此看来，auto_reconect这个参数要起作用必须是在连接断开的情况下，说明close()方法有时候并没有完全断开连接。</description>
     </item>
     
@@ -190,8 +190,7 @@ var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: 
       <guid>https://www.yuedun.wang/blogdetail/5440a294fea3dae97beee4f9/</guid>
       <description>随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。
 首先看下mongoose API，find方法源码：
-Model.find = function find (conditions, fields, options, callback){ if(&amp;#34;function&amp;#34;==typeof conditions){ callback = conditions; conditions ={}; fields = null; options = null; }elseif(&amp;#34;function&amp;#34;==typeof fields){ callback = fields; fields = null; options = null; }elseif(&amp;#34;function&amp;#34;==typeof options){ callback = options; options = null; } // get the raw mongodb collection object  var mq =newQuery({}, options,this,this.collection); mq.select(fields); if(this.schema.discriminatorMapping &amp;amp;amp;&amp;amp;amp; mq._selectedInclusively()){ mq.select(this.schema.options.discriminatorKey); } return mq.find(conditions, callback); }; 其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：
-router.get(&amp;#34;/admin/blogList&amp;#34;, function(req, res) { var user = req.</description>
+Model.find = function find (conditions, fields, options, callback){ if(&amp;#34;function&amp;#34;==typeof conditions){  callback = conditions;  conditions ={};  fields = null;  options = null; }elseif(&amp;#34;function&amp;#34;==typeof fields){  callback = fields;  fields = null;  options = null;  }elseif(&amp;#34;function&amp;#34;==typeof options){  callback = options;  options = null;  }  // get the raw mongodb collection object  var mq =newQuery({}, options,this,this.collection);  mq.select(fields);  if(this.</description>
     </item>
     
   </channel>

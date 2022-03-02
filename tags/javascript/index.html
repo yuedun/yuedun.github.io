@@ -160,7 +160,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		不依赖jquery也可以实现图片预览功能：
-&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; &lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; //图片放大 	document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.style.cursor = &#34;pointer&#34;; }); document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.addEventListener(&#34;click&#34;, function () { imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); }) }) function imgShow(outerdiv, bigimg, _this) { var src = _this.
+&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; 	&lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; 	//图片放大 	document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; 	document.querySelectorAll(&#34;img&#34;).forEach(function (item) { 	item.style.cursor = &#34;pointer&#34;; 	});  	document.querySelectorAll(&#34;img&#34;).forEach(function (item) { 	item.addEventListener(&#34;click&#34;, function () { 	imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); 	}) 	})  	function imgShow(outerdiv, bigimg, _this) { 	var src = _this.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5f20f0c05981482973150396/">阅读全文…</a>
@@ -219,10 +219,10 @@
 	<div class="content list__excerpt post__content clearfix">
 		完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
 typescript编译配置
-{ &#34;compilerOptions&#34;: { &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  }, &#34;include&#34;: [ &#34;*/**/*.ts&#34; ], &#34;exclude&#34;: [ //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
+{  &#34;compilerOptions&#34;: {  &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  },  &#34;include&#34;: [  &#34;*/**/*.ts&#34;  ],  &#34;exclude&#34;: [  //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
 选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
 vscode编译typescript配置
-{ // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.json format  &#34;version&#34;: &#34;0.
+{  // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/58243e338fa26c04fd124ee6/">阅读全文…</a>
@@ -252,7 +252,7 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
 在这里我们只介绍 util.inherits 的用法，示例如下：
-var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;; this.base = 1991; this.sayHello = function() { console.log(&#34;Hello &#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#34;sub&#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.
+var util = require(&#34;util&#34;);  function Base() {  this.name = &#34;base&#34;;  this.base = 1991;   this.sayHello = function() {  console.log(&#34;Hello &#34; + this.name);  }; }  Base.prototype.showName = function() {  console.log(this.name);  };  function Sub() {  this.name = &#34;sub&#34;; }  util.inherits(Sub, Base);  var objBase = new Base(); objBase.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5451f72e0eb53ef723e47bfe/">阅读全文…</a>
@@ -277,11 +277,11 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/gorm-model-find-first/">Gorm Model Find First Where等查询函数的区别</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/chrome-extensions-hook-ajax/">Chrome插件hook Ajax</a></li>
 		</ul>
 	</div>
 </div>
@@ -334,6 +334,7 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chanel/" title="chanel">chanel</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
@@ -373,6 +374,7 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
@@ -462,7 +464,7 @@ var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

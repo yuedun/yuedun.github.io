@@ -12,13 +12,13 @@
 <meta property="og:description" content="vue在子组件中直接修改父组件传递下来的数据会报错：Avoid mutating a prop directly since the value will be" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5f24e2665edb9b37630af3bb/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2020-08-01T03:32:54&#43;00:00" />
-<meta property="article:modified_time" content="2020-08-01T03:32:54&#43;00:00" />
+<meta property="article:published_time" content="2020-08-01T03:32:54+00:00" />
+<meta property="article:modified_time" content="2020-08-01T03:32:54+00:00" />
 
 
 		<meta itemprop="name" content="vue子组件修改父组件的数据">
-<meta itemprop="description" content="vue在子组件中直接修改父组件传递下来的数据会报错：Avoid mutating a prop directly since the value will be"><meta itemprop="datePublished" content="2020-08-01T03:32:54&#43;00:00" />
-<meta itemprop="dateModified" content="2020-08-01T03:32:54&#43;00:00" />
+<meta itemprop="description" content="vue在子组件中直接修改父组件传递下来的数据会报错：Avoid mutating a prop directly since the value will be"><meta itemprop="datePublished" content="2020-08-01T03:32:54+00:00" />
+<meta itemprop="dateModified" content="2020-08-01T03:32:54+00:00" />
 <meta itemprop="wordCount" content="57">
 <meta itemprop="keywords" content="vue,组件," />
 		
@@ -168,9 +168,9 @@
 <p>原因是vue子组件不能直接修改父组件的数据，可以使用this.$emit发送通知，让父组件来修改。
 示例代码：</p>
 <p>子组件：</p>
-<pre><code>this.$emit(&quot;changeData&quot;, &quot;要修改的数据&quot;);
+<pre tabindex="0"><code>this.$emit(&#34;changeData&#34;, &#34;要修改的数据&#34;);
 </code></pre><p>父组件：</p>
-<pre><code>&lt;mycomponent :json=&quot;JsonData&quot; @changeData=&quot;changeData&quot;&gt;&lt;/mycomponent&gt;
+<pre tabindex="0"><code>&lt;mycomponent :json=&#34;JsonData&#34; @changeData=&#34;changeData&#34;&gt;&lt;/mycomponent&gt;
 
 data(){
     return {
@@ -227,7 +227,7 @@ methods:{
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

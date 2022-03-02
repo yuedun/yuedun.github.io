@@ -12,13 +12,13 @@
 <meta property="og:description" content="一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2018-03-19T03:27:57&#43;00:00" />
-<meta property="article:modified_time" content="2018-03-19T03:27:57&#43;00:00" />
+<meta property="article:published_time" content="2018-03-19T03:27:57+00:00" />
+<meta property="article:modified_time" content="2018-03-19T03:27:57+00:00" />
 
 
 		<meta itemprop="name" content="Golang－ import 导入包的语法">
-<meta itemprop="description" content="一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下"><meta itemprop="datePublished" content="2018-03-19T03:27:57&#43;00:00" />
-<meta itemprop="dateModified" content="2018-03-19T03:27:57&#43;00:00" />
+<meta itemprop="description" content="一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：import(	fmt)然后在代码里面可以通过如下"><meta itemprop="datePublished" content="2018-03-19T03:27:57+00:00" />
+<meta itemprop="dateModified" content="2018-03-19T03:27:57+00:00" />
 <meta itemprop="wordCount" content="57">
 <meta itemprop="keywords" content="golang," />
 		
@@ -165,46 +165,46 @@
 <div class="content post__content clearfix">
 			<p>一、 包的导入语法
 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span>(
-	<span style="color:#e6db74">&#34;fmt&#34;</span>
-)
-</code></pre></div><p>然后在代码里面可以通过如下的方式调用</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
-</code></pre></div><p>上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>(
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>然后在代码里面可以通过如下的方式调用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><p>上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：</p>
 <p><strong>相对路径</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span>   <span style="color:#e6db74">&#34;./model&#34;</span>  <span style="color:#75715e">//当前文件同一目录的model目录，但是不建议这种方式import`
-</span></code></pre></div><p><strong>绝对路径</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span>   <span style="color:#e6db74">&#34;shorturl/model&#34;</span>  <span style="color:#75715e">//加载GOPATH/src/shorturl/model模块`
-</span></code></pre></div><p>上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>   <span style="color:#e6db74">&#34;./model&#34;</span>  <span style="color:#75715e">//当前文件同一目录的model目录，但是不建议这种方式import`
+</span></span></span></code></pre></div><p><strong>绝对路径</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>   <span style="color:#e6db74">&#34;shorturl/model&#34;</span>  <span style="color:#75715e">//加载GOPATH/src/shorturl/model模块`
+</span></span></span></code></pre></div><p>上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。</p>
 <ol>
 <li><strong>点操作</strong></li>
 </ol>
 <p>有时候会看到如下的方式导入包</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span>( 
-    . <span style="color:#e6db74">&#34;fmt&#34;</span> 
-)
-</code></pre></div><p>这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
-</code></pre></div><p>可以省略的写成</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>( 
+</span></span><span style="display:flex;"><span>    . <span style="color:#e6db74">&#34;fmt&#34;</span> 
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><p>可以省略的写成</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><ol start="2">
 <li><strong>别名操作</strong></li>
 </ol>
 <p>别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span>(
-  <span style="color:#a6e22e">f</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
-)
-</code></pre></div><p>别名操作调用包函数时前缀变成了重命名的前缀，即</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">f</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>别名操作调用包函数时前缀变成了重命名的前缀，即</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><ol start="3">
 <li><strong>_操作</strong></li>
 </ol>
 <p>这个操作经常是让很多人费解的一个操作符，请看下面这个import</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> ( 
-  <span style="color:#e6db74">&#34;database/sql&#34;</span> 
-  <span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;github.com/ziutek/mymysql/godrv&#34;</span> 
-)
-</code></pre></div><p>_操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> ( 
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;database/sql&#34;</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;github.com/ziutek/mymysql/godrv&#34;</span> 
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>_操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。</p>
 <p>二、 包的导入过程说明
 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：</p>
 <p><img src="https://hopefully-img.yuedun.wang/20140511222515968.jpg" alt="go包导入过程" title="go包导入过程"></p>
@@ -251,7 +251,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

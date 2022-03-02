@@ -15,10 +15,10 @@
       <guid>https://www.yuedun.wang/blogdetail/5f6ae2145edb9b37630b34c1/</guid>
       <description>Nuxt.js 2.13+可以扫描并自动导入您的组件，不再需要在该script部分中手动导入它们！
 nuxt.config配置：
-export default { components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
+export default {  components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
 组件目录：
-components/ ComponentFoo.vue ComponentBar.vue 使用
-&amp;lt;template&amp;gt; &amp;lt;ComponentFoo /&amp;gt; &amp;lt;component-bar /&amp;gt; &amp;lt;/template&amp;gt; 注意：如果使用nuxt 2.10&amp;hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。</description>
+components/  ComponentFoo.vue  ComponentBar.vue 使用
+&amp;lt;template&amp;gt;  &amp;lt;ComponentFoo /&amp;gt;  &amp;lt;component-bar /&amp;gt; &amp;lt;/template&amp;gt; 注意：如果使用nuxt 2.10&amp;hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。</description>
     </item>
     
     <item>
@@ -30,8 +30,8 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
       <description>vue在子组件中直接修改父组件传递下来的数据会报错： Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop&#39;s value. Prop being mutated: &amp;quot;json&amp;quot;
 原因是vue子组件不能直接修改父组件的数据，可以使用this.$emit发送通知，让父组件来修改。 示例代码：
 子组件：
-this.$emit(&amp;quot;changeData&amp;quot;, &amp;quot;要修改的数据&amp;quot;);父组件：
-&amp;lt;mycomponent :json=&amp;quot;JsonData&amp;quot; @changeData=&amp;quot;changeData&amp;quot;&amp;gt;&amp;lt;/mycomponent&amp;gt;data(){return {JsonData:{}}}methods:{changeData(newData){this.JsonData = newData;}}子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。</description>
+this.$emit(&amp;#34;changeData&amp;#34;, &amp;#34;要修改的数据&amp;#34;); 父组件：
+&amp;lt;mycomponent :json=&amp;#34;JsonData&amp;#34; @changeData=&amp;#34;changeData&amp;#34;&amp;gt;&amp;lt;/mycomponent&amp;gt; data(){ return { JsonData:{} } } methods:{ changeData(newData){ this.JsonData = newData; } } 子组件发送changeData事件， 父组件绑定changeData事件并接受数据，赋值给父组件的JsonData属性，子组件的值也会改变。从而实现子组件修改父组件的属性值。</description>
     </item>
     
     <item>
@@ -65,8 +65,8 @@ this.$emit(&amp;quot;changeData&amp;quot;, &amp;quot;要修改的数据&amp;quot
       <pubDate>Fri, 16 Feb 2018 13:22:49 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5a86db29c3700db1c9ae7c55/</guid>
-      <description>bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &amp;lt;Root&amp;gt;) 解决方案：与entry属性平级添加
-resolve: { alias: { &amp;#39;vue$&amp;#39;: &amp;#39;vue/dist/vue.esm.js&amp;#39; //该路径为node_modules下的vue目录  } } // 需要编译器 new Vue({ template: &amp;#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&amp;#39; }) // 不需要编译器 new Vue({ render (h) { return h(&amp;#39;div&amp;#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释</description>
+      <description>bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.  (found in &amp;lt;Root&amp;gt;) 解决方案：与entry属性平级添加
+resolve: {  alias: {  &amp;#39;vue$&amp;#39;: &amp;#39;vue/dist/vue.esm.js&amp;#39; 	//该路径为node_modules下的vue目录  }  } // 需要编译器 new Vue({  template: &amp;#39;&amp;lt;div&amp;gt;{{ hi }}&amp;lt;/div&amp;gt;&amp;#39; })  // 不需要编译器 new Vue({  render (h) {  return h(&amp;#39;div&amp;#39;, this.</description>
     </item>
     
     <item>
@@ -91,7 +91,7 @@ http://www.mydomain/?#!/index
       
       <guid>https://www.yuedun.wang/blogdetail/56a8db6abf2e89202c146370/</guid>
       <description>Vue.js可以传递$event对象
-&amp;lt;body id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li v-on:click=&amp;#34;say(&amp;#39;hello!&amp;#39;, $event)&amp;#34;&amp;gt;点击当前行文本&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;li2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;li3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;script&amp;gt; new Vue({ el: &amp;#39;#app&amp;#39;, data: { message: &amp;#39;Hello Vue.js!&amp;#39; }, methods: { say: function(msg, event) { //获取点击对象 	var el = event.currentTarget; alert(&amp;#34;当前对象的内容：&amp;#34;+el.innerHTML); } } }) &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; 函数调用处传递$event
+&amp;lt;body id=&amp;#34;app&amp;#34;&amp;gt;  &amp;lt;ul&amp;gt; 	&amp;lt;li v-on:click=&amp;#34;say(&amp;#39;hello!&amp;#39;, $event)&amp;#34;&amp;gt;点击当前行文本&amp;lt;/li&amp;gt; 	&amp;lt;li&amp;gt;li2&amp;lt;/li&amp;gt; 	&amp;lt;li&amp;gt;li3&amp;lt;/li&amp;gt;  &amp;lt;/ul&amp;gt;  &amp;lt;script&amp;gt;  new Vue({ 	el: &amp;#39;#app&amp;#39;, 	data: { 	message: &amp;#39;Hello Vue.js!&amp;#39; 	}, 	methods: { 	say: function(msg, event) { 	//获取点击对象 	var el = event.currentTarget; 	alert(&amp;#34;当前对象的内容：&amp;#34;+el.innerHTML); 	} 	}  })  &amp;lt;/script&amp;gt;  &amp;lt;/body&amp;gt; 函数调用处传递$event
 v-on:click=&amp;quot;say(&#39;hello!&#39;, $event)&amp;quot;
 函数中获取到的event.currentTarget对象就是当前元素
 在线示例
@@ -125,8 +125,8 @@ v-on:click=&amp;quot;say(&#39;hello!&#39;, $event)&amp;quot;
       
       <guid>https://www.yuedun.wang/blogdetail/568a088edb1fef9e0cda949e/</guid>
       <description>直接看代码：
-var gulp = require(&amp;#39;gulp&amp;#39;) var webpack = require(&amp;#34;gulp-webpack&amp;#34;); var webpackConfig = require(&amp;#34;./webpack.config.js&amp;#34;); // gulp.task(&amp;#34;webpack&amp;#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;err:&amp;#34;+JSON.stringify(err)) // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;stats:&amp;#34;+stats) // if(err) throw new Error(&amp;#34;webpack&amp;#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&amp;#34;webpack&amp;#34;, function(){ return gulp.src(&amp;#34;./app.js&amp;#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&amp;#34;./dist/&amp;#34;)) }); gulp.watch(&amp;#39;./views/*&amp;#39;, [&amp;#39;webpack&amp;#39;]); webpack.config.js配置
-var webpack = require(&amp;#34;webpack&amp;#34;); module.exports = { entry: //&amp;#34;./app.js&amp;#34;,  { app:&amp;#34;./app.js&amp;#34; // vendor: [&amp;#34;.</description>
+var gulp = require(&amp;#39;gulp&amp;#39;) var webpack = require(&amp;#34;gulp-webpack&amp;#34;); var webpackConfig = require(&amp;#34;./webpack.config.js&amp;#34;); // gulp.task(&amp;#34;webpack&amp;#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;err:&amp;#34;+JSON.stringify(err)) // console.log(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;stats:&amp;#34;+stats) // if(err) throw new Error(&amp;#34;webpack&amp;#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&amp;#34;webpack&amp;#34;, function(){  return gulp.src(&amp;#34;./app.js&amp;#34;)  .pipe(webpack(Object.create(webpackConfig)))  .pipe(gulp.dest(&amp;#34;./dist/&amp;#34;)) });  gulp.watch(&amp;#39;./views/*&amp;#39;, [&amp;#39;webpack&amp;#39;]); webpack.config.js配置
+var webpack = require(&amp;#34;webpack&amp;#34;); module.exports = {  entry: //&amp;#34;.</description>
     </item>
     
   </channel>

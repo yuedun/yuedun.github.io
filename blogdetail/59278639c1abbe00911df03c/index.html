@@ -12,13 +12,13 @@
 <meta property="og:description" content="原生的go推荐目录是├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/59278639c1abbe00911df03c/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2017-05-25T15:34:49&#43;00:00" />
-<meta property="article:modified_time" content="2017-05-25T15:34:49&#43;00:00" />
+<meta property="article:published_time" content="2017-05-25T15:34:49+00:00" />
+<meta property="article:modified_time" content="2017-05-25T15:34:49+00:00" />
 
 
 		<meta itemprop="name" content="基于beego框架的go项目目录结构">
-<meta itemprop="description" content="原生的go推荐目录是├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装"><meta itemprop="datePublished" content="2017-05-25T15:34:49&#43;00:00" />
-<meta itemprop="dateModified" content="2017-05-25T15:34:49&#43;00:00" />
+<meta itemprop="description" content="原生的go推荐目录是├─bin├─pkg├─srcbin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装"><meta itemprop="datePublished" content="2017-05-25T15:34:49+00:00" />
+<meta itemprop="dateModified" content="2017-05-25T15:34:49+00:00" />
 <meta itemprop="wordCount" content="11">
 <meta itemprop="keywords" content="golang," />
 		
@@ -164,15 +164,15 @@
 </div>
 <div class="content post__content clearfix">
 			<p>原生的go推荐目录是</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">├─bin
-├─pkg
-├─src
-</code></pre></div><p>bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">.src<span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>├─project1
-├─project2
-├─project3
-</code></pre></div><p>所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>├─bin
+</span></span><span style="display:flex;"><span>├─pkg
+</span></span><span style="display:flex;"><span>├─src
+</span></span></code></pre></div><p>bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>.src<span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>├─project1
+</span></span><span style="display:flex;"><span>├─project2
+</span></span><span style="display:flex;"><span>├─project3
+</span></span></code></pre></div><p>所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。</p>
 <p>但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。</p>
 
 		</div>
@@ -215,7 +215,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

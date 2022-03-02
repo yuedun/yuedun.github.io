@@ -12,13 +12,13 @@
 <meta property="og:description" content="## mongdb查询某一字段sum值&gt; 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计**" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/5819b2b7c4d0a377509b8f1a/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2016-11-02T09:32:39&#43;00:00" />
-<meta property="article:modified_time" content="2016-11-02T09:32:39&#43;00:00" />
+<meta property="article:published_time" content="2016-11-02T09:32:39+00:00" />
+<meta property="article:modified_time" content="2016-11-02T09:32:39+00:00" />
 
 
 		<meta itemprop="name" content="Mongodb和mongoose聚合查询">
-<meta itemprop="description" content="## mongdb查询某一字段sum值&gt; 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计**"><meta itemprop="datePublished" content="2016-11-02T09:32:39&#43;00:00" />
-<meta itemprop="dateModified" content="2016-11-02T09:32:39&#43;00:00" />
+<meta itemprop="description" content="## mongdb查询某一字段sum值&gt; 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计**"><meta itemprop="datePublished" content="2016-11-02T09:32:39+00:00" />
+<meta itemprop="dateModified" content="2016-11-02T09:32:39+00:00" />
 <meta itemprop="wordCount" content="115">
 <meta itemprop="keywords" content="mongodb,mongoose," />
 		
@@ -172,33 +172,31 @@
 <p>需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计</p>
 </blockquote>
 <p><strong>mongodb中查询</strong></p>
-<pre><code>select sum(pv) from articles;
-db.articles.aggregate([{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);
-结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 2 }
+<pre tabindex="0"><code>select sum(pv) from articles;
+db.articles.aggregate([{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 2 }
 
-select sum(pv) from articles where createDate &lt;= '2016-10-20';
-db.articles.aggregate([{$match:{createDate:{$lte:&quot;2016-10-20&quot;}}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);
-结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 9 }
+select sum(pv) from articles where createDate &lt;= &#39;2016-10-20&#39;;
+db.articles.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 9 }
 
-select sum(pv) from articles where category = 'Nodejs';
-db.articles.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null,pv:{$sum:&quot;$pv&quot;}}}]);
-结果：{ &quot;_id&quot; : null, &quot;pv&quot; : 7 }
-
+select sum(pv) from articles where category = &#39;Nodejs&#39;;
+db.articles.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 7 }
 </code></pre><p><em>需要注意<code>$match</code>和<code>$group</code>的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）</em></p>
 <p><strong>mongoose实现方式，与上面sql的顺序对应：</strong></p>
-<pre><code>Article.aggregate({ $group: { _id: null, pvCount: { $sum: '$pv' }}}, function(err, doc) {
-    console.log(&quot;1&quot;, doc);
+<pre tabindex="0"><code>Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) {
+    console.log(&#34;1&#34;, doc);
 });
-Article.aggregate([{$match:{createDate:{$lte:&quot;2016-10-20&quot;}}},{$group:{_id:null, pvCount:{$sum:&quot;$pv&quot;}}}], function(err, doc) {
-    console.log(&quot;2&quot;, doc);
+Article.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) {
+    console.log(&#34;2&#34;, doc);
 });
-Article.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null, pvCount:{$sum:&quot;$pv&quot;}}}], function(err, doc) {
-    console.log(&quot;3&quot;, doc);
+Article.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) {
+    console.log(&#34;3&#34;, doc);
 });
 1 [ { _id: null, pv: 25 } ]
 2 [ { _id: null, pv: 9 } ]
 3 [ { _id: null, pv: 7 } ]
-
 </code></pre><p>参考文档：</p>
 <p><a href="https://docs.mongodb.com/manual/aggregation/">https://docs.mongodb.com/manual/aggregation/</a></p>
 <p><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/#aggregation-expression-operators">https://docs.mongodb.com/manual/reference/operator/aggregation/#aggregation-expression-operators</a></p>
@@ -246,7 +244,7 @@ Article.aggregate([{$match:{category:&quot;Nodejs&quot;}},{$group:{_id:null, pvC
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

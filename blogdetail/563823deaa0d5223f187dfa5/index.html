@@ -12,13 +12,13 @@
 <meta property="og:description" content="以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/563823deaa0d5223f187dfa5/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2015-11-03T03:02:54&#43;00:00" />
-<meta property="article:modified_time" content="2015-11-03T03:02:54&#43;00:00" />
+<meta property="article:published_time" content="2015-11-03T03:02:54+00:00" />
+<meta property="article:modified_time" content="2015-11-03T03:02:54+00:00" />
 
 
 		<meta itemprop="name" content="无插件实现动态瀑布流加载数据">
-<meta itemprop="description" content="以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但"><meta itemprop="datePublished" content="2015-11-03T03:02:54&#43;00:00" />
-<meta itemprop="dateModified" content="2015-11-03T03:02:54&#43;00:00" />
+<meta itemprop="description" content="以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但"><meta itemprop="datePublished" content="2015-11-03T03:02:54+00:00" />
+<meta itemprop="dateModified" content="2015-11-03T03:02:54+00:00" />
 <meta itemprop="wordCount" content="54">
 <meta itemprop="keywords" content="" />
 		
@@ -165,34 +165,33 @@
 <div class="content post__content clearfix">
 			<p>以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但是结果很不理想，waterfall的很多参数不管是什么用处，反正看着很头疼，最麻烦的是它会改变页面样式和布局，实在不想调整了，还是自己实现这个功能吧！</p>
 <p>首先看下面代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-
-(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">loadmore</span>() {
-
-    <span style="color:#75715e">//绑定滚动事件  
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">bind</span>(<span style="color:#e6db74">&#34;scroll&#34;</span>,  <span style="color:#66d9ef">function</span>() {
-
-        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">scrollTop</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">height</span>() <span style="color:#f92672">+</span> <span style="color:#ae81ff">40</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">height</span>() <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>;<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>; <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">scrollTop</span>() <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">40</span>) {
-
-            <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">unbind</span>(<span style="color:#e6db74">&#34;scroll&#34;</span>); <span style="color:#75715e">//到底后先移除滚动事件  
-</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/portal/getTopic?pageIndex=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&amp;amp;pageSize=3&#34;</span>,  
-            <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
-
-                <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#container&#34;</span>).<span style="color:#a6e22e">append</span>(<span style="color:#a6e22e">data</span>);
-
-                <span style="color:#a6e22e">pageIndex</span><span style="color:#f92672">++</span>;
-
-                <span style="color:#a6e22e">loadmore</span>(); <span style="color:#75715e">//数据加载成功重新绑定滚动事件  
-</span><span style="color:#75715e"></span>            },  
-            <span style="color:#e6db74">&#34;html&#34;</span>);
-
-        };
-
-    });
-
-})();
-
-</code></pre></div><p>没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">loadmore</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//绑定滚动事件  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">bind</span>(<span style="color:#e6db74">&#34;scroll&#34;</span>,  <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">scrollTop</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">height</span>() <span style="color:#f92672">+</span> <span style="color:#ae81ff">40</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">height</span>() <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>;<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>; <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">scrollTop</span>() <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">40</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">unbind</span>(<span style="color:#e6db74">&#34;scroll&#34;</span>); <span style="color:#75715e">//到底后先移除滚动事件  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/portal/getTopic?pageIndex=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&amp;amp;pageSize=3&#34;</span>,  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#container&#34;</span>).<span style="color:#a6e22e">append</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">pageIndex</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">loadmore</span>(); <span style="color:#75715e">//数据加载成功重新绑定滚动事件  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            },  
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;html&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><p>没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。</p>
 <p>先来说明如何判断页面是否滚动到最底部，<code>$(this).scrollTop()</code>用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是<code>$(this).scrollTop() + $(window).height()=$(document).height()</code>，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么<code>$(this).scrollTop() + $(window).height()</code>就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有<code>&amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40</code>是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。</p>
 <p>已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，<code>$(window).unbind(&quot;scroll&quot;);</code>等数据添加到页面以后再重新绑定滚动事件。</p>
 
@@ -225,7 +224,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

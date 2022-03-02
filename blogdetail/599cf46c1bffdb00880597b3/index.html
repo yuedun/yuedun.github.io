@@ -12,13 +12,13 @@
 <meta property="og:description" content="Unhandled rejection CastError: Cast to ObjectId failed for value catalog at path" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.yuedun.wang/blogdetail/599cf46c1bffdb00880597b3/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2017-08-23T03:20:12&#43;00:00" />
-<meta property="article:modified_time" content="2017-08-23T03:20:12&#43;00:00" />
+<meta property="article:published_time" content="2017-08-23T03:20:12+00:00" />
+<meta property="article:modified_time" content="2017-08-23T03:20:12+00:00" />
 
 
 		<meta itemprop="name" content="Unhandled rejection CastError: Cast to ObjectId failed for value catalog at path _id for model Blog">
-<meta itemprop="description" content="Unhandled rejection CastError: Cast to ObjectId failed for value catalog at path"><meta itemprop="datePublished" content="2017-08-23T03:20:12&#43;00:00" />
-<meta itemprop="dateModified" content="2017-08-23T03:20:12&#43;00:00" />
+<meta itemprop="description" content="Unhandled rejection CastError: Cast to ObjectId failed for value catalog at path"><meta itemprop="datePublished" content="2017-08-23T03:20:12+00:00" />
+<meta itemprop="dateModified" content="2017-08-23T03:20:12+00:00" />
 <meta itemprop="wordCount" content="139">
 <meta itemprop="keywords" content="nodejs," />
 		
@@ -163,7 +163,7 @@
 	</div>
 </div>
 <div class="content post__content clearfix">
-			<pre><code>Unhandled rejection CastError: Cast to ObjectId failed for value &quot;catalog&quot; at path &quot;_id&quot; for model &quot;Blog&quot;
+			<pre tabindex="0"><code>Unhandled rejection CastError: Cast to ObjectId failed for value &#34;catalog&#34; at path &#34;_id&#34; for model &#34;Blog&#34;
     at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11)
     at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13)
     at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15)
@@ -204,7 +204,7 @@ From previous event:
     at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\mongodb\lib\collection.js:1417:5
     at handleCallback (e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\mongodb\lib\utils.js:120:56)
 </code></pre><p>乍看之下有用的只有第一行，意思是将<code>catalog</code>赋值给<code>_id</code>,但是这么一大片都是mongoose相关的错误，找不到在哪爆出来的错误，再仔细看一下，其实还是指出了具体错误代码：</p>
-<pre><code>    at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10)
+<pre tabindex="0"><code>    at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10)
     at e:\workspace\yuedun_ts\app.ts:53:14
 </code></pre><p>最后找出了答案，<code>model.findById(id)</code>,id的值为<code>catalog</code>导致的</p>
 
@@ -248,7 +248,7 @@ From previous event:
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2021 月盾.
+			&copy; 2022 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
