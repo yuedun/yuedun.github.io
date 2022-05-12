@@ -147,6 +147,30 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ffffe3d3f518207e7235250/" rel="bookmark">
+			nestjs中使用携程Apollo配置中心
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-14T08:18:05Z">2021-01-14 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
+集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
+// main.ts import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import { MyLogger } from &#39;./libs/mylog.service&#39;; import { join } from &#39;path&#39;; const Apollo = require(&#39;node-apollo&#39;); const dotenv = require(&#39;dotenv&#39;);  async function bootstrap() {  try {  const root = join(__dirname, &#39;../&#39;);  let envFile = join(root, &#39;.env&#39;)  dotenv.config({ &#34;path&#34;: envFile })  const {  APOLLO_APPID,  APOLLO_ENV,  APOLLO_HOST,  APOLLO_NAMESPACE,  APOLLO_PORT,  APOLLO_TOKEN,  APOLLO_ClUSTER  } = process.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ffffe3d3f518207e7235250/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5ff7d7cc3f518207e72349ed/" rel="bookmark">
 			svelte history路由刷新后404
 			</a>
@@ -374,30 +398,6 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
  page = await browser.newPage();   // 模拟3g网络  let cdp = await page.target().createCDPSession();  await cdp.send(&#39;Network.emulateNetworkConditions&#39;, {  &#39;offline&#39;: false,  &#39;downloadThroughput&#39;: 600 * 1024,//(bytes/sec) 3G最高600K/s 4G 最高10M/s  &#39;uploadThroughput&#39;: 600 * 1024,//(bytes/sec)  &#39;latency&#39;: 0  });  await page.setCacheEnabled(false);  await page.goto(url); 
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5fa0f8e55edb9b37630b65f7/" rel="bookmark">
-			postman使用技巧
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-03T06:29:57Z">2020-11-03 06:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		postman是开发人员必备的接口测试工具，虽然经常使用，但是并不会使用到所有功能，除了简单的接口测试外，它还有很多实用的功能，如果充分利用起来，能使我们的工作事半功倍。
- 环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例  环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
-环境变量配置
-环境变量使用
-环境变量切换
-捕获请求和cookie 能够直接将浏览器中的请求和cookie同步到postman，省去手动复制请求接口和cookie到postman中。 同时，对于需要登录后使用的接口，postman可以直接使用浏览器的登录状态，而不必复制cookie。 举例： 收藏接口与分享接口 将自己保存的接口分享与他人，直接拿来即可使用。 如果安装了Chrome插件，则可以直接的浏览器中打开链接。使用客户端需要使用import来导入。 批量测试 保存的多个接口批量测试。 编写文档和示例 对于团队协作很有用，接口交流利器。不仅有了请求参数，添加一个example还可以看到接口返回参数。 
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -421,11 +421,11 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
 		</ul>
 	</div>
 </div>
@@ -435,6 +435,9 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">golang</a>
+			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/linux/">linux</a>
 			</li>

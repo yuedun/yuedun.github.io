@@ -6,7 +6,17 @@
     <description>Recent content in 2022s on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 18 Feb 2022 16:23:26 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/2022/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 May 2022 21:46:13 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/2022/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go http响应乱码</title>
+      <link>https://www.yuedun.wang/2022/05/http-response-garbled/</link>
+      <pubDate>Thu, 12 May 2022 21:46:13 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2022/05/http-response-garbled/</guid>
+      <description>golang请求接口返回的数据乱码，原因之一是请求头设置了&amp;quot;Accept-Encoding&amp;quot;: &amp;quot;gzip, deflate, br&amp;quot;，那么如果服务器支持的话响应的数据就会经过gzip，deflate，br等方式的压缩，解决方式是对数据解压，或者可以不设置接收方式，即&amp;quot;Accept-Encoding&amp;quot;: &amp;quot;&amp;quot;
+import &amp;#34;github.com/andybalholm/brotli&amp;#34; import &amp;#34;compress/flate&amp;#34; import &amp;#34;compress/gzip&amp;#34; // 检测返回的body是否经过压缩，并返回解压的内容 func contentDecoding(res *http.Response) (bodyReader io.Reader, err error) { 	switch res.Header.Get(&amp;#34;Content-Encoding&amp;#34;) { 	case &amp;#34;gzip&amp;#34;: 	bodyReader, err = gzip.NewReader(res.Body) 	case &amp;#34;deflate&amp;#34;: 	bodyReader = flate.NewReader(res.Body) 	case &amp;#34;br&amp;#34;: 	bodyReader = brotli.NewReader(res.Body) 	default: 	bodyReader = res.Body 	} 	return } </description>
+    </item>
+    
     <item>
       <title>chrome开发者工具显示接口完整路径</title>
       <link>https://www.yuedun.wang/2022/02/chrome-devtool-show-all-path/</link>

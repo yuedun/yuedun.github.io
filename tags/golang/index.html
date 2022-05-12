@@ -146,6 +146,26 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2022/05/http-response-garbled/" rel="bookmark">
+			go http响应乱码
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-05-12T21:46:13&#43;08:00">2022-05-12 21:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">golang</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		golang请求接口返回的数据乱码，原因之一是请求头设置了&quot;Accept-Encoding&quot;: &quot;gzip, deflate, br&quot;，那么如果服务器支持的话响应的数据就会经过gzip，deflate，br等方式的压缩，解决方式是对数据解压，或者可以不设置接收方式，即&quot;Accept-Encoding&quot;: &quot;&quot;
+import &#34;github.com/andybalholm/brotli&#34; import &#34;compress/flate&#34; import &#34;compress/gzip&#34; // 检测返回的body是否经过压缩，并返回解压的内容 func contentDecoding(res *http.Response) (bodyReader io.Reader, err error) { 	switch res.Header.Get(&#34;Content-Encoding&#34;) { 	case &#34;gzip&#34;: 	bodyReader, err = gzip.NewReader(res.Body) 	case &#34;deflate&#34;: 	bodyReader = flate.NewReader(res.Body) 	case &#34;br&#34;: 	bodyReader = brotli.NewReader(res.Body) 	default: 	bodyReader = res.Body 	} 	return } 
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2021/07/gorm-model-find-first/" rel="bookmark">
 			Gorm Model Find First Where等查询函数的区别
 			</a>
@@ -375,33 +395,6 @@ str, err := req.String() if err != nil {  t.Fatal(err) } fmt.Println(str) 以上
 		<a class="list__footer-readmore btn" href="/blogdetail/5e216204567cde49c49187f1/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5c70f2074a7b7e6cd8086a1f/" rel="bookmark">
-			部署golang到服务器
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-23T07:11:03Z">2019-02-23 07:11</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		说起将开发好的程序部署到服务上，常用的有两种方式：
- 本地编译打包，上传到服务器 git push到远程仓库，在服务器上拉取（编译-打包）  无论以怎样的方式发布，都只有熟悉流程才能得心应手。今天我要说的是golang的部署流程。
-如果是在公司内，自然有专人负责发布事宜，也有公司暂无运维人员，这时还是由开发人员负责服务器发布工作，当然，CI/CD这类工具一般也没有搭建起来。但这并不影响我们快速发布。 得益于go的编译速度，整个发布过程可能也就2分钟，接下来说明一下我个人的发布流程:
- 在项目目录下执行go打包命令  GOOS=linux GOARCH=amd64 go build 由于是要部署到Linux服务器上，所以加上GOOS=linux GOARCH=amd64就可以打包出对应系统的二进制可执行文件。可以将该命令写成脚本文件。
- 推送代码到git仓库，这一步并不是必须，之所以需要这一步，是因为go只打包*.go文件，并不会打包静态文件，所以还需要把相关静态文件推送的git仓库以便拉取。
-  上传打包好的二进制可执行文件到服务器的项目目录下。为什么是项目目录？因为还有静态文件需要使用，所以服务器上也要有同样的项目结构。可借助一些工具来上传，我使用了rz命令来上传。
-  git pull代码，主要是拉取静态文件。
-  重启应用。
-  整个过程比较耗时的操作是上传文件和推拉代码，打包和重启应用反而很快，基本是两三秒完成。 golang相对于其他语言，在服务，器上不需要安装运行时，不像Java和nodejs都需要安装正确的运行时版本，go只需要把打包好的二进制可执行文件扔上去就可以执行。
-	</div>
-</article>
 
 </main>
 
@@ -425,11 +418,11 @@ str, err := req.String() if err != nil {  t.Fatal(err) } fmt.Println(str) 以上
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/dianjia/">为什么夜间电费只收半价？</a></li>
 		</ul>
 	</div>
 </div>
@@ -439,6 +432,9 @@ str, err := req.String() if err != nil {  t.Fatal(err) } fmt.Println(str) 以上
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/golang/">golang</a>
+			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/linux/">linux</a>
 			</li>
