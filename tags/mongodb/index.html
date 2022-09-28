@@ -160,8 +160,8 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&ldquo;someKey&rdquo;]=&ldquo;someValue&rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
-//构造一个查询结构体 search := User{ 	ID: id, 	Name: name, 	Age: age, 	} //构造一个条件变量 	condition := bson.M{} 	//将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) 	if err != nil { 	return user, err 	} 	//将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;condition) 	log.Println(condition) 	if err = this.mongo.Collection(&#34;user&#34;).FindOne(context.TODO(), 	condition).Decode(&amp;user); err != nil { 	return user, err 	} 以上基本就实现了动态条件查询的效果，其中：
-search := User{ 	ID: id, 	Name: name, 	Age: age, 	} search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
+//构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 bson.Unmarshal(userbyte, &amp;condition) log.Println(condition) if err = this.mongo.Collection(&#34;user&#34;).FindOne(context.TODO(), condition).Decode(&amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
+search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
 	</div>
 </article>
 <article class="list__item post">
@@ -233,7 +233,7 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
 		使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
 db.createUser( {user: &#34;hp_website&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示
 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
-use website  db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。
+use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。
 	</div>
 </article>
 <article class="list__item post">
@@ -253,7 +253,7 @@ use website  db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,role
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){  item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;)  db.getCollection(&#39;blogs&#39;).save(item) 	print(&#34;&gt;&gt;&#34;, item.content); }) 
+db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;) db.getCollection(&#39;blogs&#39;).save(item) print(&#34;&gt;&gt;&#34;, item.content); }) 
 	</div>
 </article>
 <article class="list__item post">
@@ -273,7 +273,7 @@ db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&#39;mongoose&#39;);  mongoose.connect(&#39;mongodb://localhost/my_database&#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const mongoose = require(&#39;mongoose&#39;); mongoose.connect(&#39;mongodb://localhost/my_database&#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
 const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = conn.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
 const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = mongoose.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 不能工作 
 	</div>
@@ -296,20 +296,21 @@ const conn = mongoose.createConnection(&#39;your connection string&#39;); const 
 	<div class="content list__excerpt post__content clearfix">
 		修改terminal apt-get update更新软件源，安装zsh，设置默认terminal为zsh，chsh -s /usr/bin/zsh。非root用户需要在root权限下修改/etc/passwd文件才能实现。
 安装git
- apt-get install git
- nginx设置：
- sudo /etc/init.d/nginx restart # or start, stop
- 或
- sudo service nginx restart # or start, stop
- 有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
+apt-get install git
+nginx设置：
+sudo /etc/init.d/nginx restart # or start, stop
+或
+sudo service nginx restart # or start, stop
+有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
 目录/etc/nginx/sites-available/下增加文件配置反向代理，并软链接到/etc/nginx/sites-enabled/下
 mongodb导入数据 启动：
- /usr/local/mongodb/bin/mongod &ndash;dbpath=/usr/local/mongodb/data &ndash;logpath=/usr/local/mongodb/logs &ndash;logappend &ndash;auth &ndash;fork
- 如需外网客户端连接加参数--bind_ip_all
+/usr/local/mongodb/bin/mongod &ndash;dbpath=/usr/local/mongodb/data &ndash;logpath=/usr/local/mongodb/logs &ndash;logappend &ndash;auth &ndash;fork
+如需外网客户端连接加参数--bind_ip_all
 导入单个collection
- ./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
- 或导入整个目录
- ./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.
+./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
+或导入整个目录
+./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.bson/xxxx
+没有指定-h参数会报错：Failed: error connecting to db server: no reachable servers 阿里云上-h参数需要内网ip，localhost不行。
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5b21fc996699964267f5e168/">阅读全文…</a>
@@ -332,7 +333,7 @@ mongodb导入数据 启动：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;  const opts = { 	// autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &#34;warn&#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true // reconnectTries: 30,//尝试重连，默认30次 // reconnectInterval: 1000, //重连间隔，默认1000毫秒 loggerLevel: &#34;warn&#34;, //error/warn/info/debug useMongoClient: true }; mongoose.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
@@ -354,7 +355,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		export var CommentSchema: Schema = new Schema({  Id: String,  content: String,  status: {  type: Boolean,  default: true  } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
+		export var CommentSchema: Schema = new Schema({ Id: String, content: String, status: { type: Boolean, default: true } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
 	</div>
 </article>
 <article class="list__item post">
@@ -374,7 +375,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		RockMongo是一个PHP5写的MongoDB管理工具。
- 鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
+鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
 查询操作 点击某个collection后的默认画面：
 查询界面很简单，关键是怎么写查询语句？
 点击文本可以查看所有数据字段，查询title为“测试”文档：
@@ -408,11 +409,11 @@ array( &#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;) ) 字段名要�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

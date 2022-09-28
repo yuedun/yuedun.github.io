@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.93.0" />
+	<meta name="generator" content="Hugo 0.104.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,6 +147,28 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5742d3bb44b00beb2d26238d/" rel="bookmark">
+			VMware重新安装VMware Tool
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-05-23T09:56:11Z">2016-05-23 09:56</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		VMware重新安装VMware Tool 将虚拟机从Ubuntu 14重新安装为Ubuntu 16以后不能将Windows的文本内容复制到Linux中，需要重新安装VMware Tool,VMware版本为12
+一、安装VMware Tool 安装时需要在虚拟机启动登录的情况下进行，
+点击以后应该会弹出磁盘图标并且打开一个文件夹
+文件夹中包含一个压缩文件，需要解压，解压需要root权限，打开命令行 # sudo su 提升为超级用户，可以右击查看gz压缩文件路径，并切换到该目录下，或者可以直接使用图形界面，右击-提取，不能提取到当前目录下，该目录为磁盘目录，不能写入数据，解压到其他目录下即可。解压完成会得到vmware-tools-distrib文件夹，文件夹下有多个文件，其中有vmware-install.pl，命令行中执行这个文件 ./vmware-install.pl 基本可以一路按回车，安装完成后需要重启。重启后可能会有这样的显示，不过不影响。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/574019ee0bdb5de027394523/" rel="bookmark">
 			linux下安装nodejs
 			</a>
@@ -185,15 +207,12 @@ ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录�
 由于javascript是动态语言，java是静态语言，所以两者在编写方式上有很大区别，主要是因为javascript没有类的概念，在ES6标准发布之前要构造一个对象需要用new关键字实例化一个function或者直接使用对象字面量。不过ES6标准的发布，使得javascript也可像java一样声明类了。
 在使用nodejs开发大型应用时需要到类的概念来封装一个复杂的逻辑，我们可以从现在开始逐步使用ES6开发，但是基于现有的支持环境，很多时候还得用ES5编写代码，那么这时候怎么来抽象一个类和实例化对象？
 以Java的思想方式来编写JavaScript，首先是一个构造函数：
-function Person(name, age){ 	this.name = name; 	this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
+function Person(name, age){ this.name = name; this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
 var tom = new Person(&quot;Tom&quot;,12);
 构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:
-var tom = new Person();  tom.name = &#34;Tom&#34;; tom.age = 13; 有了构造函数，还要有普通函数：
-tom.sayHello = function(){  	console.log(&#34;my name is &#34;+this.name);//my name is Tom  } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
-function Person(name, age){ 	this.name = name;  	this.age = age;  }  Person.getAge = function(){  	console.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56f15a4a3823e4e62593d4e2/">阅读全文…</a>
+var tom = new Person(); tom.name = &#34;Tom&#34;; tom.age = 13; 有了构造函数，还要有普通函数：
+tom.sayHello = function(){ console.log(&#34;my name is &#34;+this.name);//my name is Tom } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
+function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。
 	</div>
 </article>
 <article class="list__item post">
@@ -212,7 +231,7 @@ function Person(name, age){ 	this.name = name;  	this.age = age;  }  Person.getA
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		$(&#39;#calendar&#39;).fullCalendar({  lang: &#34;zh-cn&#34;,  header: {  left: &#39;prev, next, today&#39;,  center: &#39;title&#39;,  right: &#39;month&#39;  },  height: 500,  dayClick: function(date, jsEvent, view) {  //点击空白日期调用  },  eventClick: function(calEvent, jsEvent, view) {  //点击已有数据的日期调用  },  defaultDate: moment(),//默认日期  events:function(start, end, callback){  //点击prev上一月, next下一月等事件时调用  } }); 
+		$(&#39;#calendar&#39;).fullCalendar({ lang: &#34;zh-cn&#34;, header: { left: &#39;prev, next, today&#39;, center: &#39;title&#39;, right: &#39;month&#39; }, height: 500, dayClick: function(date, jsEvent, view) { //点击空白日期调用 }, eventClick: function(calEvent, jsEvent, view) { //点击已有数据的日期调用 }, defaultDate: moment(),//默认日期 events:function(start, end, callback){ //点击prev上一月, next下一月等事件时调用 } }); 
 	</div>
 </article>
 <article class="list__item post">
@@ -277,7 +296,7 @@ http://www.mydomain/?#!/index
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Vue.js可以传递$event对象
-&lt;body id=&#34;app&#34;&gt;  &lt;ul&gt; 	&lt;li v-on:click=&#34;say(&#39;hello!&#39;, $event)&#34;&gt;点击当前行文本&lt;/li&gt; 	&lt;li&gt;li2&lt;/li&gt; 	&lt;li&gt;li3&lt;/li&gt;  &lt;/ul&gt;  &lt;script&gt;  new Vue({ 	el: &#39;#app&#39;, 	data: { 	message: &#39;Hello Vue.js!&#39; 	}, 	methods: { 	say: function(msg, event) { 	//获取点击对象 	var el = event.currentTarget; 	alert(&#34;当前对象的内容：&#34;+el.innerHTML); 	} 	}  })  &lt;/script&gt;  &lt;/body&gt; 函数调用处传递$event
+&lt;body id=&#34;app&#34;&gt; &lt;ul&gt; &lt;li v-on:click=&#34;say(&#39;hello!&#39;, $event)&#34;&gt;点击当前行文本&lt;/li&gt; &lt;li&gt;li2&lt;/li&gt; &lt;li&gt;li3&lt;/li&gt; &lt;/ul&gt; &lt;script&gt; new Vue({ el: &#39;#app&#39;, data: { message: &#39;Hello Vue.js!&#39; }, methods: { say: function(msg, event) { //获取点击对象 var el = event.currentTarget; alert(&#34;当前对象的内容：&#34;+el.innerHTML); } } }) &lt;/script&gt; &lt;/body&gt; 函数调用处传递$event
 v-on:click=&quot;say('hello!', $event)&quot;
 函数中获取到的event.currentTarget对象就是当前元素
 在线示例
@@ -344,27 +363,6 @@ v-on:click=&quot;say('hello!', $event)&quot;
 使用focus，blur可对表单进行验证，除了这两个事件，还有一个watch属性可监听data属性值得变化，具体可打开浏览器控制台看属性值得变化情况，代码可直接在浏览器中查看源码
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/568b2d05db1fef9e0cda949f/" rel="bookmark">
-			webuploader模态框按钮不起作用或每次打开都会变大
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-05T02:40:05Z">2016-01-05 02:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		在bootstra模态框中放置webuploader上传控件，每次打开模态框按钮都会成倍放大，原因是每次打开模态框都会进行一次初始化，在原来按钮的基础上又加了一层样式，那么初始化一次应该可以吧。
-修改后的确不会再放大了，可以又有新问题出现了，就是不能点击上传文件了。
-上传实例初始化一次，先然按钮正常显示， var uploader = WebUploader.create({})， 再通过uploader提供的API重新添加一个按钮uploader.addButton({})，这样类似于将前一个按钮覆盖了。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -388,11 +386,11 @@ v-on:click=&quot;say('hello!', $event)&quot;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

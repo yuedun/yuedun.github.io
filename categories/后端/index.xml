@@ -16,12 +16,12 @@
       <description>gorm是一款优秀的国产golang orm关系型数据库框架，在国内外使用比较广泛。它的链式调用还算是一种符合人类思维的风格。
 不过在使用过程中也遇到一些困扰，比如：Model, Find, First, Where这些函数该什么时候使用，有时候会有边界不清楚，使用混乱的情况。
 以下代码示例使用v2版本，v1和v2大体上相同，有些细微的不同
-Where和Find search := User{UserName:&amp;#34;月盾&amp;#34;} db.Find(&amp;amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &amp;#39;月盾&amp;#39;  db.Where(search).Find(&amp;amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &amp;#39;月盾&amp;#39; 以上两种查询方式结果一样。
+Where和Find search := User{UserName:&amp;#34;月盾&amp;#34;} db.Find(&amp;amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &amp;#39;月盾&amp;#39; db.Where(search).Find(&amp;amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &amp;#39;月盾&amp;#39; 以上两种查询方式结果一样。
 Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是数据接收者，conds是查询条件。所以Find也是可以代替Where来传入条件的。
 Where的参数主要分为两类：String，Struct&amp;amp;Map。还有其他不常用类型。
 String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
 Struct&amp;amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
-db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE name = &amp;#34;jinzhu&amp;#34; AND age = 0;  db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&amp;rsquo;&amp;rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：</description>
+db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE name = &amp;#34;jinzhu&amp;#34; AND age = 0; db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;Age&amp;#34;).Find(&amp;amp;users) // SELECT * FROM users WHERE age = 0; 注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&amp;rsquo;&amp;rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：</description>
     </item>
     
     <item>
@@ -32,7 +32,7 @@ db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, 
       <guid>https://www.yuedun.wang/blogdetail/5ffffe3d3f518207e7235250/</guid>
       <description>nest框架官方文档中使用的是本地文件配置，也就是@nestjs/config包。本地配置文件的好处是使用简单，但是对于一些更新较快的项目，难免会增加配置数据，曾经吃过不少配置文件的亏，在发布的时候很容易因为缺少配置文件直接把服务发挂了，或者需要在服务器上修改配置很容易修改错误导致服务发布失败。
 集中的配置中心可以解决上面问题，本文以apollo配置中心为例来说明。 在使用的过程中需要注意以下问题：从配置中心获取数据库连接信息，再去连接会连接失败，因为在连接的时候还没有获取到配置信息。 先看代码再解释。
-// main.ts import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdapter, NestExpressApplication } from &amp;#39;@nestjs/platform-express&amp;#39;; import { AppModule } from &amp;#39;./app.module&amp;#39;; import { MyLogger } from &amp;#39;./libs/mylog.service&amp;#39;; import { join } from &amp;#39;path&amp;#39;; const Apollo = require(&amp;#39;node-apollo&amp;#39;); const dotenv = require(&amp;#39;dotenv&amp;#39;);  async function bootstrap() {  try {  const root = join(__dirname, &amp;#39;../&amp;#39;);  let envFile = join(root, &amp;#39;.env&amp;#39;)  dotenv.config({ &amp;#34;path&amp;#34;: envFile })  const {  APOLLO_APPID,  APOLLO_ENV,  APOLLO_HOST,  APOLLO_NAMESPACE,  APOLLO_PORT,  APOLLO_TOKEN,  APOLLO_ClUSTER  } = process.</description>
+// main.ts import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdapter, NestExpressApplication } from &amp;#39;@nestjs/platform-express&amp;#39;; import { AppModule } from &amp;#39;./app.module&amp;#39;; import { MyLogger } from &amp;#39;./libs/mylog.service&amp;#39;; import { join } from &amp;#39;path&amp;#39;; const Apollo = require(&amp;#39;node-apollo&amp;#39;); const dotenv = require(&amp;#39;dotenv&amp;#39;); async function bootstrap() { try { const root = join(__dirname, &amp;#39;../&amp;#39;); let envFile = join(root, &amp;#39;.env&amp;#39;) dotenv.config({ &amp;#34;path&amp;#34;: envFile }) const { APOLLO_APPID, APOLLO_ENV, APOLLO_HOST, APOLLO_NAMESPACE, APOLLO_PORT, APOLLO_TOKEN, APOLLO_ClUSTER } = process.</description>
     </item>
     
     <item>
@@ -42,9 +42,9 @@ db.Where(&amp;amp;User{Name: &amp;#34;jinzhu&amp;#34;}, &amp;#34;name&amp;#34;, 
       
       <guid>https://www.yuedun.wang/blogdetail/5fc7321dc0ec0c27f57ace6e/</guid>
       <description>go单元测试会遇到这样的场景： 写好了service层函数getUser()。然后测试测试getUser函数。有个问题是，函数中使用了数据库连接，如果直接测试的话会报错误，比如空指针错误。
- panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
- 如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
-func TestMain(m *testing.M) { 	fmt.Println(&amp;#34;begin&amp;#34;) 	dba, err := gorm.Open(&amp;#34;sqlite3&amp;#34;, &amp;#34;../../website.db&amp;#34;) 	db.SQLLite = dba 	if err != nil { 	panic(err) 	} 	m.Run() 	fmt.Println(&amp;#34;end&amp;#34;) }  func TestProjectUsers(t *testing.T) { 	userService := user.</description>
+panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
+如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
+func TestMain(m *testing.M) { fmt.Println(&amp;#34;begin&amp;#34;) dba, err := gorm.Open(&amp;#34;sqlite3&amp;#34;, &amp;#34;../../website.db&amp;#34;) db.SQLLite = dba if err != nil { panic(err) } m.Run() fmt.Println(&amp;#34;end&amp;#34;) } func TestProjectUsers(t *testing.T) { userService := user.NewService(db.SQLLite) users, err := userService.GetProjectUsers(25) if err != nil { t.</description>
     </item>
     
     <item>
@@ -54,7 +54,7 @@ func TestMain(m *testing.M) { 	fmt.Println(&amp;#34;begin&amp;#34;) 	dba, err :=
       
       <guid>https://www.yuedun.wang/blogdetail/5f1fb24c4536b06ac3897662/</guid>
       <description>乱码的情况目前有两种可能：
- 常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。  关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&amp;quot;Accept-Encoding&amp;quot;, &amp;quot;gzip, deflate&amp;quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。</description>
+常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。 关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&amp;quot;Accept-Encoding&amp;quot;, &amp;quot;gzip, deflate&amp;quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
       <pubDate>Thu, 02 Apr 2020 08:42:11 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5e85a563c9109f0f909b52bf/</guid>
-      <description>pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  {  // Applications part  &amp;#34;apps&amp;#34; : [{  &amp;#34;name&amp;#34; : &amp;#34;API&amp;#34;,  &amp;#34;script&amp;#34; : &amp;#34;app.js&amp;#34;,  &amp;#34;env&amp;#34;: {  &amp;#34;COMMON_VARIABLE&amp;#34;: &amp;#34;true&amp;#34;  },  // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &amp;#34;env_production&amp;#34; : {  &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;  }  },{  &amp;#34;name&amp;#34; : &amp;#34;WEB&amp;#34;,  &amp;#34;script&amp;#34; : &amp;#34;web.js&amp;#34;  }],  // 部署部分  // Here you describe each environment  &amp;#34;deploy&amp;#34; : {  &amp;#34;production&amp;#34; : {  &amp;#34;user&amp;#34; : &amp;#34;node&amp;#34;,  // 多主机配置  &amp;#34;host&amp;#34; : [&amp;#34;212.</description>
+      <description>pm2支持远程部署服务，创建文件ecosystem.json,内容形式如： { // Applications part &amp;#34;apps&amp;#34; : [{ &amp;#34;name&amp;#34; : &amp;#34;API&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;app.js&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;COMMON_VARIABLE&amp;#34;: &amp;#34;true&amp;#34; }, // Environment variables injected when starting with --env production // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments &amp;#34;env_production&amp;#34; : { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34; } },{ &amp;#34;name&amp;#34; : &amp;#34;WEB&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;web.js&amp;#34; }], // 部署部分 // Here you describe each environment &amp;#34;deploy&amp;#34; : { &amp;#34;production&amp;#34; : { &amp;#34;user&amp;#34; : &amp;#34;node&amp;#34;, // 多主机配置 &amp;#34;host&amp;#34; : [&amp;#34;212.83.163.1&amp;#34;, &amp;#34;212.83.163.2&amp;#34;, &amp;#34;212.83.163.3&amp;#34;], // 服务使用的分支 &amp;#34;ref&amp;#34; : &amp;#34;origin/master&amp;#34;, // Git 仓库地址 &amp;#34;repo&amp;#34; : &amp;#34;git@github.</description>
     </item>
     
     <item>
@@ -89,8 +89,12 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
       <pubDate>Mon, 30 Mar 2020 02:29:13 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5e815979c9109f0f909b4cdd/</guid>
-      <description>gorm概述  全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好  已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
-func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { 	if search.Name != &amp;#34;&amp;#34; { 	u.mysql = u.mysql.Where(&amp;#34;name LIKE ?&amp;#34;, search.Name+&amp;#34;%&amp;#34;) 	} 	if search.Category != &amp;#34;&amp;#34; { 	u.mysql = u.mysql.Where(&amp;#34;age =?&amp;#34;, search.Age) 	}  	err = u.mysql.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error 	return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。</description>
+      <description>gorm概述 全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好 已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
+func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { if search.Name != &amp;#34;&amp;#34; { u.mysql = u.mysql.Where(&amp;#34;name LIKE ?&amp;#34;, search.Name+&amp;#34;%&amp;#34;) } if search.Category != &amp;#34;&amp;#34; { u.mysql = u.mysql.Where(&amp;#34;age =?&amp;#34;, search.Age) } err = u.mysql.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
+1.if代码是动态组装条件。
+2.err = u.mysql.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error
+这行代码包含了数据列表查询和数据条数。
+3.有些需要注意的地方是u.mysql.Offset(offset).Limit(limit).Find(&amp;amp;users) 用于查询数据列表，</description>
     </item>
     
     <item>
@@ -114,15 +118,15 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
       <description>很遗憾，go-micro v2版本不再使用consul作为服务发现中间件，官方文档也没有consul相关的文档，而是默认改用了mdns，生产推荐etcd。
 问题：I can&amp;rsquo;t set registry with consul
 解答：《Deprecating Consul in favour of Etcd》
- 超过4年的时间，Consul一直是Micro的默认服务发现系统之一，为我们提供了良好的服务。实际上，从一开始，它就是用于注册表的默认机制以及入门所需的唯一基础依赖项。
-  从那时起，世界在不断发展，原生云技术也在不断发展。我们发现了许多与使用Consul的方式有关的问题。这不是对Consul的打击，而是对我们的用例的反思，以及对继续前进的需求。
-  例如，我们将元数据和服务端点信息进行二进制编码，压缩和base64编码，然后再将它们存储为Consul标签，因为没有其他方法可以这样做。我们还非常严重地滥用Consul的分布式属性，这导致了许多关于raft共识的问题。
-  不幸的是，我们发现现在该继续前进了。
-  自2014年以来，Kubernetes真正成为了容器编排和基础服务平台中的一支计算力。因此，etcd成为了他们选择的键值存储的一种，它是基于raft共识构建的分布式键值存储。它已经发展到可以满足kubernetes的规模需求，并且已经以其他开源项目所没有的方式经过了实战测试。
-  Etcd还是用于二进制数据的非常标准的Get / Put / Delete存储，这意味着我们可以轻松地编码和存储服务元数据，而不会出现零问题。它对所存储数据的格式没有意见。
-  过去一周中，我们已将etcd迁移为Micro中的默认服务发现机制之一，并将在未来几周内弃用Consul。这是什么意思？好吧，我们将领事移交给我们社区维护的go-plugins存储库，并专注于支持etcd。
-  我们知道许多用户正在使用Consul，这可能会导致中断。对我们来说，这是通往v2的重大突破，因此我们的下一个发行版将被标记为v2。您可以放心，您的v1发行版将继续按原样运行，但希望我们发布的下一个发行版是micro v2.0.0。
- 参考项目：micro-service</description>
+超过4年的时间，Consul一直是Micro的默认服务发现系统之一，为我们提供了良好的服务。实际上，从一开始，它就是用于注册表的默认机制以及入门所需的唯一基础依赖项。
+从那时起，世界在不断发展，原生云技术也在不断发展。我们发现了许多与使用Consul的方式有关的问题。这不是对Consul的打击，而是对我们的用例的反思，以及对继续前进的需求。
+例如，我们将元数据和服务端点信息进行二进制编码，压缩和base64编码，然后再将它们存储为Consul标签，因为没有其他方法可以这样做。我们还非常严重地滥用Consul的分布式属性，这导致了许多关于raft共识的问题。
+不幸的是，我们发现现在该继续前进了。
+自2014年以来，Kubernetes真正成为了容器编排和基础服务平台中的一支计算力。因此，etcd成为了他们选择的键值存储的一种，它是基于raft共识构建的分布式键值存储。它已经发展到可以满足kubernetes的规模需求，并且已经以其他开源项目所没有的方式经过了实战测试。
+Etcd还是用于二进制数据的非常标准的Get / Put / Delete存储，这意味着我们可以轻松地编码和存储服务元数据，而不会出现零问题。它对所存储数据的格式没有意见。
+过去一周中，我们已将etcd迁移为Micro中的默认服务发现机制之一，并将在未来几周内弃用Consul。这是什么意思？好吧，我们将领事移交给我们社区维护的go-plugins存储库，并专注于支持etcd。
+我们知道许多用户正在使用Consul，这可能会导致中断。对我们来说，这是通往v2的重大突破，因此我们的下一个发行版将被标记为v2。您可以放心，您的v1发行版将继续按原样运行，但希望我们发布的下一个发行版是micro v2.0.0。
+参考项目：micro-service</description>
     </item>
     
     <item>
@@ -132,12 +136,12 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
       
       <guid>https://www.yuedun.wang/blogdetail/5e216204567cde49c49187f1/</guid>
       <description>beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。 常用的模块有以下这些：
- session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块  本文要讲解的是httplib客户端请求的使用。
+session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块 本文要讲解的是httplib客户端请求的使用。
 日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用httplib。
-基本使用方法 import (  &amp;#34;github.com/astaxie/beego/httplib&amp;#34; ) 然后初始化请求方法，返回对象
+基本使用方法 import ( &amp;#34;github.com/astaxie/beego/httplib&amp;#34; ) 然后初始化请求方法，返回对象
 req := httplib.Get(&amp;#34;http://beego.me/&amp;#34;) 然后我们就可以获取数据了
-str, err := req.String() if err != nil {  t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
-获取body信息 func RequestByAjax3(region, language string) {  req := httplib.Get(fmt.Sprintf(&amp;#34;https://m.lagou.com/search.json?city=%s&amp;amp;positionName=%s&amp;amp;pageNo=1&amp;amp;pageSize=1&amp;#34;, url.QueryEscape(region), language))  req.Header(&amp;#34;Referer&amp;#34;, &amp;#34;https://m.lagou.com/search.html&amp;#34;)  req.Header(&amp;#34;Cookie&amp;#34;, &amp;#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&amp;#34;)  req.</description>
+str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
+获取body信息 func RequestByAjax3(region, language string) { req := httplib.Get(fmt.Sprintf(&amp;#34;https://m.lagou.com/search.json?city=%s&amp;amp;positionName=%s&amp;amp;pageNo=1&amp;amp;pageSize=1&amp;#34;, url.QueryEscape(region), language)) req.Header(&amp;#34;Referer&amp;#34;, &amp;#34;https://m.lagou.com/search.html&amp;#34;) req.Header(&amp;#34;Cookie&amp;#34;, &amp;#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&amp;#34;) req.Header(&amp;#34;Host&amp;#34;, &amp;#34;m.lagou.com&amp;#34;) req.Header(&amp;#34;User-Agent&amp;#34;, &amp;#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.</description>
     </item>
     
     <item>
@@ -147,7 +151,7 @@ str, err := req.String() if err != nil {  t.Fatal(err) } fmt.Println(str) 以上
       
       <guid>https://www.yuedun.wang/blogdetail/5cc807d6effb223a816d9114/</guid>
       <description>main.ts
-import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import {  ExpressAdapter,  NestExpressApplication, } from &amp;#39;@nestjs/platform-express&amp;#39;; import { AppModule } from &amp;#39;./app.module&amp;#39;; import nunjucks = require(&amp;#39;nunjucks&amp;#39;); import { join } from &amp;#39;path&amp;#39;;  async function bootstrap() {  const app = await NestFactory.create&amp;lt;NestExpressApplication&amp;gt;(  AppModule,  new ExpressAdapter(),  );  app.useStaticAssets(join(__dirname, &amp;#39;..&amp;#39;, &amp;#39;public&amp;#39;)); // NestFactory.create需要加泛型参数&amp;lt;NestExpressApplication&amp;gt;  app.setBaseViewsDir(join(__dirname, &amp;#39;..&amp;#39;, &amp;#39;views&amp;#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用  nunjucks.configure(&amp;#39;views&amp;#39;, {  ext:&amp;#39;njk&amp;#39;,  autoescape: true,  express: app,  watch: true,  });  await app.</description>
+import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import { ExpressAdapter, NestExpressApplication, } from &amp;#39;@nestjs/platform-express&amp;#39;; import { AppModule } from &amp;#39;./app.module&amp;#39;; import nunjucks = require(&amp;#39;nunjucks&amp;#39;); import { join } from &amp;#39;path&amp;#39;; async function bootstrap() { const app = await NestFactory.create&amp;lt;NestExpressApplication&amp;gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &amp;#39;..&amp;#39;, &amp;#39;public&amp;#39;)); // NestFactory.create需要加泛型参数&amp;lt;NestExpressApplication&amp;gt; app.setBaseViewsDir(join(__dirname, &amp;#39;..&amp;#39;, &amp;#39;views&amp;#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用 nunjucks.configure(&amp;#39;views&amp;#39;, { ext:&amp;#39;njk&amp;#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&amp;gt; { }); } bootstrap(); app.</description>
     </item>
     
     <item>
@@ -157,14 +161,14 @@ import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import {  ExpressAda
       
       <guid>https://www.yuedun.wang/blogdetail/5c70f2074a7b7e6cd8086a1f/</guid>
       <description>说起将开发好的程序部署到服务上，常用的有两种方式：
- 本地编译打包，上传到服务器 git push到远程仓库，在服务器上拉取（编译-打包）  无论以怎样的方式发布，都只有熟悉流程才能得心应手。今天我要说的是golang的部署流程。
+本地编译打包，上传到服务器 git push到远程仓库，在服务器上拉取（编译-打包） 无论以怎样的方式发布，都只有熟悉流程才能得心应手。今天我要说的是golang的部署流程。
 如果是在公司内，自然有专人负责发布事宜，也有公司暂无运维人员，这时还是由开发人员负责服务器发布工作，当然，CI/CD这类工具一般也没有搭建起来。但这并不影响我们快速发布。 得益于go的编译速度，整个发布过程可能也就2分钟，接下来说明一下我个人的发布流程:
- 在项目目录下执行go打包命令  GOOS=linux GOARCH=amd64 go build 由于是要部署到Linux服务器上，所以加上GOOS=linux GOARCH=amd64就可以打包出对应系统的二进制可执行文件。可以将该命令写成脚本文件。
- 推送代码到git仓库，这一步并不是必须，之所以需要这一步，是因为go只打包*.go文件，并不会打包静态文件，所以还需要把相关静态文件推送的git仓库以便拉取。
-  上传打包好的二进制可执行文件到服务器的项目目录下。为什么是项目目录？因为还有静态文件需要使用，所以服务器上也要有同样的项目结构。可借助一些工具来上传，我使用了rz命令来上传。
-  git pull代码，主要是拉取静态文件。
-  重启应用。
-  整个过程比较耗时的操作是上传文件和推拉代码，打包和重启应用反而很快，基本是两三秒完成。 golang相对于其他语言，在服务，器上不需要安装运行时，不像Java和nodejs都需要安装正确的运行时版本，go只需要把打包好的二进制可执行文件扔上去就可以执行。</description>
+在项目目录下执行go打包命令 GOOS=linux GOARCH=amd64 go build 由于是要部署到Linux服务器上，所以加上GOOS=linux GOARCH=amd64就可以打包出对应系统的二进制可执行文件。可以将该命令写成脚本文件。
+推送代码到git仓库，这一步并不是必须，之所以需要这一步，是因为go只打包*.go文件，并不会打包静态文件，所以还需要把相关静态文件推送的git仓库以便拉取。
+上传打包好的二进制可执行文件到服务器的项目目录下。为什么是项目目录？因为还有静态文件需要使用，所以服务器上也要有同样的项目结构。可借助一些工具来上传，我使用了rz命令来上传。
+git pull代码，主要是拉取静态文件。
+重启应用。
+整个过程比较耗时的操作是上传文件和推拉代码，打包和重启应用反而很快，基本是两三秒完成。 golang相对于其他语言，在服务，器上不需要安装运行时，不像Java和nodejs都需要安装正确的运行时版本，go只需要把打包好的二进制可执行文件扔上去就可以执行。</description>
     </item>
     
     <item>
@@ -174,7 +178,7 @@ import { NestFactory } from &amp;#39;@nestjs/core&amp;#39;; import {  ExpressAda
       
       <guid>https://www.yuedun.wang/blogdetail/5c63b5334a7b7e6cd808697a/</guid>
       <description>一、安装gRPC $ go get -u google.golang.org/grpc package google.golang.org/grpc: unrecognized import path &amp;#34;google.golang.org/grpc&amp;#34; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
-git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc  git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net  git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text  go get -u github.com/golang/protobuf/{proto,protoc-gen-go}  git clone https://github.</description>
+git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto cd $GOPATH/src/ go install google.</description>
     </item>
     
     <item>
@@ -194,11 +198,10 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
       
       <guid>https://www.yuedun.wang/blogdetail/5b3604876b5bf65ca5031db7/</guid>
       <description>go可以很容易实现一个文件服务器，只需要使用函数 func ServeFile(w ResponseWriter, r *Request, name string)即可。
-package main  import ( 	&amp;#34;log&amp;#34; 	&amp;#34;net/http&amp;#34; 	&amp;#34;fmt&amp;#34; )  func helloHandler(res http.ResponseWriter, req *http.Request) { 	http.ServeFile(res, req, &amp;#34;E:/go-work/src/go-learning/foo.xlsx&amp;#34;) } func main() { 	fmt.Println(&amp;#34;web服务启动成功，可在浏览器中访问：localhost:8081&amp;#34;) 	http.HandleFunc(&amp;#34;/file&amp;#34;, helloHandler) 	http.Handle(&amp;#34;/&amp;#34;, http.FileServer(http.Dir(&amp;#34;E:/go-work/src/go-learning/&amp;#34;))) 	err := http.ListenAndServe(&amp;#34;:8081&amp;#34;, nil) 	if err != nil { 	log.Fatal(&amp;#34;ListenAndServe:&amp;#34;, err.Error()) 	} } 查看go文档除了翻墙访问https://golang.org
+package main import ( &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;fmt&amp;#34; ) func helloHandler(res http.ResponseWriter, req *http.Request) { http.ServeFile(res, req, &amp;#34;E:/go-work/src/go-learning/foo.xlsx&amp;#34;) } func main() { fmt.Println(&amp;#34;web服务启动成功，可在浏览器中访问：localhost:8081&amp;#34;) http.HandleFunc(&amp;#34;/file&amp;#34;, helloHandler) http.Handle(&amp;#34;/&amp;#34;, http.FileServer(http.Dir(&amp;#34;E:/go-work/src/go-learning/&amp;#34;))) err := http.ListenAndServe(&amp;#34;:8081&amp;#34;, nil) if err != nil { log.Fatal(&amp;#34;ListenAndServe:&amp;#34;, err.Error()) } } 查看go文档除了翻墙访问https://golang.org
 还可以访问国内镜像：https://golang.google.cn/
 最简单快速的访问，直接在本地起服务：
- godoc -http=:8082
- </description>
+godoc -http=:8082</description>
     </item>
     
     <item>
@@ -208,10 +211,10 @@ package main  import ( 	&amp;#34;log&amp;#34; 	&amp;#34;net/http&amp;#34; 	&amp;
       
       <guid>https://www.yuedun.wang/blogdetail/5ad46aebb9be3f8e30daaea8/</guid>
       <description>beego注解路由匹配不到，返回404页面 router.go使用了两种方式注册路由：
-ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, 	beego.NSRouter(&amp;#34;/&amp;#34;, &amp;amp;controllers.UserController{}, &amp;#34;get:Welcome&amp;#34;), 	beego.NSInclude( 	&amp;amp;controllers.UserController{}, 	), controller中的路由注解设置：
-// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { 	user := new(User) 	users, err := user.GetUserList() 	if nil != err { 	c.Data[&amp;#34;json&amp;#34;] = ErrorMsg(err) 	} 	c.Data[&amp;#34;json&amp;#34;] = users 	c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
+ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, beego.NSRouter(&amp;#34;/&amp;#34;, &amp;amp;controllers.UserController{}, &amp;#34;get:Welcome&amp;#34;), beego.NSInclude( &amp;amp;controllers.UserController{}, ), controller中的路由注解设置：
+// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&amp;#34;json&amp;#34;] = ErrorMsg(err) } c.Data[&amp;#34;json&amp;#34;] = users c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
 最终结果显示上面的注解路由时错误的，下面是正确的注册方式： 问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。 即/admin为命名空间，注解中只需写/user/get-all-user，不能这样写/admin/user/get-all-user
-// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { 	user := new(User) 	users, err := user.</description>
+// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&amp;#34;json&amp;#34;] = ErrorMsg(err) } c.</description>
     </item>
     
     <item>
@@ -221,7 +224,7 @@ ns := beego.NewNamespace(&amp;#34;/admin&amp;#34;, 	beego.NSRouter(&amp;#34;/&am
       
       <guid>https://www.yuedun.wang/blogdetail/5acb49ba45213aca5fde59e1/</guid>
       <description>go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
-package main  import ( 	&amp;#34;sync&amp;#34; 	&amp;#34;time&amp;#34; 	&amp;#34;fmt&amp;#34; ) func main() { 	syncFunc() 	fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) 	asyncFunc() 	fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) 	asyncChanFunc() } // 串行执行 func syncFunc() { 	var n,m,x int 	start := time.Now() 	fmt.Println(&amp;#34;syncFunc start:&amp;#34;,start) 	func () { 	time.Sleep(time.Second*1) 	n = 1 	}() 	func () { 	time.Sleep(time.Second*2) 	m = 2 	}() 	func () { 	time.</description>
+package main import ( &amp;#34;sync&amp;#34; &amp;#34;time&amp;#34; &amp;#34;fmt&amp;#34; ) func main() { syncFunc() fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) asyncFunc() fmt.Println(&amp;#34;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&amp;#34;syncFunc start:&amp;#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&amp;#34;syncFunc end:&amp;#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.</description>
     </item>
     
     <item>
@@ -232,9 +235,9 @@ package main  import ( 	&amp;#34;sync&amp;#34; 	&amp;#34;time&amp;#34; 	&amp;#34
       <guid>https://www.yuedun.wang/blogdetail/5ac588446a513c7b8bfd72e6/</guid>
       <description>go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内，所有以_test.go为后缀名的源文件并不是go build构建包的一部分，它们是go test测试的一部分。 在\*_test.go文件中，有三种类型的函数：测试函数、基准测试函数、示例函数。一个测试函数是以Test为函数名前缀的函数，用于测试程序的一些逻辑行为是否正确； go test命令会调用这些测试函数并报告测试结果是PASS或FAIL。基准测试函数是以Benchmark为函数名前缀的函数，它们用于衡量一些函数的性能；go test命令会多次运行基准函数以计算一个平均的执行时间。示例函数是以Example为函数名前缀的函数，提供一个由编译器保证正确性的示例文档。
 测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
-func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
- func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
-// gopl.io/ch11/word1 // Package word provides utilities for word games. package word  // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.</description>
+func TestName(t *testing.T) { // ... } 测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
+func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
+// gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.) func IsPalindrome(s string) bool { for i := range s { if s[i] !</description>
     </item>
     
     <item>
@@ -244,18 +247,18 @@ func TestName(t *testing.T) { // ... }  测试函数的名字必须以Test开头
       
       <guid>https://www.yuedun.wang/blogdetail/5aaf2e3da55bb1fd38001c70/</guid>
       <description>一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( 	&amp;#34;fmt&amp;#34; ) 然后在代码里面可以通过如下的方式调用
+import( &amp;#34;fmt&amp;#34; ) 然后在代码里面可以通过如下的方式调用
 fmt.Println(&amp;#34;hello world&amp;#34;) 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：
 相对路径
 import &amp;#34;./model&amp;#34; //当前文件同一目录的model目录，但是不建议这种方式import` 绝对路径
 import &amp;#34;shorturl/model&amp;#34; //加载GOPATH/src/shorturl/model模块` 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
- 点操作  有时候会看到如下的方式导入包
-import(  . &amp;#34;fmt&amp;#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
+点操作 有时候会看到如下的方式导入包
+import( . &amp;#34;fmt&amp;#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
 fmt.Println(&amp;#34;hello world&amp;#34;) 可以省略的写成
-Println(&amp;#34;hello world&amp;#34;) 别名操作  别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字
-import(  f &amp;#34;fmt&amp;#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
-f.Println(&amp;#34;hello world&amp;#34;) _操作  这个操作经常是让很多人费解的一个操作符，请看下面这个import
-import (  &amp;#34;database/sql&amp;#34;  _ &amp;#34;github.com/ziutek/mymysql/godrv&amp;#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
+Println(&amp;#34;hello world&amp;#34;) 别名操作 别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字
+import( f &amp;#34;fmt&amp;#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
+f.Println(&amp;#34;hello world&amp;#34;) _操作 这个操作经常是让很多人费解的一个操作符，请看下面这个import
+import ( &amp;#34;database/sql&amp;#34; _ &amp;#34;github.com/ziutek/mymysql/godrv&amp;#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
 二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
 通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
 原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457</description>
@@ -272,10 +275,12 @@ import (  &amp;#34;database/sql&amp;#34;  _ &amp;#34;github.com/ziutek/mymysql/g
 win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
 一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
 设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
- pm2 start pm2.json &amp;ndash;env production
- --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
+pm2 start pm2.json &amp;ndash;env production
+--env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
 pm2.json
-{  &amp;#34;apps&amp;#34; : [{  &amp;#34;name&amp;#34;: &amp;#34;issue&amp;#34;,  &amp;#34;cwd&amp;#34;: &amp;#34;dest&amp;#34;,  &amp;#34;script&amp;#34; : &amp;#34;bin/www.js&amp;#34;,  &amp;#34;instances&amp;#34; : &amp;#34;2&amp;#34;,  &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;,  &amp;#34;env&amp;#34;: {  &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;,  &amp;#34;PORT&amp;#34;: 3002  },  &amp;#34;env_production&amp;#34; : {  &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;,  &amp;#34;PORT&amp;#34;: 3003  },  &amp;#34;log_date_format&amp;#34;: &amp;#34;YYYY-MM-DD_HH:mm Z&amp;#34;,  &amp;#34;merge_logs&amp;#34;: true  }] } 如果不加参数则默认使用</description>
+{ &amp;#34;apps&amp;#34; : [{ &amp;#34;name&amp;#34;: &amp;#34;issue&amp;#34;, &amp;#34;cwd&amp;#34;: &amp;#34;dest&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;bin/www.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;2&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;, &amp;#34;PORT&amp;#34;: 3002 }, &amp;#34;env_production&amp;#34; : { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;, &amp;#34;PORT&amp;#34;: 3003 }, &amp;#34;log_date_format&amp;#34;: &amp;#34;YYYY-MM-DD_HH:mm Z&amp;#34;, &amp;#34;merge_logs&amp;#34;: true }] } 如果不加参数则默认使用
+&amp;#34;env&amp;#34;: { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;, &amp;#34;PORT&amp;#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
+加--env production则使用的是</description>
     </item>
     
     <item>
@@ -289,7 +294,7 @@ pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路
 error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
 安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
 pm2-logrotate配置
- max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&amp;rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&amp;rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.</description>
+max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&amp;rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&amp;rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.</description>
     </item>
     
     <item>
@@ -303,7 +308,7 @@ fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，�
 cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
 ** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
 也可以使用文件方式： processes.json文件：
-{  &amp;#34;apps&amp;#34; : [{  &amp;#34;script&amp;#34; : &amp;#34;api.js&amp;#34;,  &amp;#34;instances&amp;#34; : &amp;#34;max&amp;#34;,  &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;  }] } pm2 start processes.json</description>
+{ &amp;#34;apps&amp;#34; : [{ &amp;#34;script&amp;#34; : &amp;#34;api.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;max&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34; }] } pm2 start processes.json</description>
     </item>
     
     <item>
@@ -313,7 +318,7 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
       
       <guid>https://www.yuedun.wang/blogdetail/5a06d5989f088c0683b93d26/</guid>
       <description>Assistance.belongTo(User)会报以下错误：
-ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&amp;#39;t write; duplicate key in table &amp;#39;#sql-454_d&amp;#39;  at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16)  at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23)  at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12)  at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28)  at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16)  at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14)  at Socket.&amp;lt;anonymous&amp;gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29)  at emitOne (events.js:115:13)  at Socket.emit (events.js:210:7)  at addChunk (_stream_readable.</description>
+ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&amp;#39;t write; duplicate key in table &amp;#39;#sql-454_d&amp;#39; at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16) at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23) at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12) at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28) at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16) at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14) at Socket.&amp;lt;anonymous&amp;gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29) at emitOne (events.js:115:13) at Socket.emit (events.js:210:7) at addChunk (_stream_readable.js:264:12) at readableAddChunk (_stream_readable.js:251:11) at Socket.Readable.push (_stream_readable.js:209:10) at TCP.onread (net.</description>
     </item>
     
     <item>
@@ -333,9 +338,9 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
       
       <guid>https://www.yuedun.wang/blogdetail/59eab23989faeadc30eac826/</guid>
       <description>定义Model的时候有这样两个参数： underscored,underscoredAll,
- Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
- 其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
-var Model = sequelize.define&amp;lt;ModelInstance, ModelAttributes&amp;gt;(  &amp;#39;Assistance&amp;#39;, {  title: Sequelize.STRING,  description: Sequelize.STRING,  fullName: Sequelize.STRING  }, {  underscored: true,  tableName: &amp;#39;assistance&amp;#39;,  charset: &amp;#39;utf8&amp;#39;,  collate: &amp;#39;utf8_unicode_ci&amp;#39;  } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.</description>
+Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
+其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
+var Model = sequelize.define&amp;lt;ModelInstance, ModelAttributes&amp;gt;( &amp;#39;Assistance&amp;#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &amp;#39;assistance&amp;#39;, charset: &amp;#39;utf8&amp;#39;, collate: &amp;#39;utf8_unicode_ci&amp;#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.</description>
     </item>
     
     <item>
@@ -354,7 +359,7 @@ var Model = sequelize.define&amp;lt;ModelInstance, ModelAttributes&amp;gt;(  &am
       
       <guid>https://www.yuedun.wang/blogdetail/5967123a3d2aae2ccfdc61a3/</guid>
       <description>sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
-User.bulkCreate([  { username: &amp;#39;barfooz&amp;#39;, isAdmin: true },  { username: &amp;#39;foo&amp;#39;, isAdmin: true },  { username: &amp;#39;bar&amp;#39;, isAdmin: false } ]).then(() =&amp;gt; { // Notice: There are no arguments here, as of right now you&amp;#39;ll have to...  return User.findAll(); }).then(users =&amp;gt; {  console.log(users) // ... in order to get the array of user objects }) </description>
+User.bulkCreate([ { username: &amp;#39;barfooz&amp;#39;, isAdmin: true }, { username: &amp;#39;foo&amp;#39;, isAdmin: true }, { username: &amp;#39;bar&amp;#39;, isAdmin: false } ]).then(() =&amp;gt; { // Notice: There are no arguments here, as of right now you&amp;#39;ll have to... return User.findAll(); }).then(users =&amp;gt; { console.log(users) // ... in order to get the array of user objects }) </description>
     </item>
     
     <item>
@@ -364,7 +369,8 @@ User.bulkCreate([  { username: &amp;#39;barfooz&amp;#39;, isAdmin: true },  { us
       
       <guid>https://www.yuedun.wang/blogdetail/5944b81d9d957900957feff6/</guid>
       <description>以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
-package main  import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34;  type User struct {  name string  age int  createdAt time.Time }  type UserPojo struct {  User  createdAt string }  func (user *User) getName(){  fmt.Println(&amp;#34;获取用户名：&amp;#34;, user.name) }  func main() {  user := new(User)  user.name=&amp;#34;张三&amp;#34;  user.age=26  user.createdAt=time.Now()  fmt.Println(&amp;#34;user.createdAt&amp;#34;,user.createdAt)   userpj := new(UserPojo)  userpj.User = *user  userpj.</description>
+package main import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&amp;#34;获取用户名：&amp;#34;, user.name) } func main() { user := new(User) user.name=&amp;#34;张三&amp;#34; user.age=26 user.createdAt=time.Now() fmt.Println(&amp;#34;user.createdAt&amp;#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&amp;#34;2006-01-02 15:04:05&amp;#34;) fmt.Println(&amp;#34;userpj.createdAt&amp;#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
+# command-line-arguments .</description>
     </item>
     
     <item>
@@ -386,8 +392,8 @@ package main  import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34;  type U
       
       <guid>https://www.yuedun.wang/blogdetail/591c5eac35b6751981e4681e/</guid>
       <description>Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
- 假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
- var fs = require(&amp;#34;fs&amp;#34;);  function queue(){ 	return new Promise((resolve, reject)=&amp;gt;{ 	fs.readFile(&amp;#34;../queue.txt&amp;#34;, &amp;#34;utf8&amp;#34;, (err, data)=&amp;gt;{ 	if (err) reject(err); 	console.log(data.toString()); 	resolve(data.toString()); 	}) 	}) } function account(id){ 	return new Promise((resolve, reject)=&amp;gt;{ 	fs.writeFile(&amp;#39;../account.txt&amp;#39;, id+&amp;#39;一个新账户&amp;#39;, (err) =&amp;gt; { 	if (err) reject(err); 	console.log(&amp;#39;办卡成功!&amp;#39;); 	resolve(); 	}); 	}) } function money(id){ 	return new Promise((resolve, reject)=&amp;gt;{ 	fs.</description>
+假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
+var fs = require(&amp;#34;fs&amp;#34;); function queue(){ return new Promise((resolve, reject)=&amp;gt;{ fs.readFile(&amp;#34;../queue.txt&amp;#34;, &amp;#34;utf8&amp;#34;, (err, data)=&amp;gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&amp;gt;{ fs.writeFile(&amp;#39;../account.txt&amp;#39;, id+&amp;#39;一个新账户&amp;#39;, (err) =&amp;gt; { if (err) reject(err); console.log(&amp;#39;办卡成功!&amp;#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&amp;gt;{ fs.writeFile(&amp;#39;../money.txt&amp;#39;, id+&amp;#39;存了10万&amp;#39;, (err) =&amp;gt; { if (err) reject(err); console.log(&amp;#39;存款成功!&amp;#39;); resolve(); }); }) } //入口 function enter(id) { Promise.</description>
     </item>
     
     <item>
@@ -397,11 +403,11 @@ package main  import &amp;#34;fmt&amp;#34; import &amp;#34;time&amp;#34;  type U
       
       <guid>https://www.yuedun.wang/blogdetail/590c93d3266e3f1c8fd4aa83/</guid>
       <description>typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
-function a(args: number ): number { 	return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
-function b(args: string ): string { 	return args; } console.log(b(&amp;#34;sdg&amp;#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
-function c(args: any ): any { 	return args; } console.log(c(&amp;#34;sdg&amp;#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
-function c(args: any ): any {  let n = args + &amp;#34;变成了字符串&amp;#34;;  //甚至更多的处理 	return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
-function d&amp;lt;A&amp;gt;(args: A ): A {  let n = args + &amp;#34;变成了字符串&amp;#34;;  //甚至更多的处理 	return n; } console.</description>
+function a(args: number ): number { return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
+function b(args: string ): string { return args; } console.log(b(&amp;#34;sdg&amp;#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
+function c(args: any ): any { return args; } console.log(c(&amp;#34;sdg&amp;#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
+function c(args: any ): any { let n = args + &amp;#34;变成了字符串&amp;#34;; //甚至更多的处理 return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
+function d&amp;lt;A&amp;gt;(args: A ): A { let n = args + &amp;#34;变成了字符串&amp;#34;; //甚至更多的处理 return n; } console.</description>
     </item>
     
     <item>
@@ -421,10 +427,10 @@ function d&amp;lt;A&amp;gt;(args: A ): A {  let n = args + &amp;#34;变成了字
       <guid>https://www.yuedun.wang/blogdetail/58243e338fa26c04fd124ee6/</guid>
       <description>完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
 typescript编译配置
-{  &amp;#34;compilerOptions&amp;#34;: {  &amp;#34;module&amp;#34;: &amp;#34;commonjs&amp;#34;,//模块化规范  &amp;#34;target&amp;#34;: &amp;#34;es5&amp;#34;,//生成js  &amp;#34;noImplicitAny&amp;#34;: true,//在表达式和声明上有隐含的&amp;#39;any&amp;#39;类型时报错  &amp;#34;noImplicitReturns&amp;#34;: true,//函数没有返回值提示  &amp;#34;noFallthroughCasesInSwitch&amp;#34;: true,//switch没有break提示  &amp;#34;removeComments&amp;#34;: true,//输出文件移除注释  &amp;#34;noEmitOnError&amp;#34;: true,//ts文件错误时不生成js  &amp;#34;rootDir&amp;#34;: &amp;#34;./&amp;#34;,//需要编译的根目录  &amp;#34;outDir&amp;#34;: &amp;#34;./build&amp;#34;,//编译文件输出目录  &amp;#34;sourceMap&amp;#34;: ture//是否生成.map文件，用于ts debug调试  },  &amp;#34;include&amp;#34;: [  &amp;#34;*/**/*.ts&amp;#34;  ],  &amp;#34;exclude&amp;#34;: [  //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
+{ &amp;#34;compilerOptions&amp;#34;: { &amp;#34;module&amp;#34;: &amp;#34;commonjs&amp;#34;,//模块化规范 &amp;#34;target&amp;#34;: &amp;#34;es5&amp;#34;,//生成js &amp;#34;noImplicitAny&amp;#34;: true,//在表达式和声明上有隐含的&amp;#39;any&amp;#39;类型时报错 &amp;#34;noImplicitReturns&amp;#34;: true,//函数没有返回值提示 &amp;#34;noFallthroughCasesInSwitch&amp;#34;: true,//switch没有break提示 &amp;#34;removeComments&amp;#34;: true,//输出文件移除注释 &amp;#34;noEmitOnError&amp;#34;: true,//ts文件错误时不生成js &amp;#34;rootDir&amp;#34;: &amp;#34;./&amp;#34;,//需要编译的根目录 &amp;#34;outDir&amp;#34;: &amp;#34;./build&amp;#34;,//编译文件输出目录 &amp;#34;sourceMap&amp;#34;: ture//是否生成.map文件，用于ts debug调试 }, &amp;#34;include&amp;#34;: [ &amp;#34;*/**/*.ts&amp;#34; ], &amp;#34;exclude&amp;#34;: [ //默认排除了node_modules ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
 选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
 vscode编译typescript配置
-{  // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.</description>
+{ // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format &amp;#34;version&amp;#34;: &amp;#34;0.1.0&amp;#34;, &amp;#34;command&amp;#34;: &amp;#34;tsc&amp;#34;, &amp;#34;isShellCommand&amp;#34;: true, &amp;#34;args&amp;#34;: [&amp;#34;-w&amp;#34;, &amp;#34;-p&amp;#34;, &amp;#34;.&amp;#34;], &amp;#34;showOutput&amp;#34;: &amp;#34;silent&amp;#34;, &amp;#34;isWatching&amp;#34;: true, &amp;#34;problemMatcher&amp;#34;: &amp;#34;$tsc-watch&amp;#34; } 这样就不用每次编译了，只要文件有修改就会自动编译</description>
     </item>
     
     <item>
@@ -435,11 +441,11 @@ vscode编译typescript配置
       <guid>https://www.yuedun.wang/blogdetail/58037ab767a381257039c926/</guid>
       <description>ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启experimentalDecorators。
 命令行编译
- tsc --target ES5 --experimentalDecorators /test.ts
+tsc --target ES5 --experimentalDecorators /test.ts
 tsconfig.json:
 &amp;#34;compilerOptions&amp;#34;: { &amp;#34;experimentalDecorators&amp;#34;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
-//test.ts class Route {  greeting: string;  constructor(greet: string){  this.greeting = greet;  }   @route(&amp;#34;hello&amp;#34;)  default(): any {  console.log(this.greeting);  } }  function route(name: string) {  return function (target: Object, value: string, desc: PropertyDescriptor) {  console.log(&amp;#39;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#39;, name);  } } 生成的js代码：
-//test.js var __decorate = (this &amp;amp;&amp;amp; this.</description>
+//test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&amp;#34;hello&amp;#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&amp;#39;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#39;, name); } } 生成的js代码：
+//test.js var __decorate = (this &amp;amp;&amp;amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.length, r = c &amp;lt; 3 ?</description>
     </item>
     
     <item>
@@ -449,17 +455,20 @@ tsconfig.json:
       
       <guid>https://www.yuedun.wang/blogdetail/57fcf50869c8bf6e323dff48/</guid>
       <description>在一切开始之前先具备的开发环境：
-  nodejs4.0+
-  推荐的开发工具vscode
-  我希望通过本文介绍能直接做出一个最简单的项目框架，以便日后参考，这也是我想把之前纯nodejs写的博用typescript客重写一遍。
+nodejs4.0+
+推荐的开发工具vscode
+我希望通过本文介绍能直接做出一个最简单的项目框架，以便日后参考，这也是我想把之前纯nodejs写的博用typescript客重写一遍。
 还是以expressjs为框架来搭建
 使用express-generator来生成项目基本框架，需要全局安装
- npm install -g express-generator
-  express -e mpro
- 参数-e是以ejs为模板引擎，mpor为项目目录名，最后生成这样的目录结构：
+npm install -g express-generator
+express -e mpro
+参数-e是以ejs为模板引擎，mpor为项目目录名，最后生成这样的目录结构：
 . ├── app.js ├── bin │ └── www ├── package.json ├── public │ ├── images │ ├── javascripts │ └── stylesheets │ └── style.css ├── routes │ ├── index.js │ └── users.js └── views ├── error.ejs └── index.ejs 然后是全局安装typescript，便于在任何目录下编译，也可以安装在项目目录下。
- npm install -g typescript
- 安装完以后初始化typescript:</description>
+npm install -g typescript
+安装完以后初始化typescript:
+tsc &amp;ndash;init
+会在根目录下生成tsconfig.json文件，用于配置ts的编译选项。 有了基本目录以后就可以着手编写代码了，为了使用ts开发，可以手动将routes目录下的js文件 和app.js后缀名改成.ts. 做完以上步骤以后可以试着在项目根目录下执行&amp;gt; tsc命令，可能什么都没发生， 这个命令会默认编译当前目录下的ts文件，但是我们项目中并没有这样的文件， 你可以自己新建一个后缀为.ts的文件再执行&amp;gt; tsc还是什么都没有发生一样，但是如果我们把app.ts (已经改过后缀的app.js文件)中的
+var bodyParser = require(&#39;body-parser&#39;); 改成</description>
     </item>
     
     <item>
@@ -481,8 +490,8 @@ tsconfig.json:
       <guid>https://www.yuedun.wang/blogdetail/57d6aaa7471c11fa271ed1bb/</guid>
       <description>为了获取json类型的参数煞费苦心，差点不再爱了。
 前端请求代码：
-$.ajax({  url: &amp;#34;/user&amp;#34;,  type: &amp;#34;post&amp;#34;,  data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}),  //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &amp;#34;json&amp;#34; }).done(function(res) {  if(res.result){  alert(&amp;#34;成功&amp;#34;)  }  }); 后端接收代码：
-func (this *UserController) Post() {  var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;amp;ob)//解析二进制json，把结果放进ob中  user := &amp;amp;User{Username: ob.UserName, Mobile: ob.Mobile}  err := user.AddUser()//这是添加用户函数  if nil != err {  this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: false, &amp;#34;msg&amp;#34;: err}  } else {  this.</description>
+$.ajax({ url: &amp;#34;/user&amp;#34;, type: &amp;#34;post&amp;#34;, data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串， //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行 dataType: &amp;#34;json&amp;#34; }).done(function(res) { if(res.result){ alert(&amp;#34;成功&amp;#34;) } }); 后端接收代码：
+func (this *UserController) Post() { var ob User//这是一个model，struct类型 body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据 json.Unmarshal(body, &amp;amp;ob)//解析二进制json，把结果放进ob中 user := &amp;amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数 if nil != err { this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: false, &amp;#34;msg&amp;#34;: err} } else { this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;新增成功&amp;#34;} } this.ServeJSON() } this.Input()获取的是所有参数集合，类型：url.Values(map[string]string) ** 特别注意：** 如果数据类型不匹配也会造成空数据结果。 例如：前端参数是age: &amp;quot;23&amp;quot;，model中age int，也会获取不到数据。</description>
     </item>
     
     <item>
@@ -492,13 +501,13 @@ func (this *UserController) Post() {  var ob User//这是一个model，struct类
       
       <guid>https://www.yuedun.wang/blogdetail/57c7f2301165e2677d137d65/</guid>
       <description>nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
-var request=require(&amp;#34;request&amp;#34;); var fs=require(&amp;#34;fs&amp;#34;);  var url=&amp;#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;#34;; HttpRequest.get(url, (err, res, body) =&amp;gt; {  res.setEncoding(&amp;#34;binary&amp;#34;);//二进制（binary）  FS.writeFile(&amp;#34;out.png&amp;#34;, body, &amp;#34;binary&amp;#34;, function (err) {//以二进制格式保存  if (err) throw err;  console.log(&amp;#34;file saved&amp;#34;);  }); }); 这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
+var request=require(&amp;#34;request&amp;#34;); var fs=require(&amp;#34;fs&amp;#34;); var url=&amp;#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;#34;; HttpRequest.get(url, (err, res, body) =&amp;gt; { res.setEncoding(&amp;#34;binary&amp;#34;);//二进制（binary） FS.writeFile(&amp;#34;out.png&amp;#34;, body, &amp;#34;binary&amp;#34;, function (err) {//以二进制格式保存 if (err) throw err; console.log(&amp;#34;file saved&amp;#34;); }); }); 这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
 var url=&amp;#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&amp;#34;; request(url).pipe(fs.createWriteStream(&amp;#34;out.png&amp;#34;)); 不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？
 非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉
 有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，
-const http = require(&amp;#34;http&amp;#34;);  var server = http.createServer( (req, res) =&amp;gt; {  } 其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));,
+const http = require(&amp;#34;http&amp;#34;); var server = http.createServer( (req, res) =&amp;gt; { } 其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&amp;quot;out.png&amp;quot;));,
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。</description>
     </item>
     
@@ -521,12 +530,12 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
 由于javascript是动态语言，java是静态语言，所以两者在编写方式上有很大区别，主要是因为javascript没有类的概念，在ES6标准发布之前要构造一个对象需要用new关键字实例化一个function或者直接使用对象字面量。不过ES6标准的发布，使得javascript也可像java一样声明类了。
 在使用nodejs开发大型应用时需要到类的概念来封装一个复杂的逻辑，我们可以从现在开始逐步使用ES6开发，但是基于现有的支持环境，很多时候还得用ES5编写代码，那么这时候怎么来抽象一个类和实例化对象？
 以Java的思想方式来编写JavaScript，首先是一个构造函数：
-function Person(name, age){ 	this.name = name; 	this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
+function Person(name, age){ this.name = name; this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
 var tom = new Person(&amp;quot;Tom&amp;quot;,12);
 构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:
-var tom = new Person();  tom.name = &amp;#34;Tom&amp;#34;; tom.age = 13; 有了构造函数，还要有普通函数：
-tom.sayHello = function(){  	console.log(&amp;#34;my name is &amp;#34;+this.name);//my name is Tom  } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
-function Person(name, age){ 	this.name = name;  	this.age = age;  }  Person.getAge = function(){  	console.</description>
+var tom = new Person(); tom.name = &amp;#34;Tom&amp;#34;; tom.age = 13; 有了构造函数，还要有普通函数：
+tom.sayHello = function(){ console.log(&amp;#34;my name is &amp;#34;+this.name);//my name is Tom } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
+function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。</description>
     </item>
     
     <item>
@@ -537,8 +546,8 @@ function Person(name, age){ 	this.name = name;  	this.age = age;  }  Person.getA
       <guid>https://www.yuedun.wang/blogdetail/5656ba78c72f59d15379b4ba/</guid>
       <description>js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {   prop: &amp;#39;delete me&amp;#39;  };  //或者这么声明的对象  var objtest = new Array();  objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;;  //删除属性&amp;#39;prop&amp;#39;：  delete objtest.prop;  //或者  delete objtest[&amp;#39;prop&amp;#39;];  //还可以删除任意变量  var numb = 17;  delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = { 	name: &amp;#39;鸣人&amp;#39;, 	age: 16, 	gender: &amp;#39;男&amp;#39;, 	friends: [{ 	name: &amp;#39;小樱&amp;#39;, 	age: 16, 	gender: &amp;#39;女&amp;#39;, 	friends: [{ 	name: &amp;#39;井野&amp;#39;, 	age: 16, 	gender: &amp;#39;女&amp;#39; 	}] 	}, 	{ 	name: &amp;#39;佐助&amp;#39;, 	age: 16, 	gender: &amp;#39;男&amp;#39; 	}] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.</description>
+var objtest = { prop: &amp;#39;delete me&amp;#39; }; //或者这么声明的对象 var objtest = new Array(); objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;; //删除属性&amp;#39;prop&amp;#39;： delete objtest.prop; //或者 delete objtest[&amp;#39;prop&amp;#39;]; //还可以删除任意变量 var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &amp;#39;鸣人&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39;, friends: [{ name: &amp;#39;小樱&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39;, friends: [{ name: &amp;#39;井野&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39; }] }, { name: &amp;#39;佐助&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.</description>
     </item>
     
     <item>
@@ -563,8 +572,7 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       <description>先来一张效果图：
 ](https://hopefully-img.yuedun.wang/172722906.png)
 由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。
-使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 
-注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
+使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
 可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。</description>
     </item>
     
@@ -574,8 +582,8 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       <pubDate>Tue, 01 Sep 2015 03:17:52 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/55e518e0db5ac9c2be76b2fa/</guid>
-      <description>var nodemailer = require(&amp;#34;nodemailer&amp;#34;);  var transporter = nodemailer.createTransport({  	service: &amp;#34;gmail&amp;#34;,  	auth: {  	user: &amp;#34;youname@gmail.com&amp;#34;,  	pass: &amp;#34;password&amp;#34;  	}  });  transporter.sendMail({  	from: &amp;#34;youname@gmail.com&amp;#34;,  	to: &amp;#34;username@qq.com&amp;#34;,  	subject: &amp;#34;hello&amp;#34;,  	text: &amp;#34;hello world!&amp;#34;  }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
- &amp;ldquo;1und1&amp;rdquo; &amp;ldquo;AOL&amp;rdquo; &amp;ldquo;DebugMail.io&amp;rdquo; &amp;ldquo;DynectEmail&amp;rdquo; &amp;ldquo;FastMail&amp;rdquo; &amp;ldquo;GandiMail&amp;rdquo; &amp;ldquo;Gmail&amp;rdquo; &amp;ldquo;Godaddy&amp;rdquo; &amp;ldquo;GodaddyAsia&amp;rdquo; &amp;ldquo;GodaddyEurope&amp;rdquo; &amp;ldquo;hot.ee&amp;rdquo; &amp;ldquo;Hotmail&amp;rdquo; &amp;ldquo;iCloud&amp;rdquo; &amp;ldquo;mail.ee&amp;rdquo; &amp;ldquo;Mail.ru&amp;rdquo; &amp;ldquo;Mailgun&amp;rdquo; &amp;ldquo;Mailjet&amp;rdquo; &amp;ldquo;Mandrill&amp;rdquo; &amp;ldquo;Naver&amp;rdquo; &amp;ldquo;Postmark&amp;rdquo; &amp;ldquo;QQ&amp;rdquo; &amp;ldquo;QQex&amp;rdquo; &amp;ldquo;SendCloud&amp;rdquo; &amp;ldquo;SendGrid&amp;rdquo; &amp;ldquo;SES&amp;rdquo; &amp;ldquo;Sparkpost&amp;rdquo; &amp;ldquo;Yahoo&amp;rdquo; &amp;ldquo;Yandex&amp;rdquo; &amp;ldquo;Zoho&amp;rdquo;  </description>
+      <description>var nodemailer = require(&amp;#34;nodemailer&amp;#34;); var transporter = nodemailer.createTransport({ service: &amp;#34;gmail&amp;#34;, auth: { user: &amp;#34;youname@gmail.com&amp;#34;, pass: &amp;#34;password&amp;#34; } }); transporter.sendMail({ from: &amp;#34;youname@gmail.com&amp;#34;, to: &amp;#34;username@qq.com&amp;#34;, subject: &amp;#34;hello&amp;#34;, text: &amp;#34;hello world!&amp;#34; }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
+&amp;ldquo;1und1&amp;rdquo; &amp;ldquo;AOL&amp;rdquo; &amp;ldquo;DebugMail.io&amp;rdquo; &amp;ldquo;DynectEmail&amp;rdquo; &amp;ldquo;FastMail&amp;rdquo; &amp;ldquo;GandiMail&amp;rdquo; &amp;ldquo;Gmail&amp;rdquo; &amp;ldquo;Godaddy&amp;rdquo; &amp;ldquo;GodaddyAsia&amp;rdquo; &amp;ldquo;GodaddyEurope&amp;rdquo; &amp;ldquo;hot.ee&amp;rdquo; &amp;ldquo;Hotmail&amp;rdquo; &amp;ldquo;iCloud&amp;rdquo; &amp;ldquo;mail.ee&amp;rdquo; &amp;ldquo;Mail.ru&amp;rdquo; &amp;ldquo;Mailgun&amp;rdquo; &amp;ldquo;Mailjet&amp;rdquo; &amp;ldquo;Mandrill&amp;rdquo; &amp;ldquo;Naver&amp;rdquo; &amp;ldquo;Postmark&amp;rdquo; &amp;ldquo;QQ&amp;rdquo; &amp;ldquo;QQex&amp;rdquo; &amp;ldquo;SendCloud&amp;rdquo; &amp;ldquo;SendGrid&amp;rdquo; &amp;ldquo;SES&amp;rdquo; &amp;ldquo;Sparkpost&amp;rdquo; &amp;ldquo;Yahoo&amp;rdquo; &amp;ldquo;Yandex&amp;rdquo; &amp;ldquo;Zoho&amp;rdquo; </description>
     </item>
     
     <item>
@@ -585,7 +593,7 @@ E: &amp;amp;&amp;amp; cd E:\NodejsWorkSpace\app-node &amp;amp;&amp;amp; nodemon 
       
       <guid>https://www.yuedun.wang/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</guid>
       <description>最基本的where条件：
-Post.findAll({  where: {  authorId: 2  } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({  where: {  authorId: 12,  status: active  } });  // SELECT \* FROM post WHERE authorId = 12 AND status = &amp;#39;active&amp;#39;;  Post.destroy({  where: {  status: &amp;#39;inactive&amp;#39;  } }); // DELETE FROM post WHERE status = &amp;#39;inactive&amp;#39;;  Post.update({  updatedAt: null, }, {  where: {  deletedAt: {  $ne: null  }  } });  // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案</description>
+Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2 Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &amp;#39;active&amp;#39;; Post.destroy({ where: { status: &amp;#39;inactive&amp;#39; } }); // DELETE FROM post WHERE status = &amp;#39;inactive&amp;#39;; Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案</description>
     </item>
     
     <item>
@@ -605,7 +613,7 @@ var sequelize = require(&amp;#34;../utils/sequelizeDB&amp;#34;);//连接数据�
       
       <guid>https://www.yuedun.wang/blogdetail/5479b18a93ae2eb85f26b2d3/</guid>
       <description>前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了。
-/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&amp;#34;crypto&amp;#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) {  var query = req.query;  var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&amp;#34;timestamp&amp;#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array();  oriArray[0] = nonce;  oriArray[1] = timestamp;  oriArray[2] = &amp;#34;hale&amp;#34;;//token  oriArray.</description>
+/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&amp;#34;crypto&amp;#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) { var query = req.query; var signature = query.signature;//微信服务器加密字符串 var echostr = query.echostr;//随机字符串 var timestamp = query[&amp;#34;timestamp&amp;#34;];//时间戳 var nonce = query.nonce;//nonce var oriArray = new Array(); oriArray[0] = nonce; oriArray[1] = timestamp; oriArray[2] = &amp;#34;hale&amp;#34;;//token oriArray.sort(); var original = oriArray[0]+oriArray[1]+oriArray[2]; console.log(&amp;#34;Original Str:&amp;#34;+original); console.log(&amp;#34;signature:&amp;#34;+signature); var scyptoString = sha1(original);//将三个参数拼接加密字符串，并与服务器发送的字符串对比 if (signature == scyptoString) { res.</description>
     </item>
     
     <item>
@@ -622,7 +630,7 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
 在这里我们只介绍 util.inherits 的用法，示例如下：
-var util = require(&amp;#34;util&amp;#34;);  function Base() {  this.name = &amp;#34;base&amp;#34;;  this.base = 1991;   this.sayHello = function() {  console.log(&amp;#34;Hello &amp;#34; + this.name);  }; }  Base.prototype.showName = function() {  console.log(this.name);  };  function Sub() {  this.name = &amp;#34;sub&amp;#34;; }  util.inherits(Sub, Base);  var objBase = new Base(); objBase.</description>
+var util = require(&amp;#34;util&amp;#34;); function Base() { this.name = &amp;#34;base&amp;#34;; this.base = 1991; this.sayHello = function() { console.log(&amp;#34;Hello &amp;#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &amp;#34;sub&amp;#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.</description>
     </item>
     
     <item>
@@ -634,7 +642,7 @@ var util = require(&amp;#34;util&amp;#34;);  function Base() {  this.name = &amp
       <description>Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那么你就应该无所不用，让你的应用更快，异常的快。本文将介绍10条经过检验得知可大大提高Node速度的应用技巧。废话不多说，让我们逐条来看看。
 **1.**并行
 创建 Web 应用的时候，你可能要多次调用内部 API 来获取各种数据。比如说，假设在 Dashboard 页面上，你要执行下面这几个调用：
- 用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications().  为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
+用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications(). 为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
 如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
 我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
 如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
@@ -656,16 +664,16 @@ var util = require(&amp;#34;util&amp;#34;);  function Base() {  this.name = &amp
       
       <guid>https://www.yuedun.wang/blogdetail/543fdff0bba99b9e56a705d1/</guid>
       <description>express获取参数有三种方法：官网介绍如下
- hecks route params (req.params), ex: /user/:id
-  Checks query string params (req.query), ex: ?id=12
-  Checks urlencoded body params (req.body), ex: id=12
- 1、例如：127.0.0.1:3000/index，这种情况下，我们为了得到index，我们可以通过使用req.params得到，通过这种方法我们就可以很好的处理Node中的路由处理问题，同时利用这点可以非常方便的实现MVC模式；
+hecks route params (req.params), ex: /user/:id
+Checks query string params (req.query), ex: ?id=12
+Checks urlencoded body params (req.body), ex: id=12
+1、例如：127.0.0.1:3000/index，这种情况下，我们为了得到index，我们可以通过使用req.params得到，通过这种方法我们就可以很好的处理Node中的路由处理问题，同时利用这点可以非常方便的实现MVC模式；
 2、例如：127.0.0.1:3000/index?id=12，这种情况下，这种方式是获取客户端get方式传递过来的值，通过使用req.query.id就可以获得，类似于PHP的get方法；
 3、例如：127.0.0.1：300/index，然后post了一个id=2的值，这种方式是获取客户端post过来的数据，可以通过req.body.id获取，类似于PHP的post方法；
 下面举例介绍下这三个方法：
 如下一个test.html代码
 &amp;lt;form action=&amp;#34;/index&amp;#34; method=&amp;#34;get&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;login_name&amp;#34; /&amp;gt; &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Sign In&amp;#34; /&amp;gt; &amp;lt;/form&amp;gt; 在nodeJs中我们要自定义HTTP，因此创建index.js
-app.post(&amp;#39;/:key&amp;#39;, function(req, res) {  console.log(req.params.key); //输出index  console.log(req.body.login_name); //输出表单post提交的login_name  res.send(&amp;#39;great you are right for post method!&amp;#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791</description>
+app.post(&amp;#39;/:key&amp;#39;, function(req, res) { console.log(req.params.key); //输出index console.log(req.body.login_name); //输出表单post提交的login_name res.send(&amp;#39;great you are right for post method!&amp;#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791</description>
     </item>
     
   </channel>

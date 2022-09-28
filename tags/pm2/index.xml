@@ -13,7 +13,7 @@
       <pubDate>Thu, 02 Apr 2020 08:42:11 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5e85a563c9109f0f909b52bf/</guid>
-      <description>pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  {  // Applications part  &amp;#34;apps&amp;#34; : [{  &amp;#34;name&amp;#34; : &amp;#34;API&amp;#34;,  &amp;#34;script&amp;#34; : &amp;#34;app.js&amp;#34;,  &amp;#34;env&amp;#34;: {  &amp;#34;COMMON_VARIABLE&amp;#34;: &amp;#34;true&amp;#34;  },  // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &amp;#34;env_production&amp;#34; : {  &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;  }  },{  &amp;#34;name&amp;#34; : &amp;#34;WEB&amp;#34;,  &amp;#34;script&amp;#34; : &amp;#34;web.js&amp;#34;  }],  // 部署部分  // Here you describe each environment  &amp;#34;deploy&amp;#34; : {  &amp;#34;production&amp;#34; : {  &amp;#34;user&amp;#34; : &amp;#34;node&amp;#34;,  // 多主机配置  &amp;#34;host&amp;#34; : [&amp;#34;212.</description>
+      <description>pm2支持远程部署服务，创建文件ecosystem.json,内容形式如： { // Applications part &amp;#34;apps&amp;#34; : [{ &amp;#34;name&amp;#34; : &amp;#34;API&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;app.js&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;COMMON_VARIABLE&amp;#34;: &amp;#34;true&amp;#34; }, // Environment variables injected when starting with --env production // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments &amp;#34;env_production&amp;#34; : { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34; } },{ &amp;#34;name&amp;#34; : &amp;#34;WEB&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;web.js&amp;#34; }], // 部署部分 // Here you describe each environment &amp;#34;deploy&amp;#34; : { &amp;#34;production&amp;#34; : { &amp;#34;user&amp;#34; : &amp;#34;node&amp;#34;, // 多主机配置 &amp;#34;host&amp;#34; : [&amp;#34;212.83.163.1&amp;#34;, &amp;#34;212.83.163.2&amp;#34;, &amp;#34;212.83.163.3&amp;#34;], // 服务使用的分支 &amp;#34;ref&amp;#34; : &amp;#34;origin/master&amp;#34;, // Git 仓库地址 &amp;#34;repo&amp;#34; : &amp;#34;git@github.</description>
     </item>
     
     <item>
@@ -27,10 +27,12 @@
 win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
 一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
 设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
- pm2 start pm2.json &amp;ndash;env production
- --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
+pm2 start pm2.json &amp;ndash;env production
+--env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
 pm2.json
-{  &amp;#34;apps&amp;#34; : [{  &amp;#34;name&amp;#34;: &amp;#34;issue&amp;#34;,  &amp;#34;cwd&amp;#34;: &amp;#34;dest&amp;#34;,  &amp;#34;script&amp;#34; : &amp;#34;bin/www.js&amp;#34;,  &amp;#34;instances&amp;#34; : &amp;#34;2&amp;#34;,  &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;,  &amp;#34;env&amp;#34;: {  &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;,  &amp;#34;PORT&amp;#34;: 3002  },  &amp;#34;env_production&amp;#34; : {  &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;,  &amp;#34;PORT&amp;#34;: 3003  },  &amp;#34;log_date_format&amp;#34;: &amp;#34;YYYY-MM-DD_HH:mm Z&amp;#34;,  &amp;#34;merge_logs&amp;#34;: true  }] } 如果不加参数则默认使用</description>
+{ &amp;#34;apps&amp;#34; : [{ &amp;#34;name&amp;#34;: &amp;#34;issue&amp;#34;, &amp;#34;cwd&amp;#34;: &amp;#34;dest&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;bin/www.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;2&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;, &amp;#34;PORT&amp;#34;: 3002 }, &amp;#34;env_production&amp;#34; : { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;, &amp;#34;PORT&amp;#34;: 3003 }, &amp;#34;log_date_format&amp;#34;: &amp;#34;YYYY-MM-DD_HH:mm Z&amp;#34;, &amp;#34;merge_logs&amp;#34;: true }] } 如果不加参数则默认使用
+&amp;#34;env&amp;#34;: { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;, &amp;#34;PORT&amp;#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
+加--env production则使用的是</description>
     </item>
     
     <item>
@@ -44,7 +46,7 @@ pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路
 error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
 安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
 pm2-logrotate配置
- max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&amp;rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&amp;rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.</description>
+max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&amp;rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&amp;rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.</description>
     </item>
     
     <item>
@@ -58,7 +60,7 @@ fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，�
 cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
 ** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
 也可以使用文件方式： processes.json文件：
-{  &amp;#34;apps&amp;#34; : [{  &amp;#34;script&amp;#34; : &amp;#34;api.js&amp;#34;,  &amp;#34;instances&amp;#34; : &amp;#34;max&amp;#34;,  &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;  }] } pm2 start processes.json</description>
+{ &amp;#34;apps&amp;#34; : [{ &amp;#34;script&amp;#34; : &amp;#34;api.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;max&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34; }] } pm2 start processes.json</description>
     </item>
     
   </channel>

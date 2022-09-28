@@ -160,7 +160,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;  const opts = { 	// autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &#34;warn&#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true // reconnectTries: 30,//尝试重连，默认30次 // reconnectInterval: 1000, //重连间隔，默认1000毫秒 loggerLevel: &#34;warn&#34;, //error/warn/info/debug useMongoClient: true }; mongoose.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
@@ -205,7 +205,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
-User.bulkCreate([  { username: &#39;barfooz&#39;, isAdmin: true },  { username: &#39;foo&#39;, isAdmin: true },  { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to...  return User.findAll(); }).then(users =&gt; {  console.log(users) // ... in order to get the array of user objects }) 
+User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to... return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
 	</div>
 </article>
 <article class="list__item post">
@@ -250,9 +250,9 @@ npm ERR! Windows_NT 6.1.7601 npm ERR! argv &#34;D:\\Program Files\\nodejs\\node.
 		说起居住证这东西，对于来沪务工的人平时没什么用，但是到一些关键时候却是不可缺少的，比如考驾照，子女上学，落户等。我也是来上海几年了都没办过，最近为了孩子上学做准备不得已就赶紧办了，之前之所以没办就是觉得麻烦。
 办居住证麻烦的是准备材料，其实材料准备好了一小时甚至半小时就能办好。要准备的资料当中恐怕最难的就是房东方面了，如果房东OK其他倒是很简单。
 房东方面
- 房东本人 房东身份证 房产证 房产所有人身份证 租赁合同 备案证明  按照上海市条文规定，房屋租赁备案证明是要缴纳5%的房租税的，这是要房东缴纳的，所以很多房东恐怕不太愿意，但实际上目前没有具体单位来收取这个税的，如果房东还是害怕收税那你们可以商量好另拟一份房租比较低的合同。办理居住证房东还需要准备身份证，房产证，如果房产为多人共同所有，那么就需要其他共有人的身份证，其实户口本是不行的，因为要刷身份证信息的。如果无法提供其他人身份证，那么就让其他人写一份委托书，这个委托书嘛！其实是不是真正的委托人写的无所谓。如果办事处还是不能接受，那么就让房东现场写一份承诺书，大概内容就是说房东可以全权代理其他人来出租这一套房产，保证今后不会产生分歧，如有分歧可以承担一切责任。其实就是保证这套房子不是由房东私自出租就行。有些房子是由二房东来出租的，没有房产证，这种情况可以先去街道办事处问一下。房东准备这些东西其实就是为了办理房屋租赁备案证明。
+房东本人 房东身份证 房产证 房产所有人身份证 租赁合同 备案证明 按照上海市条文规定，房屋租赁备案证明是要缴纳5%的房租税的，这是要房东缴纳的，所以很多房东恐怕不太愿意，但实际上目前没有具体单位来收取这个税的，如果房东还是害怕收税那你们可以商量好另拟一份房租比较低的合同。办理居住证房东还需要准备身份证，房产证，如果房产为多人共同所有，那么就需要其他共有人的身份证，其实户口本是不行的，因为要刷身份证信息的。如果无法提供其他人身份证，那么就让其他人写一份委托书，这个委托书嘛！其实是不是真正的委托人写的无所谓。如果办事处还是不能接受，那么就让房东现场写一份承诺书，大概内容就是说房东可以全权代理其他人来出租这一套房产，保证今后不会产生分歧，如有分歧可以承担一切责任。其实就是保证这套房子不是由房东私自出租就行。有些房子是由二房东来出租的，没有房产证，这种情况可以先去街道办事处问一下。房东准备这些东西其实就是为了办理房屋租赁备案证明。
 自己方面
- 身份证，2份复印件 租赁合同 劳动合同 1份复印件 近6个月社保单  在办理之前需要做一些准备，先去居委问一下街道办事处地址，也可以自己网上查，别去错地方，比如我住的地方近处就有一个街道办，但并不属于这个街道办事处管理。然后关心的可能是再哪办房屋租赁备案证明，我所在的甘泉街道办事处就是在一块的，我想其他地方也是一样的，要不然去两个地方跑就太不方便了。
+身份证，2份复印件 租赁合同 劳动合同 1份复印件 近6个月社保单 在办理之前需要做一些准备，先去居委问一下街道办事处地址，也可以自己网上查，别去错地方，比如我住的地方近处就有一个街道办，但并不属于这个街道办事处管理。然后关心的可能是再哪办房屋租赁备案证明，我所在的甘泉街道办事处就是在一块的，我想其他地方也是一样的，要不然去两个地方跑就太不方便了。
 	</div>
 </article>
 <article class="list__item post">
@@ -272,7 +272,8 @@ npm ERR! Windows_NT 6.1.7601 npm ERR! argv &#34;D:\\Program Files\\nodejs\\node.
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
-package main  import &#34;fmt&#34; import &#34;time&#34;  type User struct {  name string  age int  createdAt time.Time }  type UserPojo struct {  User  createdAt string }  func (user *User) getName(){  fmt.Println(&#34;获取用户名：&#34;, user.name) }  func main() {  user := new(User)  user.name=&#34;张三&#34;  user.age=26  user.createdAt=time.Now()  fmt.Println(&#34;user.createdAt&#34;,user.createdAt)   userpj := new(UserPojo)  userpj.User = *user  userpj.
+package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&#34;获取用户名：&#34;, user.name) } func main() { user := new(User) user.name=&#34;张三&#34; user.age=26 user.createdAt=time.Now() fmt.Println(&#34;user.createdAt&#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&#34;2006-01-02 15:04:05&#34;) fmt.Println(&#34;userpj.createdAt&#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
+# command-line-arguments .
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5944b81d9d957900957feff6/">阅读全文…</a>
@@ -294,7 +295,7 @@ package main  import &#34;fmt&#34; import &#34;time&#34;  type User struct {  na
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		export var CommentSchema: Schema = new Schema({  Id: String,  content: String,  status: {  type: Boolean,  default: true  } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
+		export var CommentSchema: Schema = new Schema({ Id: String, content: String, status: { type: Boolean, default: true } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
 	</div>
 </article>
 <article class="list__item post">
@@ -356,7 +357,7 @@ package main  import &#34;fmt&#34; import &#34;time&#34;  type User struct {  na
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		RockMongo是一个PHP5写的MongoDB管理工具。
- 鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
+鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
 查询操作 点击某个collection后的默认画面：
 查询界面很简单，关键是怎么写查询语句？
 点击文本可以查看所有数据字段，查询title为“测试”文档：
@@ -391,11 +392,11 @@ array( &#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;) ) 字段名要�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

@@ -14,7 +14,7 @@
       
       <guid>https://www.yuedun.wang/blogdetail/5a06d5989f088c0683b93d26/</guid>
       <description>Assistance.belongTo(User)会报以下错误：
-ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&amp;#39;t write; duplicate key in table &amp;#39;#sql-454_d&amp;#39;  at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16)  at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23)  at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12)  at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28)  at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16)  at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14)  at Socket.&amp;lt;anonymous&amp;gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29)  at emitOne (events.js:115:13)  at Socket.emit (events.js:210:7)  at addChunk (_stream_readable.</description>
+ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&amp;#39;t write; duplicate key in table &amp;#39;#sql-454_d&amp;#39; at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16) at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23) at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12) at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28) at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16) at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14) at Socket.&amp;lt;anonymous&amp;gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29) at emitOne (events.js:115:13) at Socket.emit (events.js:210:7) at addChunk (_stream_readable.js:264:12) at readableAddChunk (_stream_readable.js:251:11) at Socket.Readable.push (_stream_readable.js:209:10) at TCP.onread (net.</description>
     </item>
     
     <item>
@@ -34,9 +34,9 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
       
       <guid>https://www.yuedun.wang/blogdetail/59eab23989faeadc30eac826/</guid>
       <description>定义Model的时候有这样两个参数： underscored,underscoredAll,
- Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
- 其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
-var Model = sequelize.define&amp;lt;ModelInstance, ModelAttributes&amp;gt;(  &amp;#39;Assistance&amp;#39;, {  title: Sequelize.STRING,  description: Sequelize.STRING,  fullName: Sequelize.STRING  }, {  underscored: true,  tableName: &amp;#39;assistance&amp;#39;,  charset: &amp;#39;utf8&amp;#39;,  collate: &amp;#39;utf8_unicode_ci&amp;#39;  } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.</description>
+Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
+其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
+var Model = sequelize.define&amp;lt;ModelInstance, ModelAttributes&amp;gt;( &amp;#39;Assistance&amp;#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &amp;#39;assistance&amp;#39;, charset: &amp;#39;utf8&amp;#39;, collate: &amp;#39;utf8_unicode_ci&amp;#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ var Model = sequelize.define&amp;lt;ModelInstance, ModelAttributes&amp;gt;(  &am
       
       <guid>https://www.yuedun.wang/blogdetail/5967123a3d2aae2ccfdc61a3/</guid>
       <description>sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
-User.bulkCreate([  { username: &amp;#39;barfooz&amp;#39;, isAdmin: true },  { username: &amp;#39;foo&amp;#39;, isAdmin: true },  { username: &amp;#39;bar&amp;#39;, isAdmin: false } ]).then(() =&amp;gt; { // Notice: There are no arguments here, as of right now you&amp;#39;ll have to...  return User.findAll(); }).then(users =&amp;gt; {  console.log(users) // ... in order to get the array of user objects }) </description>
+User.bulkCreate([ { username: &amp;#39;barfooz&amp;#39;, isAdmin: true }, { username: &amp;#39;foo&amp;#39;, isAdmin: true }, { username: &amp;#39;bar&amp;#39;, isAdmin: false } ]).then(() =&amp;gt; { // Notice: There are no arguments here, as of right now you&amp;#39;ll have to... return User.findAll(); }).then(users =&amp;gt; { console.log(users) // ... in order to get the array of user objects }) </description>
     </item>
     
     <item>
@@ -57,8 +57,8 @@ User.bulkCreate([  { username: &amp;#39;barfooz&amp;#39;, isAdmin: true },  { us
       <guid>https://www.yuedun.wang/blogdetail/5656ba78c72f59d15379b4ba/</guid>
       <description>js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {   prop: &amp;#39;delete me&amp;#39;  };  //或者这么声明的对象  var objtest = new Array();  objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;;  //删除属性&amp;#39;prop&amp;#39;：  delete objtest.prop;  //或者  delete objtest[&amp;#39;prop&amp;#39;];  //还可以删除任意变量  var numb = 17;  delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = { 	name: &amp;#39;鸣人&amp;#39;, 	age: 16, 	gender: &amp;#39;男&amp;#39;, 	friends: [{ 	name: &amp;#39;小樱&amp;#39;, 	age: 16, 	gender: &amp;#39;女&amp;#39;, 	friends: [{ 	name: &amp;#39;井野&amp;#39;, 	age: 16, 	gender: &amp;#39;女&amp;#39; 	}] 	}, 	{ 	name: &amp;#39;佐助&amp;#39;, 	age: 16, 	gender: &amp;#39;男&amp;#39; 	}] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.</description>
+var objtest = { prop: &amp;#39;delete me&amp;#39; }; //或者这么声明的对象 var objtest = new Array(); objtest[&amp;#39;prop&amp;#39;] = &amp;#39;delete me&amp;#39;; //删除属性&amp;#39;prop&amp;#39;： delete objtest.prop; //或者 delete objtest[&amp;#39;prop&amp;#39;]; //还可以删除任意变量 var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &amp;#39;鸣人&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39;, friends: [{ name: &amp;#39;小樱&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39;, friends: [{ name: &amp;#39;井野&amp;#39;, age: 16, gender: &amp;#39;女&amp;#39; }] }, { name: &amp;#39;佐助&amp;#39;, age: 16, gender: &amp;#39;男&amp;#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.</description>
     </item>
     
     <item>
@@ -68,7 +68,7 @@ var user = { 	name: &amp;#39;鸣人&amp;#39;, 	age: 16, 	gender: &amp;#39;男&am
       
       <guid>https://www.yuedun.wang/blogdetail/55dfd3a4de3bc8b1ee4f7e45/</guid>
       <description>最基本的where条件：
-Post.findAll({  where: {  authorId: 2  } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({  where: {  authorId: 12,  status: active  } });  // SELECT \* FROM post WHERE authorId = 12 AND status = &amp;#39;active&amp;#39;;  Post.destroy({  where: {  status: &amp;#39;inactive&amp;#39;  } }); // DELETE FROM post WHERE status = &amp;#39;inactive&amp;#39;;  Post.update({  updatedAt: null, }, {  where: {  deletedAt: {  $ne: null  }  } });  // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案</description>
+Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2 Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &amp;#39;active&amp;#39;; Post.destroy({ where: { status: &amp;#39;inactive&amp;#39; } }); // DELETE FROM post WHERE status = &amp;#39;inactive&amp;#39;; Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案</description>
     </item>
     
     <item>

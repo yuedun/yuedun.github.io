@@ -14,7 +14,7 @@
       
       <guid>https://www.yuedun.wang/blogdetail/5fa0f8e55edb9b37630b65f7/</guid>
       <description>postman是开发人员必备的接口测试工具，虽然经常使用，但是并不会使用到所有功能，除了简单的接口测试外，它还有很多实用的功能，如果充分利用起来，能使我们的工作事半功倍。
- 环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例  环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
+环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例 环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
 环境变量配置
 环境变量使用
 环境变量切换
@@ -32,10 +32,12 @@
 win：set NODE_ENV=development&amp;amp;&amp;amp; node app.js
 一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
 设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
- pm2 start pm2.json &amp;ndash;env production
- --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
+pm2 start pm2.json &amp;ndash;env production
+--env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
 pm2.json
-{  &amp;#34;apps&amp;#34; : [{  &amp;#34;name&amp;#34;: &amp;#34;issue&amp;#34;,  &amp;#34;cwd&amp;#34;: &amp;#34;dest&amp;#34;,  &amp;#34;script&amp;#34; : &amp;#34;bin/www.js&amp;#34;,  &amp;#34;instances&amp;#34; : &amp;#34;2&amp;#34;,  &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;,  &amp;#34;env&amp;#34;: {  &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;,  &amp;#34;PORT&amp;#34;: 3002  },  &amp;#34;env_production&amp;#34; : {  &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;,  &amp;#34;PORT&amp;#34;: 3003  },  &amp;#34;log_date_format&amp;#34;: &amp;#34;YYYY-MM-DD_HH:mm Z&amp;#34;,  &amp;#34;merge_logs&amp;#34;: true  }] } 如果不加参数则默认使用</description>
+{ &amp;#34;apps&amp;#34; : [{ &amp;#34;name&amp;#34;: &amp;#34;issue&amp;#34;, &amp;#34;cwd&amp;#34;: &amp;#34;dest&amp;#34;, &amp;#34;script&amp;#34; : &amp;#34;bin/www.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;2&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;, &amp;#34;PORT&amp;#34;: 3002 }, &amp;#34;env_production&amp;#34; : { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;production&amp;#34;, &amp;#34;PORT&amp;#34;: 3003 }, &amp;#34;log_date_format&amp;#34;: &amp;#34;YYYY-MM-DD_HH:mm Z&amp;#34;, &amp;#34;merge_logs&amp;#34;: true }] } 如果不加参数则默认使用
+&amp;#34;env&amp;#34;: { &amp;#34;NODE_ENV&amp;#34;: &amp;#34;development&amp;#34;, &amp;#34;PORT&amp;#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
+加--env production则使用的是</description>
     </item>
     
   </channel>

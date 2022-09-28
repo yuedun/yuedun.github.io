@@ -160,8 +160,8 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Dockerfile
-FROM hub.c.163.com/public/nodejs:6.11.0 WORKDIR /app COPY . /app RUN npm install EXPOSE 3000 # CMD [&#34;npm&#34;, &#34;start&#34;] ENTRYPOINT [&#34;npm&#34;, &#34;start&#34;]  docker ps:
- CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &#34;/bin/sh -c &#39;/usr/...&#34; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
+FROM hub.c.163.com/public/nodejs:6.11.0 WORKDIR /app COPY . /app RUN npm install EXPOSE 3000 # CMD [&#34;npm&#34;, &#34;start&#34;] ENTRYPOINT [&#34;npm&#34;, &#34;start&#34;] docker ps:
+CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &#34;/bin/sh -c &#39;/usr/...&#34; 在Dockerfile中配置了CMD [&quot;npm&quot;, &quot;start&quot;],docker ps后显示COMMAND为&quot;/bin/sh -c '/usr/...&quot; 改为ENTRYPOINT [&quot;npm&quot;, &quot;start&quot;]就可以了
 	</div>
 </article>
 <article class="list__item post">
@@ -226,7 +226,7 @@ npm ERR! Windows_NT 6.1.7601 npm ERR! argv &#34;D:\\Program Files\\nodejs\\node.
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		RockMongo是一个PHP5写的MongoDB管理工具。
- 鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
+鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
 查询操作 点击某个collection后的默认画面：
 查询界面很简单，关键是怎么写查询语句？
 点击文本可以查看所有数据字段，查询title为“测试”文档：
@@ -253,8 +253,8 @@ array( &#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;) ) 字段名要�
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		VMware重新安装VMware Tool  将虚拟机从Ubuntu 14重新安装为Ubuntu 16以后不能将Windows的文本内容复制到Linux中，需要重新安装VMware Tool,VMware版本为12
- 一、安装VMware Tool 安装时需要在虚拟机启动登录的情况下进行，
+		VMware重新安装VMware Tool 将虚拟机从Ubuntu 14重新安装为Ubuntu 16以后不能将Windows的文本内容复制到Linux中，需要重新安装VMware Tool,VMware版本为12
+一、安装VMware Tool 安装时需要在虚拟机启动登录的情况下进行，
 点击以后应该会弹出磁盘图标并且打开一个文件夹
 文件夹中包含一个压缩文件，需要解压，解压需要root权限，打开命令行 # sudo su 提升为超级用户，可以右击查看gz压缩文件路径，并切换到该目录下，或者可以直接使用图形界面，右击-提取，不能提取到当前目录下，该目录为磁盘目录，不能写入数据，解压到其他目录下即可。解压完成会得到vmware-tools-distrib文件夹，文件夹下有多个文件，其中有vmware-install.pl，命令行中执行这个文件 ./vmware-install.pl 基本可以一路按回车，安装完成后需要重启。重启后可能会有这样的显示，不过不影响。
 	</div>
@@ -322,7 +322,7 @@ Enter file in which to save the key (//.ssh/id_rsa):
 第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa
 Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下
 接下来两部是要求输入密码，不输入直接回车就完成了。
-PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34;  Generating public/private rsa key pair.  Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa  Enter passphrase (empty for no passphrase):  Enter same passphrase again:  Your identification has been saved in .
+PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Generating public/private rsa key pair. Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in .
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56400429c888d8070f145c35/">阅读全文…</a>
@@ -418,11 +418,11 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

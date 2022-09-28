@@ -15,10 +15,10 @@
       <guid>https://www.yuedun.wang/blogdetail/606d512c54277a10496a38ae/</guid>
       <description>上篇简单介绍了sapper和sveltekit的发展，目前sveltekit还只是Beta版本，有很多不确定因素存在，有可能会有大的变更，所以还不推荐在生产环境中使用，不过在个人项目和小项目中可以大胆尝试。
 今天我们就正式使用sveltekit开发一个web项目。
-第一步：创建项目 mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
+第一步：创建项目 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问 /blog 路由，还需要创建index.svelte文件，内容如下：
-&amp;lt;script context=&amp;#34;module&amp;#34;&amp;gt;  /** * @type {import(&amp;#39;@sveltejs/kit&amp;#39;).Load} */ 	export async function load({ page, fetch, session, context }) { 	return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&amp;gt; r.json()) 	.then((posts) =&amp;gt; { 	console.log(posts); 	return { 	props: { 	posts 	} 	}; 	}); 	} &amp;lt;/script&amp;gt;  &amp;lt;script&amp;gt; 	export let posts; &amp;lt;/script&amp;gt;  &amp;lt;svelte:head&amp;gt; 	&amp;lt;title&amp;gt;Blog&amp;lt;/title&amp;gt; &amp;lt;/svelte:head&amp;gt;  &amp;lt;h1&amp;gt;Recent posts&amp;lt;/h1&amp;gt;  &amp;lt;ul&amp;gt; 	{#each posts as post} 	&amp;lt;!</description>
+&amp;lt;script context=&amp;#34;module&amp;#34;&amp;gt; /** * @type {import(&amp;#39;@sveltejs/kit&amp;#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json .then((r) =&amp;gt; r.json()) .then((posts) =&amp;gt; { console.log(posts); return { props: { posts } }; }); } &amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; export let posts; &amp;lt;/script&amp;gt; &amp;lt;svelte:head&amp;gt; &amp;lt;title&amp;gt;Blog&amp;lt;/title&amp;gt; &amp;lt;/svelte:head&amp;gt; &amp;lt;h1&amp;gt;Recent posts&amp;lt;/h1&amp;gt; &amp;lt;ul&amp;gt; {#each posts as post} &amp;lt;!</description>
     </item>
     
     <item>
@@ -35,15 +35,15 @@ svelte作者里奇·哈里斯（Rich Harris）在2020年10月的svelte峰会上�
 而作者放弃sapper后的另一种选择是开发SvelteKit。
 Sapper和SvelteKit都是svelte的开发框架，类似于vue的nuxt框架。
 sveltekit包含的功能有：
-  服务端渲染（SSR）
-  路由
-  typescript支持
-  less, scss支持
-  serverless
-  vite打包
-  可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
-创建sveltekit的方法：  mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
- $ npm run dev -- --open   &amp;gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app  &amp;gt; svelte-kit dev &amp;#34;--open&amp;#34;  D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2  import &amp;#39;.</description>
+服务端渲染（SSR）
+路由
+typescript支持
+less, scss支持
+serverless
+vite打包
+可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
+创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
+$ npm run dev -- --open &amp;gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &amp;gt; svelte-kit dev &amp;#34;--open&amp;#34; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import &amp;#39;./dist/cli.js&amp;#39;; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10) at Module.load (internal/modules/cjs/loader.js:653:32) at tryModuleLoad (internal/modules/cjs/loader.js:593:12) at Function.Module._load (internal/modules/cjs/loader.js:585:3) at Function.Module.runMain (internal/modules/cjs/loader.js:831:12) at startup (internal/bootstrap/node.</description>
     </item>
     
   </channel>

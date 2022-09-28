@@ -25,12 +25,13 @@
       
       <guid>https://www.yuedun.wang/2021/07/qiuniu-image-preivew/</guid>
       <description>七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。
-vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
+vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。
+上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
 可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也没有时间排序，只有名称排序，真的是很难用。
 为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
 关于chrome插件开发的细节本文暂不细说，直接上代码。
 代码展示 manifest.json
-{  &amp;#34;manifest_version&amp;#34;: 2,  &amp;#34;name&amp;#34;: &amp;#34;chome-plugin&amp;#34;,  &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;,  &amp;#34;description&amp;#34;: &amp;#34;chrome示例插件&amp;#34;,  &amp;#34;icons&amp;#34;: {  &amp;#34;16&amp;#34;: &amp;#34;images/icon-16x16.png&amp;#34;,  &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;,  &amp;#34;128&amp;#34;: &amp;#34;images/icon-128x128.png&amp;#34;  },  &amp;#34;page_action&amp;#34;: {  &amp;#34;default_icon&amp;#34;: {  &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;  },  &amp;#34;default_popup&amp;#34;: &amp;#34;html/popup.html&amp;#34;,  &amp;#34;default_title&amp;#34;: &amp;#34;Hello yuedun&amp;#34;  },  &amp;#34;author&amp;#34;: &amp;#34;yuedun&amp;#34;,  &amp;#34;background&amp;#34;: {  &amp;#34;scripts&amp;#34;: [  &amp;#34;scripts/jquery.min.js&amp;#34;,  &amp;#34;scripts/background.js&amp;#34;  ]  },  &amp;#34;devtools_page&amp;#34;: &amp;#34;html/devtools-page.</description>
+{ &amp;#34;manifest_version&amp;#34;: 2, &amp;#34;name&amp;#34;: &amp;#34;chome-plugin&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;chrome示例插件&amp;#34;, &amp;#34;icons&amp;#34;: { &amp;#34;16&amp;#34;: &amp;#34;images/icon-16x16.png&amp;#34;, &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;, &amp;#34;128&amp;#34;: &amp;#34;images/icon-128x128.png&amp;#34; }, &amp;#34;page_action&amp;#34;: { &amp;#34;default_icon&amp;#34;: { &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34; }, &amp;#34;default_popup&amp;#34;: &amp;#34;html/popup.html&amp;#34;, &amp;#34;default_title&amp;#34;: &amp;#34;Hello yuedun&amp;#34; }, &amp;#34;author&amp;#34;: &amp;#34;yuedun&amp;#34;, &amp;#34;background&amp;#34;: { &amp;#34;scripts&amp;#34;: [ &amp;#34;scripts/jquery.min.js&amp;#34;, &amp;#34;scripts/background.js&amp;#34; ] }, &amp;#34;devtools_page&amp;#34;: &amp;#34;html/devtools-page.html&amp;#34;, &amp;#34;content_scripts&amp;#34;: [ { &amp;#34;js&amp;#34;: [ &amp;#34;scripts/jquery.min.js&amp;#34;, &amp;#34;scripts/content.js&amp;#34; ], &amp;#34;css&amp;#34;: [ &amp;#34;styles/yuedun-insert.css&amp;#34; ], &amp;#34;matches&amp;#34;: [ &amp;#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&amp;#34; ], &amp;#34;run_at&amp;#34;: &amp;#34;document_start&amp;#34; } ], &amp;#34;permissions&amp;#34;: [ &amp;#34;cookies&amp;#34;, &amp;#34;*://*/*&amp;#34;, &amp;#34;webRequest&amp;#34; ], &amp;#34;homepage_url&amp;#34;: &amp;#34;https://www.</description>
     </item>
     
     <item>
@@ -78,7 +79,7 @@ code-server是一个可以运行在服务器上的web项目，这下我们可以
       
       <guid>https://www.yuedun.wang/blogdetail/5fa0f8e55edb9b37630b65f7/</guid>
       <description>postman是开发人员必备的接口测试工具，虽然经常使用，但是并不会使用到所有功能，除了简单的接口测试外，它还有很多实用的功能，如果充分利用起来，能使我们的工作事半功倍。
- 环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例  环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
+环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例 环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
 环境变量配置
 环境变量使用
 环境变量切换
@@ -92,7 +93,7 @@ code-server是一个可以运行在服务器上的web项目，这下我们可以
       
       <guid>https://www.yuedun.wang/blogdetail/5f1fb24c4536b06ac3897662/</guid>
       <description>乱码的情况目前有两种可能：
- 常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。  关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&amp;quot;Accept-Encoding&amp;quot;, &amp;quot;gzip, deflate&amp;quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。</description>
+常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。 关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&amp;quot;Accept-Encoding&amp;quot;, &amp;quot;gzip, deflate&amp;quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。</description>
     </item>
     
     <item>
@@ -108,14 +109,15 @@ code-server是一个可以运行在服务器上的web项目，这下我们可以
 是不是还没看清？没错，平时人工测试一个报名表单需要15秒左右，而自动化后几乎一瞬间即可完成，速度提升不言而喻。如果您对UI自动化已产生兴趣，请继续往下看。
 哪些场景可以UI自动化？ UI自动化的目的不是为了自动化而自动化，也并不能覆盖所有测试。还是以测试金字塔来说明：
 UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越往顶层消耗的人力成本越高，如果底层测试不够充分就只能靠顶层测试来保证。自动化虽好，但需要满足特定的场景才行，那么什么样的场景可以做UI自动化？
- 流程变化少。侧重UI的修改，而不是流程的修改。 频繁的回归测试。比如一个报名表单样式修改比较频繁，需要测试其报名是否可用。 界面稳定。样式可以频繁修改，但表单顺序和个数变化较少不能频繁变更。 维护周期长。如果只是使用一次那也不必自动化了，毕竟自动化是解决重复劳动。 开发与测试可相互配合。自动化需要程序有一定规范便于测试人员写测试程序。 测试人员具备编程能力。 如果满足了上述的场景，那么UI自动化在人力消耗和效率上就有很大的提升。正确性上更有保证，手工录入会有输错重输的情况，而自动化则不会出现。 再看一个流程比较长的页面：  上面动图并没与快进，一气呵成完成了一次下单流程，基本不需要停留即可进入下一步，相比起手动操作省时省力。
+流程变化少。侧重UI的修改，而不是流程的修改。 频繁的回归测试。比如一个报名表单样式修改比较频繁，需要测试其报名是否可用。 界面稳定。样式可以频繁修改，但表单顺序和个数变化较少不能频繁变更。 维护周期长。如果只是使用一次那也不必自动化了，毕竟自动化是解决重复劳动。 开发与测试可相互配合。自动化需要程序有一定规范便于测试人员写测试程序。 测试人员具备编程能力。 如果满足了上述的场景，那么UI自动化在人力消耗和效率上就有很大的提升。正确性上更有保证，手工录入会有输错重输的情况，而自动化则不会出现。 再看一个流程比较长的页面： 上面动图并没与快进，一气呵成完成了一次下单流程，基本不需要停留即可进入下一步，相比起手动操作省时省力。
 为什么UI自动化普及率低？ 既然UI自动化能提高效率，但为什么却很少有人去使用？
- 开发自动化程序对测试人员的编程水平有一定要求，很少有人愿意花时间去写这个程序。 对于互联网公司，大多数业务需要快速迭代，一个页面的生存周期很短，也可能只是一次性的，自动化测试没有存在的必要性。 测试人员没有切实的感受到效率提升。  其实说白了，就是大家觉得投入和产出不值得。如果是迫于领导压力要写自动化程序，就会不停的对程序修修补补，自己用的话有问题大不了不用自动化，手动测试一下通过就行，如果是给别人用就会不停收到反馈和吐槽，自然也就没有写下去的动力了。 所以个人觉得，自动化程序不应该成为一种流程和形式，而是应该由开发和测试人员自发的去将自身经常重复的工作做成自动化。因为自动化本身就不能覆盖所有场景，只有实际参与的人才能知道哪些是可以自动化的。
+开发自动化程序对测试人员的编程水平有一定要求，很少有人愿意花时间去写这个程序。 对于互联网公司，大多数业务需要快速迭代，一个页面的生存周期很短，也可能只是一次性的，自动化测试没有存在的必要性。 测试人员没有切实的感受到效率提升。 其实说白了，就是大家觉得投入和产出不值得。如果是迫于领导压力要写自动化程序，就会不停的对程序修修补补，自己用的话有问题大不了不用自动化，手动测试一下通过就行，如果是给别人用就会不停收到反馈和吐槽，自然也就没有写下去的动力了。 所以个人觉得，自动化程序不应该成为一种流程和形式，而是应该由开发和测试人员自发的去将自身经常重复的工作做成自动化。因为自动化本身就不能覆盖所有场景，只有实际参与的人才能知道哪些是可以自动化的。
 有哪些工具可以选择？ 目前市场上不仅提供了多种工具可以选择，还支持不同语言。 web端：selenium、webdriver、robotframework、puppeteer等。 APP端：Appium、Instrumentation、Robotium 、UIAutomator、Espresso、Calabash、Selendroid、Robolectric、RoboSpock、Cafe、Athrun等。
- 移动APP自动化测试框架
- 本文不对所有工具一一详解，可自行根据平台选择合适的工具和语言进行学习使用。只针对个别WEB端工具做简单说明。 拿selenium来说，selenium是一款很多人比较熟悉的工具，支持的语言有Python，Java，JavaScript等，推荐使用Python。而且其支持的浏览器也很全面： Google Chrome Internet Explorer 7, 8, 9, 10, 11 Firefox Safari Opera HtmlUnit phantomjs Android iOS
+移动APP自动化测试框架
+本文不对所有工具一一详解，可自行根据平台选择合适的工具和语言进行学习使用。只针对个别WEB端工具做简单说明。 拿selenium来说，selenium是一款很多人比较熟悉的工具，支持的语言有Python，Java，JavaScript等，推荐使用Python。而且其支持的浏览器也很全面： Google Chrome Internet Explorer 7, 8, 9, 10, 11 Firefox Safari Opera HtmlUnit phantomjs Android iOS
 一些常见问题 在自动化过程中最多的就是对元素进行定位，自动化工具常见的定位符有：
- id name class name tag link text partial link text xpath css selector  以上这些元素定位对于以前的网页来说还足以应对，因为以前开发的网页大多数元素会有id，class这些属性，定位起来也比较方便。但是对于react，vue，angular这类数据驱动的框架就不那么友好了。 比如有这么一个元素：&amp;lt;div&amp;gt;{{element}}&amp;lt;/div&amp;gt;结果为：</description>
+id name class name tag link text partial link text xpath css selector 以上这些元素定位对于以前的网页来说还足以应对，因为以前开发的网页大多数元素会有id，class这些属性，定位起来也比较方便。但是对于react，vue，angular这类数据驱动的框架就不那么友好了。 比如有这么一个元素：&amp;lt;div&amp;gt;{{element}}&amp;lt;/div&amp;gt;结果为：
+这个元素既没有id，也没有class，而且是使用最多的div元素，想要定位就很困难了。 而且这些元素定位支持也比较简单，不支持一些兄弟元素，父子元素的定位，我们以往使用的jquery选择器是不支持的。 所以这时候就体现出开发和测试配合的重要性了，开发测试不分家，开发需要根据测试需要的来对重要元素加明确的标识便于测试定位。 其次就是让自动化工具支持jquery，使用一些jquery的选择器来操作元素，使用方式是自动添加一个&amp;lt;script src=&amp;quot;jquery&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;标签。然后执行js脚本来实现jquery选择器。</description>
     </item>
     
     <item>
@@ -140,8 +142,8 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
       <guid>https://www.yuedun.wang/blogdetail/5a615ab64bdc8ea471fd2ddd/</guid>
       <description>从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧，
 如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：
- 地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
- 其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox</description>
+地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
+其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox</description>
     </item>
     
     <item>
@@ -190,7 +192,7 @@ http://www.mydomain/?#!/index
       <description>prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototype属性，可以给类动态地添加方法，以便在JavaScript中实现“ 继承”的效果。
 具体来说，prototype 是在 IE 4 及其以后版本引入的一个针对于某一类的对象的方法，当你用prototype编写一个类后，如果new一个新的对象，浏览器会自动把prototype中 的内容替你附加在对象上。这样，通过利用prototype就可以在JavaScript中实现成员函数的定义，甚至是“继承”的效果。
 对于javascript本身而言是基于对象的，任何元素都可以看成对象。然而类型和对象是不同的，而我们所讲的prototype属性即是基于类型的一 种属性。对于prototype的基本使用就如对象的创建及属性赋值一样的简单。直接通过赋值操作即可完成属性的创建。
- /** * 关于prototype, 理解这个很有必要 可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 JS中允许的类型有Array, Boolean, Date, Enumerator, Error, Function, Number, Object, RegExp, String 以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例 */ Object.prototype.name = &amp;#34;zhangsan&amp;#34;;  Object.prototype.nihao = function () {   alert(&amp;#34;i can method name is &amp;#34; + this.name);  }  var obj = new Object();  obj.nihao();  alert(obj.name);    // 在实例上不能使用prototype，否则会发生编译错误  obj.prototype.sex = &amp;#34;男&amp;#34;; //error,无法给一个实例prototype var o = {   name: &amp;#34;zhangsan&amp;#34;  }  o.</description>
+/** * 关于prototype, 理解这个很有必要 可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 JS中允许的类型有Array, Boolean, Date, Enumerator, Error, Function, Number, Object, RegExp, String 以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例 */ Object.prototype.name = &amp;#34;zhangsan&amp;#34;; Object.prototype.nihao = function () { alert(&amp;#34;i can method name is &amp;#34; + this.name); } var obj = new Object(); obj.nihao(); alert(obj.name); // 在实例上不能使用prototype，否则会发生编译错误 obj.prototype.sex = &amp;#34;男&amp;#34;; //error,无法给一个实例prototype var o = { name: &amp;#34;zhangsan&amp;#34; } o.prototype.age = 30; //error,无法给一个实例prototype //可以为类型定义“静态”的属性和方法，直接在类型上调用即可 alert(Object.</description>
     </item>
     
     <item>
@@ -218,7 +220,7 @@ https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/
       <guid>https://www.yuedun.wang/blogdetail/55e3e840db5ac9c2be76b2f9/</guid>
       <description>公司之前的产品管理对于小编们的使用情况及其糟糕，每次打开一个页面都要等待好久，这也是由于时间紧张，开始做的时候就只管进度没有时间优化。我大概看了下，光是登录页和一个空白首页就有78个请求，1.1M的数据。其他功能页面不少于这个数，这是因为所有页面共用了一个头文件，而这个头文件把所有有用没有的css文件和js文件都加载进来了，所以这次做的新后台管理系统绝不能这么做了。
 首先，css按需加载，当然有一些css是每个页面必须的就放到一个公共页面中include进来，对于一些新增的插件就在需要的时候添加到对应的页面。
-其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。
+其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式 defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。
 初步结果显示，所有页面加载速度平均在0.5秒，有些页面几乎看不出来重新加载过程，瞬间完成。优化也算是有一定的效果了。其中要说一下requirejs的一些优缺点，requirejs优点是可以实现js异步加载和模块化开发，不过让我有点不适应的是在HTML页面中不能使用onclick=func这种方式的事件处理，会提示找不到函数，只能在页面加载完成后用jquery进行事件监听，一些动态加载的页面数据也需要在加载以后重新绑定事件。
 2015-11-08日更新
 自从使用了requirejs后，凡是做页面需要js的时候首先想到的就是requirejs，感觉入坑跳不出来，反而弄巧成拙了。requirejs本意是异步加载多个js文件以防止页面阻塞，在一个网站或项目中也尽量合并多个文件里的内容以减少网络请求，一次加载一个大的文件比多次加载多个小文件来的划算的多，还有，requirejs虽然有好处但是并不是任何时候都有，比如页面很简单，js内容也很少的时候就完全不该用它。最后有一个不得不说的缺点，在上面已经提过，就是事件绑定，因为不能使用onclick=func()这种方式调用函数，只能用$(function(){})这种方式绑定事件，那么在网络不好的情况下，有些文件加载缓慢，导致不能绑定事件，如果一个按钮是这种方式绑定的事件，结果就是非要等到页面加载完才能点击，很让人着急。</description>
@@ -235,7 +237,7 @@ https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/
 2.文件压缩：既然都合并了，何不再压缩一下呢
 3.语法检查：这个功能一般会和下面第4条功能配合使用，当文件修改的时候检查是否有语法错误，并在命令行中输出错误信息。
 4.监听文件变化：监听某个目录下文件是否修改，修改的话就执行特定的操作，比如上面几个操作。 以上4点是比较常用的功能，更多功能根据自己需要添加
-var gulp = require(&amp;#39;gulp&amp;#39;); var jshint = require(&amp;#39;gulp-jshint&amp;#39;);//语法检查 var concat = require(&amp;#39;gulp-concat&amp;#39;);//合并文件 var uglify = require(&amp;#39;gulp-uglify&amp;#39;);//压缩代码 var rename = require(&amp;#39;gulp-rename&amp;#39;);//重命名  // 语法检查 gulp.task(&amp;#39;jshint&amp;#39;, function () { return gulp.src(&amp;#39;public/javascripts/*.js&amp;#39;) .pipe(jshint()) .pipe(jshint.reporter(&amp;#39;default&amp;#39;)); });  // 合并文件之后压缩代码 gulp.task(&amp;#39;minify&amp;#39;, function (){ return gulp.src(&amp;#39;public/javascripts/*.js&amp;#39;) .pipe(concat(&amp;#39;all.js&amp;#39;)) .pipe(gulp.dest(&amp;#39;public/javascripts/dist&amp;#39;)) .pipe(uglify()) .pipe(rename(&amp;#39;all.min.js&amp;#39;)) .pipe(gulp.dest(&amp;#39;public/javascripts/dist&amp;#39;)); });  // 监视文件的变化 gulp.task(&amp;#39;watch&amp;#39;, function () { gulp.watch(&amp;#39;public/javascripts/*.js&amp;#39;, [&amp;#39;jshint&amp;#39;, &amp;#39;minify&amp;#39;]); });  // 注册缺省任务 gulp.task(&amp;#39;default&amp;#39;, [&amp;#39;jshint&amp;#39;, &amp;#39;minify&amp;#39;, &amp;#39;watch&amp;#39;]); // gulp.</description>
+var gulp = require(&amp;#39;gulp&amp;#39;); var jshint = require(&amp;#39;gulp-jshint&amp;#39;);//语法检查 var concat = require(&amp;#39;gulp-concat&amp;#39;);//合并文件 var uglify = require(&amp;#39;gulp-uglify&amp;#39;);//压缩代码 var rename = require(&amp;#39;gulp-rename&amp;#39;);//重命名 // 语法检查 gulp.task(&amp;#39;jshint&amp;#39;, function () { return gulp.src(&amp;#39;public/javascripts/*.js&amp;#39;) .pipe(jshint()) .pipe(jshint.reporter(&amp;#39;default&amp;#39;)); }); // 合并文件之后压缩代码 gulp.task(&amp;#39;minify&amp;#39;, function (){ return gulp.src(&amp;#39;public/javascripts/*.js&amp;#39;) .pipe(concat(&amp;#39;all.js&amp;#39;)) .pipe(gulp.dest(&amp;#39;public/javascripts/dist&amp;#39;)) .pipe(uglify()) .pipe(rename(&amp;#39;all.min.js&amp;#39;)) .pipe(gulp.dest(&amp;#39;public/javascripts/dist&amp;#39;)); }); // 监视文件的变化 gulp.task(&amp;#39;watch&amp;#39;, function () { gulp.watch(&amp;#39;public/javascripts/*.js&amp;#39;, [&amp;#39;jshint&amp;#39;, &amp;#39;minify&amp;#39;]); }); // 注册缺省任务 gulp.task(&amp;#39;default&amp;#39;, [&amp;#39;jshint&amp;#39;, &amp;#39;minify&amp;#39;, &amp;#39;watch&amp;#39;]); // gulp.task(&amp;#39;default&amp;#39;, [&amp;#39;jshint&amp;#39;, &amp;#39;minify&amp;#39;]); 目录结构:</description>
     </item>
     
     <item>
@@ -247,7 +249,7 @@ var gulp = require(&amp;#39;gulp&amp;#39;); var jshint = require(&amp;#39;gulp-j
       <description>Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那么你就应该无所不用，让你的应用更快，异常的快。本文将介绍10条经过检验得知可大大提高Node速度的应用技巧。废话不多说，让我们逐条来看看。
 **1.**并行
 创建 Web 应用的时候，你可能要多次调用内部 API 来获取各种数据。比如说，假设在 Dashboard 页面上，你要执行下面这几个调用：
- 用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications().  为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
+用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications(). 为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
 如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
 我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
 如果你想更深入了解 async.js ，请移步它的 GitHub 页面。

@@ -164,9 +164,9 @@
 那怎么才能删除呢？
 试着直接删除目录也不行，这问题能难倒我，但难不倒百度。
 使用ls | xargs -n 1000 rm -fr ls删除，可是一直在输出错误提示：
- rm: invalid option -- &#39;s&#39;  Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
+rm: invalid option -- &#39;s&#39; Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
 删除方式是：
- rm -- -foo  或  rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
+rm -- -foo 或 rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
 ls | xargs -n 1000 rm -frv ls
 rm命令加个参数v，用来显示删除信息。
 最终会输出这样的提示信息，
@@ -215,20 +215,21 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	<div class="content list__excerpt post__content clearfix">
 		修改terminal apt-get update更新软件源，安装zsh，设置默认terminal为zsh，chsh -s /usr/bin/zsh。非root用户需要在root权限下修改/etc/passwd文件才能实现。
 安装git
- apt-get install git
- nginx设置：
- sudo /etc/init.d/nginx restart # or start, stop
- 或
- sudo service nginx restart # or start, stop
- 有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
+apt-get install git
+nginx设置：
+sudo /etc/init.d/nginx restart # or start, stop
+或
+sudo service nginx restart # or start, stop
+有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
 目录/etc/nginx/sites-available/下增加文件配置反向代理，并软链接到/etc/nginx/sites-enabled/下
 mongodb导入数据 启动：
- /usr/local/mongodb/bin/mongod &ndash;dbpath=/usr/local/mongodb/data &ndash;logpath=/usr/local/mongodb/logs &ndash;logappend &ndash;auth &ndash;fork
- 如需外网客户端连接加参数--bind_ip_all
+/usr/local/mongodb/bin/mongod &ndash;dbpath=/usr/local/mongodb/data &ndash;logpath=/usr/local/mongodb/logs &ndash;logappend &ndash;auth &ndash;fork
+如需外网客户端连接加参数--bind_ip_all
 导入单个collection
- ./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
- 或导入整个目录
- ./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.
+./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
+或导入整个目录
+./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.bson/xxxx
+没有指定-h参数会报错：Failed: error connecting to db server: no reachable servers 阿里云上-h参数需要内网ip，localhost不行。
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5b21fc996699964267f5e168/">阅读全文…</a>
@@ -294,11 +295,11 @@ ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

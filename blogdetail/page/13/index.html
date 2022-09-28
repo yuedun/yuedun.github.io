@@ -163,15 +163,12 @@
 由于javascript是动态语言，java是静态语言，所以两者在编写方式上有很大区别，主要是因为javascript没有类的概念，在ES6标准发布之前要构造一个对象需要用new关键字实例化一个function或者直接使用对象字面量。不过ES6标准的发布，使得javascript也可像java一样声明类了。
 在使用nodejs开发大型应用时需要到类的概念来封装一个复杂的逻辑，我们可以从现在开始逐步使用ES6开发，但是基于现有的支持环境，很多时候还得用ES5编写代码，那么这时候怎么来抽象一个类和实例化对象？
 以Java的思想方式来编写JavaScript，首先是一个构造函数：
-function Person(name, age){ 	this.name = name; 	this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
+function Person(name, age){ this.name = name; this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
 var tom = new Person(&quot;Tom&quot;,12);
 构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:
-var tom = new Person();  tom.name = &#34;Tom&#34;; tom.age = 13; 有了构造函数，还要有普通函数：
-tom.sayHello = function(){  	console.log(&#34;my name is &#34;+this.name);//my name is Tom  } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
-function Person(name, age){ 	this.name = name;  	this.age = age;  }  Person.getAge = function(){  	console.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56f15a4a3823e4e62593d4e2/">阅读全文…</a>
+var tom = new Person(); tom.name = &#34;Tom&#34;; tom.age = 13; 有了构造函数，还要有普通函数：
+tom.sayHello = function(){ console.log(&#34;my name is &#34;+this.name);//my name is Tom } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
+function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。
 	</div>
 </article>
 <article class="list__item post">
@@ -190,7 +187,7 @@ function Person(name, age){ 	this.name = name;  	this.age = age;  }  Person.getA
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		$(&#39;#calendar&#39;).fullCalendar({  lang: &#34;zh-cn&#34;,  header: {  left: &#39;prev, next, today&#39;,  center: &#39;title&#39;,  right: &#39;month&#39;  },  height: 500,  dayClick: function(date, jsEvent, view) {  //点击空白日期调用  },  eventClick: function(calEvent, jsEvent, view) {  //点击已有数据的日期调用  },  defaultDate: moment(),//默认日期  events:function(start, end, callback){  //点击prev上一月, next下一月等事件时调用  } }); 
+		$(&#39;#calendar&#39;).fullCalendar({ lang: &#34;zh-cn&#34;, header: { left: &#39;prev, next, today&#39;, center: &#39;title&#39;, right: &#39;month&#39; }, height: 500, dayClick: function(date, jsEvent, view) { //点击空白日期调用 }, eventClick: function(calEvent, jsEvent, view) { //点击已有数据的日期调用 }, defaultDate: moment(),//默认日期 events:function(start, end, callback){ //点击prev上一月, next下一月等事件时调用 } }); 
 	</div>
 </article>
 <article class="list__item post">
@@ -255,7 +252,7 @@ http://www.mydomain/?#!/index
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Vue.js可以传递$event对象
-&lt;body id=&#34;app&#34;&gt;  &lt;ul&gt; 	&lt;li v-on:click=&#34;say(&#39;hello!&#39;, $event)&#34;&gt;点击当前行文本&lt;/li&gt; 	&lt;li&gt;li2&lt;/li&gt; 	&lt;li&gt;li3&lt;/li&gt;  &lt;/ul&gt;  &lt;script&gt;  new Vue({ 	el: &#39;#app&#39;, 	data: { 	message: &#39;Hello Vue.js!&#39; 	}, 	methods: { 	say: function(msg, event) { 	//获取点击对象 	var el = event.currentTarget; 	alert(&#34;当前对象的内容：&#34;+el.innerHTML); 	} 	}  })  &lt;/script&gt;  &lt;/body&gt; 函数调用处传递$event
+&lt;body id=&#34;app&#34;&gt; &lt;ul&gt; &lt;li v-on:click=&#34;say(&#39;hello!&#39;, $event)&#34;&gt;点击当前行文本&lt;/li&gt; &lt;li&gt;li2&lt;/li&gt; &lt;li&gt;li3&lt;/li&gt; &lt;/ul&gt; &lt;script&gt; new Vue({ el: &#39;#app&#39;, data: { message: &#39;Hello Vue.js!&#39; }, methods: { say: function(msg, event) { //获取点击对象 var el = event.currentTarget; alert(&#34;当前对象的内容：&#34;+el.innerHTML); } } }) &lt;/script&gt; &lt;/body&gt; 函数调用处传递$event
 v-on:click=&quot;say('hello!', $event)&quot;
 函数中获取到的event.currentTarget对象就是当前元素
 在线示例
@@ -360,8 +357,8 @@ v-on:click=&quot;say('hello!', $event)&quot;
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		直接看代码：
-var gulp = require(&#39;gulp&#39;) var webpack = require(&#34;gulp-webpack&#34;); var webpackConfig = require(&#34;./webpack.config.js&#34;); // gulp.task(&#34;webpack&#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err)) // console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats) // if(err) throw new Error(&#34;webpack&#34;, err); // callback(); // }); // });  /** * 编译时有错误提示 */ gulp.task(&#34;webpack&#34;, function(){  return gulp.src(&#34;./app.js&#34;)  .pipe(webpack(Object.create(webpackConfig)))  .pipe(gulp.dest(&#34;./dist/&#34;)) });  gulp.watch(&#39;./views/*&#39;, [&#39;webpack&#39;]); webpack.config.js配置
-var webpack = require(&#34;webpack&#34;); module.exports = {  entry: //&#34;.
+var gulp = require(&#39;gulp&#39;) var webpack = require(&#34;gulp-webpack&#34;); var webpackConfig = require(&#34;./webpack.config.js&#34;); // gulp.task(&#34;webpack&#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err)) // console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats) // if(err) throw new Error(&#34;webpack&#34;, err); // callback(); // }); // }); /** * 编译时有错误提示 */ gulp.task(&#34;webpack&#34;, function(){ return gulp.src(&#34;./app.js&#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&#34;./dist/&#34;)) }); gulp.watch(&#39;./views/*&#39;, [&#39;webpack&#39;]); webpack.config.js配置
+var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app.js&#34;, { app:&#34;./app.js&#34; // vendor: [&#34;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/568a088edb1fef9e0cda949e/">阅读全文…</a>
@@ -391,11 +388,11 @@ var webpack = require(&#34;webpack&#34;); module.exports = {  entry: //&#34;.
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

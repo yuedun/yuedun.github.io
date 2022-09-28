@@ -205,21 +205,26 @@
 这叫用“鞭”驱动“驴”拉磨
 在程序里，程序停止在那不动，你点击一个按钮，它就有反应了，过一会，又没反应了，你再点一下，它又继续运行。
 这叫用“事件”驱动“程序”运行
-0. 基本概念 窗口/组件 事件 消息(队列) 事件响应(服务处理程序) 调度算法 进程/线程 非阻塞I/O 程序的执行可以看成对CPU,内存,IO资源一次占用 现代操作系统支持多任务,可以分时复用上述资源.  1. 为什么采用事件驱动模型? 事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：
-首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）； 当目标发送改变（发布），观察者（订阅者）就可以接收到改变； 观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。  2. 代码执行流程 在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。 在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。
+0. 基本概念 窗口/组件 事件 消息(队列) 事件响应(服务处理程序) 调度算法 进程/线程 非阻塞I/O 程序的执行可以看成对CPU,内存,IO资源一次占用 现代操作系统支持多任务,可以分时复用上述资源. 1. 为什么采用事件驱动模型? 事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：
+首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）； 当目标发送改变（发布），观察者（订阅者）就可以接收到改变； 观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。 2. 代码执行流程 在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。 在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。
 3. 事件驱动模型 在UI编程中，常常要对鼠标点击进行相应，首先如何获得鼠标点击呢？
 方式一：创建一个线程，该线程一直循环检测是否有鼠标点击，那么这个方式有以下几个缺点：
-CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？ 如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘； 如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。  方式二：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：
-有一个事件（消息）队列； 鼠标按下时，往这个队列中增加一个点击事件（消息）； 有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等； 事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图:  4. 事件驱动处理库 select poll epoll libev  消息驱动 事件驱动机制跟消息驱动机制相比
+CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？ 如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘； 如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。 方式二：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：
+有一个事件（消息）队列； 鼠标按下时，往这个队列中增加一个点击事件（消息）； 有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等； 事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图: 4. 事件驱动处理库 select poll epoll libev 消息驱动 事件驱动机制跟消息驱动机制相比
 消息驱动和事件驱动很类似，都是先有一个事件，然后产生一个相应的消息，再把消息放入消息队列，由需要的项目获取。他们的区别是消息是谁产生的
 消息驱动：鼠标管自己点击不需要和系统有过多的交互，消息由系统（第三方）循环检测，来捕获并放入消息队列。消息对于点击事件来说是被动产生的，高内聚。
 事件驱动：鼠标点击产生点击事件后要向系统发送消息“我点击了”的消息，消息是主动产生的。再发送到消息队列中。
 事件：按下鼠标，按下键盘，按下游戏手柄，将U盘插入USB接口，都将产生事件。比如说按下鼠标左键，将产生鼠标左键被按下的事件。
 消息：当鼠标被按下，产生了鼠标按下事件，windows侦测到这一事件的发生，随即发出鼠标被按下的消息到消息队列中，这消息附带了一系列相关的事件信息，比如鼠标哪个键被按了，在哪个窗口被按的，按下点的坐标是多少？如此等等。
- 要理解事件驱动和程序，就需要与非事件驱动的程序进行比较。实际上，现代的程序大多是事件驱动的，比如多线程的程序，肯定是事件驱动的。早期则存在许多非事件驱动的程序，这样的程序，在需要等待某个条件触发时，会不断地检查这个条件，直到条件满足，这是很浪费cpu时间的。而事件驱动的程序，则有机会释放cpu从而进入睡眠态（注意是有机会，当然程序也可自行决定不释放cpu），当事件触发时被操作系统唤醒，这样就能更加有效地使用cpu. 再说什么是事件驱动的程序。一个典型的事件驱动的程序，就是一个死循环，并以一个线程的形式存在，这个死循环包括两个部分，第一个部分是按照一定的条件接收并选择一个要处理的事件，第二个部分就是事件的处理过程。程序的执行过程就是选择事件和处理事件，而当没有任何事件触发时，程序会因查询事件队列失败而进入睡眠状态，从而释放cpu。 事件驱动的程序，必定会直接或者间接拥有一个事件队列，用于存储未能及时处理的事件。 事件驱动的程序的行为，完全受外部输入的事件控制，所以，事件驱动的系统中，存在大量这种程序，并以事件作为主要的通信方式。 事件驱动的程序，还有一个最大的好处，就是可以按照一定的顺序处理队列中的事件，而这个顺序则是由事件的触发顺序决定的，这一特性往往被用于保证某些过程的原子化。 目前windows,linux,nucleus,vxworks都是事件驱动的，只有一些单片机可能是非事件驱动的。  事件模式耦合高，同模块内好用；消息模式耦合低，跨模块好用。事件模式集成其它语言比较繁琐，消息模式集成其他语言比较轻松。事件是侵入式设计，霸占你的主循环；消息是非侵入式设计，将主循环该怎样设计的自由留给用户。如果你在设计一个东西举棋不定，那么你可以参考win32的GetMessage，本身就是一个藕合度极低的接口，又足够自由，接口任何语言都很方便，具体应用场景再在其基础上封装成事件并不是难事，接口耦合较低，即便哪天事件框架调整，修改外层即可，不会伤经动骨。而如果直接实现成事件，那就完全反过来了。
+要理解事件驱动和程序，就需要与非事件驱动的程序进行比较。实际上，现代的程序大多是事件驱动的，比如多线程的程序，肯定是事件驱动的。早期则存在许多非事件驱动的程序，这样的程序，在需要等待某个条件触发时，会不断地检查这个条件，直到条件满足，这是很浪费cpu时间的。而事件驱动的程序，则有机会释放cpu从而进入睡眠态（注意是有机会，当然程序也可自行决定不释放cpu），当事件触发时被操作系统唤醒，这样就能更加有效地使用cpu. 再说什么是事件驱动的程序。一个典型的事件驱动的程序，就是一个死循环，并以一个线程的形式存在，这个死循环包括两个部分，第一个部分是按照一定的条件接收并选择一个要处理的事件，第二个部分就是事件的处理过程。程序的执行过程就是选择事件和处理事件，而当没有任何事件触发时，程序会因查询事件队列失败而进入睡眠状态，从而释放cpu。 事件驱动的程序，必定会直接或者间接拥有一个事件队列，用于存储未能及时处理的事件。 事件驱动的程序的行为，完全受外部输入的事件控制，所以，事件驱动的系统中，存在大量这种程序，并以事件作为主要的通信方式。 事件驱动的程序，还有一个最大的好处，就是可以按照一定的顺序处理队列中的事件，而这个顺序则是由事件的触发顺序决定的，这一特性往往被用于保证某些过程的原子化。 目前windows,linux,nucleus,vxworks都是事件驱动的，只有一些单片机可能是非事件驱动的。 事件模式耦合高，同模块内好用；消息模式耦合低，跨模块好用。事件模式集成其它语言比较繁琐，消息模式集成其他语言比较轻松。事件是侵入式设计，霸占你的主循环；消息是非侵入式设计，将主循环该怎样设计的自由留给用户。如果你在设计一个东西举棋不定，那么你可以参考win32的GetMessage，本身就是一个藕合度极低的接口，又足够自由，接口任何语言都很方便，具体应用场景再在其基础上封装成事件并不是难事，接口耦合较低，即便哪天事件框架调整，修改外层即可，不会伤经动骨。而如果直接实现成事件，那就完全反过来了。
 什么是数据驱动编程 最近在学习《Unix编程艺术》。以前粗略的翻过，以为是介绍unix工具的。现在认真的看了下，原来是介绍设计原则的。它的核心就是第一章介绍的unix的哲学以及17个设计原则，而后面的内容就是围绕它来展开的。以前说过，要学习适合自己的资料，而判断是否适合的一个方法就是看你是否能够读得下去。我对这本书有一种相见恨晚的感觉。推荐有4~6年工作经验的朋友可以读一下。
 正题：
 作者在介绍Unix设计原则时，其中有一条为“表示原则：把知识叠入数据以求逻辑质朴而健壮”。结合之前自己的一些经验，我对这个原则很有共鸣，所以先学习了数据驱动编程相关的内容，这里和大家分享出来和大家一起讨论。
+数据驱动编程的核心
+数据驱动编程的核心出发点是相对于程序逻辑，人类更擅长于处理数据。数据比程序逻辑更容易驾驭，所以我们应该尽可能的将设计的复杂度从程序代码转移至数据。
+真的是这样吗？让我们来看一个示例。
+假设有一个程序，需要处理其他程序发送的消息，消息类型是字符串，每个消息都需要一个函数进行处理。第一印象，我们可能会这样处理：
+void msg_proc(const char *msg_type, const char *msg_buf) { if (0 == strcmp(msg_type, &#34;inivite&#34;)) { inivite_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;tring_100&#34;)) { tring_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ring_180&#34;)) { ring_180_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ring_181&#34;)) { ring_181_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ring_182&#34;)) { ring_182_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ring_183&#34;)) { ring_183_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ok_200&#34;)) { ok_200_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;fail_486&#34;)) { fail_486_fun(msg_buf); } else { log(&#34;未识别的消息类型%s\n&#34;, msg_type); } } 上面的消息类型取自sip协议（不完全相同，sip协议借鉴了http协议），消息类型可能还会增加。看着常常的流程可能有点累，检测一下中间某个消息有没有处理也比较费劲，而且，没增加一个消息，就要增加一个流程分支。
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/07/event-message-data-driven/">阅读全文…</a>
@@ -267,12 +272,12 @@ CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还�
 		gorm是一款优秀的国产golang orm关系型数据库框架，在国内外使用比较广泛。它的链式调用还算是一种符合人类思维的风格。
 不过在使用过程中也遇到一些困扰，比如：Model, Find, First, Where这些函数该什么时候使用，有时候会有边界不清楚，使用混乱的情况。
 以下代码示例使用v2版本，v1和v2大体上相同，有些细微的不同
-Where和Find search := User{UserName:&#34;月盾&#34;} db.Find(&amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39;  db.Where(search).Find(&amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; 以上两种查询方式结果一样。
+Where和Find search := User{UserName:&#34;月盾&#34;} db.Find(&amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; db.Where(search).Find(&amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; 以上两种查询方式结果一样。
 Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是数据接收者，conds是查询条件。所以Find也是可以代替Where来传入条件的。
 Where的参数主要分为两类：String，Struct&amp;Map。还有其他不常用类型。
 String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
 Struct&amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
-db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE name = &#34;jinzhu&#34; AND age = 0;  db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&rsquo;&rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：
+db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE name = &#34;jinzhu&#34; AND age = 0; db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE age = 0; 注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&rsquo;&rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/07/gorm-model-find-first/">阅读全文…</a>
@@ -296,13 +301,13 @@ db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(
 	<div class="content list__excerpt post__content clearfix">
 		如何Hook Ajax请求 现在很多网站都使用Ajax作为数据接口，这样其实也方便爬虫爬取数据，但是，如果站点对IP，访问频率做 了限制，或者网站定位就是搜索类，无法遍历完所有页面，或者是数据实时变化，无法预期的。这样就可能需要 直接在浏览器中模拟人的行为，对于这样的网站(使用Ajax作数据接口，有一定防范措施) ，如果我们可以通过hook得到Ajax请求，就可以搞定它的数据了。
 单页面Web应用 对于单页面的Web应用，在console中使用如下代码，就能在浏览器进行Ajax请求时候，得到返回内容， 然后在post给存储接口就好了:
-(function() {  var origOpen = XMLHttpRequest.prototype.open;   XMLHttpRequest.prototype.open = function() {  // console.log(&#39;request started!&#39;);  this.addEventListener(&#39;load&#39;, function() {  console.log(this.responseText); // 得到Ajax的返回内容  });  origOpen.apply(this, arguments);  }; })(); 比如百度图片:
+(function() { var origOpen = XMLHttpRequest.prototype.open; XMLHttpRequest.prototype.open = function() { // console.log(&#39;request started!&#39;); this.addEventListener(&#39;load&#39;, function() { console.log(this.responseText); // 得到Ajax的返回内容 }); origOpen.apply(this, arguments); }; })(); 比如百度图片:
 我们可以看到请求图片的路径，这段代码 直接使用了一个匿名函数，重写了Ajax请求的open方法，给load事件加上一个事件监听器，从而把内容得到:
 对于单页面的Web应用，基本可以满足需求，但是如果翻页的话，每次翻页上一页的代码就失效了， 不可能每页都把这段代码复制进console中，还是需要使用类似Chrome插件的方式才能实现。
 翻页Web应用 有了上面的代码，如果我们把它直接丢到Chrome插件的JS文件里面(官方叫Content Scripts)，发现是无法执行的，XMLHttpRequest.prototype.open 还是浏览器自身的代码。
 这样看来，就无法实现自动翻页，自动获取ajax请求内容了。
 Chrome官方说法如下:
- Content scripts execute in a special environment called an isolated world. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.
+Content scripts execute in a special environment called an isolated world. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/07/chrome-extensions-hook-ajax/">阅读全文…</a>
@@ -325,12 +330,13 @@ Chrome官方说法如下:
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。
-vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
+vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。
+上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
 可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也没有时间排序，只有名称排序，真的是很难用。
 为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
 关于chrome插件开发的细节本文暂不细说，直接上代码。
 代码展示 manifest.json
-{  &#34;manifest_version&#34;: 2,  &#34;name&#34;: &#34;chome-plugin&#34;,  &#34;version&#34;: &#34;0.0.1&#34;,  &#34;description&#34;: &#34;chrome示例插件&#34;,  &#34;icons&#34;: {  &#34;16&#34;: &#34;images/icon-16x16.png&#34;,  &#34;48&#34;: &#34;images/icon-48x48.png&#34;,  &#34;128&#34;: &#34;images/icon-128x128.png&#34;  },  &#34;page_action&#34;: {  &#34;default_icon&#34;: {  &#34;48&#34;: &#34;images/icon-48x48.png&#34;  },  &#34;default_popup&#34;: &#34;html/popup.html&#34;,  &#34;default_title&#34;: &#34;Hello yuedun&#34;  },  &#34;author&#34;: &#34;yuedun&#34;,  &#34;background&#34;: {  &#34;scripts&#34;: [  &#34;scripts/jquery.min.js&#34;,  &#34;scripts/background.js&#34;  ]  },  &#34;devtools_page&#34;: &#34;html/devtools-page.
+{ &#34;manifest_version&#34;: 2, &#34;name&#34;: &#34;chome-plugin&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;description&#34;: &#34;chrome示例插件&#34;, &#34;icons&#34;: { &#34;16&#34;: &#34;images/icon-16x16.png&#34;, &#34;48&#34;: &#34;images/icon-48x48.png&#34;, &#34;128&#34;: &#34;images/icon-128x128.png&#34; }, &#34;page_action&#34;: { &#34;default_icon&#34;: { &#34;48&#34;: &#34;images/icon-48x48.png&#34; }, &#34;default_popup&#34;: &#34;html/popup.html&#34;, &#34;default_title&#34;: &#34;Hello yuedun&#34; }, &#34;author&#34;: &#34;yuedun&#34;, &#34;background&#34;: { &#34;scripts&#34;: [ &#34;scripts/jquery.min.js&#34;, &#34;scripts/background.js&#34; ] }, &#34;devtools_page&#34;: &#34;html/devtools-page.html&#34;, &#34;content_scripts&#34;: [ { &#34;js&#34;: [ &#34;scripts/jquery.min.js&#34;, &#34;scripts/content.js&#34; ], &#34;css&#34;: [ &#34;styles/yuedun-insert.css&#34; ], &#34;matches&#34;: [ &#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&#34; ], &#34;run_at&#34;: &#34;document_start&#34; } ], &#34;permissions&#34;: [ &#34;cookies&#34;, &#34;*://*/*&#34;, &#34;webRequest&#34; ], &#34;homepage_url&#34;: &#34;https://www.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/07/qiuniu-image-preivew/">阅读全文…</a>
@@ -353,10 +359,10 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		接上篇《博客迁移至hugo gitpage》后，因为缺失了每一篇文章的浏览量，而hugo又不具备这样的功能，原因还是gitpage不具备数据存储能力，自然就没办法统计每一篇文章的浏览量了。原本想使用自己服务器提供一个接口来记录，但发现https协议不支持调用http协议的接口，会出现block:mixed-content错误。
- 错误：https页面去发送http请求报错(浏览器阻止https发送http请求)
- 问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。
+错误：https页面去发送http请求报错(浏览器阻止https发送http请求)
+问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。
 后来想到了leancloud，直接在前端调用api，将数据存储在云端。
-&lt;script src=&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;&gt;&lt;/script&gt; &lt;script&gt;  // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003  // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086  const appId = &#34;xxx&#34;;  const appKey = &#34;xxx&#34;;  const serverURL = &#34;xxx&#34;;  AV.init({ appId, appKey, serverURL });  function updateCollect() {  const collect = new AV.Query(&#39;Collect&#39;);  const url = location.pathname;  collect.select([&#39;url&#39;, &#39;pv&#39;])  collect.equalTo(&#39;url&#39;, url);  collect.first().then((col) =&gt; {  if (!col) {  // 声明 class  const Collect = AV.
+&lt;script src=&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;&gt;&lt;/script&gt; &lt;script&gt; // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003 // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086 const appId = &#34;xxx&#34;; const appKey = &#34;xxx&#34;; const serverURL = &#34;xxx&#34;; AV.init({ appId, appKey, serverURL }); function updateCollect() { const collect = new AV.Query(&#39;Collect&#39;); const url = location.pathname; collect.select([&#39;url&#39;, &#39;pv&#39;]) collect.equalTo(&#39;url&#39;, url); collect.first().then((col) =&gt; { if (!col) { // 声明 class const Collect = AV.Object.extend(&#39;Collect&#39;); // 构建对象 const collect = new Collect(); // 为属性赋值 collect.set(&#39;url&#39;, url); collect.set(&#39;pv&#39;, 1); collect.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/06/gitpage-hugo-page-view/">阅读全文…</a>
@@ -382,11 +388,11 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 再想到一年后又是一顿操作，不由得一个激灵。
 经过一番的思量后，决定将自建博客迁移至gitpage上。
 自建和gitpage优劣对比 首先列出自己博客具备的功能：
- 首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链 目录 所有文章时间线 留言 自维护留言系统 微博 新浪微博，最近出问题不显示了 速记 简单记录 关于 自我介绍  整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。所以迁移到gitpage上也不会有什么问题。
+首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链 目录 所有文章时间线 留言 自维护留言系统 微博 新浪微博，最近出问题不显示了 速记 简单记录 关于 自我介绍 整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。所以迁移到gitpage上也不会有什么问题。
 劣势 静态博客在一些细节功能上面确实会有缺失，比如：
- 评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。  优势  免费，没有服务器费用。 可以自定义域名，只需要一丁点儿的域名费用。 seo良好。 规范的书写格式，使文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于本地检索。 数据更保险，不易丢失。 安全，静态博客可以避免一些网络攻击。  整体来说，除了数据存储功能缺失外，其他都是可以实现的。
+评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。 优势 免费，没有服务器费用。 可以自定义域名，只需要一丁点儿的域名费用。 seo良好。 规范的书写格式，使文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于本地检索。 数据更保险，不易丢失。 安全，静态博客可以避免一些网络攻击。 整体来说，除了数据存储功能缺失外，其他都是可以实现的。
 迁移过程 将mongodb数据中的博客导出为本地markdown文件。
-// mongodb数据转markdown function genMd() { 	return Blog.find({ status: 1 }, null, { sort: { &#39;_id&#39;: -1 } }) 	.then(data =&gt; { 	data.forEach((b) =&gt; { 	debug(b) 	let tags = b.
+// mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &#39;_id&#39;: -1 } }) .then(data =&gt; { data.forEach((b) =&gt; { debug(b) let tags = b.tags.split(&#34;,&#34;) let blog = `--- title: &#34;${b.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/06/blog-move-to-gitpage/">阅读全文…</a>
@@ -411,11 +417,11 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

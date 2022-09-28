@@ -173,7 +173,7 @@
 十二、Consul Web UI
 十三、Docker下安装consul 作者：菲宇
 来源：CSDN
-原文：https://blog.csdn.net/bbwangj/article/details/81116505
+原文：https://blog.csdn.net/bbwangj/article/details/81116505 
 	</div>
 </article>
 <article class="list__item post">
@@ -278,14 +278,14 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		说起将开发好的程序部署到服务上，常用的有两种方式：
- 本地编译打包，上传到服务器 git push到远程仓库，在服务器上拉取（编译-打包）  无论以怎样的方式发布，都只有熟悉流程才能得心应手。今天我要说的是golang的部署流程。
+本地编译打包，上传到服务器 git push到远程仓库，在服务器上拉取（编译-打包） 无论以怎样的方式发布，都只有熟悉流程才能得心应手。今天我要说的是golang的部署流程。
 如果是在公司内，自然有专人负责发布事宜，也有公司暂无运维人员，这时还是由开发人员负责服务器发布工作，当然，CI/CD这类工具一般也没有搭建起来。但这并不影响我们快速发布。 得益于go的编译速度，整个发布过程可能也就2分钟，接下来说明一下我个人的发布流程:
- 在项目目录下执行go打包命令  GOOS=linux GOARCH=amd64 go build 由于是要部署到Linux服务器上，所以加上GOOS=linux GOARCH=amd64就可以打包出对应系统的二进制可执行文件。可以将该命令写成脚本文件。
- 推送代码到git仓库，这一步并不是必须，之所以需要这一步，是因为go只打包*.go文件，并不会打包静态文件，所以还需要把相关静态文件推送的git仓库以便拉取。
-  上传打包好的二进制可执行文件到服务器的项目目录下。为什么是项目目录？因为还有静态文件需要使用，所以服务器上也要有同样的项目结构。可借助一些工具来上传，我使用了rz命令来上传。
-  git pull代码，主要是拉取静态文件。
-  重启应用。
-  整个过程比较耗时的操作是上传文件和推拉代码，打包和重启应用反而很快，基本是两三秒完成。 golang相对于其他语言，在服务，器上不需要安装运行时，不像Java和nodejs都需要安装正确的运行时版本，go只需要把打包好的二进制可执行文件扔上去就可以执行。
+在项目目录下执行go打包命令 GOOS=linux GOARCH=amd64 go build 由于是要部署到Linux服务器上，所以加上GOOS=linux GOARCH=amd64就可以打包出对应系统的二进制可执行文件。可以将该命令写成脚本文件。
+推送代码到git仓库，这一步并不是必须，之所以需要这一步，是因为go只打包*.go文件，并不会打包静态文件，所以还需要把相关静态文件推送的git仓库以便拉取。
+上传打包好的二进制可执行文件到服务器的项目目录下。为什么是项目目录？因为还有静态文件需要使用，所以服务器上也要有同样的项目结构。可借助一些工具来上传，我使用了rz命令来上传。
+git pull代码，主要是拉取静态文件。
+重启应用。
+整个过程比较耗时的操作是上传文件和推拉代码，打包和重启应用反而很快，基本是两三秒完成。 golang相对于其他语言，在服务，器上不需要安装运行时，不像Java和nodejs都需要安装正确的运行时版本，go只需要把打包好的二进制可执行文件扔上去就可以执行。
 	</div>
 </article>
 <article class="list__item post">
@@ -324,7 +324,7 @@ Consul使用gossip来传播集群信息的方式，使其比etcd更易于搭建�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		一、安装gRPC $ go get -u google.golang.org/grpc package google.golang.org/grpc: unrecognized import path &#34;google.golang.org/grpc&#34; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
-git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc  git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net  git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text  go get -u github.com/golang/protobuf/{proto,protoc-gen-go}  git clone https://github.
+git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto cd $GOPATH/src/ go install google.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5c63b5334a7b7e6cd808697a/">阅读全文…</a>
@@ -393,7 +393,7 @@ character_set_database这一项还是latin1,不过似乎并不影响。 友情�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){  item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;)  db.getCollection(&#39;blogs&#39;).save(item) 	print(&#34;&gt;&gt;&#34;, item.content); }) 
+db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;) db.getCollection(&#39;blogs&#39;).save(item) print(&#34;&gt;&gt;&#34;, item.content); }) 
 	</div>
 </article>
 <article class="list__item post">
@@ -413,7 +413,7 @@ db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&#39;mongoose&#39;);  mongoose.connect(&#39;mongodb://localhost/my_database&#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const mongoose = require(&#39;mongoose&#39;); mongoose.connect(&#39;mongodb://localhost/my_database&#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
 const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = conn.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
 const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = mongoose.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 不能工作 
 	</div>
@@ -442,11 +442,11 @@ const conn = mongoose.createConnection(&#39;your connection string&#39;); const 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

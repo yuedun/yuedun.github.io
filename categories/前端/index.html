@@ -161,10 +161,10 @@
 	<div class="content list__excerpt post__content clearfix">
 		上篇简单介绍了sapper和sveltekit的发展，目前sveltekit还只是Beta版本，有很多不确定因素存在，有可能会有大的变更，所以还不推荐在生产环境中使用，不过在个人项目和小项目中可以大胆尝试。
 今天我们就正式使用sveltekit开发一个web项目。
-第一步：创建项目 mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
+第一步：创建项目 mkdir my-app cd my-app npm init svelte@next npm install npm run dev 这样就可以创建一个简单的项目了，不过和我们真实需求还有些差距，既然是使用sveltekit，那么最重要的原因是其支持服务端渲染了。这就需要从服务端获取数据，接下来就实现这样的需求。
 第二步：路由 和sapper一样，sveltekit也是基于文件系统的的路由器，这就需要我们来合理的组织目录结构。路由的核心目录是src/routes，当然，这个也是可配置的，按照自己的需求修改svelte.config.cjs，参考文档：https://kit.svelte.dev/docs#configuration。
 我们以一个博客系统为例，在scr/routes下创建blog目录，光有目录还不行，如果想要访问 /blog 路由，还需要创建index.svelte文件，内容如下：
-&lt;script context=&#34;module&#34;&gt;  /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ 	export async function load({ page, fetch, session, context }) { 	return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json 	.then((r) =&gt; r.json()) 	.then((posts) =&gt; { 	console.log(posts); 	return { 	props: { 	posts 	} 	}; 	}); 	} &lt;/script&gt;  &lt;script&gt; 	export let posts; &lt;/script&gt;  &lt;svelte:head&gt; 	&lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt;  &lt;h1&gt;Recent posts&lt;/h1&gt;  &lt;ul&gt; 	{#each posts as post} 	&lt;!
+&lt;script context=&#34;module&#34;&gt; /** * @type {import(&#39;@sveltejs/kit&#39;).Load} */ export async function load({ page, fetch, session, context }) { return fetch(`blog.json`)// index.json.js = blog.json或blog/blog.json .then((r) =&gt; r.json()) .then((posts) =&gt; { console.log(posts); return { props: { posts } }; }); } &lt;/script&gt; &lt;script&gt; export let posts; &lt;/script&gt; &lt;svelte:head&gt; &lt;title&gt;Blog&lt;/title&gt; &lt;/svelte:head&gt; &lt;h1&gt;Recent posts&lt;/h1&gt; &lt;ul&gt; {#each posts as post} &lt;!
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/606d512c54277a10496a38ae/">阅读全文…</a>
@@ -194,15 +194,15 @@ svelte作者里奇·哈里斯（Rich Harris）在2020年10月的svelte峰会上�
 而作者放弃sapper后的另一种选择是开发SvelteKit。
 Sapper和SvelteKit都是svelte的开发框架，类似于vue的nuxt框架。
 sveltekit包含的功能有：
-  服务端渲染（SSR）
-  路由
-  typescript支持
-  less, scss支持
-  serverless
-  vite打包
-  可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
-创建sveltekit的方法：  mkdir my-app  cd my-app  npm init svelte@next  npm install  npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
- $ npm run dev -- --open   &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app  &gt; svelte-kit dev &#34;--open&#34;  D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2  import &#39;.
+服务端渲染（SSR）
+路由
+typescript支持
+less, scss支持
+serverless
+vite打包
+可以看到，sveltekit几乎包含了所有我们想要的功能，既能高效开发，又有高性能。
+创建sveltekit的方法： mkdir my-app cd my-app npm init svelte@next npm install npm run dev 需要注意，您的nodejs版本需要更新到v12以上，否则可能出现以下错误：
+$ npm run dev -- --open &gt; sveltekit-app@0.0.1 dev D:\workspace\sveltekit-app &gt; svelte-kit dev &#34;--open&#34; D:\workspace\sveltekit-app\node_modules\@sveltejs\kit\svelte-kit.js:2 import &#39;./dist/cli.js&#39;; SyntaxError: Unexpected string at Module._compile (internal/modules/cjs/loader.js:723:23) at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10) at Module.load (internal/modules/cjs/loader.js:653:32) at tryModuleLoad (internal/modules/cjs/loader.js:593:12) at Function.Module._load (internal/modules/cjs/loader.js:585:3) at Function.Module.runMain (internal/modules/cjs/loader.js:831:12) at startup (internal/bootstrap/node.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/60628dfa8f0b5a0240684581/">阅读全文…</a>
@@ -225,9 +225,9 @@ sveltekit包含的功能有：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持history模式的使用上也不是很方便，试用过五六个支持history的路由后最终@spaceavocado/svelte-router算是满足了要求。
- 使用简单 功能丰富 支持history和hash 我也是够难伺候的。  在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
+使用简单 功能丰富 支持history和hash 我也是够难伺候的。 在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
 使用方法：
-//App.svelte &lt;script&gt; 	import RouterView from &#39;@spaceavocado/svelte-router/component/view&#39;; 	import { routes } from &#39;./router.js&#39; &lt;/script&gt;  &lt;RouterView /&gt; //router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;;  export const routes = createRouter({  mode: &#34;HISTORY&#34;,  routes: [  {  path: &#39;/&#39;,  name: &#39;HOME&#39;,  component: index,  },  {  path: &#39;/a&#39;,  name: &#39;a&#39;,  component: a,  },  {  path: &#39;/b&#39;,  name: &#39;b&#39;,  component: b,  },  {  path: &#39;*&#39;,  component: index,  },  ], }); // index.
+//App.svelte &lt;script&gt; import RouterView from &#39;@spaceavocado/svelte-router/component/view&#39;; import { routes } from &#39;./router.js&#39; &lt;/script&gt; &lt;RouterView /&gt; //router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = createRouter({ mode: &#34;HISTORY&#34;, routes: [ { path: &#39;/&#39;, name: &#39;HOME&#39;, component: index, }, { path: &#39;/a&#39;, name: &#39;a&#39;, component: a, }, { path: &#39;/b&#39;, name: &#39;b&#39;, component: b, }, { path: &#39;*&#39;, component: index, }, ], }); // index.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ff7d7cc3f518207e72349ed/">阅读全文…</a>
@@ -255,10 +255,10 @@ sveltekit包含的功能有：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		sapper可能被放弃更新，如果您要继续使用svelte，可以考虑使用sveltekit
- 最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
- 服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试）  可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
+最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
+服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试） 可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
 遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
-import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;;  const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;;  polka() 	// 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.
+import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 .use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.com&#39;, pathRewrite: { &#39;^/api&#39;: &#39;&#39; }, secure: false, changeOrigin: true, })) .
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ff449035e80c6649222da2c/">阅读全文…</a>
@@ -281,7 +281,7 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用svelte开发项目时遇到需要将px转换成rem的需求，有试过postcss-px2rem，postcss-pxtorem，等postcss插件，都没成成功，最后找到了postcss-units插件成功实现。 完整rollup配置文件如下： converts px to rem 该配置是sapper项目配置
-import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-resolve&#39;; import replace from &#39;@rollup/plugin-replace&#39;; import commonjs from &#39;@rollup/plugin-commonjs&#39;; import url from &#39;@rollup/plugin-url&#39;; import svelte from &#39;rollup-plugin-svelte&#39;; import babel from &#39;@rollup/plugin-babel&#39;; import { terser } from &#39;rollup-plugin-terser&#39;; import config from &#39;sapper/config/rollup.js&#39;; import pkg from &#39;./package.json&#39;; import sveltePreprocess from &#39;svelte-preprocess&#39;; // import { less } from &#39;svelte-preprocess&#39;; const postcssUnits = require(&#39;postcss-units&#39;);  const mode = process.env.NODE_ENV; const dev = mode === &#39;development&#39;; const legacy = !
+import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-resolve&#39;; import replace from &#39;@rollup/plugin-replace&#39;; import commonjs from &#39;@rollup/plugin-commonjs&#39;; import url from &#39;@rollup/plugin-url&#39;; import svelte from &#39;rollup-plugin-svelte&#39;; import babel from &#39;@rollup/plugin-babel&#39;; import { terser } from &#39;rollup-plugin-terser&#39;; import config from &#39;sapper/config/rollup.js&#39;; import pkg from &#39;./package.json&#39;; import sveltePreprocess from &#39;svelte-preprocess&#39;; // import { less } from &#39;svelte-preprocess&#39;; const postcssUnits = require(&#39;postcss-units&#39;); const mode = process.env.NODE_ENV; const dev = mode === &#39;development&#39;; const legacy = !
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ff3db095e80c6649222d94e/">阅读全文…</a>
@@ -304,7 +304,7 @@ import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-re
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		svelte给dom对象绑定事件和vue框架类似。 定义函数：
-function handler(index){ 	alert(&#34;hello&#34;, index); } 绑定事件：
+function handler(index){ alert(&#34;hello&#34;, index); } 绑定事件：
 &lt;button on:click={handler}&gt;点击&lt;/button&gt;
 但是带参函数的使用就略有不同了，函数handler的参数index需要传入的时候，不能直接这样使用&lt;button on:click={handler(123)}&gt;点击&lt;/button&gt;,这样的写法会在页面打开时直接执行，而不是在点击按钮的时候执行。
 这是初学svelte的时候比较郁闷的事，官方文档中也没有明显的文档说明如何传参。 正确的传参方式是这样的： &lt;button on:click={() =&gt; handler(123)}&gt;点击&lt;/button&gt; 将on:click的内容改写为匿名函数，在函数中调用。
@@ -329,8 +329,8 @@ function handler(index){ 	alert(&#34;hello&#34;, index); } 绑定事件：
 		svelte目前没有提供官网路由组件，不过可以在社区中找到。本文介绍的是svelte-spa-router的使用方法。
 npm i svelte-spa-router 参考以下目录结构创建文件（不是必须）
 router.js:
-import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;;  export const routes = {  &#39;/&#39;: index,  &#39;/a&#39;: a,  &#39;/b&#39;: b } 动态导入组件和代码分割：
-import { wrap } from &#39;svelte-spa-router/wrap&#39; import index from &#39;./index/index.svelte&#39;;  export const routes = {  &#39;/&#39;: index,  &#39;/a&#39;: wrap({  asyncComponent: () =&gt; import(&#39;./a/a.svelte&#39;)  }),  // &#39;/b&#39;: b 	// 动态加载  &#39;/b&#39;: wrap({  asyncComponent: () =&gt; import(&#39;.
+import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = { &#39;/&#39;: index, &#39;/a&#39;: a, &#39;/b&#39;: b } 动态导入组件和代码分割：
+import { wrap } from &#39;svelte-spa-router/wrap&#39; import index from &#39;./index/index.svelte&#39;; export const routes = { &#39;/&#39;: index, &#39;/a&#39;: wrap({ asyncComponent: () =&gt; import(&#39;./a/a.svelte&#39;) }), // &#39;/b&#39;: b // 动态加载 &#39;/b&#39;: wrap({ asyncComponent: () =&gt; import(&#39;./b/b.svelte&#39;) }), } 动态导入组件的优点是组件不会一起打包，而是单独的组件文件，在打开对应的页面时才会请求，可以有效减少包文件大小。 App.svelte:
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5fc1f965c0ec0c27f57ac7c9/">阅读全文…</a>
@@ -354,10 +354,10 @@ import { wrap } from &#39;svelte-spa-router/wrap&#39; import index from &#39;./i
 	<div class="content list__excerpt post__content clearfix">
 		Nuxt.js 2.13+可以扫描并自动导入您的组件，不再需要在该script部分中手动导入它们！
 nuxt.config配置：
-export default {  components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
+export default { components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
 组件目录：
-components/  ComponentFoo.vue  ComponentBar.vue 使用
-&lt;template&gt;  &lt;ComponentFoo /&gt;  &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
+components/ ComponentFoo.vue ComponentBar.vue 使用
+&lt;template&gt; &lt;ComponentFoo /&gt; &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
 	</div>
 </article>
 <article class="list__item post">
@@ -400,7 +400,7 @@ this.$emit(&#34;changeData&#34;, &#34;要修改的数据&#34;); 父组件：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		不依赖jquery也可以实现图片预览功能：
-&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; 	&lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; 	//图片放大 	document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; 	document.querySelectorAll(&#34;img&#34;).forEach(function (item) { 	item.style.cursor = &#34;pointer&#34;; 	});  	document.querySelectorAll(&#34;img&#34;).forEach(function (item) { 	item.addEventListener(&#34;click&#34;, function () { 	imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); 	}) 	})  	function imgShow(outerdiv, bigimg, _this) { 	var src = _this.
+&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; &lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; //图片放大 document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.style.cursor = &#34;pointer&#34;; }); document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.addEventListener(&#34;click&#34;, function () { imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); }) }) function imgShow(outerdiv, bigimg, _this) { var src = _this.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5f20f0c05981482973150396/">阅读全文…</a>
@@ -429,11 +429,11 @@ this.$emit(&#34;changeData&#34;, &#34;要修改的数据&#34;); 父组件：
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

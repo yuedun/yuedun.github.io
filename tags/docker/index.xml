@@ -26,7 +26,7 @@
       <guid>https://www.yuedun.wang/blogdetail/5a6021fa4bdc8ea471fd2db0/</guid>
       <description>首先看项目目录：
 再看Dockerfile文件内容：
-# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g  EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&amp;#34;pm2-runtime&amp;#34;, &amp;#34;dest/server.js&amp;#34;, &amp;#34;--no-daemon&amp;#34;] # ENTRYPOINT [&amp;#34;node&amp;#34;, &amp;#34;server.js&amp;#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&amp;#34;pm2-runtime&amp;#34;, &amp;#34;dest/server.js&amp;#34;, &amp;#34;--no-daemon&amp;#34;] # ENTRYPOINT [&amp;#34;node&amp;#34;, &amp;#34;server.js&amp;#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
 如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
 需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 </description>
     </item>
@@ -38,8 +38,8 @@
       
       <guid>https://www.yuedun.wang/blogdetail/5a1be456da5c711b612f4d39/</guid>
       <description>Dockerfile
-FROM hub.c.163.com/public/nodejs:6.11.0 WORKDIR /app COPY . /app RUN npm install EXPOSE 3000 # CMD [&amp;#34;npm&amp;#34;, &amp;#34;start&amp;#34;] ENTRYPOINT [&amp;#34;npm&amp;#34;, &amp;#34;start&amp;#34;]  docker ps:
- CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &amp;#34;/bin/sh -c &amp;#39;/usr/...&amp;#34; 在Dockerfile中配置了CMD [&amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot;],docker ps后显示COMMAND为&amp;quot;/bin/sh -c &#39;/usr/...&amp;quot; 改为ENTRYPOINT [&amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot;]就可以了</description>
+FROM hub.c.163.com/public/nodejs:6.11.0 WORKDIR /app COPY . /app RUN npm install EXPOSE 3000 # CMD [&amp;#34;npm&amp;#34;, &amp;#34;start&amp;#34;] ENTRYPOINT [&amp;#34;npm&amp;#34;, &amp;#34;start&amp;#34;] docker ps:
+CONTAINER ID IMAGE COMMAND 59988bd90894 myfd &amp;#34;/bin/sh -c &amp;#39;/usr/...&amp;#34; 在Dockerfile中配置了CMD [&amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot;],docker ps后显示COMMAND为&amp;quot;/bin/sh -c &#39;/usr/...&amp;quot; 改为ENTRYPOINT [&amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot;]就可以了</description>
     </item>
     
   </channel>

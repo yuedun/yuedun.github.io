@@ -160,9 +160,9 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		npms.io上搜索到svelte的route包其实也不算少，使用比较广泛的svelte-spa-router路由包却不支持history模式。有些支持history模式的使用上也不是很方便，试用过五六个支持history的路由后最终@spaceavocado/svelte-router算是满足了要求。
- 使用简单 功能丰富 支持history和hash 我也是够难伺候的。  在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
+使用简单 功能丰富 支持history和hash 我也是够难伺候的。 在试用了多个支持history的路由过程中，都遇到了一个问题：切换路由后刷新404。这也算是单页应用的通病了。不过像vue这种是在部署到服务器上刷新404，而svelte却在开发过程中也出现了，又想放弃了&hellip; 好在我也是试用过五六七八个路由的人了，中间不知道尝试过多少种方法来实现history路由。最后使用@spaceavocado/svelte-router包实现了history路由的时候我还是满心欢喜。
 使用方法：
-//App.svelte &lt;script&gt; 	import RouterView from &#39;@spaceavocado/svelte-router/component/view&#39;; 	import { routes } from &#39;./router.js&#39; &lt;/script&gt;  &lt;RouterView /&gt; //router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;;  export const routes = createRouter({  mode: &#34;HISTORY&#34;,  routes: [  {  path: &#39;/&#39;,  name: &#39;HOME&#39;,  component: index,  },  {  path: &#39;/a&#39;,  name: &#39;a&#39;,  component: a,  },  {  path: &#39;/b&#39;,  name: &#39;b&#39;,  component: b,  },  {  path: &#39;*&#39;,  component: index,  },  ], }); // index.
+//App.svelte &lt;script&gt; import RouterView from &#39;@spaceavocado/svelte-router/component/view&#39;; import { routes } from &#39;./router.js&#39; &lt;/script&gt; &lt;RouterView /&gt; //router.js import createRouter from &#39;@spaceavocado/svelte-router&#39;; import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = createRouter({ mode: &#34;HISTORY&#34;, routes: [ { path: &#39;/&#39;, name: &#39;HOME&#39;, component: index, }, { path: &#39;/a&#39;, name: &#39;a&#39;, component: a, }, { path: &#39;/b&#39;, name: &#39;b&#39;, component: b, }, { path: &#39;*&#39;, component: index, }, ], }); // index.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ff7d7cc3f518207e72349ed/">阅读全文…</a>
@@ -190,10 +190,10 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		sapper可能被放弃更新，如果您要继续使用svelte，可以考虑使用sveltekit
- 最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
- 服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试）  可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
+最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
+服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试） 可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
 遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
-import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;;  const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;;  polka() 	// 需要放在最前面，否则接口404，secure参数解决调用https问题 	.use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.
+import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 .use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.com&#39;, pathRewrite: { &#39;^/api&#39;: &#39;&#39; }, secure: false, changeOrigin: true, })) .
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ff449035e80c6649222da2c/">阅读全文…</a>
@@ -216,7 +216,7 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		使用svelte开发项目时遇到需要将px转换成rem的需求，有试过postcss-px2rem，postcss-pxtorem，等postcss插件，都没成成功，最后找到了postcss-units插件成功实现。 完整rollup配置文件如下： converts px to rem 该配置是sapper项目配置
-import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-resolve&#39;; import replace from &#39;@rollup/plugin-replace&#39;; import commonjs from &#39;@rollup/plugin-commonjs&#39;; import url from &#39;@rollup/plugin-url&#39;; import svelte from &#39;rollup-plugin-svelte&#39;; import babel from &#39;@rollup/plugin-babel&#39;; import { terser } from &#39;rollup-plugin-terser&#39;; import config from &#39;sapper/config/rollup.js&#39;; import pkg from &#39;./package.json&#39;; import sveltePreprocess from &#39;svelte-preprocess&#39;; // import { less } from &#39;svelte-preprocess&#39;; const postcssUnits = require(&#39;postcss-units&#39;);  const mode = process.env.NODE_ENV; const dev = mode === &#39;development&#39;; const legacy = !
+import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-resolve&#39;; import replace from &#39;@rollup/plugin-replace&#39;; import commonjs from &#39;@rollup/plugin-commonjs&#39;; import url from &#39;@rollup/plugin-url&#39;; import svelte from &#39;rollup-plugin-svelte&#39;; import babel from &#39;@rollup/plugin-babel&#39;; import { terser } from &#39;rollup-plugin-terser&#39;; import config from &#39;sapper/config/rollup.js&#39;; import pkg from &#39;./package.json&#39;; import sveltePreprocess from &#39;svelte-preprocess&#39;; // import { less } from &#39;svelte-preprocess&#39;; const postcssUnits = require(&#39;postcss-units&#39;); const mode = process.env.NODE_ENV; const dev = mode === &#39;development&#39;; const legacy = !
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ff3db095e80c6649222d94e/">阅读全文…</a>
@@ -239,7 +239,7 @@ import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-re
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		svelte给dom对象绑定事件和vue框架类似。 定义函数：
-function handler(index){ 	alert(&#34;hello&#34;, index); } 绑定事件：
+function handler(index){ alert(&#34;hello&#34;, index); } 绑定事件：
 &lt;button on:click={handler}&gt;点击&lt;/button&gt;
 但是带参函数的使用就略有不同了，函数handler的参数index需要传入的时候，不能直接这样使用&lt;button on:click={handler(123)}&gt;点击&lt;/button&gt;,这样的写法会在页面打开时直接执行，而不是在点击按钮的时候执行。
 这是初学svelte的时候比较郁闷的事，官方文档中也没有明显的文档说明如何传参。 正确的传参方式是这样的： &lt;button on:click={() =&gt; handler(123)}&gt;点击&lt;/button&gt; 将on:click的内容改写为匿名函数，在函数中调用。
@@ -262,9 +262,9 @@ function handler(index){ 	alert(&#34;hello&#34;, index); } 绑定事件：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		go单元测试会遇到这样的场景： 写好了service层函数getUser()。然后测试测试getUser函数。有个问题是，函数中使用了数据库连接，如果直接测试的话会报错误，比如空指针错误。
- panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
- 如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
-func TestMain(m *testing.M) { 	fmt.Println(&#34;begin&#34;) 	dba, err := gorm.Open(&#34;sqlite3&#34;, &#34;../../website.db&#34;) 	db.SQLLite = dba 	if err != nil { 	panic(err) 	} 	m.Run() 	fmt.Println(&#34;end&#34;) }  func TestProjectUsers(t *testing.T) { 	userService := user.
+panic: runtime error: invalid memory address or nil pointer dereference [recovered] panic: runtime error: invalid memory address or nil pointer dereference [signal 0xc0000005 code=0x0 addr=0xb0 pc=0x167680d]
+如果遇到这种情况很有可能就是数据库连接未初始化。但是单元测试并不会主动去初始化数据库连接。不用担心，有办法。 go test提供了用于初始化的方法：TestMain函数。只需要在这个函数中进行数据库初始化，后面需要用的的数据库连接可直接使用，不需要重复初始化。
+func TestMain(m *testing.M) { fmt.Println(&#34;begin&#34;) dba, err := gorm.Open(&#34;sqlite3&#34;, &#34;../../website.db&#34;) db.SQLLite = dba if err != nil { panic(err) } m.Run() fmt.Println(&#34;end&#34;) } func TestProjectUsers(t *testing.T) { userService := user.NewService(db.SQLLite) users, err := userService.GetProjectUsers(25) if err != nil { t.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5fc7321dc0ec0c27f57ace6e/">阅读全文…</a>
@@ -289,8 +289,8 @@ func TestMain(m *testing.M) { 	fmt.Println(&#34;begin&#34;) 	dba, err := gorm.Op
 		svelte目前没有提供官网路由组件，不过可以在社区中找到。本文介绍的是svelte-spa-router的使用方法。
 npm i svelte-spa-router 参考以下目录结构创建文件（不是必须）
 router.js:
-import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;;  export const routes = {  &#39;/&#39;: index,  &#39;/a&#39;: a,  &#39;/b&#39;: b } 动态导入组件和代码分割：
-import { wrap } from &#39;svelte-spa-router/wrap&#39; import index from &#39;./index/index.svelte&#39;;  export const routes = {  &#39;/&#39;: index,  &#39;/a&#39;: wrap({  asyncComponent: () =&gt; import(&#39;./a/a.svelte&#39;)  }),  // &#39;/b&#39;: b 	// 动态加载  &#39;/b&#39;: wrap({  asyncComponent: () =&gt; import(&#39;.
+import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = { &#39;/&#39;: index, &#39;/a&#39;: a, &#39;/b&#39;: b } 动态导入组件和代码分割：
+import { wrap } from &#39;svelte-spa-router/wrap&#39; import index from &#39;./index/index.svelte&#39;; export const routes = { &#39;/&#39;: index, &#39;/a&#39;: wrap({ asyncComponent: () =&gt; import(&#39;./a/a.svelte&#39;) }), // &#39;/b&#39;: b // 动态加载 &#39;/b&#39;: wrap({ asyncComponent: () =&gt; import(&#39;./b/b.svelte&#39;) }), } 动态导入组件的优点是组件不会一起打包，而是单独的组件文件，在打开对应的页面时才会请求，可以有效减少包文件大小。 App.svelte:
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5fc1f965c0ec0c27f57ac7c9/">阅读全文…</a>
@@ -370,7 +370,7 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		puppeteer要模拟3G，4G网络需要利用DevTools Protocol。 Chrome DevTools Protocol
- page = await browser.newPage();   // 模拟3g网络  let cdp = await page.target().createCDPSession();  await cdp.send(&#39;Network.emulateNetworkConditions&#39;, {  &#39;offline&#39;: false,  &#39;downloadThroughput&#39;: 600 * 1024,//(bytes/sec) 3G最高600K/s 4G 最高10M/s  &#39;uploadThroughput&#39;: 600 * 1024,//(bytes/sec)  &#39;latency&#39;: 0  });  await page.setCacheEnabled(false);  await page.goto(url); 
+page = await browser.newPage(); // 模拟3g网络 let cdp = await page.target().createCDPSession(); await cdp.send(&#39;Network.emulateNetworkConditions&#39;, { &#39;offline&#39;: false, &#39;downloadThroughput&#39;: 600 * 1024,//(bytes/sec) 3G最高600K/s 4G 最高10M/s &#39;uploadThroughput&#39;: 600 * 1024,//(bytes/sec) &#39;latency&#39;: 0 }); await page.setCacheEnabled(false); await page.goto(url); 
 	</div>
 </article>
 <article class="list__item post">
@@ -390,7 +390,7 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		postman是开发人员必备的接口测试工具，虽然经常使用，但是并不会使用到所有功能，除了简单的接口测试外，它还有很多实用的功能，如果充分利用起来，能使我们的工作事半功倍。
- 环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例  环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
+环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例 环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
 环境变量配置
 环境变量使用
 环境变量切换
@@ -421,11 +421,11 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

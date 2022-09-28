@@ -6,7 +6,17 @@
     <description>Recent content in 数据库 on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 19 Jun 2020 07:57:09 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Sep 2022 14:00:43 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Elasticsearch批量insert和批量upsert</title>
+      <link>https://www.yuedun.wang/2022/09/elasticsearch-bulk-upsert/</link>
+      <pubDate>Wed, 28 Sep 2022 14:00:43 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2022/09/elasticsearch-bulk-upsert/</guid>
+      <description>golang版本的elasticsearch批量插入和批量更新方法如下：
+package main import ( &amp;#34;github.com/elastic/go-elasticsearch/v8&amp;#34; &amp;#34;github.com/elastic/go-elasticsearch/v8/esutil&amp;#34; ) func main() { list:=make(User, 0) bulkES(list) } func bulkES(list []User) error { indexer, err := esutil.NewBulkIndexer(esutil.BulkIndexerConfig{ Index: &amp;#34;search-user&amp;#34;, Client: ES, }) if err != nil { return err } for _, v := range list { data, err := json.Marshal(v) if err != nil { return err } err = indexer.Add( context.Background(), esutil.BulkIndexerItem{ Action: &amp;#34;index&amp;#34;, Body: bytes.NewReader(data), }, ) if err != nil { return err } } indexer.</description>
+    </item>
+    
     <item>
       <title>go mongo-driver动态条件</title>
       <link>https://www.yuedun.wang/blogdetail/5eec6fd5e8775d3b7f2ee79c/</link>
@@ -14,8 +24,8 @@
       
       <guid>https://www.yuedun.wang/blogdetail/5eec6fd5e8775d3b7f2ee79c/</guid>
       <description>在go mongo中查询是使用的是bson.M类型的条件，但是直接使用时无法动态添加条件，只能初始化赋值，bson.M其实就是map类型，只能使用someMap[&amp;ldquo;someKey&amp;rdquo;]=&amp;ldquo;someValue&amp;rdquo; 的形式添加，这样的话只能是用if判断字段的值来决定是否添加map key/value，写起来比较繁琐。还有一种是利用结构体转换为bson.M来实现。
-//构造一个查询结构体 search := User{ 	ID: id, 	Name: name, 	Age: age, 	} //构造一个条件变量 	condition := bson.M{} 	//将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 	userbyte, err := bson.Marshal(search) 	if err != nil { 	return user, err 	} 	//将字节码转为bson.M类型 	bson.Unmarshal(userbyte, &amp;amp;condition) 	log.Println(condition) 	if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), 	condition).Decode(&amp;amp;user); err != nil { 	return user, err 	} 以上基本就实现了动态条件查询的效果，其中：
-search := User{ 	ID: id, 	Name: name, 	Age: age, 	} search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
+//构造一个查询结构体 search := User{ ID: id, Name: name, Age: age, } //构造一个条件变量 condition := bson.M{} //将结构体转为字节数组，userInfo中的字段根据需要设置值，需要保证没有值时不会有默认值出现 userbyte, err := bson.Marshal(search) if err != nil { return user, err } //将字节码转为bson.M类型 bson.Unmarshal(userbyte, &amp;amp;condition) log.Println(condition) if err = this.mongo.Collection(&amp;#34;user&amp;#34;).FindOne(context.TODO(), condition).Decode(&amp;amp;user); err != nil { return user, err } 以上基本就实现了动态条件查询的效果，其中：
+search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。</description>
     </item>
     
     <item>
@@ -37,7 +47,7 @@ search := User{ 	ID: id, 	Name: name, 	Age: age, 	} search结构中的字段可�
       <description>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
 db.createUser( {user: &amp;#34;hp_website&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示
 虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
-use website  db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。</description>
+use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxxx&amp;#34;,roles: [ { role: &amp;#34;userAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbAdmin&amp;#34;, db: &amp;#34;website&amp;#34; },{ role: &amp;#34;dbOwner&amp;#34;, db: &amp;#34;website&amp;#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。</description>
     </item>
     
     <item>
@@ -60,7 +70,7 @@ character_set_database这一项还是latin1,不过似乎并不影响。 友情�
       
       <guid>https://www.yuedun.wang/blogdetail/5bb08746f846d21847dc2aef/</guid>
       <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){  item.content = item.content.replace(/hopefully.qiniudn.com/g, &amp;#39;hopefully-img.yuedun.wang&amp;#39;)  db.getCollection(&amp;#39;blogs&amp;#39;).save(item) 	print(&amp;#34;&amp;gt;&amp;gt;&amp;#34;, item.content); }) </description>
+db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &amp;#39;hopefully-img.yuedun.wang&amp;#39;) db.getCollection(&amp;#39;blogs&amp;#39;).save(item) print(&amp;#34;&amp;gt;&amp;gt;&amp;#34;, item.content); }) </description>
     </item>
     
     <item>
@@ -70,7 +80,7 @@ db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniu
       
       <guid>https://www.yuedun.wang/blogdetail/5b90f19bb1f3aa6dab14313d/</guid>
       <description>使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&amp;#39;mongoose&amp;#39;);  mongoose.connect(&amp;#39;mongodb://localhost/my_database&amp;#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
+const mongoose = require(&amp;#39;mongoose&amp;#39;); mongoose.connect(&amp;#39;mongodb://localhost/my_database&amp;#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
 const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = conn.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
 const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;); const MyModel = mongoose.model(&amp;#39;ModelName&amp;#39;, schema); const m = new MyModel; m.save(); // 不能工作 </description>
     </item>
@@ -82,7 +92,7 @@ const conn = mongoose.createConnection(&amp;#39;your connection string&amp;#39;)
       
       <guid>https://www.yuedun.wang/blogdetail/5996a2dc9205bd72e7290ebb/</guid>
       <description>`open()` is deprecated in mongoose &amp;gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`;  const opts = { 	// autoReconnect: false,//默认true 	// reconnectTries: 30,//尝试重连，默认30次 	// reconnectInterval: 1000, //重连间隔，默认1000毫秒 	loggerLevel: &amp;#34;warn&amp;#34;, //error/warn/info/debug 	useMongoClient: true }; mongoose.</description>
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true // reconnectTries: 30,//尝试重连，默认30次 // reconnectInterval: 1000, //重连间隔，默认1000毫秒 loggerLevel: &amp;#34;warn&amp;#34;, //error/warn/info/debug useMongoClient: true }; mongoose.</description>
     </item>
     
     <item>
@@ -91,7 +101,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
       <pubDate>Sat, 10 Jun 2017 04:44:55 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/593b6b37b787b03177cfff16/</guid>
-      <description>export var CommentSchema: Schema = new Schema({  Id: String,  content: String,  status: {  type: Boolean,  default: true  } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:&#39;created_at&#39;, updatedAt:&#39;updated_at&#39;}}</description>
+      <description>export var CommentSchema: Schema = new Schema({ Id: String, content: String, status: { type: Boolean, default: true } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:&#39;created_at&#39;, updatedAt:&#39;updated_at&#39;}}</description>
     </item>
     
     <item>
@@ -101,14 +111,14 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
       
       <guid>https://www.yuedun.wang/blogdetail/581d736c43c18f1b7ae3e3ff/</guid>
       <description>需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
- 以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
+以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
 mongodb中查询
 select * from articles where content like &amp;#39;%Nodejs%&amp;#39;; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
 var a=&amp;#34;Nodejs&amp;#34; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&amp;quot;a&amp;quot;当做要查询的关键字而不是&amp;quot;Nodejs&amp;quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
 var text = &amp;#39;Nodejs&amp;#39;;//动态传入的变量 Article.find({ content: { $regex: text, $options: &amp;#39;i&amp;#39; }}, function (err, docs) {}); $options选项值：
- i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串  其实$regex就是正则表达式的写法
+i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串 其实$regex就是正则表达式的写法
 查找数组中的字段：
-contacts:{  [  {  address: &amp;#34;address1&amp;#34;,  name: &amp;#34;张三&amp;#34;  },  {  address: &amp;#34;address2&amp;#34;,  name: &amp;#34;李四&amp;#34;  },  .</description>
+contacts:{ [ { address: &amp;#34;address1&amp;#34;, name: &amp;#34;张三&amp;#34; }, { address: &amp;#34;address2&amp;#34;, name: &amp;#34;李四&amp;#34; }, .</description>
     </item>
     
     <item>
@@ -117,11 +127,11 @@ contacts:{  [  {  address: &amp;#34;address1&amp;#34;,  name: &amp;#34;张三&am
       <pubDate>Wed, 02 Nov 2016 09:32:39 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5819b2b7c4d0a377509b8f1a/</guid>
-      <description>mongdb查询某一字段sum值  需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
- mongodb中查询
+      <description>mongdb查询某一字段sum值 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
+mongodb中查询
 select sum(pv) from articles; db.articles.aggregate([{$group:{_id:null,pv:{$sum:&amp;#34;$pv&amp;#34;}}}]); 结果：{ &amp;#34;_id&amp;#34; : null, &amp;#34;pv&amp;#34; : 2 } select sum(pv) from articles where createDate &amp;lt;= &amp;#39;2016-10-20&amp;#39;; db.articles.aggregate([{$match:{createDate:{$lte:&amp;#34;2016-10-20&amp;#34;}}},{$group:{_id:null,pv:{$sum:&amp;#34;$pv&amp;#34;}}}]); 结果：{ &amp;#34;_id&amp;#34; : null, &amp;#34;pv&amp;#34; : 9 } select sum(pv) from articles where category = &amp;#39;Nodejs&amp;#39;; db.articles.aggregate([{$match:{category:&amp;#34;Nodejs&amp;#34;}},{$group:{_id:null,pv:{$sum:&amp;#34;$pv&amp;#34;}}}]); 结果：{ &amp;#34;_id&amp;#34; : null, &amp;#34;pv&amp;#34; : 7 } 需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
 mongoose实现方式，与上面sql的顺序对应：
-Article.aggregate({ $group: { _id: null, pvCount: { $sum: &amp;#39;$pv&amp;#39; }}}, function(err, doc) { console.log(&amp;#34;1&amp;#34;, doc); }); Article.</description>
+Article.aggregate({ $group: { _id: null, pvCount: { $sum: &amp;#39;$pv&amp;#39; }}}, function(err, doc) { console.log(&amp;#34;1&amp;#34;, doc); }); Article.aggregate([{$match:{createDate:{$lte:&amp;#34;2016-10-20&amp;#34;}}},{$group:{_id:null, pvCount:{$sum:&amp;#34;$pv&amp;#34;}}}], function(err, doc) { console.</description>
     </item>
     
     <item>
@@ -143,9 +153,9 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: &amp;#39;$pv&amp;#39; 
       <description>数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。那么如何加索引才是正确的做法呢？
 数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。
 如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。
- 最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&amp;lt;,like等)，这样的sql可以使用该多列索引。
- mysql多列索引适合的场景
- 全字段匹配 匹配部分最左前缀 匹配第一列 匹配第一列范围查询(可用用like a%,但不能使用like %b) 精确匹配某一列和和范围匹配另外一列  order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &amp;hellip; where name=&amp;ldquo;nginx.cn&amp;rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &amp;hellip; where name=&amp;ldquo;nginx.cn&amp;rdquo; and age in(15,16,17) and id =&amp;ldquo;3&amp;rdquo;</description>
+最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&amp;lt;,like等)，这样的sql可以使用该多列索引。
+mysql多列索引适合的场景
+全字段匹配 匹配部分最左前缀 匹配第一列 匹配第一列范围查询(可用用like a%,但不能使用like %b) 精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &amp;hellip; where name=&amp;ldquo;nginx.cn&amp;rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &amp;hellip; where name=&amp;ldquo;nginx.cn&amp;rdquo; and age in(15,16,17) and id =&amp;ldquo;3&amp;rdquo;</description>
     </item>
     
     <item>
@@ -167,8 +177,7 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: &amp;#39;$pv&amp;#39; 
       
       <guid>https://www.yuedun.wang/blogdetail/5608dbb10adc9cf12635ebbb/</guid>
       <description>今天是
-SELECT NOW();-- 2015-09-28 13:48:12 
-查询当天，格式为YYYY-MM-DD
+SELECT NOW();-- 2015-09-28 13:48:12 查询当天，格式为YYYY-MM-DD
 SELECT CURDATE();-- 2015-09-28
 查询当天，格式为YYYY-MM-DD HH:mm:ss
 SELECT NOW();-- 2015-09-28 13:42:00
@@ -196,7 +205,8 @@ SECOND_MICROSECOND
 MINUTE_MICROSECOND
 MINUTE_SECOND
 HOUR_MICROSECOND
-HOUR_SECOND</description>
+HOUR_SECOND
+HOUR_MINUTE</description>
     </item>
     
     <item>
@@ -299,7 +309,8 @@ select count(*) from 表 where 性别 ＝ 男； select count(*) from 表 where 
       <guid>https://www.yuedun.wang/blogdetail/5440a294fea3dae97beee4f9/</guid>
       <description>随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。
 首先看下mongoose API，find方法源码：
-Model.find = function find (conditions, fields, options, callback){ if(&amp;#34;function&amp;#34;==typeof conditions){  callback = conditions;  conditions ={};  fields = null;  options = null; }elseif(&amp;#34;function&amp;#34;==typeof fields){  callback = fields;  fields = null;  options = null;  }elseif(&amp;#34;function&amp;#34;==typeof options){  callback = options;  options = null;  }  // get the raw mongodb collection object  var mq =newQuery({}, options,this,this.collection);  mq.select(fields);  if(this.</description>
+Model.find = function find (conditions, fields, options, callback){ if(&amp;#34;function&amp;#34;==typeof conditions){ callback = conditions; conditions ={}; fields = null; options = null; }elseif(&amp;#34;function&amp;#34;==typeof fields){ callback = fields; fields = null; options = null; }elseif(&amp;#34;function&amp;#34;==typeof options){ callback = options; options = null; } // get the raw mongodb collection object var mq =newQuery({}, options,this,this.collection); mq.select(fields); if(this.schema.discriminatorMapping &amp;amp;amp;&amp;amp;amp; mq._selectedInclusively()){ mq.select(this.schema.options.discriminatorKey); } return mq.find(conditions, callback); }; 其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：
+router.get(&amp;#34;/admin/blogList&amp;#34;, function(req, res) { var user = req.</description>
     </item>
     
   </channel>

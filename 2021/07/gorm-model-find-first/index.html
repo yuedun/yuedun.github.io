@@ -19,7 +19,7 @@
 		<meta itemprop="name" content="Gorm Model Find First Where等查询函数的区别">
 <meta itemprop="description" content="Gorm Model Find First Where等查询函数的区别，它们的顺序是怎么样的？"><meta itemprop="datePublished" content="2021-07-13T20:51:21+08:00" />
 <meta itemprop="dateModified" content="2021-07-13T20:51:21+08:00" />
-<meta itemprop="wordCount" content="212">
+<meta itemprop="wordCount" content="213">
 <meta itemprop="keywords" content="gorm,golang," />
 		
 		<meta name="twitter:card" content="summary"/>
@@ -155,26 +155,7 @@
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-13T20:51:21&#43;08:00">2021-07-13 20:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">目录</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#where和find">Where和Find</a></li>
-        <li><a href="#find和first">Find和First</a></li>
-        <li><a href="#find和scan">Find和Scan</a></li>
-        <li><a href="#model函数什么时候用">Model()函数什么时候用？</a></li>
-        <li><a href="#函数顺序">函数顺序</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-	</div>
-</div>
-<div class="content post__content clearfix">
+		</header><div class="content post__content clearfix">
 			<p>gorm是一款优秀的国产golang orm关系型数据库框架，在国内外使用比较广泛。它的链式调用还算是一种符合人类思维的风格。</p>
 <p>不过在使用过程中也遇到一些困扰，比如：<code>Model</code>, <code>Find</code>, <code>First</code>, <code>Where</code>这些函数该什么时候使用，有时候会有边界不清楚，使用混乱的情况。</p>
 <p><strong>以下代码示例使用v2版本，v1和v2大体上相同，有些细微的不同</strong></p>

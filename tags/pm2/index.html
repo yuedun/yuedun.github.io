@@ -159,7 +159,7 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如：  {  // Applications part  &#34;apps&#34; : [{  &#34;name&#34; : &#34;API&#34;,  &#34;script&#34; : &#34;app.js&#34;,  &#34;env&#34;: {  &#34;COMMON_VARIABLE&#34;: &#34;true&#34;  },  // Environment variables injected when starting with --env production  // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments  &#34;env_production&#34; : {  &#34;NODE_ENV&#34;: &#34;production&#34;  }  },{  &#34;name&#34; : &#34;WEB&#34;,  &#34;script&#34; : &#34;web.js&#34;  }],  // 部署部分  // Here you describe each environment  &#34;deploy&#34; : {  &#34;production&#34; : {  &#34;user&#34; : &#34;node&#34;,  // 多主机配置  &#34;host&#34; : [&#34;212.
+		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如： { // Applications part &#34;apps&#34; : [{ &#34;name&#34; : &#34;API&#34;, &#34;script&#34; : &#34;app.js&#34;, &#34;env&#34;: { &#34;COMMON_VARIABLE&#34;: &#34;true&#34; }, // Environment variables injected when starting with --env production // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34; } },{ &#34;name&#34; : &#34;WEB&#34;, &#34;script&#34; : &#34;web.js&#34; }], // 部署部分 // Here you describe each environment &#34;deploy&#34; : { &#34;production&#34; : { &#34;user&#34; : &#34;node&#34;, // 多主机配置 &#34;host&#34; : [&#34;212.83.163.1&#34;, &#34;212.83.163.2&#34;, &#34;212.83.163.3&#34;], // 服务使用的分支 &#34;ref&#34; : &#34;origin/master&#34;, // Git 仓库地址 &#34;repo&#34; : &#34;git@github.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e85a563c9109f0f909b52bf/">阅读全文…</a>
@@ -186,10 +186,12 @@
 win：set NODE_ENV=development&amp;&amp; node app.js
 一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
 设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
- pm2 start pm2.json &ndash;env production
- --env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
+pm2 start pm2.json &ndash;env production
+--env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
 pm2.json
-{  &#34;apps&#34; : [{  &#34;name&#34;: &#34;issue&#34;,  &#34;cwd&#34;: &#34;dest&#34;,  &#34;script&#34; : &#34;bin/www.js&#34;,  &#34;instances&#34; : &#34;2&#34;,  &#34;exec_mode&#34; : &#34;cluster&#34;,  &#34;env&#34;: {  &#34;NODE_ENV&#34;: &#34;development&#34;,  &#34;PORT&#34;: 3002  },  &#34;env_production&#34; : {  &#34;NODE_ENV&#34;: &#34;production&#34;,  &#34;PORT&#34;: 3003  },  &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;,  &#34;merge_logs&#34;: true  }] } 如果不加参数则默认使用
+{ &#34;apps&#34; : [{ &#34;name&#34;: &#34;issue&#34;, &#34;cwd&#34;: &#34;dest&#34;, &#34;script&#34; : &#34;bin/www.js&#34;, &#34;instances&#34; : &#34;2&#34;, &#34;exec_mode&#34; : &#34;cluster&#34;, &#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 }, &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34;, &#34;PORT&#34;: 3003 }, &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;, &#34;merge_logs&#34;: true }] } 如果不加参数则默认使用
+&#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
+加--env production则使用的是
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
@@ -216,7 +218,7 @@ pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路
 error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
 安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
 pm2-logrotate配置
- max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.
+max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a69a8301f395d7179259c45/">阅读全文…</a>
@@ -243,7 +245,7 @@ fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，�
 cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
 ** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
 也可以使用文件方式： processes.json文件：
-{  &#34;apps&#34; : [{  &#34;script&#34; : &#34;api.js&#34;,  &#34;instances&#34; : &#34;max&#34;,  &#34;exec_mode&#34; : &#34;cluster&#34;  }] } pm2 start processes.json
+{ &#34;apps&#34; : [{ &#34;script&#34; : &#34;api.js&#34;, &#34;instances&#34; : &#34;max&#34;, &#34;exec_mode&#34; : &#34;cluster&#34; }] } pm2 start processes.json
 	</div>
 </article>
 
@@ -265,11 +267,11 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

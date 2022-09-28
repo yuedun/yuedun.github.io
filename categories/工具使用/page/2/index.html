@@ -180,7 +180,7 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		puppeteer要模拟3G，4G网络需要利用DevTools Protocol。 Chrome DevTools Protocol
- page = await browser.newPage();   // 模拟3g网络  let cdp = await page.target().createCDPSession();  await cdp.send(&#39;Network.emulateNetworkConditions&#39;, {  &#39;offline&#39;: false,  &#39;downloadThroughput&#39;: 600 * 1024,//(bytes/sec) 3G最高600K/s 4G 最高10M/s  &#39;uploadThroughput&#39;: 600 * 1024,//(bytes/sec)  &#39;latency&#39;: 0  });  await page.setCacheEnabled(false);  await page.goto(url); 
+page = await browser.newPage(); // 模拟3g网络 let cdp = await page.target().createCDPSession(); await cdp.send(&#39;Network.emulateNetworkConditions&#39;, { &#39;offline&#39;: false, &#39;downloadThroughput&#39;: 600 * 1024,//(bytes/sec) 3G最高600K/s 4G 最高10M/s &#39;uploadThroughput&#39;: 600 * 1024,//(bytes/sec) &#39;latency&#39;: 0 }); await page.setCacheEnabled(false); await page.goto(url); 
 	</div>
 </article>
 <article class="list__item post">
@@ -200,7 +200,7 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		postman是开发人员必备的接口测试工具，虽然经常使用，但是并不会使用到所有功能，除了简单的接口测试外，它还有很多实用的功能，如果充分利用起来，能使我们的工作事半功倍。
- 环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例  环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
+环境变量的使用 捕获请求和cookie 收藏接口与分享接口 批量测试 编写文档和示例 环境变量的使用 环境变量的作用是使用切换变量的方式代替频繁的环境修改。这样我们只需保存一次测试接口就可以在不同环境下使用。 举例：
 环境变量配置
 环境变量使用
 环境变量切换
@@ -266,14 +266,15 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 是不是还没看清？没错，平时人工测试一个报名表单需要15秒左右，而自动化后几乎一瞬间即可完成，速度提升不言而喻。如果您对UI自动化已产生兴趣，请继续往下看。
 哪些场景可以UI自动化？ UI自动化的目的不是为了自动化而自动化，也并不能覆盖所有测试。还是以测试金字塔来说明：
 UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越往顶层消耗的人力成本越高，如果底层测试不够充分就只能靠顶层测试来保证。自动化虽好，但需要满足特定的场景才行，那么什么样的场景可以做UI自动化？
- 流程变化少。侧重UI的修改，而不是流程的修改。 频繁的回归测试。比如一个报名表单样式修改比较频繁，需要测试其报名是否可用。 界面稳定。样式可以频繁修改，但表单顺序和个数变化较少不能频繁变更。 维护周期长。如果只是使用一次那也不必自动化了，毕竟自动化是解决重复劳动。 开发与测试可相互配合。自动化需要程序有一定规范便于测试人员写测试程序。 测试人员具备编程能力。 如果满足了上述的场景，那么UI自动化在人力消耗和效率上就有很大的提升。正确性上更有保证，手工录入会有输错重输的情况，而自动化则不会出现。 再看一个流程比较长的页面：  上面动图并没与快进，一气呵成完成了一次下单流程，基本不需要停留即可进入下一步，相比起手动操作省时省力。
+流程变化少。侧重UI的修改，而不是流程的修改。 频繁的回归测试。比如一个报名表单样式修改比较频繁，需要测试其报名是否可用。 界面稳定。样式可以频繁修改，但表单顺序和个数变化较少不能频繁变更。 维护周期长。如果只是使用一次那也不必自动化了，毕竟自动化是解决重复劳动。 开发与测试可相互配合。自动化需要程序有一定规范便于测试人员写测试程序。 测试人员具备编程能力。 如果满足了上述的场景，那么UI自动化在人力消耗和效率上就有很大的提升。正确性上更有保证，手工录入会有输错重输的情况，而自动化则不会出现。 再看一个流程比较长的页面： 上面动图并没与快进，一气呵成完成了一次下单流程，基本不需要停留即可进入下一步，相比起手动操作省时省力。
 为什么UI自动化普及率低？ 既然UI自动化能提高效率，但为什么却很少有人去使用？
- 开发自动化程序对测试人员的编程水平有一定要求，很少有人愿意花时间去写这个程序。 对于互联网公司，大多数业务需要快速迭代，一个页面的生存周期很短，也可能只是一次性的，自动化测试没有存在的必要性。 测试人员没有切实的感受到效率提升。  其实说白了，就是大家觉得投入和产出不值得。如果是迫于领导压力要写自动化程序，就会不停的对程序修修补补，自己用的话有问题大不了不用自动化，手动测试一下通过就行，如果是给别人用就会不停收到反馈和吐槽，自然也就没有写下去的动力了。 所以个人觉得，自动化程序不应该成为一种流程和形式，而是应该由开发和测试人员自发的去将自身经常重复的工作做成自动化。因为自动化本身就不能覆盖所有场景，只有实际参与的人才能知道哪些是可以自动化的。
+开发自动化程序对测试人员的编程水平有一定要求，很少有人愿意花时间去写这个程序。 对于互联网公司，大多数业务需要快速迭代，一个页面的生存周期很短，也可能只是一次性的，自动化测试没有存在的必要性。 测试人员没有切实的感受到效率提升。 其实说白了，就是大家觉得投入和产出不值得。如果是迫于领导压力要写自动化程序，就会不停的对程序修修补补，自己用的话有问题大不了不用自动化，手动测试一下通过就行，如果是给别人用就会不停收到反馈和吐槽，自然也就没有写下去的动力了。 所以个人觉得，自动化程序不应该成为一种流程和形式，而是应该由开发和测试人员自发的去将自身经常重复的工作做成自动化。因为自动化本身就不能覆盖所有场景，只有实际参与的人才能知道哪些是可以自动化的。
 有哪些工具可以选择？ 目前市场上不仅提供了多种工具可以选择，还支持不同语言。 web端：selenium、webdriver、robotframework、puppeteer等。 APP端：Appium、Instrumentation、Robotium 、UIAutomator、Espresso、Calabash、Selendroid、Robolectric、RoboSpock、Cafe、Athrun等。
- 移动APP自动化测试框架
- 本文不对所有工具一一详解，可自行根据平台选择合适的工具和语言进行学习使用。只针对个别WEB端工具做简单说明。 拿selenium来说，selenium是一款很多人比较熟悉的工具，支持的语言有Python，Java，JavaScript等，推荐使用Python。而且其支持的浏览器也很全面： Google Chrome Internet Explorer 7, 8, 9, 10, 11 Firefox Safari Opera HtmlUnit phantomjs Android iOS
+移动APP自动化测试框架
+本文不对所有工具一一详解，可自行根据平台选择合适的工具和语言进行学习使用。只针对个别WEB端工具做简单说明。 拿selenium来说，selenium是一款很多人比较熟悉的工具，支持的语言有Python，Java，JavaScript等，推荐使用Python。而且其支持的浏览器也很全面： Google Chrome Internet Explorer 7, 8, 9, 10, 11 Firefox Safari Opera HtmlUnit phantomjs Android iOS
 一些常见问题 在自动化过程中最多的就是对元素进行定位，自动化工具常见的定位符有：
- id name class name tag link text partial link text xpath css selector  以上这些元素定位对于以前的网页来说还足以应对，因为以前开发的网页大多数元素会有id，class这些属性，定位起来也比较方便。但是对于react，vue，angular这类数据驱动的框架就不那么友好了。 比如有这么一个元素：&lt;div&gt;{{element}}&lt;/div&gt;结果为：
+id name class name tag link text partial link text xpath css selector 以上这些元素定位对于以前的网页来说还足以应对，因为以前开发的网页大多数元素会有id，class这些属性，定位起来也比较方便。但是对于react，vue，angular这类数据驱动的框架就不那么友好了。 比如有这么一个元素：&lt;div&gt;{{element}}&lt;/div&gt;结果为：
+这个元素既没有id，也没有class，而且是使用最多的div元素，想要定位就很困难了。 而且这些元素定位支持也比较简单，不支持一些兄弟元素，父子元素的定位，我们以往使用的jquery选择器是不支持的。 所以这时候就体现出开发和测试配合的重要性了，开发测试不分家，开发需要根据测试需要的来对重要元素加明确的标识便于测试定位。 其次就是让自动化工具支持jquery，使用一些jquery的选择器来操作元素，使用方式是自动添加一个&lt;script src=&quot;jquery&quot;&gt;&lt;/script&gt;标签。然后执行js脚本来实现jquery选择器。
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e96f1d8bd7e796e7100a71a/">阅读全文…</a>
@@ -297,7 +298,7 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
 	<div class="content list__excerpt post__content clearfix">
 		新买的windows笔记本一般会对磁盘进行分区，虽然有说法是现代电脑没必要分区，不过目前很多人还是有这样的习惯。 然而我们往往低估了软件的吃磁盘能力，会把C盘设置50G左右的大小，觉得C盘只是装个系统而已，会自觉把软件装到其他盘下，结果就是没用几个月C盘就满了。其实，虽然我们把软件装到了其他盘，但是软件本身会下载很多内容，比如数据保存，缓存，默认下载等等都会占用C盘。所以建议C盘设置100G比较合理。 关于已经分配好大小的磁盘也可以进行调整，需要借助一些软件来操作，本文作者使用的是Diskgenius。
 很简单的三个步骤：
- 选择需要扩容的磁盘右击“扩容分区” 选择缩容的磁盘，用于将缩容的磁盘分配给C盘。 选择需要缩容的大小。  确认开始大约需要十几分钟就可以了。
+选择需要扩容的磁盘右击“扩容分区” 选择缩容的磁盘，用于将缩容的磁盘分配给C盘。 选择需要缩容的大小。 确认开始大约需要十几分钟就可以了。
 	</div>
 </article>
 <article class="list__item post">
@@ -339,8 +340,8 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
 	<div class="content list__excerpt post__content clearfix">
 		从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧，
 如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：
- 地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
- 其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox
+地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
+其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox
 	</div>
 </article>
 <article class="list__item post">
@@ -360,7 +361,7 @@ UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Hostname and port the broker will advertise to producers and consumers. If not set, it uses the value for &ldquo;listeners&rdquo; if configured. Otherwise, it will use the value returned from java.net.InetAddress.getCanonicalHostName(). advertised.listeners=PLAINTEXT://ip:9092
- 打开advertised.listeners=PLAINTEXT://ip:9092配置，ip为kafka服务ip
+打开advertised.listeners=PLAINTEXT://ip:9092配置，ip为kafka服务ip
 	</div>
 </article>
 <article class="list__item post">
@@ -411,11 +412,11 @@ ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

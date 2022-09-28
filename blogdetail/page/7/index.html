@@ -206,9 +206,9 @@
 2014年使用了一段时间angularjs，感觉学习难度有点大，并且据官方说2.0下向下兼容于是放弃继续学习。2015年使用vue1.0做了一个项目后我逢人便说angular，vue有多好用，推荐他们放弃jquery使用vue。不到2年时间再看看前端界，vue，react等框架已经是前端开发标配，如果你说公司项目还在使用jquery会被人笑话，对于前端新人MVVM框架是必学，jquery反而不会被重视。
 这就导致一个结果：**“手里拿着锤子，看什么都是钉子”，因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。**就拿一个需要SEO的网站来说，该选择哪种技术好？如果只会vue，那么肯定是选择vue，就算vue不太适合做这类网站，也会拿出ssr来强行做事。殊不知需要SEO的网站使用静态文件是最合适的。大多数人认为前后端分离是使用vue，react，angular，使用jquery的不叫前后端分离，这完全是搞混了概念，实际上后端的controller层也属于视图层，也可以归属于前端。
 现在去网上一搜，问一下身边的人怎么看待前后端分离的，大多数人秉持着支持的态度，认为前后端分离好处多多，列举几条：
- 专业的人做专业的事 前后并行开发，效率高 前端工程化，组件化 解耦 降低了开发学习难度  等等…… 大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：
- 增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。 一般前端开发速度会比后端快，在接口没开发好时前端只能闲等着。也有反过来的情况。前后端分离也意味着任务关联性减弱，可能不是同时开发，需要一方催着一方来完成。 跨域问题导致联调困难，前端只能等待接口开发上了服务器才能调试。 职责分离后确认职责也困难，一个问题出现到底是谁的问题？谁解决？ 一个需求需要前后端开发同时参与理解需求，有理解偏差问题。 小公司多一个人多一份支出。  那么到底该不该进行前后端分离，如何进行技术选型？这需要根据一些实际情况来决定，大体判断准则有以下几点：
- 后台系统采用前后端分离比较合适。 需要SEO引流的就不要强行前后端分离了，react，vue的服务端渲染也很勉强，徒增开发难度而已。 数据交互比较多的使用前后端分离，操作数据比jquery方便。 页面本身特别简单，只负责简单数据展示，要求打开速度，直接服务端渲染即可。这种页面本身就是单页面，如果还要使用框架就是多此一举，增加页面负担，增加开发调试难度。 开发资源充足最好前后端分离，开发资源不足时不分离，一人包揽前后台端反而更快。  最后，前后端分离是一个趋势，但不是必须。更准确的说法应该叫做“前后端分工”，毕竟在5年前这些活都是一个开发来做的，因为技术复杂性提升，前端不想只是切图，后端不想学变化太快的前端就出现了分离。你可以想象测试的工作，现在的测试大多还是测业务，但是也出现了一个自动化测试的职位，因为测试不想天天鼠标点呀点的测，想搞点高深的东西，而开发又特别烦写单元测试代码，这就又出现分离。再者，数据库也是一样，所以出现了DBA这个角色。谁知哪一天又会合起来呢！
+专业的人做专业的事 前后并行开发，效率高 前端工程化，组件化 解耦 降低了开发学习难度 等等…… 大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：
+增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。 一般前端开发速度会比后端快，在接口没开发好时前端只能闲等着。也有反过来的情况。前后端分离也意味着任务关联性减弱，可能不是同时开发，需要一方催着一方来完成。 跨域问题导致联调困难，前端只能等待接口开发上了服务器才能调试。 职责分离后确认职责也困难，一个问题出现到底是谁的问题？谁解决？ 一个需求需要前后端开发同时参与理解需求，有理解偏差问题。 小公司多一个人多一份支出。 那么到底该不该进行前后端分离，如何进行技术选型？这需要根据一些实际情况来决定，大体判断准则有以下几点：
+后台系统采用前后端分离比较合适。 需要SEO引流的就不要强行前后端分离了，react，vue的服务端渲染也很勉强，徒增开发难度而已。 数据交互比较多的使用前后端分离，操作数据比jquery方便。 页面本身特别简单，只负责简单数据展示，要求打开速度，直接服务端渲染即可。这种页面本身就是单页面，如果还要使用框架就是多此一举，增加页面负担，增加开发调试难度。 开发资源充足最好前后端分离，开发资源不足时不分离，一人包揽前后台端反而更快。 最后，前后端分离是一个趋势，但不是必须。更准确的说法应该叫做“前后端分工”，毕竟在5年前这些活都是一个开发来做的，因为技术复杂性提升，前端不想只是切图，后端不想学变化太快的前端就出现了分离。你可以想象测试的工作，现在的测试大多还是测业务，但是也出现了一个自动化测试的职位，因为测试不想天天鼠标点呀点的测，想搞点高深的东西，而开发又特别烦写单元测试代码，这就又出现分离。再者，数据库也是一样，所以出现了DBA这个角色。谁知哪一天又会合起来呢！
 	</div>
 </article>
 <article class="list__item post">
@@ -228,11 +228,10 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		go可以很容易实现一个文件服务器，只需要使用函数 func ServeFile(w ResponseWriter, r *Request, name string)即可。
-package main  import ( 	&#34;log&#34; 	&#34;net/http&#34; 	&#34;fmt&#34; )  func helloHandler(res http.ResponseWriter, req *http.Request) { 	http.ServeFile(res, req, &#34;E:/go-work/src/go-learning/foo.xlsx&#34;) } func main() { 	fmt.Println(&#34;web服务启动成功，可在浏览器中访问：localhost:8081&#34;) 	http.HandleFunc(&#34;/file&#34;, helloHandler) 	http.Handle(&#34;/&#34;, http.FileServer(http.Dir(&#34;E:/go-work/src/go-learning/&#34;))) 	err := http.ListenAndServe(&#34;:8081&#34;, nil) 	if err != nil { 	log.Fatal(&#34;ListenAndServe:&#34;, err.Error()) 	} } 查看go文档除了翻墙访问https://golang.org
+package main import ( &#34;log&#34; &#34;net/http&#34; &#34;fmt&#34; ) func helloHandler(res http.ResponseWriter, req *http.Request) { http.ServeFile(res, req, &#34;E:/go-work/src/go-learning/foo.xlsx&#34;) } func main() { fmt.Println(&#34;web服务启动成功，可在浏览器中访问：localhost:8081&#34;) http.HandleFunc(&#34;/file&#34;, helloHandler) http.Handle(&#34;/&#34;, http.FileServer(http.Dir(&#34;E:/go-work/src/go-learning/&#34;))) err := http.ListenAndServe(&#34;:8081&#34;, nil) if err != nil { log.Fatal(&#34;ListenAndServe:&#34;, err.Error()) } } 查看go文档除了翻墙访问https://golang.org
 还可以访问国内镜像：https://golang.google.cn/
 最简单快速的访问，直接在本地起服务：
- godoc -http=:8082
- 
+godoc -http=:8082
 	</div>
 </article>
 <article class="list__item post">
@@ -251,7 +250,7 @@ package main  import ( 	&#34;log&#34; 	&#34;net/http&#34; 	&#34;fmt&#34; )  func
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		//上传图片 	var imagesBase64 = []; 	$(&#34;input[type=file]&#34;).on(&#34;change&#34;, function (e) { 	var image = e.target.files[0]; 	var imgFile = new FileReader(); 	var imgShow = new Image(); 	imgFile.readAsDataURL(image); 	imgFile.onload = function () { 	var imgData = this.result; //base64数据 	imagesBase64.push({ 	teaId: teacherInfo.id, 	fileType: &#34;award&#34;,//图片 	fileName: image.name, 	file: imgData, 	}); 	imgShow.src = imgData; 	imgShow.style.width = &#34;100px&#34;; 	imgShow.style.height = &#34;100px&#34;; 	imgShow.
+		//上传图片 var imagesBase64 = []; $(&#34;input[type=file]&#34;).on(&#34;change&#34;, function (e) { var image = e.target.files[0]; var imgFile = new FileReader(); var imgShow = new Image(); imgFile.readAsDataURL(image); imgFile.onload = function () { var imgData = this.result; //base64数据 imagesBase64.push({ teaId: teacherInfo.id, fileType: &#34;award&#34;,//图片 fileName: image.name, file: imgData, }); imgShow.src = imgData; imgShow.style.width = &#34;100px&#34;; imgShow.style.height = &#34;100px&#34;; imgShow.title = &#34;双击删除&#34;; $(&#34;#imageShow&#34;).append(imgShow); } }); $(&#34;#imageShow&#34;).on(&#34;dblclick &#34;, &#34;img&#34;, function () { var index = $(&#34;#imageShow &gt; img&#34;).
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5b309564cca06924b14119ea/">阅读全文…</a>
@@ -275,20 +274,21 @@ package main  import ( 	&#34;log&#34; 	&#34;net/http&#34; 	&#34;fmt&#34; )  func
 	<div class="content list__excerpt post__content clearfix">
 		修改terminal apt-get update更新软件源，安装zsh，设置默认terminal为zsh，chsh -s /usr/bin/zsh。非root用户需要在root权限下修改/etc/passwd文件才能实现。
 安装git
- apt-get install git
- nginx设置：
- sudo /etc/init.d/nginx restart # or start, stop
- 或
- sudo service nginx restart # or start, stop
- 有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
+apt-get install git
+nginx设置：
+sudo /etc/init.d/nginx restart # or start, stop
+或
+sudo service nginx restart # or start, stop
+有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
 目录/etc/nginx/sites-available/下增加文件配置反向代理，并软链接到/etc/nginx/sites-enabled/下
 mongodb导入数据 启动：
- /usr/local/mongodb/bin/mongod &ndash;dbpath=/usr/local/mongodb/data &ndash;logpath=/usr/local/mongodb/logs &ndash;logappend &ndash;auth &ndash;fork
- 如需外网客户端连接加参数--bind_ip_all
+/usr/local/mongodb/bin/mongod &ndash;dbpath=/usr/local/mongodb/data &ndash;logpath=/usr/local/mongodb/logs &ndash;logappend &ndash;auth &ndash;fork
+如需外网客户端连接加参数--bind_ip_all
 导入单个collection
- ./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
- 或导入整个目录
- ./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.
+./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
+或导入整个目录
+./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.bson/xxxx
+没有指定-h参数会报错：Failed: error connecting to db server: no reachable servers 阿里云上-h参数需要内网ip，localhost不行。
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5b21fc996699964267f5e168/">阅读全文…</a>
@@ -337,9 +337,9 @@ mongodb导入数据 启动：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		消息队列（MQ）在系统架构中发挥了重要作用，其主要作用有系统解耦，流量削峰，异步消息存储，分布式系统最终一致性等。 本文介绍的是消息系统中消息发布者和订阅者间参数如何约定和传递？实际应用场景中，一种消息的发布者和订阅者都有可能是多个，也就是多对多的关系，这样就形成了消息参数传递的复杂性，就算一开始参数有约定，大家都按照最初约定来开发，但不免开发过程中各端需求变化带来的修改。例如最开始为了实现系统解耦而引进了消息队列，此时消息参与者较少，只有一个发布者和一个订阅者，这种情况最简单（其实最简单还是直接调接口），双方简单约定了需要传递的参数。
-{ 	userId:123, 	userName:&#34;阿离&#34;, 	age:23 } 后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
-{ 	userId:123, 	userName:&#34;阿离&#34;, 	age:23, 	gender:&#34;女&#34;, 	address:&#34;上海&#34;, 	job:&#34;测试&#34; } 再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
-{ 	userId:123, 	userName:&#34;阿离&#34;, 	age:23, 	gender:&#34;女&#34;, 	address:&#34;上海&#34;, 	job:&#34;测试&#34;, 	workingLife:4 } 再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
+{ userId:123, userName:&#34;阿离&#34;, age:23 } 后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
+{ userId:123, userName:&#34;阿离&#34;, age:23, gender:&#34;女&#34;, address:&#34;上海&#34;, job:&#34;测试&#34; } 再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
+{ userId:123, userName:&#34;阿离&#34;, age:23, gender:&#34;女&#34;, address:&#34;上海&#34;, job:&#34;测试&#34;, workingLife:4 } 再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
 这时消息系统已经不是当初简单的两个发布者订阅者了，而是一群人在参数，所谓的众口难调。此时弊端已现，无论哪一方有变化都势必牵连所有人。所以看出的出这种消息参数传递有其不合理的地方，那么怎么传递更合理？此处的MQ最开始已经说了，是为了解耦而引进，说明该MQ是多个系统的衔接者，而多个系统终究还是系统，不是简单的前端和后端接口调用，例如某个前端A也是由自己的接口提供服务系统的，MQ不是直接为前端A提供参数的。应该是由前端A自己的服务端A订阅消息，前端A需要什么参数就有服务A查询需要的参数即可，前端B需要什么参数由服务B查询提供。而发布者A，发布者B等只需要传递关键参数userId即可，其他姓名，性别，年龄什么的都不需要传。
 此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
 总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。
@@ -362,10 +362,10 @@ mongodb导入数据 启动：
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		beego注解路由匹配不到，返回404页面 router.go使用了两种方式注册路由：
-ns := beego.NewNamespace(&#34;/admin&#34;, 	beego.NSRouter(&#34;/&#34;, &amp;controllers.UserController{}, &#34;get:Welcome&#34;), 	beego.NSInclude( 	&amp;controllers.UserController{}, 	), controller中的路由注解设置：
-// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { 	user := new(User) 	users, err := user.GetUserList() 	if nil != err { 	c.Data[&#34;json&#34;] = ErrorMsg(err) 	} 	c.Data[&#34;json&#34;] = users 	c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
+ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;controllers.UserController{}, &#34;get:Welcome&#34;), beego.NSInclude( &amp;controllers.UserController{}, ), controller中的路由注解设置：
+// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.Data[&#34;json&#34;] = users c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
 最终结果显示上面的注解路由时错误的，下面是正确的注册方式： 问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。 即/admin为命名空间，注解中只需写/user/get-all-user，不能这样写/admin/user/get-all-user
-// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { 	user := new(User) 	users, err := user.
+// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5ad46aebb9be3f8e30daaea8/">阅读全文…</a>
@@ -388,7 +388,7 @@ ns := beego.NewNamespace(&#34;/admin&#34;, 	beego.NSRouter(&#34;/&#34;, &amp;con
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
-package main  import ( 	&#34;sync&#34; 	&#34;time&#34; 	&#34;fmt&#34; ) func main() { 	syncFunc() 	fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) 	asyncFunc() 	fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) 	asyncChanFunc() } // 串行执行 func syncFunc() { 	var n,m,x int 	start := time.Now() 	fmt.Println(&#34;syncFunc start:&#34;,start) 	func () { 	time.Sleep(time.Second*1) 	n = 1 	}() 	func () { 	time.Sleep(time.Second*2) 	m = 2 	}() 	func () { 	time.
+package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() { syncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&#34;syncFunc start:&#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&#34;syncFunc end:&#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5acb49ba45213aca5fde59e1/">阅读全文…</a>
@@ -418,11 +418,11 @@ package main  import ( 	&#34;sync&#34; 	&#34;time&#34; 	&#34;fmt&#34; ) func mai
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

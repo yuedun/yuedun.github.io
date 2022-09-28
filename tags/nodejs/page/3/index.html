@@ -160,8 +160,8 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
- 假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
- var fs = require(&#34;fs&#34;);  function queue(){ 	return new Promise((resolve, reject)=&gt;{ 	fs.readFile(&#34;../queue.txt&#34;, &#34;utf8&#34;, (err, data)=&gt;{ 	if (err) reject(err); 	console.log(data.toString()); 	resolve(data.toString()); 	}) 	}) } function account(id){ 	return new Promise((resolve, reject)=&gt;{ 	fs.writeFile(&#39;../account.txt&#39;, id+&#39;一个新账户&#39;, (err) =&gt; { 	if (err) reject(err); 	console.log(&#39;办卡成功!&#39;); 	resolve(); 	}); 	}) } function money(id){ 	return new Promise((resolve, reject)=&gt;{ 	fs.
+假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
+var fs = require(&#34;fs&#34;); function queue(){ return new Promise((resolve, reject)=&gt;{ fs.readFile(&#34;../queue.txt&#34;, &#34;utf8&#34;, (err, data)=&gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../account.txt&#39;, id+&#39;一个新账户&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;办卡成功!&#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../money.txt&#39;, id+&#39;存了10万&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;存款成功!&#39;); resolve(); }); }) } //入口 function enter(id) { Promise.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/591c5eac35b6751981e4681e/">阅读全文…</a>
@@ -184,11 +184,11 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
-function a(args: number ): number { 	return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
-function b(args: string ): string { 	return args; } console.log(b(&#34;sdg&#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
-function c(args: any ): any { 	return args; } console.log(c(&#34;sdg&#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
-function c(args: any ): any {  let n = args + &#34;变成了字符串&#34;;  //甚至更多的处理 	return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
-function d&lt;A&gt;(args: A ): A {  let n = args + &#34;变成了字符串&#34;;  //甚至更多的处理 	return n; } console.
+function a(args: number ): number { return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
+function b(args: string ): string { return args; } console.log(b(&#34;sdg&#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
+function c(args: any ): any { return args; } console.log(c(&#34;sdg&#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
+function c(args: any ): any { let n = args + &#34;变成了字符串&#34;; //甚至更多的处理 return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
+function d&lt;A&gt;(args: A ): A { let n = args + &#34;变成了字符串&#34;; //甚至更多的处理 return n; } console.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/590c93d3266e3f1c8fd4aa83/">阅读全文…</a>
@@ -231,10 +231,10 @@ function d&lt;A&gt;(args: A ): A {  let n = args + &#34;变成了字符串&#34;;
 	<div class="content list__excerpt post__content clearfix">
 		完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
 typescript编译配置
-{  &#34;compilerOptions&#34;: {  &#34;module&#34;: &#34;commonjs&#34;,//模块化规范  &#34;target&#34;: &#34;es5&#34;,//生成js  &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错  &#34;noImplicitReturns&#34;: true,//函数没有返回值提示  &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示  &#34;removeComments&#34;: true,//输出文件移除注释  &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js  &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录  &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录  &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试  },  &#34;include&#34;: [  &#34;*/**/*.ts&#34;  ],  &#34;exclude&#34;: [  //默认排除了node_modules  ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
+{ &#34;compilerOptions&#34;: { &#34;module&#34;: &#34;commonjs&#34;,//模块化规范 &#34;target&#34;: &#34;es5&#34;,//生成js &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错 &#34;noImplicitReturns&#34;: true,//函数没有返回值提示 &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示 &#34;removeComments&#34;: true,//输出文件移除注释 &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录 &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录 &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试 }, &#34;include&#34;: [ &#34;*/**/*.ts&#34; ], &#34;exclude&#34;: [ //默认排除了node_modules ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
 选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
 vscode编译typescript配置
-{  // See https://go.microsoft.com/fwlink/?LinkId=733558  // for the documentation about the tasks.
+{ // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format &#34;version&#34;: &#34;0.1.0&#34;, &#34;command&#34;: &#34;tsc&#34;, &#34;isShellCommand&#34;: true, &#34;args&#34;: [&#34;-w&#34;, &#34;-p&#34;, &#34;.&#34;], &#34;showOutput&#34;: &#34;silent&#34;, &#34;isWatching&#34;: true, &#34;problemMatcher&#34;: &#34;$tsc-watch&#34; } 这样就不用每次编译了，只要文件有修改就会自动编译
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/58243e338fa26c04fd124ee6/">阅读全文…</a>
@@ -258,11 +258,11 @@ vscode编译typescript配置
 	<div class="content list__excerpt post__content clearfix">
 		ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启experimentalDecorators。
 命令行编译
- tsc --target ES5 --experimentalDecorators /test.ts
+tsc --target ES5 --experimentalDecorators /test.ts
 tsconfig.json:
 &#34;compilerOptions&#34;: { &#34;experimentalDecorators&#34;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
-//test.ts class Route {  greeting: string;  constructor(greet: string){  this.greeting = greet;  }   @route(&#34;hello&#34;)  default(): any {  console.log(this.greeting);  } }  function route(name: string) {  return function (target: Object, value: string, desc: PropertyDescriptor) {  console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name);  } } 生成的js代码：
-//test.js var __decorate = (this &amp;&amp; this.
+//test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&#34;hello&#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name); } } 生成的js代码：
+//test.js var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.length, r = c &lt; 3 ?
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/58037ab767a381257039c926/">阅读全文…</a>
@@ -285,17 +285,20 @@ tsconfig.json:
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		在一切开始之前先具备的开发环境：
-  nodejs4.0+
-  推荐的开发工具vscode
-  我希望通过本文介绍能直接做出一个最简单的项目框架，以便日后参考，这也是我想把之前纯nodejs写的博用typescript客重写一遍。
+nodejs4.0+
+推荐的开发工具vscode
+我希望通过本文介绍能直接做出一个最简单的项目框架，以便日后参考，这也是我想把之前纯nodejs写的博用typescript客重写一遍。
 还是以expressjs为框架来搭建
 使用express-generator来生成项目基本框架，需要全局安装
- npm install -g express-generator
-  express -e mpro
- 参数-e是以ejs为模板引擎，mpor为项目目录名，最后生成这样的目录结构：
+npm install -g express-generator
+express -e mpro
+参数-e是以ejs为模板引擎，mpor为项目目录名，最后生成这样的目录结构：
 . ├── app.js ├── bin │ └── www ├── package.json ├── public │ ├── images │ ├── javascripts │ └── stylesheets │ └── style.css ├── routes │ ├── index.js │ └── users.js └── views ├── error.ejs └── index.ejs 然后是全局安装typescript，便于在任何目录下编译，也可以安装在项目目录下。
- npm install -g typescript
- 安装完以后初始化typescript:
+npm install -g typescript
+安装完以后初始化typescript:
+tsc &ndash;init
+会在根目录下生成tsconfig.json文件，用于配置ts的编译选项。 有了基本目录以后就可以着手编写代码了，为了使用ts开发，可以手动将routes目录下的js文件 和app.js后缀名改成.ts. 做完以上步骤以后可以试着在项目根目录下执行&gt; tsc命令，可能什么都没发生， 这个命令会默认编译当前目录下的ts文件，但是我们项目中并没有这样的文件， 你可以自己新建一个后缀为.ts的文件再执行&gt; tsc还是什么都没有发生一样，但是如果我们把app.ts (已经改过后缀的app.js文件)中的
+var bodyParser = require('body-parser'); 改成
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/57fcf50869c8bf6e323dff48/">阅读全文…</a>
@@ -339,13 +342,13 @@ tsconfig.json:
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		nodejs请求网络资源写到本地 有这样一个需求：抓取网络上的图片或其他类型文件保存的本地，根据以往的经验这样写：
-var request=require(&#34;request&#34;); var fs=require(&#34;fs&#34;);  var url=&#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&#34;; HttpRequest.get(url, (err, res, body) =&gt; {  res.setEncoding(&#34;binary&#34;);//二进制（binary）  FS.writeFile(&#34;out.png&#34;, body, &#34;binary&#34;, function (err) {//以二进制格式保存  if (err) throw err;  console.log(&#34;file saved&#34;);  }); }); 这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
+var request=require(&#34;request&#34;); var fs=require(&#34;fs&#34;); var url=&#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&#34;; HttpRequest.get(url, (err, res, body) =&gt; { res.setEncoding(&#34;binary&#34;);//二进制（binary） FS.writeFile(&#34;out.png&#34;, body, &#34;binary&#34;, function (err) {//以二进制格式保存 if (err) throw err; console.log(&#34;file saved&#34;); }); }); 这个例子可能看起来比较眼熟，其实我就是从网上找来的，如果用这种方法成功的话那么恭喜你了，反正我是没有成功。还有一种情况是虽然成功的写文件到本地了，但是打不开，反正提示就是文件损坏之类的。总之，就是上面的方法行……不……通……
 还好，有另一种方法可行，而且看起来代码量也少了很多。
 var url=&#34;http://h.hiphotos.baidu.com/zhidao/pic/item/6d81800a19d8bc3ed69473cb848ba61ea8d34516.jpg&#34;; request(url).pipe(fs.createWriteStream(&#34;out.png&#34;)); 不过，虽然代码少了很多，但是疑问多了很多，pipe函数是什么东西，还有fs.createWriteStream()函数，借助nodejs帮助文档大概解释一二。
 _pipe_函数把他称作为管道吧，回头看一下代码，就是把前面请求的内容通过管道输送到后面的容器里面。虽然这么说还是不太理解，为什么可以调用pipe管道？
 非郑重声明：本人也是用蹩脚的英语大概理解nodejs stream的相关知识，如果有不妥的地方误导了人只能表示抱歉
 有关网络请求，比如http request，和文件操作方面的都涉及到流的概念，流是可读可写的，
-const http = require(&#34;http&#34;);  var server = http.createServer( (req, res) =&gt; {  } 其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&quot;out.png&quot;));,
+const http = require(&#34;http&#34;); var server = http.createServer( (req, res) =&gt; { } 其中req是可读Readable Stream的流，res是可写Writable Stream的流，再看request(url).pipe(fs.createWriteStream(&quot;out.png&quot;));,
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。
 	</div>
 </article>
@@ -413,11 +416,11 @@ ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

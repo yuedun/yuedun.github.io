@@ -180,11 +180,8 @@
 	<div class="content list__excerpt post__content clearfix">
 		为了获取json类型的参数煞费苦心，差点不再爱了。
 前端请求代码：
-$.ajax({  url: &#34;/user&#34;,  type: &#34;post&#34;,  data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}),  //这才是最重要的地方，必须用JSON.stringify序列化成字符串，  //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行  dataType: &#34;json&#34; }).done(function(res) {  if(res.result){  alert(&#34;成功&#34;)  }  }); 后端接收代码：
-func (this *UserController) Post() {  var ob User//这是一个model，struct类型  body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据  json.Unmarshal(body, &amp;ob)//解析二进制json，把结果放进ob中  user := &amp;User{Username: ob.UserName, Mobile: ob.Mobile}  err := user.AddUser()//这是添加用户函数  if nil != err {  this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err}  } else {  this.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/57d6aaa7471c11fa271ed1bb/">阅读全文…</a>
+$.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串， //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行 dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 后端接收代码：
+func (this *UserController) Post() { var ob User//这是一个model，struct类型 body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据 json.Unmarshal(body, &amp;ob)//解析二进制json，把结果放进ob中 user := &amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数 if nil != err { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } this.ServeJSON() } this.Input()获取的是所有参数集合，类型：url.Values(map[string]string) ** 特别注意：** 如果数据类型不匹配也会造成空数据结果。 例如：前端参数是age: &quot;23&quot;，model中age int，也会获取不到数据。
 	</div>
 </article>
 <article class="list__item post">
@@ -211,10 +208,10 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 等等……
 对于这些新语言，总有不少槽点被开发者吐槽。很多人都会进行对比，褒贬。但是我还是首先选择了Nodejs，简单快速上手，目前完全用于生产环境，它的快速开发让我很满意。ES6标准的定稿更让我肯定nodejs将会有更好的发展。
 最近又学习了go语言，在学一门语言前总会迟疑值不值得学习，然后看到网上各种讨论。但我觉得还是值得学习，且不说性能有没有C++好，光凭开发效率就值得我学了，现代计算机性能都有很大的提升，如果不是开发底层系统，而是开发软件服务端系统那么它的有点足够了。
-原生http请求获取参数   获取URL参数
-  url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
-  go返回json数据
-  type ResObj struct {  Code int  Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) {  m := make(map[string]string)  m[&#34;a&#34;] = &#34;aaaaaa&#34;  ress := &amp;ResObj{  Code: 0,  Data: m}  byt, _ := json.
+原生http请求获取参数 获取URL参数
+url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
+go返回json数据
+type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&#34;a&#34;] = &#34;aaaaaa&#34; ress := &amp;ResObj{ Code: 0, Data: m} byt, _ := json.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56556da1c72f59d15379b4b9/">阅读全文…</a>
@@ -239,11 +236,11 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

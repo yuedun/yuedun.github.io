@@ -14,7 +14,7 @@
       
       <guid>https://www.yuedun.wang/2022/05/http-response-garbled/</guid>
       <description>golang请求接口返回的数据乱码，原因之一是请求头设置了&amp;quot;Accept-Encoding&amp;quot;: &amp;quot;gzip, deflate, br&amp;quot;，那么如果服务器支持的话响应的数据就会经过gzip，deflate，br等方式的压缩，解决方式是对数据解压，或者可以不设置接收方式，即&amp;quot;Accept-Encoding&amp;quot;: &amp;quot;&amp;quot;
-import &amp;#34;github.com/andybalholm/brotli&amp;#34; import &amp;#34;compress/flate&amp;#34; import &amp;#34;compress/gzip&amp;#34; // 检测返回的body是否经过压缩，并返回解压的内容 func contentDecoding(res *http.Response) (bodyReader io.Reader, err error) { 	switch res.Header.Get(&amp;#34;Content-Encoding&amp;#34;) { 	case &amp;#34;gzip&amp;#34;: 	bodyReader, err = gzip.NewReader(res.Body) 	case &amp;#34;deflate&amp;#34;: 	bodyReader = flate.NewReader(res.Body) 	case &amp;#34;br&amp;#34;: 	bodyReader = brotli.NewReader(res.Body) 	default: 	bodyReader = res.Body 	} 	return } </description>
+import &amp;#34;github.com/andybalholm/brotli&amp;#34; import &amp;#34;compress/flate&amp;#34; import &amp;#34;compress/gzip&amp;#34; // 检测返回的body是否经过压缩，并返回解压的内容 func contentDecoding(res *http.Response) (bodyReader io.Reader, err error) { switch res.Header.Get(&amp;#34;Content-Encoding&amp;#34;) { case &amp;#34;gzip&amp;#34;: bodyReader, err = gzip.NewReader(res.Body) case &amp;#34;deflate&amp;#34;: bodyReader = flate.NewReader(res.Body) case &amp;#34;br&amp;#34;: bodyReader = brotli.NewReader(res.Body) default: bodyReader = res.Body } return } </description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@ import &amp;#34;github.com/andybalholm/brotli&amp;#34; import &amp;#34;compress/
       
       <guid>https://www.yuedun.wang/blogdetail/5f1fb24c4536b06ac3897662/</guid>
       <description>乱码的情况目前有两种可能：
- 常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。  关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&amp;quot;Accept-Encoding&amp;quot;, &amp;quot;gzip, deflate&amp;quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。</description>
+常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。 关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&amp;quot;Accept-Encoding&amp;quot;, &amp;quot;gzip, deflate&amp;quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。</description>
     </item>
     
   </channel>

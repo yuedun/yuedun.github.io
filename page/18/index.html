@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.93.0" />
+	<meta name="generator" content="Hugo 0.104.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -145,6 +145,30 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/559bd64ad366f15412cbf594/" rel="bookmark">
+			前端工具gulp的用途和使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-07T13:38:18Z">2015-07-07 13:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在接触前端开始就听说过grunt和gulp是很叼的前端构建工具，但不知道到底有多叼，只是听说可以自动编译less，sass为css，目前还没有使用less和sass，所以也就没有尝试使用grunt和gulp。但是作为一个技术爱好者还是经不住诱惑，照着网上的教程简单使用了一下，总算是知道有什么用处了，因为都说gulp比grunt更简单好用，就以gulp的使用方法为例来说明一下。
+文件合并：关于文件合并很多人存在这样的疑惑，在前端开发中到底该把所有js和css写在一个文件里还是各个页面分开写，我的建议是开发的时候分开写，上线的时候合并为一个，这样的好处是对于浏览器来说，不同页面中相同的文件默认会请求一次缓存下来，其他页面请求相同文件时就直接从缓存中读取，减少文件的网络请求可以提高网页速度，所以文件合并的是很有必要的。
+2.文件压缩：既然都合并了，何不再压缩一下呢
+3.语法检查：这个功能一般会和下面第4条功能配合使用，当文件修改的时候检查是否有语法错误，并在命令行中输出错误信息。
+4.监听文件变化：监听某个目录下文件是否修改，修改的话就执行特定的操作，比如上面几个操作。 以上4点是比较常用的功能，更多功能根据自己需要添加
+var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名 // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); }); // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); }); // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); }); // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); 目录结构:
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/559774527756526fccc59577/" rel="bookmark">
@@ -301,10 +325,10 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		在寫產品體驗報告的時候，經常會陷入這樣的一個困境，即把體驗報告寫成了這個產品的說明書或者營銷文案，幾乎把這個產品的所有功能又複述了一遍，重點不突出。在網上看了不少的體驗報告，基本也都陷入了這樣的一個怪圈。很多人一上來就很宏大地開始架構諸如『產品定位』、『戰略發展』、『市場狀況』、『商業模式』、『產品結構』等字眼。
- 關於這樣的分析方法有不少問題。一方面是缺少足夠的信息來源。比如『商業模式』的決定是需要有不少的信息輸入作為參考的，而你又並非這個公司的人，憑著在網上搜刮的一點資料難道就可以做出決定嗎？另一方面時，研究一個產品的重心應該放在哪個方面？面面俱到的分析方法必然會失去重心。
+關於這樣的分析方法有不少問題。一方面是缺少足夠的信息來源。比如『商業模式』的決定是需要有不少的信息輸入作為參考的，而你又並非這個公司的人，憑著在網上搜刮的一點資料難道就可以做出決定嗎？另一方面時，研究一個產品的重心應該放在哪個方面？面面俱到的分析方法必然會失去重心。
 對於這個問題，我自己的結論是：分析一個產品無需宏大整體的架構，只需要把自己當成用戶，問自己幾個問題即可。
 這幾個問題是：
- 你會繼續使用這個產品嗎？（ 第一關，該產品是否能繼續在該用戶的手機上存在。） 你會使用它的什麼功能？（ 該產品給用戶提供了什麼價值。） 如果跟XX 擺在一起， 你會選擇哪一個？（ 該產品的差異化優勢）  為什麼選擇這樣幾個問題而非宏觀地進行分析呢？這個問題可以從我們最近流行起來的幾個App看出端倪。無論是足跡和臉萌，都有一個很重要的特點，即它們的某一個功能很明顯地比其它功能要突出很多，甚至其它功能都不被用戶意識到，但是就這麼一個功能，就能使它們成為一個好的產品。也就是說，用戶在感知一個產品的時候，並不會去感知這個產品的整體，而只會關注一個問題：這個產品能幫助我什麼？如果這個產品的這個功能能夠為我帶來價值，就算其它功能都是雞肋，那留著也就留著吧，我不關心。
+你會繼續使用這個產品嗎？（ 第一關，該產品是否能繼續在該用戶的手機上存在。） 你會使用它的什麼功能？（ 該產品給用戶提供了什麼價值。） 如果跟XX 擺在一起， 你會選擇哪一個？（ 該產品的差異化優勢） 為什麼選擇這樣幾個問題而非宏觀地進行分析呢？這個問題可以從我們最近流行起來的幾個App看出端倪。無論是足跡和臉萌，都有一個很重要的特點，即它們的某一個功能很明顯地比其它功能要突出很多，甚至其它功能都不被用戶意識到，但是就這麼一個功能，就能使它們成為一個好的產品。也就是說，用戶在感知一個產品的時候，並不會去感知這個產品的整體，而只會關注一個問題：這個產品能幫助我什麼？如果這個產品的這個功能能夠為我帶來價值，就算其它功能都是雞肋，那留著也就留著吧，我不關心。
 大多數玩微信的人不玩遊戲，也不關心『我的錢包』裡面豐富的服務，但不妨礙他們成為微信的重度用戶。
 由此我們得出一個什麼結論呢？結論是：一個好產品可能并不遵守木桶理論，只要最長的那根木板足夠長，這個產品就足夠好。因此，當我們去分析一個產品的時候，我們應該分析這個產品的關鍵驅動因素是什麼？它最亮的那個亮點是什麼？它亮到什麼程度以至於我決定把這個產品給收下來而不是長按刪除。不要再寫那些長長的貌似很系統的分析報告了吧，我相信微信里的很多頁面你從沒進去過。
 内容摘自知乎：http://www.zhihu.com/question/19851117
@@ -332,26 +356,6 @@
 		<a class="list__footer-readmore btn" href="/blogdetail/554aff409ddef487a8b23409/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/554ae5b3a07843eb8002a388/" rel="bookmark">
-			sequelize定义实体对象
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T04:10:27Z">2015-05-07 04:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		sequelize定义实体对象
-var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Sequelize = require(&#34;sequelize&#34;); var User = sequelize.define(&#34;User&#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &#34;user&#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -375,11 +379,11 @@ var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Se
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

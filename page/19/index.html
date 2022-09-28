@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.93.0" />
+	<meta name="generator" content="Hugo 0.104.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,6 +147,26 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/554ae5b3a07843eb8002a388/" rel="bookmark">
+			sequelize定义实体对象
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T04:10:27Z">2015-05-07 04:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		sequelize定义实体对象
+var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Sequelize = require(&#34;sequelize&#34;); var User = sequelize.define(&#34;User&#34;, { user_id:{ type: Sequelize.STRING, primaryKey: true}, name: Sequelize.STRING, phone: Sequelize.STRING, create_date: Sequelize.DATE, update_date: Sequelize.DATE }, { freezeTableName: true, // 默认false修改表名为复数，true不修改表名，与数据库表名同步 tableName: &#34;user&#34;, timestamps: false }); define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5534d242cf68fa0beaf71cb9/" rel="bookmark">
 			 mysql一个字段为空时使用另一个字段排序
 			</a>
@@ -208,7 +228,7 @@ select * from table order by IFNULL(updateDate, createDate) desc;
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了。
-/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) {  var query = req.query;  var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&#34;timestamp&#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array();  oriArray[0] = nonce;  oriArray[1] = timestamp;  oriArray[2] = &#34;hale&#34;;//token  oriArray.
+/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) { var query = req.query; var signature = query.signature;//微信服务器加密字符串 var echostr = query.echostr;//随机字符串 var timestamp = query[&#34;timestamp&#34;];//时间戳 var nonce = query.nonce;//nonce var oriArray = new Array(); oriArray[0] = nonce; oriArray[1] = timestamp; oriArray[2] = &#34;hale&#34;;//token oriArray.sort(); var original = oriArray[0]+oriArray[1]+oriArray[2]; console.log(&#34;Original Str:&#34;+original); console.log(&#34;signature:&#34;+signature); var scyptoString = sha1(original);//将三个参数拼接加密字符串，并与服务器发送的字符串对比 if (signature == scyptoString) { res.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5479b18a93ae2eb85f26b2d3/">阅读全文…</a>
@@ -265,7 +285,7 @@ to less than 2GB of data (or less with &ndash;journal).
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。 由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。  
+		由于工作没时间，博客搭建起来以后一直没有添加文件上传功能，瞬间感觉不完美了。这两天外包项目结束，要出项目组，在交接工作之余，用中午休息时间写好了文件上传功能，具体是图片上传。在本地测试好发布到BAE上，居然没法上传了，初步推断应该是服务器没有写权限，原来一直想试试百度云存储来做图片存储，但是翻看了文档发现暂不支持node.js上传，只能先上传好再引用链接，感觉好麻烦。 由于一直在node中文社区混，发现用的是七牛存储，也想跟着大牛的步伐去试试，对开发文档进行两轮战斗，愣是没看懂，今天没事干，就从头到尾认认真真看了一遍，动手写了个测试程序，可以上传，激动万分，真想分享出来，但是测试程序还不完善，还没有把回调搞定，也没有完整的例子拿出来给大家看，等完全搞定了以后再写个教程卖弄一下。 
 	</div>
 </article>
 <article class="list__item post">
@@ -347,7 +367,7 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
 在这里我们只介绍 util.inherits 的用法，示例如下：
-var util = require(&#34;util&#34;);  function Base() {  this.name = &#34;base&#34;;  this.base = 1991;   this.sayHello = function() {  console.log(&#34;Hello &#34; + this.name);  }; }  Base.prototype.showName = function() {  console.log(this.name);  };  function Sub() {  this.name = &#34;sub&#34;; }  util.inherits(Sub, Base);  var objBase = new Base(); objBase.
+var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;; this.base = 1991; this.sayHello = function() { console.log(&#34;Hello &#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#34;sub&#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5451f72e0eb53ef723e47bfe/">阅读全文…</a>
@@ -371,45 +391,8 @@ var util = require(&#34;util&#34;);  function Base() {  this.name = &#34;base&#3
 	<div class="content list__excerpt post__content clearfix">
 		前段时间写了《BAE上连接mongodb每隔十多小时就不能连接的问题(一)》之后暂时的解决了连不上的问题，每隔十小时重启一次，但是这个方法却没有彻底解决问题，偶尔还会出现三四小时就连不上，实在搞不懂问题到底出在哪，到底是bae的mongodb的问题还是mongoose中间件的问题，现象是有做open操作，但是却没有open事件发出，那么我想是不是mongoose存在bug，翻看了源码也没看出来个所以然，不过大概是觉得要重新打开需要保证连接已经关闭的，那么干脆在监听到error事件时就将状态直接改为disconnected，反正是要调用db.close()方法进行关闭连接的，可能close()方法不好使，没有完全关闭，如果我手动将状态设为disconnected，close方法中也会判断是否是这个状态，如果是就直接返回，省的多走其他步骤了。不过这样一来就不会有close事件发出了，根据我所写代码的逻辑，那就不会调用open()方法了，但实际情况确实程序可以正常运行，说明已经重连上了，原来在代码中添加了这个属性：
 Js代码 :
-var opts = { db: {  native_parser: true }, server: {  poolSize:4,  auto_reconnect: true }, user: username,  pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
+var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: true }, user: username, pass: password }; 上面的红色字体，只能说是可能这个参数起作用了。
 不过由此看来，auto_reconect这个参数要起作用必须是在连接断开的情况下，说明close()方法有时候并没有完全断开连接。
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/54488218aedc6cf109b96d32/" rel="bookmark">
-			让你的Node.js应用跑得更快的10个技巧
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-23T04:20:40Z">2014-10-23 04:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那么你就应该无所不用，让你的应用更快，异常的快。本文将介绍10条经过检验得知可大大提高Node速度的应用技巧。废话不多说，让我们逐条来看看。
-**1.**并行
-创建 Web 应用的时候，你可能要多次调用内部 API 来获取各种数据。比如说，假设在 Dashboard 页面上，你要执行下面这几个调用：
- 用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications().  为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
-如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
-我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
-如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
-2. 异步
-根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:
-不过要是你执行那种长时间的阻塞操作，主线程就会被阻塞到这些操作完成为止。这大大降低你应用的性能。所以，最好确保你的代码里用的都是异步版本 API，最起码你应该在性能节点异步。而且，你在选用第三方模块的时候也要很小心。因为当你想方设法把同步操作从你代码中剔除之后，一个外部库的同步调用会让你前功尽弃，降低你的应用性能。
-3. 缓存
-如果你用到一些不经常变化的数据，你应该把它们缓存起来，改善性能。比如说，下面的代码是获取最新帖子并显示的例子:
-如果你不经常发贴的话，你可以把帖子列表缓存起来，然后一段时间之后再把它们清理掉。比如，我们可以用 Redis 模块来达到这个目的。当然，你必须在你的服务器上装 Redis。然后你可以用叫做 node_redis 的客户端来保存键/值对。下面的例子演示我们怎么缓存帖子：
-看到了吧，我们首先检查 Redis 缓存，看看是否有帖子。如果有，我们从缓存中拿这些帖子列表。否则我们就检索数据库内容，然后把结果缓存。此外，一定时间之后，我们可以清理 Redis 缓存，这样就可以更新内容了。
-4. gzip 压缩
-开启 gzip 压缩对你的 Web 应用会产生巨大影响。当一个 gzip 压缩浏览器请求某些资源的时候，服务器会在响应返回给浏览器之前进行压缩。如果你不用 gzip 压缩你的静态资源，浏览器拿到它们可能会花费更长时间。
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/54488218aedc6cf109b96d32/">阅读全文…</a>
 	</div>
 </article>
 
@@ -435,11 +418,11 @@ var opts = { db: {  native_parser: true }, server: {  poolSize:4,  auto_reconnec
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

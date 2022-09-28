@@ -201,13 +201,13 @@
 	<div class="content list__excerpt post__content clearfix">
 		如何Hook Ajax请求 现在很多网站都使用Ajax作为数据接口，这样其实也方便爬虫爬取数据，但是，如果站点对IP，访问频率做 了限制，或者网站定位就是搜索类，无法遍历完所有页面，或者是数据实时变化，无法预期的。这样就可能需要 直接在浏览器中模拟人的行为，对于这样的网站(使用Ajax作数据接口，有一定防范措施) ，如果我们可以通过hook得到Ajax请求，就可以搞定它的数据了。
 单页面Web应用 对于单页面的Web应用，在console中使用如下代码，就能在浏览器进行Ajax请求时候，得到返回内容， 然后在post给存储接口就好了:
-(function() {  var origOpen = XMLHttpRequest.prototype.open;   XMLHttpRequest.prototype.open = function() {  // console.log(&#39;request started!&#39;);  this.addEventListener(&#39;load&#39;, function() {  console.log(this.responseText); // 得到Ajax的返回内容  });  origOpen.apply(this, arguments);  }; })(); 比如百度图片:
+(function() { var origOpen = XMLHttpRequest.prototype.open; XMLHttpRequest.prototype.open = function() { // console.log(&#39;request started!&#39;); this.addEventListener(&#39;load&#39;, function() { console.log(this.responseText); // 得到Ajax的返回内容 }); origOpen.apply(this, arguments); }; })(); 比如百度图片:
 我们可以看到请求图片的路径，这段代码 直接使用了一个匿名函数，重写了Ajax请求的open方法，给load事件加上一个事件监听器，从而把内容得到:
 对于单页面的Web应用，基本可以满足需求，但是如果翻页的话，每次翻页上一页的代码就失效了， 不可能每页都把这段代码复制进console中，还是需要使用类似Chrome插件的方式才能实现。
 翻页Web应用 有了上面的代码，如果我们把它直接丢到Chrome插件的JS文件里面(官方叫Content Scripts)，发现是无法执行的，XMLHttpRequest.prototype.open 还是浏览器自身的代码。
 这样看来，就无法实现自动翻页，自动获取ajax请求内容了。
 Chrome官方说法如下:
- Content scripts execute in a special environment called an isolated world. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.
+Content scripts execute in a special environment called an isolated world. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/07/chrome-extensions-hook-ajax/">阅读全文…</a>
@@ -230,12 +230,13 @@ Chrome官方说法如下:
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。
-vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
+vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。
+上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
 可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也没有时间排序，只有名称排序，真的是很难用。
 为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
 关于chrome插件开发的细节本文暂不细说，直接上代码。
 代码展示 manifest.json
-{  &#34;manifest_version&#34;: 2,  &#34;name&#34;: &#34;chome-plugin&#34;,  &#34;version&#34;: &#34;0.0.1&#34;,  &#34;description&#34;: &#34;chrome示例插件&#34;,  &#34;icons&#34;: {  &#34;16&#34;: &#34;images/icon-16x16.png&#34;,  &#34;48&#34;: &#34;images/icon-48x48.png&#34;,  &#34;128&#34;: &#34;images/icon-128x128.png&#34;  },  &#34;page_action&#34;: {  &#34;default_icon&#34;: {  &#34;48&#34;: &#34;images/icon-48x48.png&#34;  },  &#34;default_popup&#34;: &#34;html/popup.html&#34;,  &#34;default_title&#34;: &#34;Hello yuedun&#34;  },  &#34;author&#34;: &#34;yuedun&#34;,  &#34;background&#34;: {  &#34;scripts&#34;: [  &#34;scripts/jquery.min.js&#34;,  &#34;scripts/background.js&#34;  ]  },  &#34;devtools_page&#34;: &#34;html/devtools-page.
+{ &#34;manifest_version&#34;: 2, &#34;name&#34;: &#34;chome-plugin&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;description&#34;: &#34;chrome示例插件&#34;, &#34;icons&#34;: { &#34;16&#34;: &#34;images/icon-16x16.png&#34;, &#34;48&#34;: &#34;images/icon-48x48.png&#34;, &#34;128&#34;: &#34;images/icon-128x128.png&#34; }, &#34;page_action&#34;: { &#34;default_icon&#34;: { &#34;48&#34;: &#34;images/icon-48x48.png&#34; }, &#34;default_popup&#34;: &#34;html/popup.html&#34;, &#34;default_title&#34;: &#34;Hello yuedun&#34; }, &#34;author&#34;: &#34;yuedun&#34;, &#34;background&#34;: { &#34;scripts&#34;: [ &#34;scripts/jquery.min.js&#34;, &#34;scripts/background.js&#34; ] }, &#34;devtools_page&#34;: &#34;html/devtools-page.html&#34;, &#34;content_scripts&#34;: [ { &#34;js&#34;: [ &#34;scripts/jquery.min.js&#34;, &#34;scripts/content.js&#34; ], &#34;css&#34;: [ &#34;styles/yuedun-insert.css&#34; ], &#34;matches&#34;: [ &#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&#34; ], &#34;run_at&#34;: &#34;document_start&#34; } ], &#34;permissions&#34;: [ &#34;cookies&#34;, &#34;*://*/*&#34;, &#34;webRequest&#34; ], &#34;homepage_url&#34;: &#34;https://www.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/07/qiuniu-image-preivew/">阅读全文…</a>
@@ -298,7 +299,7 @@ vscode中一对括号()代表一个变量。
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
-node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.  113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~  node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.  114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void;  ~~~~~~~~~~~  node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;.
+node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 118 touch: (sid: string, session: Express.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/60b48e405caa4b4dc69e3abf/">阅读全文…</a>
@@ -329,11 +330,11 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 当时把这个系统定位为nodejs专用发布系统，因为它依赖了pm2，而pm2则是nodejs专用的进程管理工具，其他语言用不到。这个系统的上线也算是解决了我司一直以来没有合适的nodejs发布系统的空缺。
 经过9个月的使用，也算比较稳定。但是也存在问题，最大的问题是部署应用方面比较繁琐。
 基本流程如下：
- 发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。  部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
+发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。 部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
 使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
 最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。
 朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
- 朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。  项目地址：朱雀发布系统
+朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。 项目地址：朱雀发布系统
 	</div>
 </article>
 <article class="list__item post">
@@ -354,9 +355,9 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 	<div class="content list__excerpt post__content clearfix">
 		Easy-Monitor是一款轻量级的Node性能监控工具，仅仅需要项目入口 require 一次，就可以非常便捷地展示出进程的状态细节。
 Easy-Monitor主要提供以下的功能：
- 找出执行时长耗费最久的5个或者更多的函数 找出那些执行时间超出预期的函数 找出v8引擎无法优化的函数  Easy-Monitor的特点：
- 轻量级：非传统C/S物理分离模式，require 后即可使用，没有额外的监控server/agent部署成本。 运行时：针对的是运行时的函数性能以及内存细节进行处理展示，可用于线上生产环境项目。 无状态：永远展示的是开发者访问时的业务进程状态  关于监控qps，作者在文档中并没有提到qps这样的关键字，很多人也不知道怎么监控qps。 不过在监控界面中有这样的指标数据： 所以我从源码入手，找到了该数据指标的源头是这样的：
-const data = {  osCpu: Number((used_cpu * 100).toFixed(2)),  osMem: Number((used_memory_percent * 100).toFixed(2)),  maxDisk: max_disk_usage,  disks: disks_json,  load1: Number(load1.toFixed(2)),  load5: Number(load5.toFixed(2)),  load15: Number(load15.toFixed(2)),  nodeCount: node_count,  scavengeTotal: total_scavange_duration,  scavengeAverage: scavange_duration_last_record,  marksweepTotal: total_marksweep_duration,  marksweepAverage: marksweep_duration_last_record,  qps: Number((http_response_sent / 60).toFixed(2)),  rtExpired: http_patch_timeout,  rtAverage: http_rt,  }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
+找出执行时长耗费最久的5个或者更多的函数 找出那些执行时间超出预期的函数 找出v8引擎无法优化的函数 Easy-Monitor的特点：
+轻量级：非传统C/S物理分离模式，require 后即可使用，没有额外的监控server/agent部署成本。 运行时：针对的是运行时的函数性能以及内存细节进行处理展示，可用于线上生产环境项目。 无状态：永远展示的是开发者访问时的业务进程状态 关于监控qps，作者在文档中并没有提到qps这样的关键字，很多人也不知道怎么监控qps。 不过在监控界面中有这样的指标数据： 所以我从源码入手，找到了该数据指标的源头是这样的：
+const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_memory_percent * 100).toFixed(2)), maxDisk: max_disk_usage, disks: disks_json, load1: Number(load1.toFixed(2)), load5: Number(load5.toFixed(2)), load15: Number(load15.toFixed(2)), nodeCount: node_count, scavengeTotal: total_scavange_duration, scavengeAverage: scavange_duration_last_record, marksweepTotal: total_marksweep_duration, marksweepAverage: marksweep_duration_last_record, qps: Number((http_response_sent / 60).toFixed(2)), rtExpired: http_patch_timeout, rtAverage: http_rt, }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
 	</div>
 </article>
 <article class="list__item post">
@@ -440,11 +441,11 @@ code-server是一个可以运行在服务器上的web项目，这下我们可以
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

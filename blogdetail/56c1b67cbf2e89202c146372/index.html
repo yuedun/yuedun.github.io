@@ -155,14 +155,7 @@
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-02-15T11:29:00Z">2016-02-15 11:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">目录</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents"></nav>
-	</div>
-</div>
-<div class="content post__content clearfix">
+		</header><div class="content post__content clearfix">
 			<p>多人协作开发过程中会遇到一些字段设置默认值的情况，但是这个默认值到底该由哪一阶段来设置？比如有三个阶段:前端或移动端，接口程序，数据库。说个具体场景，APP上有个医生需要显示挂号费，这个挂号费是由后台管理系统添加的，但是在添加医生这个过程不是一次性完成的，先是添加员工信息，角色为医生，这个挂号费是添加完成员工信息以后在医生管理里设置的，那么在完成添加员工后还没来得及设置挂号费医生就显示到了APP中，由于这个医生没有挂号费，就会导致用户误解或者APP程序报错。这时候问题来了，挂号费该有个默认值吧！但是这个默认值由谁来设置呢？尤其是程序上线以后出现问题大家都不想背这个黑锅，移动端问接口，你要传个默认值给我，接口对后台管理说你怎么没传个默认值给我？后台管理说，就不能在数据库设置吗，没有值我干嘛还要传？究竟该由谁来设置这个默认值，好像谁都可以，但是有很多字段要设置的时候就有很多工作量要做了，需要判断用户有没有填，没有填就设置默认值。一堆的if判断，很不明智的做法，而且也不能保证万无一失。</p>
 <p>最后总结：默认值由数据库来设置，这是最简单的方法，可以为程序省去很多判断，而且数据库不为null的设置可以为索引字段带来好处，节省空间。</p>
 

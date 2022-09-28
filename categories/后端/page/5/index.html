@@ -161,8 +161,8 @@
 	<div class="content list__excerpt post__content clearfix">
 		js中有个delete操作符可以删除对象的属性，比如下面代码：
 //objtest对象有个prop属性
-var objtest = {   prop: &#39;delete me&#39;  };  //或者这么声明的对象  var objtest = new Array();  objtest[&#39;prop&#39;] = &#39;delete me&#39;;  //删除属性&#39;prop&#39;：  delete objtest.prop;  //或者  delete objtest[&#39;prop&#39;];  //还可以删除任意变量  var numb = 17;  delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = { 	name: &#39;鸣人&#39;, 	age: 16, 	gender: &#39;男&#39;, 	friends: [{ 	name: &#39;小樱&#39;, 	age: 16, 	gender: &#39;女&#39;, 	friends: [{ 	name: &#39;井野&#39;, 	age: 16, 	gender: &#39;女&#39; 	}] 	}, 	{ 	name: &#39;佐助&#39;, 	age: 16, 	gender: &#39;男&#39; 	}] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
+var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象 var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;： delete objtest.prop; //或者 delete objtest[&#39;prop&#39;]; //还可以删除任意变量 var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
+var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
@@ -210,8 +210,7 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 		先来一张效果图：
 ](https://hopefully-img.yuedun.wang/172722906.png)
 由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。
-使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 
-注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
+使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
 可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。
 	</div>
 </article>
@@ -231,8 +230,8 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		var nodemailer = require(&#34;nodemailer&#34;);  var transporter = nodemailer.createTransport({  	service: &#34;gmail&#34;,  	auth: {  	user: &#34;youname@gmail.com&#34;,  	pass: &#34;password&#34;  	}  });  transporter.sendMail({  	from: &#34;youname@gmail.com&#34;,  	to: &#34;username@qq.com&#34;,  	subject: &#34;hello&#34;,  	text: &#34;hello world!&#34;  }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
- &ldquo;1und1&rdquo; &ldquo;AOL&rdquo; &ldquo;DebugMail.io&rdquo; &ldquo;DynectEmail&rdquo; &ldquo;FastMail&rdquo; &ldquo;GandiMail&rdquo; &ldquo;Gmail&rdquo; &ldquo;Godaddy&rdquo; &ldquo;GodaddyAsia&rdquo; &ldquo;GodaddyEurope&rdquo; &ldquo;hot.ee&rdquo; &ldquo;Hotmail&rdquo; &ldquo;iCloud&rdquo; &ldquo;mail.ee&rdquo; &ldquo;Mail.ru&rdquo; &ldquo;Mailgun&rdquo; &ldquo;Mailjet&rdquo; &ldquo;Mandrill&rdquo; &ldquo;Naver&rdquo; &ldquo;Postmark&rdquo; &ldquo;QQ&rdquo; &ldquo;QQex&rdquo; &ldquo;SendCloud&rdquo; &ldquo;SendGrid&rdquo; &ldquo;SES&rdquo; &ldquo;Sparkpost&rdquo; &ldquo;Yahoo&rdquo; &ldquo;Yandex&rdquo; &ldquo;Zoho&rdquo;  
+		var nodemailer = require(&#34;nodemailer&#34;); var transporter = nodemailer.createTransport({ service: &#34;gmail&#34;, auth: { user: &#34;youname@gmail.com&#34;, pass: &#34;password&#34; } }); transporter.sendMail({ from: &#34;youname@gmail.com&#34;, to: &#34;username@qq.com&#34;, subject: &#34;hello&#34;, text: &#34;hello world!&#34; }); 这是一个最基本的邮件发送程序，邮件服务商有以下：
+&ldquo;1und1&rdquo; &ldquo;AOL&rdquo; &ldquo;DebugMail.io&rdquo; &ldquo;DynectEmail&rdquo; &ldquo;FastMail&rdquo; &ldquo;GandiMail&rdquo; &ldquo;Gmail&rdquo; &ldquo;Godaddy&rdquo; &ldquo;GodaddyAsia&rdquo; &ldquo;GodaddyEurope&rdquo; &ldquo;hot.ee&rdquo; &ldquo;Hotmail&rdquo; &ldquo;iCloud&rdquo; &ldquo;mail.ee&rdquo; &ldquo;Mail.ru&rdquo; &ldquo;Mailgun&rdquo; &ldquo;Mailjet&rdquo; &ldquo;Mandrill&rdquo; &ldquo;Naver&rdquo; &ldquo;Postmark&rdquo; &ldquo;QQ&rdquo; &ldquo;QQex&rdquo; &ldquo;SendCloud&rdquo; &ldquo;SendGrid&rdquo; &ldquo;SES&rdquo; &ldquo;Sparkpost&rdquo; &ldquo;Yahoo&rdquo; &ldquo;Yandex&rdquo; &ldquo;Zoho&rdquo; 
 	</div>
 </article>
 <article class="list__item post">
@@ -252,7 +251,7 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		最基本的where条件：
-Post.findAll({  where: {  authorId: 2  } }); // SELECT \* FROM post WHERE authorId = 2  Post.findAll({  where: {  authorId: 12,  status: active  } });  // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;;  Post.destroy({  where: {  status: &#39;inactive&#39;  } }); // DELETE FROM post WHERE status = &#39;inactive&#39;;  Post.update({  updatedAt: null, }, {  where: {  deletedAt: {  $ne: null  }  } });  // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
+Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2 Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;; Post.destroy({ where: { status: &#39;inactive&#39; } }); // DELETE FROM post WHERE status = &#39;inactive&#39;; Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
@@ -295,7 +294,7 @@ var sequelize = require(&#34;../utils/sequelizeDB&#34;);//连接数据库 var Se
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		前端时间用node改写了下去年用Java练习时写的微信接口，可能是因为微信接口看的多了更加熟悉了，也可能是node开发更快速，反正不到一小时就搞定了微信token的验证，放到博客项目中，新增了一个URL请求，在微信公众平台上测试了下，没想到调试两三次就通过了，想当初用Java测试时各种问题不断。想起来可惜的是去年Java版的微信接口做的自定义菜单，自动回复等功能，由于BAE收费的缘故就废掉了。
-/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) {  var query = req.query;  var signature = query.signature;//微信服务器加密字符串  var echostr = query.echostr;//随机字符串  var timestamp = query[&#34;timestamp&#34;];//时间戳  var nonce = query.nonce;//nonce  var oriArray = new Array();  oriArray[0] = nonce;  oriArray[1] = timestamp;  oriArray[2] = &#34;hale&#34;;//token  oriArray.
+/** * Created by huopanpan on 2014/10/10. */ var crypto = require(&#34;crypto&#34;); /** * 验证token * @param req * @param res */ function validateToken(req, res) { var query = req.query; var signature = query.signature;//微信服务器加密字符串 var echostr = query.echostr;//随机字符串 var timestamp = query[&#34;timestamp&#34;];//时间戳 var nonce = query.nonce;//nonce var oriArray = new Array(); oriArray[0] = nonce; oriArray[1] = timestamp; oriArray[2] = &#34;hale&#34;;//token oriArray.sort(); var original = oriArray[0]+oriArray[1]+oriArray[2]; console.log(&#34;Original Str:&#34;+original); console.log(&#34;signature:&#34;+signature); var scyptoString = sha1(original);//将三个参数拼接加密字符串，并与服务器发送的字符串对比 if (signature == scyptoString) { res.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5479b18a93ae2eb85f26b2d3/">阅读全文…</a>
@@ -325,7 +324,7 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
 提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
 在这里我们只介绍 util.inherits 的用法，示例如下：
-var util = require(&#34;util&#34;);  function Base() {  this.name = &#34;base&#34;;  this.base = 1991;   this.sayHello = function() {  console.log(&#34;Hello &#34; + this.name);  }; }  Base.prototype.showName = function() {  console.log(this.name);  };  function Sub() {  this.name = &#34;sub&#34;; }  util.inherits(Sub, Base);  var objBase = new Base(); objBase.
+var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;; this.base = 1991; this.sayHello = function() { console.log(&#34;Hello &#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#34;sub&#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5451f72e0eb53ef723e47bfe/">阅读全文…</a>
@@ -350,7 +349,7 @@ var util = require(&#34;util&#34;);  function Base() {  this.name = &#34;base&#3
 		Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那么你就应该无所不用，让你的应用更快，异常的快。本文将介绍10条经过检验得知可大大提高Node速度的应用技巧。废话不多说，让我们逐条来看看。
 **1.**并行
 创建 Web 应用的时候，你可能要多次调用内部 API 来获取各种数据。比如说，假设在 Dashboard 页面上，你要执行下面这几个调用：
- 用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications().  为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
+用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications(). 为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
 如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
 我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
 如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
@@ -385,16 +384,16 @@ var util = require(&#34;util&#34;);  function Base() {  this.name = &#34;base&#3
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		express获取参数有三种方法：官网介绍如下
- hecks route params (req.params), ex: /user/:id
-  Checks query string params (req.query), ex: ?id=12
-  Checks urlencoded body params (req.body), ex: id=12
- 1、例如：127.0.0.1:3000/index，这种情况下，我们为了得到index，我们可以通过使用req.params得到，通过这种方法我们就可以很好的处理Node中的路由处理问题，同时利用这点可以非常方便的实现MVC模式；
+hecks route params (req.params), ex: /user/:id
+Checks query string params (req.query), ex: ?id=12
+Checks urlencoded body params (req.body), ex: id=12
+1、例如：127.0.0.1:3000/index，这种情况下，我们为了得到index，我们可以通过使用req.params得到，通过这种方法我们就可以很好的处理Node中的路由处理问题，同时利用这点可以非常方便的实现MVC模式；
 2、例如：127.0.0.1:3000/index?id=12，这种情况下，这种方式是获取客户端get方式传递过来的值，通过使用req.query.id就可以获得，类似于PHP的get方法；
 3、例如：127.0.0.1：300/index，然后post了一个id=2的值，这种方式是获取客户端post过来的数据，可以通过req.body.id获取，类似于PHP的post方法；
 下面举例介绍下这三个方法：
 如下一个test.html代码
 &lt;form action=&#34;/index&#34; method=&#34;get&#34;&gt; &lt;input type=&#34;text&#34; name=&#34;login_name&#34; /&gt; &lt;input type=&#34;submit&#34; value=&#34;Sign In&#34; /&gt; &lt;/form&gt; 在nodeJs中我们要自定义HTTP，因此创建index.js
-app.post(&#39;/:key&#39;, function(req, res) {  console.log(req.params.key); //输出index  console.log(req.body.login_name); //输出表单post提交的login_name  res.send(&#39;great you are right for post method!&#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791
+app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //输出index console.log(req.body.login_name); //输出表单post提交的login_name res.send(&#39;great you are right for post method!&#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791
 	</div>
 </article>
 
@@ -420,11 +419,11 @@ app.post(&#39;/:key&#39;, function(req, res) {  console.log(req.params.key); //
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

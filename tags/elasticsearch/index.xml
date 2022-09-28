@@ -6,7 +6,17 @@
     <description>Recent content in elasticsearch on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 26 Dec 2017 15:24:12 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Sep 2022 14:00:43 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Elasticsearch批量insert和批量upsert</title>
+      <link>https://www.yuedun.wang/2022/09/elasticsearch-bulk-upsert/</link>
+      <pubDate>Wed, 28 Sep 2022 14:00:43 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2022/09/elasticsearch-bulk-upsert/</guid>
+      <description>golang版本的elasticsearch批量插入和批量更新方法如下：
+package main import ( &amp;#34;github.com/elastic/go-elasticsearch/v8&amp;#34; &amp;#34;github.com/elastic/go-elasticsearch/v8/esutil&amp;#34; ) func main() { list:=make(User, 0) bulkES(list) } func bulkES(list []User) error { indexer, err := esutil.NewBulkIndexer(esutil.BulkIndexerConfig{ Index: &amp;#34;search-user&amp;#34;, Client: ES, }) if err != nil { return err } for _, v := range list { data, err := json.Marshal(v) if err != nil { return err } err = indexer.Add( context.Background(), esutil.BulkIndexerItem{ Action: &amp;#34;index&amp;#34;, Body: bytes.NewReader(data), }, ) if err != nil { return err } } indexer.</description>
+    </item>
+    
     <item>
       <title>推荐在Nodejs使用的java常用技术和工具</title>
       <link>https://www.yuedun.wang/blogdetail/5a430ce84aa3290e95cb0e67/</link>

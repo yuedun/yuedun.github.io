@@ -162,7 +162,7 @@
 		由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故，我们本文还是来实测一下，由于时间关系，VC还没装，书生先用PHP测试了一下，下次有时间在C/C++上补充测试到本文来，因为 PHP的底层解析应该也是基于C的，所以估计两者环境测试结果差不多，小问题大收获，现在就来看一下测试过程及结果。
 测试程序如下： //说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。
 //说明2：测试两次一次是4K数据，一次是整形数据
-set_time_limit(0); function fnGet($filename) {  $content = file_get_contents($filename);  return $content; }  function fnGetContent($filename) {  $content = fnGet($filename);  return $content; }  $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) {  $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;);  $row=$dbcon-&gt;mydb_fetch_row($res);  $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //---------------------------------  $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) {  $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;);  $row=$dbcon-&gt;mydb_fetch_array($res);  $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.
+set_time_limit(0); function fnGet($filename) { $content = file_get_contents($filename); return $content; } function fnGetContent($filename) { $content = fnGet($filename); return $content; } $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_row($res); $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_array($res); $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_object($res); $content=$row-&gt;log_Content; } echo &#39;fetch_object &#39;.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5a1d8147da5c711b612f4d88/">阅读全文…</a>
@@ -187,9 +187,9 @@ set_time_limit(0); function fnGet($filename) {  $content = file_get_contents($fi
 		说起居住证这东西，对于来沪务工的人平时没什么用，但是到一些关键时候却是不可缺少的，比如考驾照，子女上学，落户等。我也是来上海几年了都没办过，最近为了孩子上学做准备不得已就赶紧办了，之前之所以没办就是觉得麻烦。
 办居住证麻烦的是准备材料，其实材料准备好了一小时甚至半小时就能办好。要准备的资料当中恐怕最难的就是房东方面了，如果房东OK其他倒是很简单。
 房东方面
- 房东本人 房东身份证 房产证 房产所有人身份证 租赁合同 备案证明  按照上海市条文规定，房屋租赁备案证明是要缴纳5%的房租税的，这是要房东缴纳的，所以很多房东恐怕不太愿意，但实际上目前没有具体单位来收取这个税的，如果房东还是害怕收税那你们可以商量好另拟一份房租比较低的合同。办理居住证房东还需要准备身份证，房产证，如果房产为多人共同所有，那么就需要其他共有人的身份证，其实户口本是不行的，因为要刷身份证信息的。如果无法提供其他人身份证，那么就让其他人写一份委托书，这个委托书嘛！其实是不是真正的委托人写的无所谓。如果办事处还是不能接受，那么就让房东现场写一份承诺书，大概内容就是说房东可以全权代理其他人来出租这一套房产，保证今后不会产生分歧，如有分歧可以承担一切责任。其实就是保证这套房子不是由房东私自出租就行。有些房子是由二房东来出租的，没有房产证，这种情况可以先去街道办事处问一下。房东准备这些东西其实就是为了办理房屋租赁备案证明。
+房东本人 房东身份证 房产证 房产所有人身份证 租赁合同 备案证明 按照上海市条文规定，房屋租赁备案证明是要缴纳5%的房租税的，这是要房东缴纳的，所以很多房东恐怕不太愿意，但实际上目前没有具体单位来收取这个税的，如果房东还是害怕收税那你们可以商量好另拟一份房租比较低的合同。办理居住证房东还需要准备身份证，房产证，如果房产为多人共同所有，那么就需要其他共有人的身份证，其实户口本是不行的，因为要刷身份证信息的。如果无法提供其他人身份证，那么就让其他人写一份委托书，这个委托书嘛！其实是不是真正的委托人写的无所谓。如果办事处还是不能接受，那么就让房东现场写一份承诺书，大概内容就是说房东可以全权代理其他人来出租这一套房产，保证今后不会产生分歧，如有分歧可以承担一切责任。其实就是保证这套房子不是由房东私自出租就行。有些房子是由二房东来出租的，没有房产证，这种情况可以先去街道办事处问一下。房东准备这些东西其实就是为了办理房屋租赁备案证明。
 自己方面
- 身份证，2份复印件 租赁合同 劳动合同 1份复印件 近6个月社保单  在办理之前需要做一些准备，先去居委问一下街道办事处地址，也可以自己网上查，别去错地方，比如我住的地方近处就有一个街道办，但并不属于这个街道办事处管理。然后关心的可能是再哪办房屋租赁备案证明，我所在的甘泉街道办事处就是在一块的，我想其他地方也是一样的，要不然去两个地方跑就太不方便了。
+身份证，2份复印件 租赁合同 劳动合同 1份复印件 近6个月社保单 在办理之前需要做一些准备，先去居委问一下街道办事处地址，也可以自己网上查，别去错地方，比如我住的地方近处就有一个街道办，但并不属于这个街道办事处管理。然后关心的可能是再哪办房屋租赁备案证明，我所在的甘泉街道办事处就是在一块的，我想其他地方也是一样的，要不然去两个地方跑就太不方便了。
 	</div>
 </article>
 <article class="list__item post">
@@ -350,10 +350,10 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 等等……
 对于这些新语言，总有不少槽点被开发者吐槽。很多人都会进行对比，褒贬。但是我还是首先选择了Nodejs，简单快速上手，目前完全用于生产环境，它的快速开发让我很满意。ES6标准的定稿更让我肯定nodejs将会有更好的发展。
 最近又学习了go语言，在学一门语言前总会迟疑值不值得学习，然后看到网上各种讨论。但我觉得还是值得学习，且不说性能有没有C++好，光凭开发效率就值得我学了，现代计算机性能都有很大的提升，如果不是开发底层系统，而是开发软件服务端系统那么它的有点足够了。
-原生http请求获取参数   获取URL参数
-  url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
-  go返回json数据
-  type ResObj struct {  Code int  Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) {  m := make(map[string]string)  m[&#34;a&#34;] = &#34;aaaaaa&#34;  ress := &amp;ResObj{  Code: 0,  Data: m}  byt, _ := json.
+原生http请求获取参数 获取URL参数
+url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
+go返回json数据
+type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&#34;a&#34;] = &#34;aaaaaa&#34; ress := &amp;ResObj{ Code: 0, Data: m} byt, _ := json.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/56556da1c72f59d15379b4b9/">阅读全文…</a>
@@ -489,11 +489,11 @@ Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

@@ -14,12 +14,13 @@
       
       <guid>https://www.yuedun.wang/2021/07/qiuniu-image-preivew/</guid>
       <description>七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。
-vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
+vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。
+上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
 可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也没有时间排序，只有名称排序，真的是很难用。
 为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
 关于chrome插件开发的细节本文暂不细说，直接上代码。
 代码展示 manifest.json
-{  &amp;#34;manifest_version&amp;#34;: 2,  &amp;#34;name&amp;#34;: &amp;#34;chome-plugin&amp;#34;,  &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;,  &amp;#34;description&amp;#34;: &amp;#34;chrome示例插件&amp;#34;,  &amp;#34;icons&amp;#34;: {  &amp;#34;16&amp;#34;: &amp;#34;images/icon-16x16.png&amp;#34;,  &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;,  &amp;#34;128&amp;#34;: &amp;#34;images/icon-128x128.png&amp;#34;  },  &amp;#34;page_action&amp;#34;: {  &amp;#34;default_icon&amp;#34;: {  &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;  },  &amp;#34;default_popup&amp;#34;: &amp;#34;html/popup.html&amp;#34;,  &amp;#34;default_title&amp;#34;: &amp;#34;Hello yuedun&amp;#34;  },  &amp;#34;author&amp;#34;: &amp;#34;yuedun&amp;#34;,  &amp;#34;background&amp;#34;: {  &amp;#34;scripts&amp;#34;: [  &amp;#34;scripts/jquery.min.js&amp;#34;,  &amp;#34;scripts/background.js&amp;#34;  ]  },  &amp;#34;devtools_page&amp;#34;: &amp;#34;html/devtools-page.</description>
+{ &amp;#34;manifest_version&amp;#34;: 2, &amp;#34;name&amp;#34;: &amp;#34;chome-plugin&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;0.0.1&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;chrome示例插件&amp;#34;, &amp;#34;icons&amp;#34;: { &amp;#34;16&amp;#34;: &amp;#34;images/icon-16x16.png&amp;#34;, &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34;, &amp;#34;128&amp;#34;: &amp;#34;images/icon-128x128.png&amp;#34; }, &amp;#34;page_action&amp;#34;: { &amp;#34;default_icon&amp;#34;: { &amp;#34;48&amp;#34;: &amp;#34;images/icon-48x48.png&amp;#34; }, &amp;#34;default_popup&amp;#34;: &amp;#34;html/popup.html&amp;#34;, &amp;#34;default_title&amp;#34;: &amp;#34;Hello yuedun&amp;#34; }, &amp;#34;author&amp;#34;: &amp;#34;yuedun&amp;#34;, &amp;#34;background&amp;#34;: { &amp;#34;scripts&amp;#34;: [ &amp;#34;scripts/jquery.min.js&amp;#34;, &amp;#34;scripts/background.js&amp;#34; ] }, &amp;#34;devtools_page&amp;#34;: &amp;#34;html/devtools-page.html&amp;#34;, &amp;#34;content_scripts&amp;#34;: [ { &amp;#34;js&amp;#34;: [ &amp;#34;scripts/jquery.min.js&amp;#34;, &amp;#34;scripts/content.js&amp;#34; ], &amp;#34;css&amp;#34;: [ &amp;#34;styles/yuedun-insert.css&amp;#34; ], &amp;#34;matches&amp;#34;: [ &amp;#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&amp;#34; ], &amp;#34;run_at&amp;#34;: &amp;#34;document_start&amp;#34; } ], &amp;#34;permissions&amp;#34;: [ &amp;#34;cookies&amp;#34;, &amp;#34;*://*/*&amp;#34;, &amp;#34;webRequest&amp;#34; ], &amp;#34;homepage_url&amp;#34;: &amp;#34;https://www.</description>
     </item>
     
     <item>
@@ -30,7 +31,7 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
       <guid>https://www.yuedun.wang/blogdetail/5db03db400f24e1fd556cec4/</guid>
       <description>背景 面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。
 原来 日常开发流程是这样的：
- 开发 -&amp;gt; 合代码 -&amp;gt; 上测试环境 -&amp;gt; 测试 -&amp;gt; 合代码 -&amp;gt; 上uat环境 -&amp;gt; 测试 -&amp;gt; 合代码 -&amp;gt; 提发布申请 -&amp;gt; 发布 -&amp;gt; 验收
+开发 -&amp;gt; 合代码 -&amp;gt; 上测试环境 -&amp;gt; 测试 -&amp;gt; 合代码 -&amp;gt; 上uat环境 -&amp;gt; 测试 -&amp;gt; 合代码 -&amp;gt; 提发布申请 -&amp;gt; 发布 -&amp;gt; 验收
 就算是一个3分钟搞定的需求，流程也需要1天，因为中间有太多的环境切换和人员流转。
 这样的经历所有做过运营活动的童鞋或多或少都有体验，所以很多人也想过做一个编辑器，比如拖拉组件的方式实现一个页面。
 我们曾经有种设想是直接给运营做一个活动编辑器，让他们自己去修改，自己去做页面，自己发布。说实话这个也做过，但是没用起来，原因呢大概就是人性的贪婪与懒惰，当初做出第一版的时候觉得太简单，不能满足使用需求，第二版的时候功能倒是挺丰富，但是运营又不会用。想想那么多css样式，你以为图形化了他们就会用？太天真！干脆教他们写代码好了！
@@ -67,10 +68,10 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
       
       <guid>https://www.yuedun.wang/blogdetail/555feb54576fa2560c02302e/</guid>
       <description>在寫產品體驗報告的時候，經常會陷入這樣的一個困境，即把體驗報告寫成了這個產品的說明書或者營銷文案，幾乎把這個產品的所有功能又複述了一遍，重點不突出。在網上看了不少的體驗報告，基本也都陷入了這樣的一個怪圈。很多人一上來就很宏大地開始架構諸如『產品定位』、『戰略發展』、『市場狀況』、『商業模式』、『產品結構』等字眼。
- 關於這樣的分析方法有不少問題。一方面是缺少足夠的信息來源。比如『商業模式』的決定是需要有不少的信息輸入作為參考的，而你又並非這個公司的人，憑著在網上搜刮的一點資料難道就可以做出決定嗎？另一方面時，研究一個產品的重心應該放在哪個方面？面面俱到的分析方法必然會失去重心。
+關於這樣的分析方法有不少問題。一方面是缺少足夠的信息來源。比如『商業模式』的決定是需要有不少的信息輸入作為參考的，而你又並非這個公司的人，憑著在網上搜刮的一點資料難道就可以做出決定嗎？另一方面時，研究一個產品的重心應該放在哪個方面？面面俱到的分析方法必然會失去重心。
 對於這個問題，我自己的結論是：分析一個產品無需宏大整體的架構，只需要把自己當成用戶，問自己幾個問題即可。
 這幾個問題是：
- 你會繼續使用這個產品嗎？（ 第一關，該產品是否能繼續在該用戶的手機上存在。） 你會使用它的什麼功能？（ 該產品給用戶提供了什麼價值。） 如果跟XX 擺在一起， 你會選擇哪一個？（ 該產品的差異化優勢）  為什麼選擇這樣幾個問題而非宏觀地進行分析呢？這個問題可以從我們最近流行起來的幾個App看出端倪。無論是足跡和臉萌，都有一個很重要的特點，即它們的某一個功能很明顯地比其它功能要突出很多，甚至其它功能都不被用戶意識到，但是就這麼一個功能，就能使它們成為一個好的產品。也就是說，用戶在感知一個產品的時候，並不會去感知這個產品的整體，而只會關注一個問題：這個產品能幫助我什麼？如果這個產品的這個功能能夠為我帶來價值，就算其它功能都是雞肋，那留著也就留著吧，我不關心。
+你會繼續使用這個產品嗎？（ 第一關，該產品是否能繼續在該用戶的手機上存在。） 你會使用它的什麼功能？（ 該產品給用戶提供了什麼價值。） 如果跟XX 擺在一起， 你會選擇哪一個？（ 該產品的差異化優勢） 為什麼選擇這樣幾個問題而非宏觀地進行分析呢？這個問題可以從我們最近流行起來的幾個App看出端倪。無論是足跡和臉萌，都有一個很重要的特點，即它們的某一個功能很明顯地比其它功能要突出很多，甚至其它功能都不被用戶意識到，但是就這麼一個功能，就能使它們成為一個好的產品。也就是說，用戶在感知一個產品的時候，並不會去感知這個產品的整體，而只會關注一個問題：這個產品能幫助我什麼？如果這個產品的這個功能能夠為我帶來價值，就算其它功能都是雞肋，那留著也就留著吧，我不關心。
 大多數玩微信的人不玩遊戲，也不關心『我的錢包』裡面豐富的服務，但不妨礙他們成為微信的重度用戶。
 由此我們得出一個什麼結論呢？結論是：一個好產品可能并不遵守木桶理論，只要最長的那根木板足夠長，這個產品就足夠好。因此，當我們去分析一個產品的時候，我們應該分析這個產品的關鍵驅動因素是什麼？它最亮的那個亮點是什麼？它亮到什麼程度以至於我決定把這個產品給收下來而不是長按刪除。不要再寫那些長長的貌似很系統的分析報告了吧，我相信微信里的很多頁面你從沒進去過。
 内容摘自知乎：http://www.zhihu.com/question/19851117</description>

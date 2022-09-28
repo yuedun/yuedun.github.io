@@ -155,14 +155,7 @@
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-05-12T21:46:13&#43;08:00">2022-05-12 21:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/golang/" rel="category">golang</a>
 	</span>
 </div></div>
-		</header>
-<div class="post__toc toc">
-	<div class="toc__title">目录</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents"></nav>
-	</div>
-</div>
-<div class="content post__content clearfix">
+		</header><div class="content post__content clearfix">
 			<p>golang请求接口返回的数据乱码，原因之一是请求头设置了<code>&quot;Accept-Encoding&quot;: &quot;gzip, deflate, br&quot;</code>，那么如果服务器支持的话响应的数据就会经过<code>gzip</code>，<code>deflate</code>，<code>br</code>等方式的压缩，解决方式是对数据解压，或者可以不设置接收方式，即<code>&quot;Accept-Encoding&quot;: &quot;&quot;</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;github.com/andybalholm/brotli&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;compress/flate&#34;</span>
@@ -206,6 +199,12 @@
 		<a class="pager__link" href="/2022/02/chrome-devtool-show-all-path/" rel="prev">
 			<span class="pager__subtitle">«&thinsp;上一篇</span>
 			<p class="pager__title">chrome开发者工具显示接口完整路径</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2022/09/elasticsearch-bulk-upsert/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">Elasticsearch批量insert和批量upsert</p>
 		</a>
 	</div>
 </nav>

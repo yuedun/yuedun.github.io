@@ -162,12 +162,12 @@
 		gorm是一款优秀的国产golang orm关系型数据库框架，在国内外使用比较广泛。它的链式调用还算是一种符合人类思维的风格。
 不过在使用过程中也遇到一些困扰，比如：Model, Find, First, Where这些函数该什么时候使用，有时候会有边界不清楚，使用混乱的情况。
 以下代码示例使用v2版本，v1和v2大体上相同，有些细微的不同
-Where和Find search := User{UserName:&#34;月盾&#34;} db.Find(&amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39;  db.Where(search).Find(&amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; 以上两种查询方式结果一样。
+Where和Find search := User{UserName:&#34;月盾&#34;} db.Find(&amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; db.Where(search).Find(&amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; 以上两种查询方式结果一样。
 Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是数据接收者，conds是查询条件。所以Find也是可以代替Where来传入条件的。
 Where的参数主要分为两类：String，Struct&amp;Map。还有其他不常用类型。
 String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
 Struct&amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
-db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE name = &#34;jinzhu&#34; AND age = 0;  db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE age = 0;  注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&rsquo;&rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：
+db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE name = &#34;jinzhu&#34; AND age = 0; db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE age = 0; 注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&rsquo;&rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2021/07/gorm-model-find-first/">阅读全文…</a>
@@ -189,8 +189,12 @@ db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		gorm概述  全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好  已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
-func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { 	if search.Name != &#34;&#34; { 	u.mysql = u.mysql.Where(&#34;name LIKE ?&#34;, search.Name+&#34;%&#34;) 	} 	if search.Category != &#34;&#34; { 	u.mysql = u.mysql.Where(&#34;age =?&#34;, search.Age) 	}  	err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error 	return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
+		gorm概述 全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好 已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
+func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { if search.Name != &#34;&#34; { u.mysql = u.mysql.Where(&#34;name LIKE ?&#34;, search.Name+&#34;%&#34;) } if search.Category != &#34;&#34; { u.mysql = u.mysql.Where(&#34;age =?&#34;, search.Age) } err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
+1.if代码是动态组装条件。
+2.err = u.mysql.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error
+这行代码包含了数据列表查询和数据条数。
+3.有些需要注意的地方是u.mysql.Offset(offset).Limit(limit).Find(&amp;users) 用于查询数据列表，
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e815979c9109f0f909b4cdd/">阅读全文…</a>
@@ -215,11 +219,11 @@ func (u *userService) GetuserList(offset, limit int, search User) (users []User,
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>

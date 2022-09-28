@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.93.0" />
+	<meta name="generator" content="Hugo 0.104.1" />
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,6 +147,43 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/54488218aedc6cf109b96d32/" rel="bookmark">
+			让你的Node.js应用跑得更快的10个技巧
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-23T04:20:40Z">2014-10-23 04:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Node.js 受益于它的事件驱动和异步的特征，所以已经很快了。但是，在现代网络中只是快是不行的。如果你打算用 Node.js 开发你的下一个Web应用的话，那么你就应该无所不用，让你的应用更快，异常的快。本文将介绍10条经过检验得知可大大提高Node速度的应用技巧。废话不多说，让我们逐条来看看。
+**1.**并行
+创建 Web 应用的时候，你可能要多次调用内部 API 来获取各种数据。比如说，假设在 Dashboard 页面上，你要执行下面这几个调用：
+用户信息 -getUserProfile(). 当前活动 -getRecentActivity(). 订阅内容 -getSubscriptions(). 通知内容 -getNotifications(). 为了拿到这些信息，你应该会为每个方法创建独立的中间件，然后将它们链接到 Dashboard 路由上。不过问题是，这些方法的执行是线性的，上一个没结束之前下一个不会开始。可行解决案是并行调用它们。
+如你所知由于异步性，Node.js 非常擅长并行调用多个方法。我们不能暴殄天物。我上面提到的那些方法没有依赖性，所以我们可以并行执行它们。这样我们可以削减中间件数量，大幅提高速度。
+我们可以用 async.js 来处理并行，它是一个专门用来调教 JavaScript 异步的 Node 模块。下面代码演示怎样用 async.js 并行调用多个方法的：
+如果你想更深入了解 async.js ，请移步它的 GitHub 页面。
+2. 异步
+根据设计 Node.js 是单线程的。基于这点，同步代码会堵塞整个应用。比如说，多数的文件系统 API 都有它们的同步版本。下面代码演示了文件读取的同步和异步两种操作:
+不过要是你执行那种长时间的阻塞操作，主线程就会被阻塞到这些操作完成为止。这大大降低你应用的性能。所以，最好确保你的代码里用的都是异步版本 API，最起码你应该在性能节点异步。而且，你在选用第三方模块的时候也要很小心。因为当你想方设法把同步操作从你代码中剔除之后，一个外部库的同步调用会让你前功尽弃，降低你的应用性能。
+3. 缓存
+如果你用到一些不经常变化的数据，你应该把它们缓存起来，改善性能。比如说，下面的代码是获取最新帖子并显示的例子:
+如果你不经常发贴的话，你可以把帖子列表缓存起来，然后一段时间之后再把它们清理掉。比如，我们可以用 Redis 模块来达到这个目的。当然，你必须在你的服务器上装 Redis。然后你可以用叫做 node_redis 的客户端来保存键/值对。下面的例子演示我们怎么缓存帖子：
+看到了吧，我们首先检查 Redis 缓存，看看是否有帖子。如果有，我们从缓存中拿这些帖子列表。否则我们就检索数据库内容，然后把结果缓存。此外，一定时间之后，我们可以清理 Redis 缓存，这样就可以更新内容了。
+4. gzip 压缩
+开启 gzip 压缩对你的 Web 应用会产生巨大影响。当一个 gzip 压缩浏览器请求某些资源的时候，服务器会在响应返回给浏览器之前进行压缩。如果你不用 gzip 压缩你的静态资源，浏览器拿到它们可能会花费更长时间。
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/54488218aedc6cf109b96d32/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/54486c117b1470fa64bb911a/" rel="bookmark">
 			git常用命令
 			</a>
@@ -196,7 +233,8 @@ git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一�
 	<div class="content list__excerpt post__content clearfix">
 		随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。
 首先看下mongoose API，find方法源码：
-Model.find = function find (conditions, fields, options, callback){ if(&#34;function&#34;==typeof conditions){  callback = conditions;  conditions ={};  fields = null;  options = null; }elseif(&#34;function&#34;==typeof fields){  callback = fields;  fields = null;  options = null;  }elseif(&#34;function&#34;==typeof options){  callback = options;  options = null;  }  // get the raw mongodb collection object  var mq =newQuery({}, options,this,this.collection);  mq.select(fields);  if(this.
+Model.find = function find (conditions, fields, options, callback){ if(&#34;function&#34;==typeof conditions){ callback = conditions; conditions ={}; fields = null; options = null; }elseif(&#34;function&#34;==typeof fields){ callback = fields; fields = null; options = null; }elseif(&#34;function&#34;==typeof options){ callback = options; options = null; } // get the raw mongodb collection object var mq =newQuery({}, options,this,this.collection); mq.select(fields); if(this.schema.discriminatorMapping &amp;amp;&amp;amp; mq._selectedInclusively()){ mq.select(this.schema.options.discriminatorKey); } return mq.find(conditions, callback); }; 其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：
+router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5440a294fea3dae97beee4f9/">阅读全文…</a>
@@ -219,16 +257,16 @@ Model.find = function find (conditions, fields, options, callback){ if(&#34;func
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		express获取参数有三种方法：官网介绍如下
- hecks route params (req.params), ex: /user/:id
-  Checks query string params (req.query), ex: ?id=12
-  Checks urlencoded body params (req.body), ex: id=12
- 1、例如：127.0.0.1:3000/index，这种情况下，我们为了得到index，我们可以通过使用req.params得到，通过这种方法我们就可以很好的处理Node中的路由处理问题，同时利用这点可以非常方便的实现MVC模式；
+hecks route params (req.params), ex: /user/:id
+Checks query string params (req.query), ex: ?id=12
+Checks urlencoded body params (req.body), ex: id=12
+1、例如：127.0.0.1:3000/index，这种情况下，我们为了得到index，我们可以通过使用req.params得到，通过这种方法我们就可以很好的处理Node中的路由处理问题，同时利用这点可以非常方便的实现MVC模式；
 2、例如：127.0.0.1:3000/index?id=12，这种情况下，这种方式是获取客户端get方式传递过来的值，通过使用req.query.id就可以获得，类似于PHP的get方法；
 3、例如：127.0.0.1：300/index，然后post了一个id=2的值，这种方式是获取客户端post过来的数据，可以通过req.body.id获取，类似于PHP的post方法；
 下面举例介绍下这三个方法：
 如下一个test.html代码
 &lt;form action=&#34;/index&#34; method=&#34;get&#34;&gt; &lt;input type=&#34;text&#34; name=&#34;login_name&#34; /&gt; &lt;input type=&#34;submit&#34; value=&#34;Sign In&#34; /&gt; &lt;/form&gt; 在nodeJs中我们要自定义HTTP，因此创建index.js
-app.post(&#39;/:key&#39;, function(req, res) {  console.log(req.params.key); //输出index  console.log(req.body.login_name); //输出表单post提交的login_name  res.send(&#39;great you are right for post method!&#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791
+app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //输出index console.log(req.body.login_name); //输出表单post提交的login_name res.send(&#39;great you are right for post method!&#39;); //显示页面文字信息 }); app.listen(3000); 转自：http://handyxuefeng.blog.163.com/blog/static/454521722012921287791
 	</div>
 </article>
 <article class="list__item post">
@@ -275,7 +313,7 @@ app.post(&#39;/:key&#39;, function(req, res) {  console.log(req.params.key); //
 最后，我必须指出的是优质睡眠。大家知道，但却实践的少。使你自己在一个结实的床垫上度过一整晚。不要在晚上还盯着电脑或者手机和平板，至少保证睡前一小时不使用这些电子产品。10 点上床，6 点半起床，你就是个快乐程序员！
 结论：
 你已经知道了，获得健康很容易。只需保持以下习惯：
- 变换姿势 经常休息 不做蠢事，比如高强度器材健身 更多的步行 正确呼吸 训练灵活性和力量 更多的睡眠  只要坚持几个月，你就会看到收获。
+变换姿势 经常休息 不做蠢事，比如高强度器材健身 更多的步行 正确呼吸 训练灵活性和力量 更多的睡眠 只要坚持几个月，你就会看到收获。
 	</div>
 </article>
 
@@ -300,11 +338,11 @@ app.post(&#39;/:key&#39;, function(req, res) {  console.log(req.params.key); //
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/07/event-message-data-driven/">事件驱动编程、消息驱动编程、数据驱动编程</a></li>
 		</ul>
 	</div>
 </div>
