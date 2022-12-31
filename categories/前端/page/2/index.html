@@ -146,6 +146,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f20f0c05981482973150396/" rel="bookmark">
+			原生js实现图片预览
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-29T03:45:04Z">2020-07-29 03:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		不依赖jquery也可以实现图片预览功能：
+&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; &lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; //图片放大 document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.style.cursor = &#34;pointer&#34;; }); document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.addEventListener(&#34;click&#34;, function () { imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); }) }) function imgShow(outerdiv, bigimg, _this) { var src = _this.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5f20f0c05981482973150396/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5b309564cca06924b14119ea/" rel="bookmark">
 			js转图片为base64上传
 			</a>
@@ -333,30 +356,6 @@ v-on:click=&quot;say('hello!', $event)&quot;
 使用focus，blur可对表单进行验证，除了这两个事件，还有一个watch属性可监听data属性值得变化，具体可打开浏览器控制台看属性值得变化情况，代码可直接在浏览器中查看源码
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/568a088edb1fef9e0cda949e/" rel="bookmark">
-			vue.js开发gulp监听文件变化自动编译
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-04T05:52:14Z">2016-01-04 05:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		直接看代码：
-var gulp = require(&#39;gulp&#39;) var webpack = require(&#34;gulp-webpack&#34;); var webpackConfig = require(&#34;./webpack.config.js&#34;); // gulp.task(&#34;webpack&#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err)) // console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats) // if(err) throw new Error(&#34;webpack&#34;, err); // callback(); // }); // }); /** * 编译时有错误提示 */ gulp.task(&#34;webpack&#34;, function(){ return gulp.src(&#34;./app.js&#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&#34;./dist/&#34;)) }); gulp.watch(&#39;./views/*&#39;, [&#39;webpack&#39;]); webpack.config.js配置
-var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app.js&#34;, { app:&#34;./app.js&#34; // vendor: [&#34;.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/568a088edb1fef9e0cda949e/">阅读全文…</a>
-	</div>
-</article>
 
 </main>
 
@@ -381,11 +380,11 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/12/31/sveltekit/">Sveltekit的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 		</ul>
 	</div>
 </div>

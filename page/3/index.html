@@ -147,6 +147,38 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/60459dcf8e743369d9dd5a8f/" rel="bookmark">
+			/bin/rm: argument list too long
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-03-08T03:45:19Z">2021-03-08 03:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		有人在服务器上不小心执行了rm -fr /*，而我想在删除某个文件夹下面的文件却遇到/bin/rm: argument list too long。
+意思是我删除的文件太多了，这倒有点稀奇。
+那怎么才能删除呢？
+试着直接删除目录也不行，这问题能难倒我，但难不倒百度。
+使用ls | xargs -n 1000 rm -fr ls删除，可是一直在输出错误提示：
+rm: invalid option -- &#39;s&#39; Try &#39;rm --help&#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
+删除方式是：
+rm -- -foo 或 rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
+ls | xargs -n 1000 rm -frv ls
+rm命令加个参数v，用来显示删除信息。
+最终会输出这样的提示信息，
+removed ‘zMJ1MgKdzgbjNsWawUcX7OO3WspyxZEU.json’
+为了让它在后台执行可以这样：
+ls | xargs -n 1000 rm -frv ls &amp;
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/60191322ebffed4856026fc7/" rel="bookmark">
 			firefox火狐新标签中打开书签
 			</a>
@@ -379,26 +411,6 @@ code-server是一个可以运行在服务器上的web项目，这下我们可以
 最后 贴一篇带图的环境搭建教程真香！使用 VSCode 远程开发调试
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5fb32fc75edb9b37630b7a6a/" rel="bookmark">
-			通用的数据库GUI工具
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-17T02:04:55Z">2020-11-17 02:04</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		MySQL常用的客户端是Navicat，SQLyog等，本文推荐另一款通用的客户端：DBeaver
-DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -422,11 +434,11 @@ DBeaver不能创建表？那是因为选错了视图。可以重新编辑链接
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/12/31/sveltekit/">Sveltekit的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 		</ul>
 	</div>
 </div>

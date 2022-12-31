@@ -147,6 +147,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5bbf2531f846d21847dc2fcc/" rel="bookmark">
+			linux修改MySQL 5.7.22字符集为utf8
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-11T10:25:53Z">2018-10-11 10:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		网上也找了很多方案结果就是奇葩的不成功，最后直接修改/etc/mysql/mysql.conf.d/mysqld.cnf成功了。 在该文件最后添加
+default-storage-engine=INNODB character-set-server=utf8 collation-server=utf8_general_ci 重启成功。
+这是本地虚拟机里的mysql
+mysql&gt; show variables like &#34;character%&#34;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | utf8 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | utf8 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 完全正确，但是修改阿里云服务器以后还是有点小问题
+character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5bb08746f846d21847dc2aef/" rel="bookmark">
 			mongodb forEach替换文本
 			</a>
@@ -363,31 +386,6 @@ mongodb导入数据 启动：
 总结：没有针对性的性能优化，只是按照假象场景来设计，最后不但不能起到优化作用反而为后期优化带来累赘。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5b1d2d8f2c36bd008e01f5a3/" rel="bookmark">
-			消息队列中参数的传递和存储
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-10T13:54:23Z">2018-06-10 13:54</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		消息队列（MQ）在系统架构中发挥了重要作用，其主要作用有系统解耦，流量削峰，异步消息存储，分布式系统最终一致性等。 本文介绍的是消息系统中消息发布者和订阅者间参数如何约定和传递？实际应用场景中，一种消息的发布者和订阅者都有可能是多个，也就是多对多的关系，这样就形成了消息参数传递的复杂性，就算一开始参数有约定，大家都按照最初约定来开发，但不免开发过程中各端需求变化带来的修改。例如最开始为了实现系统解耦而引进了消息队列，此时消息参与者较少，只有一个发布者和一个订阅者，这种情况最简单（其实最简单还是直接调接口），双方简单约定了需要传递的参数。
-{ userId:123, userName:&#34;阿离&#34;, age:23 } 后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
-{ userId:123, userName:&#34;阿离&#34;, age:23, gender:&#34;女&#34;, address:&#34;上海&#34;, job:&#34;测试&#34; } 再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
-{ userId:123, userName:&#34;阿离&#34;, age:23, gender:&#34;女&#34;, address:&#34;上海&#34;, job:&#34;测试&#34;, workingLife:4 } 再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
-这时消息系统已经不是当初简单的两个发布者订阅者了，而是一群人在参数，所谓的众口难调。此时弊端已现，无论哪一方有变化都势必牵连所有人。所以看出的出这种消息参数传递有其不合理的地方，那么怎么传递更合理？此处的MQ最开始已经说了，是为了解耦而引进，说明该MQ是多个系统的衔接者，而多个系统终究还是系统，不是简单的前端和后端接口调用，例如某个前端A也是由自己的接口提供服务系统的，MQ不是直接为前端A提供参数的。应该是由前端A自己的服务端A订阅消息，前端A需要什么参数就有服务A查询需要的参数即可，前端B需要什么参数由服务B查询提供。而发布者A，发布者B等只需要传递关键参数userId即可，其他姓名，性别，年龄什么的都不需要传。
-此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
-总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -411,11 +409,11 @@ mongodb导入数据 启动：
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2022/12/31/sveltekit/">Sveltekit的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/09/18/">最近关于公司的一些事</a></li>
 		</ul>
 	</div>
 </div>
