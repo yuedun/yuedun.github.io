@@ -147,6 +147,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5bc1bd1bf846d21847dc3014/" rel="bookmark">
+			gRPC负载均衡
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-13T09:38:35Z">2018-10-13 09:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。
+在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
+upstream grpcservice { server localhost:50051; server localhost:50052; } server { listen 8080 http2;#需要加http2 server_name localhost; location / { grpc_pass grpc://grpcservice;#以grpc为前缀 } grpc_connect_timeout 10; } 配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图： 可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
+虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。
+原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5bbf2531f846d21847dc2fcc/" rel="bookmark">
 			linux修改MySQL 5.7.22字符集为utf8
 			</a>
@@ -360,32 +383,6 @@ mongodb导入数据 启动：
 		<a class="list__footer-readmore btn" href="/blogdetail/5b21fc996699964267f5e168/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5b1fcbf7e205c79ceab7a529/" rel="bookmark">
-			过早的优化是万恶之源
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-12T13:34:47Z">2018-06-12 13:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		“过早的优化是万恶之源”，这句话或多或少在哪听过，不过为什么优化也会带来问题，恐怕只有经历过的人才能理解其中的意义。
-关于程序优化，产品优化这些词在开发工作中一定有经历过。某位程序员做事一丝不苟，对程序开发特别注重性能问题，花大量时间来优化某段代码。某位产品在提出需求的时候总是有一些目前用不到的功能，说是为了方便将来扩展。
-那么实际工作中这种优化到底起到了什么作用？个人认为弊多于利。
-问题一：过早引入新技术 甲同学在做一个员工日常工作内容列表的接口时，认为该接口会产生性能问题，将来数据增多的时候会有性能瓶颈，于是利用了某项缓存技术，觉得缓存一定比直接查数据库速度快，于是就引入了缓存数据库。把数据拉到缓存中，先从缓存中读取数据，没有数据的时候从数据库中读取放到缓存中。这个思路看似挺好，不过为了更新数据就设置过期时间为1天。上线后发现很多员工的日常工作内容一天内会有变化，就设置过期时间为半天，结果半天过期时间还是会有部分员工工作内容更新频繁。这时候就有些纠结了，到底是再降低过期时间还是单独更新某个员工的数据？如果选择降低过期时间会导致所有数据都要从数据库重新拉取，选择单独更新又要对各个更新几口进行修改来更新缓存。这期间不免要折腾几回来适应业务需求，而且容易造成各个业务过度依赖缓存，为了保持缓存数据一致性需要做很多工作，然而很多的工作目的并没有提高系统可用性。
-问题二：过早优化数据库 有些同学在设计数据库的时候总喜欢多加些字段，为了方便未来使用，知道索引能加速查询，就使劲加索引，这基本属于不够成熟的思想，试问：等真正需要字段的时候加会晚吗？现在提前加了后面还能知道这个字段当初是准备怎么用来的吗？别的同学要加的时候发现已经有了一个类似的，这个字段到底有没有在用，不敢删又不敢用。索引加了一大堆本以为有积极作用，可不知道索引会占用空间，插入修改却慢了下来。
-问题三：过早进行防范准备 在没有真实QPS数据和准确预估的情况，开发同学生生怕线上出现故障，要求多部署几台服务器做负载均衡，反正服务器多了也不会有问题。但是过多的服务器会带来其他方面的问题： 1、运维难度增加 2、企业成本增加 3、线上故障排查难度增加
-针对性优化 在避免过度设计的情况下才进行针对性优化。性能问题的出现并不是经常性的，而是在某个访问高峰期出现，这时候影响范围还不是很大，但是该考虑进行优化了，如果是经常性突发并发数增加可以考虑缓存数据库。如果是日常单机承载能力高可以进行一定压力测试，评估并发压力增加合适的服务器。随着企业发展，数据量不断累积，此时数据库成为主要压力，此时对数据库索引，SQL进行优化，往往能有立竿见影的效果。
-总结：没有针对性的性能优化，只是按照假象场景来设计，最后不但不能起到优化作用反而为后期优化带来累赘。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -409,11 +406,11 @@ mongodb导入数据 启动：
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/2022/12/31/sveltekit/">Sveltekit的使用感受</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2022/12/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 		</ul>
 	</div>
 </div>
@@ -599,7 +596,7 @@ mongodb导入数据 启动：
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 月盾.
+			&copy; 2023 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

@@ -147,6 +147,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5624482861248de07b01887a/" rel="bookmark">
+			windows下使用脚本快速启动nodejs服务
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-19T01:32:24Z">2015-10-19 01:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		每次启动node服务都要先打开cmd命令行，或者在win8下先打开文件资源管理器&gt;文件&gt;打开命令提示符，然后执行node命令，这样的过程真的很烦人，当然需要一个简单粗暴的方式启动了，就像用bat文件双击启动。
+首先，建一个空白文件，输入以下内容：
+E: cd E:\\NodejsWorkSpace\\app-node nodemon ./bin/www 就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
+E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
+使用&amp;符号连接各个命令也可以
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5620bcc461248de07b018879/" rel="bookmark">
 			数据表索引如何建立？多列索引还是单列索引
 			</a>
@@ -432,29 +455,6 @@ HOUR_MINUTE
 自从使用了requirejs后，凡是做页面需要js的时候首先想到的就是requirejs，感觉入坑跳不出来，反而弄巧成拙了。requirejs本意是异步加载多个js文件以防止页面阻塞，在一个网站或项目中也尽量合并多个文件里的内容以减少网络请求，一次加载一个大的文件比多次加载多个小文件来的划算的多，还有，requirejs虽然有好处但是并不是任何时候都有，比如页面很简单，js内容也很少的时候就完全不该用它。最后有一个不得不说的缺点，在上面已经提过，就是事件绑定，因为不能使用onclick=func()这种方式调用函数，只能用$(function(){})这种方式绑定事件，那么在网络不好的情况下，有些文件加载缓慢，导致不能绑定事件，如果一个按钮是这种方式绑定的事件，结果就是非要等到页面加载完才能点击，很让人着急。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/" rel="bookmark">
-			sequelizejs中where条件与order排序的使用
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-08-28T03:21:08Z">2015-08-28 03:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		最基本的where条件：
-Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2 Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;; Post.destroy({ where: { status: &#39;inactive&#39; } }); // DELETE FROM post WHERE status = &#39;inactive&#39;; Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -478,11 +478,11 @@ Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/2022/12/31/sveltekit/">Sveltekit的使用感受</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2022/12/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 		</ul>
 	</div>
 </div>
@@ -668,7 +668,7 @@ Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId 
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 月盾.
+			&copy; 2023 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

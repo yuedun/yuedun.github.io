@@ -147,6 +147,28 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5dd2378b00f24e1fd556d0c4/" rel="bookmark">
+			linux安装nodejs——快捷版
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019-11-18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前面写过一篇linux下安装nodejs，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。
+wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
+另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
+wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5db03db400f24e1fd556cec4/" rel="bookmark">
 			让代码配置化
 			</a>
@@ -460,29 +482,6 @@ git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc
 		<a class="list__footer-readmore btn" href="/blogdetail/5c63b5334a7b7e6cd808697a/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5bc1bd1bf846d21847dc3014/" rel="bookmark">
-			gRPC负载均衡
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-13T09:38:35Z">2018-10-13 09:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。
-在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
-upstream grpcservice { server localhost:50051; server localhost:50052; } server { listen 8080 http2;#需要加http2 server_name localhost; location / { grpc_pass grpc://grpcservice;#以grpc为前缀 } grpc_connect_timeout 10; } 配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图： 可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
-虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。
-原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -506,11 +505,11 @@ upstream grpcservice { server localhost:50051; server localhost:50052; } server 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/2022/12/31/sveltekit/">Sveltekit的使用感受</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2022/12/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 		</ul>
 	</div>
 </div>
@@ -696,7 +695,7 @@ upstream grpcservice { server localhost:50051; server localhost:50052; } server 
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 月盾.
+			&copy; 2023 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>

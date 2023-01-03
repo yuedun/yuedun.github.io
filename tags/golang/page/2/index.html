@@ -146,6 +146,34 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e216204567cde49c49187f1/" rel="bookmark">
+			beego httplib库使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-16T14:28:04Z">2020-01-16 14:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。 常用的模块有以下这些：
+session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块 本文要讲解的是httplib客户端请求的使用。
+日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用httplib。
+基本使用方法 import ( &#34;github.com/astaxie/beego/httplib&#34; ) 然后初始化请求方法，返回对象
+req := httplib.Get(&#34;http://beego.me/&#34;) 然后我们就可以获取数据了
+str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
+获取body信息 func RequestByAjax3(region, language string) { req := httplib.Get(fmt.Sprintf(&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;, url.QueryEscape(region), language)) req.Header(&#34;Referer&#34;, &#34;https://m.lagou.com/search.html&#34;) req.Header(&#34;Cookie&#34;, &#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;) req.Header(&#34;Host&#34;, &#34;m.lagou.com&#34;) req.Header(&#34;User-Agent&#34;, &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e216204567cde49c49187f1/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5c70f2074a7b7e6cd8086a1f/" rel="bookmark">
 			部署golang到服务器
 			</a>
@@ -371,34 +399,13 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/57d6aaa7471c11fa271ed1bb/" rel="bookmark">
-			beego post请求获取request body参数
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-09-12T13:16:23Z">2016-09-12 13:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		为了获取json类型的参数煞费苦心，差点不再爱了。
-前端请求代码：
-$.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串， //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行 dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 后端接收代码：
-func (this *UserController) Post() { var ob User//这是一个model，struct类型 body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据 json.Unmarshal(body, &amp;ob)//解析二进制json，把结果放进ob中 user := &amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数 if nil != err { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } this.ServeJSON() } this.Input()获取的是所有参数集合，类型：url.Values(map[string]string) ** 特别注意：** 如果数据类型不匹配也会造成空数据结果。 例如：前端参数是age: &quot;23&quot;，model中age int，也会获取不到数据。
-	</div>
-</article>
 
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/tags/golang/">«</a>
-	<span class="pagination__item pagination__item--current">2/2</span>
+	<span class="pagination__item pagination__item--current">2/3</span>
+	<a class="pagination__item pagination__item--next btn" href="/tags/golang/page/3/">»</a>
 </div>
 
 		</div>
@@ -416,11 +423,11 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/2022/12/31/sveltekit/">Sveltekit的使用感受</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2022/12/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2021/11/postman-auto-add-cookie/">postman header中自动添加cookie</a></li>
 		</ul>
 	</div>
 </div>
@@ -606,7 +613,7 @@ func (this *UserController) Post() { var ob User//这是一个model，struct类�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2022 月盾.
+			&copy; 2023 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
