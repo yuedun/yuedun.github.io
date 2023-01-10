@@ -319,8 +319,12 @@ var bodyParser = require('body-parser'); 改成
 	<div class="content list__excerpt post__content clearfix">
 		为了获取json类型的参数煞费苦心，差点不再爱了。
 前端请求代码：
-$.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串， //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行 dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 后端接收代码：
-func (this *UserController) Post() { var ob User//这是一个model，struct类型 body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据 json.Unmarshal(body, &amp;ob)//解析二进制json，把结果放进ob中 user := &amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数 if nil != err { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { this.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } this.ServeJSON() } this.Input()获取的是所有参数集合，类型：url.Values(map[string]string) ** 特别注意：** 如果数据类型不匹配也会造成空数据结果。 例如：前端参数是age: &quot;23&quot;，model中age int，也会获取不到数据。
+$.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, contentType: &#39;application/json&#39;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串， //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行 dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 需要传输json类型数据，同时数据需要使用JSON.stringify序列化。
+后端接收代码：
+func (c *UserController) Post() { var form struct { Username string `json:&#34;username&#34;` Mobile string `json:&#34;mobile&#34;` } c.BindJSON(&amp;form) user := &amp;User{Username: form.UserName, Mobile: form.Mobile} err := user.AddUser()//这是添加用户函数 if nil != err { c.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { c.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } c.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/57d6aaa7471c11fa271ed1bb/">阅读全文…</a>
 	</div>
 </article>
 <article class="list__item post">

@@ -490,8 +490,9 @@ var bodyParser = require(&#39;body-parser&#39;); 改成</description>
       <guid>https://www.yuedun.wang/blogdetail/57d6aaa7471c11fa271ed1bb/</guid>
       <description>为了获取json类型的参数煞费苦心，差点不再爱了。
 前端请求代码：
-$.ajax({ url: &amp;#34;/user&amp;#34;, type: &amp;#34;post&amp;#34;, data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串， //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行 dataType: &amp;#34;json&amp;#34; }).done(function(res) { if(res.result){ alert(&amp;#34;成功&amp;#34;) } }); 后端接收代码：
-func (this *UserController) Post() { var ob User//这是一个model，struct类型 body := this.Ctx.Input.RequestBody//这是获取到的json二进制数据 json.Unmarshal(body, &amp;amp;ob)//解析二进制json，把结果放进ob中 user := &amp;amp;User{Username: ob.UserName, Mobile: ob.Mobile} err := user.AddUser()//这是添加用户函数 if nil != err { this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: false, &amp;#34;msg&amp;#34;: err} } else { this.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;新增成功&amp;#34;} } this.ServeJSON() } this.Input()获取的是所有参数集合，类型：url.Values(map[string]string) ** 特别注意：** 如果数据类型不匹配也会造成空数据结果。 例如：前端参数是age: &amp;quot;23&amp;quot;，model中age int，也会获取不到数据。</description>
+$.ajax({ url: &amp;#34;/user&amp;#34;, type: &amp;#34;post&amp;#34;, contentType: &amp;#39;application/json&amp;#39;, data: JSON.stringify({username:&amp;#34;张三&amp;#34;,mobile:&amp;#34;13265478965&amp;#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串， //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行 dataType: &amp;#34;json&amp;#34; }).done(function(res) { if(res.result){ alert(&amp;#34;成功&amp;#34;) } }); 需要传输json类型数据，同时数据需要使用JSON.stringify序列化。
+后端接收代码：
+func (c *UserController) Post() { var form struct { Username string `json:&amp;#34;username&amp;#34;` Mobile string `json:&amp;#34;mobile&amp;#34;` } c.BindJSON(&amp;amp;form) user := &amp;amp;User{Username: form.UserName, Mobile: form.Mobile} err := user.AddUser()//这是添加用户函数 if nil != err { c.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: false, &amp;#34;msg&amp;#34;: err} } else { c.Data[&amp;#34;json&amp;#34;] = map[string]interface{}{&amp;#34;result&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;新增成功&amp;#34;} } c.</description>
     </item>
     
     <item>
