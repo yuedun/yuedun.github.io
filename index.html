@@ -147,6 +147,34 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2023/01/thinkpadjiagutaiyingpan/" rel="bookmark">
+			Thinkpad T450加装固态硬盘记录
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-01-31T10:58:35&#43;08:00">2023-01-31 10:58</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		2016年初花大价钱买的thinkpad t450准备用来工作，结果发现性能太差，根本满不了需求。于是就放家里日常使用，即使这样还是无法忍受它的慢，慢到什么程度呢？开机到桌面3分钟，再到打开程序3分钟。这还不如我2010年买的2G内存i3电脑性能好。后来把内存从4G加到8G没有明显提升，那就剩下CPU和机械硬盘的问题了，CPU是低压版i5 4300U，和主板焊在一起，没法升级。前几年就想升级硬盘，但是那时候固态硬盘价格不便宜，也没有着急升级。直到最近才忍受不了，下定决心升级一下。
+升级过程并不顺利……
+首先是确定支持的接口，thinkpad t450已经装了一块16G固态硬盘，接口是M.2（即NGFF，现在已经改名为M.2了）
+真实尺寸很小，22*42mm大小，就是2240型号。2280型号意思就是宽22长80，自然就是更大尺寸的。选择的时候要注意不要选错。
+安装好以后使用傲梅分区助手进行系统迁移（之后遇到很多问题），然后在bios里修改启动顺序，结果左上角的光标一直闪，无法进入系统，修改为原HDD硬盘后还是可以启动的。网上有说法是磁盘盘符冲突，按照方法在注册表中调换盘符后还是进入不了系统，甚至原来的磁盘系统也进入不了。
+无奈，只能重装系统。但是不能在原来的盘里装，需要直接装套SSD固态硬盘上。准备了8G U盘，4G肯定是不够的，win10系统就有4.5G以上了。下载winpe，直接安装到U盘里，然后将下载好的win10系统拷贝到winpe工具箱里。
+再修改启动顺序重启系统，这时候也出现问题，识别不到U盘，我是在系统启动后再插上U盘，如果直接插上再启动就会识别不出来。进入到pe系统后首先通过系统安装器安装系统，又出现找不到iso系统文件的情况，重插U盘解决。但是选择目标盘后MBR始终是黄色，无法变成绿色，最后通过CGI工具还原的方式成功安装。
+安装成功重启又出现boot menu界面，死活进入不了系统，这个是由于在bios中修改过启动方式引起的。有uefi和legacy两种模式，设置为both兼容模式启动。至此算是安装成功。
+由于加了SSD固态硬盘，原来的盘符也有变化，SSD成了C盘，原来的C盘变成了D盘，以此类推。手动把原盘中的快捷方式拷贝过新盘，都用不了，可以通过属性-修改路径的方式修正。个别软件缺少dll动态链接库也可以从原盘找到，有两个目录可以查找windows-System32,windows-Syswow64。
+总结：系统启动时间由3分钟提升到了30秒，到桌面也可以直接操作，不需要再等3分钟才能做操作。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2022/12/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/" rel="bookmark">
 			Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked
 			</a>
@@ -361,36 +389,6 @@ void msg_proc(const char *msg_type, const char *msg_buf) { if (0 == strcmp(msg_t
 既然发电量在夜间无法大量减少，而白天大家都用电的时候发电量往往又会不够。那么最好的办法就是鼓励用户尽量把白天需用电做的工作挪到晚上来做。人们形象地把白天用电多比喻成山的“峰”，把夜间用电少比喻成山的“谷”，那么把白天的一部分用电移到夜间用，就可以起到“削峰填谷”的节能作用。这么一来，发电机保持在波动不太大的持续工作状态中，它的能源消耗最少，发电效率最高，生产也更安全。采取夜间电费半价的方式，就是以低价电费来鼓励电力用户积极参与“削峰填谷”的用电方式，共同为电力节能减排做出贡献。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2021/07/gorm-model-find-first/" rel="bookmark">
-			Gorm Model Find First Where等查询函数的区别
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-13T20:51:21&#43;08:00">2021-07-13 20:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		gorm是一款优秀的国产golang orm关系型数据库框架，在国内外使用比较广泛。它的链式调用还算是一种符合人类思维的风格。
-不过在使用过程中也遇到一些困扰，比如：Model, Find, First, Where这些函数该什么时候使用，有时候会有边界不清楚，使用混乱的情况。
-以下代码示例使用v2版本，v1和v2大体上相同，有些细微的不同
-Where和Find search := User{UserName:&#34;月盾&#34;} db.Find(&amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; db.Where(search).Find(&amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; 以上两种查询方式结果一样。
-Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是数据接收者，conds是查询条件。所以Find也是可以代替Where来传入条件的。
-Where的参数主要分为两类：String，Struct&amp;Map。还有其他不常用类型。
-String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
-Struct&amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
-db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE name = &#34;jinzhu&#34; AND age = 0; db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE age = 0; 注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&rsquo;&rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/07/gorm-model-find-first/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -413,11 +411,11 @@ db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/12/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 		</ul>
 	</div>
 </div>
@@ -543,7 +541,6 @@ db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
@@ -552,7 +549,6 @@ db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
@@ -561,6 +557,7 @@ db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>

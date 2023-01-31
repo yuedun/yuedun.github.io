@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2023s on 月盾的博客</title>
+    <link>https://www.yuedun.wang/2023/</link>
+    <description>Recent content in 2023s on 月盾的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 31 Jan 2023 10:58:35 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/2023/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thinkpad T450加装固态硬盘记录</title>
+      <link>https://www.yuedun.wang/2023/01/thinkpadjiagutaiyingpan/</link>
+      <pubDate>Tue, 31 Jan 2023 10:58:35 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2023/01/thinkpadjiagutaiyingpan/</guid>
+      <description>2016年初花大价钱买的thinkpad t450准备用来工作，结果发现性能太差，根本满不了需求。于是就放家里日常使用，即使这样还是无法忍受它的慢，慢到什么程度呢？开机到桌面3分钟，再到打开程序3分钟。这还不如我2010年买的2G内存i3电脑性能好。后来把内存从4G加到8G没有明显提升，那就剩下CPU和机械硬盘的问题了，CPU是低压版i5 4300U，和主板焊在一起，没法升级。前几年就想升级硬盘，但是那时候固态硬盘价格不便宜，也没有着急升级。直到最近才忍受不了，下定决心升级一下。
+升级过程并不顺利……
+首先是确定支持的接口，thinkpad t450已经装了一块16G固态硬盘，接口是M.2（即NGFF，现在已经改名为M.2了）
+真实尺寸很小，22*42mm大小，就是2240型号。2280型号意思就是宽22长80，自然就是更大尺寸的。选择的时候要注意不要选错。
+安装好以后使用傲梅分区助手进行系统迁移（之后遇到很多问题），然后在bios里修改启动顺序，结果左上角的光标一直闪，无法进入系统，修改为原HDD硬盘后还是可以启动的。网上有说法是磁盘盘符冲突，按照方法在注册表中调换盘符后还是进入不了系统，甚至原来的磁盘系统也进入不了。
+无奈，只能重装系统。但是不能在原来的盘里装，需要直接装套SSD固态硬盘上。准备了8G U盘，4G肯定是不够的，win10系统就有4.5G以上了。下载winpe，直接安装到U盘里，然后将下载好的win10系统拷贝到winpe工具箱里。
+再修改启动顺序重启系统，这时候也出现问题，识别不到U盘，我是在系统启动后再插上U盘，如果直接插上再启动就会识别不出来。进入到pe系统后首先通过系统安装器安装系统，又出现找不到iso系统文件的情况，重插U盘解决。但是选择目标盘后MBR始终是黄色，无法变成绿色，最后通过CGI工具还原的方式成功安装。
+安装成功重启又出现boot menu界面，死活进入不了系统，这个是由于在bios中修改过启动方式引起的。有uefi和legacy两种模式，设置为both兼容模式启动。至此算是安装成功。
+由于加了SSD固态硬盘，原来的盘符也有变化，SSD成了C盘，原来的C盘变成了D盘，以此类推。手动把原盘中的快捷方式拷贝过新盘，都用不了，可以通过属性-修改路径的方式修正。个别软件缺少dll动态链接库也可以从原盘找到，有两个目录可以查找windows-System32,windows-Syswow64。
+总结：系统启动时间由3分钟提升到了30秒，到桌面也可以直接操作，不需要再等3分钟才能做操作。</description>
+    </item>
+    
+  </channel>
+</rss>

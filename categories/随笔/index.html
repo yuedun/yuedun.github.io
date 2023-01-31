@@ -146,6 +146,34 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2023/01/thinkpadjiagutaiyingpan/" rel="bookmark">
+			Thinkpad T450加装固态硬盘记录
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-01-31T10:58:35&#43;08:00">2023-01-31 10:58</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		2016年初花大价钱买的thinkpad t450准备用来工作，结果发现性能太差，根本满不了需求。于是就放家里日常使用，即使这样还是无法忍受它的慢，慢到什么程度呢？开机到桌面3分钟，再到打开程序3分钟。这还不如我2010年买的2G内存i3电脑性能好。后来把内存从4G加到8G没有明显提升，那就剩下CPU和机械硬盘的问题了，CPU是低压版i5 4300U，和主板焊在一起，没法升级。前几年就想升级硬盘，但是那时候固态硬盘价格不便宜，也没有着急升级。直到最近才忍受不了，下定决心升级一下。
+升级过程并不顺利……
+首先是确定支持的接口，thinkpad t450已经装了一块16G固态硬盘，接口是M.2（即NGFF，现在已经改名为M.2了）
+真实尺寸很小，22*42mm大小，就是2240型号。2280型号意思就是宽22长80，自然就是更大尺寸的。选择的时候要注意不要选错。
+安装好以后使用傲梅分区助手进行系统迁移（之后遇到很多问题），然后在bios里修改启动顺序，结果左上角的光标一直闪，无法进入系统，修改为原HDD硬盘后还是可以启动的。网上有说法是磁盘盘符冲突，按照方法在注册表中调换盘符后还是进入不了系统，甚至原来的磁盘系统也进入不了。
+无奈，只能重装系统。但是不能在原来的盘里装，需要直接装套SSD固态硬盘上。准备了8G U盘，4G肯定是不够的，win10系统就有4.5G以上了。下载winpe，直接安装到U盘里，然后将下载好的win10系统拷贝到winpe工具箱里。
+再修改启动顺序重启系统，这时候也出现问题，识别不到U盘，我是在系统启动后再插上U盘，如果直接插上再启动就会识别不出来。进入到pe系统后首先通过系统安装器安装系统，又出现找不到iso系统文件的情况，重插U盘解决。但是选择目标盘后MBR始终是黄色，无法变成绿色，最后通过CGI工具还原的方式成功安装。
+安装成功重启又出现boot menu界面，死活进入不了系统，这个是由于在bios中修改过启动方式引起的。有uefi和legacy两种模式，设置为both兼容模式启动。至此算是安装成功。
+由于加了SSD固态硬盘，原来的盘符也有变化，SSD成了C盘，原来的C盘变成了D盘，以此类推。手动把原盘中的快捷方式拷贝过新盘，都用不了，可以通过属性-修改路径的方式修正。个别软件缺少dll动态链接库也可以从原盘找到，有两个目录可以查找windows-System32,windows-Syswow64。
+总结：系统启动时间由3分钟提升到了30秒，到桌面也可以直接操作，不需要再等3分钟才能做操作。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2021/09/18/" rel="bookmark">
 			最近关于公司的一些事
 			</a>
@@ -463,37 +491,11 @@
 		天然气热水器莫名其妙就不打火了，然后到58上找了维修公司，在电话里问维修多少钱就是死活不说，连区间都不说。然后就是维修员上门检修20元。 就换了这么个零件，看着也不是特别精密的零件，问师傅换这个多少钱，说是300元。到最后收费的时候说是380，这两个数字听起来很像吗？我能听错！！还要加50元人工费，合计450元。 或许这就是维修公司的套路吧，开始不说多少钱，总是催着你什么时候可以上门维修，维修的时候又说这坏那坏了，换个零件又很贵。网上一看二手的都不过300块，还不及一个零件贵。还有就是问价格的时候一定要多次确认多少钱后再决定是否需要更换。最后要保留维修票据，以免日后保修。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5b66733ae7e37a672f015c10/" rel="bookmark">
-			说道说道前后端分离
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-08-05T03:47:06Z">2018-08-05 03:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		要说前端界的发展速度，那真是快！
-2012年那时候接触过extjs，用于企业级后台开发还真不错，有好看的UI界面，组件丰富，基本能满足各类需求。但此时，HTML5正在蓬勃发展，尤其是乔布斯宣布苹果设备不支持flash后HTML5发展更是迅猛。并且angularjs这类MVVM框架被大多数所知，reactjs,vuejs如雨后春笋般生长。
-2014年使用了一段时间angularjs，感觉学习难度有点大，并且据官方说2.0下向下兼容于是放弃继续学习。2015年使用vue1.0做了一个项目后我逢人便说angular，vue有多好用，推荐他们放弃jquery使用vue。不到2年时间再看看前端界，vue，react等框架已经是前端开发标配，如果你说公司项目还在使用jquery会被人笑话，对于前端新人MVVM框架是必学，jquery反而不会被重视。
-这就导致一个结果：**“手里拿着锤子，看什么都是钉子”，因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。**就拿一个需要SEO的网站来说，该选择哪种技术好？如果只会vue，那么肯定是选择vue，就算vue不太适合做这类网站，也会拿出ssr来强行做事。殊不知需要SEO的网站使用静态文件是最合适的。大多数人认为前后端分离是使用vue，react，angular，使用jquery的不叫前后端分离，这完全是搞混了概念，实际上后端的controller层也属于视图层，也可以归属于前端。
-现在去网上一搜，问一下身边的人怎么看待前后端分离的，大多数人秉持着支持的态度，认为前后端分离好处多多，列举几条：
-专业的人做专业的事 前后并行开发，效率高 前端工程化，组件化 解耦 降低了开发学习难度 等等…… 大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：
-增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。 一般前端开发速度会比后端快，在接口没开发好时前端只能闲等着。也有反过来的情况。前后端分离也意味着任务关联性减弱，可能不是同时开发，需要一方催着一方来完成。 跨域问题导致联调困难，前端只能等待接口开发上了服务器才能调试。 职责分离后确认职责也困难，一个问题出现到底是谁的问题？谁解决？ 一个需求需要前后端开发同时参与理解需求，有理解偏差问题。 小公司多一个人多一份支出。 那么到底该不该进行前后端分离，如何进行技术选型？这需要根据一些实际情况来决定，大体判断准则有以下几点：
-后台系统采用前后端分离比较合适。 需要SEO引流的就不要强行前后端分离了，react，vue的服务端渲染也很勉强，徒增开发难度而已。 数据交互比较多的使用前后端分离，操作数据比jquery方便。 页面本身特别简单，只负责简单数据展示，要求打开速度，直接服务端渲染即可。这种页面本身就是单页面，如果还要使用框架就是多此一举，增加页面负担，增加开发调试难度。 开发资源充足最好前后端分离，开发资源不足时不分离，一人包揽前后台端反而更快。 最后，前后端分离是一个趋势，但不是必须。更准确的说法应该叫做“前后端分工”，毕竟在5年前这些活都是一个开发来做的，因为技术复杂性提升，前端不想只是切图，后端不想学变化太快的前端就出现了分离。你可以想象测试的工作，现在的测试大多还是测业务，但是也出现了一个自动化测试的职位，因为测试不想天天鼠标点呀点的测，想搞点高深的东西，而开发又特别烦写单元测试代码，这就又出现分离。再者，数据库也是一样，所以出现了DBA这个角色。谁知哪一天又会合起来呢！
-	</div>
-</article>
 
 </main>
 
 <div class="pagination">
-	<span class="pagination__item pagination__item--current">1/3</span>
+	<span class="pagination__item pagination__item--current">1/4</span>
 	<a class="pagination__item pagination__item--next btn" href="/categories/%E9%9A%8F%E7%AC%94/page/2/">»</a>
 </div>
 
@@ -512,11 +514,11 @@
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/12/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 		</ul>
 	</div>
 </div>
@@ -642,7 +644,6 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
@@ -651,7 +652,6 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
@@ -660,6 +660,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>

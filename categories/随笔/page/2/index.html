@@ -146,6 +146,32 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5b66733ae7e37a672f015c10/" rel="bookmark">
+			说道说道前后端分离
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-08-05T03:47:06Z">2018-08-05 03:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		要说前端界的发展速度，那真是快！
+2012年那时候接触过extjs，用于企业级后台开发还真不错，有好看的UI界面，组件丰富，基本能满足各类需求。但此时，HTML5正在蓬勃发展，尤其是乔布斯宣布苹果设备不支持flash后HTML5发展更是迅猛。并且angularjs这类MVVM框架被大多数所知，reactjs,vuejs如雨后春笋般生长。
+2014年使用了一段时间angularjs，感觉学习难度有点大，并且据官方说2.0下向下兼容于是放弃继续学习。2015年使用vue1.0做了一个项目后我逢人便说angular，vue有多好用，推荐他们放弃jquery使用vue。不到2年时间再看看前端界，vue，react等框架已经是前端开发标配，如果你说公司项目还在使用jquery会被人笑话，对于前端新人MVVM框架是必学，jquery反而不会被重视。
+这就导致一个结果：**“手里拿着锤子，看什么都是钉子”，因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。**就拿一个需要SEO的网站来说，该选择哪种技术好？如果只会vue，那么肯定是选择vue，就算vue不太适合做这类网站，也会拿出ssr来强行做事。殊不知需要SEO的网站使用静态文件是最合适的。大多数人认为前后端分离是使用vue，react，angular，使用jquery的不叫前后端分离，这完全是搞混了概念，实际上后端的controller层也属于视图层，也可以归属于前端。
+现在去网上一搜，问一下身边的人怎么看待前后端分离的，大多数人秉持着支持的态度，认为前后端分离好处多多，列举几条：
+专业的人做专业的事 前后并行开发，效率高 前端工程化，组件化 解耦 降低了开发学习难度 等等…… 大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：
+增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。 一般前端开发速度会比后端快，在接口没开发好时前端只能闲等着。也有反过来的情况。前后端分离也意味着任务关联性减弱，可能不是同时开发，需要一方催着一方来完成。 跨域问题导致联调困难，前端只能等待接口开发上了服务器才能调试。 职责分离后确认职责也困难，一个问题出现到底是谁的问题？谁解决？ 一个需求需要前后端开发同时参与理解需求，有理解偏差问题。 小公司多一个人多一份支出。 那么到底该不该进行前后端分离，如何进行技术选型？这需要根据一些实际情况来决定，大体判断准则有以下几点：
+后台系统采用前后端分离比较合适。 需要SEO引流的就不要强行前后端分离了，react，vue的服务端渲染也很勉强，徒增开发难度而已。 数据交互比较多的使用前后端分离，操作数据比jquery方便。 页面本身特别简单，只负责简单数据展示，要求打开速度，直接服务端渲染即可。这种页面本身就是单页面，如果还要使用框架就是多此一举，增加页面负担，增加开发调试难度。 开发资源充足最好前后端分离，开发资源不足时不分离，一人包揽前后台端反而更快。 最后，前后端分离是一个趋势，但不是必须。更准确的说法应该叫做“前后端分工”，毕竟在5年前这些活都是一个开发来做的，因为技术复杂性提升，前端不想只是切图，后端不想学变化太快的前端就出现了分离。你可以想象测试的工作，现在的测试大多还是测业务，但是也出现了一个自动化测试的职位，因为测试不想天天鼠标点呀点的测，想搞点高深的东西，而开发又特别烦写单元测试代码，这就又出现分离。再者，数据库也是一样，所以出现了DBA这个角色。谁知哪一天又会合起来呢！
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a1d8147da5c711b612f4d88/" rel="bookmark">
 			读写数据库与读写文件哪个更快？
 			</a>
@@ -381,96 +407,12 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 对于重构的意义除了上面提到的，个人认为还有一个好处——虽然一次不能写出最好的代码，但是只要有重构的意识，至少是能写出比上次更好的代码，也算是经验总结，要不然怎么会出现那么多设计模式。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/56499caf536a927c57d10a9c/" rel="bookmark">
-			做菜技巧-很重要又很容易被忽视的做菜技巧
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-16T09:06:55Z">2015-11-16 09:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		烹饪可以看一个人的性格，慢性的人喜欢慢炖，性急的人喜欢爆炒，心细的人爱做复杂精致的菜，但不管什么样的性格，烹饪都需要保持一个好心情才会做的好吃。
-0、放盐的多少关系着一道菜的生死，最关键的放在最前边讲
-1、鱼煎过后再煮才会变白汤，而且要双面煎（某电影有提）
-2、炖骨头汤时冷水下锅小火炖6小时变白，重复加水时万不可加冷水，只要一直保持加热水汤可以一直是乳白色（当然骨头没有营养了记得换掉）加一滴醋会瞬间变清汤
-3、任何肉类在遇热后在遇冷怎么煮都不会烂，所以做红烧肉一类的菜在烹饪过程中万不可加冷水（另补充补救的办法，利用高压锅的超高内温可以再次溶解肉类，有同学说有地方喜欢吃弹的可以用冷水处理）
-4、99％的菜都在临近出锅前才可以加盐、醋这两种调味品，过早的投入不仅影响口感，还会使菜变得难看
-5、灵活的运用酱油，分清酱油的种类，分别的作用，最简单的是生抽调味，老抽上色
-6、炒鸡蛋记得用筷子炒，炒的时候慢慢的将鸡蛋滑散，你会发现因为受热均匀鸡蛋变得更蓬松更大了
-7、学会焯菜，在菜变色的同时捞出，有些需要口感清脆的菜还要立刻过凉水
-8、炒菜要遵循一个道理，最难熟的先下锅，可以生吃的最后放
-9、永远不要忘记葱姜蒜，他们很重要
-10、糖有时候是为了甜，有时候是为了更突出咸或者辣，同理盐有时候是为了咸，有时候是为了更突出甜（全靠这个多年来耻笑表哥的料理能力）
-11、肉类遇到酸会变嫩，很多菜吃起来并没有酸味，可是却有一丝丝说不清的醋香，其实那是在出锅前加了一瓶盖起锅醋，起锅醋适用于绝大多数肉类炒菜
-12、可以去腥的东西有很多，味精，鸡精，白糖，料酒，柠檬皮都可以用来去腥
-13、记得酸是甜的老婆，辣是甜的二奶，酸是辣的姐姐，咸是辣的闺蜜，甜是苦的哥们。他们是黄金搭档（这是母上的经验之谈，适用于绝大多数料理）
-14、炸肉类火不要大，否则面衣糊了肉没熟，快熟的时候火不能小，不然油都被吸到食物里，这也就是复炸的用意。（母上万岁）
-15、学会油泼，最简单的练习水煮肉片
-16、记住你吃过的每一道菜，有些蔬菜的经典搭配是全球通用的，比如茄子配蒜，洋葱配肉
-17、蒸米饭加点油会让米颗粒分明，加百合会让米饭变甜，加啤酒会让米饭变香，用高压锅蒸米饭更香，隔水蒸米饭更筋道，淘米水是最好的天然餐洗 净，糊锅了插几根葱，有的时候可以挽救米饭（家父是料理界的格格巫，经他手的食材都会变成碳，没有碳化的部分还不熟，我就天然的领悟了这个能力了）
-18、想要鸡蛋嫩，打鸡蛋的时候加水（小学看小当家学到的）
-19、切肉要逆纹路纵向切，不然咬不动煮不熟（肉丝顺纹路切，不然会断，速成鸡肉一类较嫩的肉类需要顺纹切不然会散，速成猪肉的肉质较鸡肉更老比 牛肉更嫩要斜切，土猪肉则纵切，整块的猪肉又需要逆纹切，总之需要自己理解肉类的紧实度选择切的方向，谢提醒）切蘑菇要顺纹路不然吃起来太糯，切笋要避开 纹路斜切不然切不动也咬不动
-20、整块的肉料理需要断筋，用刀背给予一定力道，不需要太大力，重复在肉面敲打3分钟
-21、辣味不是只有辣椒，还有黑白胡椒，姜，蒜。同理甜味不只有糖，还有蜂蜜，果糖，各种饮料等。酸味不是只有醋，还有柠檬，山楂等
-22、蜂蜜也可以用作嫩肉（食戟之灵）
-23、一定要试菜，由于很多菜重要的调味都在最后步骤，试菜可以很大程度上解决味道不够的问题，所以最后的关键调味料宁缺毋滥！调味结束后不要忙着关火，试过之后没问题在出锅，俗话说饿死的厨子三百斤，就是说的试菜
-24、热锅凉油是为了给高蛋白食物一个缓冲，不至于外面熟了里面不熟，还有个好处是蒸腾锅内多余水分，不至于遇油飞溅，多用于滑炒，上浆的肉片什么的。热锅热油，锁水，用于爆炒
-调料：
-1、鱼香味（sorry，各严格的原产地同学表示我这个鱼香太水了，我就删掉了，正经八百的鱼香据说非常稀有，几近失传，我此生可能无缘吃到，本着不会不写的心态我就不加了）
-2、红烧就是老抽上色＋生抽调味＋糖
-3、宫爆味就是生抽＋水淀粉（或豆瓣酱，也有凝固的作用）＋干辣椒＋糖＋醋＋葱白
-4、勾芡就是淀粉＋各种液体预热凝固（糖醋里脊，糖醋鲤鱼也是）
-5、韩国味就是韩国大酱＋韩国辣酱
-6、照烧汁就是蜂蜜＋日本酱油
-7、老干妈豆豉可以直接用做调料，比如回锅肉，蛋炒饭
-8、关东煮汤料，日本酱油，苹果，海带，水果萝卜，炖4个小时（有先后顺序）
-9、白灼就是蚝油＋糖＋盐＋葱蒜
-10、火锅蘸料：①花生酱＋芝麻酱＋盐或者生抽＋巧克力＋水调成糊状菜肉蘸料（这就是店里的秘制酱料，某前男友教的）。②海鲜汁＋凉拌酱油＋蚝油＋醋＋糖＋香油＋香菜碎调成肉类蘸料（火锅店吃还是在家吃都很方便，另一个前男友教的）
-11、蛋黄酱就是原味沙拉＋鸡蛋黄搅拌均匀
-饺子馅：
-**1、红肉类：**各种红肉馅＋各种配菜＋十三香或者五香面少许（去腥）＋白糖少许或者耗油（去腥，耗油本身有 甜味取其一）＋姜汁（去腥，超市有卖）＋料酒（去腥）＋香油（母上会在添加花生油用作调味）＋盐＋鸡精＋生鸡蛋＋花椒油（去腥，是有多腥！）（羊肉属于味 道较重的肉类可以用胡萝卜大葱来遮掩一点点味道，另有的地方肉馅会加酱油）
-**2、白肉类：**鸡肉或者鱼肉＋猪肉或者牛肉＋各种去腥少量版＋鸡精＋韭菜或者胡萝卜（别的配菜没试验过，因为韭菜跟胡萝卜属于重口味蔬菜，可以中和不和谐的味道）
-**3、素馅类：**各种蔬菜馅（各种含水量大的蔬菜都需要在剁好馅后撒盐静置一段时间过滤掉多余水分，此步骤为杀水）＋香油＋盐＋炒鸡蛋＋木耳碎（可以不加）＋鸡精
-**常备的调料：**盐，糖，米醋，豆瓣酱，郫县豆瓣，老干妈豆豉，料酒，鸡精，白胡椒粉，黑胡椒粉，花椒，葱姜蒜，干辣椒，香油，蚝油
-**可选调料：**番茄酱，白醋，各种混合酱油，黑白芝麻，干木耳，干香菇，干银耳，枸杞，沙拉酱，蛋黄酱，千岛酱，金枪鱼罐头，花生酱，芝麻酱，豆豉鲮鱼，午餐肉，方火腿，各种罐头，咖喱，姜汁，蒜汁，花椒油，米酒
-**炖料类：**桂皮，八角，肉桂，香叶，山楂干，柠檬，十三香（柠檬籽与香叶有苦味，放的时候记得去籽，少量）
-根据上文的理论进行的一些简单的料理实践，通过一点点更改原有做法，从而突出个人特色，但又不会变成黑暗料理的方法，要知道我那些年做过多少黑暗料理才总结出来！
-番茄炒蛋：（由于番茄是酸的，可以跟刚才提到酸配甜或者酸配辣可以混搭一下，那么做法就变成）鸡蛋加水打 散，下油锅（油温要高一点）用筷子炒到凝固盛出待用，下番茄炒到出汁，喜欢汁多就多炖一会，加入白糖，加入炒好的鸡蛋翻炒均匀，出锅前加入盐，蒜片，待闻 到蒜香的时候即可关火盛盘，这样的番茄炒蛋酸甜适口，鸡蛋蓬松滑嫩，又有一丝微微的蒜辣混杂着蒜香，最适合下饭。
-水煮肉片：（这道菜有个简单的逻辑，肉要碗里熟）
-1、里脊肉或者牛肉切薄片（有朋友表示新手难切，加入方法，将肉在速冻层冻半小时再切肉会定型），加入鸡蛋，淀粉，盐，料酒腌制2小时
-2、可以选用各种带叶菜，我喜欢油菜或者圆白菜，生菜撕成块状大小随意，加水，盐煮菜5分钟后连汤带菜一起盛出。
-3、热油把肉炒到变色断生铺在菜上，撒上盐，辣椒粉，葱碎（新手请加入超市花椒粉，或者花椒在微波炉叮一分钟用蒜窝捣碎铺上）
-4、重新热油放入花椒，干辣椒煸糊（有朋友表示蹦糊有苦味，糊不是真的让他变成碳，红色脆硬或者红黄相间即可，上一部加了花椒粉的就不需要花椒了），趁着油温最高的时候浇在肉跟料上即可。
-高油温与菜的热度会将肉煮熟。由于用料随意这基本上算是入门级的肉类料理，对于刚学做菜的人来说，这算是拿的出手的大菜了。
-洋葱炒肉：（会用到上面我们说到“起锅醋”这个东西）
-1、随意猪或者牛肉切丝用生姜，料酒，盐腌，淀粉制十分钟；
-2、锅中倒油，烧热，放入腌好的肉丝，迅速拨开，炒到肉丝变色；
-3、加入洗好、切好的洋葱，放入适量的酱油，和盐；
-4、加入味精，倒入一瓶盖米醋，翻炒5秒出锅装盘。
-全靠那一瓶盖醋，从不吃洋葱的傲娇表弟把盘子都舔了。
-回锅肉：（好开心，辣的哎）
-1、将二刀肉（有的地方叫二条，就是肥瘦各一半的肉）整块放入热水煮熟
-2、用筷子试插，如无血水渗出即已熟透，捞出，待冷却后切成薄片备用（上面提到过不可接触凉水）
-3、青辣椒洗净，去蒂去籽，切成菱形
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56499caf536a927c57d10a9c/">阅读全文…</a>
-	</div>
-</article>
 
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/categories/%E9%9A%8F%E7%AC%94/">«</a>
-	<span class="pagination__item pagination__item--current">2/3</span>
+	<span class="pagination__item pagination__item--current">2/4</span>
 	<a class="pagination__item pagination__item--next btn" href="/categories/%E9%9A%8F%E7%AC%94/page/3/">»</a>
 </div>
 
@@ -489,11 +431,11 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/12/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/05/http-response-garbled/">go http响应乱码</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2022/02/chrome-devtool-show-all-path/">chrome开发者工具显示接口完整路径</a></li>
 		</ul>
 	</div>
 </div>
@@ -619,7 +561,6 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BD%93%E5%A4%A9/" title="当天">当天</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%84%8F%E4%B9%89/" title="意义">意义</a>
@@ -628,7 +569,6 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%96%87%E4%BB%B6/" title="文件">文件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" title="日期格式化">日期格式化</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%98%A8%E5%A4%A9/" title="昨天">昨天</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
@@ -637,6 +577,7 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
