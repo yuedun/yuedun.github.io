@@ -25,5 +25,15 @@
 总结：系统启动时间由3分钟提升到了30秒，到桌面也可以直接操作，不需要再等3分钟才能做操作。</description>
     </item>
     
+    <item>
+      <title>Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</title>
+      <link>https://www.yuedun.wang/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/</link>
+      <pubDate>Tue, 03 Jan 2023 10:46:35 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/</guid>
+      <description>go run和go build会报出一连串下面这样的警告信息，虽然不影响程序运行，但是看着难看。
+# command-line-arguments ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-link-3994413096/000000.o) was built for newer macOS version (12.0) than being linked (11.0) 解决方法：CGO_CFLAGS=-mmacosx-version-min=10.12 go run main.go，运行前加CGO_CFLAGS=-mmacosx-version-min=10.12参数可以解决。</description>
+    </item>
+    
   </channel>
 </rss>
