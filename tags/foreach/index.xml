@@ -1,21 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>forEach on 月盾的个人博客</title>
-    <link>/tags/foreach/</link>
-    <description>Recent content in forEach on 月盾的个人博客</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Sun, 30 Sep 2018 08:20:22 +0000</lastBuildDate><atom:link href="/tags/foreach/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>mongodb forEach替换文本</title>
-      <link>/blogdetail/5bb08746f846d21847dc2aef/</link>
-      <pubDate>Sun, 30 Sep 2018 08:20:22 +0000</pubDate>
-      
-      <guid>/blogdetail/5bb08746f846d21847dc2aef/</guid>
-      <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&#39;blogs&#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){item.content = item.content.replace(/hopefully.qiniudn.com/g, &#39;hopefully-img.yuedun.wang&#39;)db.getCollection(&#39;blogs&#39;).save(item)print(&amp;quot;&amp;gt;&amp;gt;&amp;quot;, item.content);})</description>
-    </item>
-    
-  </channel>
-</rss>
