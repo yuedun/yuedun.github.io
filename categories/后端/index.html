@@ -146,6 +146,49 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2022/09/elasticsearch-bulk-upsert/" rel="bookmark">
+			Elasticsearch批量insert和批量upsert
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-09-28T14:00:43&#43;08:00">2022-09-28 14:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>, <a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		golang版本的elasticsearch批量插入和批量更新方法如下：
+package main import ( &#34;github.com/elastic/go-elasticsearch/v8&#34; &#34;github.com/elastic/go-elasticsearch/v8/esutil&#34; ) func main() { list:=make(User, 0) bulkES(list) } func bulkES(list []User) error { indexer, err := esutil.NewBulkIndexer(esutil.BulkIndexerConfig{ Index: &#34;search-user&#34;, Client: ES, }) if err != nil { return err } for _, v := range list { data, err := json.Marshal(v) if err != nil { return err } err = indexer.Add( context.Background(), esutil.BulkIndexerItem{ Action: &#34;index&#34;, Body: bytes.NewReader(data), }, ) if err != nil { return err } } indexer.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2022/09/elasticsearch-bulk-upsert/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2022/05/http-response-garbled/" rel="bookmark">
+			go http响应乱码
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-05-12T21:46:13&#43;08:00">2022-05-12 21:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		golang请求接口返回的数据乱码，原因之一是请求头设置了&quot;Accept-Encoding&quot;: &quot;gzip, deflate, br&quot;，那么如果服务器支持的话响应的数据就会经过gzip，deflate，br等方式的压缩，解决方式是对数据解压，或者可以不设置接收方式，即&quot;Accept-Encoding&quot;: &quot;&quot;
+import &#34;github.com/andybalholm/brotli&#34; import &#34;compress/flate&#34; import &#34;compress/gzip&#34; // 检测返回的body是否经过压缩，并返回解压的内容 func contentDecoding(res *http.Response) (bodyReader io.Reader, err error) { switch res.Header.Get(&#34;Content-Encoding&#34;) { case &#34;gzip&#34;: bodyReader, err = gzip.NewReader(res.Body) case &#34;deflate&#34;: bodyReader = flate.NewReader(res.Body) case &#34;br&#34;: bodyReader = brotli.NewReader(res.Body) default: bodyReader = res.Body } return } 
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2021/07/gorm-model-find-first/" rel="bookmark">
 			Gorm Model Find First Where等查询函数的区别
 			</a>
@@ -346,69 +389,11 @@ $ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04
 		<a class="list__footer-readmore btn" href="/blogdetail/5e709b485bd8165f28d22394/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5e6c860e5bd8165f28d2210b/" rel="bookmark">
-			go-micro v2弃用了consul作为默认的服务发现
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-14T07:21:50Z">2020-03-14 07:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		很遗憾，go-micro v2版本不再使用consul作为服务发现中间件，官方文档也没有consul相关的文档，而是默认改用了mdns，生产推荐etcd。
-问题：I can&rsquo;t set registry with consul
-解答：《Deprecating Consul in favour of Etcd》
-超过4年的时间，Consul一直是Micro的默认服务发现系统之一，为我们提供了良好的服务。实际上，从一开始，它就是用于注册表的默认机制以及入门所需的唯一基础依赖项。
-从那时起，世界在不断发展，原生云技术也在不断发展。我们发现了许多与使用Consul的方式有关的问题。这不是对Consul的打击，而是对我们的用例的反思，以及对继续前进的需求。
-例如，我们将元数据和服务端点信息进行二进制编码，压缩和base64编码，然后再将它们存储为Consul标签，因为没有其他方法可以这样做。我们还非常严重地滥用Consul的分布式属性，这导致了许多关于raft共识的问题。
-不幸的是，我们发现现在该继续前进了。
-自2014年以来，Kubernetes真正成为了容器编排和基础服务平台中的一支计算力。因此，etcd成为了他们选择的键值存储的一种，它是基于raft共识构建的分布式键值存储。它已经发展到可以满足kubernetes的规模需求，并且已经以其他开源项目所没有的方式经过了实战测试。
-Etcd还是用于二进制数据的非常标准的Get / Put / Delete存储，这意味着我们可以轻松地编码和存储服务元数据，而不会出现零问题。它对所存储数据的格式没有意见。
-过去一周中，我们已将etcd迁移为Micro中的默认服务发现机制之一，并将在未来几周内弃用Consul。这是什么意思？好吧，我们将领事移交给我们社区维护的go-plugins存储库，并专注于支持etcd。
-我们知道许多用户正在使用Consul，这可能会导致中断。对我们来说，这是通往v2的重大突破，因此我们的下一个发行版将被标记为v2。您可以放心，您的v1发行版将继续按原样运行，但希望我们发布的下一个发行版是micro v2.0.0。
-参考项目：micro-service
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5e216204567cde49c49187f1/" rel="bookmark">
-			beego httplib库使用方法
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-16T14:28:04Z">2020-01-16 14:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。 常用的模块有以下这些：
-session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块 本文要讲解的是httplib客户端请求的使用。
-日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用httplib。
-基本使用方法 import ( &#34;github.com/astaxie/beego/httplib&#34; ) 然后初始化请求方法，返回对象
-req := httplib.Get(&#34;http://beego.me/&#34;) 然后我们就可以获取数据了
-str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
-获取body信息 func RequestByAjax3(region, language string) { req := httplib.Get(fmt.Sprintf(&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;, url.QueryEscape(region), language)) req.Header(&#34;Referer&#34;, &#34;https://m.lagou.com/search.html&#34;) req.Header(&#34;Cookie&#34;, &#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;) req.Header(&#34;Host&#34;, &#34;m.lagou.com&#34;) req.Header(&#34;User-Agent&#34;, &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5e216204567cde49c49187f1/">阅读全文…</a>
-	</div>
-</article>
 
 </main>
 
 <div class="pagination">
-	<span class="pagination__item pagination__item--current">1/5</span>
+	<span class="pagination__item pagination__item--current">1/6</span>
 	<a class="pagination__item pagination__item--next btn" href="/categories/%E5%90%8E%E7%AB%AF/page/2/">»</a>
 </div>
 
@@ -441,9 +426,6 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item">
-				<a class="widget__link" href="/categories/golang/">golang</a>
-			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/linux/">linux</a>
 			</li>
