@@ -147,6 +147,26 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5628ab0882f22d389ded545a/" rel="bookmark">
+			一个下载电子书籍的好网站
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T09:23:20Z">2015-10-22 09:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		http://www.chnxp.com.cn/
+几乎可以下载到任何想要的书籍
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/56286fd6ce46c19e89132969/" rel="bookmark">
 			手机和PC联机调试Debugging Firefox for Android with WebIDE
 			</a>
@@ -424,37 +444,6 @@ HOUR_MINUTE
 可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/55e91db7db5ac9c2be76b2fb/" rel="bookmark">
-			总结一下最近数据库设计原则（待补充）
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-04T04:27:35Z">2015-09-04 04:27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		在没有做过数据库设计之前认为：数据库设计是表与表的关系设计，合理的表关系设计能使逻辑更易编写，不过这是以前肤浅的认知。后来逐渐开始参与公司数据库的设计才发现，单单是数据库表名，字段名也有一定学问，在最近的开发过程中感觉尤为突出。其中一些是历史遗留发现的，另外一些是新加表中发现的。
-一、遗留问题主要体现在文档缺失上，基本所有表没有注释，字段更不用说，然后就对每个字段的作用搞不清楚，而且很多字段也不知道有没有用到，因为所有记录都没有值，但又不敢删。留着不管又影响性能，看着也不爽。
-二、在新加表出现的问题是：新人喜欢模仿以前的表设计，也不管字段有没有用，有什么用，先都照搬过来，而且又喜欢添加一些新字段，说是为了预留以后新加功能的时候万一用到了，这就重蹈覆辙了，把字段加上了却又不喜欢写注释，然后导致后来连自己也不知道当初为什么加这个字段。
-三、另外对于一些枚举字段，用了数字来表示不同类型，比如用1，2，3，4表示超级管理员，普通管理员，用户，小编，这种方式好处是占用字节少，但是坏处也不少，首先，从数值上看不出代表什么类型，需要看文档注释，要是连注释也没写那就坑了。
-四、由于业务不断增加，表字段也不管添加，最后一张表中就会有好几十个字段，最后变得不好维护，而且有些字段是做的时候加上，最后又不用了，又没有及时删掉，然后就变成了垃圾字段。
-以上几点问题是比较突出又影响开发的，我也总结出了对策：
-1、表和字段一定要写注释
-2、只添加需要用到的字段，千万不要加一些以后用到的字段，以后用到以后加
-3、枚举字段在MySQL中建议使用enum枚举类型，在插入记录的时候使用单词来表明类型，在数据库保存的实际是数值索引
-4、对于常用的字段放到一个表中，不常用的字段可以考虑分表存放，一对一关联，需要的时候查询即可
-数据库引擎的使用：
-就目前mysql的使用来说，大多数人在数据库引擎上会选择InnoDB，也总是有人建议这么做，主要目的是为了支持事务。但同样有人认为MyISAM读取性能比InnoDB强很多，会选择使用MyISAM。所以说具体选择哪种引擎类型依据业务实际情况决定。根据我们的项目实际使用情况，我最后选择了MyISAM作为数据库引擎。
-前一个项目使用java开发，MySQL数据库InnoDB，确实也出现一些问题，在某次活动时200左右的并发量下不仅服务器宕机，连另一台数据库服务器在连接数暴增的情况下读取性能骤降，从而导致java服务器不能及时响应。这次开发语言选择了nodejs，经测试发现，可以支撑的并发量在2000多近3000的样子，所以就要求数据库能尽快读取数据，再加上目前业务中不要求事务，那么MyISAM就成了不二之选。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -478,11 +467,11 @@ HOUR_MINUTE
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 		</ul>
 	</div>
 </div>
@@ -556,6 +545,7 @@ HOUR_MINUTE
 		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>

@@ -147,6 +147,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5b3604876b5bf65ca5031db7/" rel="bookmark">
+			go实现文件下载
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-29T13:05:59Z">2018-06-29 13:05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		go可以很容易实现一个文件服务器，只需要使用函数 func ServeFile(w ResponseWriter, r *Request, name string)即可。
+package main import ( &#34;log&#34; &#34;net/http&#34; &#34;fmt&#34; ) func helloHandler(res http.ResponseWriter, req *http.Request) { http.ServeFile(res, req, &#34;E:/go-work/src/go-learning/foo.xlsx&#34;) } func main() { fmt.Println(&#34;web服务启动成功，可在浏览器中访问：localhost:8081&#34;) http.HandleFunc(&#34;/file&#34;, helloHandler) http.Handle(&#34;/&#34;, http.FileServer(http.Dir(&#34;E:/go-work/src/go-learning/&#34;))) err := http.ListenAndServe(&#34;:8081&#34;, nil) if err != nil { log.Fatal(&#34;ListenAndServe:&#34;, err.Error()) } } 查看go文档除了翻墙访问https://golang.org
+还可以访问国内镜像：https://golang.google.cn/
+最简单快速的访问，直接在本地起服务：
+godoc -http=:8082
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5b309564cca06924b14119ea/" rel="bookmark">
 			js转图片为base64上传
 			</a>
@@ -385,38 +408,6 @@ import ( &#34;database/sql&#34; _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _�
 验证邮箱后就会立马重新统计
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a98c43ff4583f741c210b89/" rel="bookmark">
-			pm2设置NODE_ENV环境变量
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-02T03:25:51Z">2018-03-02 03:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV。那么在生产环境中使用pm2如何设置环境变量？
-设置方式一：shell命令设置 linux：export NODE_ENV=development&amp;&amp; node app.js
-win：set NODE_ENV=development&amp;&amp; node app.js
-一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
-设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
-pm2 start pm2.json &ndash;env production
---env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
-pm2.json
-{ &#34;apps&#34; : [{ &#34;name&#34;: &#34;issue&#34;, &#34;cwd&#34;: &#34;dest&#34;, &#34;script&#34; : &#34;bin/www.js&#34;, &#34;instances&#34; : &#34;2&#34;, &#34;exec_mode&#34; : &#34;cluster&#34;, &#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 }, &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34;, &#34;PORT&#34;: 3003 }, &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;, &#34;merge_logs&#34;: true }] } 如果不加参数则默认使用
-&#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
-加--env production则使用的是
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -440,11 +431,11 @@ pm2.json
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2022/12/sveltekit/">Sveltekit1.0后的使用感受</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2022/09/elasticsearch-bulk-upsert/">Elasticsearch批量insert和批量upsert</a></li>
 		</ul>
 	</div>
 </div>
@@ -518,6 +509,7 @@ pm2.json
 		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
