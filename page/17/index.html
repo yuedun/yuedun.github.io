@@ -147,6 +147,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/563823deaa0d5223f187dfa5/" rel="bookmark">
+			无插件实现动态瀑布流加载数据
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-03T03:02:54Z">2015-11-03 03:02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但是结果很不理想，waterfall的很多参数不管是什么用处，反正看着很头疼，最麻烦的是它会改变页面样式和布局，实在不想调整了，还是自己实现这个功能吧！
+首先看下面代码：
+var pageIndex = 2; (function loadmore() { //绑定滚动事件 $(window).bind(&#34;scroll&#34;, function() { if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40) { $(window).unbind(&#34;scroll&#34;); //到底后先移除滚动事件 $.get(&#34;/portal/getTopic?pageIndex=&#34; + pageIndex + &#34;&amp;amp;pageSize=3&#34;, function(data) { $(&#34;#container&#34;).append(data); pageIndex++; loadmore(); //数据加载成功重新绑定滚动事件 }, &#34;html&#34;); }; }); })(); 没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。
+先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
+已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&quot;scroll&quot;);等数据添加到页面以后再重新绑定滚动事件。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/563069efaa0d5223f187dfa4/" rel="bookmark">
 			检测网站中未使用的css样式
 			</a>
@@ -414,58 +437,6 @@ mysql多列索引适合的场景
 但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5608dbb10adc9cf12635ebbb/" rel="bookmark">
-			MySQL查询当天0点，昨天
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-28T06:18:25Z">2015-09-28 06:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		今天是
-SELECT NOW();-- 2015-09-28 13:48:12 查询当天，格式为YYYY-MM-DD
-SELECT CURDATE();-- 2015-09-28
-查询当天，格式为YYYY-MM-DD HH:mm:ss
-SELECT NOW();-- 2015-09-28 13:42:00
-查询当天0点，格式为YYYY-MM-DD HH:mm:ss
-SELECT DATE_FORMAT(CURDATE(),&quot;%Y-%m-%d %H:%i:%s&quot;);-- 2015-09-28 00:00:00
-查询当天早上9点，格式为YYYY-MM-DD HH:mm:ss
-SELECT DATE_ADD(CURDATE(), INTERVAL 9 HOUR);-- 2015-09-28 09:00:00
-查询昨天，格式为YYYY-MM-DD
-SELECT DATE_SUB(CURDATE(),INTERVAL 1 DAY);-- 2015-09-27
-查询昨天早上9点
-SELECT DATE_ADD(DATE_SUB(CURDATE(),INTERVAL 1 DAY),INTERVAL 9 HOUR);-- 2015-09-27 09:00:00
-DATE_ADD(date,INTERVAL expr type) 参数是合法的日期表达式。expr 参数是您希望增加的时间。
-type 参数可以是下列值：
-Type 值
-MICROSECOND
-SECOND
-MINUTE
-HOUR
-DAY
-WEEK
-MONTH
-QUARTER
-YEAR
-SECOND_MICROSECOND
-MINUTE_MICROSECOND
-MINUTE_SECOND
-HOUR_MICROSECOND
-HOUR_SECOND
-HOUR_MINUTE
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5608dbb10adc9cf12635ebbb/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -490,10 +461,10 @@ HOUR_MINUTE
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
 		</ul>
 	</div>
 </div>

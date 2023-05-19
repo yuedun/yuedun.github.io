@@ -147,6 +147,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5996a2dc9205bd72e7290ebb/" rel="bookmark">
+			open() is deprecated in mongoose &gt;= 4.11.0, use openUri()
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-18T08:18:36Z">2017-08-18 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
+url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true // reconnectTries: 30,//尝试重连，默认30次 // reconnectInterval: 1000, //重连间隔，默认1000毫秒 loggerLevel: &#34;warn&#34;, //error/warn/info/debug useMongoClient: true }; mongoose.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/598aaf0525207f400eeb1b87/" rel="bookmark">
 			windows好用的bash工具——ConEmu
 			</a>
@@ -346,30 +369,6 @@ array( &#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;) ) 字段名要�
 基本操作就是这样，删除操作不用说也应该能知道怎么做了。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/591c5eac35b6751981e4681e/" rel="bookmark">
-			nodejs中promise的if流程控制
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-17T14:31:08Z">2017-05-17 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
-假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
-var fs = require(&#34;fs&#34;); function queue(){ return new Promise((resolve, reject)=&gt;{ fs.readFile(&#34;../queue.txt&#34;, &#34;utf8&#34;, (err, data)=&gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../account.txt&#39;, id+&#39;一个新账户&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;办卡成功!&#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../money.txt&#39;, id+&#39;存了10万&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;存款成功!&#39;); resolve(); }); }) } //入口 function enter(id) { Promise.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/591c5eac35b6751981e4681e/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -394,10 +393,10 @@ var fs = require(&#34;fs&#34;); function queue(){ return new Promise((resolve, r
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
 		</ul>
 	</div>
 </div>

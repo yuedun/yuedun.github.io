@@ -147,6 +147,31 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5440a294fea3dae97beee4f9/" rel="bookmark">
+			mongoose实现翻页
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-17T05:01:08Z">2014-10-17 05:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。
+首先看下mongoose API，find方法源码：
+Model.find = function find (conditions, fields, options, callback){ if(&#34;function&#34;==typeof conditions){ callback = conditions; conditions ={}; fields = null; options = null; }elseif(&#34;function&#34;==typeof fields){ callback = fields; fields = null; options = null; }elseif(&#34;function&#34;==typeof options){ callback = options; options = null; } // get the raw mongodb collection object var mq =newQuery({}, options,this,this.collection); mq.select(fields); if(this.schema.discriminatorMapping &amp;amp;&amp;amp; mq._selectedInclusively()){ mq.select(this.schema.options.discriminatorKey); } return mq.find(conditions, callback); }; 其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：
+router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5440a294fea3dae97beee4f9/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/543fdff0bba99b9e56a705d1/" rel="bookmark">
 			NodeJs中的express框架获取http参数  
 			</a>
@@ -243,10 +268,10 @@ app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //�
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
 		</ul>
 	</div>
 </div>
