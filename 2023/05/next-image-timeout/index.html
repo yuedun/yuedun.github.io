@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>next/image组件导致服务器504超时 - 月盾的博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="next/image组件导致服务器504超时，react next.js 504 timeout">
+		
+		<meta property="og:title" content="next/image组件导致服务器504超时" />
+<meta property="og:description" content="next/image组件导致服务器504超时，react next.js 504 timeout" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.yuedun.wang/2023/05/next-image-timeout/" /><meta property="article:section" content="2023" />
+<meta property="article:published_time" content="2023-05-17T16:38:34+08:00" />
+<meta property="article:modified_time" content="2023-05-17T16:38:34+08:00" />
+
+
+		<meta itemprop="name" content="next/image组件导致服务器504超时">
+<meta itemprop="description" content="next/image组件导致服务器504超时，react next.js 504 timeout"><meta itemprop="datePublished" content="2023-05-17T16:38:34+08:00" />
+<meta itemprop="dateModified" content="2023-05-17T16:38:34+08:00" />
+<meta itemprop="wordCount" content="16">
+<meta itemprop="keywords" content="502,next.js," />
+		
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="next/image组件导致服务器504超时"/>
+<meta name="twitter:description" content="next/image组件导致服务器504超时，react next.js 504 timeout"/>
+
+
+	<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
+
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
+<script>
+  
+  
+  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
+  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
+  const serverURL = "https://api.yuedun.wang";
+  AV.init({ appId, appKey, serverURL });
+  function updateCollect() {
+    const collect = new AV.Query('Collect');
+    const url = location.pathname;
+    collect.select(['url', 'pv'])
+    collect.equalTo('url', url);
+    collect.first().then((col) => {
+      if (!col) {
+        
+        const Collect = AV.Object.extend('Collect');
+        
+        const collect = new Collect();
+        
+        const title = document.title;
+        collect.set('title', title);
+        collect.set('url', url);
+        collect.set('pv', 1);
+        collect.save()
+      } else {
+        col.increment('pv', 1)
+        col.save();
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    });
+  }
+
+  updateCollect()
+</script>
+</head>
+<body class="body">
+	<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/quicknote/">
+					
+					<span class="menu__text">速记</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+	<div class="container wrapper flex">
+		<div class="primary">
+		
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">next/image组件导致服务器504超时</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-05-17T16:38:34&#43;08:00">2023-05-17 16:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<p>谁能想到，一个前端组件也能把服务搞崩溃。这个组件正是<strong>next/image</strong>，原本是想利用next/image来优化图片，next.js官方也一直推荐这么做。</p>
+<p>突然有一天用户反馈网站出现504超时报错，当时优先重启恢复服务。然后把日志打开观察，果不其然，几分钟后就又出现504超时，伴随出现的日志则是：</p>
+<pre tabindex="0"><code>upstream image response failed for https://example.com/280d59d8-f3b0-11ed-a295-00163e253f9a_00002_VvBbv3zj.jpg?OSSAccessKeyId=LTAI5nodLHeacT1J5SmWh&amp;Expires=317044217325&amp;Signature=Wf5jYWf7vnXOyRoKLVtiTCrt8%3D 404
+</code></pre><p>初步判断是图片404导致服务器超时，深入猜测是使用next.js服务端渲染请求了图片资源，而图片资源不存在导致服务器渲染出错。</p>
+<p>但是很不合理，服务端只是把图片资源的地址渲染到html中，并不会在服务端请求图片资源才对，为什么服务器日志会出现上述错误信息呢？于是观察浏览器中图片的请求，发现格式是这样的：
+<code>http://example.com/_next/image?url=https%3A%2F%2Fexample.com%2Ff6c912da-f0cc0000_0d7GBaLE.jpg%3FOSSAccessKeyId%3DmWh%26Expires%3D317043899846%26Signature%3DYUMro%253D&amp;w=384&amp;q=75</code></p>
+<p>浏览器请求的图片资源并不是图片的真实地址，而是经过了next.js服务处理的，尤其是URL最后两个参数，是图片压缩参数。如果你发现图片变模糊了，也可能是这两个参数捣的鬼。直接拿着这个地址去浏览器请求发现响应很慢，这时再次得出结论：这个图片组件有问题。为了验证把所有使用了next/image组件全部使用原生img标签，发布到线上后就再没出现504超时。</p>
+<p>总结：next/image组件包装后的图片资源需要经过node层压缩处理，会消耗CPU资源，对于大量的图片资源会有风险，酌情处理。
+本次出现的时候伴随着图片资源404，可能是有bug存在，如果加载不到正确的图片就会触发bug。
+另一种解决方案：根据官方文档说明，如果使用<code>next/image</code>,需要添加<code>sharp</code>包来提高性能，但是可能需要注意内存消耗问题。</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/502/" rel="tag">502</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/next.js/" rel="tag">next.js</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2023/05/ci-cd/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">jenkins代替品</p>
+		</a>
+	</div>
+</nav>
+
+
+
+		</div>
+		
+	</div>
+	<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+		
+
+	</div>
+</footer>
+
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
+</body>
+</html>

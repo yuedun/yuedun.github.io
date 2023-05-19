@@ -147,6 +147,32 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/57d6aaa7471c11fa271ed1bb/" rel="bookmark">
+			beego post请求获取request body参数
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-09-12T13:16:23Z">2016-09-12 13:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		为了获取json类型的参数煞费苦心，差点不再爱了。
+前端请求代码：
+$.ajax({ url: &#34;/user&#34;, type: &#34;post&#34;, contentType: &#39;application/json&#39;, data: JSON.stringify({username:&#34;张三&#34;,mobile:&#34;13265478965&#34;}), //这才是最重要的地方，必须用JSON.stringify序列化成字符串， //直接使用对象死活都接收不到，至于大小写并不影响，只要写对了就行 dataType: &#34;json&#34; }).done(function(res) { if(res.result){ alert(&#34;成功&#34;) } }); 需要传输json类型数据，同时数据需要使用JSON.stringify序列化。
+后端接收代码：
+func (c *UserController) Post() { var form struct { Username string `json:&#34;username&#34;` Mobile string `json:&#34;mobile&#34;` } c.BindJSON(&amp;form) user := &amp;User{Username: form.UserName, Mobile: form.Mobile} err := user.AddUser()//这是添加用户函数 if nil != err { c.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: false, &#34;msg&#34;: err} } else { c.Data[&#34;json&#34;] = map[string]interface{}{&#34;result&#34;: true, &#34;msg&#34;: &#34;新增成功&#34;} } c.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/57d6aaa7471c11fa271ed1bb/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/57ca186925f9289500f49cf1/" rel="bookmark">
 			把公司电脑拿回家用
 			</a>
@@ -344,25 +370,6 @@ tom.sayHello = function(){ console.log(&#34;my name is &#34;+this.name);//my nam
 function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/56f1498b3823e4e62593d4e1/" rel="bookmark">
-			fullcalendar点击prve或者next按钮翻月触发事件调用
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-03-22T13:32:59Z">2016-03-22 13:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		$(&#39;#calendar&#39;).fullCalendar({ lang: &#34;zh-cn&#34;, header: { left: &#39;prev, next, today&#39;, center: &#39;title&#39;, right: &#39;month&#39; }, height: 500, dayClick: function(date, jsEvent, view) { //点击空白日期调用 }, eventClick: function(calEvent, jsEvent, view) { //点击已有数据的日期调用 }, defaultDate: moment(),//默认日期 events:function(start, end, callback){ //点击prev上一月, next下一月等事件时调用 } }); 
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -386,11 +393,11 @@ function Person(name, age){ this.name = name; this.age = age; } Person.getAge = 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 		</ul>
 	</div>
 </div>
@@ -470,6 +477,7 @@ function Person(name, age){ this.name = name; this.age = age; } Person.getAge = 
 		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>

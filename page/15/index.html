@@ -147,6 +147,25 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/56f1498b3823e4e62593d4e1/" rel="bookmark">
+			fullcalendar点击prve或者next按钮翻月触发事件调用
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-03-22T13:32:59Z">2016-03-22 13:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		$(&#39;#calendar&#39;).fullCalendar({ lang: &#34;zh-cn&#34;, header: { left: &#39;prev, next, today&#39;, center: &#39;title&#39;, right: &#39;month&#39; }, height: 500, dayClick: function(date, jsEvent, view) { //点击空白日期调用 }, eventClick: function(calEvent, jsEvent, view) { //点击已有数据的日期调用 }, defaultDate: moment(),//默认日期 events:function(start, end, callback){ //点击prev上一月, next下一月等事件时调用 } }); 
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/56c1b67cbf2e89202c146372/" rel="bookmark">
 			系统开发中默认值的设置 
 			</a>
@@ -340,31 +359,6 @@ var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app
 我的理解是更新的时候要先显示数据，所以就在input里加了value来初始化数据，也是因为加了这个value导致输入汉字出现拼音，也与浏览器有点关系，就是输入的时候chrome浏览器会把输入的汉字拼音拼写也放进输入框，那么数据模型就接收了输入，敲击空格键的时候又输进了汉字，所以就都带进来了。但其实只需要v-model就能实现数据的接收和输出。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5656ba78c72f59d15379b4ba/" rel="bookmark">
-			sequelizejs删除对象属性
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-26T07:53:28Z">2015-11-26 07:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		js中有个delete操作符可以删除对象的属性，比如下面代码：
-//objtest对象有个prop属性
-var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象 var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;： delete objtest.prop; //或者 delete objtest[&#39;prop&#39;]; //还可以删除任意变量 var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -388,11 +382,11 @@ var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 		</ul>
 	</div>
 </div>
@@ -472,6 +466,7 @@ var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{
 		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>

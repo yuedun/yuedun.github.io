@@ -145,6 +145,30 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a430ce84aa3290e95cb0e67/" rel="bookmark">
+			推荐在Nodejs使用的java常用技术和工具
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-12-26T15:24:12Z">2017-12-26 15:24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		作为Nodejs开发者可能会对java中常用的一些技术工具不太关心，主要原因大概除了语言级别的间隙就是Nodejs相对于java来说比较轻量级，大多用来开发简单系统，用不到其他工具。根据经验来说，开发相同功能的系统，Nodejs的开发周期和代码体量上也会比Java少太多，毕竟java出生年代长，生态丰富，如果不使用几个框架都感觉不是在开发系统。而Nodejs要开发一个web系统基本使用express或koa就差不多够了。所以对于Nodejs开发者来说，分布式，消息队列，远程调用等技术接触就少些。当然，不用这些技术其实也不会有太大影响，但是对于一个有追求有理想的码农来说我们的眼界不应该局限于系统能运行就行。 下面就来介绍一些可以在nodejs中使用的JAVA常用工具和技术。
+elasticsearch ElasticSearch（以下简称ES）是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。看见了吧，这就是一个使用JAVA开发的全文搜索引擎，到底有什么用呢？就是可以提供像google和百度一样的搜索功能，就算不需要这样功能，也可以用于管理后台的字段搜索，大家知道数据库的搜索效率比较差，有索引的字段还好，没有的就很慢了，这时ES就可以派上用场了，把数据同步进ES,不论查询列表还是以字段搜索都是极快的，是redis缓存的很好补充。
+ELK ELK（ElasticSearch,LogStash,Kibana）是三个工具的组合, Logstash是一款轻量级的日志搜集处理框架，可以方便的把分散的、多样化的日志搜集起来，并进行自定义的处理，然后传输到指定的位置，比如某个服务器或者文件。 Kibana是一个使用nodejs开发的web应用，用于查询和操作ES，就是一个ES的图形界面。 如果nodejs系统布署在多台服务器，那么查看日志是件很头疼的事，你不知道请求发送到哪一台服务器，需要挨个查看，如果服务超过5台，这绝对是噩梦。这时候ELK就是很好的解决方案，LogStash收集每一台服务器的日志统一存到ES中，利用ES的优点，查询任何关键字都很快很方便。
+消息中间件（kafka） 拿用户注册为例，需要发送邮件，短信，这两个服务之间本没有关联关系，但我们的一贯作风是用户注册的时候调用邮件服务，短信服务，严谨一点会放在事务中操作，假如一个服务失败可能会让事务回滚，所有操作都失败。这是一种情况，另一种情况是如果要再注册后加积分，那么就得改代码，要是有更多服务要添加就得每次改代码发布，启停服务，不送积分了又要删代码，这就是耦合度太高导致的结果。使用消息中间件不仅能保证服务完整性还可以有效解耦，有兴趣可以去了解kafka,rabbitMQ,roketMQ等消息中间件。
+远程调用RPC 通俗的来讲就是两台服务器A和B，A服务器直接调用B服务器上的函数，如果没有一个具体事例很难理解A服务器怎么可能调用到B服务器的函数，感兴趣可下载尝试：https://github.com/yuedun/nodejs-grpc 那么为什么要用rpc呢？A服务器要调用B服务的资源直接用http提供接口不就行了吗？其实http也算是一种远程调用，而且也比较简单直观，但是其效率较低，调用成本高，三次握手耗时，甚至请求头的数据量比请求体还大。那么就需要一种更高效的调用协议了——rpc。为什么需要RPC，而不是简单的HTTP接口
+总结：以上的这些工具和技术和语言并没有绑定，java可以使用，nodejs也可以使用，推荐理由：投入成本小，使用收益高。
+	</div>
+</article>
+<article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.yuedun.wang/blogdetail/5a375f52e9a4cf008860c09b/">
 			<img src="https://hopefully-img.yuedun.wang/104432cjc7c8tx7xxqqkgq.jpg?imageMogr2/thumbnail/!20p/" alt="为什么需要RPC，而不是简单的HTTP接口" />
@@ -360,28 +384,6 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/598aaf0525207f400eeb1b87/" rel="bookmark">
-			windows好用的bash工具——ConEmu
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-09T06:43:17Z">2017-08-09 06:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		其实git-bash-for-windows这个git bash工具已经很好用了，不过对于平时需要开3-5的bash窗口的我来说就比较烦了，一直要不停的切换窗口，所以想找一款像linux terminal一样可以多开的工具，幸好有这样的工具，那就是ConEmu。
-使用前需要一些配置，不配置也没关系，就是使用起来不方便，我是按照的习惯完全配置成了git bash的使用方式。
-第一步: 第二步： 配置本地git bash地址（此步骤可适当配置 第三步： 设置ConEmu启动即打开bash而非windows cmd 第四步： 如果前面都没问题，可以设置自动保存打开的窗口，以便下次打开即可使用 最后： 根据个人喜好修改字体等 这样就可以完美使用git bash，不论是自动补全还是颜色主题都和git bash无异。
-另外cmder其实也是我使用过的一个不错的工具，同时推荐试用。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -405,11 +407,11 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 		</ul>
 	</div>
 </div>
@@ -489,6 +491,7 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>

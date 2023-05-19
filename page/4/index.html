@@ -145,6 +145,37 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.yuedun.wang/blogdetail/5ff449035e80c6649222da2c/">
+			<img src="https://hopefully-img.yuedun.wang/svelte.jpg" alt="基于sapper开发svelte项目配置本地代理" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ff449035e80c6649222da2c/" rel="bookmark">
+			基于sapper开发svelte项目配置本地代理
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-05T11:09:55Z">2021-01-05 11:09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		sapper可能被放弃更新，如果您要继续使用svelte，可以考虑使用sveltekit
+最近使用svelte开发一个项目，说实在的，开发过程中遇到不少问题。 每次遇到问题的时候都有种想放弃的冲动，这生态也太差了，查个啥啥问题都查不到，找个啥啥插件也没有。 不过，到最后，遇到的问题又都解决了。 这不，今天又遇到了本地代理的设置问题。 在说遇到的问题之前先介绍一些项目架构。该项目是基于sapper框架开发，这是一个使用svelte开发的框架，具备以下特点：
+服务端渲染 路由 代码分割 默认支持渐进式web应用（PWA） 预取路由 单独的头标签（meta，link等） 作为静态站点弹出 Cypress测试（免费，简单，端到端的测试） 可以看到，sapper基本是集合了目前前端开发所有需求，双向数据绑定，渐进式开发，SSR，静态化，高性能。
+遇到的新问题：对于前端项目，调用接口时容易遇到跨域问题，一般是使用本地代理解决。自然也想这样来做，可是sapper没有vue项目那样的生态，用的打包工具也不是webpack，而是rollup。 那么就使用sapper自带的服务端来做代理好了。sapper的服务端用的是polka，而不是express，不过没关系，其实可以相互替换。 最关键的是增加了http-proxy-middleware中间件，却对中间件位置很敏感，不是想随便在哪添加一下就行。需要添加在第一个中间件位置，否则就会优先使用静态服务中间件，导致接口找不到。 完整代码：
+import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compression from &#39;compression&#39;; import * as sapper from &#39;@sapper/server&#39;; import { createProxyMiddleware } from &#39;http-proxy-middleware&#39;; const { PORT, NODE_ENV } = process.env; const dev = NODE_ENV === &#39;development&#39;; polka() // 需要放在最前面，否则接口404，secure参数解决调用https问题 .use(&#39;/api&#39;, createProxyMiddleware({ target: &#39;https://example.com&#39;, pathRewrite: { &#39;^/api&#39;: &#39;&#39; }, secure: false, changeOrigin: true, })) .
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5ff449035e80c6649222da2c/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5ff3db095e80c6649222d94e/" rel="bookmark">
@@ -366,42 +397,6 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 &lt;template&gt; &lt;ComponentFoo /&gt; &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
 	</div>
 </article>
-<article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.yuedun.wang/blogdetail/5f41c9d65edb9b37630b0d46/">
-			<img src="https://hopefully-img.yuedun.wang/zhuque.jpg?imageMogr2/thumbnail/!20p/" alt="nodejs专用发布系统" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5f41c9d65edb9b37630b0d46/" rel="bookmark">
-			nodejs专用发布系统
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-08-23T01:43:50Z">2020-08-23 01:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Nodejs项目部署到服务器以后接下来做的最多的操作就是上线发布了。因为nodejs的语言特性决定了其开发效率高，发布自然就频繁，每个公司或个人都有自己的发布方式。
-有的公司会有严格的流程，必须通过CI/CD工具进行发布，有可能使用现成的工具，如：jenkins。有可能是自研发布系统。
-有的公司会通过FTP上传代码到服务器发布。
-有的公司使用更原始的发布方式，直接登录服务拉代码发布。
-不论哪种发布方式都有其优缺点，越高级的工具会有诸多限制，比如有权限控制，有严格的审批流程，自然就不能随时发布，也就越僵化。越原始的方式越简单越灵活，自然风险也越高。
-至于采用哪种发布方式，依据需要选择即可。
-而关于nodejs的发布方式，本人也是也是多种方式都有使用，公司项目也经历过多次变迁。公司最开始是直接登录服务器拉代码发布，后来有了运维团队，领导说开发自己发布不安全，于是就由运维搭建了Jenkins环境来发布，但是每次发布都需要走流程，后来因为发布太频繁，每1-2天要发布一次，又要灰度发布，运维也会觉得烦。于是开发就搭建了某个发布系统自己来发布，不过这个发布系统有个缺点，就是发布集群的时候是串行的，每次发布要十几分钟。
-另外说明一下Jenkins。它应该是使用最多的发布系统了，Jenkins基于Java开发，它已经是成熟的系统了，成熟同时也代表着复杂，复杂代表修改困难，我想大家也不太会基于Jenkins定制开发。 然后是部署困难，相比较nodejs三条命令搞定linux安装nodejs——快捷版，go直接放二进制文件部署，Jenkins部署可能就略显复杂了。
-于是下定决心自己开发一个发布系统，朱雀发布系统因此诞生。
-基于以往的发布系统使用经历，我想要的是一款使用够灵活，部署够简单的发布系统。市面上现有的系统为了满足各种语言的发布，做的大而全。我自然是不想重蹈覆辙再做一个大而全的系统，我要的是小而美。正好之前了解过PM2本身集成了远程发布功能，可以在此基础上开发。PM2本身的发布过程其实已经很简单了，而且足够灵活，能够满足我的部分要求，但是公司的环境是不能在本地直接连接应用服务器的，所以需要一个中间层代理一下，放一张简单的架构图：
-和其他工具架构逻辑一样，都是通过ssh来通信，不同的是朱雀没有直接使用ssh，而是利用了pm2,由pm2来实现通信，它已经为了做了一部分工作，比如拉代码，回滚，执行远程脚本。 由于nodejs的项目特性，它依赖了node_modules包，如果按照打包的方式发布会又大又费时，所以还是选择拉git代码的方式发布比较合适。 所以我只需要给它做一个图形界面，并有一定的管理和审批流程（可根据环境跳过）。 放一张图来看一下：
-项目地址：nodejs发布系统
-朱雀发布系统支持scp（rsync）发布
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -425,11 +420,11 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/01/thinkpadjiagutaiyingpan/">Thinkpad T450加装固态硬盘记录</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked</a></li>
 		</ul>
 	</div>
 </div>
@@ -509,6 +504,7 @@ components/ ComponentFoo.vue ComponentBar.vue 使用
 		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
