@@ -6,7 +6,24 @@
     <description>Recent content in 阿里云 on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 May 2023 18:55:23 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/%E9%98%BF%E9%87%8C%E4%BA%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jul 2023 18:13:43 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/%E9%98%BF%E9%87%8C%E4%BA%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>阿里云oss私有桶图片处理</title>
+      <link>https://www.yuedun.wang/2023/07/ali-oss-process/</link>
+      <pubDate>Sat, 01 Jul 2023 18:13:43 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2023/07/ali-oss-process/</guid>
+      <description>针对OSS内存储的图片文件（Object），您可以在GetObject请求中携带图片处理参数对图片文件进行处理。例如添加图片水印、转换格式等。详情见：官方文档
+对于允许公共读写的文件可以直接在图片URL后面拼接参数的方式进行图片处理，格式：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value
+对于不允许匿名访问的私有图片文件，不支持通过文件URL直接添加参数的方式处理图片，您需要通过SDK的方式将图片处理操作加入签名URL中。
+重要： 通过文件URL访问图片时，默认是下载行为。如需确保通过文件URL访问图片时是预览行为，您需要绑定自定义域名并添加CNAME记录。具体操作，请参见绑定自定义域名。
+所以，私有桶的图片是不能直接添加参数处理，否则会返回错误信息：
+SignatureDoesNotMatch
+The request signature we calculated does not match the signature you provided. Check your key and signing method.
+SDK处理方法，以go版本为例：
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;os&amp;#34; &amp;#34;github.com/aliyun/aliyun-oss-go-sdk/oss&amp;#34; ) func HandleError(err error) { fmt.Println(&amp;#34;Error:&amp;#34;, err) os.Exit(-1) } func main() { // 创建OSSClient实例。 // yourEndpoint填写Bucket对应的Endpoint，以华东1（杭州）为例，填写为https://oss-cn-hangzhou.aliyuncs.com。其它Region请按实际情况填写。 // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。 client, err := oss.New(&amp;#34;yourEndpoint&amp;#34;, &amp;#34;yourAccessKeyId&amp;#34;, &amp;#34;yourAccessKeySecret&amp;#34;) if err != nil { HandleError(err) } // 指定图片所在Bucket的名称，例如examplebucket。 bucketName := &amp;#34;examplebucket&amp;#34; bucket, err := client.</description>
+    </item>
+    
     <item>
       <title>jenkins代替品</title>
       <link>https://www.yuedun.wang/2023/05/ci-cd/</link>

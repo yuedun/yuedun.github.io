@@ -142,6 +142,28 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/561677d7bfae4b590b7a4aaa/" rel="bookmark">
+			数据库优化一点总结
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-08T14:04:07Z">2015-10-08 14:04</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		以前找工作的时候总被面试到数据库方面的知识，尤其是数据库优化。当然在去面试之前先补习一下，背一些网上的概念来应付。现在想想，要考察一个开发者数据库优化方面的知识只需要问一下有没有做过数据库设计和优化就行，如果做过相关工作那么多少会总结出来一些，如果没做过说出再多也是概念而已。
+国庆节前韩豆咖派上线，然后这个节日就不会有好日子过了，上线三四天的时候很多用户反映帖子刷新不出来，登陆不了等问题，起初我以为是放假了大家回家网络不好导致的，后来测试了下接口花了一分多钟数据才返回，看来不是网络问题。查了下数据库帖子数量，居然达到6万了，想到以前背的概念，首先加索引试试，果然快了。但是节后数量达到12万的时候又出现了相同的问题，有点纳闷，索引页加了怎么还是慢呢？经过多次试验，分拆复杂查询后得出结论是由于查询语句中使用了left join自连接查询，通俗的说就是在12万数据中找出需要的数据，然后再在这12万中找出关联数据，光是这两个12万都够吓人了。最后还是把复杂的sql分解用程序控制查询子句，速度果然又提高了。
+得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片：
+但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5608dbb10adc9cf12635ebbb/" rel="bookmark">
 			MySQL查询当天0点，昨天
 			</a>
@@ -379,27 +401,6 @@ Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId 
 var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);//语法检查 var concat = require(&#39;gulp-concat&#39;);//合并文件 var uglify = require(&#39;gulp-uglify&#39;);//压缩代码 var rename = require(&#39;gulp-rename&#39;);//重命名 // 语法检查 gulp.task(&#39;jshint&#39;, function () { return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(jshint()) .pipe(jshint.reporter(&#39;default&#39;)); }); // 合并文件之后压缩代码 gulp.task(&#39;minify&#39;, function (){ return gulp.src(&#39;public/javascripts/*.js&#39;) .pipe(concat(&#39;all.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)) .pipe(uglify()) .pipe(rename(&#39;all.min.js&#39;)) .pipe(gulp.dest(&#39;public/javascripts/dist&#39;)); }); // 监视文件的变化 gulp.task(&#39;watch&#39;, function () { gulp.watch(&#39;public/javascripts/*.js&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); }); // 注册缺省任务 gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;, &#39;watch&#39;]); // gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;]); 目录结构:
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/559774527756526fccc59577/" rel="bookmark">
-			年中总结
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-04T05:51:14Z">2015-07-04 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		三月的时候做了一个简单的计划，主要是在前端知识方面的学习，包括HTML5，CSS3，bootstrap,angularjs。到目前的四个月时间里工作内容基本包揽了所有前端任务开发，从不会到会，到熟练，对于我来说痛并快乐着，学习过程虽然艰难，但是如果让我每天重复一样的工作内容真的会很烦躁，而现在连做梦都会梦到遇到的技术难题，想到解决办法就迫不及待第二天上班去解决。这样一路下来，除了angularjs不太熟练其他都可以轻松胜任，这是不是离全栈更近一步了。
-虽然angularjs这个坑挖的越来越深，下一个2.0版本也不向后兼容，让人纠结该不该继续学习，不过其实大家都对它的先进性认可的，暂时不会放弃。No这样的话前端技术暂时没有要学习的，接下来就是要学习服务器方面的东西，Linux操作系统，Nginx服务器使用，MySQL数据库优化，NoSQL公司暂时没有使用就先不深入学习了，不过好在公司的技术使用上有决策权，如有必要还是希望能用上，从上次活动服务器挂掉得出结论，MySQL不作特别优化处理是有点难以支撑高并发，有点与nodejs不搭调。
-总体来说，这几个月成长不少，除了自己努力之外还要感谢公司提供了我能够充分发挥的环境和前辈同事的指导和老板的信任。——不论公司最后成败，付出的努力不会付之东流。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -423,11 +424,11 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 		</ul>
 	</div>
 </div>

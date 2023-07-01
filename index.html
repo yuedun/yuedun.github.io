@@ -142,6 +142,36 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2023/07/ali-oss-process/" rel="bookmark">
+			阿里云oss私有桶图片处理
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-01T18:13:43&#43;08:00">2023-07-01 18:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		针对OSS内存储的图片文件（Object），您可以在GetObject请求中携带图片处理参数对图片文件进行处理。例如添加图片水印、转换格式等。详情见：官方文档
+对于允许公共读写的文件可以直接在图片URL后面拼接参数的方式进行图片处理，格式：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value
+对于不允许匿名访问的私有图片文件，不支持通过文件URL直接添加参数的方式处理图片，您需要通过SDK的方式将图片处理操作加入签名URL中。
+重要： 通过文件URL访问图片时，默认是下载行为。如需确保通过文件URL访问图片时是预览行为，您需要绑定自定义域名并添加CNAME记录。具体操作，请参见绑定自定义域名。
+所以，私有桶的图片是不能直接添加参数处理，否则会返回错误信息：
+SignatureDoesNotMatch
+The request signature we calculated does not match the signature you provided. Check your key and signing method.
+SDK处理方法，以go版本为例：
+package main import ( &#34;fmt&#34; &#34;os&#34; &#34;github.com/aliyun/aliyun-oss-go-sdk/oss&#34; ) func HandleError(err error) { fmt.Println(&#34;Error:&#34;, err) os.Exit(-1) } func main() { // 创建OSSClient实例。 // yourEndpoint填写Bucket对应的Endpoint，以华东1（杭州）为例，填写为https://oss-cn-hangzhou.aliyuncs.com。其它Region请按实际情况填写。 // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。 client, err := oss.New(&#34;yourEndpoint&#34;, &#34;yourAccessKeyId&#34;, &#34;yourAccessKeySecret&#34;) if err != nil { HandleError(err) } // 指定图片所在Bucket的名称，例如examplebucket。 bucketName := &#34;examplebucket&#34; bucket, err := client.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2023/07/ali-oss-process/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2023/05/next-image-timeout/" rel="bookmark">
 			next/image组件导致服务器504超时
 			</a>
@@ -351,26 +381,6 @@ package main import ( &#34;github.com/elastic/go-elasticsearch/v8&#34; &#34;gith
 		<a class="list__footer-readmore btn" href="/2022/09/elasticsearch-bulk-upsert/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2022/05/http-response-garbled/" rel="bookmark">
-			go http响应乱码
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-05-12T21:46:13&#43;08:00">2022-05-12 21:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		golang请求接口返回的数据乱码，原因之一是请求头设置了&quot;Accept-Encoding&quot;: &quot;gzip, deflate, br&quot;，那么如果服务器支持的话响应的数据就会经过gzip，deflate，br等方式的压缩，解决方式是对数据解压，或者可以不设置接收方式，即&quot;Accept-Encoding&quot;: &quot;&quot;
-import &#34;github.com/andybalholm/brotli&#34; import &#34;compress/flate&#34; import &#34;compress/gzip&#34; // 检测返回的body是否经过压缩，并返回解压的内容 func contentDecoding(res *http.Response) (bodyReader io.Reader, err error) { switch res.Header.Get(&#34;Content-Encoding&#34;) { case &#34;gzip&#34;: bodyReader, err = gzip.NewReader(res.Body) case &#34;deflate&#34;: bodyReader = flate.NewReader(res.Body) case &#34;br&#34;: bodyReader = brotli.NewReader(res.Body) default: bodyReader = res.Body } return } 
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -393,11 +403,11 @@ import &#34;github.com/andybalholm/brotli&#34; import &#34;compress/flate&#34; i
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 		</ul>
 	</div>
 </div>

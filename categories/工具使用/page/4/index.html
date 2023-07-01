@@ -141,6 +141,33 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/563069efaa0d5223f187dfa4/" rel="bookmark">
+			检测网站中未使用的css样式
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-28T06:23:43Z">2015-10-28 06:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		网站的css样式文件在多次修改后会有很多样式废弃不再使用，使得维护起来困难，还可能出现重名样式，后面的覆盖掉前面的效果，所以有必要清除掉不再使用的样式。可以使用的工具很多，不过在使用了Dust-Me Selectors觉得足够了。
+https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/
+打开上面网址安装
+直接点击这个小扫把会检测当前页面没有使用的样式，不过这样的结果还不是我们想要的，因为当前页面没有使用不代表其他页面也没有使用。我们更需要的是找出整个网站中未使用的样式。
+选择第一项“Spider Sitemap”，就像是百度蜘蛛爬取整个网站数据一样。
+输入网址，本地网址和网络地址都可以检测，点击“Start”后很快就有结果了，如果页面较多会费时些。
+可以看到有橘黄色部分就是没有使用的样式，但是这也不能完全代表就是没有使用过，上面三个未使用的样式是我对于博客内容的图片和引用块使用的样式，因为本地的测试内容中的确没有使用这三个样式，但是线上的网站却使用了，遇到这种情况就需要仔细甄别了。
+再看一下扫描的页面日志
+基本的页面都有扫描过了。此时可以手动删除掉没有使用的样式，这个插件对于简单的网站够用了，但是大型网站就不准确了，当然有些其他工具还可以导出检测后的结果。有必要的可以去下载。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/562d9ca9c6ed32d312337025/" rel="bookmark">
 			linux下添加svn用户名密码
 			</a>
@@ -319,11 +346,11 @@ git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 		</ul>
 	</div>
 </div>

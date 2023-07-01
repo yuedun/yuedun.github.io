@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>阿里云oss私有桶图片处理 - 月盾的博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="阿里云oss私有桶图片处理，压缩，裁剪">
+		
+		<meta property="og:title" content="阿里云oss私有桶图片处理" />
+<meta property="og:description" content="阿里云oss私有桶图片处理，压缩，裁剪" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.yuedun.wang/2023/07/ali-oss-process/" /><meta property="article:section" content="2023" />
+<meta property="article:published_time" content="2023-07-01T18:13:43+08:00" />
+<meta property="article:modified_time" content="2023-07-01T18:13:43+08:00" />
+
+
+		<meta itemprop="name" content="阿里云oss私有桶图片处理">
+<meta itemprop="description" content="阿里云oss私有桶图片处理，压缩，裁剪"><meta itemprop="datePublished" content="2023-07-01T18:13:43+08:00" />
+<meta itemprop="dateModified" content="2023-07-01T18:13:43+08:00" />
+<meta itemprop="wordCount" content="120">
+<meta itemprop="keywords" content="阿里云," />
+
+	<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
+
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js"></script>
+<script>
+  
+  
+  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
+  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
+  const serverURL = "https://api.yuedun.wang";
+  AV.init({ appId, appKey, serverURL });
+  function updateCollect() {
+    const collect = new AV.Query('Collect');
+    const url = location.pathname;
+    collect.select(['url', 'pv'])
+    collect.equalTo('url', url);
+    collect.first().then((col) => {
+      if (!col) {
+        
+        const Collect = AV.Object.extend('Collect');
+        
+        const collect = new Collect();
+        
+        const title = document.title;
+        collect.set('title', title);
+        collect.set('url', url);
+        collect.set('pv', 1);
+        collect.save()
+      } else {
+        col.increment('pv', 1)
+        col.save();
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    });
+  }
+
+  updateCollect()
+</script>
+</head>
+<body class="body">
+	<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/quicknote/">
+					
+					<span class="menu__text">速记</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+	<div class="container wrapper flex">
+		<div class="primary">
+		
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">阿里云oss私有桶图片处理</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-01T18:13:43&#43;08:00">2023-07-01 18:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<blockquote>
+<p>针对OSS内存储的图片文件（Object），您可以在GetObject请求中携带图片处理参数对图片文件进行处理。例如添加图片水印、转换格式等。详情见：<a href="https://help.aliyun.com/document_detail/183902.html?spm=a2c4g.44686.0.0.3c532793kTBeVm">官方文档</a></p>
+</blockquote>
+<p>对于允许公共读写的文件可以直接在图片URL后面拼接参数的方式进行图片处理，格式：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value</p>
+<p><strong>对于不允许匿名访问的私有图片文件，不支持通过文件URL直接添加参数的方式处理图片，您需要通过SDK的方式将图片处理操作加入签名URL中。</strong></p>
+<p><strong>重要：</strong> <em>通过文件URL访问图片时，默认是下载行为。如需确保通过文件URL访问图片时是预览行为，您需要绑定自定义域名并添加CNAME记录。具体操作，请参见绑定<a href="https://help.aliyun.com/document_detail/31902.html?spm=a2c4g.44686.0.0.4e5c24cby8yy9K#concept-ozw-m2r-5fb">自定义域名</a>。</em></p>
+<p>所以，私有桶的图片是不能直接添加参数处理，否则会返回错误信息：</p>
+<blockquote>
+<p>SignatureDoesNotMatch<br>
+The request signature we calculated does not match the signature you provided. Check your key and signing method.</p>
+</blockquote>
+<p>SDK处理方法，以go版本为例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/aliyun/aliyun-oss-go-sdk/oss&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建OSSClient实例。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// yourEndpoint填写Bucket对应的Endpoint，以华东1（杭州）为例，填写为https://oss-cn-hangzhou.aliyuncs.com。其它Region请按实际情况填写。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;yourEndpoint&#34;</span>, <span style="color:#e6db74">&#34;yourAccessKeyId&#34;</span>, <span style="color:#e6db74">&#34;yourAccessKeySecret&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指定图片所在Bucket的名称，例如examplebucket。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">bucketName</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;examplebucket&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bucket</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Bucket</span>(<span style="color:#a6e22e">bucketName</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指定图片名称。如果图片不在Bucket根目录，需携带文件完整路径，例如exampledir/example.jpg。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ossImageName</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;exampledir/example.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 生成带签名的URL，并指定过期时间为600s。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">signedURL</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bucket</span>.<span style="color:#a6e22e">SignURL</span>(<span style="color:#a6e22e">ossImageName</span>, <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">HTTPGet</span>, <span style="color:#ae81ff">600</span>, <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">Process</span>(<span style="color:#e6db74">&#34;image/format,png&#34;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">signedURL</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>其中，<code>yourAccessKeyId</code>,<code>yourAccessKeySecret</code>的来源参考该文，<a href="https://blog.csdn.net/iteye_19045/article/details/106721450">阿里云OSS上传报错: You have no right to access this object because of bucket acl</a>。创建完用户需要创建AccessKeyId，接着就可以创建yourAccessKeyId和AccessKeySecret。
+最后会生成完整的图片链接，注意，如果发现链接中多出了bucket，需要排查yourEndpoint是否已经加上了bucket，需要删除掉。</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2023/05/next-image-timeout/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">next/image组件导致服务器504超时</p>
+		</a>
+	</div>
+</nav>
+
+
+
+		</div>
+		
+	</div>
+	<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+		
+
+	</div>
+</footer>
+
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
+</body>
+</html>

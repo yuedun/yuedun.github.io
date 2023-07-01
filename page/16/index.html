@@ -142,6 +142,30 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/568a088edb1fef9e0cda949e/" rel="bookmark">
+			vue.js开发gulp监听文件变化自动编译
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-04T05:52:14Z">2016-01-04 05:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		直接看代码：
+var gulp = require(&#39;gulp&#39;) var webpack = require(&#34;gulp-webpack&#34;); var webpackConfig = require(&#34;./webpack.config.js&#34;); // gulp.task(&#34;webpack&#34;, function(callback) { // var myConfig = Object.create(webpackConfig); // webpack(myConfig, function(err, stats) { // console.log(&#34;&gt;&gt;&gt;&gt;&gt;err:&#34;+JSON.stringify(err)) // console.log(&#34;&gt;&gt;&gt;&gt;&gt;stats:&#34;+stats) // if(err) throw new Error(&#34;webpack&#34;, err); // callback(); // }); // }); /** * 编译时有错误提示 */ gulp.task(&#34;webpack&#34;, function(){ return gulp.src(&#34;./app.js&#34;) .pipe(webpack(Object.create(webpackConfig))) .pipe(gulp.dest(&#34;./dist/&#34;)) }); gulp.watch(&#39;./views/*&#39;, [&#39;webpack&#39;]); webpack.config.js配置
+var webpack = require(&#34;webpack&#34;); module.exports = { entry: //&#34;./app.js&#34;, { app:&#34;./app.js&#34; // vendor: [&#34;.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/568a088edb1fef9e0cda949e/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/568652c9db1fef9e0cda949d/" rel="bookmark">
 			vue.js在chrome浏览器下输入汉字会带出拼音
 			</a>
@@ -421,25 +445,6 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 		<a class="list__footer-readmore btn" href="/blogdetail/56400429c888d8070f145c35/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/563ec26201908e12987ef72a/" rel="bookmark">
-			nokia诺基亚XL4g开不了机
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-08T03:32:50Z">2015-11-08 03:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		昨天用了一天的手机，晚上用着突然就黑屏了，死活开不了机，以为是没电了，充电时也开不了机。奇怪的是用了一天一直显示满电，怎么突然就坏掉了。抠电板试试，还是开不了机。扣电板充电，总算有点反应了，但是还是开不了机，不过这种情况遇见过，就是刚买回来试试有没有问题时没装电池充电一闪一闪的震动就是开不了机。后来才发现要装了电池才能开机，但是这次为什么装了电池也开不了机，反而是一点反应也没有。今天早上起来用数据线连接电脑打算刷机试试，刚连接电脑也是开不了机，就把电池扣掉，这时出现了充电的反应，原来是一点电量都没有了。充了一会总算是开机了。所以，如果突然开不了机可能是一点电都没有了，建议先充一会电再开机试试。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -463,11 +468,11 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 		</ul>
 	</div>
 </div>

@@ -142,6 +142,34 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5534d242cf68fa0beaf71cb9/" rel="bookmark">
+			 mysql一个字段为空时使用另一个字段排序
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-04-20T10:17:38Z">2015-04-20 10:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		表中有两个日期字段createDate，updateDate。其中updateDate可以为空，要求使用updateDate排序，如果updateDate为空则使用createDate排序，结果要顺序排下来。
+按照常规方法：
+select * from table order by updateDate desc;
+这样的结果是为空的数据排在了最下面，不符合要求。
+这样试试：
+select * from table order by updateDate desc, createDate desc;
+这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。
+正确方法：
+select * from table order by IFNULL(updateDate, createDate) desc;
+这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/54fbdd9ed6135b272abc05b7/" rel="bookmark">
 			2015年计划
 			</a>
@@ -379,40 +407,6 @@ var opts = { db: { native_parser: true }, server: { poolSize:4, auto_reconnect: 
 		<a class="list__footer-readmore btn" href="/blogdetail/54488218aedc6cf109b96d32/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/54486c117b1470fa64bb911a/" rel="bookmark">
-			git常用命令
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-23T02:46:41Z">2014-10-23 02:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		查看、添加、提交、删除、找回，重置修改文件
-git help # 显示command的help
-git show # 显示某次提交的内容 git show $id
-git co &ndash; # 抛弃工作区修改
-git co . # 抛弃工作区修改
-git add # 将工作文件修改提交到本地暂存区
-git add . # 将所有修改过的工作文件提交暂存区
-git rm # 从版本库中删除文件
-git rm &ndash;cached # 从版本库中删除文件，但不删除文件
-git reset # 从暂存区恢复到工作文件
-git reset &ndash; . # 从暂存区恢复到工作文件
-git reset &ndash;hard # 恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改
-git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一起做　git ci -am &ldquo;some comments&rdquo;
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/54486c117b1470fa64bb911a/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -436,11 +430,11 @@ git ci git ci . git ci -a # 将git add, git rm和git ci等操作都合并在一�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/02/acer-4741g-upgrade/">2010年的笔记本升级硬件，再战10年</a></li>
 		</ul>
 	</div>
 </div>
