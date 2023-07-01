@@ -153,28 +153,30 @@
 		</header><div class="content post__content clearfix">
 			<p>ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启<code>experimentalDecorators</code>。</p>
 <p><strong>命令行编译</strong></p>
-<p><code> tsc --target ES5 --experimentalDecorators /test.ts</code></p>
-<p>tsconfig.json:</p>
-<pre tabindex="0"><code>    &#34;compilerOptions&#34;: {
-        &#34;experimentalDecorators&#34;: true
-    }
-}
-</code></pre><p>那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//test.ts
+<p><code>tsc --target ES5 --experimentalDecorators /test.ts</code>
+或者配置文件设置：</p>
+<p><strong>tsconfig.json</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;compilerOptions&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;experimentalDecorators&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">//test.ts
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Route</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">greeting</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">greet</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">greeting</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">greet</span>: <span style="color:#66d9ef">string</span>){
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">greet</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">route</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">@route</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">any</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">route</span>(<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> Object, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>, <span style="color:#a6e22e">desc</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">PropertyDescriptor</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">route</span>(<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">target</span>: <span style="color:#66d9ef">Object</span>, <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">desc</span>: <span style="color:#66d9ef">PropertyDescriptor</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;&gt;&gt;&gt;&gt;&#39;</span>, <span style="color:#a6e22e">name</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>} 
@@ -200,19 +202,19 @@
 </span></span><span style="display:flex;"><span>}());
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">route</span>(<span style="color:#a6e22e">name</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">desc</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;&gt;&gt;&gt;&gt;&#39;</span>, <span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;装饰器输出&#39;</span>, <span style="color:#a6e22e">name</span>);
 </span></span><span style="display:flex;"><span>    };
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>在命令行下执行编译出的test.js文件：</p>
-<pre tabindex="0"><code>&gt; node test.js
-&gt;&gt;&gt;&gt; hello
-</code></pre><p>执行test.js后会有内容输出，除了<code>@route(&quot;hello&quot;)</code>在代码中没有其他地方执行route函数的操作，其实只要看一下生成的js代码就能知道<code>route</code>函数是在声明Route类的时候执行的，在Route函数内执行了<code>__decorate</code>,然后又在<code>__decorate</code>内执行了装饰器。</p>
-<p>** 总结：装饰器函数在声明被装饰对象时执行，也就是声明完函数，再执行装饰器并且对声明的函数做一些操作 **</p>
-<pre tabindex="0"><code>decorators,//数组类型，可以是多个装饰器 
-target,//被装饰对象，就是例子中的default函数 
+</span></span></code></pre></div><p><strong>备注</strong></p>
+<pre tabindex="0"><code>target,//被装饰对象，就是例子中的default函数 
 key,//被装饰对象的名字：default 
 desc//被装饰对象属性描述，比如这个对象是否可读写，枚举
-</code></pre>
+</code></pre><p>在命令行下执行编译出的test.js文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&gt; node test.js
+</span></span><span style="display:flex;"><span>装饰器输出 hello
+</span></span></code></pre></div><p>执行test.js后会有内容输出，除了<code>@route(&quot;hello&quot;)</code>这行代码外，再没有其他地方执行<code>route</code>函数，耐心的看一下生成的js代码就能知道<code>route</code>函数是在声明Route类的时候执行的，在Route函数内执行了<code>__decorate</code>,然后又在<code>__decorate</code>内执行了装饰器。</p>
+<p><strong>总结</strong>：装饰器函数在声明被装饰对象时执行，也就是声明完函数，再执行装饰器并且对声明的函数做一些操作。</p>
+
 		</div>
 		<footer class="post__footer">
 			

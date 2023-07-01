@@ -316,11 +316,11 @@ vscode编译typescript配置
       <guid>https://www.yuedun.wang/blogdetail/58037ab767a381257039c926/</guid>
       <description>ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启experimentalDecorators。
 命令行编译
-tsc --target ES5 --experimentalDecorators /test.ts
+tsc --target ES5 --experimentalDecorators /test.ts 或者配置文件设置：
 tsconfig.json:
-&amp;#34;compilerOptions&amp;#34;: { &amp;#34;experimentalDecorators&amp;#34;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
+{ &amp;#34;compilerOptions&amp;#34;: { &amp;#34;experimentalDecorators&amp;#34;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
 //test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&amp;#34;hello&amp;#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&amp;#39;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;#39;, name); } } 生成的js代码：
-//test.js var __decorate = (this &amp;amp;&amp;amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.length, r = c &amp;lt; 3 ?</description>
+//test.js var __decorate = (this &amp;amp;&amp;amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.</description>
     </item>
     
     <item>
