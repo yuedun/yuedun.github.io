@@ -156,6 +156,12 @@
 	<div class="content list__excerpt post__content clearfix">
 		go run和go build会报出一连串下面这样的警告信息，虽然不影响程序运行，但是看着难看。
 # command-line-arguments ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-link-3994413096/000000.o) was built for newer macOS version (12.0) than being linked (11.0) 解决方法：CGO_CFLAGS=-mmacosx-version-min=10.12 go run main.go，运行前加CGO_CFLAGS=-mmacosx-version-min=10.12参数可以解决。
+vscode中可以通过配置launch.json文件实现：
+{ &#34;version&#34;: &#34;0.2.0&#34;, &#34;configurations&#34;: [ { &#34;name&#34;: &#34;Launch Package&#34;, &#34;type&#34;: &#34;go&#34;, &#34;request&#34;: &#34;launch&#34;, &#34;env&#34;: { &#34;CGO_CFLAGS&#34;:&#34;-mmacosx-version-min=10.12&#34; }, &#34;program&#34;: &#34;${fileDirname}&#34;, &#34;args&#34;: [], &#34;cwd&#34;: &#34;${fileDirname}&#34; } ] } 或者从文件中读取环境变量：
+{ &#34;version&#34;: &#34;0.2.0&#34;, &#34;configurations&#34;: [ { &#34;name&#34;: &#34;Launch Package&#34;, &#34;type&#34;: &#34;go&#34;, &#34;request&#34;: &#34;launch&#34;, &#34;envFile&#34;: &#34;${workspaceFolder}/.env&#34;, &#34;program&#34;: &#34;${fileDirname}&#34;, &#34;args&#34;: [], &#34;cwd&#34;: &#34;${fileDirname}&#34; } ] } 如果是在vscode中执行测试代码，则需要设置settings.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">阅读全文…</a>
 	</div>
 </article>
 <article class="list__item post">

@@ -35,7 +35,10 @@
       
       <guid>https://www.yuedun.wang/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/</guid>
       <description>go run和go build会报出一连串下面这样的警告信息，虽然不影响程序运行，但是看着难看。
-# command-line-arguments ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-link-3994413096/000000.o) was built for newer macOS version (12.0) than being linked (11.0) 解决方法：CGO_CFLAGS=-mmacosx-version-min=10.12 go run main.go，运行前加CGO_CFLAGS=-mmacosx-version-min=10.12参数可以解决。</description>
+# command-line-arguments ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-link-3994413096/000000.o) was built for newer macOS version (12.0) than being linked (11.0) 解决方法：CGO_CFLAGS=-mmacosx-version-min=10.12 go run main.go，运行前加CGO_CFLAGS=-mmacosx-version-min=10.12参数可以解决。
+vscode中可以通过配置launch.json文件实现：
+{ &amp;#34;version&amp;#34;: &amp;#34;0.2.0&amp;#34;, &amp;#34;configurations&amp;#34;: [ { &amp;#34;name&amp;#34;: &amp;#34;Launch Package&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;go&amp;#34;, &amp;#34;request&amp;#34;: &amp;#34;launch&amp;#34;, &amp;#34;env&amp;#34;: { &amp;#34;CGO_CFLAGS&amp;#34;:&amp;#34;-mmacosx-version-min=10.12&amp;#34; }, &amp;#34;program&amp;#34;: &amp;#34;${fileDirname}&amp;#34;, &amp;#34;args&amp;#34;: [], &amp;#34;cwd&amp;#34;: &amp;#34;${fileDirname}&amp;#34; } ] } 或者从文件中读取环境变量：
+{ &amp;#34;version&amp;#34;: &amp;#34;0.2.0&amp;#34;, &amp;#34;configurations&amp;#34;: [ { &amp;#34;name&amp;#34;: &amp;#34;Launch Package&amp;#34;, &amp;#34;type&amp;#34;: &amp;#34;go&amp;#34;, &amp;#34;request&amp;#34;: &amp;#34;launch&amp;#34;, &amp;#34;envFile&amp;#34;: &amp;#34;${workspaceFolder}/.env&amp;#34;, &amp;#34;program&amp;#34;: &amp;#34;${fileDirname}&amp;#34;, &amp;#34;args&amp;#34;: [], &amp;#34;cwd&amp;#34;: &amp;#34;${fileDirname}&amp;#34; } ] } 如果是在vscode中执行测试代码，则需要设置settings.</description>
     </item>
     
     <item>
