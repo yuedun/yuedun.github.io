@@ -142,6 +142,31 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e709b485bd8165f28d22394/" rel="bookmark">
+			go-micro线上部署，注册服务到etcd
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-17T09:41:28Z">2020-03-17 09:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		线上部署 在线上部署就不能使用go run main.go命令了，需要打包编译成可执行文件。 linux系统需要这样编译：GOOS=linux go build -o service main.go，就是在windows系统上进行交叉编译，可根据自己服务器情况修改参数。
+go build -o service main.go go build -o api api/api.go 线上的restful api也不能使用micro api了。需要选择适合自己的web服务框架，在web服务中调用api服务。
+etcd启动 线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。
+$ ./service --registry=etcd --registry_address=xx.xx.xx.xx:2379 2020-03-17 17:04:42 Starting [service] go.micro.srv.user 2020-03-17 17:04:42 Server [grpc] Listening on [::]:48493 2020-03-17 17:04:42 Registry [etcd] Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395 {&#34;level&#34;:&#34;warn&#34;,&#34;ts&#34;:&#34;2020-03-17T17:04:47.849+0800&#34;,&#34;caller&#34;:&#34;clientv3/retry_interceptor.go:61&#34;,&#34;msg&#34;:&#34;retrying of unary invoker failed&#34;,&#34;target&#34;:&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;,&#34;attempt&#34;:0,&#34;error&#34;:&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e709b485bd8165f28d22394/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e6c860e5bd8165f28d2210b/" rel="bookmark">
 			go-micro v2弃用了consul作为默认的服务发现
 			</a>
@@ -423,82 +448,6 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 核心思想 这个项目的核心思想是将代码做成配置，我们都喜欢做配置平台，让业务来操作数据省去了修改代码，为什么不可以将代码也做成配置？
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5d81a71a00f24e1fd556cc25/" rel="bookmark">
-			再坚持一下，你的奶茶店马上破产
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-09-17T15:40:10Z">2019-09-17 15:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		1 这两天我看后台后台的时候，发现有几个朋友再问我能不能加盟瑞幸咖啡，能不能赚到钱。
-当时我是很迷惑的，因为据我所知瑞幸咖啡从来就没有开放加盟，网上所有挂着瑞幸咖啡加盟旗号的人都是各种沙雕骗子，可能是端幸咖啡。后来我一问，说的不是瑞幸咖啡，是财报上增长亮眼的小鹿茶进行了品牌独立，正在招募各地的合伙人，问我能不能加盟，有没有钱赚。
-看得我很伤心，真的。
-亏我多次称赞瑞幸是最牛逼的民族品牌，因为从来不割国内的韭菜，都是从国外搞钱烧来补贴大家喝咖啡，走的是公益路线。
-没想到浓眉大眼的瑞幸居然搞了小鹿茶现在开始在国内招募合伙人了。
-我觉得自己被扇了一耳光。
-不谈瑞幸和小鹿茶，单看奶茶加盟这个行业，我觉得我觉得但凡稍微有点眼力或者判断力的人，都不会在2019年投身到奶茶加盟这个无底巨坑了。
-作为一个参与了多家奶茶企业及供应链公司融资尽调的人，我想说目前几乎所有的奶茶加盟，对于绝大多数普通人而言，是坑。
-加盟奶茶的这些人，90%都是赔钱的，剩下的10%也基本是勉强维持赚不到什么钱，除了奶茶商家外，只有极少数自有店面的人还多少能捞一点点。
-如果现在是2014年，那么奶茶还算一个值得玩玩儿的领域。
-但现在是2019年，说这个行业是血海都感觉过于保守了。
-这个行业的现状简直可以称之为地中海。
-不仅深不见底，而且每一个加盟奶茶的人，最终都会愁成地中海。
-2 先不说行业，我想先问问各位想要加盟奶茶店的人3个灵魂问题，如果你的答案是否的话，建议直接拉黑所有让你加盟的销售就可以了。
-不然你脑子里绝对进奶茶了，还是加浓的那种。
-问题1，你在奶茶店打过工吗？ 这个问题其实是多个问题的综合，就是你对于奶茶行业了解多少。 你知道客流潮汐吗？你知道近3年店铺人流的变化吗？ 你知道原材料的真实成本以及营销成本和售价的ROI关系吗？ 你知道如何流程化管理员工让他们不要瞎JB搞甚至偷钱吗？ 你知道奶茶标准SOP有多少页，如何抓大放小吗？ 你知道如果外送的话，运费和外卖平台促销成本是怎样的吗？ 如果你听的很茫然，那么还是别来送人头了，奶茶这个行业，外行杀进来会死的很惨的。
-问题2，你在开店当地有资源吗？ 这个问题本质上是问你的奶茶店选址成本是否可控，奶茶，是一个高度吃地理位置的行业，这个年代别想什么酒香不怕巷子深，奶茶店地理位置不是人流中心地带的话，直接就不用开了。
-各个犄角旮旯里死去的奶茶店数都数不清。
-如果是中心地带的话，那么你能保证拿下这块地吗？
-注意，拿下的前提是以合理的成本，如果成本失控，那么拿这块地也没意义。
-如果不能，你还是别来了，这个门槛对你高到能卡蛋的地步。
-问题3，你有多少本钱可以烧掉不心疼？
-这个问题本质上是问你的抗风险能力。
-我相信每个人做生意都不是为了赔钱的，但正因如此，才要给自己留足余地，因为生意这件事情，真的是说不好的。
-别总想着孤注一掷破釜沉舟，人类历史上成功的也就那么几个，绝大多数都是死的不要不要的没人知道，这叫做幸存者偏差。
-奶茶店属于非常吃资金流的行业，很多原材料的保质期都不长，而且SOP要求新鲜度，如果没有足够的准备，那么很快你就发现自己手里的钢镚根本吃不住烧。
-这时候后悔，就真的晚了。
-如果你没有足够的运营资金等着烧，并且烧光了也不影响生活，那么还是别来玩儿奶茶店了，这行业成功率太低。
-我给供应链做贷款尽调的时候，见识过的普通家庭创业开奶茶店烧个妻离子散一屁股债的太多了。 多到你想象不到。
-3 经历灵魂3问，如果你还是觉得自己想要在奶茶行业一展拳脚，成为一代奶茶大师的话，那么我来和你好好讲讲奶茶加盟里的坑。
-其实上述的灵魂3问，各种奶茶加盟都有各种话术应对，无非是跟你讲自己是大品牌，实力雄厚，并且有足够的知名度，毛利率高，并且会帮你选址，帮你安排装修，帮你培训员工，教你如何管理，给你提供标准化的原材料，你只需要一颗创业的心和吃苦的勇气，以及一大堆加盟费就够了， 干奶茶，他们各个都是专业的，你只要躺下数钱就行。
-听起来真的很诱人，而且餐饮还是出名的强流水行业，还是实业，干干干，冲冲冲。
-各家的话术本质都差不多，但是这些话术中隐藏着一个非常实际的问题。
-既然厂家什么东西都能做到位包你上手就赚钱，有你没你差不多，那他们要你干嘛？
-一个必然赚钱的店，煞笔才开加盟，你见过星巴克开加盟吗？
-实力雄厚，知名度高，且毛利高的厂家差你一个外行的十几万钢镚吗？
-他们不是赚钱么？不是管理能力强吗？不是7天培训上岗吗？干嘛不自己做？
-除非，他们说的都是假的，就靠你交加盟费来养活。
-吃的就是外行不懂。
-绝大多数奶茶加盟，本质上就是厂家在割加盟者的韭菜，这个流程已经非常熟练了。
-其实也不局限于奶茶，各种品牌加盟的玩法，越来越像资金盘做局了。
-先搞几家样板店，然后雇人来买，造成特别火爆的假象，然后择机开放加盟，疯狂打广告，吸引人加盟。
-加入前他是儿子般的态度，交钱后他就是爹。
-加盟费割一笔，培训费割一笔，然后就是原材料高价割一笔，流水抽成赚一笔，时不时巡店罚款割一笔，最后保证金再割一笔。
-你赚不赚不重要，重要的是他们赚了，不仅赚了钱，而且韭菜们开了这么多店，无形中给他们打了很多广告，甚至有的品牌的考核还有拉多少人开店才能返还保证金，彻彻底底的资金盘玩法。
-之前在抖音爆火的某茶，一口气搞了6000多家加盟，最火爆的时候，一条街能有3家某案茶，结果3个月不到，倒闭了80%，但这不重要，因为厂家早就赚嗨了，可以换一个新品牌接着割了。
-可怜了那些负债加盟的人，以及他们的家庭。
-4 再说具体点，当你选择加盟一家奶茶后，会发生什么事情。
-记清楚，加盟商的目的不是帮你赚钱，而是从你手上赚钱，这一点非常重要。
-首先你得交加盟费，有的品牌收几万块，有的收几千块，随着韭菜不好割了，已经开始有品牌开始0加盟费了，靠后面的运营来赚你钱。
-然后你得交保证金，这个不同品牌不一样，但是说法都差不多，这个保证金是约束，防止你做对品牌不利的事情，只要XXX时间没问题或者退出时，保证金会还给你，当然最终还不还给你就不知道了。 培训费和培训之类的洗脑就不说了，我管这套叫做韭菜三板斧。
-当你经历了三板斧之后，你需要有一个店铺地址。
-这里就考验你拿店的能力了，每个城市，哪怕是县城，那些人流量大的好位置也都是有限的，不要想着找便宜的地方。
-奶茶店最重要的三要素，地理位置，地理位置，还是地理位置，就算你打算做外卖，也要选附近有学校或者是CBD。
-这些地理位置的统一特征就是贵。
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5d81a71a00f24e1fd556cc25/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -522,11 +471,11 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 		</ul>
 	</div>
 </div>

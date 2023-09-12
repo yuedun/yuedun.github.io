@@ -142,6 +142,28 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5742d3bb44b00beb2d26238d/" rel="bookmark">
+			VMware重新安装VMware Tool
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-05-23T09:56:11Z">2016-05-23 09:56</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		VMware重新安装VMware Tool 将虚拟机从Ubuntu 14重新安装为Ubuntu 16以后不能将Windows的文本内容复制到Linux中，需要重新安装VMware Tool,VMware版本为12
+一、安装VMware Tool 安装时需要在虚拟机启动登录的情况下进行，
+点击以后应该会弹出磁盘图标并且打开一个文件夹
+文件夹中包含一个压缩文件，需要解压，解压需要root权限，打开命令行 # sudo su 提升为超级用户，可以右击查看gz压缩文件路径，并切换到该目录下，或者可以直接使用图形界面，右击-提取，不能提取到当前目录下，该目录为磁盘目录，不能写入数据，解压到其他目录下即可。解压完成会得到vmware-tools-distrib文件夹，文件夹下有多个文件，其中有vmware-install.pl，命令行中执行这个文件 ./vmware-install.pl 基本可以一路按回车，安装完成后需要重启。重启后可能会有这样的显示，不过不影响。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/574019ee0bdb5de027394523/" rel="bookmark">
 			linux下安装nodejs
 			</a>
@@ -336,27 +358,6 @@ v-on:click=&quot;say('hello!', $event)&quot;
 使用focus，blur可对表单进行验证，除了这两个事件，还有一个watch属性可监听data属性值得变化，具体可打开浏览器控制台看属性值得变化情况，代码可直接在浏览器中查看源码
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/568b2d05db1fef9e0cda949f/" rel="bookmark">
-			webuploader模态框按钮不起作用或每次打开都会变大
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-05T02:40:05Z">2016-01-05 02:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		在bootstra模态框中放置webuploader上传控件，每次打开模态框按钮都会成倍放大，原因是每次打开模态框都会进行一次初始化，在原来按钮的基础上又加了一层样式，那么初始化一次应该可以吧。
-修改后的确不会再放大了，可以又有新问题出现了，就是不能点击上传文件了。
-上传实例初始化一次，先然按钮正常显示， var uploader = WebUploader.create({})， 再通过uploader提供的API重新添加一个按钮uploader.addButton({})，这样类似于将前一个按钮覆盖了。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -380,11 +381,11 @@ v-on:click=&quot;say('hello!', $event)&quot;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 		</ul>
 	</div>
 </div>

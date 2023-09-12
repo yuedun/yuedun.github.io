@@ -142,6 +142,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2022/09/elasticsearch-bulk-upsert/" rel="bookmark">
+			Elasticsearch批量insert和批量upsert
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-09-28T14:00:43&#43;08:00">2022-09-28 14:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>, <a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		golang版本的elasticsearch批量插入和批量更新方法如下：
+package main import ( &#34;github.com/elastic/go-elasticsearch/v8&#34; &#34;github.com/elastic/go-elasticsearch/v8/esutil&#34; ) func main() { list:=make(User, 0) bulkES(list) } func bulkES(list []User) error { indexer, err := esutil.NewBulkIndexer(esutil.BulkIndexerConfig{ Index: &#34;search-user&#34;, Client: ES, }) if err != nil { return err } for _, v := range list { data, err := json.Marshal(v) if err != nil { return err } err = indexer.Add( context.Background(), esutil.BulkIndexerItem{ Action: &#34;index&#34;, Body: bytes.NewReader(data), }, ) if err != nil { return err } } indexer.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2022/09/elasticsearch-bulk-upsert/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2022/05/http-response-garbled/" rel="bookmark">
 			go http响应乱码
 			</a>
@@ -384,32 +407,6 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 		<a class="list__footer-readmore btn" href="/2021/07/qiuniu-image-preivew/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2021/06/gitpage-hugo-page-view/" rel="bookmark">
-			gitpage Hugo统计每一篇文章浏览量
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-18T20:03:41&#43;08:00">2021-06-18 20:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		接上篇《博客迁移至hugo gitpage》后，因为缺失了每一篇文章的浏览量，而hugo又不具备这样的功能，原因还是gitpage不具备数据存储能力，自然就没办法统计每一篇文章的浏览量了。原本想使用自己服务器提供一个接口来记录，但发现https协议不支持调用http协议的接口，会出现block:mixed-content错误。
-错误：https页面去发送http请求报错(浏览器阻止https发送http请求)
-问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。
-后来想到了leancloud，直接在前端调用api，将数据存储在云端。
-&lt;script src=&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;&gt;&lt;/script&gt; &lt;script&gt; // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003 // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086 const appId = &#34;xxx&#34;; const appKey = &#34;xxx&#34;; const serverURL = &#34;xxx&#34;; AV.init({ appId, appKey, serverURL }); function updateCollect() { const collect = new AV.Query(&#39;Collect&#39;); const url = location.pathname; collect.select([&#39;url&#39;, &#39;pv&#39;]) collect.equalTo(&#39;url&#39;, url); collect.first().then((col) =&gt; { if (!col) { // 声明 class const Collect = AV.Object.extend(&#39;Collect&#39;); // 构建对象 const collect = new Collect(); // 为属性赋值 collect.set(&#39;url&#39;, url); collect.set(&#39;pv&#39;, 1); collect.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/06/gitpage-hugo-page-view/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -433,11 +430,11 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 		</ul>
 	</div>
 </div>

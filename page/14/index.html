@@ -142,6 +142,34 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/58037ab767a381257039c926/" rel="bookmark">
+			TypeScript中的装饰器Decorato什么时候执行？
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-16T13:03:51Z">2016-10-16 13:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启experimentalDecorators。
+命令行编译
+tsc --target ES5 --experimentalDecorators /test.ts 或者配置文件设置：
+tsconfig.json:
+{ &#34;compilerOptions&#34;: { &#34;experimentalDecorators&#34;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
+//test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&#34;hello&#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name); } } 生成的js代码：
+//test.js var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/58037ab767a381257039c926/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/57fcf50869c8bf6e323dff48/" rel="bookmark">
 			使用typescript开发nodejs的环境搭建（一）
 			</a>
@@ -351,28 +379,6 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
 		vm提供了一个沙箱环境，什么叫沙箱环境？类似于一个独立的执行空间，什么时候会用到vm模块？就以我现在接触的需求来说，每个月都有运营活动，但是每次需求又不同，比如一些优惠规则不同，最后可能只需要得到一个结果，如果每次活动都去修改代码就会显得很麻烦，我们提供一个后台管理界面，或者直接在数据库里写入每次活动的不同计算规则，这些规则其实也是JavaScript代码，既然是代码就需要执行才行。这就形成了一种情况：在已有的程序中插入一段代码进行执行，这要怎么实现？如果觉得很容易插入的话，那么是不是黑客可以在你的程序中插入一段代码执行呢？这当然是不允许的，所以就需要提供一种安全环境来执行——就是沙箱了，而vm模块就是提供了这样一种执行环境。 http://www.cnblogs.com/softlover/archive/2012/10/03/2707144.html
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5742d3bb44b00beb2d26238d/" rel="bookmark">
-			VMware重新安装VMware Tool
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-05-23T09:56:11Z">2016-05-23 09:56</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		VMware重新安装VMware Tool 将虚拟机从Ubuntu 14重新安装为Ubuntu 16以后不能将Windows的文本内容复制到Linux中，需要重新安装VMware Tool,VMware版本为12
-一、安装VMware Tool 安装时需要在虚拟机启动登录的情况下进行，
-点击以后应该会弹出磁盘图标并且打开一个文件夹
-文件夹中包含一个压缩文件，需要解压，解压需要root权限，打开命令行 # sudo su 提升为超级用户，可以右击查看gz压缩文件路径，并切换到该目录下，或者可以直接使用图形界面，右击-提取，不能提取到当前目录下，该目录为磁盘目录，不能写入数据，解压到其他目录下即可。解压完成会得到vmware-tools-distrib文件夹，文件夹下有多个文件，其中有vmware-install.pl，命令行中执行这个文件 ./vmware-install.pl 基本可以一路按回车，安装完成后需要重启。重启后可能会有这样的显示，不过不影响。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -396,11 +402,11 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 		</ul>
 	</div>
 </div>

@@ -142,6 +142,31 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/59eab23989faeadc30eac826/" rel="bookmark">
+			sequelize.js不能将驼峰camelCased命名转化为下划线underscored命名
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-21T02:34:33Z">2017-10-21 02:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		定义Model的时候有这样两个参数： underscored,underscoredAll,
+Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
+其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
+var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assistance&#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &#39;assistance&#39;, charset: &#39;utf8&#39;, collate: &#39;utf8_unicode_ci&#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/59eab23989faeadc30eac826/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/599cf46c1bffdb00880597b3/" rel="bookmark">
 			Unhandled rejection CastError: Cast to ObjectId failed for value catalog at path _id for model Blog
 			</a>
@@ -338,26 +363,6 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/592195fed65a0126c7cdf455/" rel="bookmark">
-			婴儿学步牵引绳需不需要？
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-21T13:28:30Z">2017-05-21 13:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		我女儿12个月开始学走路，由于她身高还很低，所以需要大人弯着腰搀扶着，时间长了大人的腰比较累，当时就在网上买了个绑带。 本以为能轻松点，结果发现排不上用场，因为实在不好用，宝宝根本不会老实的配合，她一感觉到胸前有个东西扶着她，就整个人爬下来了，所有重点都放在牵引绳上，所以大人就只能提着，而且由于刚学走路，也不能稳当的走，总是东倒西歪，牵引绳其实不能保证宝宝的平衡，反而会过于依赖绑带，结果就导致失去平衡类似于一只脚在地上一只脚翘起来打转，也容易勒到胳膊。
-宝宝学走路一般一个月就能自己走了，所以我觉得没必要用这个。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -381,11 +386,11 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/04/centos-appstream-error/">Centos Appstream Error</a></li>
 		</ul>
 	</div>
 </div>
