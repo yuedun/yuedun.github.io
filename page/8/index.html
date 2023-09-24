@@ -142,6 +142,36 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5db03db400f24e1fd556cec4/" rel="bookmark">
+			让代码配置化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-10-23T11:47:00Z">2019-10-23 11:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		背景 面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。
+原来 日常开发流程是这样的：
+开发 -&gt; 合代码 -&gt; 上测试环境 -&gt; 测试 -&gt; 合代码 -&gt; 上uat环境 -&gt; 测试 -&gt; 合代码 -&gt; 提发布申请 -&gt; 发布 -&gt; 验收
+就算是一个3分钟搞定的需求，流程也需要1天，因为中间有太多的环境切换和人员流转。
+这样的经历所有做过运营活动的童鞋或多或少都有体验，所以很多人也想过做一个编辑器，比如拖拉组件的方式实现一个页面。
+我们曾经有种设想是直接给运营做一个活动编辑器，让他们自己去修改，自己去做页面，自己发布。说实话这个也做过，但是没用起来，原因呢大概就是人性的贪婪与懒惰，当初做出第一版的时候觉得太简单，不能满足使用需求，第二版的时候功能倒是挺丰富，但是运营又不会用。想想那么多css样式，你以为图形化了他们就会用？太天真！干脆教他们写代码好了！
+现在 所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。 这个平台最终流程变成了这样：
+开发 -&gt; 测试 -&gt; 发布 -&gt; 验收
+是的，由原来的11步直接变成了4步，其中开发和发布也比原来更简单了，你可以选择自己喜欢的编辑方式和开发框架，或vscode，或devtool,或工具提供的文本框，或jquery，或vue。可单独对css，js，html修改，将修改的内容直接提交即可看到效果。 为什么会减少这么多？因为没有了测试环境和uat环境的流转，直接在生产环境操作的。
+是不是会有疑问——直接在生产环境开发会不会有风险？ 答案是：不会！项目本身是分为两个环境，一个是开发环境，另一个是访问环境。开发环境是用于内部开发和测试使用，不对外开放，只有发布后才将开发数据同步到公开环境。
+上图展示的是一个示例程序，提供一种思路，可根据自己需求开发相应功能。比如支持多环境发布，回滚，都可以做到点个按钮就行，不需要等待编译和重启等耗时。因为开发完成后的一切操作都是数据的操作，并不会涉及到编译，所以无论是发布还是回滚都是毫秒完成。 这种做法适合频繁修改的页面，万年不变的页面就不需要这样做了。
+核心思想 这个项目的核心思想是将代码做成配置，我们都喜欢做配置平台，让业务来操作数据省去了修改代码，为什么不可以将代码也做成配置？
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5d81a71a00f24e1fd556cc25/" rel="bookmark">
 			再坚持一下，你的奶茶店马上破产
 			</a>
@@ -448,29 +478,6 @@ upstream grpcservice { server localhost:50051; server localhost:50052; } server 
 原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5bbf2531f846d21847dc2fcc/" rel="bookmark">
-			linux修改MySQL 5.7.22字符集为utf8
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-11T10:25:53Z">2018-10-11 10:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		网上也找了很多方案结果就是奇葩的不成功，最后直接修改/etc/mysql/mysql.conf.d/mysqld.cnf成功了。 在该文件最后添加
-default-storage-engine=INNODB character-set-server=utf8 collation-server=utf8_general_ci 重启成功。
-这是本地虚拟机里的mysql
-mysql&gt; show variables like &#34;character%&#34;; +--------------------------+----------------------------+ | Variable_name | Value | +--------------------------+----------------------------+ | character_set_client | utf8 | | character_set_connection | utf8 | | character_set_database | utf8 | | character_set_filesystem | binary | | character_set_results | utf8 | | character_set_server | utf8 | | character_set_system | utf8 | | character_sets_dir | /usr/share/mysql/charsets/ | +--------------------------+----------------------------+ 完全正确，但是修改阿里云服务器以后还是有点小问题
-character_set_database这一项还是latin1,不过似乎并不影响。 友情提示：纠正了mysql字符集发现新建的表还是latin1字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -494,11 +501,11 @@ character_set_database这一项还是latin1,不过似乎并不影响。 友情�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-devolep/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 		</ul>
 	</div>
 </div>

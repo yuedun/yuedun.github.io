@@ -141,6 +141,36 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2023/09/wechatchat-devolep/" rel="bookmark">
+			微信开发基础设施准备
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-24T11:07:26&#43;08:00">2023-09-24 11:07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		多年前微信开发写过一篇关于内网穿透的文章《微信开发通过公网访问本地服务器》，如今重拾起微信开发还是有很多基础准备工作要做。
+本地服务器地址 前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。
+不可用的方式——ngrok
+最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。
+借助花生壳来实现
+如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”。就去web页面配置即可https://console.hsk.oray.com/forward
+服务器配置 此处的**服务器地址(URL)**不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。
+测试号管理 测试号管理点开后就会看到和上面服务器配置一样的配置内容。
+测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。
+接口访问白名单 设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单
+这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。
+有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2023/09/https-ca/" rel="bookmark">
 			https证书生成
 			</a>
@@ -380,11 +410,11 @@ vscode中可以通过配置launch.json文件实现：
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-devolep/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 		</ul>
 	</div>
 </div>

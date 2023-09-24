@@ -142,6 +142,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/55ab0f6ed366f15412cbf596/" rel="bookmark">
+			微信开发通过公网访问本地服务器
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-19T02:46:06Z">2015-07-19 02:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		做微信开发的时候，在开发者中心需要进行服务器配置，这里的配置是一个可以公网访问的地址，如果是产品上线的话肯定有公网地址，但是在开发过程中需要本地测试，总不能开发一点部署到服务器测试。这时候我们就需要从公网访问本地服务器。
+这已经是设置好的，服务器端口是指公网地址的端口，就以80端口来好了，这样公网地址可以省略端口，内部服务器端口就是本地服务器端口，Java程序一般是8080这样的端口，IP地址就是本地服务器在局域网中的ip，协议选ALL，状态：生效。常用服务器端口可以不选。
+然后启动本地服务器就可以通过路由器的公网IP访问本地服务了
+但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”：
+当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/559bd64ad366f15412cbf594/" rel="bookmark">
 			前端工具gulp的用途和使用方法
 			</a>
@@ -329,28 +352,6 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 内容摘自知乎：http://www.zhihu.com/question/19851117
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/554aff409ddef487a8b23409/" rel="bookmark">
-			redis启动失败
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T05:59:28Z">2015-05-07 05:59</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		redis-server.exe redis.windows.conf 使用上面命令启动redis服务的时候报了以下错误信息： The Windows version of Redis allocates a memory mapped heap for sharing with the forked process used for persistence operations. In order to share this memory, Windows allocates from the system paging file a portion equal to the size of the Redis heap. At this time there is insufficient contiguous free space available in the system paging file for this operation (Windows error 0x5AF). To work around this you may either increase the size of the system paging file, or decrease the size of the Redis heap with the &ndash;maxheap flag.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/554aff409ddef487a8b23409/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -374,11 +375,11 @@ var gulp = require(&#39;gulp&#39;); var jshint = require(&#39;gulp-jshint&#39;);
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-devolep/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/ci-cd/">jenkins代替品</a></li>
 		</ul>
 	</div>
 </div>

@@ -6,7 +6,7 @@
     <description>Recent content on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 12 Sep 2023 14:18:30 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Sep 2023 11:07:26 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>目录</title>
       <link>https://www.yuedun.wang/catalog/</link>
@@ -42,6 +42,26 @@ edge chrome下载地址：https://www.microsoftedgeinsider.com/en-us/download
 技能：nodejs，golang，react，vue，jquery，爬虫，mongodb。
 其他：本博客由基于gitpage，hugo提供技术服务。
 QQ：438473005</description>
+    </item>
+    
+    <item>
+      <title>微信开发基础设施准备</title>
+      <link>https://www.yuedun.wang/2023/09/wechatchat-devolep/</link>
+      <pubDate>Sun, 24 Sep 2023 11:07:26 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2023/09/wechatchat-devolep/</guid>
+      <description>多年前微信开发写过一篇关于内网穿透的文章《微信开发通过公网访问本地服务器》，如今重拾起微信开发还是有很多基础准备工作要做。
+本地服务器地址 前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。
+不可用的方式——ngrok
+最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。
+借助花生壳来实现
+如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”。就去web页面配置即可https://console.hsk.oray.com/forward
+服务器配置 此处的**服务器地址(URL)**不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。
+测试号管理 测试号管理点开后就会看到和上面服务器配置一样的配置内容。
+测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。
+接口访问白名单 设置路径：设置与开发 -&amp;gt; 安全中心 -&amp;gt; IP白名单
+这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。
+有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！</description>
     </item>
     
     <item>
@@ -2806,7 +2826,8 @@ Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId 
       <description>做微信开发的时候，在开发者中心需要进行服务器配置，这里的配置是一个可以公网访问的地址，如果是产品上线的话肯定有公网地址，但是在开发过程中需要本地测试，总不能开发一点部署到服务器测试。这时候我们就需要从公网访问本地服务器。
 这已经是设置好的，服务器端口是指公网地址的端口，就以80端口来好了，这样公网地址可以省略端口，内部服务器端口就是本地服务器端口，Java程序一般是8080这样的端口，IP地址就是本地服务器在局域网中的ip，协议选ALL，状态：生效。常用服务器端口可以不选。
 然后启动本地服务器就可以通过路由器的公网IP访问本地服务了
-但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”： 当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了 </description>
+但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”：
+当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了</description>
     </item>
     
     <item>
