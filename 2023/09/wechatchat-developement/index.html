@@ -4,23 +4,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>https证书生成 - 月盾的博客</title>
+	<title>微信开发基础设施准备 - 月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="https证书生成">
+	<meta name="description" content="微信开发基础设施准备：内网穿透，服务器URL，白名单">
 		
-		<meta property="og:title" content="https证书生成" />
-<meta property="og:description" content="https证书生成" />
+		<meta property="og:title" content="微信开发基础设施准备" />
+<meta property="og:description" content="微信开发基础设施准备：内网穿透，服务器URL，白名单" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.yuedun.wang/2023/09/https-ca/" /><meta property="article:section" content="2023" />
-<meta property="article:published_time" content="2023-09-12T14:18:30+08:00" />
-<meta property="article:modified_time" content="2023-09-12T14:18:30+08:00" />
+<meta property="og:url" content="https://www.yuedun.wang/2023/09/wechatchat-developement/" /><meta property="article:section" content="2023" />
+<meta property="article:published_time" content="2023-09-24T11:07:26+08:00" />
+<meta property="article:modified_time" content="2023-09-24T11:07:26+08:00" />
 
 
-		<meta itemprop="name" content="https证书生成">
-<meta itemprop="description" content="https证书生成"><meta itemprop="datePublished" content="2023-09-12T14:18:30+08:00" />
-<meta itemprop="dateModified" content="2023-09-12T14:18:30+08:00" />
-<meta itemprop="wordCount" content="19">
-<meta itemprop="keywords" content="nginx," />
+		<meta itemprop="name" content="微信开发基础设施准备">
+<meta itemprop="description" content="微信开发基础设施准备：内网穿透，服务器URL，白名单"><meta itemprop="datePublished" content="2023-09-24T11:07:26+08:00" />
+<meta itemprop="dateModified" content="2023-09-24T11:07:26+08:00" />
+<meta itemprop="wordCount" content="20">
+<meta itemprop="keywords" content="微信,内网映射," />
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
@@ -142,23 +142,34 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">https证书生成</h1>
+			<h1 class="post__title">微信开发基础设施准备</h1>
 			<div class="post__meta meta"><div class="meta__item-author meta__item">
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-12T14:18:30&#43;08:00">2023-09-12 14:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-24T11:07:26&#43;08:00">2023-09-24 11:07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
-			<p>生成crt证书</p>
-<blockquote>
-<p>openssl req -new -x509 -key domain.key -out domain.crt -days 365</p>
-</blockquote>
-<p>将CRT转换为CSR：</p>
-<blockquote>
-<p>openssl req -new -key domain.key -out domain.csr</p>
-</blockquote>
+			<p>多年前微信开发写过一篇关于内网穿透的文章<a href="/blogdetail/55ab0f6ed366f15412cbf596/">《微信开发通过公网访问本地服务器》</a>，如今重拾起微信开发还是有很多基础准备工作要做。</p>
+<h2 id="本地服务器地址">本地服务器地址</h2>
+<p>前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。</p>
+<p><strong>不可用的方式——ngrok</strong></p>
+<p>最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。</p>
+<p><strong>借助花生壳来实现</strong></p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
+<p>如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”。就去web页面配置即可https://console.hsk.oray.com/forward</p>
+<h2 id="服务器配置">服务器配置</h2>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
+<p>此处的**服务器地址(URL)**不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。</p>
+<h2 id="测试号管理">测试号管理</h2>
+<p><a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index">测试号管理</a>点开后就会看到和上面服务器配置一样的配置内容。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
+<p>测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。</p>
+<h2 id="接口访问白名单">接口访问白名单</h2>
+<p>设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单</p>
+<p>这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。</p>
+<p>有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！</p>
 
 		</div>
 		<footer class="post__footer">
@@ -167,7 +178,10 @@
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
 		<li class="tags__item">
-			<a class="tags__link btn" href="/tags/nginx/" rel="tag">nginx</a>
+			<a class="tags__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" rel="tag">内网映射</a>
 		</li>
 	</ul>
 </div>
@@ -178,15 +192,9 @@
 
 <nav class="pager flex">
 	<div class="pager__item pager__item--prev">
-		<a class="pager__link" href="/2023/07/ali-oss-process/" rel="prev">
+		<a class="pager__link" href="/2023/09/https-ca/" rel="prev">
 			<span class="pager__subtitle">«&thinsp;上一篇</span>
-			<p class="pager__title">阿里云oss私有桶图片处理</p>
-		</a>
-	</div>
-	<div class="pager__item pager__item--next">
-		<a class="pager__link" href="/2023/09/wechatchat-developement/" rel="next">
-			<span class="pager__subtitle">下一篇&thinsp;»</span>
-			<p class="pager__title">微信开发基础设施准备</p>
+			<p class="pager__title">https证书生成</p>
 		</a>
 	</div>
 </nav>
