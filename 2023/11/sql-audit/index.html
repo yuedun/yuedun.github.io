@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>常用SQL审计平台介绍 - 月盾的博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Sql Audit">
+		
+		<meta property="og:title" content="常用SQL审计平台介绍" />
+<meta property="og:description" content="Sql Audit" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.yuedun.wang/2023/11/sql-audit/" /><meta property="article:section" content="2023" />
+<meta property="article:published_time" content="2023-11-14T15:53:33+08:00" />
+<meta property="article:modified_time" content="2023-11-14T15:53:33+08:00" />
+
+
+		<meta itemprop="name" content="常用SQL审计平台介绍">
+<meta itemprop="description" content="Sql Audit"><meta itemprop="datePublished" content="2023-11-14T15:53:33+08:00" />
+<meta itemprop="dateModified" content="2023-11-14T15:53:33+08:00" />
+<meta itemprop="wordCount" content="245">
+<meta itemprop="keywords" content="mysql," />
+
+	<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+
+	
+		
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-9KRMQRCRDQ');
+</script>
+
+
+<script src="/js/av-min.js"></script>
+<script>
+  
+  
+  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
+  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
+  const serverURL = "https://api.yuedun.wang";
+  AV.init({ appId, appKey, serverURL });
+  function updateCollect() {
+    const collect = new AV.Query('Collect');
+    const url = location.pathname;
+    collect.select(['url', 'pv'])
+    collect.equalTo('url', url);
+    collect.first().then((col) => {
+      if (!col) {
+        
+        const Collect = AV.Object.extend('Collect');
+        
+        const collect = new Collect();
+        
+        const title = document.title;
+        collect.set('title', title);
+        collect.set('url', url);
+        collect.set('pv', 1);
+        collect.save()
+      } else {
+        col.increment('pv', 1)
+        col.save();
+        
+        try {
+          const context = document.querySelector('.post__meta.meta');
+          const pv = document.createElement('div');
+          pv.setAttribute('class', 'meta__item-author meta__item');
+          const span = document.createElement('span');
+          span.setAttribute('class', 'meta__text');
+          span.innerText = "浏览（" + col.get('pv') + "）";
+          pv.appendChild(span)
+          context.appendChild(pv)
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    });
+  }
+
+  updateCollect()
+</script>
+</head>
+<body class="body">
+	<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾</div>
+						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/quicknote/">
+					
+					<span class="menu__text">速记</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+	<div class="container wrapper flex">
+		<div class="primary">
+		
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">常用SQL审计平台介绍</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-14T15:53:33&#43;08:00">2023-11-14 15:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			<p>数据安全一直是企业安全的重中之重，在企业系统开发过程中，数据库的安全日益增强，所以需要有个平台能够记录和审查数据库变更。</p>
+<p>SQL 审计平台的功能特点：</p>
+<ul>
+<li>实时监控和记录：SQL 审计平台能够实时监听数据库操作，记录所有的 SQL 查询和事务操作，确保数据变更的可追溯性。</li>
+<li>用户行为分析：通过分析用户的查询行为和访问模式，SQL 审计平台可以识别风险操作、异常查询和异常登录行为，帮助提前发现潜在的安全威胁。</li>
+<li>合规报告与警报：SQL 审计平台能够生成详尽的合规报告，满足合规要求，并根据预设的规则触发警报，帮助管理员及时采取应对措施。</li>
+<li>数据完整性保护：通过审计日志记录的数据变更信息，SQL 审计平台能够帮助恢复受损的数据或进行调查取证，确保数据库的完整性和可靠性。</li>
+<li>权限管理与访问控制：SQL 审计平台提供丰富的权限管理功能，可以对用户进行细粒度的访问控制，确保只有经过授权的用户能够访问敏感数据。</li>
+</ul>
+<p>常见的sql审计平台：</p>
+<ul>
+<li>Yearning</li>
+<li>Archery</li>
+<li>bytebase</li>
+</ul>
+<h2 id="yearning">Yearning</h2>
+<p>官网：<a href="https://yearning.io/">https://yearning.io</a></p>
+<p>开发语言：golang</p>
+<p>功能：</p>
+<ul>
+<li>SQL 查询
+<ul>
+<li>查询工单</li>
+<li>导出</li>
+<li>自动补全，智能提示</li>
+<li>查询语句审计</li>
+<li>查询结果脱敏</li>
+</ul>
+</li>
+<li>SQL 审核
+<ul>
+<li>流程化工单</li>
+<li>SQL语句语法检测</li>
+<li>根据规则检测SQL语句合规性</li>
+<li>自动生成DDL/DML回滚语句</li>
+<li>历史审核记录</li>
+</ul>
+</li>
+<li>推送
+<ul>
+<li>E-mail 工单推送</li>
+<li>钉钉 webhook 机器人工单推送</li>
+</ul>
+</li>
+<li>用户权限及管理
+<ul>
+<li>角色划分</li>
+<li>基于用户的细粒度权限</li>
+<li>注册</li>
+</ul>
+</li>
+<li>其他
+<ul>
+<li>todoList</li>
+<li>LDAP 登录</li>
+<li>动态审核规则配置</li>
+<li>自定义审核层级</li>
+</ul>
+</li>
+<li>AutoTask 自动执行</li>
+</ul>
+<h3 id="部署">部署</h3>
+<p>支持容器部署。</p>
+<h2 id="archery">Archery</h2>
+<p>官网：<a href="https://archerydms.com/">https://archerydms.com/</a></p>
+<p>开发语言：python</p>
+<p>功能：</p>
+<table>
+<thead>
+<tr>
+<th>查询</th>
+<th>审核</th>
+<th>执行</th>
+<th>备份</th>
+<th>数据字典</th>
+<th>慢日志</th>
+<th>会话管理</th>
+<th>账号管理</th>
+<th>参数管理</th>
+<th>数据归档</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MySQL</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>MsSQL</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>PgSQL</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>Phoenix</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>ODPS</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>ClickHouse</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sql审核">SQL审核</h3>
+<h4 id="mysql实例">MySQL实例</h4>
+<p>基于Inception/goInception实现，集成审核、执行、备份</p>
+<h4 id="非mysql实例">非MySQL实例</h4>
+<p>支持提交和执行工单，依托工作流实现流程化管理</p>
+<h4 id="审核执行分离">审核执行分离</h4>
+<p>审批和执行可以分配给不同的用户进行操作</p>
+<h4 id="sql工单自动审批高危语句驳回">SQL工单自动审批、高危语句驳回</h4>
+<pre><code>支持正则判断工单是否需要人工审批，开启自动审批后，不在正则范围内的SQL语句无需审批，系统自动审核
+自主控制SQL是否自动驳回，可自主配置对inception审核驳回的场景，支持警告驳回和异常驳回
+</code></pre>
+<h4 id="快速上线其他实例">快速上线其他实例</h4>
+<p>在工单详情可快速提交相同SQL内容到其他实例，可适用于test&gt;beta&gt;ga等多套环境维护的需求</p>
+<h4 id="定时执行">定时执行</h4>
+<p>工单审核通过后可以选择定时执行或者立即执行</p>
+<h3 id="sql查询">SQL查询</h3>
+<h4 id="多类型数据库支持">多类型数据库支持</h4>
+<pre><code>MySQL 表级授权、脱敏查询
+MsSQL 库级授权、脱敏查询
+Redis 库级授权
+PostgreSQL 库级授权、脱敏查询
+Oracle 库级授权、脱敏查询
+MongoDB 库级授权
+Phoenix 库级授权
+ODPS 库级授权
+ClickHouse 库级授权
+</code></pre>
+<h4 id="授权管理">授权管理</h4>
+<pre><code>工作流控制SQL查询授权，支持库表级别的权限限制，以及授权时间，查询结果集的限制
+支持部分语句的动态查询脱敏（有限的功能）
+支持前台管理用户权限，对用户权限进行修改和维护
+支持查询导出、查询日志审计
+</code></pre>
+<h4 id="页面体验">页面体验</h4>
+<pre><code>库、表、字段补全提示
+多结果级展示
+表结构查看
+</code></pre>
+<h3 id="sql优化">SQL优化</h3>
+<h4 id="慢日志管理">慢日志管理</h4>
+<p>基于PT收集慢日志，需要单独部署
+SQL语句优化</p>
+<p>基于SQLAdvisor|SOAR|SQLTuning的全方位优化建议</p>
+<h3 id="实例管理">实例管理</h3>
+<h4 id="会话管理">会话管理</h4>
+<pre><code>支持查看和批量终止会话
+支持查看事物、锁信息
+</code></pre>
+<h4 id="数据库管理">数据库管理</h4>
+<p>管理实例数据库，支持添加</p>
+<h4 id="账号管理">账号管理</h4>
+<p>管理实例账号，支持增加、授权、删除</p>
+<h4 id="参数配置">参数配置</h4>
+<p>可修改实例动态参数并记录修改历史</p>
+<h3 id="工具插件">工具插件</h3>
+<h4 id="ptarchiver">PTArchiver</h4>
+<p>支持使用pt-archiver归档MySQL数据，支持直接添加配置和由用户申请归档</p>
+<h4 id="binlog2sql">Binlog2SQL</h4>
+<p>将Binlog2SQL模块可视化，从MySQL binlog解析出你要的SQL</p>
+<h4 id="my2sql">My2SQL</h4>
+<p>My2SQL可视化，更高效地解析MySQL binlog，快速回滚</p>
+<h4 id="schemasync">SchemaSync</h4>
+<p>对比不同数据库的Schema信息，输出修改语句和回滚语句，SchemaSync不仅限于表结构，它可以处理的对象还有：视图、事件、存储过程、函数、触发器、外键</p>
+<h3 id="资源项目组">资源（项目）组</h3>
+<p>支持自定义资源(项目）组，管理资源组和关联对象，资源组成员之间审批流程、实例配置、消息通知等资源隔离</p>
+<h3 id="权限角色组">权限（角色）组</h3>
+<p>权限可以分配给用户，也可以分配给权限组，支持对大多数操作进行限制，独立控制用户的审核、执行等操作权限</p>
+<h3 id="工作流">工作流</h3>
+<p>工作流审批流程支持多层级多用户，并且隔离资源组，不同资源组不同的工单类型可以配置不同的审批层级</p>
+<h3 id="配置管理">配置管理</h3>
+<p>系统配置项、工作流审批流程可在前端页面动态修改，无需重启服务实时生效</p>
+<h3 id="消息通知">消息通知</h3>
+<p>支持钉钉、企业微信、邮件通知，及时知晓工单状态变化</p>
+<h3 id="可视化">可视化</h3>
+<p>使用pyecharts实现工单、查询维度的可视化统计</p>
+<h3 id="部署-1">部署</h3>
+<p>支持容器部署。</p>
+<h2 id="bytebase">bytebase</h2>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/mysql/" rel="tag">mysql</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/2023/09/wechatchat-developement/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;上一篇</span>
+			<p class="pager__title">微信开发基础设施准备</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/2023/11/kubernetes-deploy-mysql8/" rel="next">
+			<span class="pager__subtitle">下一篇&thinsp;»</span>
+			<p class="pager__title">kubernetes部署mysql8</p>
+		</a>
+	</div>
+</nav>
+
+
+
+		</div>
+		
+	</div>
+	<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
+		</div>
+		
+
+	</div>
+</footer>
+
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
+</body>
+</html>

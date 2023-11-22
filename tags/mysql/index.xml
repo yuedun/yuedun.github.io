@@ -6,7 +6,35 @@
     <description>Recent content in mysql on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 11 Oct 2018 10:25:53 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 13:32:34 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernetes部署mysql8</title>
+      <link>https://www.yuedun.wang/2023/11/kubernetes-deploy-mysql8/</link>
+      <pubDate>Wed, 22 Nov 2023 13:32:34 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2023/11/kubernetes-deploy-mysql8/</guid>
+      <description>apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql spec: progressDeadlineSeconds: 600 replicas: 1 revisionHistoryLimit: 10 selector: matchLabels: app: mysql strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: labels: app: mysql spec: containers: - env: - name: MYSQL_ROOT_PASSWORD value: xxx image: mysql:8.0.33 imagePullPolicy: IfNotPresent name: mysql ports: - containerPort: 3306 name: mysql protocol: TCP resources: limits: cpu: &amp;#34;4&amp;#34; memory: 8Gi volumeMounts: - mountPath: /var/lib/mysql name: data - mountPath: /etc/mysql/conf.</description>
+    </item>
+    
+    <item>
+      <title>常用SQL审计平台介绍</title>
+      <link>https://www.yuedun.wang/2023/11/sql-audit/</link>
+      <pubDate>Tue, 14 Nov 2023 15:53:33 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2023/11/sql-audit/</guid>
+      <description>数据安全一直是企业安全的重中之重，在企业系统开发过程中，数据库的安全日益增强，所以需要有个平台能够记录和审查数据库变更。
+SQL 审计平台的功能特点：
+实时监控和记录：SQL 审计平台能够实时监听数据库操作，记录所有的 SQL 查询和事务操作，确保数据变更的可追溯性。 用户行为分析：通过分析用户的查询行为和访问模式，SQL 审计平台可以识别风险操作、异常查询和异常登录行为，帮助提前发现潜在的安全威胁。 合规报告与警报：SQL 审计平台能够生成详尽的合规报告，满足合规要求，并根据预设的规则触发警报，帮助管理员及时采取应对措施。 数据完整性保护：通过审计日志记录的数据变更信息，SQL 审计平台能够帮助恢复受损的数据或进行调查取证，确保数据库的完整性和可靠性。 权限管理与访问控制：SQL 审计平台提供丰富的权限管理功能，可以对用户进行细粒度的访问控制，确保只有经过授权的用户能够访问敏感数据。 常见的sql审计平台：
+Yearning Archery bytebase Yearning 官网：https://yearning.io
+开发语言：golang
+功能：
+SQL 查询 查询工单 导出 自动补全，智能提示 查询语句审计 查询结果脱敏 SQL 审核 流程化工单 SQL语句语法检测 根据规则检测SQL语句合规性 自动生成DDL/DML回滚语句 历史审核记录 推送 E-mail 工单推送 钉钉 webhook 机器人工单推送 用户权限及管理 角色划分 基于用户的细粒度权限 注册 其他 todoList LDAP 登录 动态审核规则配置 自定义审核层级 AutoTask 自动执行 部署 支持容器部署。
+Archery 官网：https://archerydms.com/
+开发语言：python
+功能：
+查询 审核 执行 备份 数据字典 慢日志 会话管理 账号管理 参数管理 数据归档 MySQL √ √ √ √ √ √ √ √ √ MsSQL √ × √ × × × × × × Redis √ × √ × × × × × × PgSQL √ × √ × × × × × × Oracle √ √ √ √ × × × × × MongoDB √ √ √ × × × × × × Phoenix √ × √ × × × × × × ODPS √ × × × × × × × × ClickHouse √ × × × × × × × × SQL审核 MySQL实例 基于Inception/goInception实现，集成审核、执行、备份</description>
+    </item>
+    
     <item>
       <title>linux修改MySQL 5.7.22字符集为utf8</title>
       <link>https://www.yuedun.wang/blogdetail/5bbf2531f846d21847dc2fcc/</link>

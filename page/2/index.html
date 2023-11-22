@@ -140,6 +140,65 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.yuedun.wang/2023/01/thinkpadjiagutaiyingpan/">
+			<img src="https://hopefully-img.yuedun.wang/%e5%9b%ba%e6%80%81%e7%a1%ac%e7%9b%98%e5%b0%ba%e5%af%b8.jpeg?imageslim" alt="Thinkpad T450加装固态硬盘记录" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2023/01/thinkpadjiagutaiyingpan/" rel="bookmark">
+			Thinkpad T450加装固态硬盘记录
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-01-31T10:58:35&#43;08:00">2023-01-31 10:58</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		2016年初花大价钱买的thinkpad t450准备用来工作，结果发现性能太差，根本满不了需求。于是就放家里日常使用，即使这样还是无法忍受它的慢，慢到什么程度呢？开机到桌面3分钟，再到打开程序3分钟。这还不如我2010年买的2G内存i3电脑性能好。后来把内存从4G加到8G没有明显提升，那就剩下CPU和机械硬盘的问题了，CPU是低压版i5 4300U，和主板焊在一起，没法升级。前几年就想升级硬盘，但是那时候固态硬盘价格不便宜，也没有着急升级。直到最近才忍受不了，下定决心升级一下。
+升级过程并不顺利……
+首先是确定支持的接口，thinkpad t450已经装了一块16G固态硬盘，接口是M.2（即NGFF，现在已经改名为M.2了）
+真实尺寸很小，22*40mm大小，就是2240型号。2280型号意思就是宽22长80，自然就是更大尺寸的。选择的时候要注意不要选错。
+安装好以后使用傲梅分区助手进行系统迁移（之后遇到很多问题），然后在bios里修改启动顺序，结果左上角的光标一直闪，无法进入系统，修改为原HDD硬盘后还是可以启动的。网上有说法是磁盘盘符冲突，按照方法在注册表中调换盘符后还是进入不了系统，甚至原来的磁盘系统也进入不了。
+无奈，只能重装系统。但是不能在原来的盘里装，需要直接装套SSD固态硬盘上。准备了8G U盘，4G肯定是不够的，win10系统就有4.5G以上了。下载winpe，直接安装到U盘里，然后将下载好的win10系统拷贝到winpe工具箱里。
+再修改启动顺序重启系统，这时候也出现问题，识别不到U盘，我是在系统启动后再插上U盘，如果直接插上再启动就会识别不出来。进入到pe系统后首先通过系统安装器安装系统，又出现找不到iso系统文件的情况，重插U盘解决。但是选择目标盘后MBR始终是黄色，无法变成绿色，最后通过CGI工具还原的方式成功安装。
+安装成功重启又出现boot menu界面，死活进入不了系统，这个是由于在bios中修改过启动方式引起的。有uefi和legacy两种模式，设置为both兼容模式启动。至此算是安装成功。
+由于加了SSD固态硬盘，原来的盘符也有变化，SSD成了C盘，原来的C盘变成了D盘，以此类推。手动把原盘中的快捷方式拷贝过新盘，都用不了，可以通过属性-修改路径的方式修正。个别软件缺少dll动态链接库也可以从原盘找到，有两个目录可以查找windows-System32,windows-Syswow64。
+总结：系统启动时间由3分钟提升到了30秒，到桌面也可以直接操作，不需要再等3分钟才能做操作。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/" rel="bookmark">
+			Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-01-03T10:46:35&#43;08:00">2023-01-03 10:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		go run和go build会报出一连串下面这样的警告信息，虽然不影响程序运行，但是看着难看。
+# command-line-arguments ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-link-3994413096/000000.o) was built for newer macOS version (12.0) than being linked (11.0) 解决方法：CGO_CFLAGS=-mmacosx-version-min=10.12 go run main.go，运行前加CGO_CFLAGS=-mmacosx-version-min=10.12参数可以解决。
+vscode中可以通过配置launch.json文件实现：
+{ &#34;version&#34;: &#34;0.2.0&#34;, &#34;configurations&#34;: [ { &#34;name&#34;: &#34;Launch Package&#34;, &#34;type&#34;: &#34;go&#34;, &#34;request&#34;: &#34;launch&#34;, &#34;env&#34;: { &#34;CGO_CFLAGS&#34;:&#34;-mmacosx-version-min=10.12&#34; }, &#34;program&#34;: &#34;${fileDirname}&#34;, &#34;args&#34;: [], &#34;cwd&#34;: &#34;${fileDirname}&#34; } ] } 或者从文件中读取环境变量：
+{ &#34;version&#34;: &#34;0.2.0&#34;, &#34;configurations&#34;: [ { &#34;name&#34;: &#34;Launch Package&#34;, &#34;type&#34;: &#34;go&#34;, &#34;request&#34;: &#34;launch&#34;, &#34;envFile&#34;: &#34;${workspaceFolder}/.env&#34;, &#34;program&#34;: &#34;${fileDirname}&#34;, &#34;args&#34;: [], &#34;cwd&#34;: &#34;${fileDirname}&#34; } ] } 如果是在vscode中执行测试代码，则需要设置settings.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/2022/12/sveltekit/" rel="bookmark">
@@ -337,66 +396,6 @@ void msg_proc(const char *msg_type, const char *msg_buf) { if (0 == strcmp(msg_t
 既然发电量在夜间无法大量减少，而白天大家都用电的时候发电量往往又会不够。那么最好的办法就是鼓励用户尽量把白天需用电做的工作挪到晚上来做。人们形象地把白天用电多比喻成山的“峰”，把夜间用电少比喻成山的“谷”，那么把白天的一部分用电移到夜间用，就可以起到“削峰填谷”的节能作用。这么一来，发电机保持在波动不太大的持续工作状态中，它的能源消耗最少，发电效率最高，生产也更安全。采取夜间电费半价的方式，就是以低价电费来鼓励电力用户积极参与“削峰填谷”的用电方式，共同为电力节能减排做出贡献。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2021/07/gorm-model-find-first/" rel="bookmark">
-			Gorm Model Find First Where等查询函数的区别
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-13T20:51:21&#43;08:00">2021-07-13 20:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		gorm是一款优秀的国产golang orm关系型数据库框架，在国内外使用比较广泛。它的链式调用还算是一种符合人类思维的风格。
-不过在使用过程中也遇到一些困扰，比如：Model, Find, First, Where这些函数该什么时候使用，有时候会有边界不清楚，使用混乱的情况。
-以下代码示例使用v2版本，v1和v2大体上相同，有些细微的不同
-Where和Find search := User{UserName:&#34;月盾&#34;} db.Find(&amp;user, search) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; db.Where(search).Find(&amp;user) // SELECT * FROM `user` WHERE `user`.`user_name` = &#39;月盾&#39; 以上两种查询方式结果一样。
-Find(dest interface{}, conds ...interface{})Find函数有两个参数，dest是数据接收者，conds是查询条件。所以Find也是可以代替Where来传入条件的。
-Where的参数主要分为两类：String，Struct&amp;Map。还有其他不常用类型。
-String参数 当使用string参数时，使用方式类似于fmt.Printf，第一个参数为字符串格式，使用?作为占位符，后面的参数作为值。
-Struct&amp;Map参数 使用结构体和映射作为参数时，则推荐一个参数即可，struct和map本身就是键值对格式。否则容易引起混淆。比如这样的：
-db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;name&#34;, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE name = &#34;jinzhu&#34; AND age = 0; db.Where(&amp;User{Name: &#34;jinzhu&#34;}, &#34;Age&#34;).Find(&amp;users) // SELECT * FROM users WHERE age = 0; 注意 当使用结构作为条件查询时，GORM 只会查询非零值字段。这意味着如果您的字段值为 0、&rsquo;&rsquo;、false 或其他 零值，该字段不会被用于构建查询条件，例如：
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/07/gorm-model-find-first/">阅读全文…</a>
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2021/07/chrome-extensions-hook-ajax/" rel="bookmark">
-			Chrome插件hook Ajax
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-10T20:15:08&#43;08:00">2021-07-10 20:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		如何Hook Ajax请求 现在很多网站都使用Ajax作为数据接口，这样其实也方便爬虫爬取数据，但是，如果站点对IP，访问频率做 了限制，或者网站定位就是搜索类，无法遍历完所有页面，或者是数据实时变化，无法预期的。这样就可能需要 直接在浏览器中模拟人的行为，对于这样的网站(使用Ajax作数据接口，有一定防范措施) ，如果我们可以通过hook得到Ajax请求，就可以搞定它的数据了。
-单页面Web应用 对于单页面的Web应用，在console中使用如下代码，就能在浏览器进行Ajax请求时候，得到返回内容， 然后在post给存储接口就好了:
-(function() { var origOpen = XMLHttpRequest.prototype.open; XMLHttpRequest.prototype.open = function() { // console.log(&#39;request started!&#39;); this.addEventListener(&#39;load&#39;, function() { console.log(this.responseText); // 得到Ajax的返回内容 }); origOpen.apply(this, arguments); }; })(); 比如百度图片:
-我们可以看到请求图片的路径，这段代码 直接使用了一个匿名函数，重写了Ajax请求的open方法，给load事件加上一个事件监听器，从而把内容得到:
-对于单页面的Web应用，基本可以满足需求，但是如果翻页的话，每次翻页上一页的代码就失效了， 不可能每页都把这段代码复制进console中，还是需要使用类似Chrome插件的方式才能实现。
-翻页Web应用 有了上面的代码，如果我们把它直接丢到Chrome插件的JS文件里面(官方叫Content Scripts)，发现是无法执行的，XMLHttpRequest.prototype.open 还是浏览器自身的代码。
-这样看来，就无法实现自动翻页，自动获取ajax请求内容了。
-Chrome官方说法如下:
-Content scripts execute in a special environment called an isolated world. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/07/chrome-extensions-hook-ajax/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -420,11 +419,11 @@ Content scripts execute in a special environment called an isolated world. They 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 		</ul>
 	</div>
 </div>

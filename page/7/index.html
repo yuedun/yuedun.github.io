@@ -142,6 +142,50 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e87e9ac75da9268a3e5993c/" rel="bookmark">
+			mongodb创建新数据库和创建用户
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-04T01:58:04Z">2020-04-04 01:58</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
+db.createUser( {user: &#34;hp_website&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示
+虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
+use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5e85a563c9109f0f909b52bf/" rel="bookmark">
+			使用pm2一键部署多个服务
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-02T08:42:11Z">2020-04-02 08:42</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如： { // Applications part &#34;apps&#34; : [{ &#34;name&#34; : &#34;API&#34;, &#34;script&#34; : &#34;app.js&#34;, &#34;env&#34;: { &#34;COMMON_VARIABLE&#34;: &#34;true&#34; }, // Environment variables injected when starting with --env production // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34; } },{ &#34;name&#34; : &#34;WEB&#34;, &#34;script&#34; : &#34;web.js&#34; }], // 部署部分 // Here you describe each environment &#34;deploy&#34; : { &#34;production&#34; : { &#34;user&#34; : &#34;node&#34;, // 多主机配置 &#34;host&#34; : [&#34;212.83.163.1&#34;, &#34;212.83.163.2&#34;, &#34;212.83.163.3&#34;], // 服务使用的分支 &#34;ref&#34; : &#34;origin/master&#34;, // Git 仓库地址 &#34;repo&#34; : &#34;git@github.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5e85a563c9109f0f909b52bf/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e815979c9109f0f909b4cdd/" rel="bookmark">
 			gorm模糊查询和分页查询同时查总条数
 			</a>
@@ -399,52 +443,6 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 说着话，拿起朱砂笔，在一张黄纸上，写了一长串字，然后走到尸体旁，大声的说道：“天圆地方律令九章，吾今下镇殃煞消亡。万鬼潜藏家宅永昌，吉星高照人口安康。太上老君急急如律令。”
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5df30ce58803fb4044fa0651/" rel="bookmark">
-			 一次商业web网站搭建的取舍过程
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-12-13T04:00:37Z">2019-12-13 04:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。
-所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。
-要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。
-选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。
-技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
-这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5dd2378b00f24e1fd556d0c4/" rel="bookmark">
-			linux安装nodejs——快捷版
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019-11-18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		前面写过一篇linux下安装nodejs，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。
-wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
-另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
-wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -468,11 +466,11 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 		</ul>
 	</div>
 </div>

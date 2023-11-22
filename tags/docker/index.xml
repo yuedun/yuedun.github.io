@@ -6,7 +6,16 @@
     <description>Recent content in docker on 月盾的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 Jan 2018 04:35:58 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 13:32:34 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernetes部署mysql8</title>
+      <link>https://www.yuedun.wang/2023/11/kubernetes-deploy-mysql8/</link>
+      <pubDate>Wed, 22 Nov 2023 13:32:34 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2023/11/kubernetes-deploy-mysql8/</guid>
+      <description>apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql spec: progressDeadlineSeconds: 600 replicas: 1 revisionHistoryLimit: 10 selector: matchLabels: app: mysql strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: labels: app: mysql spec: containers: - env: - name: MYSQL_ROOT_PASSWORD value: xxx image: mysql:8.0.33 imagePullPolicy: IfNotPresent name: mysql ports: - containerPort: 3306 name: mysql protocol: TCP resources: limits: cpu: &amp;#34;4&amp;#34; memory: 8Gi volumeMounts: - mountPath: /var/lib/mysql name: data - mountPath: /etc/mysql/conf.</description>
+    </item>
+    
     <item>
       <title>再聊docker和nodejs</title>
       <link>https://www.yuedun.wang/blogdetail/5a6ab02e260a5391e91a525f/</link>

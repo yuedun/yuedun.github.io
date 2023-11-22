@@ -141,6 +141,60 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2023/11/kubernetes-deploy-mysql8/" rel="bookmark">
+			kubernetes部署mysql8
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-22T13:32:34&#43;08:00">2023-11-22 13:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql spec: progressDeadlineSeconds: 600 replicas: 1 revisionHistoryLimit: 10 selector: matchLabels: app: mysql strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: labels: app: mysql spec: containers: - env: - name: MYSQL_ROOT_PASSWORD value: xxx image: mysql:8.0.33 imagePullPolicy: IfNotPresent name: mysql ports: - containerPort: 3306 name: mysql protocol: TCP resources: limits: cpu: &#34;4&#34; memory: 8Gi volumeMounts: - mountPath: /var/lib/mysql name: data - mountPath: /etc/mysql/conf.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2023/11/kubernetes-deploy-mysql8/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2023/11/sql-audit/" rel="bookmark">
+			常用SQL审计平台介绍
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-14T15:53:33&#43;08:00">2023-11-14 15:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		数据安全一直是企业安全的重中之重，在企业系统开发过程中，数据库的安全日益增强，所以需要有个平台能够记录和审查数据库变更。
+SQL 审计平台的功能特点：
+实时监控和记录：SQL 审计平台能够实时监听数据库操作，记录所有的 SQL 查询和事务操作，确保数据变更的可追溯性。 用户行为分析：通过分析用户的查询行为和访问模式，SQL 审计平台可以识别风险操作、异常查询和异常登录行为，帮助提前发现潜在的安全威胁。 合规报告与警报：SQL 审计平台能够生成详尽的合规报告，满足合规要求，并根据预设的规则触发警报，帮助管理员及时采取应对措施。 数据完整性保护：通过审计日志记录的数据变更信息，SQL 审计平台能够帮助恢复受损的数据或进行调查取证，确保数据库的完整性和可靠性。 权限管理与访问控制：SQL 审计平台提供丰富的权限管理功能，可以对用户进行细粒度的访问控制，确保只有经过授权的用户能够访问敏感数据。 常见的sql审计平台：
+Yearning Archery bytebase Yearning 官网：https://yearning.io
+开发语言：golang
+功能：
+SQL 查询 查询工单 导出 自动补全，智能提示 查询语句审计 查询结果脱敏 SQL 审核 流程化工单 SQL语句语法检测 根据规则检测SQL语句合规性 自动生成DDL/DML回滚语句 历史审核记录 推送 E-mail 工单推送 钉钉 webhook 机器人工单推送 用户权限及管理 角色划分 基于用户的细粒度权限 注册 其他 todoList LDAP 登录 动态审核规则配置 自定义审核层级 AutoTask 自动执行 部署 支持容器部署。
+Archery 官网：https://archerydms.com/
+开发语言：python
+功能：
+查询 审核 执行 备份 数据字典 慢日志 会话管理 账号管理 参数管理 数据归档 MySQL √ √ √ √ √ √ √ √ √ MsSQL √ × √ × × × × × × Redis √ × √ × × × × × × PgSQL √ × √ × × × × × × Oracle √ √ √ √ × × × × × MongoDB √ √ √ × × × × × × Phoenix √ × √ × × × × × × ODPS √ × × × × × × × × ClickHouse √ × × × × × × × × SQL审核 MySQL实例 基于Inception/goInception实现，集成审核、执行、备份
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2023/11/sql-audit/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2023/09/wechatchat-developement/" rel="bookmark">
 			微信开发基础设施准备
 			</a>
@@ -394,63 +448,6 @@ VUE，React这类框架用于构建应用方面很合适，但不太适合构建
 3架构学习没有捷径 没有成为架构师的捷径，只有勤学苦练。架构的学习需要很多基础性工作，需要很广泛的涉猎，这方面笔者在《六方面学习，帮你走上业务架构师之路》一文中有所介绍，在架构能力、流程优化、建模技术、软件过程、编程语言、整体思维方面，都有很多知识需要学习，也列出了一些参考书目，此处不再赘述。 无论是哪一种架构师，都需要深厚的积累，架构师都是项目堆出来的。 不可否认的是，互联网企业架构师成长确实很快，这也许是企业机制提供了更多的考验机会给适任者，使其能够快速进步。如果说培养架构师有什么勉强可以称之为“捷径”的方法，对企业而言，就是认真思考下自己是否建立了快速发现人才、培养人才的机制吧，否则，阿里说过了，业务架构师只能自己培养，没有合适的人才是什么也干不成的。 最近在一部《Doctor X》的连续剧中，医术高超的女主角在一场难度极高的手术中，说了这样一段话：“就像河水流淌一样，反复的基本技巧，就能创造出美丽的最终术野，那就是理想的手术……最重要的是，不管手术再艰难，也不能抛弃患者”，笔者想，这也同样适用于架构领域吧。 架构没有捷径，有的只是前人的肩膀，努力学习，积极实践，消化理解，真正站在前人的肩膀上，才可能看到前进的方向，而前人的肩膀也不仅限于你所从事的行业。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5df30ce58803fb4044fa0651/" rel="bookmark">
-			 一次商业web网站搭建的取舍过程
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-12-13T04:00:37Z">2019-12-13 04:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。
-所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。
-要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。
-选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。
-技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
-这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5c739d01e4d2f35bdd267d2d/" rel="bookmark">
-			Consul 入门教程
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-25T07:45:05Z">2019-02-25 07:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		一、什么是服务发现
-二、consul 简介
-三、consul的几个概念
-四、安装 Consul
-五、运行 Consul Agent
-六、集群成员
-七、停止 Agent
-八、注册服务
-九、Consul 集群
-十、健康检查
-十一、KV Data
-十二、Consul Web UI
-十三、Docker下安装consul 作者：菲宇
-来源：CSDN
-原文：https://blog.csdn.net/bbwangj/article/details/81116505 
-	</div>
-</article>
 
 </main>
 
@@ -474,11 +471,11 @@ VUE，React这类框架用于构建应用方面很合适，但不太适合构建
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 		</ul>
 	</div>
 </div>

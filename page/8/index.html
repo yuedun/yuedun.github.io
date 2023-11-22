@@ -142,6 +142,52 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5df30ce58803fb4044fa0651/" rel="bookmark">
+			 一次商业web网站搭建的取舍过程
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-12-13T04:00:37Z">2019-12-13 04:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。
+所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。
+要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。
+选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。
+技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
+这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5dd2378b00f24e1fd556d0c4/" rel="bookmark">
+			linux安装nodejs——快捷版
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019-11-18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前面写过一篇linux下安装nodejs，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。
+wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
+另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
+wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5db03db400f24e1fd556cec4/" rel="bookmark">
 			让代码配置化
 			</a>
@@ -432,52 +478,6 @@ git pull代码，主要是拉取静态文件。
 		同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。 go占14.7M nodejs占122.2M
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5c63b5334a7b7e6cd808697a/" rel="bookmark">
-			go语言开发grpc之安装grpc
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-12T14:12:03Z">2019-02-12 14:12</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		一、安装gRPC $ go get -u google.golang.org/grpc package google.golang.org/grpc: unrecognized import path &#34;google.golang.org/grpc&#34; (https fetch: Get https://google.golang.org/grpc?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.) grpc的源码库迁移到了github上，所以需要手动下载了。grpc-go 正常情况下按照以下方式就可安装完成
-git clone https://github.com/grpc/grpc-go.git $GOPATH/src/google.golang.org/grpc git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text go get -u github.com/golang/protobuf/{proto,protoc-gen-go} git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto cd $GOPATH/src/ go install google.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5c63b5334a7b7e6cd808697a/">阅读全文…</a>
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5bc1bd1bf846d21847dc3014/" rel="bookmark">
-			gRPC负载均衡
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-13T09:38:35Z">2018-10-13 09:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		gRPC是谷歌开发的跨语言（C, C++, Python, PHP, Nodejs, C#, Objective-C、Golang、Java）RPC框架，跨语言是指可以使用gRPC进行个语言之间的通信，例如：PHP可以对java进行远程调用。
-在系统架构中，我们会把多个系统公共的模块拆分出来做成单独的服务，可以提供RESTful接口，也可以为了低延迟快速响应而提供RPC接口。如果选择的是gRPC，上线后发现多个系统都请求这个RPC服务提供者，而且流量很大的时候负载过高导致崩溃。为了降低负载和提高可用性，理所当然的要做集群，用nginx作为代理服务器，幸运的是nginx版本为1.13及以上支持了gRPC的负载均衡。那么请看以下配置：
-upstream grpcservice { server localhost:50051; server localhost:50052; } server { listen 8080 http2;#需要加http2 server_name localhost; location / { grpc_pass grpc://grpcservice;#以grpc为前缀 } grpc_connect_timeout 10; } 配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。 效果图： 可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
-虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。
-原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了grpc_connect_timeout选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -501,11 +501,11 @@ upstream grpcservice { server localhost:50051; server localhost:50052; } server 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 		</ul>
 	</div>
 </div>

@@ -142,6 +142,63 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f1fb24c4536b06ac3897662/" rel="bookmark">
+			goquery 中文乱码
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-27T13:09:20Z">2020-07-27 13:09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		乱码的情况目前有两种可能：
+常规乱码，网页非utf-8。 非常规乱码，代码导致的乱码。 关于常规乱码可参考issue获取中文网页有乱码的问题 #185 非常规乱码就像我遇到的一样，最开始以为是网页问题，使用了github.com/djimenez/iconv-go转换还是乱码，使用了golang.org/x/text/encoding/simplifiedchinese还是乱码。 试试英文网页，还是乱码。最终一点点调试发现是由header引起的。 req.Header.Add(&quot;Accept-Encoding&quot;, &quot;gzip, deflate&quot;) 这一行的作用是告诉服务器浏览器要接收的数据编码是gzip,dflate，到达浏览器后会自动解码。但是我们的代码并非浏览器，不会自动解码，所以接收到的就是非常规的压缩数据。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f1e88b24536b06ac38974d6/" rel="bookmark">
+			国产动漫之不幸
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-26T14:56:34Z">2020-07-26 14:56</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		最近侄子放暑假来我家玩，顺便带来了暑假作业，写作业的时候他问：“我国四大名著是什么？”
+我当时一愣，心想这种问题还需要问吗？但是没有这么问他，而是问：“你们课本上没有教过吗？”
+他说：“没有！”
+我问：“那老师有没有说过？”
+他说：“没有”
+我心想：“可能是二年级还没有到应该知道的年龄！”
+就问：“那你知道《西游记》吗？”
+他说：“不知道。”
+我问：“那《三国演义》，《红楼梦》，《水浒传》你更不知道了吧？”
+他说：“不知道。”
+当时我就有点气了，我气的不是他什么都不知道，而是气他到底看些什么动画。
+于是我问：“《西游记》动画片你都没看过，那你平时都看什么动画？”
+他说：“奥特曼，小猪佩奇，海绵宝宝，汪汪队，还有……”
+四大名著不知道，四个动漫说的很溜，而且好像都是国外动漫，我赶紧打断，说道：“行了，行了，从今天开始，在我家你不能看这些动画片了，我们从今天开始先从《西游记》看起。”
+他顿时有点不乐意了，但是也没办法。于是在吃饭时间我找到了《西游记》动画，结果看了两集他就直对我说好看。 此刻，我对国漫的现状感到悲哀，正好和最近多次在公众号上看到关于国漫被举报的话题相对应——“人物头发染成五颜六色，穿得花里胡哨，价值导向有问题”。 当时也只是感觉现在这家长真是闲的慌，自己的价值观是不是有问题，反而去举报动漫。动漫中的人物染五颜六色的头发也能成举报理由，我们从小看的动漫人物不都是这种造型吗？并没觉得有什么不妥，也没听说过有人因动漫人物造型问题而走上违法犯罪的道路。
+现在摆在眼前的现实问题是：我们的孩子不只是没有国产动漫可以看，甚至连中国文化都开始丢弃，是因为中国文化不好吗？绝对不是！而是作为家长，作为长辈的我们都在排斥和诋毁中国文化。小时候看的一些优秀动画现在都已经看不到了，其中有不少是禁播了。老的动画禁播，新的动画审核不通过，剩下的只有国外入侵动漫，国外文化入侵。
+请问下面哪个是孙悟空？
+希望我们的后代还能分得清什么是中国的，什么是外国的。
+国产动画不乏有很多优秀作品，未来会有更多，希望能够理性的对待，而是总是在挑毛病。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5f1393cf148c8850e52174dc/" rel="bookmark">
 			关于个人博客（网站）发展的一些思考
 			</a>
@@ -358,50 +415,6 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
 		<a class="list__footer-readmore btn" href="/blogdetail/5e8b4742bd7e796e71009fcc/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5e87e9ac75da9268a3e5993c/" rel="bookmark">
-			mongodb创建新数据库和创建用户
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-04T01:58:04Z">2020-04-04 01:58</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website
-db.createUser( {user: &#34;hp_website&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户db.getUsers()显示
-虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用use website后创建用户也是不对。 正确的做法是关闭数据库认证，使用不带--auth启动数据库，使用命令行来创建
-use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]}) 这样就可以登录了。由于数据库和用户名是绑定的，只有确保用户是创建在对应数据库上才行。
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5e85a563c9109f0f909b52bf/" rel="bookmark">
-			使用pm2一键部署多个服务
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-02T08:42:11Z">2020-04-02 08:42</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		pm2支持远程部署服务，创建文件ecosystem.json,内容形式如： { // Applications part &#34;apps&#34; : [{ &#34;name&#34; : &#34;API&#34;, &#34;script&#34; : &#34;app.js&#34;, &#34;env&#34;: { &#34;COMMON_VARIABLE&#34;: &#34;true&#34; }, // Environment variables injected when starting with --env production // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34; } },{ &#34;name&#34; : &#34;WEB&#34;, &#34;script&#34; : &#34;web.js&#34; }], // 部署部分 // Here you describe each environment &#34;deploy&#34; : { &#34;production&#34; : { &#34;user&#34; : &#34;node&#34;, // 多主机配置 &#34;host&#34; : [&#34;212.83.163.1&#34;, &#34;212.83.163.2&#34;, &#34;212.83.163.3&#34;], // 服务使用的分支 &#34;ref&#34; : &#34;origin/master&#34;, // Git 仓库地址 &#34;repo&#34; : &#34;git@github.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5e85a563c9109f0f909b52bf/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -425,11 +438,11 @@ use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 		</ul>
 	</div>
 </div>

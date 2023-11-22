@@ -142,6 +142,60 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2023/11/kubernetes-deploy-mysql8/" rel="bookmark">
+			kubernetes部署mysql8
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-22T13:32:34&#43;08:00">2023-11-22 13:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql spec: progressDeadlineSeconds: 600 replicas: 1 revisionHistoryLimit: 10 selector: matchLabels: app: mysql strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: labels: app: mysql spec: containers: - env: - name: MYSQL_ROOT_PASSWORD value: xxx image: mysql:8.0.33 imagePullPolicy: IfNotPresent name: mysql ports: - containerPort: 3306 name: mysql protocol: TCP resources: limits: cpu: &#34;4&#34; memory: 8Gi volumeMounts: - mountPath: /var/lib/mysql name: data - mountPath: /etc/mysql/conf.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2023/11/kubernetes-deploy-mysql8/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2023/11/sql-audit/" rel="bookmark">
+			常用SQL审计平台介绍
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-14T15:53:33&#43;08:00">2023-11-14 15:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		数据安全一直是企业安全的重中之重，在企业系统开发过程中，数据库的安全日益增强，所以需要有个平台能够记录和审查数据库变更。
+SQL 审计平台的功能特点：
+实时监控和记录：SQL 审计平台能够实时监听数据库操作，记录所有的 SQL 查询和事务操作，确保数据变更的可追溯性。 用户行为分析：通过分析用户的查询行为和访问模式，SQL 审计平台可以识别风险操作、异常查询和异常登录行为，帮助提前发现潜在的安全威胁。 合规报告与警报：SQL 审计平台能够生成详尽的合规报告，满足合规要求，并根据预设的规则触发警报，帮助管理员及时采取应对措施。 数据完整性保护：通过审计日志记录的数据变更信息，SQL 审计平台能够帮助恢复受损的数据或进行调查取证，确保数据库的完整性和可靠性。 权限管理与访问控制：SQL 审计平台提供丰富的权限管理功能，可以对用户进行细粒度的访问控制，确保只有经过授权的用户能够访问敏感数据。 常见的sql审计平台：
+Yearning Archery bytebase Yearning 官网：https://yearning.io
+开发语言：golang
+功能：
+SQL 查询 查询工单 导出 自动补全，智能提示 查询语句审计 查询结果脱敏 SQL 审核 流程化工单 SQL语句语法检测 根据规则检测SQL语句合规性 自动生成DDL/DML回滚语句 历史审核记录 推送 E-mail 工单推送 钉钉 webhook 机器人工单推送 用户权限及管理 角色划分 基于用户的细粒度权限 注册 其他 todoList LDAP 登录 动态审核规则配置 自定义审核层级 AutoTask 自动执行 部署 支持容器部署。
+Archery 官网：https://archerydms.com/
+开发语言：python
+功能：
+查询 审核 执行 备份 数据字典 慢日志 会话管理 账号管理 参数管理 数据归档 MySQL √ √ √ √ √ √ √ √ √ MsSQL √ × √ × × × × × × Redis √ × √ × × × × × × PgSQL √ × √ × × × × × × Oracle √ √ √ √ × × × × × MongoDB √ √ √ × × × × × × Phoenix √ × √ × × × × × × ODPS √ × × × × × × × × ClickHouse √ × × × × × × × × SQL审核 MySQL实例 基于Inception/goInception实现，集成审核、执行、备份
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2023/11/sql-audit/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2023/09/wechatchat-developement/" rel="bookmark">
 			微信开发基础设施准备
 			</a>
@@ -335,65 +389,6 @@ GitHub Actions gitlab ci 阿里云流水线 coding持续部署 上面只是列�
 然后就是35元买了120G固态硬盘，35元的4G内存，10元买了硬盘盒。原来是32位win7系统，现在重装了64位win7，这样一升级性能至少翻倍，再用10年没毛病吧。
 	</div>
 </article>
-<article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.yuedun.wang/2023/01/thinkpadjiagutaiyingpan/">
-			<img src="https://hopefully-img.yuedun.wang/%e5%9b%ba%e6%80%81%e7%a1%ac%e7%9b%98%e5%b0%ba%e5%af%b8.jpeg?imageslim" alt="Thinkpad T450加装固态硬盘记录" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2023/01/thinkpadjiagutaiyingpan/" rel="bookmark">
-			Thinkpad T450加装固态硬盘记录
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-01-31T10:58:35&#43;08:00">2023-01-31 10:58</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		2016年初花大价钱买的thinkpad t450准备用来工作，结果发现性能太差，根本满不了需求。于是就放家里日常使用，即使这样还是无法忍受它的慢，慢到什么程度呢？开机到桌面3分钟，再到打开程序3分钟。这还不如我2010年买的2G内存i3电脑性能好。后来把内存从4G加到8G没有明显提升，那就剩下CPU和机械硬盘的问题了，CPU是低压版i5 4300U，和主板焊在一起，没法升级。前几年就想升级硬盘，但是那时候固态硬盘价格不便宜，也没有着急升级。直到最近才忍受不了，下定决心升级一下。
-升级过程并不顺利……
-首先是确定支持的接口，thinkpad t450已经装了一块16G固态硬盘，接口是M.2（即NGFF，现在已经改名为M.2了）
-真实尺寸很小，22*40mm大小，就是2240型号。2280型号意思就是宽22长80，自然就是更大尺寸的。选择的时候要注意不要选错。
-安装好以后使用傲梅分区助手进行系统迁移（之后遇到很多问题），然后在bios里修改启动顺序，结果左上角的光标一直闪，无法进入系统，修改为原HDD硬盘后还是可以启动的。网上有说法是磁盘盘符冲突，按照方法在注册表中调换盘符后还是进入不了系统，甚至原来的磁盘系统也进入不了。
-无奈，只能重装系统。但是不能在原来的盘里装，需要直接装套SSD固态硬盘上。准备了8G U盘，4G肯定是不够的，win10系统就有4.5G以上了。下载winpe，直接安装到U盘里，然后将下载好的win10系统拷贝到winpe工具箱里。
-再修改启动顺序重启系统，这时候也出现问题，识别不到U盘，我是在系统启动后再插上U盘，如果直接插上再启动就会识别不出来。进入到pe系统后首先通过系统安装器安装系统，又出现找不到iso系统文件的情况，重插U盘解决。但是选择目标盘后MBR始终是黄色，无法变成绿色，最后通过CGI工具还原的方式成功安装。
-安装成功重启又出现boot menu界面，死活进入不了系统，这个是由于在bios中修改过启动方式引起的。有uefi和legacy两种模式，设置为both兼容模式启动。至此算是安装成功。
-由于加了SSD固态硬盘，原来的盘符也有变化，SSD成了C盘，原来的C盘变成了D盘，以此类推。手动把原盘中的快捷方式拷贝过新盘，都用不了，可以通过属性-修改路径的方式修正。个别软件缺少dll动态链接库也可以从原盘找到，有两个目录可以查找windows-System32,windows-Syswow64。
-总结：系统启动时间由3分钟提升到了30秒，到桌面也可以直接操作，不需要再等3分钟才能做操作。
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/" rel="bookmark">
-			Ld Warning Object File Was Built for Newer MacOS Version Than Being Linked
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-01-03T10:46:35&#43;08:00">2023-01-03 10:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		go run和go build会报出一连串下面这样的警告信息，虽然不影响程序运行，但是看着难看。
-# command-line-arguments ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-link-3994413096/000000.o) was built for newer macOS version (12.0) than being linked (11.0) 解决方法：CGO_CFLAGS=-mmacosx-version-min=10.12 go run main.go，运行前加CGO_CFLAGS=-mmacosx-version-min=10.12参数可以解决。
-vscode中可以通过配置launch.json文件实现：
-{ &#34;version&#34;: &#34;0.2.0&#34;, &#34;configurations&#34;: [ { &#34;name&#34;: &#34;Launch Package&#34;, &#34;type&#34;: &#34;go&#34;, &#34;request&#34;: &#34;launch&#34;, &#34;env&#34;: { &#34;CGO_CFLAGS&#34;:&#34;-mmacosx-version-min=10.12&#34; }, &#34;program&#34;: &#34;${fileDirname}&#34;, &#34;args&#34;: [], &#34;cwd&#34;: &#34;${fileDirname}&#34; } ] } 或者从文件中读取环境变量：
-{ &#34;version&#34;: &#34;0.2.0&#34;, &#34;configurations&#34;: [ { &#34;name&#34;: &#34;Launch Package&#34;, &#34;type&#34;: &#34;go&#34;, &#34;request&#34;: &#34;launch&#34;, &#34;envFile&#34;: &#34;${workspaceFolder}/.env&#34;, &#34;program&#34;: &#34;${fileDirname}&#34;, &#34;args&#34;: [], &#34;cwd&#34;: &#34;${fileDirname}&#34; } ] } 如果是在vscode中执行测试代码，则需要设置settings.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2023/01/ld-warning-object-file-was-built-for-newer-macos-version-than-being-linked/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -416,11 +411,11 @@ vscode中可以通过配置launch.json文件实现：
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 		</ul>
 	</div>
 </div>

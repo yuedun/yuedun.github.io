@@ -142,6 +142,54 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/56286643ce46c19e89132968/" rel="bookmark">
+			使用sublime开发node.js快速跳转到变量函数声明处
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T04:29:55Z">2015-10-22 04:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
+所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
+首先在uses.js文件中有一个函数
+//我是一个测试方法 router.get(&#34;/commeHere&#34;, function(req, res) { }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
+可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
+双击就可以跳转到对应的文件和行上。
+当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5624482861248de07b01887a/" rel="bookmark">
+			windows下使用脚本快速启动nodejs服务
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-19T01:32:24Z">2015-10-19 01:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		每次启动node服务都要先打开cmd命令行，或者在win8下先打开文件资源管理器&gt;文件&gt;打开命令提示符，然后执行node命令，这样的过程真的很烦人，当然需要一个简单粗暴的方式启动了，就像用bat文件双击启动。
+首先，建一个空白文件，输入以下内容：
+E: cd E:\\NodejsWorkSpace\\app-node nodemon ./bin/www 就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
+E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
+使用&amp;符号连接各个命令也可以
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5620bcc461248de07b018879/" rel="bookmark">
 			数据表索引如何建立？多列索引还是单列索引
 			</a>
@@ -403,53 +451,6 @@ HOUR_MINUTE
 &ldquo;1und1&rdquo; &ldquo;AOL&rdquo; &ldquo;DebugMail.io&rdquo; &ldquo;DynectEmail&rdquo; &ldquo;FastMail&rdquo; &ldquo;GandiMail&rdquo; &ldquo;Gmail&rdquo; &ldquo;Godaddy&rdquo; &ldquo;GodaddyAsia&rdquo; &ldquo;GodaddyEurope&rdquo; &ldquo;hot.ee&rdquo; &ldquo;Hotmail&rdquo; &ldquo;iCloud&rdquo; &ldquo;mail.ee&rdquo; &ldquo;Mail.ru&rdquo; &ldquo;Mailgun&rdquo; &ldquo;Mailjet&rdquo; &ldquo;Mandrill&rdquo; &ldquo;Naver&rdquo; &ldquo;Postmark&rdquo; &ldquo;QQ&rdquo; &ldquo;QQex&rdquo; &ldquo;SendCloud&rdquo; &ldquo;SendGrid&rdquo; &ldquo;SES&rdquo; &ldquo;Sparkpost&rdquo; &ldquo;Yahoo&rdquo; &ldquo;Yandex&rdquo; &ldquo;Zoho&rdquo; 
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/55e3e840db5ac9c2be76b2f9/" rel="bookmark">
-			一次简单的前端页面优化
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-08-31T05:38:08Z">2015-08-31 05:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		公司之前的产品管理对于小编们的使用情况及其糟糕，每次打开一个页面都要等待好久，这也是由于时间紧张，开始做的时候就只管进度没有时间优化。我大概看了下，光是登录页和一个空白首页就有78个请求，1.1M的数据。其他功能页面不少于这个数，这是因为所有页面共用了一个头文件，而这个头文件把所有有用没有的css文件和js文件都加载进来了，所以这次做的新后台管理系统绝不能这么做了。
-首先，css按需加载，当然有一些css是每个页面必须的就放到一个公共页面中include进来，对于一些新增的插件就在需要的时候添加到对应的页面。
-其次，js的加载方式也进行特别优化，一种方式是把js放在body结束标签之前，可以避免js的加载阻塞页面渲染，还有可以使用异步加载方式 defer是针对IE浏览器的，async是其他非IE内核浏览器异步加载属性。但是，我还是使用了requirejs来加载js，一方面是为了页面加载更快，另一方面是可以做到js模块化。
-初步结果显示，所有页面加载速度平均在0.5秒，有些页面几乎看不出来重新加载过程，瞬间完成。优化也算是有一定的效果了。其中要说一下requirejs的一些优缺点，requirejs优点是可以实现js异步加载和模块化开发，不过让我有点不适应的是在HTML页面中不能使用onclick=func这种方式的事件处理，会提示找不到函数，只能在页面加载完成后用jquery进行事件监听，一些动态加载的页面数据也需要在加载以后重新绑定事件。
-2015-11-08日更新
-自从使用了requirejs后，凡是做页面需要js的时候首先想到的就是requirejs，感觉入坑跳不出来，反而弄巧成拙了。requirejs本意是异步加载多个js文件以防止页面阻塞，在一个网站或项目中也尽量合并多个文件里的内容以减少网络请求，一次加载一个大的文件比多次加载多个小文件来的划算的多，还有，requirejs虽然有好处但是并不是任何时候都有，比如页面很简单，js内容也很少的时候就完全不该用它。最后有一个不得不说的缺点，在上面已经提过，就是事件绑定，因为不能使用onclick=func()这种方式调用函数，只能用$(function(){})这种方式绑定事件，那么在网络不好的情况下，有些文件加载缓慢，导致不能绑定事件，如果一个按钮是这种方式绑定的事件，结果就是非要等到页面加载完才能点击，很让人着急。
-	</div>
-</article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/" rel="bookmark">
-			sequelizejs中where条件与order排序的使用
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-08-28T03:21:08Z">2015-08-28 03:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		最基本的where条件：
-Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId = 2 Post.findAll({ where: { authorId: 12, status: active } }); // SELECT \* FROM post WHERE authorId = 12 AND status = &#39;active&#39;; Post.destroy({ where: { status: &#39;inactive&#39; } }); // DELETE FROM post WHERE status = &#39;inactive&#39;; Post.update({ updatedAt: null, }, { where: { deletedAt: { $ne: null } } }); // UPDATE post SET updatedAt = null WHERE deletedAt NOT NULL; 如果涉及到or的使用，sequelize也提供了很好的解决方案
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/55dfd3a4de3bc8b1ee4f7e45/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -473,11 +474,11 @@ Post.findAll({ where: { authorId: 2 } }); // SELECT \* FROM post WHERE authorId 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/next-image-timeout/">next/image组件导致服务器504超时</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/05/pm2-reload-nextjs-502/">next.js项目使用pm2 reload出现502</a></li>
 		</ul>
 	</div>
 </div>
