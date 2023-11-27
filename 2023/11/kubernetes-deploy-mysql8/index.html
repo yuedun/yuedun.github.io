@@ -19,7 +19,7 @@
 		<meta itemprop="name" content="kubernetes部署mysql8">
 <meta itemprop="description" content="kubernetes Deploy Mysql8"><meta itemprop="datePublished" content="2023-11-22T13:32:34+08:00" />
 <meta itemprop="dateModified" content="2023-11-22T13:32:34+08:00" />
-<meta itemprop="wordCount" content="172">
+<meta itemprop="wordCount" content="174">
 <meta itemprop="keywords" content="mysql,docker," />
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -151,7 +151,9 @@
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
-			<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+			<p>虽然很多文章说不建议将数据库部署在容器中，因为有性能问题。但我觉得这事还是要看具体使用场景来决定，而不是全盘否定。开发的过程中并不只有性能是最重要的，还有效率，易用性等也很重要。</p>
+<p>对于测试环境来说，数据库部署在容器中肯定是可以的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:

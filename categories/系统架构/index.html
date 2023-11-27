@@ -154,7 +154,9 @@
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql spec: progressDeadlineSeconds: 600 replicas: 1 revisionHistoryLimit: 10 selector: matchLabels: app: mysql strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: labels: app: mysql spec: containers: - env: - name: MYSQL_ROOT_PASSWORD value: xxx image: mysql:8.0.33 imagePullPolicy: IfNotPresent name: mysql ports: - containerPort: 3306 name: mysql protocol: TCP resources: limits: cpu: &#34;4&#34; memory: 8Gi volumeMounts: - mountPath: /var/lib/mysql name: data - mountPath: /etc/mysql/conf.
+		虽然很多文章说不建议将数据库部署在容器中，因为有性能问题。但我觉得这事还是要看具体使用场景来决定，而不是全盘否定。开发的过程中并不只有性能是最重要的，还有效率，易用性等也很重要。
+对于测试环境来说，数据库部署在容器中肯定是可以的。
+apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql spec: progressDeadlineSeconds: 600 replicas: 1 revisionHistoryLimit: 10 selector: matchLabels: app: mysql strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: labels: app: mysql spec: containers: - env: - name: MYSQL_ROOT_PASSWORD value: xxx image: mysql:8.0.33 imagePullPolicy: IfNotPresent name: mysql ports: - containerPort: 3306 name: mysql protocol: TCP resources: limits: cpu: &#34;4&#34; memory: 8Gi volumeMounts: - mountPath: /var/lib/mysql name: data - mountPath: /etc/mysql/conf.
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/2023/11/kubernetes-deploy-mysql8/">阅读全文…</a>
