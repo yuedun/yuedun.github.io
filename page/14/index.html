@@ -142,6 +142,33 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/58243e338fa26c04fd124ee6/" rel="bookmark">
+			使用typescript开发nodejs的环境搭建（二）
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-10T09:30:27Z">2016-11-10 09:30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
+typescript编译配置
+{ &#34;compilerOptions&#34;: { &#34;module&#34;: &#34;commonjs&#34;,//模块化规范 &#34;target&#34;: &#34;es5&#34;,//生成js &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错 &#34;noImplicitReturns&#34;: true,//函数没有返回值提示 &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示 &#34;removeComments&#34;: true,//输出文件移除注释 &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录 &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录 &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试 }, &#34;include&#34;: [ &#34;*/**/*.ts&#34; ], &#34;exclude&#34;: [ //默认排除了node_modules ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
+选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
+vscode编译typescript配置
+{ // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format &#34;version&#34;: &#34;0.1.0&#34;, &#34;command&#34;: &#34;tsc&#34;, &#34;isShellCommand&#34;: true, &#34;args&#34;: [&#34;-w&#34;, &#34;-p&#34;, &#34;.&#34;], &#34;showOutput&#34;: &#34;silent&#34;, &#34;isWatching&#34;: true, &#34;problemMatcher&#34;: &#34;$tsc-watch&#34; } 这样就不用每次编译了，只要文件有修改就会自动编译
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/58243e338fa26c04fd124ee6/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/581dae6e8c4c3f206816c226/" rel="bookmark">
 			我喜欢的电影之《吸血鬼猎人D》
 			</a>
@@ -378,26 +405,6 @@ const http = require(&#34;http&#34;); var server = http.createServer( (req, res)
 request是继承自stream模块的，所以它也是具有可读可写的特性，自然就能调用pipe函数，从而获取到数据，然后需要写入到一个文件中，就需要由pipe输出到一个可写的流中，fs.createWriteStream(path)返回一个可写WriteStream的流，就可以接受pipe管道的输出，最后写入到本地文件。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/57ac0b71a2e66e6c13c08862/" rel="bookmark">
-			iphone快速锁屏
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-08-11T05:21:53Z">2016-08-11 05:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		以iphone5s来说明，要关闭屏幕通常需要按顶部电源键，但是iphone5s的电源键高度太低，如果再装个手机壳的话基本很难按到，或者需要很大的力气才能锁屏。而且长期按压也会按坏，就算现在没坏也有这样的担心不是吗？所以我们希望有个快捷方式点击屏幕就能锁屏，所幸iphone提供了这样的功能，不过默认没有放到第一级菜单中，所以不太好找，但是可以通过设置来放到第一级菜单，就是屏幕上的虚拟home键打开后的菜单。
-设置-通用-辅助功能-AssistiveTouch-自定顶层菜单，点击一个不常用的按钮，选择锁定屏幕，完成。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -421,11 +428,11 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 		</ul>
 	</div>
 </div>

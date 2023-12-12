@@ -142,6 +142,26 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a86db29c3700db1c9ae7c55/" rel="bookmark">
+			webpack构建vue项目警告
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-02-16T13:22:49Z">2018-02-16 13:22</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
+resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录 } } // 需要编译器 new Vue({ template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a6ab02e260a5391e91a525f/" rel="bookmark">
 			再聊docker和nodejs
 			</a>
@@ -357,31 +377,6 @@ RPC是一个软件结构概念，是构建分布式应用的理论基础。就�
 		在项目中遇到过这种情况：请求发送后迟迟没有响应，但也并没有报错，在代码中一步步调试都没有发现问题，明明已经走到最后返回数据一步了客户端却没有返回。原因是在中间件中使用了redis或memcache缓存，然后连接缓存服务失败，然后就会一直等待，直到连接缓存超时才会继续执行后续操作。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a1d8147da5c711b612f4d88/" rel="bookmark">
-			读写数据库与读写文件哪个更快？
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-28T15:31:19Z">2017-11-28 15:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>, <a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故，我们本文还是来实测一下，由于时间关系，VC还没装，书生先用PHP测试了一下，下次有时间在C/C++上补充测试到本文来，因为 PHP的底层解析应该也是基于C的，所以估计两者环境测试结果差不多，小问题大收获，现在就来看一下测试过程及结果。
-测试程序如下： //说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。
-//说明2：测试两次一次是4K数据，一次是整形数据
-set_time_limit(0); function fnGet($filename) { $content = file_get_contents($filename); return $content; } function fnGetContent($filename) { $content = fnGet($filename); return $content; } $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_row($res); $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_array($res); $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_object($res); $content=$row-&gt;log_Content; } echo &#39;fetch_object &#39;.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a1d8147da5c711b612f4d88/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -405,11 +400,11 @@ set_time_limit(0); function fnGet($filename) { $content = file_get_contents($fil
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 		</ul>
 	</div>
 </div>

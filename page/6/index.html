@@ -142,6 +142,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f20f0c05981482973150396/" rel="bookmark">
+			原生js实现图片预览
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-29T03:45:04Z">2020-07-29 03:45</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		不依赖jquery也可以实现图片预览功能：
+&lt;!--图片放大后的div 开始 这块粘贴在你的html中最后body前 --&gt; &lt;div id=&#34;outerdiv&#34; style=&#34;text-align: center;position: fixed;z-index: 9999;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(28,28,28,0.9);&#34;&gt; &lt;img id=&#34;bigimg&#34; style=&#34;max-height: 800px;max-width: 100%;border: 0;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;&#34; src=&#34;&#34; /&gt; &lt;/div&gt; &lt;!--图片放大后的div 结束 这块粘贴在你的html中最后body前--&gt; &lt;!--js开始 是放大点击的触发事件 这块粘贴在你的html中最后body前--&gt; &lt;script type=&#34;text/javascript&#34;&gt; //图片放大 document.querySelector(&#34;#outerdiv&#34;).style.display = &#34;none&#34;; document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.style.cursor = &#34;pointer&#34;; }); document.querySelectorAll(&#34;img&#34;).forEach(function (item) { item.addEventListener(&#34;click&#34;, function () { imgShow(&#34;#outerdiv&#34;, &#34;#bigimg&#34;, this); }) }) function imgShow(outerdiv, bigimg, _this) { var src = _this.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5f20f0c05981482973150396/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5f1fb24c4536b06ac3897662/" rel="bookmark">
 			goquery 中文乱码
 			</a>
@@ -385,36 +408,6 @@ id name class name tag link text partial link text xpath css selector 以上这�
 本地客户端连接mongo Atlas 复制了连接字符串后直接粘贴到客户端中，替换,点击From SRV,会自动拉取集群配置，点击Test测试连接是否成功。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5e8b4742bd7e796e71009fcc/" rel="bookmark">
-			golang操作mongodb
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-04-06T15:14:10Z">2020-04-06 15:14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		在之前mgo是一个使用广泛的mongodb驱动器，不过从2018年开始已不再维护，虽然觉得怪可惜的，但也不推荐使用了，毕竟mongodb本身一直在迭代，如果驱动器不更新后续也没法使用。 详细说明见仓库:https://github.com/go-mgo/mgo
-而mongodb提供了官方驱动，目前能找到的中文文档大多比较旧了，推荐直接看官方文档，有完整的操作手册:https://www.mongodb.com/blog/search/golang 本文也不想做一次搬运工，毕竟也不能随时保持更新，还是直接看官方文档比较好。下面列出一些主要的文章链接:
-Stack Overflow Research of 100,000 Developers Finds MongoDB is the Most Wanted Database (2019-2-2)
-Official MongoDB Go Driver Now Available for Beta Testing (2019-2-2) mongodb将为go提供官方驱动支持
-MongoDB Go Driver Tutorial (2019-5-30) MongoDB Go驱动程序教程
-Go Migration Guide (2019-2-2) 从社区驱动（mgo）迁移到官方驱动
-MongoDB Stitch Functions – The AWS re:Invent Stitch Rover Demo(2019-10-15)
-Calling the MongoDB Atlas API - How to do it from Go(2019-3-18)
-MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2019-4-23)
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5e8b4742bd7e796e71009fcc/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -438,11 +431,11 @@ MongoDB Go Driver Tutorial Part 1: Connecting, Using BSON, and CRUD Operations(2
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/07/ali-oss-process/">阿里云oss私有桶图片处理</a></li>
 		</ul>
 	</div>
 </div>
