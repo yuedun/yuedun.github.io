@@ -19,8 +19,8 @@
 		<meta itemprop="name" content="在docker中运行nodejs">
 <meta itemprop="description" content="docker中运行nodejs"><meta itemprop="datePublished" content="2018-01-18T04:26:34+00:00" />
 <meta itemprop="dateModified" content="2018-01-18T04:26:34+00:00" />
-<meta itemprop="wordCount" content="62">
-<meta itemprop="keywords" content="nodejs,docker," />
+<meta itemprop="wordCount" content="81">
+<meta itemprop="keywords" content="nodejs,docker,pm2," />
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
@@ -167,14 +167,25 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出</span>
 </span></span><span style="display:flex;"><span>CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;pm2-runtime&#34;</span>, <span style="color:#e6db74">&#34;dest/server.js&#34;</span>, <span style="color:#e6db74">&#34;--no-daemon&#34;</span><span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># ENTRYPOINT [&#34;node&#34;, &#34;server.js&#34;]</span>
-</span></span></code></pre></div><p>或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令：
-<code>docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
-<p>如果是后台运行的docker，
-<code>docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code>
-<code>-d</code>选项是后台运行</p>
+</span></span></code></pre></div><p>或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令：</p>
+<p><code>docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
+<p>如果是后台运行的docker:</p>
+<p><code>docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
+<p><code>-d</code>选项是后台运行</p>
 <p>需要进入到docker查看pm2运行情况
 ，可以通过<code>docker exec -ti ks /bin/sh</code>查看运行的容器内部情况
 <img src="https://hopefully-img.yuedun.wang/pm2running.png" alt="pm2运行情况"></p>
+<h1 id="要不要在docker中使用pm2运行nodejs">要不要在docker中使用pm2运行nodejs</h1>
+<ul>
+<li>pm2可以监控nodejs进程，如果进程挂了，可以自动重启</li>
+<li>pm2可以设置启动的nodejs进程个数，提高服务性能</li>
+<li>pm2可以设置日志记录</li>
+<li>pm2可以设置端口，避免端口冲突</li>
+</ul>
+<p>docker已经提供了自动重启的功能，可以这样启动nodejs服务：</p>
+<p><code>docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
+<p>&ndash;restart=always参数可以保证服务宕机时自动重启，那么既然docker已经提供了自动重启功能，为什么还要用pm2呢？
+如果只是简单的启动一个nodejs服务，pm2的功能可以忽略。但是docker在重启后会丢失内容，比如生成的文件日志原本在容器内，重启后就丢失了，而使用pm2的话，pm2始终是运行的，应用宕机后pm2会将应用拉起来，这样就可以保证整体程序不会因错误而频繁重启容器。</p>
 
 		</div>
 		<footer class="post__footer">
@@ -187,6 +198,9 @@
 		</li>
 		<li class="tags__item">
 			<a class="tags__link btn" href="/tags/docker/" rel="tag">docker</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/pm2/" rel="tag">pm2</a>
 		</li>
 	</ul>
 </div>

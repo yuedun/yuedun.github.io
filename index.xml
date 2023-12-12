@@ -1000,12 +1000,10 @@ use website db.createUser( {user: &amp;#34;username&amp;#34;,pwd: &amp;#34;xxxxx
       <pubDate>Mon, 30 Mar 2020 02:29:13 +0000</pubDate>
       
       <guid>https://www.yuedun.wang/blogdetail/5e815979c9109f0f909b4cdd/</guid>
-      <description>gorm概述 全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好 已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
+      <description>gorm概述 全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好 like查询 gorm提供了丰富的查询功能，在开发中我们经常需要组合查询，比如列表查询，列表查询一般需要支持条件查询，模糊查询，分页查询，数据条数查询。 已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
 func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { query := u.mysql.Model(&amp;amp;User{}) if search.Name != &amp;#34;&amp;#34; { query.Where(&amp;#34;name LIKE ?&amp;#34;, search.Name+&amp;#34;%&amp;#34;) } if search.Age != &amp;#34;&amp;#34; { query.Where(&amp;#34;age = ?&amp;#34;, search.Age) } err = query.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
-1.if代码是动态组装条件。
-2.err = query.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error
-这行代码包含了数据列表查询和数据条数。
-3.有些需要注意的地方是query.Offset(offset).Limit(limit).Find(&amp;amp;users) 用于查询数据列表，</description>
+if代码是动态组装条件。
+err = query.Offset(offset).Limit(limit).Find(&amp;amp;users).Offset(-1).Limit(-1).Count(&amp;amp;count).Error 这行代码包含了数据列表查询和数据条数。</description>
     </item>
     
     <item>
@@ -1714,9 +1712,13 @@ max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K re
       <guid>https://www.yuedun.wang/blogdetail/5a6021fa4bdc8ea471fd2db0/</guid>
       <description>首先看项目目录：
 再看Dockerfile文件内容：
-# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&amp;#34;pm2-runtime&amp;#34;, &amp;#34;dest/server.js&amp;#34;, &amp;#34;--no-daemon&amp;#34;] # ENTRYPOINT [&amp;#34;node&amp;#34;, &amp;#34;server.js&amp;#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令： docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
-如果是后台运行的docker， docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js -d选项是后台运行
-需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 </description>
+# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&amp;#34;pm2-runtime&amp;#34;, &amp;#34;dest/server.js&amp;#34;, &amp;#34;--no-daemon&amp;#34;] # ENTRYPOINT [&amp;#34;node&amp;#34;, &amp;#34;server.js&amp;#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令：
+docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+如果是后台运行的docker:
+docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+-d选项是后台运行
+需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 要不要在docker中使用pm2运行nodejs pm2可以监控nodejs进程，如果进程挂了，可以自动重启 pm2可以设置启动的nodejs进程个数，提高服务性能 pm2可以设置日志记录 pm2可以设置端口，避免端口冲突 docker已经提供了自动重启的功能，可以这样启动nodejs服务：
+docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/server.</description>
     </item>
     
     <item>

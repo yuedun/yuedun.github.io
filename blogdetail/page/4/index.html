@@ -342,12 +342,10 @@ use website db.createUser( {user: &#34;username&#34;,pwd: &#34;xxxxxx&#34;,roles
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		gorm概述 全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好 已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
+		gorm概述 全功能ORM（几乎） 关联（包含一个，包含多个，属于，多对多，多种包含） Callbacks（创建/保存/更新/删除/查找之前/之后） 预加载（急加载） 事务 复合主键 SQL Builder 自动迁移 日志 可扩展，编写基于GORM回调的插件 每个功能都有测试 开发人员友好 like查询 gorm提供了丰富的查询功能，在开发中我们经常需要组合查询，比如列表查询，列表查询一般需要支持条件查询，模糊查询，分页查询，数据条数查询。 已上支持基本满足了日常开发需要，一些基本的查询需求可以查看文档得到解决，不过文档并没有覆盖所有日常开发案例，尤其是一些组合需求，本文挑了一段常见的场景。
 func (u *userService) GetuserList(offset, limit int, search User) (users []User, count int, err error) { query := u.mysql.Model(&amp;User{}) if search.Name != &#34;&#34; { query.Where(&#34;name LIKE ?&#34;, search.Name+&#34;%&#34;) } if search.Age != &#34;&#34; { query.Where(&#34;age = ?&#34;, search.Age) } err = query.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error return users, count, err } 这简单的一小段已经包含了gorm的模糊查询，动态条件，分页查询，数据条数。 这就是一个最常见的列表查询，列表需要支持条件查询，模糊查询，分页，从代码可以直接看到。
-1.if代码是动态组装条件。
-2.err = query.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error
-这行代码包含了数据列表查询和数据条数。
-3.有些需要注意的地方是query.Offset(offset).Limit(limit).Find(&amp;users) 用于查询数据列表，
+if代码是动态组装条件。
+err = query.Offset(offset).Limit(limit).Find(&amp;users).Offset(-1).Limit(-1).Count(&amp;count).Error 这行代码包含了数据列表查询和数据条数。
 	</div>
 	<div class="list__footer clearfix">
 		<a class="list__footer-readmore btn" href="/blogdetail/5e815979c9109f0f909b4cdd/">阅读全文…</a>
