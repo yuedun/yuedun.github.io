@@ -142,6 +142,25 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5a24ed6c2d700330ae669e89/" rel="bookmark">
+			请求发送到Nodejs服务器以后响应非常慢
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-12-04T06:38:36Z">2017-12-04 06:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		在项目中遇到过这种情况：请求发送后迟迟没有响应，但也并没有报错，在代码中一步步调试都没有发现问题，明明已经走到最后返回数据一步了客户端却没有返回。原因是在中间件中使用了redis或memcache缓存，然后连接缓存服务失败，然后就会一直等待，直到连接缓存超时才会继续执行后续操作。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5a1d8147da5c711b612f4d88/" rel="bookmark">
 			读写数据库与读写文件哪个更快？
 			</a>
@@ -340,29 +359,6 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to... return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/59532a3233c3c869639761db/" rel="bookmark">
-			npm ERR! Error: EPERM: operation not permitted
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-28T04:01:54Z">2017-06-28 04:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		windows下npm install安装依赖的时候出现下面的错误：
-npm ERR! Windows_NT 6.1.7601 npm ERR! argv &#34;D:\\Program Files\\nodejs\\node.exe&#34; &#34;D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js&#34; &#34;install&#34; &#34;yog2@1.0.0&#34; npm ERR! node v4.8.0 npm ERR! npm v2.15.11 npm ERR! path C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925 npm ERR! code EPERM npm ERR! errno -4048 npm ERR! syscall rename npm ERR! Error: EPERM: operation not permitted, rename &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925&#39; -&gt; &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz&#39; npm ERR! at Error (native) npm ERR! { [Error: EPERM: operation not permitted, rename &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz.1683947925&#39; -&gt; &#39;C:\Users\Administrator\AppData\Roaming\npm-cache\images\3.0.0\package.tgz&#39;] npm ERR! errno: -4048, npm ERR!
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/59532a3233c3c869639761db/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -386,11 +382,11 @@ npm ERR! Windows_NT 6.1.7601 npm ERR! argv &#34;D:\\Program Files\\nodejs\\node.
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 		</ul>
 	</div>
 </div>

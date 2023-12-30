@@ -142,6 +142,31 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/56551ce4c72f59d15379b4b8/" rel="bookmark">
+			js prototype的理解【转】
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T02:28:52Z">2015-11-25 02:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototype属性，可以给类动态地添加方法，以便在JavaScript中实现“ 继承”的效果。
+具体来说，prototype 是在 IE 4 及其以后版本引入的一个针对于某一类的对象的方法，当你用prototype编写一个类后，如果new一个新的对象，浏览器会自动把prototype中 的内容替你附加在对象上。这样，通过利用prototype就可以在JavaScript中实现成员函数的定义，甚至是“继承”的效果。
+对于javascript本身而言是基于对象的，任何元素都可以看成对象。然而类型和对象是不同的，而我们所讲的prototype属性即是基于类型的一 种属性。对于prototype的基本使用就如对象的创建及属性赋值一样的简单。直接通过赋值操作即可完成属性的创建。
+/** * 关于prototype, 理解这个很有必要 可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 JS中允许的类型有Array, Boolean, Date, Enumerator, Error, Function, Number, Object, RegExp, String 以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例 */ Object.prototype.name = &#34;zhangsan&#34;; Object.prototype.nihao = function () { alert(&#34;i can method name is &#34; + this.name); } var obj = new Object(); obj.nihao(); alert(obj.name); // 在实例上不能使用prototype，否则会发生编译错误 obj.prototype.sex = &#34;男&#34;; //error,无法给一个实例prototype var o = { name: &#34;zhangsan&#34; } o.prototype.age = 30; //error,无法给一个实例prototype //可以为类型定义“静态”的属性和方法，直接在类型上调用即可 alert(Object.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/56551ce4c72f59d15379b4b8/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/564c33be91dccd315681abff/" rel="bookmark">
 			代码是否应该重构
 			</a>
@@ -424,26 +449,6 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 然后会提示输入密码，就此完成svn账号设置。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5628ab0882f22d389ded545a/" rel="bookmark">
-			一个下载电子书籍的好网站
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T09:23:20Z">2015-10-22 09:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		http://www.chnxp.com.cn/
-几乎可以下载到任何想要的书籍
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -467,11 +472,11 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/09/https-ca/">https证书生成</a></li>
 		</ul>
 	</div>
 </div>
