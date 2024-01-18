@@ -19,7 +19,7 @@
 		<meta itemprop="name" content="微信开发基础设施准备">
 <meta itemprop="description" content="微信开发基础设施准备：内网穿透，服务器URL，白名单"><meta itemprop="datePublished" content="2023-09-24T11:07:26+08:00" />
 <meta itemprop="dateModified" content="2023-09-24T11:07:26+08:00" />
-<meta itemprop="wordCount" content="20">
+<meta itemprop="wordCount" content="23">
 <meta itemprop="keywords" content="微信,内网映射," />
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -151,17 +151,17 @@
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
-			<p>多年前微信开发写过一篇关于内网穿透的文章<a href="/blogdetail/55ab0f6ed366f15412cbf596/">《微信开发通过公网访问本地服务器》</a>，如今重拾起微信开发还是有很多基础准备工作要做。</p>
+			<p>多年前微信开发写过一篇关于内网穿透的文章<a href="/blogdetail/55ab0f6ed366f15412cbf596/">《微信开发通过公网访问本地服务器》</a>，随着时间的推移，有些方法已经不再适用。</p>
 <h2 id="本地服务器地址">本地服务器地址</h2>
 <p>前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。</p>
 <p><strong>不可用的方式——ngrok</strong></p>
 <p>最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。</p>
-<p><strong>借助花生壳来实现</strong></p>
+<p><strong>可用的方式——借助花生壳来实现</strong></p>
 <p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
-<p>如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”。就去web页面配置即可https://console.hsk.oray.com/forward</p>
+<p>如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&gt; <a href="https://console.hsk.oray.com/forward">https://console.hsk.oray.com/forward</a></p>
 <h2 id="服务器配置">服务器配置</h2>
 <p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
-<p>此处的**服务器地址(URL)**不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。</p>
+<p>此处的<strong>服务器地址(URL)</strong> 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。</p>
 <h2 id="测试号管理">测试号管理</h2>
 <p><a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index">测试号管理</a>点开后就会看到和上面服务器配置一样的配置内容。</p>
 <p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
@@ -214,7 +214,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2023 月盾.
+			&copy; 2024 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			<span><a href="https://beian.miit.gov.cn/">沪ICP备17035008号-1</a></span>
 		</div>
