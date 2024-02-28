@@ -139,6 +139,33 @@
 	<header class="main__header">
 		<h1 class="main__title">前端</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://www.yuedun.wang/2024/02/node-deno-bun-llrt/">
+			<img src="https://hopefully-img.yuedun.wang/%e5%85%b1%e4%ba%ab%e7%9b%ae%e5%bd%95/02/node-deno-bun-llrt/llrt.webp?imageMogr2/thumbnail/!20p/" alt="又一个比Nodejs快的运行时，它叫LLRT" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2024/02/node-deno-bun-llrt/" rel="bookmark">
+			又一个比Nodejs快的运行时，它叫LLRT
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-02-28T16:16:19&#43;08:00">2024-02-28 16:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前端圈的发展一向让人感觉学不动，前有Deno，后有Bun，这不，最近又出了个比Nodejs快的Runtime，它叫LLRT。
+1. 什么是LLRT LLRT是Low Latency Runtime的缩写，是一种轻量级JavaScript运行时，旨在满足对快速高效的无服务器应用程序日益增长的需求。与在AWS Lambda上运行的其他JavaScript运行时相比，LLRT的启动速度提高了10倍以上，总体成本降低了2倍。
+2. LLRT是如何做到比Nodejs快的 它内置在Rust中，利用QuickJS作为JavaScript引擎，确保高效的内存使用和快速启动。
+3. LLRT的发展 它还处于实验阶段，并不稳定，还不推荐用于生产。
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/2023/05/next-image-timeout/" rel="bookmark">
@@ -374,32 +401,6 @@ function handler(index){ alert(&#34;hello&#34;, index); } 绑定事件：
 这是初学svelte的时候比较郁闷的事，官方文档中也没有明显的文档说明如何传参。 正确的传参方式是这样的： &lt;button on:click={() =&gt; handler(123)}&gt;点击&lt;/button&gt; 将on:click的内容改写为匿名函数，在函数中调用。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5fc1f965c0ec0c27f57ac7c9/" rel="bookmark">
-			Svelte3路由
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-11-28T07:16:53Z">2020-11-28 07:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		svelte目前没有提供官网路由组件，不过可以在社区中找到。本文介绍的是svelte-spa-router的使用方法。
-npm i svelte-spa-router 参考以下目录结构创建文件（不是必须）
-router.js:
-import index from &#39;./index/index.svelte&#39;; import a from &#39;./a/a.svelte&#39;; import b from &#39;./b/b.svelte&#39;; export const routes = { &#39;/&#39;: index, &#39;/a&#39;: a, &#39;/b&#39;: b } 动态导入组件和代码分割：
-import { wrap } from &#39;svelte-spa-router/wrap&#39; import index from &#39;./index/index.svelte&#39;; export const routes = { &#39;/&#39;: index, &#39;/a&#39;: wrap({ asyncComponent: () =&gt; import(&#39;./a/a.svelte&#39;) }), // &#39;/b&#39;: b // 动态加载 &#39;/b&#39;: wrap({ asyncComponent: () =&gt; import(&#39;./b/b.svelte&#39;) }), } 动态导入组件的优点是组件不会一起打包，而是单独的组件文件，在打开对应的页面时才会请求，可以有效减少包文件大小。 App.svelte:
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5fc1f965c0ec0c27f57ac7c9/">阅读全文…</a>
-	</div>
-</article>
 
 </main>
 
@@ -423,11 +424,11 @@ import { wrap } from &#39;svelte-spa-router/wrap&#39; import index from &#39;./i
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 		</ul>
 	</div>
 </div>

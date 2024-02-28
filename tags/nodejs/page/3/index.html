@@ -141,6 +141,26 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5967123a3d2aae2ccfdc61a3/" rel="bookmark">
+			Sequelize批量插入数据
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-07-13T06:24:58Z">2017-07-13 06:24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
+User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to... return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/591c5eac35b6751981e4681e/" rel="bookmark">
 			nodejs中promise的if流程控制
 			</a>
@@ -366,27 +386,6 @@ request是继承自stream模块的，所以它也是具有可读可写的特性�
 		vm提供了一个沙箱环境，什么叫沙箱环境？类似于一个独立的执行空间，什么时候会用到vm模块？就以我现在接触的需求来说，每个月都有运营活动，但是每次需求又不同，比如一些优惠规则不同，最后可能只需要得到一个结果，如果每次活动都去修改代码就会显得很麻烦，我们提供一个后台管理界面，或者直接在数据库里写入每次活动的不同计算规则，这些规则其实也是JavaScript代码，既然是代码就需要执行才行。这就形成了一种情况：在已有的程序中插入一段代码进行执行，这要怎么实现？如果觉得很容易插入的话，那么是不是黑客可以在你的程序中插入一段代码执行呢？这当然是不允许的，所以就需要提供一种安全环境来执行——就是沙箱了，而vm模块就是提供了这样一种执行环境。 http://www.cnblogs.com/softlover/archive/2012/10/03/2707144.html
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/574019ee0bdb5de027394523/" rel="bookmark">
-			linux下安装nodejs
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-05-21T08:18:54Z">2016-05-21 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		此文过旧，请参阅linux安装nodejs——快捷版 首先下载nodejs压缩文件node-v4.4.4-linux-x64.tar.xz，先解压文件， &gt; xz -d node-v4.4.4-linux-x64.tar.xz解压为tar格式文件，再通过tar命令解压 &gt; tar -xvf node-v4.4.4-linux-x64.tar 可以将解压后的文件夹移动到自己的软件安装文件夹下，比如：/usr/local下，因为nodejs的版本更新太快，每次更新都这么移动文件夹太麻烦，所以还是改成一个通用的名字，就叫node，执行命令这样： mv /home/huo/Download/node-v4.4.4-linux-x64 /usr/local/node 为了能够全局执行node和npm命令，需要建立软链接到可执行目录下，执行命令： echo $PATH 可以看到：/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin是linux全局执行目录，所以就选择在/usr/local/bin下建立软链接吧。
-ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录下执行node和npm命令了，不过这样还没结束，使用npm全局安装包后，在命令行里执行会找不到命令，因为npm全局安装目录在node安装目录，也就是安装在了/usr/local/node/lib/node_modules目录下，所以还需要将这个目录添加的$PATH变量中，sudo vim /etc/profile在文件最下边添加export PATH=&quot;/usr/local/node/bin:$PATH&quot;,此处的路径/usr/local/node/bin并不是上面说的/usr/local/node/lib/node_modules目录，因为npm全局安装以后会在node安装目录下的bin文件夹中建立软链接，直接在$PATH中添加npm的全局安装目录是无法找到可执行文件的。
-升级node版本 可以通过全局安装n工具来升级 npm install -g n，或者nvm工具 或者就是直接下载新的tar文件覆盖升级 cp -Rv node-v8.11.3-linux-x64/* /home/yuedun/software/nodejs/
-	</div>
-</article>
 
 </main>
 
@@ -411,11 +410,11 @@ ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 		</ul>
 	</div>
 </div>

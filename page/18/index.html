@@ -142,6 +142,45 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/562d9ca9c6ed32d312337025/" rel="bookmark">
+			linux下添加svn用户名密码
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-26T03:23:21Z">2015-10-26 03:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		首先需要知道配置文件的位置，比如我们的服务器中我就找到很多关于svn的目录，甚至分不清哪个目录下才是真正的配置文件
+root@handou:~# find / -name subversion
+/home/handou/workspace/subversion-1.8.11/subversion
+/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/src/org/apache/subversion
+/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/src/org/tigris/subversion
+/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/tests/org/apache/subversion
+/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/tests/org/tigris/subversion
+/etc/bash_completion.d/subversion
+/etc/subversion
+/usr/share/doc/subversion
+查找所得结果可以确定应该是在 /etc/subversion下，切换到subversion下有多个文件：
+config config.dpkg-dist dav_svn.authz dav_svn.passwd passwd servers
+可能需要一一查看下都是什么内容，其实主要是dav_svn.authz dav_svn.passwd这两个文件，一个存放用户名，一个存放密码，dav_svn.authz内容包含账号和权限：
+[groups]
+apiadmin=yuedun
+[handou:/]
+@admin=rw
+@apiadmin=rw
+可以编辑这个文件添加账号，然后添加密码，但是不能直接编辑dav_svn.passwd，这里面是加密数据，需要使用Apache的htpasswd命令添加。
+htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
+然后会提示输入密码，就此完成svn账号设置。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5628ab0882f22d389ded545a/" rel="bookmark">
 			一个下载电子书籍的好网站
 			</a>
@@ -416,34 +455,11 @@ HOUR_MINUTE
 然后花了点时间把自己理解的整理出来，很有成就感的发表出去，可谁又能想到其实自己也可能重蹈覆辙，走了前人的路，在别人看来同样晦涩难懂。造成这种情况的原因其实与作者有关与读者也有关，作者不能全方位的表达出思想，读者又不能百分之百的理解作者的意图，然后就形成了后浪推前浪的补充风波，或许知识就是这样不断翻新传播的
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/55f2670ce893a5b0008e57fa/" rel="bookmark">
-			pm2在线监控
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-11T05:30:52Z">2015-09-11 05:30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		先来一张效果图：
-](https://hopefully-img.yuedun.wang/172722906.png)
-由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。
-使用方法很简单，几乎是一条命令搞定，首先打开https://app.keymetrics.io/#/ 注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name
-可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。
-	</div>
-</article>
 
 		
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/page/17/">«</a>
-	<span class="pagination__item pagination__item--current">18/21</span>
+	<span class="pagination__item pagination__item--current">18/22</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/19/">»</a>
 </div>
 </main>
@@ -462,11 +478,11 @@ HOUR_MINUTE
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 		</ul>
 	</div>
 </div>

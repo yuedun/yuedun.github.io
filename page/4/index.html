@@ -141,6 +141,38 @@
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
+		<a href="https://www.yuedun.wang/blogdetail/60950c9ee76f307341586548/">
+			<img src="https://hopefully-img.yuedun.wang/zhuque1.jpg?imageMogr2/thumbnail/!20p/" alt="朱雀发布系统支持scp（rsync）发布" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/60950c9ee76f307341586548/" rel="bookmark">
+			朱雀发布系统支持scp（rsync）发布
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-11T14:16:17&#43;08:00">2021-06-11 14:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		去年花了三天时间开发了一个简易版的nodejs发布系统，它是基于pm2自带的deploy机制开发的，主要原理就是在两台装有pm2的机器直接通信，并执行相应的命令。再往简单了说就是在发布机上远程执行命令，而朱雀发布系统提供了一个图形界面而已。
+当时把这个系统定位为nodejs专用发布系统，因为它依赖了pm2，而pm2则是nodejs专用的进程管理工具，其他语言用不到。这个系统的上线也算是解决了我司一直以来没有合适的nodejs发布系统的空缺。
+经过9个月的使用，也算比较稳定。但是也存在问题，最大的问题是部署应用方面比较繁琐。
+基本流程如下：
+发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。 部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
+使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
+最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。
+朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
+朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。 项目地址：朱雀发布系统
+	</div>
+</article>
+<article class="list__item post">
+	<figure class="list__thumbnail">
 		<a href="https://www.yuedun.wang/blogdetail/608eb0b254277a10496a5f56/">
 			<img src="https://hopefully-img.yuedun.wang/led%E6%89%8B%E7%94%B5%E7%AD%92.jpg?imageMogr2/thumbnail/!20p/" alt="一体LED可伸缩变焦手电筒拆解" />
 		</a>
@@ -387,34 +419,11 @@ import sirv from &#39;sirv&#39;; import polka from &#39;polka&#39;; import compr
 		<a class="list__footer-readmore btn" href="/blogdetail/5ff449035e80c6649222da2c/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5ff3db095e80c6649222d94e/" rel="bookmark">
-			svelte项目rollup配置px2rem
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-01-05T03:20:41Z">2021-01-05 03:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		使用svelte开发项目时遇到需要将px转换成rem的需求，有试过postcss-px2rem，postcss-pxtorem，等postcss插件，都没成成功，最后找到了postcss-units插件成功实现。 完整rollup配置文件如下： converts px to rem 该配置是sapper项目配置
-import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-resolve&#39;; import replace from &#39;@rollup/plugin-replace&#39;; import commonjs from &#39;@rollup/plugin-commonjs&#39;; import url from &#39;@rollup/plugin-url&#39;; import svelte from &#39;rollup-plugin-svelte&#39;; import babel from &#39;@rollup/plugin-babel&#39;; import { terser } from &#39;rollup-plugin-terser&#39;; import config from &#39;sapper/config/rollup.js&#39;; import pkg from &#39;./package.json&#39;; import sveltePreprocess from &#39;svelte-preprocess&#39;; // import { less } from &#39;svelte-preprocess&#39;; const postcssUnits = require(&#39;postcss-units&#39;); const mode = process.env.NODE_ENV; const dev = mode === &#39;development&#39;; const legacy = !
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5ff3db095e80c6649222d94e/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/page/3/">«</a>
-	<span class="pagination__item pagination__item--current">4/21</span>
+	<span class="pagination__item pagination__item--current">4/22</span>
 	<a class="pagination__item pagination__item--next btn" href="/page/5/">»</a>
 </div>
 </main>
@@ -433,11 +442,11 @@ import path from &#39;path&#39;; import resolve from &#39;@rollup/plugin-node-re
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 		</ul>
 	</div>
 </div>

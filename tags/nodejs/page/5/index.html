@@ -141,6 +141,36 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5451f72e0eb53ef723e47bfe/" rel="bookmark">
+			Nodejs核心常用工具
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-30T08:30:38Z">2014-10-30 08:30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		内容摘自《nodejs开发指南》
+util 是一个 Node.js 核心模块，提供常用函数的集合，用于弥补核心 JavaScript 的功能
+过于精简的不足。
+util.inherits
+util.inherits(constructor, superConstructor)是一个实现对象间原型继承
+的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有
+提供对象继承的语言级别特性， 而是通过原型复制来实现的， 具体细节我们在附录A中讨论，
+在这里我们只介绍 util.inherits 的用法，示例如下：
+var util = require(&#34;util&#34;); function Base() { this.name = &#34;base&#34;; this.base = 1991; this.sayHello = function() { console.log(&#34;Hello &#34; + this.name); }; } Base.prototype.showName = function() { console.log(this.name); }; function Sub() { this.name = &#34;sub&#34;; } util.inherits(Sub, Base); var objBase = new Base(); objBase.showName(); objBase.sayHello(); console.log(objBase); var objSub = new Sub(); objSub.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/blogdetail/5451f72e0eb53ef723e47bfe/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/54488218aedc6cf109b96d32/" rel="bookmark">
 			让你的Node.js应用跑得更快的10个技巧
 			</a>
@@ -227,11 +257,11 @@ app.post(&#39;/:key&#39;, function(req, res) { console.log(req.params.key); //�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/11/sql-audit/">常用SQL审计平台介绍</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/09/wechatchat-developement/">微信开发基础设施准备</a></li>
 		</ul>
 	</div>
 </div>
