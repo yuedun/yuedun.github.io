@@ -140,6 +140,30 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f6ae2145edb9b37630b34c1/" rel="bookmark">
+			vue nuxt组建注册
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-09-23T05:50:12Z">2020-09-23 05:50</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Nuxt.js 2.13+可以扫描并自动导入您的组件，不再需要在该script部分中手动导入它们！
+nuxt.config配置：
+export default { components: true } 设置为true或使用对象时，它将包含nuxt / components依赖项，并且~/components在模板中使用它们时会自动导入您的组件。
+组件目录：
+components/ ComponentFoo.vue ComponentBar.vue 使用
+&lt;template&gt; &lt;ComponentFoo /&gt; &lt;component-bar /&gt; &lt;/template&gt; 注意：如果使用nuxt 2.10&hellip;2.13，则还必须手动安装并添加@nuxt/components到buildModulesinside nuxt.config。
+	</div>
+</article>
+<article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.yuedun.wang/blogdetail/5f41c9d65edb9b37630b0d46/">
 			<img src="https://hopefully-img.yuedun.wang/zhuque.jpg?imageMogr2/thumbnail/!20p/" alt="nodejs专用发布系统" />
@@ -403,28 +427,6 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能值为空，假设在前端并未传递age字段，那么最终condition=map[id:xxx,name:xxx]，并不会出现age:0这个的字段，有效避免了零值情况。
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5ee6fae2e8775d3b7f2ee0c6/" rel="bookmark">
-			puppeteer TypeError: text is not iterable
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-06-15T04:36:50Z">2020-06-15 04:36</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		(node:9828) UnhandledPromiseRejectionWarning: TypeError: text is not iterable at Keyboard.type (D:\workspace\auto-ui\node_modules\puppeteer-core\lib\Input.js:160:24) at Keyboard.&lt;anonymous&gt; (D:\workspace\auto-ui\node_modules\puppeteer-core\lib\helper.js:112:23) at openBrowser (D:\workspace\auto-ui\test-email\index.js:106:25) at process._tickCallback (internal/process/next_tick.js:68:7) (node:9828) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 3) (node:9828) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5ee6fae2e8775d3b7f2ee0c6/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -448,11 +450,11 @@ search := User{ ID: id, Name: name, Age: age, } search结构中的字段可能�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 		</ul>
 	</div>
 </div>

@@ -142,6 +142,29 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2024/08/gitlab-cicd-harbor/" rel="bookmark">
+			gitlab-ci使用Harbor机器人账户
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-08-06T14:50:43&#43;08:00">2024-08-06 14:50</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		gitlab ci/cd 中，需要使用到 docker registry 账号 push 镜像，这个可以设置为机器人，可以避免个人账号泄露
+配置Harbor机器人 登录 Harbor 管理界面，进入系统管理→认证页面； 选择机器人 Token页签，点击左上角的新建机器人，创建一个名为gitlab-ci的机器人； 给该机器人一个名称，并给该机器人添加相应的权限； 机器人创建完成以后，点击右侧的查看token来复制该机器人的 token，这个就是以后用 gitlab-ci 配置文件使用的账号密码； 在gitlab 创建 harbor-robot 用户； 为该用户添加项目级别的 开发 权限； 配置gitlab-ci 在项目的设置中添加 docker registry 账号密码，仓库地址是harbor的； 编辑.gitlab-ci.yml文件，把账号密码改为之前复制的 token； 注意点 有些情况下创建的机器人账户会带上$符号，在gitlab中是无法使用的，需要将$改为 %24，或者使用两个$$来表示$；
+结束 这样gitlab-ci 就可以顺利跑测试、构建、推送镜像了；
+以上内容，只是简单的配了配 harbor，可以有很多其他方法完成该工作，这里只是简单的记录下而已；
+如果需要复杂的设置，欢迎移步harbor 文档，那里有更多的内容可以提供参考。
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2024/05/miniprogram-page-comunicate/" rel="bookmark">
 			微信小程序页面之间传递数据和通信
 			</a>
@@ -417,30 +440,6 @@ package main import ( &#34;fmt&#34; &#34;os&#34; &#34;github.com/aliyun/aliyun-o
 		<a class="list__footer-readmore btn" href="/2023/07/ali-oss-process/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2023/05/next-image-timeout/" rel="bookmark">
-			next/image组件导致服务器504超时
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-05-17T19:38:34&#43;08:00">2023-05-17 19:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		谁能想到，一个前端组件也能把服务搞崩溃。这个组件正是next/image，原本是想利用next/image来优化图片，next.js官方也一直推荐这么做。
-突然有一天用户反馈网站出现504超时报错，当时优先重启恢复服务。然后把日志打开观察，果不其然，几分钟后就又出现504超时，伴随出现的日志则是：
-upstream image response failed for https://example.com/280d59d8-f3b0-11ed-a295-00163e253f9a_00002_VvBbv3zj.jpg?OSSAccessKeyId=LTAI5nodLHeacT1J5SmWh&amp;Expires=317044217325&amp;Signature=Wf5jYWf7vnXOyRoKLVtiTCrt8%3D 404 初步判断是图片404导致服务器超时，深入猜测是使用next.js服务端渲染请求了图片资源，而图片资源不存在导致服务器渲染出错。
-但是很不合理，服务端只是把图片资源的地址渲染到html中，并不会在服务端请求图片资源才对，为什么服务器日志会出现上述错误信息呢？于是观察浏览器中图片的请求，发现格式是这样的： http://example.com/_next/image?url=https%3A%2F%2Fexample.com%2Ff6c912da-f0cc0000_0d7GBaLE.jpg%3FOSSAccessKeyId%3DmWh%26Expires%3D317043899846%26Signature%3DYUMro%253D&amp;w=384&amp;q=75
-浏览器请求的图片资源并不是图片的真实地址，而是经过了next.js服务处理的，尤其是URL最后两个参数，是图片压缩参数。如果你发现图片变模糊了，也可能是这两个参数捣的鬼。直接拿着这个地址去浏览器请求发现响应很慢，这时再次得出结论：这个图片组件有问题。为了验证把所有使用了next/image组件全部使用原生img标签，发布到线上后就再没出现504超时。
-总结：next/image组件包装后的图片资源需要经过node层压缩处理，会消耗CPU资源，对于大量的图片资源会有风险，酌情处理。 本次出现的时候伴随着图片资源404，可能是有bug存在，如果加载不到正确的图片就会触发bug。 另一种解决方案：根据官方文档说明，如果使用next/image,需要添加sharp包来提高性能，但是可能需要注意内存消耗问题。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -463,11 +462,11 @@ upstream image response failed for https://example.com/280d59d8-f3b0-11ed-a295-0
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 		</ul>
 	</div>
 </div>

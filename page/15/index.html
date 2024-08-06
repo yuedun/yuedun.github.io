@@ -142,6 +142,27 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/57fb9d3169c8bf6e323dff46/" rel="bookmark">
+			使用半年TypeScript后的感受
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-10T13:52:49Z">2016-10-10 13:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		初识TypeScript 从入职新公司开始算，使用typescript已经有半年多了，这是一个创业公司使用nodejs开发的后台业务管理系统，已经做的很大了，支撑着公司每月千万人民币的业务处理。很多怀疑nodejs是否可以开发后台管理，作为一个过来人告诉你可以放心使用，现在的javascript早已不是10年前用来写前端特效的js了。美中不足的是nodejs对报表这类数据处理量较大的功能有点力不从心，经常拖垮系统，当然也不是完全不能用nodejs来处理报表，可以合理的使用子进程单独处理数据而不影响主进程。但还是不推荐。
+使用感受 其实起初对于typescript开发nodejs我是拒绝的，原因是建立起这个项目的人都走了，而这个项目结构实在是复杂，在windows下环境搭建费了好大精力，尤其是为了使用一个bcrypt加密包，需要安装Python,C++来编译，还不能使用nodejs0.12以上版本，最烦人的是每次修改文件后编译速度非常慢，这让我重新体验了开发JAVA时期的痛苦。而且服务启动方法也是前人自己编写shell脚本来同时编译前端文件和后端文件。并没有使用nodemon,supervisor这种监控工具。后来折腾发现可以直接使用vscode单独编译ts文件，一般12秒就编译完成，这与我之前的项目1秒修改重启相比还是慢了很多，不过也免强只能接受，此时只觉得如此麻烦和JAVA开发有什么区别！所以基于这些不好的体验我很不喜欢typescript。
+重新认识 最近又折腾了下我用纯nodejs开发的博客，突然发现，写起来确实不如typescript爽，主要是纯nodejs在webstorm和vscode上语法提示和错误提示较弱，而typescript则可以很好的提示并且在开发过程中就能发现一些很低级错误，不用等到运行时才发现。尤其是对ES6的支持比较完整，甚至可以使用async,await这些ES7提案中的特性。虽然现在高版本的nodejs已经支持一些新特性，但是并不是所有项目都可以使用高版本。如果说为什么要使用typescript，那就是typescript集合了js的快速和强类型语言的安全稳定，用于开发一些较大的项目绝对利大于弊。 尤其是对于一些多人合作的项目来说，typescript的强类型能够很好约束对象属性，参数传递，对后续的重构也起到至关重要的作用。 有人可能会担心降低开发效率，这一点大可不必担心，你定义类型消耗的时间会从强类型提示上补回来的。 接下来会写一篇完整的环境搭建教程：使用typescript开发nodejs的环境搭建（一）
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/57d6aaa7471c11fa271ed1bb/" rel="bookmark">
 			beego post请求获取request body参数
 			</a>
@@ -337,34 +358,6 @@ ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录�
 升级node版本 可以通过全局安装n工具来升级 npm install -g n，或者nvm工具 或者就是直接下载新的tar文件覆盖升级 cp -Rv node-v8.11.3-linux-x64/* /home/yuedun/software/nodejs/
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/56f15a4a3823e4e62593d4e2/" rel="bookmark">
-			用java的思想方式写javascript
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-03-22T14:44:26Z">2016-03-22 14:44</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		javascript和java有相似之处也有很大区别，对于初学者来说很容易被名称迷惑，其实当初javascript就是借着java的顺风车进行推广的。
-由于javascript是动态语言，java是静态语言，所以两者在编写方式上有很大区别，主要是因为javascript没有类的概念，在ES6标准发布之前要构造一个对象需要用new关键字实例化一个function或者直接使用对象字面量。不过ES6标准的发布，使得javascript也可像java一样声明类了。
-在使用nodejs开发大型应用时需要到类的概念来封装一个复杂的逻辑，我们可以从现在开始逐步使用ES6开发，但是基于现有的支持环境，很多时候还得用ES5编写代码，那么这时候怎么来抽象一个类和实例化对象？
-以Java的思想方式来编写JavaScript，首先是一个构造函数：
-function Person(name, age){ this.name = name; this.age = age; } 这就像是Java的构造函数，可以new一个对象出来
-var tom = new Person(&quot;Tom&quot;,12);
-构造函数的用处是在创建对象的时候就初始化了属性的值，不用再单独赋值，不需要再像这样赋值:
-var tom = new Person(); tom.name = &#34;Tom&#34;; tom.age = 13; 有了构造函数，还要有普通函数：
-tom.sayHello = function(){ console.log(&#34;my name is &#34;+this.name);//my name is Tom } 接下来是静态函数：静态方法就是由类名直接调用的的方法，不需要new一个对象
-function Person(name, age){ this.name = name; this.age = age; } Person.getAge = function(){ console.log(this.age); } Person.age = 12; Person.getAge();//类似于Java中的静态方法只能使用静态变量，所以此处也需要一个静态age 至于普通函数与静态函数有什么区别？区别就在于静态函数会一开始就加载到内存中，当然就比较占用内存了，普通函数是在new以后才被初始化，函数使用完就释放内存。
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -388,11 +381,11 @@ function Person(name, age){ this.name = name; this.age = age; } Person.getAge = 
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/11/kubernetes-deploy-mysql8/">kubernetes部署mysql8</a></li>
 		</ul>
 	</div>
 </div>
