@@ -19,7 +19,7 @@
 		<meta itemprop="name" content="gitlab-ci使用Harbor机器人账户">
 <meta itemprop="description" content="gitlab-ci使用Harbor机器人账户"><meta itemprop="datePublished" content="2024-08-06T14:50:43+08:00" />
 <meta itemprop="dateModified" content="2024-08-06T14:50:43+08:00" />
-<meta itemprop="wordCount" content="43">
+<meta itemprop="wordCount" content="42">
 <meta itemprop="keywords" content="CI/CD," />
 
 	<link rel="stylesheet" href="/css/style.css">
@@ -166,8 +166,8 @@
 <li>在项目的设置中添加 docker registry 账号密码，仓库地址是harbor的；</li>
 <li>编辑<code>.gitlab-ci.yml</code>文件，把账号密码改为之前复制的 token；</li>
 </ul>
-<p><strong>注意点</strong>
-有些情况下创建的机器人账户会带上<code>$</code>符号，在gitlab中是无法使用的，需要将<code>$</code>改为 <code>%24</code>，或者使用两个<code>$$</code>来表示<code>$</code>；</p>
+<p><strong>注意点</strong></p>
+<p>有些情况下创建的机器人账户会带上<code>$</code>符号，在gitlab中是无法使用的，需要将<code>$</code>改为两个<code>$$</code>来表示<code>$</code>；</p>
 <h2 id="结束">结束</h2>
 <p>这样gitlab-ci 就可以顺利跑测试、构建、推送镜像了；</p>
 <p>以上内容，只是简单的配了配 harbor，可以有很多其他方法完成该工作，这里只是简单的记录下而已；</p>

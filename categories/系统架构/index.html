@@ -155,7 +155,8 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		gitlab ci/cd 中，需要使用到 docker registry 账号 push 镜像，这个可以设置为机器人，可以避免个人账号泄露
-配置Harbor机器人 登录 Harbor 管理界面，进入系统管理→认证页面； 选择机器人 Token页签，点击左上角的新建机器人，创建一个名为gitlab-ci的机器人； 给该机器人一个名称，并给该机器人添加相应的权限； 机器人创建完成以后，点击右侧的查看token来复制该机器人的 token，这个就是以后用 gitlab-ci 配置文件使用的账号密码； 在gitlab 创建 harbor-robot 用户； 为该用户添加项目级别的 开发 权限； 配置gitlab-ci 在项目的设置中添加 docker registry 账号密码，仓库地址是harbor的； 编辑.gitlab-ci.yml文件，把账号密码改为之前复制的 token； 注意点 有些情况下创建的机器人账户会带上$符号，在gitlab中是无法使用的，需要将$改为 %24，或者使用两个$$来表示$；
+配置Harbor机器人 登录 Harbor 管理界面，进入系统管理→认证页面； 选择机器人 Token页签，点击左上角的新建机器人，创建一个名为gitlab-ci的机器人； 给该机器人一个名称，并给该机器人添加相应的权限； 机器人创建完成以后，点击右侧的查看token来复制该机器人的 token，这个就是以后用 gitlab-ci 配置文件使用的账号密码； 在gitlab 创建 harbor-robot 用户； 为该用户添加项目级别的 开发 权限； 配置gitlab-ci 在项目的设置中添加 docker registry 账号密码，仓库地址是harbor的； 编辑.gitlab-ci.yml文件，把账号密码改为之前复制的 token； 注意点
+有些情况下创建的机器人账户会带上$符号，在gitlab中是无法使用的，需要将$改为两个$$来表示$；
 结束 这样gitlab-ci 就可以顺利跑测试、构建、推送镜像了；
 以上内容，只是简单的配了配 harbor，可以有很多其他方法完成该工作，这里只是简单的记录下而已；
 如果需要复杂的设置，欢迎移步harbor 文档，那里有更多的内容可以提供参考。
