@@ -142,6 +142,33 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2024/10/socketio-cluster/" rel="bookmark">
+			socket.io多实例集群化实现
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-10-18T15:26:24&#43;08:00">2024-10-18 15:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Socket.io作为服务器推送的首要选择，可以很方便的在客户端和Web服务器之间实现双向通信。很多人在选择之初都会有个疑问：socket.io是有状态长链接服务，它能支撑多少个用户同时在线？
+虽然目前没有标准统一的答案，但是，在开发实践中已经证明，在单机情况下10万用户是没问题的。
+如果您觉得10万还是不够，那么可以通过多实例的方式来支持更多的用户也是可行的。实现方式几乎是零成本升级。
+您只需要将默认的适配器更换为redis或其他适配器就可以支持多实例：
+一个基于epxress和socket.io的多实例服务配置：
+#!/usr/bin/env node const app = require(&#39;../app&#39;); const debug = require(&#39;debug&#39;)(&#39;ws_server:www&#39;); const { createServer } = require(&#39;http&#39;); const { Server } = require(&#39;socket.io&#39;); const { createAdapter } = require(&#34;@socket.io/redis-adapter&#34;); const { Redis } = require(&#34;ioredis&#34;); const port = normalizePort(process.env.PORT || &#39;3000&#39;); app.set(&#39;port&#39;, port); const httpServer = createServer(app); /** * Normalize a port into a number, string, or false. */ function normalizePort(val) { var port = parseInt(val, 10); if (isNaN(port)) { // named pipe return val; } if (port &gt;= 0) { // port number return port; } return false; } /** * Event listener for HTTP server &#34;error&#34; event.
+	</div>
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="/2024/10/socketio-cluster/">阅读全文…</a>
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2024/08/gitlab-cicd-harbor/" rel="bookmark">
 			gitlab-ci使用Harbor机器人账户
 			</a>
@@ -411,36 +438,6 @@ openssl req -new -x509 -key domain.key -out domain.crt -days 365
 openssl req -new -key domain.key -out domain.csr
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2023/07/ali-oss-process/" rel="bookmark">
-			阿里云oss私有桶图片处理
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-01T18:13:43&#43;08:00">2023-07-01 18:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		针对OSS内存储的图片文件（Object），您可以在GetObject请求中携带图片处理参数对图片文件进行处理。例如添加图片水印、转换格式等。详情见：官方文档
-对于允许公共读写的文件可以直接在图片URL后面拼接参数的方式进行图片处理，格式：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value
-对于不允许匿名访问的私有图片文件，不支持通过文件URL直接添加参数的方式处理图片，您需要通过SDK的方式将图片处理操作加入签名URL中。
-重要： 通过文件URL访问图片时，默认是下载行为。如需确保通过文件URL访问图片时是预览行为，您需要绑定自定义域名并添加CNAME记录。具体操作，请参见绑定自定义域名。
-所以，私有桶的图片是不能直接添加参数处理，否则会返回错误信息：
-SignatureDoesNotMatch
-The request signature we calculated does not match the signature you provided. Check your key and signing method.
-SDK处理方法，以go版本为例：
-package main import ( &#34;fmt&#34; &#34;os&#34; &#34;github.com/aliyun/aliyun-oss-go-sdk/oss&#34; ) func HandleError(err error) { fmt.Println(&#34;Error:&#34;, err) os.Exit(-1) } func main() { // 创建OSSClient实例。 // yourEndpoint填写Bucket对应的Endpoint，以华东1（杭州）为例，填写为https://oss-cn-hangzhou.aliyuncs.com。其它Region请按实际情况填写。 // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。 client, err := oss.New(&#34;yourEndpoint&#34;, &#34;yourAccessKeyId&#34;, &#34;yourAccessKeySecret&#34;) if err != nil { HandleError(err) } // 指定图片所在Bucket的名称，例如examplebucket。 bucketName := &#34;examplebucket&#34; bucket, err := client.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2023/07/ali-oss-process/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -463,11 +460,11 @@ package main import ( &#34;fmt&#34; &#34;os&#34; &#34;github.com/aliyun/aliyun-o
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 		</ul>
 	</div>
 </div>
@@ -564,6 +561,7 @@ package main import ( &#34;fmt&#34; &#34;os&#34; &#34;github.com/aliyun/aliyun-o
 		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>

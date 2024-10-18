@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>socket.io on 月盾的博客</title>
+    <link>https://www.yuedun.wang/tags/socket.io/</link>
+    <description>Recent content in socket.io on 月盾的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Oct 2024 15:26:24 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/socket.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>socket.io多实例集群化实现</title>
+      <link>https://www.yuedun.wang/2024/10/socketio-cluster/</link>
+      <pubDate>Fri, 18 Oct 2024 15:26:24 +0800</pubDate>
+      
+      <guid>https://www.yuedun.wang/2024/10/socketio-cluster/</guid>
+      <description>Socket.io作为服务器推送的首要选择，可以很方便的在客户端和Web服务器之间实现双向通信。很多人在选择之初都会有个疑问：socket.io是有状态长链接服务，它能支撑多少个用户同时在线？
+虽然目前没有标准统一的答案，但是，在开发实践中已经证明，在单机情况下10万用户是没问题的。
+如果您觉得10万还是不够，那么可以通过多实例的方式来支持更多的用户也是可行的。实现方式几乎是零成本升级。
+您只需要将默认的适配器更换为redis或其他适配器就可以支持多实例：
+一个基于epxress和socket.io的多实例服务配置：
+#!/usr/bin/env node const app = require(&amp;#39;../app&amp;#39;); const debug = require(&amp;#39;debug&amp;#39;)(&amp;#39;ws_server:www&amp;#39;); const { createServer } = require(&amp;#39;http&amp;#39;); const { Server } = require(&amp;#39;socket.io&amp;#39;); const { createAdapter } = require(&amp;#34;@socket.io/redis-adapter&amp;#34;); const { Redis } = require(&amp;#34;ioredis&amp;#34;); const port = normalizePort(process.env.PORT || &amp;#39;3000&amp;#39;); app.set(&amp;#39;port&amp;#39;, port); const httpServer = createServer(app); /** * Normalize a port into a number, string, or false. */ function normalizePort(val) { var port = parseInt(val, 10); if (isNaN(port)) { // named pipe return val; } if (port &amp;gt;= 0) { // port number return port; } return false; } /** * Event listener for HTTP server &amp;#34;error&amp;#34; event.</description>
+    </item>
+    
+  </channel>
+</rss>

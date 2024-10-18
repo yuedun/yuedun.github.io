@@ -142,6 +142,26 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/2022/05/http-response-garbled/" rel="bookmark">
+			go http响应乱码
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-05-12T21:46:13&#43;08:00">2022-05-12 21:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		golang请求接口返回的数据乱码，原因之一是请求头设置了&quot;Accept-Encoding&quot;: &quot;gzip, deflate, br&quot;，那么如果服务器支持的话响应的数据就会经过gzip，deflate，br等方式的压缩，解决方式是对数据解压，或者可以不设置接收方式，即&quot;Accept-Encoding&quot;: &quot;&quot;
+import &#34;github.com/andybalholm/brotli&#34; import &#34;compress/flate&#34; import &#34;compress/gzip&#34; // 检测返回的body是否经过压缩，并返回解压的内容 func contentDecoding(res *http.Response) (bodyReader io.Reader, err error) { switch res.Header.Get(&#34;Content-Encoding&#34;) { case &#34;gzip&#34;: bodyReader, err = gzip.NewReader(res.Body) case &#34;deflate&#34;: bodyReader = flate.NewReader(res.Body) case &#34;br&#34;: bodyReader = brotli.NewReader(res.Body) default: bodyReader = res.Body } return } 
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/2022/02/chrome-devtool-show-all-path/" rel="bookmark">
 			chrome开发者工具显示接口完整路径
 			</a>
@@ -390,36 +410,6 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 		<a class="list__footer-readmore btn" href="/2021/06/gitpage-hugo-page-view/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2021/06/blog-move-to-gitpage/" rel="bookmark">
-			博客迁移至hugo gitpage
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-17T19:38:31&#43;08:00">2021-06-17 19:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		为什么迁移？ 6月初的时候，3年前买的阿里云服务器到期了，又买了其他服务器，但是只有1年期，于是进行了一番数据，应用迁移，这么一顿操作下来还是挺累的，尤其是在linux上安装mysql，mongodb，安装后又是连接不上，用了好几天时间才搞定，挺烦的。
-再想到一年后又是一顿操作，不由得一个激灵。
-经过一番的思量后，决定将自建博客迁移至gitpage上。
-自建和gitpage优劣对比 首先列出自己博客具备的功能：
-首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链 目录 所有文章时间线 留言 自维护留言系统 微博 新浪微博，最近出问题不显示了 速记 简单记录 关于 自我介绍 整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。所以迁移到gitpage上也不会有什么问题。
-劣势 静态博客在一些细节功能上面确实会有缺失，比如：
-评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。 优势 免费，没有服务器费用。 可以自定义域名，只需要一丁点儿的域名费用。 seo良好。 规范的书写格式，使文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于本地检索。 数据更保险，不易丢失。 安全，静态博客可以避免一些网络攻击。 整体来说，除了数据存储功能缺失外，其他都是可以实现的。
-迁移过程 将mongodb数据中的博客导出为本地markdown文件。
-// mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &#39;_id&#39;: -1 } }) .then(data =&gt; { data.forEach((b) =&gt; { debug(b) let tags = b.tags.split(&#34;,&#34;) let blog = `--- title: &#34;${b.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/06/blog-move-to-gitpage/">阅读全文…</a>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -443,11 +433,11 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 		</ul>
 	</div>
 </div>
@@ -544,6 +534,7 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>

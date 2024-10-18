@@ -141,6 +141,41 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/blogdetail/5eb778a2bd7e796e7100c718/" rel="bookmark">
+			你是拿锤子的前端开发吗？
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-05-10T03:44:34Z">2020-05-10 03:44</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		前言 接上篇《说道说道前后端分离》今天再次对前端现状作一次分析（吐槽）。
+再次引用一句《穷查理宝典》中的理论：
+在手里拿着锤子的人看来，所有的东西都会是钉子。
+因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。
+事出有因 这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。
+最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。
+对以上问题分析得出结论之一：资源过大，有兴趣的可以打开淘宝网看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。
+而我们一个移动端网站的资源居然能超过3M，究其原因：
+图片大 js大 css大 图片大是因为图片基本没任何大小控制，都是使用了最高标准原图。js和css大基本是属于架构问题，一个项目中包含的上百的页面每个页面600多k的js是绕不过去的（vendor.js,app.js等打包资源，不包含其他引入资源）。
+看到vendor.js,app.js这两个名称很多人应该想到了，这是vue（react）框架开发的网站。 是的，就是用vue开发的移动端网站，使用vue开发网站本身也不是什么大问题，毕竟有实力的公司不需要SEO，直接竞价排名就行。而我要说的问题是，不是什么网站都可以用vue来开发，不信请继续往下看。
+问题分析 我司的移动端网站作用并不仅仅是用来展示公司形象的，更重要的是用户转化的，就是让用户注册的。而且是要和很多第三方机构合作投放引流，经常需要分析页面UI的不同对转化率的影响，所以需要的页面不是几个，而是几十上百个，还在不停增加，每周都有三五个页面增加。 由于vue主要是以开发单页SPA应用为主的，在开发人员不考虑真实需求的情况下自然会使用流行的技术，最终把网站开发成一个单页应用。单页应用的特点就是单页，就是把不同的页面做成一个页面一次加载，加载完成后页面之间的切换就会很快，一般无需再加载资源，用户体验也会好很多，可以套用一句话：“一次等待，处处快速”。
+这个特点在管理后台项目中很合适，但是在只需要展示一次的项目中也合适吗？不合适。
+我们的网站项目是用来做很多落地页的，各个落地页之间没有关联性，不会A页面跳到B页面，从B页面跳到C页面，A页面中不需要B页面的资源，B页面也不需要C页面的资源。然而vue项目打包的时候会把每个页面独有的一些资源都融合在一起，形成公共资源。结果就显而易见了，一个页面总要加载一堆无关资源，不仅资源大，还有很长的白屏时间，用户体验下降。
+还有一点不该使用单页应用的原因是我们的页面是纯展示的页面，不需要很多数据交互，vue能起到什么作用？操作数据？驱动UI？模块化？通通不需要。现代html可以不借助第三方库和框架的情况下完全能实现。
+结论 JavaScript 的最大优势之一是它不需要编译，所以可以在浏览器中直接运行。这样你就可以立刻获得编码的反馈。入门门槛很低；你只需一个文本编辑器和一个浏览器就能编写软件了。 不幸的是，这种简单性和可访问性已被称为过度工具链的风气破坏了。这种风气已经将 JavaScript 的开发工作变成了一场噩梦。我甚至看过一整套关于配置 Webpack 的课程。这种乱象需要有个尽头——生命苦短啊。
+VUE，React这类框架用于构建应用方面很合适，但不太适合构建网站。应用是需要有较多的UI和数据方面的交互，而网站则更多的是信息展示，你可能根本不需要JavaScript（框架）。
+追求新技术可以让我们获得新奇感，成就感，解决老问题，而不是带来新问题。复杂性才是造成软件问题的根本原因。——试问：离开框架的你还会开发网站吗？
+	</div>
+</article>
+<article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/blogdetail/5e183a7a54cf7f406dcb28f5/" rel="bookmark">
 			“中台”是架构的捷径吗？
 			</a>
@@ -420,50 +455,13 @@ docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/
 		<a class="list__footer-readmore btn" href="/blogdetail/5a6021fa4bdc8ea471fd2db0/">阅读全文…</a>
 	</div>
 </article>
-<article class="list__item post">
-	<figure class="list__thumbnail">
-		<a href="https://www.yuedun.wang/blogdetail/5a375f52e9a4cf008860c09b/">
-			<img src="https://hopefully-img.yuedun.wang/104432cjc7c8tx7xxqqkgq.jpg?imageMogr2/thumbnail/!20p/" alt="为什么需要RPC，而不是简单的HTTP接口" />
-		</a>
-	</figure>
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a375f52e9a4cf008860c09b/" rel="bookmark">
-			为什么需要RPC，而不是简单的HTTP接口
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-12-18T06:25:22Z">2017-12-18 06:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		目前有很多Java的RPC框架，有基于Json的，有基于XML，也有基于二进制对象的。
-论复杂度，RPC框架肯定是高于简单的HTTP接口的。但毋庸置疑，HTTP接口由于受限于HTTP协议，需要带HTTP请求头，导致传输起来效率或者说安全性不如RPC。
-现在问题是，遇到怎样的瓶颈了才需要或者说更适合用RPC（比如像阿里这么大的请求并发量，简单的HTTP肯定达不到预期），但问题是大家所在的公司，要有像阿里这么大的量是比较少的，甚至说1/1000的量可能都没有，那我们还需要使用RPC吗？
-技术应该不是为了使用新技术而去使用，而应该是旧技术存在某些瓶颈，存在难以支撑或者扩展性越老越差等问题暴露出来之后，用新技术来进行解决。
-那RPC最大的优点，或者说它相比简单的HTTP接口，它的优势、更适合它的业务场景是怎样呢？简单的HTTP又哪里不足，哪些场景明显不太适合呢？
-RPC=Remote Produce Call 是一种技术的概念名词. HTTP是一种协议,RPC可以通过HTTP来实现,也可以通过Socket自己实现一套协议来实现.所以楼主可以换一个问法,为何RPC还有除HTTP 之外的实现法,有何必要.毕竟除了HTTP实现外,私有协议不具备通用性.那么我想唯一的答案就在于HTTP不能满足其业务场景的地方,所以这个就要具体 案例具体分析了.
-http接口是在接口不多、系统与系统交互较少的情况下，解决信息孤岛初期常使用的一种通信手段；优点就是简单、直接、开发方便。利用现成的http协议 进行传输。但是如果是一个大型的网站，内部子系统较多、接口非常多的情况下，RPC框架的好处就显示出来了，首先就是长链接，不必每次通信都要像http 一样去3次握手什么的，减少了网络开销；其次就是RPC框架一般都有注册中心，有丰富的监控管理；发布、下线接口、动态扩展等，对调用方来说是无感知、统 一化的操作。第三个来说就是安全性。最后就是最近流行的服务化架构、服务化治理，RPC框架是一个强力的支撑。
-rpc是一种概念，http也是rpc实现的一种方式。论复杂度，dubbo/hessian用起来是超级简单的。最近用dubbo和hessian比较多，http的几乎都被废弃了。
-至于为什么用，其实很简单，业务场景不一样。我最早的单位所有的代码都在一个工程里，一次要发布几百m的代码。这种架构是非常有利于小程序的。但是我们为什么要应用rpc层呢，一个功能，一套代码下来不就解决了么？我觉得有几个好处：
-1 灵活部署 2 解耦 至于为什么，当你用到的时候，你会体会。
-系统做大了，肯定是需要做微服务的。 现在我们做电商就是这样，单独有一个订单系统，支付系统，商品系统，用户系统。都是分开部署，单独上线的。 但我们交互是用HTTP接口来交互的，我想转用RPC，但问题是我现在还没发现为什么需要用RPC，我还没能理解它的作用和意义。
-用http交互其实就已经属于rpc了。
-RPC:远程过程调用。RPC的核心并不在于使用什么协议。RPC的目的是让你在本地调用远程的方法，而对你来说这个调用是透明的，你并不知道这个调用的方法是部署哪里。通过RPC能解耦服务，这才是使用RPC的真正目的。RPC的原理主要用到了动态代理模式，至于http协议，只是传输协议而已。简单的实现可以参考spring remoting，复杂的实现可以参考dubbo。
-RPC是一个软件结构概念，是构建分布式应用的理论基础。就好比为啥你家可以用到发电厂发出来的电？是因为电是可以传输的。至于用铜线还是用铁丝还是其他 种类的导线，也就是用http还是用其他协议的问题了。这个要看什么场景，对性能要求怎么样。比如在java中的最基本的就是RMI技术，它是java原 生的应用层分布式技术。我们可以肯定的是在传输性能方面，RMI的性能是优于HTTP的。那为啥很少用到这个技术？那是因为用这个有很多局限性，首先它要 保证传输的两端都要要用java实现，且两边需要有相同的对象类型和代理接口，不需要容器，但是加大了编程的难度，在应用内部的各个子系统之间还是会看到 他的身影，比如EJB就是基于rmi技术的。这就与目前的bs架构的软件大相径庭。用http必须要服务端位于http容器里面，这样减少了网络传输方面 的开发，只需要关注业务开发即可。所以在架构一个软件的时候，不能一定根据需求选定技术。
-转自：https://www.cnblogs.com/winner-0715/p/5847638.html
-	</div>
-</article>
 
 </main>
 
 <div class="pagination">
 	<a class="pagination__item pagination__item--prev btn" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">«</a>
-	<span class="pagination__item pagination__item--current">2/2</span>
+	<span class="pagination__item pagination__item--current">2/3</span>
+	<a class="pagination__item pagination__item--next btn" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/page/3/">»</a>
 </div>
 
 		</div>
@@ -481,11 +479,11 @@ RPC是一个软件结构概念，是构建分布式应用的理论基础。就�
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/12/iphone-broswer-extensions/">没想到iPhone浏览器Safari居然已经支持扩展了</a></li>
 		</ul>
 	</div>
 </div>
@@ -582,6 +580,7 @@ RPC是一个软件结构概念，是构建分布式应用的理论基础。就�
 		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
