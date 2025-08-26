@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="后端" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/categories/%E5%90%8E%E7%AB%AF/" />
+		<meta property="og:url" content="https://www.yuedun.wang/categories/%E5%90%8E%E7%AB%AF/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="后端">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="后端">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2022-09-28T14:00:43+08:00">
+  <meta itemprop="dateModified" content="2022-09-28T14:00:43+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="后端">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="后端">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/categories/%E5%90%8E%E7%AB%AF/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,27 +116,58 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-19T03:27:57Z">2018-03-19 03:27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-19T03:27:57Z">2018.03.19 03:27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( &#34;fmt&#34; ) 然后在代码里面可以通过如下的方式调用
-fmt.Println(&#34;hello world&#34;) 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：
-相对路径
-import &#34;./model&#34; //当前文件同一目录的model目录，但是不建议这种方式import` 绝对路径
-import &#34;shorturl/model&#34; //加载GOPATH/src/shorturl/model模块` 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
-点操作 有时候会看到如下的方式导入包
-import( . &#34;fmt&#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
-fmt.Println(&#34;hello world&#34;) 可以省略的写成
-Println(&#34;hello world&#34;) 别名操作 别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字
-import( f &#34;fmt&#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
-f.Println(&#34;hello world&#34;) _操作 这个操作经常是让很多人费解的一个操作符，请看下面这个import
-import ( &#34;database/sql&#34; _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
-二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
-通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
-原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457
+		<p>一、 包的导入语法
+在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>(
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>然后在代码里面可以通过如下的方式调用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><p>上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：</p>
+<p><strong>相对路径</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>   <span style="color:#e6db74">&#34;./model&#34;</span>  <span style="color:#75715e">//当前文件同一目录的model目录，但是不建议这种方式import`</span>
+</span></span></code></pre></div><p><strong>绝对路径</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>   <span style="color:#e6db74">&#34;shorturl/model&#34;</span>  <span style="color:#75715e">//加载GOPATH/src/shorturl/model模块`</span>
+</span></span></code></pre></div><p>上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。</p>
+<ol>
+<li><strong>点操作</strong></li>
+</ol>
+<p>有时候会看到如下的方式导入包</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>( 
+</span></span><span style="display:flex;"><span>    . <span style="color:#e6db74">&#34;fmt&#34;</span> 
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><p>可以省略的写成</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><ol start="2">
+<li><strong>别名操作</strong></li>
+</ol>
+<p>别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">f</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>别名操作调用包函数时前缀变成了重命名的前缀，即</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><ol start="3">
+<li><strong>_操作</strong></li>
+</ol>
+<p>这个操作经常是让很多人费解的一个操作符，请看下面这个import</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> ( 
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;database/sql&#34;</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;github.com/ziutek/mymysql/godrv&#34;</span> 
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>_操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。</p>
+<p>二、 包的导入过程说明
+程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：</p>
+<p><img src="https://hopefully-img.yuedun.wang/20140511222515968.jpg" alt="go包导入过程" title="go包导入过程"></p>
+<p>通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。</p>
+<p>原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -183,25 +181,53 @@ import ( &#34;database/sql&#34; _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-02T03:25:51Z">2018-03-02 03:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-02T03:25:51Z">2018.03.02 03:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV。那么在生产环境中使用pm2如何设置环境变量？
-设置方式一：shell命令设置 linux：export NODE_ENV=development&amp;&amp; node app.js
-win：set NODE_ENV=development&amp;&amp; node app.js
-一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
-设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
-pm2 start pm2.json &ndash;env production
---env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
-pm2.json
-{ &#34;apps&#34; : [{ &#34;name&#34;: &#34;issue&#34;, &#34;cwd&#34;: &#34;dest&#34;, &#34;script&#34; : &#34;bin/www.js&#34;, &#34;instances&#34; : &#34;2&#34;, &#34;exec_mode&#34; : &#34;cluster&#34;, &#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 }, &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34;, &#34;PORT&#34;: 3003 }, &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;, &#34;merge_logs&#34;: true }] } 如果不加参数则默认使用
-&#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
-加--env production则使用的是
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
+		<p>nodejs中经常使用到环境变量，最常见的如：<code>process.env.NODE_ENV</code>。那么在生产环境中使用pm2如何设置环境变量？</p>
+<h3 id="设置方式一shell命令设置">设置方式一：shell命令设置</h3>
+<p><strong>linux</strong>：<code>export NODE_ENV=development&amp;&amp; node app.js</code></p>
+<p><strong>win</strong>：<code>set NODE_ENV=development&amp;&amp; node app.js</code></p>
+<p>一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据<code>process.env.NODE_ENV</code>来运行不同逻辑即可。</p>
+<h3 id="设置方式二配置文件设置">设置方式二：配置文件设置</h3>
+<p>要在pm2设置环境变量也很简单。</p>
+<blockquote>
+<p>pm2 start pm2.json &ndash;env production</p></blockquote>
+<p><code>--env production</code>参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。</p>
+<p><strong>pm2.json</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;apps&#34;</span> <span style="color:#f92672">:</span> [{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;issue&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cwd&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;dest&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;script&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bin/www.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;instances&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;exec_mode&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cluster&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;env&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3002</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;env_production&#34;</span> <span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;production&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3003</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;log_date_format&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;YYYY-MM-DD_HH:mm Z&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;merge_logs&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  }]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果不加参数则默认使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#e6db74">&#34;env&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3002</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>结果：<code>NODE_ENV=development</code>,<code>PORT=3002</code></p>
+<p>加<code>--env production</code>则使用的是</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#e6db74">&#34;env_production&#34;</span> <span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;production&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3003</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>结果：<code>NODE_ENV=production</code>,<code>PORT=3003</code></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -215,20 +241,48 @@ pm2.json
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-25T09:49:36Z">2018-01-25 09:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-25T09:49:36Z">2018.01.25 09:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		pm2介绍 pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。 最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。 总体来说就是有性能监控、自动重启、负载均衡的作用。
-pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路径：
-error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
-安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
-pm2-logrotate配置
-max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a69a8301f395d7179259c45/">阅读全文…</a>
+		<h3 id="pm2介绍">pm2介绍</h3>
+<p>pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。
+最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。
+总体来说就是有性能监控、自动重启、负载均衡的作用。</p>
+<h3 id="pm2-logrotate介绍">pm2-logrotate介绍</h3>
+<p>pm2本身是可以输出日志文件的，默认的文件路径：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>error log path    │ /home/username/.pm2/logs/app-error-0.log
+</span></span><span style="display:flex;"><span>out log path      │ /home/username/.pm2/logs/app-out-0.log 
+</span></span></code></pre></div><p>但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要<code>pm2-logrotate</code>来实现自动分割日志。</p>
+<h3 id="安装pm2-logrotate">安装pm2-logrotate</h3>
+<p><code>pm2 install pm2-logrotate</code>,是用pm2命令，不是npm命令</p>
+<p>pm2-logrotate配置</p>
+<ul>
+<li><code>max_size</code> (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K</li>
+<li><code>retain</code> (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one.</li>
+<li><code>compress</code> (默认 false): 是否压缩日志</li>
+<li><code>dateFormat</code> (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式</li>
+<li><code>rotateModule</code> (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps</li>
+<li><code>workerInterval</code> (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1)</li>
+<li><code>rotateInterval</code> (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed. We are using node-schedule to schedule cron, so all valid cron for node-schedule is valid cron for this option. Cron style :</li>
+<li><code>TZ</code> (Defaults to system time): This is the standard tz database timezone used to offset the log file saved. For instance, a value of Etc/GMT-1, with an hourly log, will save a file at hour 14 GMT with hour 13 GMT-1 in the log name.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>*    *    *    *    *    *
+</span></span><span style="display:flex;"><span>┬    ┬    ┬    ┬    ┬    ┬
+</span></span><span style="display:flex;"><span>│    │    │    │    │    |
+</span></span><span style="display:flex;"><span>│    │    │    │    │    └ day of week <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> - 7<span style="color:#f92672">)</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> or <span style="color:#ae81ff">7</span> is Sun<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>│    │    │    │    └───── month <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> - 12<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>│    │    │    └────────── day of month <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> - 31<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>│    │    └─────────────── hour <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> - 23<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>│    └──────────────────── minute <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> - 59<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>└───────────────────────── second <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> - 59, OPTIONAL<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>可以尝试使用<code>pm2 set pm2-logrotate:max_size 1K (1KB)</code>设置日志文件最大为1KB
+代码中<code>console.log</code>的内容会输出到
+<code>/home/username/.pm2/logs/app-out-0.log</code>,
+大小达到1KB就会自动生成
+<code>app-out-0__2018-01-25_16-58-16.log</code>这种格式的日志文件。
+在<code>/home/username/.pm2/logs/</code>（默认路径，可以配置）路径下还有</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -242,17 +296,32 @@ max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K re
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-17T14:21:51Z">2018-01-17 14:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-17T14:21:51Z">2018.01.17 14:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		pm2的fork模式和cluster模式的区别
-fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。 参考：http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2 运行非js语言必须设置运行模式为fork_mode
-cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
-** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
-也可以使用文件方式： processes.json文件：
-{ &#34;apps&#34; : [{ &#34;script&#34; : &#34;api.js&#34;, &#34;instances&#34; : &#34;max&#34;, &#34;exec_mode&#34; : &#34;cluster&#34; }] } pm2 start processes.json
+		<p>pm2的fork模式和cluster模式的区别</p>
+<h3 id="fork模式">fork模式</h3>
+<p>pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。
+参考：<a href="http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2">http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2</a>
+运行非js语言必须设置运行模式为<code>fork_mode</code></p>
+<h3 id="cluster模式">cluster模式</h3>
+<p>cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。</p>
+<p><img src="http://i.imgur.com/kTAowsL.png" alt=""></p>
+<p>** 使用方法 **
+<code>pm2 start app.js -i max</code>
+使用-i参数，max代表最大CPU进程数</p>
+<p>也可以使用文件方式：
+processes.json文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;apps&#34;</span> : [{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;script&#34;</span>    : <span style="color:#e6db74">&#34;api.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;instances&#34;</span> : <span style="color:#e6db74">&#34;max&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;exec_mode&#34;</span> : <span style="color:#e6db74">&#34;cluster&#34;</span> 
+</span></span><span style="display:flex;"><span>  }]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>pm2 start processes.json</code></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -266,16 +335,29 @@ cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-11T10:48:56Z">2017-11-11 10:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-11T10:48:56Z">2017.11.11 10:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Assistance.belongTo(User)会报以下错误：
-ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE; Unhandled rejection SequelizeDatabaseError: Can&#39;t write; duplicate key in table &#39;#sql-454_d&#39; at Query.formatError (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16) at Query.connection.query [as onResult] (/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23) at Query.Command.execute (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12) at Connection.handlePacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28) at PacketParser.onPacket (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16) at PacketParser.executeStart (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14) at Socket.&lt;anonymous&gt; (/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29) at emitOne (events.js:115:13) at Socket.emit (events.js:210:7) at addChunk (_stream_readable.js:264:12) at readableAddChunk (_stream_readable.js:251:11) at Socket.Readable.push (_stream_readable.js:209:10) at TCP.onread (net.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a06d5989f088c0683b93d26/">阅读全文…</a>
+		<p>Assistance.belongTo(User)会报以下错误：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span>assistance<span style="color:#f92672">`</span> <span style="color:#66d9ef">ADD</span> <span style="color:#66d9ef">CONSTRAINT</span> <span style="color:#f92672">`</span>assistance_user_id_foreign_idx<span style="color:#f92672">`</span> <span style="color:#66d9ef">FOREIGN</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>user_id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">REFERENCES</span> <span style="color:#f92672">`</span>users<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>) <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DELETE</span> <span style="color:#66d9ef">NO</span> ACTION <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">CASCADE</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Unhandled rejection SequelizeDatabaseError: Can<span style="color:#e6db74">&#39;t write; duplicate key in table &#39;</span><span style="color:#75715e">#sql-454_d&#39;</span>
+</span></span><span style="display:flex;"><span>    at Query.formatError <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:223:16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Query.connection.query <span style="color:#f92672">[</span>as onResult<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/sequelize/lib/dialects/mysql/query.js:55:23<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Query.Command.execute <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/commands/command.js:30:12<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Connection.handlePacket <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:515:28<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at PacketParser.onPacket <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:94:16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at PacketParser.executeStart <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/packet_parser.js:77:14<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Socket.&lt;anonymous&gt; <span style="color:#f92672">(</span>/home/hale/workspace/issue-tracking-system/node_modules/mysql2/lib/connection.js:102:29<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at emitOne <span style="color:#f92672">(</span>events.js:115:13<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Socket.emit <span style="color:#f92672">(</span>events.js:210:7<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at addChunk <span style="color:#f92672">(</span>_stream_readable.js:264:12<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at readableAddChunk <span style="color:#f92672">(</span>_stream_readable.js:251:11<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at Socket.Readable.push <span style="color:#f92672">(</span>_stream_readable.js:209:10<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    at TCP.onread <span style="color:#f92672">(</span>net.js:587:20<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>原因是会在Assistance表中自动添加外键约束，如果不需要外键约束则可以这样设置：
+Assistance.belongsTo(User, { constraints: false });</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -289,13 +371,19 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-28T15:28:40Z">2017-10-28 15:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-28T15:28:40Z">2017.10.28 15:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		从图片中的代码可以看出 let userRecord = await item.getUser();获取到的是Bluebird&lt;UserInstance | null&gt;类型，然后在下面获取对象属性的时候报错，错误信息是：
-[ts] Object is possibly &#39;null&#39;. let userRecord: UserInstance | null 说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的 &quot;strictNullChecks&quot;: true, /* Enable strict null checks. */ 默认是true，即严格null检查，设置为falsse即可。
+		<p><img src="https://hopefully-img.yuedun.wang/typescript.png" alt="sequelize nulll" title="sequelize nulll"></p>
+<p>从图片中的代码可以看出
+<code>let userRecord = await item.getUser();</code>获取到的是<code>Bluebird&lt;UserInstance | null&gt;</code>类型，然后在下面获取对象属性的时候报错，错误信息是：</p>
+<pre tabindex="0"><code>[ts] Object is possibly &#39;null&#39;.
+let userRecord: UserInstance | null
+</code></pre><p>说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的
+<code>&quot;strictNullChecks&quot;: true,              /* Enable strict null checks. */</code>
+默认是true，即严格null检查，设置为falsse即可。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -309,18 +397,31 @@ ALTER TABLE `assistance` ADD CONSTRAINT `assistance_user_id_foreign_idx` FOREIGN
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-21T02:34:33Z">2017-10-21 02:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-21T02:34:33Z">2017.10.21 02:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		定义Model的时候有这样两个参数： underscored,underscoredAll,
-Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option
-其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。
-var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assistance&#39;, { title: Sequelize.STRING, description: Sequelize.STRING, fullName: Sequelize.STRING }, { underscored: true, tableName: &#39;assistance&#39;, charset: &#39;utf8&#39;, collate: &#39;utf8_unicode_ci&#39; } ); CREATE TABLE IF NOT EXISTS `assistance` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `fullName` VARCHAR(255), `created_at` DATETIME NOT NULL, `updated_at` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_unicode_ci; 其中fullName字段在创建表的时候还是和模型中保持一致，并没有转换为full_name，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。 在github上也有相关讨论：https://github.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/59eab23989faeadc30eac826/">阅读全文…</a>
+		<p>定义Model的时候有这样两个参数：
+<code>underscored</code>,<code>underscoredAll</code>,</p>
+<blockquote>
+<p>Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option</p></blockquote>
+<p>其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Model</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">define</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ModelInstance</span>, <span style="color:#a6e22e">ModelAttributes</span><span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Assistance&#39;</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fullName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>
+</span></span><span style="display:flex;"><span>    }, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">underscored</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tableName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;assistance&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">charset</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;utf8&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">collate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;utf8_unicode_ci&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#f92672">`</span>assistance<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> INTEGER <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> auto_increment , <span style="color:#f92672">`</span>title<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">255</span>), <span style="color:#f92672">`</span>description<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">255</span>), <span style="color:#f92672">`</span>fullName<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">255</span>), <span style="color:#f92672">`</span>created_at<span style="color:#f92672">`</span> DATETIME <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>, <span style="color:#f92672">`</span>updated_at<span style="color:#f92672">`</span> DATETIME <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>, <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>)) ENGINE<span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">DEFAULT</span> CHARSET<span style="color:#f92672">=</span>utf8 <span style="color:#66d9ef">COLLATE</span> utf8_unicode_ci;
+</span></span></code></pre></div><p>其中<code>fullName</code>字段在创建表的时候还是和模型中保持一致，并没有转换为<code>full_name</code>，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。
+在github上也有相关讨论：<a href="https://github.com/sequelize/sequelize/issues/6423">https://github.com/sequelize/sequelize/issues/6423</a></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -334,15 +435,52 @@ var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assista
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-23T03:20:12Z">2017-08-23 03:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-23T03:20:12Z">2017.08.23 03:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Unhandled rejection CastError: Cast to ObjectId failed for value &#34;catalog&#34; at path &#34;_id&#34; for model &#34;Blog&#34; at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11) at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13) at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15) at ObjectId.castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:189:15) at ObjectId.SchemaType.castForQueryWrapper (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1021:15) at cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\cast.js:269:32) at Query.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:3103:12) at Query._castConditions (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1144:10) at Query._findOne (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1346:8) at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:250:8 at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:23:7 at nextTickCallbackWith0Args (node.js:489:9) at process._tickCallback (node.js:418:13) From previous event: at Query.exec (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2897:17) at Query.then (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2945:15) at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10) at e:\workspace\yuedun_ts\app.ts:53:14 at Layer.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/599cf46c1bffdb00880597b3/">阅读全文…</a>
+		<pre tabindex="0"><code>Unhandled rejection CastError: Cast to ObjectId failed for value &#34;catalog&#34; at path &#34;_id&#34; for model &#34;Blog&#34;
+    at MongooseError.CastError (e:\workspace\yuedun_ts\node_modules\mongoose\lib\error\cast.js:27:11)
+    at ObjectId.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:149:13)
+    at ObjectId.SchemaType._castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1064:15)
+    at ObjectId.castForQuery (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schema\objectid.js:189:15)
+    at ObjectId.SchemaType.castForQueryWrapper (e:\workspace\yuedun_ts\node_modules\mongoose\lib\schematype.js:1021:15)
+    at cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\cast.js:269:32)
+    at Query.cast (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:3103:12)
+    at Query._castConditions (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1144:10)
+    at Query._findOne (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:1346:8)
+    at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:250:8
+    at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\kareem\index.js:23:7
+    at nextTickCallbackWith0Args (node.js:489:9)
+    at process._tickCallback (node.js:418:13)
+From previous event:
+    at Query.exec (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2897:17)
+    at Query.then (e:\workspace\yuedun_ts\node_modules\mongoose\lib\query.js:2945:15)
+    at Object.default_1 [as default] (e:\workspace\yuedun_ts\utils\viewer-log.ts:21:10)
+    at e:\workspace\yuedun_ts\app.ts:53:14
+    at Layer.handle [as handle_request] (e:\workspace\yuedun_ts\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:317:13)
+    at e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:284:7
+    at param (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:354:14)
+    at param (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:410:3)
+    at next (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:275:10)
+    at e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:635:15
+    at next (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:260:14)
+    at Function.handle (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:174:3)
+    at router (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (e:\workspace\yuedun_ts\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:317:13)
+    at e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:335:12)
+    at next (e:\workspace\yuedun_ts\node_modules\express\lib\router\index.js:275:10)
+    at e:\workspace\yuedun_ts\node_modules\express-session\index.js:489:7
+    at e:\workspace\yuedun_ts\node_modules\connect-mongo\lib\connect-mongo.js:305:11
+    at handleCallback (e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\mongodb\lib\utils.js:120:56)
+    at e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\mongodb\lib\collection.js:1417:5
+    at handleCallback (e:\workspace\yuedun_ts\node_modules\mongoose\node_modules\mongodb\lib\utils.js:120:56)
+</code></pre><p>乍看之下有用的只有第一行，意思是将<code>catalog</code>赋值给<code>_id</code>,但是这么一大片都是mongoose相关的错误，找不到在哪爆出来的错误，再仔细看一下，其实还是指出了具体错误代码：</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -356,13 +494,22 @@ var Model = sequelize.define&lt;ModelInstance, ModelAttributes&gt;( &#39;Assista
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-07-13T06:24:58Z">2017-07-13 06:24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-07-13T06:24:58Z">2017.07.13 06:24</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。
-User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#39;foo&#39;, isAdmin: true }, { username: &#39;bar&#39;, isAdmin: false } ]).then(() =&gt; { // Notice: There are no arguments here, as of right now you&#39;ll have to... return User.findAll(); }).then(users =&gt; { console.log(users) // ... in order to get the array of user objects }) 
+		<p>sequelize提供了批量插入数据的方法：Model.bulkCreate([…object])。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">bulkCreate</span>([
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;barfooz&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> },
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;foo&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> },
+</span></span><span style="display:flex;"><span>  { <span style="color:#a6e22e">username</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bar&#39;</span>, <span style="color:#a6e22e">isAdmin</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> }
+</span></span><span style="display:flex;"><span>]).<span style="color:#a6e22e">then</span>(() =&gt; { <span style="color:#75715e">// Notice: There are no arguments here, as of right now you&#39;ll have to...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">User</span>.<span style="color:#a6e22e">findAll</span>();
+</span></span><span style="display:flex;"><span>}).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">users</span> =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">users</span>) <span style="color:#75715e">// ... in order to get the array of user objects
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span></code></pre></div>
 	</div>
 </article>
 <article class="list__item post">
@@ -376,17 +523,54 @@ User.bulkCreate([ { username: &#39;barfooz&#39;, isAdmin: true }, { username: &#
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-16T15:03:25Z">2017-06-16 15:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-16T15:03:25Z">2017.06.16 15:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		以实际遇到过得情况为例，用户的数据结构中有类型为日期类型time.Time的createdAt属性，经过反复的格式化处理，在页面上输出的还是2017-05-31 06:49:09 +0800 CST这种格式，所以猜想日期类型是不能直接输出2017-05-31 06:49:09格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。
-package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name string age int createdAt time.Time } type UserPojo struct { User createdAt string } func (user *User) getName(){ fmt.Println(&#34;获取用户名：&#34;, user.name) } func main() { user := new(User) user.name=&#34;张三&#34; user.age=26 user.createdAt=time.Now() fmt.Println(&#34;user.createdAt&#34;,user.createdAt) userpj := new(UserPojo) userpj.User = *user userpj.createdAt = user.createdAt.Format(&#34;2006-01-02 15:04:05&#34;) fmt.Println(&#34;userpj.createdAt&#34;,userpj.createdAt) } //输出 //user.createdAt 2017-06-17 10:39:29.5294 +0800 CST //userpj.createdAt 2017-06-17 10:39:29 在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：
-# command-line-arguments .
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5944b81d9d957900957feff6/">阅读全文…</a>
+		<p>以实际遇到过得情况为例，用户的数据结构中有类型为日期类型<code>time.Time</code>的createdAt属性，经过反复的格式化处理，在页面上输出的还是<code>2017-05-31 06:49:09 +0800 CST</code>这种格式，所以猜想日期类型是不能直接输出<code>2017-05-31 06:49:09</code>格式的，只能输出格式化后的字符串类型。于是利用go的继承将User的数据结构继承都UserPojo里，再单独对createdAt进行修改，重写为string类型。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">User</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">age</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">createdAt</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Time</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">UserPojo</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">User</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">createdAt</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">user</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">User</span>) <span style="color:#a6e22e">getName</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;获取用户名：&#34;</span>, <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>()  {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">User</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>=<span style="color:#e6db74">&#34;张三&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">age</span>=<span style="color:#ae81ff">26</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">createdAt</span>=<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;user.createdAt&#34;</span>,<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">createdAt</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">userpj</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">UserPojo</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">userpj</span>.<span style="color:#a6e22e">User</span> = <span style="color:#f92672">*</span><span style="color:#a6e22e">user</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">userpj</span>.<span style="color:#a6e22e">createdAt</span> = <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">createdAt</span>.<span style="color:#a6e22e">Format</span>(<span style="color:#e6db74">&#34;2006-01-02 15:04:05&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;userpj.createdAt&#34;</span>,<span style="color:#a6e22e">userpj</span>.<span style="color:#a6e22e">createdAt</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//输出</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//user.createdAt 2017-06-17 10:39:29.5294 +0800 CST</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//userpj.createdAt 2017-06-17 10:39:29</span>
+</span></span></code></pre></div><p>在go的继承中有一点需要注意，使用结构体struct字面量赋值会出现找不到属性的问题：</p>
+<p><img src="https://hopefully-img.yuedun.wang/go_extends_20180328182436.png" alt="https://hopefully-img.yuedun.wang/go_extends_20180328182436.pn"></p>
+<pre tabindex="0"><code># command-line-arguments
+.\test.go:17:7: unknown field &#39;Name&#39; in struct literal of type Cat
+.\test.go:18:8: unknown field &#39;Color&#39; in struct literal of type Cat
+</code></pre><p>换一种方式还是有问题：</p>
 	</div>
 </article>
 
@@ -406,7 +590,7 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -422,13 +606,12 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -466,99 +649,99 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -586,13 +769,14 @@ package main import &#34;fmt&#34; import &#34;time&#34; type User struct { name 
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

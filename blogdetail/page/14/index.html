@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="Blogdetails" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/blogdetail/" />
+		<meta property="og:url" content="https://www.yuedun.wang/blogdetail/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="Blogdetails">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="Blogdetails">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2021-06-14T10:40:52+00:00">
+  <meta itemprop="dateModified" content="2021-06-14T10:40:52+00:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blogdetails">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="Blogdetails">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/blogdetail/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,15 +116,19 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-01T10:19:53Z">2016-01-01 10:19</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-01-01T10:19:53Z">2016.01.01 10:19</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		本想写篇vue.js的教程的，但牵扯的知识点比较多，最近又没时间，就记录下过程中遇到问题吧。开发过程中用的360极速浏览器，也没什么问题，但是其他人测试的时候用的是chrome浏览器，输入汉字的时候会连拼音也带进去，比如输入的是“你好”，结果却成了“nihao你好”。
-按理说360极速浏览器也用的是chrome内核，不应该出现这两种不同的情况，这个问题先不追究了。还是说说为什么vue.js的输入框会出现拼音的问题。我本以为是浏览器的差异造成这种现象，但是也不是所有输入框都会出现，那一定是程序的问题。
-这是一种双向数据绑定常见写法，但是由于我的理解不够透彻，写成了这样：
-我的理解是更新的时候要先显示数据，所以就在input里加了value来初始化数据，也是因为加了这个value导致输入汉字出现拼音，也与浏览器有点关系，就是输入的时候chrome浏览器会把输入的汉字拼音拼写也放进输入框，那么数据模型就接收了输入，敲击空格键的时候又输进了汉字，所以就都带进来了。但其实只需要v-model就能实现数据的接收和输出。
+		<p>本想写篇vue.js的教程的，但牵扯的知识点比较多，最近又没时间，就记录下过程中遇到问题吧。开发过程中用的360极速浏览器，也没什么问题，但是其他人测试的时候用的是chrome浏览器，输入汉字的时候会连拼音也带进去，比如输入的是“你好”，结果却成了“nihao你好”。</p>
+<p><img src="https://hopefully-img.yuedun.wang/shurufa1.jpg" alt=""></p>
+<p><img src="https://hopefully-img.yuedun.wang/shurufa2.jpg" alt=""></p>
+<p>按理说360极速浏览器也用的是chrome内核，不应该出现这两种不同的情况，这个问题先不追究了。还是说说为什么vue.js的输入框会出现拼音的问题。我本以为是浏览器的差异造成这种现象，但是也不是所有输入框都会出现，那一定是程序的问题。</p>
+<!-- raw HTML omitted -->
+<p>这是一种双向数据绑定常见写法，但是由于我的理解不够透彻，写成了这样：</p>
+<!-- raw HTML omitted -->
+<p>我的理解是更新的时候要先显示数据，所以就在input里加了value来初始化数据，也是因为加了这个value导致输入汉字出现拼音，也与浏览器有点关系，就是输入的时候chrome浏览器会把输入的汉字拼音拼写也放进输入框，那么数据模型就接收了输入，敲击空格键的时候又输进了汉字，所以就都带进来了。但其实只需要v-model就能实现数据的接收和输出。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -171,18 +142,65 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-26T07:53:28Z">2015-11-26 07:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-26T07:53:28Z">2015.11.26 07:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		js中有个delete操作符可以删除对象的属性，比如下面代码：
-//objtest对象有个prop属性
-var objtest = { prop: &#39;delete me&#39; }; //或者这么声明的对象 var objtest = new Array(); objtest[&#39;prop&#39;] = &#39;delete me&#39;; //删除属性&#39;prop&#39;： delete objtest.prop; //或者 delete objtest[&#39;prop&#39;]; //还可以删除任意变量 var numb = 17; delete numb; 但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：
-var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{ name: &#39;小樱&#39;, age: 16, gender: &#39;女&#39;, friends: [{ name: &#39;井野&#39;, age: 16, gender: &#39;女&#39; }] }, { name: &#39;佐助&#39;, age: 16, gender: &#39;男&#39; }] } 鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5656ba78c72f59d15379b4ba/">阅读全文…</a>
+		<p>js中有个delete操作符可以删除对象的属性，比如下面代码：</p>
+<p>//objtest对象有个prop属性</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">objtest</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">prop</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;delete me&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//或者这么声明的对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">objtest</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">objtest</span>[<span style="color:#e6db74">&#39;prop&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;delete me&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//删除属性&#39;prop&#39;：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">objtest</span>.<span style="color:#a6e22e">prop</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//或者
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">objtest</span>[<span style="color:#e6db74">&#39;prop&#39;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//还可以删除任意变量
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">numb</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">numb</span>;
+</span></span></code></pre></div><p>但是在nodejs项目中使用了sequelizejs来读取数据，如果也有想删除的属性，直接使用delete是删不掉的，比如有这样的数据结构：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;鸣人&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">gender</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;男&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">friends</span><span style="color:#f92672">:</span> [{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;小樱&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">gender</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;女&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">friends</span><span style="color:#f92672">:</span> [{
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;井野&#39;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">gender</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;女&#39;</span>
+</span></span><span style="display:flex;"><span>		}]
+</span></span><span style="display:flex;"><span>	},
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;佐助&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">gender</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;男&#39;</span>
+</span></span><span style="display:flex;"><span>	}]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。</p>
+<p>据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。</p>
+<p><img src="https://hopefully-img.yuedun.wang/sequelizeobj.jpg" alt=""></p>
+<p>但是还是有办法的，可以这样删除</p>
+<pre tabindex="0"><code>user.getDataValue(&#39;friends&#39;)[0].setDataValue(&#39;friends&#39;, undefined)
+</code></pre><p>就是将属性设置为undefined，查询的时候就没有小樱的friends了。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -196,26 +214,60 @@ var user = { name: &#39;鸣人&#39;, age: 16, gender: &#39;男&#39;, friends: [{
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T08:13:21Z">2015-11-25 08:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T08:13:21Z">2015.11.25 08:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		近些年出现不少新的开发语言，比如:
-Rust是Mozilla开发的注重安全、性能和并发性的编程语言。
-Go语言是谷歌2009发布的第二款开源编程语言。专门针对多处理器系统应用程序的编程进行了优化，使用Go编译的程序可以媲美C或C++代码的速度，而且更加安全、支持并行进程。
-D语言最初由Digital Mars公司就职的Walter Bright于2001年发布，意图改进C++语言。目前最新D语言被简称为D2。最主要的D语言的实现是DMD。
-Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行的数据密集型的实时应用。
-等等……
-对于这些新语言，总有不少槽点被开发者吐槽。很多人都会进行对比，褒贬。但是我还是首先选择了Nodejs，简单快速上手，目前完全用于生产环境，它的快速开发让我很满意。ES6标准的定稿更让我肯定nodejs将会有更好的发展。
-最近又学习了go语言，在学一门语言前总会迟疑值不值得学习，然后看到网上各种讨论。但我觉得还是值得学习，且不说性能有没有C++好，光凭开发效率就值得我学了，现代计算机性能都有很大的提升，如果不是开发底层系统，而是开发软件服务端系统那么它的有点足够了。
-原生http请求获取参数 获取URL参数
-url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
-go返回json数据
-type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&#34;a&#34;] = &#34;aaaaaa&#34; ress := &amp;ResObj{ Code: 0, Data: m} byt, _ := json.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56556da1c72f59d15379b4b9/">阅读全文…</a>
+		<p>近些年出现不少新的开发语言，比如:</p>
+<p>Rust是Mozilla开发的注重安全、性能和并发性的编程语言。</p>
+<p>Go语言是谷歌2009发布的第二款开源编程语言。专门针对多处理器系统应用程序的编程进行了优化，使用Go编译的程序可以媲美C或C++代码的速度，而且更加安全、支持并行进程。</p>
+<p>D语言最初由Digital Mars公司就职的Walter Bright于2001年发布，意图改进C++语言。目前最新D语言被简称为D2。最主要的D语言的实现是DMD。</p>
+<p>Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行的数据密集型的实时应用。</p>
+<p>等等……</p>
+<p>对于这些新语言，总有不少槽点被开发者吐槽。很多人都会进行对比，褒贬。但是我还是首先选择了Nodejs，简单快速上手，目前完全用于生产环境，它的快速开发让我很满意。ES6标准的定稿更让我肯定nodejs将会有更好的发展。</p>
+<p>最近又学习了go语言，在学一门语言前总会迟疑值不值得学习，然后看到网上各种讨论。但我觉得还是值得学习，且不说性能有没有C++好，光凭开发效率就值得我学了，现代计算机性能都有很大的提升，如果不是开发底层系统，而是开发软件服务端系统那么它的有点足够了。</p>
+<h2 id="原生http请求获取参数">原生http请求获取参数</h2>
+<ul>
+<li>
+<p>获取URL参数</p>
+</li>
+<li>
+<p><code>url:localhost:8081/?startDate=2017-11-22</code> <code>var query = req.URL.Query()</code> <code>Println(query[&quot;startDate&quot;])</code></p>
+</li>
+<li>
+<p>go返回json数据</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ResObj</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Code</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Data</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span> 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//或</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//type ResObj struct {</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  Code int `json:&#34;code&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  Data map[string]string `json:&#34;data&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">helloHandler</span>(<span style="color:#a6e22e">res</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">m</span>[<span style="color:#e6db74">&#34;a&#34;</span>] = <span style="color:#e6db74">&#34;aaaaaa&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ress</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">ResObj</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Code</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Data</span>: <span style="color:#a6e22e">m</span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">byt</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Marshal</span>(<span style="color:#a6e22e">ress</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">resb</span> <span style="color:#a6e22e">ResObj</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#a6e22e">byt</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">resb</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">resb</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">byt</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//为什么Write参数要是byte数组？就不能像Nodejs直接是个对象。其实这是偏于底层了，Nodejs最后返回的也是byte，请看下文</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>nodejs的write函数：</p>
+<blockquote>
+<p>response.write(chunk[, encoding][, callback])</p></blockquote>
+<h1></h1>
+<p>Added in: v0.1.29</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -229,18 +281,258 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T02:28:52Z">2015-11-25 02:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T02:28:52Z">2015.11.25 02:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototype属性，可以给类动态地添加方法，以便在JavaScript中实现“ 继承”的效果。
-具体来说，prototype 是在 IE 4 及其以后版本引入的一个针对于某一类的对象的方法，当你用prototype编写一个类后，如果new一个新的对象，浏览器会自动把prototype中 的内容替你附加在对象上。这样，通过利用prototype就可以在JavaScript中实现成员函数的定义，甚至是“继承”的效果。
-对于javascript本身而言是基于对象的，任何元素都可以看成对象。然而类型和对象是不同的，而我们所讲的prototype属性即是基于类型的一 种属性。对于prototype的基本使用就如对象的创建及属性赋值一样的简单。直接通过赋值操作即可完成属性的创建。
-/** * 关于prototype, 理解这个很有必要 可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 JS中允许的类型有Array, Boolean, Date, Enumerator, Error, Function, Number, Object, RegExp, String 以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例 */ Object.prototype.name = &#34;zhangsan&#34;; Object.prototype.nihao = function () { alert(&#34;i can method name is &#34; + this.name); } var obj = new Object(); obj.nihao(); alert(obj.name); // 在实例上不能使用prototype，否则会发生编译错误 obj.prototype.sex = &#34;男&#34;; //error,无法给一个实例prototype var o = { name: &#34;zhangsan&#34; } o.prototype.age = 30; //error,无法给一个实例prototype //可以为类型定义“静态”的属性和方法，直接在类型上调用即可 alert(Object.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56551ce4c72f59d15379b4b8/">阅读全文…</a>
+		<p>prototype属性可算是JavaScript与其他面向对象语言的一大不同之处。 prototype就是“一个给类的对象添加方法的方法”，使用prototype属性，可以给类动态地添加方法，以便在JavaScript中实现“ 继承”的效果。</p>
+<p>具体来说，prototype 是在 IE 4 及其以后版本引入的一个针对于某一类的对象的方法，当你用prototype编写一个类后，如果new一个新的对象，浏览器会自动把prototype中 的内容替你附加在对象上。这样，通过利用prototype就可以在JavaScript中实现成员函数的定义，甚至是“继承”的效果。</p>
+<p>对于javascript本身而言是基于对象的，任何元素都可以看成对象。然而类型和对象是不同的，而我们所讲的prototype属性即是基于类型的一 种属性。对于prototype的基本使用就如对象的创建及属性赋值一样的简单。直接通过赋值操作即可完成属性的创建。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">关于prototype,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">理解这个很有必要
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">JS中允许的类型有Array,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Boolean,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Date,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Enumerator,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Error,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Function,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Number,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">Object,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">RegExp,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">String
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">以后这样分，没有实例化的类称为类型，实例化的类称为对象实例简称实例
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">nihao</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;i can method name is &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">nihao</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 在实例上不能使用prototype，否则会发生编译错误
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;男&#34;</span>; <span style="color:#75715e">//error,无法给一个实例prototype
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>; <span style="color:#75715e">//error,无法给一个实例prototype
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//可以为类型定义“静态”的属性和方法，直接在类型上调用即可
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>(Object.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Object.<span style="color:#a6e22e">nihao</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//实例不能调用类型的静态属性或方法，否则发生对象未定义的错误。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Object.<span style="color:#66d9ef">class</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;三年二班&#34;</span>; <span style="color:#75715e">//类静态属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">ob</span>.<span style="color:#66d9ef">class</span>); <span style="color:#75715e">//error 实例不能调用类型的静态属性和方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//可以在外部使用prototype为自定义的类型添加属性和方法。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Mytest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">hello</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//在外部不能通过prototype改变自定义类型的属性或方法。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//该例子可以看到：调用的属性和方法仍是最初定义的结果。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Mytest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lisi&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mm</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//可以在对象实例上改变或增加属性。（这个是肯定的）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//也可以在对象上改变或增加方法。（和普遍的面向对象的概念不同）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">name2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lisi&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//mm.hello();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//继承，这个例子说明了一个类型如何从另一个类型继承。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest2</span>() { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest2</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//这个例子说明了子类如何重写父类的属性或方法。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wangwu&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;i can mytest2 extend Mytest save method hello&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest2</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m3</span>.<span style="color:#a6e22e">hello</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//子类中的name属性值不会被父类覆盖
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest3</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;子类中的name属性值不会被父类覆盖&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Mytest3</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m4</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest3</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">m4</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Object.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">nihao</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;i can method name is &#34;</span><span style="color:#f92672">+</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">nihao</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">/ /</span> <span style="color:#a6e22e">在实例上不能使用prototype</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">否则会发生编译错误</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;男&#34;</span>; <span style="color:#75715e">//error,无法给一个实例prototype
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">o</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">o</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>; <span style="color:#75715e">//error,无法给一个实例prototype
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//可以为类型定义“静态”的属性和方法，直接在类型上调用即可
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>(Object.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Object.<span style="color:#a6e22e">nihao</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//实例不能调用类型的静态属性或方法，否则发生对象未定义的错误。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Object.<span style="color:#66d9ef">class</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;三年二班&#34;</span>; <span style="color:#75715e">//类静态属性
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">ob</span>.<span style="color:#66d9ef">class</span>); <span style="color:#75715e">//error 实例不能调用类型的静态属性和方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//可以在外部使用prototype为自定义的类型添加属性和方法。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zhangsan&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Mytest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">hello</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//在外部不能通过prototype改变自定义类型的属性或方法。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//该例子可以看到：调用的属性和方法仍是最初定义的结果。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Mytest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lisi&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mm</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//可以在对象实例上改变或增加属性。（这个是肯定的）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//也可以在对象上改变或增加方法。（和普遍的面向对象的概念不同）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">name2</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lisi&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mm</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alert</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//mm.hello();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">//继承，这个例子说明了一个类型如何从另一个类型继承。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest2</span>() {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest2</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">m2</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//这个例子说明了子类如何重写父类的属性或方法。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wangwu&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Mytest2</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">hello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;i can mytest2 extend Mytest save method hello&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest2</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m3</span>.<span style="color:#a6e22e">hello</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//子类中的name属性值不会被父类覆盖
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Mytest3</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;子类中的name属性值不会被父类覆盖&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Mytest3</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">m4</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Mytest3</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">m4</span>.<span style="color:#a6e22e">name</span>);
+</span></span></code></pre></div><p>来源：http://my.oschina.net/tongjh/blog/265209</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -254,15 +546,16 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-18T08:15:58Z">2015-11-18 08:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-18T08:15:58Z">2015.11.18 08:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		关于代码重构是否必须，在网上也是找了很多资料。很多人持不同态度，至少给我的感觉是对半分的态度。有人说应该重构，可以是项目更加健壮，代码读起来更加顺畅，性能提升，大工程更易维护，可扩展性强等等好处。但有人持反对态度，认为代码千万不要重写，其中原因也可以理解，比如：重构代码需要耗费大量时间，在项目周期紧张的情况下更加不可能了，只要可运行就行。很多时候写代码容易，但是读代码难，这是很多人有的感觉，尤其是没有文档，注释的代码更是看了伤眼伤神。而且重构可能带来新的问题，遗留项目更是没人敢碰。
-那到底该不该重构呢？或许我也不能说出绝对的理由，不过我有自己的理由，首先我对代码有洁癖，见不得乱糟糟的代码，不过我更多的情况是在写的时候会做代码审查，看看能不能够用更简单的方式实现，对于多次重复出现的代码会考虑封装一下以便共用。至于已经上线很久以后发现的烂代码还是谨慎重构，太复杂的就不要动了。
-有一种比较频繁出现的情况是，有很多时候会写之前写过的代码，某个类似的功能，这个时候是坚决会对以前的代码重构简化，我讨厌写重复的东西。往往能将以前的代码缩减不少使之更精简明了。
-对于重构的意义除了上面提到的，个人认为还有一个好处——虽然一次不能写出最好的代码，但是只要有重构的意识，至少是能写出比上次更好的代码，也算是经验总结，要不然怎么会出现那么多设计模式。
+		<p>关于代码重构是否必须，在网上也是找了很多资料。很多人持不同态度，至少给我的感觉是对半分的态度。有人说应该重构，可以是项目更加健壮，代码读起来更加顺畅，性能提升，大工程更易维护，可扩展性强等等好处。但有人持反对态度，认为代码千万不要重写，其中原因也可以理解，比如：重构代码需要耗费大量时间，在项目周期紧张的情况下更加不可能了，只要可运行就行。很多时候写代码容易，但是读代码难，这是很多人有的感觉，尤其是没有文档，注释的代码更是看了伤眼伤神。而且重构可能带来新的问题，遗留项目更是没人敢碰。</p>
+<p><img src="https://hopefully-img.yuedun.wang/touteng.jpg" alt=""></p>
+<p>那到底该不该重构呢？或许我也不能说出绝对的理由，不过我有自己的理由，首先我对代码有洁癖，见不得乱糟糟的代码，不过我更多的情况是在写的时候会做代码审查，看看能不能够用更简单的方式实现，对于多次重复出现的代码会考虑封装一下以便共用。至于已经上线很久以后发现的烂代码还是谨慎重构，太复杂的就不要动了。</p>
+<p>有一种比较频繁出现的情况是，有很多时候会写之前写过的代码，某个类似的功能，这个时候是坚决会对以前的代码重构简化，我讨厌写重复的东西。往往能将以前的代码缩减不少使之更精简明了。</p>
+<p>对于重构的意义除了上面提到的，个人认为还有一个好处——虽然一次不能写出最好的代码，但是只要有重构的意识，至少是能写出比上次更好的代码，也算是经验总结，要不然怎么会出现那么多设计模式。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -276,16 +569,60 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-17T07:48:37Z">2015-11-17 07:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-17T07:48:37Z">2015.11.17 07:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		js控制优酷视频播放暂停
-&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=&#34;utf-8&#34;&gt; &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&#34;&gt; &lt;title&gt;js控制优酷视频播放&lt;/title&gt; &lt;script src=&#34;http://player.youku.com/jsapi&#34;&gt;&lt;/script&gt; &lt;script&gt; player = new YKU.Player(&#34;youkuplayer&#34;,{ styleid: &#34;0&#34;, client_id: &#34;d8781b239fdad45b&#34;, vid: &#34;XMjg1MTcyNDQ0&#34;, autoplay: false, show_related: true, events:{ onPlayEnd: function(){ /*your code*/ }, onPlayStart: function(){ /*your code*/ }, onPlayerReady: function(){ /*your code*/ } } }); function playVideo(){ try{ player.playVideo(); } catch(err){ alert(&#34;*&#34;+err); } } function pauseVideo(){ player.pauseVideo(); } function seekTo(s){ player.seekTo(s); } function currentTime(){ return player.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/564adbd591dccd315681abfe/">阅读全文…</a>
+		<p>js控制优酷视频播放暂停</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>  
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;  
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">head</span>&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0&#34;</span>&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">title</span>&gt;js控制优酷视频播放&lt;/<span style="color:#f92672">title</span>&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://player.youku.com/jsapi&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">script</span>&gt;  
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">player</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">YKU</span>.<span style="color:#a6e22e">Player</span>(<span style="color:#e6db74">&#34;youkuplayer&#34;</span>,{  
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">styleid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0&#34;</span>,  
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">client_id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;d8781b239fdad45b&#34;</span>,  
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">vid</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;XMjg1MTcyNDQ0&#34;</span>,  
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">autoplay</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,  
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">show_related</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,  
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">events</span><span style="color:#f92672">:</span>{  
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">onPlayEnd</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){ <span style="color:#75715e">/*your code*/</span> },  
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">onPlayStart</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){ <span style="color:#75715e">/*your code*/</span> },  
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">onPlayerReady</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){ <span style="color:#75715e">/*your code*/</span> }  
+</span></span><span style="display:flex;"><span>                }  
+</span></span><span style="display:flex;"><span>            });  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">playVideo</span>(){  
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">try</span>{  
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">playVideo</span>();  
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">err</span>){  
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">err</span>);  
+</span></span><span style="display:flex;"><span>                }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>            }  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">pauseVideo</span>(){  
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">pauseVideo</span>();  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>            }  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">seekTo</span>(<span style="color:#a6e22e">s</span>){  
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">seekTo</span>(<span style="color:#a6e22e">s</span>);  
+</span></span><span style="display:flex;"><span>            }  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">currentTime</span>(){  
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">player</span>.<span style="color:#a6e22e">currentTime</span>();  
+</span></span><span style="display:flex;"><span>            }  
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">script</span>&gt;  
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">head</span>&gt;  
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;youkuplayer&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width:100%;height:400px;&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">br</span> /&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;playVideo();&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;播放&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height:30px;width:50px;&#34;</span>&gt;  
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pauseVideo();&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;暂停&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height:30px;width:50px;&#34;</span>&gt;  
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">body</span>&gt;  
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div>
 	</div>
 </article>
 <article class="list__item post">
@@ -299,77 +636,74 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-16T09:06:55Z">2015-11-16 09:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-16T09:06:55Z">2015.11.16 09:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		烹饪可以看一个人的性格，慢性的人喜欢慢炖，性急的人喜欢爆炒，心细的人爱做复杂精致的菜，但不管什么样的性格，烹饪都需要保持一个好心情才会做的好吃。
-0、放盐的多少关系着一道菜的生死，最关键的放在最前边讲
-1、鱼煎过后再煮才会变白汤，而且要双面煎（某电影有提）
-2、炖骨头汤时冷水下锅小火炖6小时变白，重复加水时万不可加冷水，只要一直保持加热水汤可以一直是乳白色（当然骨头没有营养了记得换掉）加一滴醋会瞬间变清汤
-3、任何肉类在遇热后在遇冷怎么煮都不会烂，所以做红烧肉一类的菜在烹饪过程中万不可加冷水（另补充补救的办法，利用高压锅的超高内温可以再次溶解肉类，有同学说有地方喜欢吃弹的可以用冷水处理）
-4、99％的菜都在临近出锅前才可以加盐、醋这两种调味品，过早的投入不仅影响口感，还会使菜变得难看
-5、灵活的运用酱油，分清酱油的种类，分别的作用，最简单的是生抽调味，老抽上色
-6、炒鸡蛋记得用筷子炒，炒的时候慢慢的将鸡蛋滑散，你会发现因为受热均匀鸡蛋变得更蓬松更大了
-7、学会焯菜，在菜变色的同时捞出，有些需要口感清脆的菜还要立刻过凉水
-8、炒菜要遵循一个道理，最难熟的先下锅，可以生吃的最后放
-9、永远不要忘记葱姜蒜，他们很重要
-10、糖有时候是为了甜，有时候是为了更突出咸或者辣，同理盐有时候是为了咸，有时候是为了更突出甜（全靠这个多年来耻笑表哥的料理能力）
-11、肉类遇到酸会变嫩，很多菜吃起来并没有酸味，可是却有一丝丝说不清的醋香，其实那是在出锅前加了一瓶盖起锅醋，起锅醋适用于绝大多数肉类炒菜
-12、可以去腥的东西有很多，味精，鸡精，白糖，料酒，柠檬皮都可以用来去腥
-13、记得酸是甜的老婆，辣是甜的二奶，酸是辣的姐姐，咸是辣的闺蜜，甜是苦的哥们。他们是黄金搭档（这是母上的经验之谈，适用于绝大多数料理）
-14、炸肉类火不要大，否则面衣糊了肉没熟，快熟的时候火不能小，不然油都被吸到食物里，这也就是复炸的用意。（母上万岁）
-15、学会油泼，最简单的练习水煮肉片
-16、记住你吃过的每一道菜，有些蔬菜的经典搭配是全球通用的，比如茄子配蒜，洋葱配肉
-17、蒸米饭加点油会让米颗粒分明，加百合会让米饭变甜，加啤酒会让米饭变香，用高压锅蒸米饭更香，隔水蒸米饭更筋道，淘米水是最好的天然餐洗 净，糊锅了插几根葱，有的时候可以挽救米饭（家父是料理界的格格巫，经他手的食材都会变成碳，没有碳化的部分还不熟，我就天然的领悟了这个能力了）
-18、想要鸡蛋嫩，打鸡蛋的时候加水（小学看小当家学到的）
-19、切肉要逆纹路纵向切，不然咬不动煮不熟（肉丝顺纹路切，不然会断，速成鸡肉一类较嫩的肉类需要顺纹切不然会散，速成猪肉的肉质较鸡肉更老比 牛肉更嫩要斜切，土猪肉则纵切，整块的猪肉又需要逆纹切，总之需要自己理解肉类的紧实度选择切的方向，谢提醒）切蘑菇要顺纹路不然吃起来太糯，切笋要避开 纹路斜切不然切不动也咬不动
-20、整块的肉料理需要断筋，用刀背给予一定力道，不需要太大力，重复在肉面敲打3分钟
-21、辣味不是只有辣椒，还有黑白胡椒，姜，蒜。同理甜味不只有糖，还有蜂蜜，果糖，各种饮料等。酸味不是只有醋，还有柠檬，山楂等
-22、蜂蜜也可以用作嫩肉（食戟之灵）
-23、一定要试菜，由于很多菜重要的调味都在最后步骤，试菜可以很大程度上解决味道不够的问题，所以最后的关键调味料宁缺毋滥！调味结束后不要忙着关火，试过之后没问题在出锅，俗话说饿死的厨子三百斤，就是说的试菜
-24、热锅凉油是为了给高蛋白食物一个缓冲，不至于外面熟了里面不熟，还有个好处是蒸腾锅内多余水分，不至于遇油飞溅，多用于滑炒，上浆的肉片什么的。热锅热油，锁水，用于爆炒
-调料：
-1、鱼香味（sorry，各严格的原产地同学表示我这个鱼香太水了，我就删掉了，正经八百的鱼香据说非常稀有，几近失传，我此生可能无缘吃到，本着不会不写的心态我就不加了）
-2、红烧就是老抽上色＋生抽调味＋糖
-3、宫爆味就是生抽＋水淀粉（或豆瓣酱，也有凝固的作用）＋干辣椒＋糖＋醋＋葱白
-4、勾芡就是淀粉＋各种液体预热凝固（糖醋里脊，糖醋鲤鱼也是）
-5、韩国味就是韩国大酱＋韩国辣酱
-6、照烧汁就是蜂蜜＋日本酱油
-7、老干妈豆豉可以直接用做调料，比如回锅肉，蛋炒饭
-8、关东煮汤料，日本酱油，苹果，海带，水果萝卜，炖4个小时（有先后顺序）
-9、白灼就是蚝油＋糖＋盐＋葱蒜
-10、火锅蘸料：①花生酱＋芝麻酱＋盐或者生抽＋巧克力＋水调成糊状菜肉蘸料（这就是店里的秘制酱料，某前男友教的）。②海鲜汁＋凉拌酱油＋蚝油＋醋＋糖＋香油＋香菜碎调成肉类蘸料（火锅店吃还是在家吃都很方便，另一个前男友教的）
-11、蛋黄酱就是原味沙拉＋鸡蛋黄搅拌均匀
-饺子馅：
-**1、红肉类：**各种红肉馅＋各种配菜＋十三香或者五香面少许（去腥）＋白糖少许或者耗油（去腥，耗油本身有 甜味取其一）＋姜汁（去腥，超市有卖）＋料酒（去腥）＋香油（母上会在添加花生油用作调味）＋盐＋鸡精＋生鸡蛋＋花椒油（去腥，是有多腥！）（羊肉属于味 道较重的肉类可以用胡萝卜大葱来遮掩一点点味道，另有的地方肉馅会加酱油）
-**2、白肉类：**鸡肉或者鱼肉＋猪肉或者牛肉＋各种去腥少量版＋鸡精＋韭菜或者胡萝卜（别的配菜没试验过，因为韭菜跟胡萝卜属于重口味蔬菜，可以中和不和谐的味道）
-**3、素馅类：**各种蔬菜馅（各种含水量大的蔬菜都需要在剁好馅后撒盐静置一段时间过滤掉多余水分，此步骤为杀水）＋香油＋盐＋炒鸡蛋＋木耳碎（可以不加）＋鸡精
-**常备的调料：**盐，糖，米醋，豆瓣酱，郫县豆瓣，老干妈豆豉，料酒，鸡精，白胡椒粉，黑胡椒粉，花椒，葱姜蒜，干辣椒，香油，蚝油
-**可选调料：**番茄酱，白醋，各种混合酱油，黑白芝麻，干木耳，干香菇，干银耳，枸杞，沙拉酱，蛋黄酱，千岛酱，金枪鱼罐头，花生酱，芝麻酱，豆豉鲮鱼，午餐肉，方火腿，各种罐头，咖喱，姜汁，蒜汁，花椒油，米酒
-**炖料类：**桂皮，八角，肉桂，香叶，山楂干，柠檬，十三香（柠檬籽与香叶有苦味，放的时候记得去籽，少量）
-根据上文的理论进行的一些简单的料理实践，通过一点点更改原有做法，从而突出个人特色，但又不会变成黑暗料理的方法，要知道我那些年做过多少黑暗料理才总结出来！
-番茄炒蛋：（由于番茄是酸的，可以跟刚才提到酸配甜或者酸配辣可以混搭一下，那么做法就变成）鸡蛋加水打 散，下油锅（油温要高一点）用筷子炒到凝固盛出待用，下番茄炒到出汁，喜欢汁多就多炖一会，加入白糖，加入炒好的鸡蛋翻炒均匀，出锅前加入盐，蒜片，待闻 到蒜香的时候即可关火盛盘，这样的番茄炒蛋酸甜适口，鸡蛋蓬松滑嫩，又有一丝微微的蒜辣混杂着蒜香，最适合下饭。
-水煮肉片：（这道菜有个简单的逻辑，肉要碗里熟）
-1、里脊肉或者牛肉切薄片（有朋友表示新手难切，加入方法，将肉在速冻层冻半小时再切肉会定型），加入鸡蛋，淀粉，盐，料酒腌制2小时
-2、可以选用各种带叶菜，我喜欢油菜或者圆白菜，生菜撕成块状大小随意，加水，盐煮菜5分钟后连汤带菜一起盛出。
-3、热油把肉炒到变色断生铺在菜上，撒上盐，辣椒粉，葱碎（新手请加入超市花椒粉，或者花椒在微波炉叮一分钟用蒜窝捣碎铺上）
-4、重新热油放入花椒，干辣椒煸糊（有朋友表示蹦糊有苦味，糊不是真的让他变成碳，红色脆硬或者红黄相间即可，上一部加了花椒粉的就不需要花椒了），趁着油温最高的时候浇在肉跟料上即可。
-高油温与菜的热度会将肉煮熟。由于用料随意这基本上算是入门级的肉类料理，对于刚学做菜的人来说，这算是拿的出手的大菜了。
-洋葱炒肉：（会用到上面我们说到“起锅醋”这个东西）
-1、随意猪或者牛肉切丝用生姜，料酒，盐腌，淀粉制十分钟；
-2、锅中倒油，烧热，放入腌好的肉丝，迅速拨开，炒到肉丝变色；
-3、加入洗好、切好的洋葱，放入适量的酱油，和盐；
-4、加入味精，倒入一瓶盖米醋，翻炒5秒出锅装盘。
-全靠那一瓶盖醋，从不吃洋葱的傲娇表弟把盘子都舔了。
-回锅肉：（好开心，辣的哎）
-1、将二刀肉（有的地方叫二条，就是肥瘦各一半的肉）整块放入热水煮熟
-2、用筷子试插，如无血水渗出即已熟透，捞出，待冷却后切成薄片备用（上面提到过不可接触凉水）
-3、青辣椒洗净，去蒂去籽，切成菱形
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56499caf536a927c57d10a9c/">阅读全文…</a>
+		<p>烹饪可以看一个人的性格，慢性的人喜欢慢炖，性急的人喜欢爆炒，心细的人爱做复杂精致的菜，但不管什么样的性格，烹饪都需要保持一个好心情才会做的好吃。</p>
+<p>0、放盐的多少关系着一道菜的生死，最关键的放在最前边讲</p>
+<p>1、鱼煎过后再煮才会变白汤，而且要双面煎（某电影有提）</p>
+<p>2、炖骨头汤时冷水下锅小火炖6小时变白，重复加水时万不可加冷水，只要一直保持加热水汤可以一直是乳白色（当然骨头没有营养了记得换掉）加一滴醋会瞬间变清汤</p>
+<p>3、任何肉类在遇热后在遇冷怎么煮都不会烂，所以做红烧肉一类的菜在烹饪过程中万不可加冷水（另补充补救的办法，利用高压锅的超高内温可以再次溶解肉类，有同学说有地方喜欢吃弹的可以用冷水处理）</p>
+<p>4、99％的菜都在临近出锅前才可以加盐、醋这两种调味品，过早的投入不仅影响口感，还会使菜变得难看</p>
+<p>5、灵活的运用酱油，分清酱油的种类，分别的作用，最简单的是生抽调味，老抽上色</p>
+<p>6、炒鸡蛋记得用筷子炒，炒的时候慢慢的将鸡蛋滑散，你会发现因为受热均匀鸡蛋变得更蓬松更大了</p>
+<p>7、学会焯菜，在菜变色的同时捞出，有些需要口感清脆的菜还要立刻过凉水</p>
+<p>8、炒菜要遵循一个道理，最难熟的先下锅，可以生吃的最后放</p>
+<p>9、永远不要忘记葱姜蒜，他们很重要</p>
+<p><img src="http://attachment.dgtle.com/forum/201203/13/004551bbb8ubb37kwfumku.jpg" alt=""></p>
+<p>10、糖有时候是为了甜，有时候是为了更突出咸或者辣，同理盐有时候是为了咸，有时候是为了更突出甜（全靠这个多年来耻笑表哥的料理能力）</p>
+<p>11、肉类遇到酸会变嫩，很多菜吃起来并没有酸味，可是却有一丝丝说不清的醋香，其实那是在出锅前加了一瓶盖起锅醋，起锅醋适用于绝大多数肉类炒菜</p>
+<p>12、可以去腥的东西有很多，味精，鸡精，白糖，料酒，柠檬皮都可以用来去腥</p>
+<p>13、记得酸是甜的老婆，辣是甜的二奶，酸是辣的姐姐，咸是辣的闺蜜，甜是苦的哥们。他们是黄金搭档（这是母上的经验之谈，适用于绝大多数料理）</p>
+<p>14、炸肉类火不要大，否则面衣糊了肉没熟，快熟的时候火不能小，不然油都被吸到食物里，这也就是复炸的用意。（母上万岁）</p>
+<p>15、学会油泼，最简单的练习水煮肉片</p>
+<p>16、记住你吃过的每一道菜，有些蔬菜的经典搭配是全球通用的，比如茄子配蒜，洋葱配肉</p>
+<p>17、蒸米饭加点油会让米颗粒分明，加百合会让米饭变甜，加啤酒会让米饭变香，用高压锅蒸米饭更香，隔水蒸米饭更筋道，淘米水是最好的天然餐洗 净，糊锅了插几根葱，有的时候可以挽救米饭（家父是料理界的格格巫，经他手的食材都会变成碳，没有碳化的部分还不熟，我就天然的领悟了这个能力了）</p>
+<p>18、想要鸡蛋嫩，打鸡蛋的时候加水（小学看小当家学到的）</p>
+<p>19、切肉要逆纹路纵向切，不然咬不动煮不熟（肉丝顺纹路切，不然会断，速成鸡肉一类较嫩的肉类需要顺纹切不然会散，速成猪肉的肉质较鸡肉更老比 牛肉更嫩要斜切，土猪肉则纵切，整块的猪肉又需要逆纹切，总之需要自己理解肉类的紧实度选择切的方向，谢提醒）切蘑菇要顺纹路不然吃起来太糯，切笋要避开 纹路斜切不然切不动也咬不动</p>
+<p>20、整块的肉料理需要断筋，用刀背给予一定力道，不需要太大力，重复在肉面敲打3分钟</p>
+<p>21、辣味不是只有辣椒，还有黑白胡椒，姜，蒜。同理甜味不只有糖，还有蜂蜜，果糖，各种饮料等。酸味不是只有醋，还有柠檬，山楂等</p>
+<p>22、蜂蜜也可以用作嫩肉（食戟之灵）</p>
+<p>23、一定要试菜，由于很多菜重要的调味都在最后步骤，试菜可以很大程度上解决味道不够的问题，所以最后的关键调味料宁缺毋滥！调味结束后不要忙着关火，试过之后没问题在出锅，俗话说饿死的厨子三百斤，就是说的试菜</p>
+<p>24、热锅凉油是为了给高蛋白食物一个缓冲，不至于外面熟了里面不熟，还有个好处是蒸腾锅内多余水分，不至于遇油飞溅，多用于滑炒，上浆的肉片什么的。热锅热油，锁水，用于爆炒</p>
+<p><strong>调料：</strong></p>
+<p>1、鱼香味（sorry，各严格的原产地同学表示我这个鱼香太水了，我就删掉了，正经八百的鱼香据说非常稀有，几近失传，我此生可能无缘吃到，本着不会不写的心态我就不加了）</p>
+<p>2、红烧就是老抽上色＋生抽调味＋糖</p>
+<p>3、宫爆味就是生抽＋水淀粉（或豆瓣酱，也有凝固的作用）＋干辣椒＋糖＋醋＋葱白</p>
+<p>4、勾芡就是淀粉＋各种液体预热凝固（糖醋里脊，糖醋鲤鱼也是）</p>
+<p>5、韩国味就是韩国大酱＋韩国辣酱</p>
+<p>6、照烧汁就是蜂蜜＋日本酱油</p>
+<p>7、老干妈豆豉可以直接用做调料，比如回锅肉，蛋炒饭</p>
+<p>8、关东煮汤料，日本酱油，苹果，海带，水果萝卜，炖4个小时（有先后顺序）</p>
+<p>9、白灼就是蚝油＋糖＋盐＋葱蒜</p>
+<p>10、火锅蘸料：①花生酱＋芝麻酱＋盐或者生抽＋巧克力＋水调成糊状菜肉蘸料（这就是店里的秘制酱料，某前男友教的）。②海鲜汁＋凉拌酱油＋蚝油＋醋＋糖＋香油＋香菜碎调成肉类蘸料（火锅店吃还是在家吃都很方便，另一个前男友教的）</p>
+<p>11、蛋黄酱就是原味沙拉＋鸡蛋黄搅拌均匀</p>
+<p><img src="http://www.pwys.net/uploadfile/20120601105640751.jpg" alt=""></p>
+<p><strong>饺子馅：</strong></p>
+<p>**1、红肉类：**各种红肉馅＋各种配菜＋十三香或者五香面少许（去腥）＋白糖少许或者耗油（去腥，耗油本身有 甜味取其一）＋姜汁（去腥，超市有卖）＋料酒（去腥）＋香油（母上会在添加花生油用作调味）＋盐＋鸡精＋生鸡蛋＋花椒油（去腥，是有多腥！）（羊肉属于味 道较重的肉类可以用胡萝卜大葱来遮掩一点点味道，另有的地方肉馅会加酱油）</p>
+<p>**2、白肉类：**鸡肉或者鱼肉＋猪肉或者牛肉＋各种去腥少量版＋鸡精＋韭菜或者胡萝卜（别的配菜没试验过，因为韭菜跟胡萝卜属于重口味蔬菜，可以中和不和谐的味道）</p>
+<p>**3、素馅类：**各种蔬菜馅（各种含水量大的蔬菜都需要在剁好馅后撒盐静置一段时间过滤掉多余水分，此步骤为杀水）＋香油＋盐＋炒鸡蛋＋木耳碎（可以不加）＋鸡精</p>
+<p>**常备的调料：**盐，糖，米醋，豆瓣酱，郫县豆瓣，老干妈豆豉，料酒，鸡精，白胡椒粉，黑胡椒粉，花椒，葱姜蒜，干辣椒，香油，蚝油</p>
+<p>**可选调料：**番茄酱，白醋，各种混合酱油，黑白芝麻，干木耳，干香菇，干银耳，枸杞，沙拉酱，蛋黄酱，千岛酱，金枪鱼罐头，花生酱，芝麻酱，豆豉鲮鱼，午餐肉，方火腿，各种罐头，咖喱，姜汁，蒜汁，花椒油，米酒</p>
+<p>**炖料类：**桂皮，八角，肉桂，香叶，山楂干，柠檬，十三香（柠檬籽与香叶有苦味，放的时候记得去籽，少量）</p>
+<p>根据上文的理论进行的一些简单的料理实践，通过一点点更改原有做法，从而突出个人特色，但又不会变成黑暗料理的方法，要知道我那些年做过多少黑暗料理才总结出来！</p>
+<p><strong>番茄炒蛋：</strong>（由于番茄是酸的，可以跟刚才提到酸配甜或者酸配辣可以混搭一下，那么做法就变成）鸡蛋加水打 散，下油锅（油温要高一点）用筷子炒到凝固盛出待用，下番茄炒到出汁，喜欢汁多就多炖一会，加入白糖，加入炒好的鸡蛋翻炒均匀，出锅前加入盐，蒜片，待闻 到蒜香的时候即可关火盛盘，这样的番茄炒蛋酸甜适口，鸡蛋蓬松滑嫩，又有一丝微微的蒜辣混杂着蒜香，最适合下饭。</p>
+<p><strong>水煮肉片：</strong>（这道菜有个简单的逻辑，肉要碗里熟）</p>
+<p>1、里脊肉或者牛肉切薄片（有朋友表示新手难切，加入方法，将肉在速冻层冻半小时再切肉会定型），加入鸡蛋，淀粉，盐，料酒腌制2小时</p>
+<p>2、可以选用各种带叶菜，我喜欢油菜或者圆白菜，生菜撕成块状大小随意，加水，盐煮菜5分钟后连汤带菜一起盛出。</p>
+<p>3、热油把肉炒到变色断生铺在菜上，撒上盐，辣椒粉，葱碎（新手请加入超市花椒粉，或者花椒在微波炉叮一分钟用蒜窝捣碎铺上）</p>
+<p>4、重新热油放入花椒，干辣椒煸糊（有朋友表示蹦糊有苦味，糊不是真的让他变成碳，红色脆硬或者红黄相间即可，上一部加了花椒粉的就不需要花椒了），趁着油温最高的时候浇在肉跟料上即可。</p>
+<p>高油温与菜的热度会将肉煮熟。由于用料随意这基本上算是入门级的肉类料理，对于刚学做菜的人来说，这算是拿的出手的大菜了。</p>
+<p><img src="http://a3.att.hudong.com/34/82/20300039515174132326826219262.jpg" alt=""></p>
+<p><strong>洋葱炒肉：</strong>（会用到上面我们说到“起锅醋”这个东西）</p>
+<p>1、随意猪或者牛肉切丝用生姜，料酒，盐腌，淀粉制十分钟；</p>
+<p>2、锅中倒油，烧热，放入腌好的肉丝，迅速拨开，炒到肉丝变色；</p>
+<p>3、加入洗好、切好的洋葱，放入适量的酱油，和盐；</p>
+<p>4、加入味精，倒入一瓶盖米醋，翻炒5秒出锅装盘。</p>
+<p>全靠那一瓶盖醋，从不吃洋葱的傲娇表弟把盘子都舔了。</p>
+<p><strong>回锅肉：</strong>（好开心，辣的哎）</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -383,12 +717,12 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-13T03:11:58Z">2015-11-13 03:11</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-13T03:11:58Z">2015.11.13 03:11</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		虽然出现git did not exit cleanly (exit code 128)的情况各有不同，不过其中一种是提交时的读写权限有问题，如果本地代码连接的是SSH仓库，那么可能是服务端没有配置SSH Key。github有两个地方配置sshkey，有一个是全局的，另一个是针对单个仓库的，如果给某个仓库配置了Deploy keys（其实和SSHkey一样），提交另一个代码时就会出现git did not exit cleanly。对于我这种不熟练的人来说就想着再添加一个Deploy keys，但是又提示Key already in use，这时就要看看是不是其他仓库单独配置了ssh key。如果仓库太多具体哪个配置了也不太清楚，有个简单快读的办法是在命令行执行 ssh -T -ai .\id_rsa git@github.com，会告诉你哪个仓库在使用本地的id_rsa内容。删掉Deploy keys，配置为全局SSH Keys就行了
+		<p>虽然出现git did not exit cleanly (exit code 128)的情况各有不同，不过其中一种是提交时的读写权限有问题，如果本地代码连接的是SSH仓库，那么可能是服务端没有配置SSH Key。github有两个地方配置sshkey，有一个是全局的，另一个是针对单个仓库的，如果给某个仓库配置了Deploy keys（其实和SSHkey一样），提交另一个代码时就会出现git did not exit cleanly。对于我这种不熟练的人来说就想着再添加一个Deploy keys，但是又提示Key already in use，这时就要看看是不是其他仓库单独配置了ssh key。如果仓库太多具体哪个配置了也不太清楚，有个简单快读的办法是在命令行执行 ssh -T -ai .\id_rsa <a href="mailto:git@github.com">git@github.com</a>，会告诉你哪个仓库在使用本地的id_rsa内容。删掉Deploy keys，配置为全局SSH Keys就行了</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -402,22 +736,60 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-09T02:25:45Z">2015-11-09 02:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-09T02:25:45Z">2015.11.09 02:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		切换到C:\Users\\.ssh
-执行命令：ssh-keygen -t rsa -C &ldquo;邮箱地址&rdquo;
-Generating public/private rsa key pair.
-Enter file in which to save the key (//.ssh/id_rsa):
-第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa
-Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下
-接下来两部是要求输入密码，不输入直接回车就完成了。
-PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Generating public/private rsa key pair. Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in .
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56400429c888d8070f145c35/">阅读全文…</a>
+		<p>切换到C:\Users\<!-- raw HTML omitted -->\.ssh</p>
+<p>执行命令：ssh-keygen -t rsa -C &ldquo;邮箱地址&rdquo;</p>
+<p>Generating public/private rsa key pair.</p>
+<p>Enter file in which to save the key (//.ssh/id_rsa):</p>
+<p>第一次生成由于没有id_rsa文件和id_rsa.pub文件，所以需要生成这两个文件，然后手动输入：./id_rsa</p>
+<p>Enter file in which to save the key (//.ssh/id_rsa): ./id_rsa，虽然要求输入//.ssh/id_rsa，但这种方式不是在当前目录下</p>
+<p>接下来两部是要求输入密码，不输入直接回车就完成了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\a</span>dmin<span style="color:#ae81ff">\.</span>ssh&gt; ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;myemail@163.com&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Generating public/private rsa key pair.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Enter file in which to save the key <span style="color:#f92672">(</span>//.ssh/id_rsa<span style="color:#f92672">)</span>: ./id_rsa
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Enter passphrase <span style="color:#f92672">(</span>empty <span style="color:#66d9ef">for</span> no passphrase<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Enter same passphrase again:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Your identification has been saved in ./id_rsa.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Your public key has been saved in ./id_rsa.pub.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The key fingerprint is:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>9c:cc:db:3e:72:82:73:2e:41:0e:17:f4:3c:ea:70:4a myemail@163.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The key<span style="color:#e6db74">&#34;s randomart image is:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+--[ RSA 2048]----+
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| .o |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| + |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| . o + |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| O o . |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| E S |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| . = = |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| . * = + |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| = = . |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| . |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">+-----------------+
+</span></span></span></code></pre></div><p>最后将.ssh目录下id_rsa.pub文件中的内容复制并添加到github或其他支持资源库中就可以使用ssh的协议clone资源了，没有添加进去是不能克隆的。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -431,12 +803,12 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-08T03:32:50Z">2015-11-08 03:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-08T03:32:50Z">2015.11.08 03:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		昨天用了一天的手机，晚上用着突然就黑屏了，死活开不了机，以为是没电了，充电时也开不了机。奇怪的是用了一天一直显示满电，怎么突然就坏掉了。抠电板试试，还是开不了机。扣电板充电，总算有点反应了，但是还是开不了机，不过这种情况遇见过，就是刚买回来试试有没有问题时没装电池充电一闪一闪的震动就是开不了机。后来才发现要装了电池才能开机，但是这次为什么装了电池也开不了机，反而是一点反应也没有。今天早上起来用数据线连接电脑打算刷机试试，刚连接电脑也是开不了机，就把电池扣掉，这时出现了充电的反应，原来是一点电量都没有了。充了一会总算是开机了。所以，如果突然开不了机可能是一点电都没有了，建议先充一会电再开机试试。
+		<p>昨天用了一天的手机，晚上用着突然就黑屏了，死活开不了机，以为是没电了，充电时也开不了机。奇怪的是用了一天一直显示满电，怎么突然就坏掉了。抠电板试试，还是开不了机。扣电板充电，总算有点反应了，但是还是开不了机，不过这种情况遇见过，就是刚买回来试试有没有问题时没装电池充电一闪一闪的震动就是开不了机。后来才发现要装了电池才能开机，但是这次为什么装了电池也开不了机，反而是一点反应也没有。今天早上起来用数据线连接电脑打算刷机试试，刚连接电脑也是开不了机，就把电池扣掉，这时出现了充电的反应，原来是一点电量都没有了。充了一会总算是开机了。所以，如果突然开不了机可能是一点电都没有了，建议先充一会电再开机试试。</p>
 	</div>
 </article>
 
@@ -456,7 +828,7 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -472,13 +844,12 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -516,99 +887,99 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -636,13 +1007,14 @@ PS C:\Users\admin\.ssh&gt; ssh-keygen -t rsa -C &#34;myemail@163.com&#34; Genera
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

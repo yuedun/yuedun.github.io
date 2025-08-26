@@ -4,94 +4,61 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>mongoose - 月盾的博客</title>
+	<title>Mongoose - 月盾的博客</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="mongoose" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/tags/mongoose/" />
+		<meta property="og:url" content="https://www.yuedun.wang/tags/mongoose/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="Mongoose">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="Mongoose">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2018-09-06T09:21:31+00:00">
+  <meta itemprop="dateModified" content="2018-09-06T09:21:31+00:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mongoose">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="mongoose">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/tags/mongoose/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -137,7 +104,7 @@
 		
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">mongoose</h1>
+		<h1 class="main__title">Mongoose</h1>
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
@@ -149,15 +116,26 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-06T09:21:31Z">2018-09-06 09:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-06T09:21:31Z">2018.09.06 09:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		使用mongoose建立了连接以后，通过model查询数据，如：testModel.find(),既不报错又不返回数据。
-const mongoose = require(&#39;mongoose&#39;); mongoose.connect(&#39;mongodb://localhost/my_database&#39;); 使用mongoose.connect连接产生在mongoose.connection上，使用mongoose.createConnection是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用mongoose.model是无效的。
-const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = conn.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 可以工作 vs
-const conn = mongoose.createConnection(&#39;your connection string&#39;); const MyModel = mongoose.model(&#39;ModelName&#39;, schema); const m = new MyModel; m.save(); // 不能工作 
+		<p>使用mongoose建立了连接以后，通过model查询数据，如：<code>testModel.find()</code>,既不报错又不返回数据。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mongoose</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;mongoose&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#e6db74">&#39;mongodb://localhost/my_database&#39;</span>);
+</span></span></code></pre></div><p>使用<code>mongoose.connect</code>连接产生在<code>mongoose.connection</code>上，使用<code>mongoose.createConnection</code>是反回一个连接对象，建立model的时候需要使用这个连接才有效，此时使用<code>mongoose.model</code>是无效的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">conn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">createConnection</span>(<span style="color:#e6db74">&#39;your connection string&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MyModel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">conn</span>.<span style="color:#a6e22e">model</span>(<span style="color:#e6db74">&#39;ModelName&#39;</span>, <span style="color:#a6e22e">schema</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyModel</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">save</span>(); <span style="color:#75715e">// 可以工作
+</span></span></span></code></pre></div><p>vs</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">conn</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">createConnection</span>(<span style="color:#e6db74">&#39;your connection string&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">MyModel</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">model</span>(<span style="color:#e6db74">&#39;ModelName&#39;</span>, <span style="color:#a6e22e">schema</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MyModel</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">save</span>(); <span style="color:#75715e">// 不能工作
+</span></span></span></code></pre></div>
 	</div>
 </article>
 <article class="list__item post">
@@ -171,16 +149,30 @@ const conn = mongoose.createConnection(&#39;your connection string&#39;); const 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-18T08:18:36Z">2017-08-18 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-08-18T08:18:36Z">2017.08.18 08:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, or set the `useMongoClient` option if using `connect()` or `createConnection()`. See http://mongoosejs.com/docs/connections.html#use-mongo-client Db.prototype.authenticate method will no longer be available in the next major release 3.x as MongoDB 3.6 will only allow auth against users in the admin db and will no longer allow multiple credentials on a socket. Please authenticate using MongoClient.connect with auth credentials. 修改连接参数：
-url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${this.dbName}`; const opts = { // autoReconnect: false,//默认true // reconnectTries: 30,//尝试重连，默认30次 // reconnectInterval: 1000, //重连间隔，默认1000毫秒 loggerLevel: &#34;warn&#34;, //error/warn/info/debug useMongoClient: true }; mongoose.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5996a2dc9205bd72e7290ebb/">阅读全文…</a>
+		<pre tabindex="0"><code>`open()` is deprecated in mongoose &gt;= 4.11.0, use `openUri()` instead, 
+or set the `useMongoClient` option if using `connect()` or `createConnection()`. 
+See http://mongoosejs.com/docs/connections.html#use-mongo-client
+Db.prototype.authenticate method will no longer be available in the next major 
+release 3.x as MongoDB 3.6 will only allow auth against users in the admin db 
+and will no longer allow multiple credentials on a socket. 
+Please authenticate using MongoClient.connect with auth credentials.
+</code></pre><p>修改连接参数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`mongodb://</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">password</span><span style="color:#e6db74">}</span><span style="color:#e6db74">@</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">host</span><span style="color:#e6db74">}</span><span style="color:#e6db74">:</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dbName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">opts</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// autoReconnect: false,//默认true
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// reconnectTries: 30,//尝试重连，默认30次
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// reconnectInterval: 1000, //重连间隔，默认1000毫秒
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">loggerLevel</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;warn&#34;</span>, <span style="color:#75715e">//error/warn/info/debug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">useMongoClient</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mongoose</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">opts</span>);
+</span></span></code></pre></div><p>如果在原有参数的基础上加了<code>userMongoClient</code>以后有如下警告：</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -194,12 +186,21 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-10T04:44:55Z">2017-06-10 04:44</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-10T04:44:55Z">2017.06.10 04:44</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		export var CommentSchema: Schema = new Schema({ Id: String, content: String, status: { type: Boolean, default: true } }, { timestamps: true}); 添加{ timestamps: true}选项即可，如果需要自定义属性名称可以直接指定： { timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}
+		<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">CommentSchema</span>: <span style="color:#66d9ef">Schema</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Schema</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Id</span>: <span style="color:#66d9ef">String</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">content</span>: <span style="color:#66d9ef">String</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> Boolean,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}, { <span style="color:#a6e22e">timestamps</span>: <span style="color:#66d9ef">true</span>});
+</span></span></code></pre></div><p>添加<code>{ timestamps: true}</code>选项即可，如果需要自定义属性名称可以直接指定：
+<code>{ timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}</code></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -213,23 +214,47 @@ url = `mongodb://${this.username}:${this.password}@${this.host}:${this.port}/${t
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T05:51:40Z">2016-11-05 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T05:51:40Z">2016.11.05 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
-以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
-mongodb中查询
-select * from articles where content like &#39;%Nodejs%&#39;; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
-var a=&#34;Nodejs&#34; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
-var text = &#39;Nodejs&#39;;//动态传入的变量 Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {}); $options选项值：
-i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串 其实$regex就是正则表达式的写法
-查找数组中的字段：
-contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address: &#34;address2&#34;, name: &#34;李四&#34; }, .
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/581d736c43c18f1b7ae3e3ff/">阅读全文…</a>
+		<blockquote>
+<p>需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的</p></blockquote>
+<p>以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章</p>
+<p><strong>mongodb中查询</strong></p>
+<pre tabindex="0"><code>select * from articles where content like &#39;%Nodejs%&#39;;
+db.articles.find( { content: /Nodejs/i } )
+Article.find({ content: /Nodejs/i}, function (err, docs) {});
+</code></pre><p>这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用<code>/</code>包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：</p>
+<pre tabindex="0"><code>var a=&#34;Nodejs&#34; ;
+Article.find({ content: /a/i}, function (err, docs) {});
+</code></pre><p>此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用<code>$regex</code>关键字，还有$options选项</p>
+<pre tabindex="0"><code>var text = &#39;Nodejs&#39;;//动态传入的变量
+Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {});
+</code></pre><p><code>$options</code>选项值：</p>
+<ul>
+<li>i 大小写不敏感</li>
+<li>m $regex包含正则^,$符号的表达式</li>
+<li>x 忽略空格</li>
+<li>s 允许逗点匹配所有字符串</li>
+</ul>
+<p>其实$regex就是正则表达式的写法</p>
+<p>查找数组中的字段：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">contacts</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">address</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;address1&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;张三&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">address</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;address2&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;李四&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        .....
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以通过<code>db.collection.find({'contacts.name':{$regex:'张'}})</code>获得</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -243,19 +268,41 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016-11-02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016.11.02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		mongdb查询某一字段sum值 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
-mongodb中查询
-select sum(pv) from articles; db.articles.aggregate([{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 2 } select sum(pv) from articles where createDate &lt;= &#39;2016-10-20&#39;; db.articles.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 9 } select sum(pv) from articles where category = &#39;Nodejs&#39;; db.articles.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 7 } 需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
-mongoose实现方式，与上面sql的顺序对应：
-Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) { console.log(&#34;1&#34;, doc); }); Article.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) { console.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5819b2b7c4d0a377509b8f1a/">阅读全文…</a>
+		<h2 id="mongdb查询某一字段sum值">mongdb查询某一字段sum值</h2>
+<blockquote>
+<p>需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计</p></blockquote>
+<p><strong>mongodb中查询</strong></p>
+<pre tabindex="0"><code>select sum(pv) from articles;
+db.articles.aggregate([{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 2 }
+
+select sum(pv) from articles where createDate &lt;= &#39;2016-10-20&#39;;
+db.articles.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 9 }
+
+select sum(pv) from articles where category = &#39;Nodejs&#39;;
+db.articles.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 7 }
+</code></pre><p><em>需要注意<code>$match</code>和<code>$group</code>的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）</em></p>
+<p><strong>mongoose实现方式，与上面sql的顺序对应：</strong></p>
+<pre tabindex="0"><code>Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) {
+    console.log(&#34;1&#34;, doc);
+});
+Article.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) {
+    console.log(&#34;2&#34;, doc);
+});
+Article.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) {
+    console.log(&#34;3&#34;, doc);
+});
+1 [ { _id: null, pv: 25 } ]
+2 [ { _id: null, pv: 9 } ]
+3 [ { _id: null, pv: 7 } ]
+</code></pre><p>参考文档：</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -269,18 +316,63 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, fun
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-17T05:01:08Z">2014-10-17 05:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-17T05:01:08Z">2014.10.17 05:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。
-首先看下mongoose API，find方法源码：
-Model.find = function find (conditions, fields, options, callback){ if(&#34;function&#34;==typeof conditions){ callback = conditions; conditions ={}; fields = null; options = null; }elseif(&#34;function&#34;==typeof fields){ callback = fields; fields = null; options = null; }elseif(&#34;function&#34;==typeof options){ callback = options; options = null; } // get the raw mongodb collection object var mq =newQuery({}, options,this,this.collection); mq.select(fields); if(this.schema.discriminatorMapping &amp;amp;&amp;amp; mq._selectedInclusively()){ mq.select(this.schema.options.discriminatorKey); } return mq.find(conditions, callback); }; 其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：
-router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5440a294fea3dae97beee4f9/">阅读全文…</a>
+		<p>随着吐槽的内容越来越多，单页显示就显得不够文雅了，分页功能是一个完整系统必备的。所以就决定加上这个功能，不过分页实现起来并不容易，找了下前辈们的资料，感觉都很复杂，所以还是实现一个简单翻页好了，就是只有上一页，下一页这样简单的功能。</p>
+<p>首先看下mongoose API，find方法源码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">Model</span>.<span style="color:#a6e22e">find</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">find</span> (<span style="color:#a6e22e">conditions</span>, <span style="color:#a6e22e">fields</span>, <span style="color:#a6e22e">options</span>, <span style="color:#a6e22e">callback</span>){
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#e6db74">&#34;function&#34;</span><span style="color:#f92672">==</span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">conditions</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">callback</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">conditions</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">conditions</span> <span style="color:#f92672">=</span>{};
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fields</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>}<span style="color:#a6e22e">elseif</span>(<span style="color:#e6db74">&#34;function&#34;</span><span style="color:#f92672">==</span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">fields</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">callback</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fields</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fields</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span> }<span style="color:#a6e22e">elseif</span>(<span style="color:#e6db74">&#34;function&#34;</span><span style="color:#f92672">==</span><span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">options</span>){
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">callback</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">options</span>;
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">// get the raw mongodb collection object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">mq</span> <span style="color:#f92672">=</span><span style="color:#a6e22e">newQuery</span>({}, <span style="color:#a6e22e">options</span>,<span style="color:#66d9ef">this</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">collection</span>);
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">fields</span>);
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">discriminatorMapping</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>;<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>; <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">_selectedInclusively</span>()){
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">select</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">discriminatorKey</span>);
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">mq</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">conditions</span>, <span style="color:#a6e22e">callback</span>);
+</span></span><span style="display:flex;"><span> };
+</span></span></code></pre></div><p>其中有4个参数，find(条件，需要查询的字段，选项，回调)，这样看着太抽象，来一段实际应用的代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/admin/blogList&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">session</span>.<span style="color:#a6e22e">user</span>;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pageSize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">pageIndex</span>  
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">:</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">pageIndex</span>;  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pageSize</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">pageSize</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">pageSize</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">pageSize</span>;  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Blog</span>.<span style="color:#a6e22e">find</span>({}, <span style="color:#66d9ef">null</span>, {  
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">sort</span> <span style="color:#f92672">:</span> {  
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;_id&#34;</span> <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  
+</span></span><span style="display:flex;"><span>        },  
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">skip</span> <span style="color:#f92672">:</span> (<span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">pageSize</span>,  
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">limit</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">pageSize</span>  
+</span></span><span style="display:flex;"><span>    }, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">docs</span>) {  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)  
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">message</span>);  
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#34;admin/bloglist&#34;</span>, {  
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">blogList</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">docs</span>,  
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">user</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">user</span>,  
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">pageIndex</span>,  
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">pageCount</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">docs</span>.<span style="color:#a6e22e">length</span>  
+</span></span><span style="display:flex;"><span>        });  
+</span></span><span style="display:flex;"><span>    });  
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>其中Blog.find({},null,{sort:{&quot;_id&quot;:-1}, skip :( pageIndex -1)* pageSize, limit : pageSize },function)<br>
+这一段第一个参数为空，意思查询所有，第二个参数null,查询所有字段，第三个参数有倒序，分页。<br>
+然后就是页面上两个翻页按钮：</p>
 	</div>
 </article>
 
@@ -295,7 +387,7 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -311,13 +403,12 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -355,99 +446,99 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -475,13 +566,14 @@ router.get(&#34;/admin/blogList&#34;, function(req, res) { var user = req.
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

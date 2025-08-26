@@ -4,41 +4,23 @@
     <title>内网映射 on 月盾的博客</title>
     <link>https://www.yuedun.wang/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/</link>
     <description>Recent content in 内网映射 on 月盾的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 24 Sep 2023 11:07:26 +0800</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Sep 2023 11:07:26 +0800</lastBuildDate>
+    <atom:link href="https://www.yuedun.wang/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微信开发基础设施准备</title>
       <link>https://www.yuedun.wang/2023/09/wechatchat-developement/</link>
       <pubDate>Sun, 24 Sep 2023 11:07:26 +0800</pubDate>
-      
       <guid>https://www.yuedun.wang/2023/09/wechatchat-developement/</guid>
-      <description>多年前微信开发写过一篇关于内网穿透的文章《微信开发通过公网访问本地服务器》，随着时间的推移，有些方法已经不再适用。
-本地服务器地址 前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。
-不可用的方式——ngrok
-最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。
-可用的方式——借助花生壳来实现
-如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&amp;gt; https://console.hsk.oray.com/forward
-服务器配置 此处的服务器地址(URL) 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。
-测试号管理 测试号管理点开后就会看到和上面服务器配置一样的配置内容。
-测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。
-接口访问白名单 设置路径：设置与开发 -&amp;gt; 安全中心 -&amp;gt; IP白名单
-这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。
-有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！</description>
+      <description>&lt;p&gt;多年前微信开发写过一篇关于内网穿透的文章&lt;a href=&#34;https://www.yuedun.wang/blogdetail/55ab0f6ed366f15412cbf596/&#34;&gt;《微信开发通过公网访问本地服务器》&lt;/a&gt;，随着时间的推移，有些方法已经不再适用。&lt;/p&gt;&#xA;&lt;h2 id=&#34;本地服务器地址&#34;&gt;本地服务器地址&lt;/h2&gt;&#xA;&lt;p&gt;前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;不可用的方式——ngrok&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;可用的方式——借助花生壳来实现&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png&#34; alt=&#34;花生壳域名.png&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&amp;gt; &lt;a href=&#34;https://console.hsk.oray.com/forward&#34;&gt;https://console.hsk.oray.com/forward&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;服务器配置&#34;&gt;服务器配置&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png&#34; alt=&#34;微信服务器配置.png&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;此处的&lt;strong&gt;服务器地址(URL)&lt;/strong&gt; 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。&lt;/p&gt;&#xA;&lt;h2 id=&#34;测试号管理&#34;&gt;测试号管理&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;amp;t=sandbox/index&#34;&gt;测试号管理&lt;/a&gt;点开后就会看到和上面服务器配置一样的配置内容。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png&#34; alt=&#34;微信测试号管理.png&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。&lt;/p&gt;&#xA;&lt;h2 id=&#34;接口访问白名单&#34;&gt;接口访问白名单&lt;/h2&gt;&#xA;&lt;p&gt;设置路径：设置与开发 -&amp;gt; 安全中心 -&amp;gt; IP白名单&lt;/p&gt;&#xA;&lt;p&gt;这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。&lt;/p&gt;&#xA;&lt;p&gt;有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>微信开发通过公网访问本地服务器</title>
       <link>https://www.yuedun.wang/blogdetail/55ab0f6ed366f15412cbf596/</link>
       <pubDate>Sun, 19 Jul 2015 02:46:06 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/55ab0f6ed366f15412cbf596/</guid>
-      <description>做微信开发的时候，在开发者中心需要进行服务器配置，这里的配置是一个可以公网访问的地址，如果是产品上线的话肯定有公网地址，但是在开发过程中需要本地测试，总不能开发一点部署到服务器测试。这时候我们就需要从公网访问本地服务器。
-这已经是设置好的，服务器端口是指公网地址的端口，就以80端口来好了，这样公网地址可以省略端口，内部服务器端口就是本地服务器端口，Java程序一般是8080这样的端口，IP地址就是本地服务器在局域网中的ip，协议选ALL，状态：生效。常用服务器端口可以不选。
-然后启动本地服务器就可以通过路由器的公网IP访问本地服务了
-但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”：
-当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了</description>
+      <description>&lt;p&gt;做微信开发的时候，在开发者中心需要进行服务器配置，这里的配置是一个可以公网访问的地址，如果是产品上线的话肯定有公网地址，但是在开发过程中需要本地测试，总不能开发一点部署到服务器测试。这时候我们就需要从公网访问本地服务器。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/1.jpg&#34; alt=&#34;设置你的路由器，进行内网映射&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;这已经是设置好的，服务器端口是指公网地址的端口，就以80端口来好了，这样公网地址可以省略端口，内部服务器端口就是本地服务器端口，Java程序一般是8080这样的端口，IP地址就是本地服务器在局域网中的ip，协议选ALL，状态：生效。常用服务器端口可以不选。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/2.png&#34; alt=&#34;设置你的路由器，进行内网映射&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;然后启动本地服务器就可以通过路由器的公网IP访问本地服务了&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/3.jpg&#34; alt=&#34;设置你的路由器，进行内网映射&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/4.jpg&#34; alt=&#34;设置你的路由器，进行内网映射&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”：&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/5.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/6.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

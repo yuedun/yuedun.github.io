@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.106.0">
+	<meta name="generator" content="Hugo 0.148.2">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,90 +9,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 		
-		<meta property="og:title" content="月盾的博客" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/" />
+		<meta property="og:url" content="https://www.yuedun.wang/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="月盾的博客">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="月盾的博客">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="月盾的博客">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="月盾的博客">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -150,16 +117,102 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-09T11:08:42Z">2018-04-09 11:08</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-09T11:08:42Z">2018.04.09 11:08</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
-package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() { syncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&#34;syncFunc start:&#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&#34;syncFunc end:&#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5acb49ba45213aca5fde59e1/">阅读全文…</a>
+		<p>go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;sync&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">syncFunc</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">asyncFunc</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">asyncChanFunc</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 串行执行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">syncFunc</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span>,<span style="color:#a6e22e">m</span>,<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;syncFunc start:&#34;</span>,<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">n</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">m</span> = <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">x</span>  =<span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">elapsed</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Sub</span>(<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;syncFunc end:&#34;</span>, <span style="color:#a6e22e">elapsed</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">x</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 并行执行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">asyncFunc</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span>,<span style="color:#a6e22e">m</span>,<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncFunc start:&#34;</span>, <span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">n</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">m</span> = <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">x</span> = <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">elapsed</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Sub</span>(<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncFunc end:&#34;</span>, <span style="color:#a6e22e">elapsed</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">x</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 并行执行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">asyncChanFunc</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">x</span> =make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>),make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>),make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncChanFunc start:&#34;</span>,<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">m</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">x</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;n:%d, m:%d, x:%d\n&#34;</span>,<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">n</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">m</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">x</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">elapsed</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Sub</span>(<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncChanFunc end:&#34;</span>, <span style="color:#a6e22e">elapsed</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>测试结果：</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -173,19 +226,40 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-05T02:21:56Z">2018-04-05 02:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-05T02:21:56Z">2018.04.05 02:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内，所有以_test.go为后缀名的源文件并不是go build构建包的一部分，它们是go test测试的一部分。 在\*_test.go文件中，有三种类型的函数：测试函数、基准测试函数、示例函数。一个测试函数是以Test为函数名前缀的函数，用于测试程序的一些逻辑行为是否正确； go test命令会调用这些测试函数并报告测试结果是PASS或FAIL。基准测试函数是以Benchmark为函数名前缀的函数，它们用于衡量一些函数的性能；go test命令会多次运行基准函数以计算一个平均的执行时间。示例函数是以Example为函数名前缀的函数，提供一个由编译器保证正确性的示例文档。
-测试函数 每个测试函数必须导入testing包。测试函数有如下的签名：
-func TestName(t *testing.T) { // ... } 测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：
-func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ } func TestLog(t *testing.T) { /* ... */ } 其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包gopl.io/ch11/word1，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）
-// gopl.io/ch11/word1 // Package word provides utilities for word games. package word // IsPalindrome reports whether s reads the same forward and backward. // (Our first attempt.) func IsPalindrome(s string) bool { for i := range s { if s[i] !
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5ac588446a513c7b8bfd72e6/">阅读全文…</a>
+		<p>go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内，所有以_test.go为后缀名的源文件并不是go build构建包的一部分，它们是go test测试的一部分。
+在<code>\*_test.go</code>文件中，有三种类型的函数：测试函数、基准测试函数、示例函数。一个测试函数是以<strong>Test为函数名前缀的函数</strong>，用于测试程序的一些逻辑行为是否正确；
+<code>go test</code>命令会调用这些测试函数并报告测试结果是PASS或FAIL。基准测试函数是以Benchmark为函数名前缀的函数，它们用于衡量一些函数的性能；<code>go test</code>命令会多次运行基准函数以计算一个平均的执行时间。示例函数是以Example为函数名前缀的函数，提供一个由编译器保证正确性的示例文档。</p>
+<h3 id="测试函数">测试函数</h3>
+<p>每个测试函数必须导入testing包。测试函数有如下的签名：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestName</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>测试函数的名字必须以Test开头，可选的后缀名必须以大写字母开头：</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestSin</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) { <span style="color:#75715e">/* ... */</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestCos</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) { <span style="color:#75715e">/* ... */</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestLog</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) { <span style="color:#75715e">/* ... */</span> }
+</span></span></code></pre></div><p>其中t参数用于报告测试失败和附加的日志信息。让我们定义一个实例包<code>gopl.io/ch11/word1</code>，其中只有一个函数IsPalindrome用于检查一个字符串是否从前向后和从后向前读都是一样的。（下面这个实现对于一个字符串是否是回文字符串前后重复测试了两次；我们稍后会再讨论这个问题。）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// gopl.io/ch11/word1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Package word provides utilities for word games.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">word</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// IsPalindrome reports whether s reads the same forward and backward.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// (Our first attempt.)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">IsPalindrome</span>(<span style="color:#a6e22e">s</span> <span style="color:#66d9ef">string</span>) <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">s</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">s</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">s</span>[len(<span style="color:#a6e22e">s</span>)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i</span>] {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在相同的目录下，word_test.go测试文件中包含了TestPalindrome和TestNonPalindrome两个测试函数。每一个都是测试IsPalindrome是否给出正确的结果，并使用t.Error报告失败信息</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -199,27 +273,58 @@ func TestSin(t *testing.T) { /* ... */ } func TestCos(t *testing.T) { /* ... */ 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-19T03:27:57Z">2018-03-19 03:27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-19T03:27:57Z">2018.03.19 03:27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		一、 包的导入语法 在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：
-import( &#34;fmt&#34; ) 然后在代码里面可以通过如下的方式调用
-fmt.Println(&#34;hello world&#34;) 上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：
-相对路径
-import &#34;./model&#34; //当前文件同一目录的model目录，但是不建议这种方式import` 绝对路径
-import &#34;shorturl/model&#34; //加载GOPATH/src/shorturl/model模块` 上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。
-点操作 有时候会看到如下的方式导入包
-import( . &#34;fmt&#34; ) 这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的
-fmt.Println(&#34;hello world&#34;) 可以省略的写成
-Println(&#34;hello world&#34;) 别名操作 别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字
-import( f &#34;fmt&#34; ) 别名操作调用包函数时前缀变成了重命名的前缀，即
-f.Println(&#34;hello world&#34;) _操作 这个操作经常是让很多人费解的一个操作符，请看下面这个import
-import ( &#34;database/sql&#34; _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。
-二、 包的导入过程说明 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：
-通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。
-原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457
+		<p>一、 包的导入语法
+在写Go代码的时候经常用到import这个命令用来导入包文件，看到的方式参考如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>(
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>然后在代码里面可以通过如下的方式调用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><p>上面这个fmt是Go语言的标准库，他其实是去GOROOT下去加载该模块，当然Go的import还支持如下两种方式来加载自己写的模块：</p>
+<p><strong>相对路径</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>   <span style="color:#e6db74">&#34;./model&#34;</span>  <span style="color:#75715e">//当前文件同一目录的model目录，但是不建议这种方式import`</span>
+</span></span></code></pre></div><p><strong>绝对路径</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>   <span style="color:#e6db74">&#34;shorturl/model&#34;</span>  <span style="color:#75715e">//加载GOPATH/src/shorturl/model模块`</span>
+</span></span></code></pre></div><p>上面展示了一些import常用的几种方式，但是还有一些特殊的import，让很多新手很费解，下面是三种导入包的使用方法。</p>
+<ol>
+<li><strong>点操作</strong></li>
+</ol>
+<p>有时候会看到如下的方式导入包</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>( 
+</span></span><span style="display:flex;"><span>    . <span style="color:#e6db74">&#34;fmt&#34;</span> 
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调用的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><p>可以省略的写成</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><ol start="2">
+<li><strong>别名操作</strong></li>
+</ol>
+<p>别名操作顾名思义可以把包命名成另一个用起来容易记忆的名字</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">f</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>别名操作调用包函数时前缀变成了重命名的前缀，即</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+</span></span></code></pre></div><ol start="3">
+<li><strong>_操作</strong></li>
+</ol>
+<p>这个操作经常是让很多人费解的一个操作符，请看下面这个import</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> ( 
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;database/sql&#34;</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">_</span> <span style="color:#e6db74">&#34;github.com/ziutek/mymysql/godrv&#34;</span> 
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>_操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。</p>
+<p>二、 包的导入过程说明
+程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：</p>
+<p><img src="https://hopefully-img.yuedun.wang/20140511222515968.jpg" alt="go包导入过程" title="go包导入过程"></p>
+<p>通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。</p>
+<p>原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -233,14 +338,16 @@ import ( &#34;database/sql&#34; _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-19T02:59:32Z">2018-03-19 02:59</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-19T02:59:32Z">2018.03.19 02:59</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		github上提交了很多commit但是没有Contributions绿色方块，原因是提交的email和github不匹配，使用git log查看记录中使用的邮箱是否是github的邮箱，如果不是也不需要做什么修改，只需要在github上添加对应的邮箱地址即可。
-右上角头像-settings-emails-Add email address
-验证邮箱后就会立马重新统计
+		<p>github上提交了很多commit但是没有Contributions绿色方块，原因是提交的email和github不匹配，使用<code>git log</code>查看记录中使用的邮箱是否是github的邮箱，如果不是也不需要做什么修改，只需要在github上添加对应的邮箱地址即可。</p>
+<blockquote>
+<p>右上角头像-settings-emails-Add email address</p></blockquote>
+<p>验证邮箱后就会立马重新统计</p>
+<p><img src="https://hopefully-img.yuedun.wang/profile.png" alt="" title="github email"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -254,25 +361,53 @@ import ( &#34;database/sql&#34; _ &#34;github.com/ziutek/mymysql/godrv&#34; ) _�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-02T03:25:51Z">2018-03-02 03:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-03-02T03:25:51Z">2018.03.02 03:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		nodejs中经常使用到环境变量，最常见的如：process.env.NODE_ENV。那么在生产环境中使用pm2如何设置环境变量？
-设置方式一：shell命令设置 linux：export NODE_ENV=development&amp;&amp; node app.js
-win：set NODE_ENV=development&amp;&amp; node app.js
-一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据process.env.NODE_ENV来运行不同逻辑即可。
-设置方式二：配置文件设置 要在pm2设置环境变量也很简单。
-pm2 start pm2.json &ndash;env production
---env production参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。
-pm2.json
-{ &#34;apps&#34; : [{ &#34;name&#34;: &#34;issue&#34;, &#34;cwd&#34;: &#34;dest&#34;, &#34;script&#34; : &#34;bin/www.js&#34;, &#34;instances&#34; : &#34;2&#34;, &#34;exec_mode&#34; : &#34;cluster&#34;, &#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 }, &#34;env_production&#34; : { &#34;NODE_ENV&#34;: &#34;production&#34;, &#34;PORT&#34;: 3003 }, &#34;log_date_format&#34;: &#34;YYYY-MM-DD_HH:mm Z&#34;, &#34;merge_logs&#34;: true }] } 如果不加参数则默认使用
-&#34;env&#34;: { &#34;NODE_ENV&#34;: &#34;development&#34;, &#34;PORT&#34;: 3002 } 结果：NODE_ENV=development,PORT=3002
-加--env production则使用的是
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a98c43ff4583f741c210b89/">阅读全文…</a>
+		<p>nodejs中经常使用到环境变量，最常见的如：<code>process.env.NODE_ENV</code>。那么在生产环境中使用pm2如何设置环境变量？</p>
+<h3 id="设置方式一shell命令设置">设置方式一：shell命令设置</h3>
+<p><strong>linux</strong>：<code>export NODE_ENV=development&amp;&amp; node app.js</code></p>
+<p><strong>win</strong>：<code>set NODE_ENV=development&amp;&amp; node app.js</code></p>
+<p>一般是作临时变量在系统启动时设置，不影响其他系统，也可同时运行开发环境和生产环境，只需要根据<code>process.env.NODE_ENV</code>来运行不同逻辑即可。</p>
+<h3 id="设置方式二配置文件设置">设置方式二：配置文件设置</h3>
+<p>要在pm2设置环境变量也很简单。</p>
+<blockquote>
+<p>pm2 start pm2.json &ndash;env production</p></blockquote>
+<p><code>--env production</code>参数是为了设置环境变量，由pm2.json中的配置决定设置什么样的环境变量。</p>
+<p><strong>pm2.json</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;apps&#34;</span> <span style="color:#f92672">:</span> [{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;issue&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cwd&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;dest&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;script&#34;</span>    <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bin/www.js&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;instances&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;exec_mode&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;cluster&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;env&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3002</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;env_production&#34;</span> <span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;production&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3003</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;log_date_format&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;YYYY-MM-DD_HH:mm Z&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;merge_logs&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  }]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果不加参数则默认使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#e6db74">&#34;env&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;development&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3002</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>结果：<code>NODE_ENV=development</code>,<code>PORT=3002</code></p>
+<p>加<code>--env production</code>则使用的是</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#e6db74">&#34;env_production&#34;</span> <span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;NODE_ENV&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;production&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;PORT&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3003</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>结果：<code>NODE_ENV=production</code>,<code>PORT=3003</code></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -286,13 +421,34 @@ pm2.json
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-02-16T13:22:49Z">2018-02-16 13:22</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-02-16T13:22:49Z">2018.02.16 13:22</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		bundle.js:935 [Vue warn]: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. (found in &lt;Root&gt;) 解决方案：与entry属性平级添加
-resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为node_modules下的vue目录 } } // 需要编译器 new Vue({ template: &#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39; }) // 不需要编译器 new Vue({ render (h) { return h(&#39;div&#39;, this.hi) } }) 出现警告的原因是使用了template属性。 文文点到为止，详情请直接访问中文官方文档https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释
+		<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>bundle.js:935 <span style="color:#f92672">[</span>Vue warn<span style="color:#f92672">]</span>: You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>found in &lt;Root&gt;<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>解决方案：与entry属性平级添加</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">resolve</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">alias</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;vue$&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;vue/dist/vue.esm.js&#39;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//该路径为node_modules下的vue目录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// 需要编译器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&lt;div&gt;{{ hi }}&lt;/div&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 不需要编译器
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">render</span> (<span style="color:#a6e22e">h</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">h</span>(<span style="color:#e6db74">&#39;div&#39;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">hi</span>)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>出现警告的原因是使用了<code>template</code>属性。
+文文点到为止，详情请直接访问中文官方文档<a href="https://cn.vuejs.org/v2/guide/installation.html#%E5%AF%B9%E4%B8%8D%E5%90%8C%E6%9E%84%E5%BB%BA%E7%89%88%E6%9C%AC%E7%9A%84%E8%A7%A3%E9%87%8A">https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释</a></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -306,14 +462,17 @@ resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-26T04:35:58Z">2018-01-26 04:35</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-26T04:35:58Z">2018.01.26 04:35</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		上一篇写到了如何在docker中运行nodejs，运行方式是在docker中安装了pm2来保证node服务宕机重启，这种方式更像是把docker当做虚拟机来使用。其实，既然使用了docker的话就可以不使用pm2来管理进程，因为docker自身可以充当守护进程，在node进程退出时进行重启。只要在启动docker容器时加上&ndash;restart=always参数即可。例如：docker run -d --restart=always -p 3000:3000 mynode:1
-没有pm2如何开启多进程 使用pm2可以开启多node进程，并且自带负载均衡，但是有个限制，pm2可以开启的进程数是CPU最大核心数。而使用docker的话就不会受限于此了，开启几十个上百个node服务都可以，然后通过nginx实现负载均衡。不过要手动开启几十上百个docker容器那怎么行？让我手动开启3个都很烦了，这时候就需要用到docker编排工具了，比如：Docker Swarm、Kubernetes、docker compose等，可以一键开启多个容器。但是使用编排工具启动docker端口就不确定了，是由编排工具随机开启服务端口的，这又要做到服务注册发现，所以这些工具结合起来使用。
-哪一种部署方式支持并发高？ 使用jmeter在本机上进行了简单的并发测试，服务端进行简单的10万次hash计算，使用pm2开启4个实例，docker开启5个实例。docker使用Nginx做负载均衡，单次访问响应时间在1.2s~1.4s之间不等，在200个并发的情况下，两种模式响应时间相差不大，docker模式响应时间略占优势，大概快了0.1s。当并发数在300以上时两者的响应时间都有增加，此时docker部署方式出现了响应失败的情况，pm2就比较稳定了，虽然响应时间增加，但是并未出现过响应失败。 所以在单机上低并发docker还是有点优势，如果在高并发情况下还是pm2更稳定一些。（以上测试是单机上进行，准确性并不高）
+		<p>上一篇写到了<a href="http://yuedun.wang/blogdetail/5a6021fa4bdc8ea471fd2db0">如何在docker中运行nodejs</a>，运行方式是在docker中安装了pm2来保证node服务宕机重启，这种方式更像是把docker当做虚拟机来使用。其实，既然使用了docker的话就可以不使用pm2来管理进程，因为docker自身可以充当守护进程，在node进程退出时进行重启。只要在启动docker容器时加上&ndash;restart=always参数即可。例如：<code>docker run -d --restart=always -p 3000:3000 mynode:1</code></p>
+<h3 id="没有pm2如何开启多进程">没有pm2如何开启多进程</h3>
+<p>使用pm2可以开启多node进程，并且自带负载均衡，但是有个限制，pm2可以开启的进程数是CPU最大核心数。而使用docker的话就不会受限于此了，开启几十个上百个node服务都可以，然后通过nginx实现负载均衡。不过要手动开启几十上百个docker容器那怎么行？让我手动开启3个都很烦了，这时候就需要用到docker编排工具了，比如：<code>Docker Swarm、Kubernetes、docker compose</code>等，可以一键开启多个容器。但是使用编排工具启动docker端口就不确定了，是由编排工具随机开启服务端口的，这又要做到服务注册发现，所以这些工具结合起来使用。</p>
+<h3 id="哪一种部署方式支持并发高">哪一种部署方式支持并发高？</h3>
+<p>使用jmeter在本机上进行了简单的并发测试，服务端进行简单的10万次hash计算，使用pm2开启4个实例，docker开启5个实例。docker使用Nginx做负载均衡，单次访问响应时间在1.2s~1.4s之间不等，在200个并发的情况下，两种模式响应时间相差不大，docker模式响应时间略占优势，大概快了0.1s。当并发数在300以上时两者的响应时间都有增加，此时docker部署方式出现了响应失败的情况，pm2就比较稳定了，虽然响应时间增加，但是并未出现过响应失败。
+所以在单机上低并发docker还是有点优势，如果在高并发情况下还是pm2更稳定一些。（以上测试是单机上进行，准确性并不高）</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -327,20 +486,48 @@ resolve: { alias: { &#39;vue$&#39;: &#39;vue/dist/vue.esm.js&#39; //该路径为
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-25T09:49:36Z">2018-01-25 09:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-25T09:49:36Z">2018.01.25 09:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		pm2介绍 pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。 最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。 总体来说就是有性能监控、自动重启、负载均衡的作用。
-pm2-logrotate介绍 pm2本身是可以输出日志文件的，默认的文件路径：
-error log path │ /home/username/.pm2/logs/app-error-0.log out log path │ /home/username/.pm2/logs/app-out-0.log 但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要pm2-logrotate来实现自动分割日志。
-安装pm2-logrotate pm2 install pm2-logrotate,是用pm2命令，不是npm命令
-pm2-logrotate配置
-max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K retain (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one. compress (默认 false): 是否压缩日志 dateFormat (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式 rotateModule (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps workerInterval (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1) rotateInterval (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a69a8301f395d7179259c45/">阅读全文…</a>
+		<h3 id="pm2介绍">pm2介绍</h3>
+<p>pm2是nodejs进程管理工具，现在基本是node生产服务器的标准选择，可以帮助我们实现node多进程服务，开启的多个实例自动实现负载均衡。
+最重要的是保证node单进程不会因为错误退出，作为守护进程保证nodejs服务不宕机。
+总体来说就是有性能监控、自动重启、负载均衡的作用。</p>
+<h3 id="pm2-logrotate介绍">pm2-logrotate介绍</h3>
+<p>pm2本身是可以输出日志文件的，默认的文件路径：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>error log path    │ /home/username/.pm2/logs/app-error-0.log
+</span></span><span style="display:flex;"><span>out log path      │ /home/username/.pm2/logs/app-out-0.log 
+</span></span></code></pre></div><p>但是pm2的日志文件不能自动分割，这会导致一个文件不断变大，不但影响性能，查看这些日志也会带来麻烦。所以需要<code>pm2-logrotate</code>来实现自动分割日志。</p>
+<h3 id="安装pm2-logrotate">安装pm2-logrotate</h3>
+<p><code>pm2 install pm2-logrotate</code>,是用pm2命令，不是npm命令</p>
+<p>pm2-logrotate配置</p>
+<ul>
+<li><code>max_size</code> (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K</li>
+<li><code>retain</code> (Defaults to all): This number is the number of rotated logs that are keep at any one time, it means that if you have retain = 7 you will have at most 7 rotated logs and your current one.</li>
+<li><code>compress</code> (默认 false): 是否压缩日志</li>
+<li><code>dateFormat</code> (默认 YYYY-MM-DD_HH-mm-ss) : 日志格式</li>
+<li><code>rotateModule</code> (Defaults to true) : Rotate the log of pm2&rsquo;s module like other apps</li>
+<li><code>workerInterval</code> (Defaults to 30 in secs) : You can control at which interval the worker is checking the log&rsquo;s size (minimum is 1)</li>
+<li><code>rotateInterval</code> (Defaults to 0 0 * * * everyday at midnight): This cron is used to a force rotate when executed. We are using node-schedule to schedule cron, so all valid cron for node-schedule is valid cron for this option. Cron style :</li>
+<li><code>TZ</code> (Defaults to system time): This is the standard tz database timezone used to offset the log file saved. For instance, a value of Etc/GMT-1, with an hourly log, will save a file at hour 14 GMT with hour 13 GMT-1 in the log name.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>*    *    *    *    *    *
+</span></span><span style="display:flex;"><span>┬    ┬    ┬    ┬    ┬    ┬
+</span></span><span style="display:flex;"><span>│    │    │    │    │    |
+</span></span><span style="display:flex;"><span>│    │    │    │    │    └ day of week <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> - 7<span style="color:#f92672">)</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> or <span style="color:#ae81ff">7</span> is Sun<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>│    │    │    │    └───── month <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> - 12<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>│    │    │    └────────── day of month <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> - 31<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>│    │    └─────────────── hour <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> - 23<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>│    └──────────────────── minute <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> - 59<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>└───────────────────────── second <span style="color:#f92672">(</span><span style="color:#ae81ff">0</span> - 59, OPTIONAL<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>可以尝试使用<code>pm2 set pm2-logrotate:max_size 1K (1KB)</code>设置日志文件最大为1KB
+代码中<code>console.log</code>的内容会输出到
+<code>/home/username/.pm2/logs/app-out-0.log</code>,
+大小达到1KB就会自动生成
+<code>app-out-0__2018-01-25_16-58-16.log</code>这种格式的日志文件。
+在<code>/home/username/.pm2/logs/</code>（默认路径，可以配置）路径下还有</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -354,15 +541,17 @@ max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K re
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-19T02:40:54Z">2018-01-19 02:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-19T02:40:54Z">2018.01.19 02:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧，
-如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：
-地址栏中输入about:config,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。
-其他情况可参考：https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox
+		<p>从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧，</p>
+<p><img src="https://hopefully-img.yuedun.wang/firefoxpocket.png" alt=""></p>
+<p>如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：</p>
+<blockquote>
+<p>地址栏中输入<code>about:config</code>,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。</p></blockquote>
+<p>其他情况可参考：<a href="https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox">https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox</a></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -376,23 +565,44 @@ max_size (默认 10M): 最大为多少时进行分割，例如: 10G, 10M, 10K re
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-18T04:26:34Z">2018-01-18 04:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-18T04:26:34Z">2018.01.18 04:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		首先看项目目录：
-再看Dockerfile文件内容：
-# 以最新的node为基础镜像 FROM hub.c.163.com/library/node:latest # 工作目录为app WORKDIR /app # 拷贝当前所在项目根目录到app目录 COPY . /app # 全局安装pm2 RUN npm install pm2 -g EXPOSE 8081 #使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出 CMD [&#34;pm2-runtime&#34;, &#34;dest/server.js&#34;, &#34;--no-daemon&#34;] # ENTRYPOINT [&#34;node&#34;, &#34;server.js&#34;] 或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令：
-docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
-如果是后台运行的docker:
-docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
--d选项是后台运行
-需要进入到docker查看pm2运行情况 ，可以通过docker exec -ti ks /bin/sh查看运行的容器内部情况 要不要在docker中使用pm2运行nodejs pm2可以监控nodejs进程，如果进程挂了，可以自动重启 pm2可以设置启动的nodejs进程个数，提高服务性能 pm2可以设置日志记录 pm2可以设置端口，避免端口冲突 docker已经提供了自动重启的功能，可以这样启动nodejs服务：
-docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/server.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a6021fa4bdc8ea471fd2db0/">阅读全文…</a>
+		<p>首先看项目目录：</p>
+<p><img src="https://hopefully-img.yuedun.wang/projectdir.png" alt="项目目录"></p>
+<p>再看Dockerfile文件内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 以最新的node为基础镜像</span>
+</span></span><span style="display:flex;"><span>FROM hub.c.163.com/library/node:latest
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 工作目录为app</span>
+</span></span><span style="display:flex;"><span>WORKDIR /app
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 拷贝当前所在项目根目录到app目录</span>
+</span></span><span style="display:flex;"><span>COPY . /app
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 全局安装pm2</span>
+</span></span><span style="display:flex;"><span>RUN npm install pm2 -g
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">8081</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出</span>
+</span></span><span style="display:flex;"><span>CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;pm2-runtime&#34;</span>, <span style="color:#e6db74">&#34;dest/server.js&#34;</span>, <span style="color:#e6db74">&#34;--no-daemon&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ENTRYPOINT [&#34;node&#34;, &#34;server.js&#34;]</span>
+</span></span></code></pre></div><p>或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令：</p>
+<p><code>docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
+<p>如果是后台运行的docker:</p>
+<p><code>docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
+<p><code>-d</code>选项是后台运行</p>
+<p>需要进入到docker查看pm2运行情况
+，可以通过<code>docker exec -ti ks /bin/sh</code>查看运行的容器内部情况
+<img src="https://hopefully-img.yuedun.wang/pm2running.png" alt="pm2运行情况"></p>
+<h1 id="要不要在docker中使用pm2运行nodejs">要不要在docker中使用pm2运行nodejs</h1>
+<ul>
+<li>pm2可以监控nodejs进程，如果进程挂了，可以自动重启</li>
+<li>pm2可以设置启动的nodejs进程个数，提高服务性能</li>
+<li>pm2可以设置日志记录</li>
+<li>pm2可以设置端口，避免端口冲突</li>
+</ul>
+<p>docker已经提供了自动重启的功能，可以这样启动nodejs服务：</p>
+<p><code>docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
 	</div>
 </article>
 
@@ -411,7 +621,7 @@ docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -427,13 +637,12 @@ docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -471,99 +680,99 @@ docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -591,13 +800,14 @@ docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

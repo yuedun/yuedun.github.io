@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="系统架构" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" />
+		<meta property="og:url" content="https://www.yuedun.wang/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="系统架构">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="系统架构">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="系统架构">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="系统架构">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,20 +116,106 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-10-18T15:26:24&#43;08:00">2024-10-18 15:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-10-18T15:26:24&#43;08:00">2024.10.18 15:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Socket.io作为服务器推送的首要选择，可以很方便的在客户端和Web服务器之间实现双向通信。很多人在选择之初都会有个疑问：socket.io是有状态长链接服务，它能支撑多少个用户同时在线？
-虽然目前没有标准统一的答案，但是，在开发实践中已经证明，在单机情况下10万用户是没问题的。
-如果您觉得10万还是不够，那么可以通过多实例的方式来支持更多的用户也是可行的。实现方式几乎是零成本升级。
-您只需要将默认的适配器更换为redis或其他适配器就可以支持多实例：
-一个基于epxress和socket.io的多实例服务配置：
-#!/usr/bin/env node const app = require(&#39;../app&#39;); const debug = require(&#39;debug&#39;)(&#39;ws_server:www&#39;); const { createServer } = require(&#39;http&#39;); const { Server } = require(&#39;socket.io&#39;); const { createAdapter } = require(&#34;@socket.io/redis-adapter&#34;); const { Redis } = require(&#34;ioredis&#34;); const port = normalizePort(process.env.PORT || &#39;3000&#39;); app.set(&#39;port&#39;, port); const httpServer = createServer(app); /** * Normalize a port into a number, string, or false. */ function normalizePort(val) { var port = parseInt(val, 10); if (isNaN(port)) { // named pipe return val; } if (port &gt;= 0) { // port number return port; } return false; } /** * Event listener for HTTP server &#34;error&#34; event.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2024/10/socketio-cluster/">阅读全文…</a>
+		<p>Socket.io作为服务器推送的首要选择，可以很方便的在客户端和Web服务器之间实现双向通信。很多人在选择之初都会有个疑问：socket.io是有状态长链接服务，它能支撑多少个用户同时在线？</p>
+<p>虽然目前没有标准统一的答案，但是，在开发实践中已经证明，在单机情况下10万用户是没问题的。</p>
+<p>如果您觉得10万还是不够，那么可以通过多实例的方式来支持更多的用户也是可行的。实现方式几乎是零成本升级。</p>
+<p>您只需要将默认的适配器更换为redis或其他适配器就可以支持多实例：</p>
+<p>一个基于epxress和socket.io的多实例服务配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env node
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../app&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debug</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;debug&#39;</span>)(<span style="color:#e6db74">&#39;ws_server:www&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">createServer</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">Server</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;socket.io&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">createAdapter</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;@socket.io/redis-adapter&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">Redis</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;ioredis&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalizePort</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;3000&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;port&#39;</span>, <span style="color:#a6e22e">port</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">httpServer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createServer</span>(<span style="color:#a6e22e">app</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Normalize a port into a number, string, or false.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizePort</span>(<span style="color:#a6e22e">val</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">val</span>, <span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (isNaN(<span style="color:#a6e22e">port</span>)) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// named pipe
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">val</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">port</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// port number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">port</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Event listener for HTTP server &#34;error&#34; event.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onError</span>(<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">syscall</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;listen&#39;</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bind</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;string&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;Pipe &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">port</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Port &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">port</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// handle specific listen errors with friendly messages
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">code</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;EACCES&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">bind</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; requires elevated privileges&#39;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;EADDRINUSE&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">bind</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; is already in use&#39;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Event listener for HTTP server &#34;listening&#34; event.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onListening</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">addr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">address</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bind</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">addr</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;string&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;pipe &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">addr</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;port &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">addr</span>.<span style="color:#a6e22e">port</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Listening on &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">bind</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 重点部分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pubClient</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Redis</span>({
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">REDIS_HOST</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">port</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">REDIS_PORT</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">REDIS_PASSWORD</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">subClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pubClient</span>.<span style="color:#a6e22e">duplicate</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">io</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Server</span>(<span style="color:#a6e22e">httpServer</span>, {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">adapter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">createAdapter</span>(<span style="color:#a6e22e">pubClient</span>, <span style="color:#a6e22e">subClient</span>),
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">cors</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">origin</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;https://admin.socket.io&#34;</span>, <span style="color:#e6db74">&#34;http://127.0.0.1:8080&#34;</span>],
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// allowedHeaders: [&#34;Authorization&#34;, &#34;Cookie&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">credentials</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#34;IO&#34;</span>, <span style="color:#a6e22e">io</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">port</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">onError</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;listening&#39;</span>, <span style="color:#a6e22e">onListening</span>);
+</span></span></code></pre></div><p>经过上面的改动后，所有的socket.io服务器实例可以共享一个redis实例来存储连接的状态信息。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -176,17 +229,32 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-08-06T14:50:43&#43;08:00">2024-08-06 14:50</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-08-06T14:50:43&#43;08:00">2024.08.06 14:50</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		gitlab ci/cd 中，需要使用到 docker registry 账号 push 镜像，这个可以设置为机器人，可以避免个人账号泄露
-配置Harbor机器人 登录 Harbor 管理界面，进入系统管理→认证页面； 选择机器人 Token页签，点击左上角的新建机器人，创建一个名为gitlab-ci的机器人； 给该机器人一个名称，并给该机器人添加相应的权限； 机器人创建完成以后，点击右侧的查看token来复制该机器人的 token，这个就是以后用 gitlab-ci 配置文件使用的账号密码； 在gitlab 创建 harbor-robot 用户； 为该用户添加项目级别的 开发 权限； 配置gitlab-ci 在项目的设置中添加 docker registry 账号密码，仓库地址是harbor的； 编辑.gitlab-ci.yml文件，把账号密码改为之前复制的 token； 注意点
-有些情况下创建的机器人账户会带上$符号，在gitlab中是无法使用的，需要将$改为两个$$来表示$；
-结束 这样gitlab-ci 就可以顺利跑测试、构建、推送镜像了；
-以上内容，只是简单的配了配 harbor，可以有很多其他方法完成该工作，这里只是简单的记录下而已；
-如果需要复杂的设置，欢迎移步harbor 文档，那里有更多的内容可以提供参考。
+		<p>gitlab ci/cd 中，需要使用到 docker registry 账号 push 镜像，这个可以设置为机器人，可以避免个人账号泄露</p>
+<h2 id="配置harbor机器人">配置Harbor机器人</h2>
+<ul>
+<li>登录 Harbor 管理界面，进入<code>系统管理→认证</code>页面；</li>
+<li>选择<code>机器人 Token</code>页签，点击左上角的<code>新建机器人</code>，创建一个名为<code>gitlab-ci</code>的机器人；</li>
+<li>给该机器人一个名称，并给该机器人添加相应的权限；</li>
+<li>机器人创建完成以后，点击右侧的<code>查看token</code>来复制该机器人的 token，这个就是以后用 gitlab-ci 配置文件使用的账号密码；</li>
+<li>在gitlab 创建 <code>harbor-robot</code> 用户；</li>
+<li>为该用户添加项目级别的 <code>开发</code> 权限；</li>
+</ul>
+<h2 id="配置gitlab-ci">配置gitlab-ci</h2>
+<ul>
+<li>在项目的设置中添加 docker registry 账号密码，仓库地址是harbor的；</li>
+<li>编辑<code>.gitlab-ci.yml</code>文件，把账号密码改为之前复制的 token；</li>
+</ul>
+<p><strong>注意点</strong></p>
+<p>有些情况下创建的机器人账户会带上<code>$</code>符号，在gitlab中是无法使用的，需要将<code>$</code>改为两个<code>$$</code>来表示<code>$</code>；</p>
+<h2 id="结束">结束</h2>
+<p>这样gitlab-ci 就可以顺利跑测试、构建、推送镜像了；</p>
+<p>以上内容，只是简单的配了配 harbor，可以有很多其他方法完成该工作，这里只是简单的记录下而已；</p>
+<p>如果需要复杂的设置，欢迎移步<a href="https://github.com/goharbor/harbor/blob/master/docs/user_guide.md">harbor 文档</a>，那里有更多的内容可以提供参考。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -200,17 +268,104 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-22T13:32:34&#43;08:00">2023-11-22 13:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-22T13:32:34&#43;08:00">2023.11.22 13:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		虽然很多文章说不建议将数据库部署在容器中，因为有性能问题。但我觉得这事还是要看具体使用场景来决定，而不是全盘否定。开发的过程中并不只有性能是最重要的，还有效率，易用性等也很重要。
-对于测试环境来说，数据库部署在容器中肯定是可以的。
-apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql spec: progressDeadlineSeconds: 600 replicas: 1 revisionHistoryLimit: 10 selector: matchLabels: app: mysql strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: labels: app: mysql spec: containers: - env: - name: MYSQL_ROOT_PASSWORD value: xxx image: mysql:8.0.33 imagePullPolicy: IfNotPresent name: mysql ports: - containerPort: 3306 name: mysql protocol: TCP resources: limits: cpu: &#34;4&#34; memory: 8Gi volumeMounts: - mountPath: /var/lib/mysql name: data - mountPath: /etc/mysql/conf.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2023/11/kubernetes-deploy-mysql8/">阅读全文…</a>
+		<p>虽然很多文章说不建议将数据库部署在容器中，因为有性能问题。但我觉得这事还是要看具体使用场景来决定，而不是全盘否定。开发的过程中并不只有性能是最重要的，还有效率，易用性等也很重要。</p>
+<p>对于测试环境来说，数据库部署在容器中肯定是可以的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">progressDeadlineSeconds</span>: <span style="color:#ae81ff">600</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">revisionHistoryLimit</span>: <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">strategy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rollingUpdate</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">maxSurge</span>: <span style="color:#ae81ff">25</span><span style="color:#ae81ff">%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">maxUnavailable</span>: <span style="color:#ae81ff">25</span><span style="color:#ae81ff">%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">RollingUpdate</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">MYSQL_ROOT_PASSWORD</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">value</span>: <span style="color:#ae81ff">xxx</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:8.0.33</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">3306</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">limits</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">cpu</span>: <span style="color:#e6db74">&#34;4&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">8Gi</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">volumeMounts</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/var/lib/mysql</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">data</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/etc/mysql/conf.d/</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-config</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">data</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">configMap</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">defaultMode</span>: <span style="color:#ae81ff">420</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-config</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">data</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my.cnf</span>: |-<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [client]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    default-character-set = utf8mb4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [mysql]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    default-character-set=utf8mb4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [mysqld]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    character-set-server=utf8mb4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    collation_server=utf8mb4_unicode_ci
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    gtid_mode=ON
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    enforce_gtid_consistency=ON
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    lower_case_table_names=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    open_files_limit=65535
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    slow_query_log = ON
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    long_query_time = 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_heap_table_size = 32M
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    tmp_table_size = 2M
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    log-bin = mysql-bin
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    binlog_cache_size = 32K
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_binlog_cache_size = 1G
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_binlog_size = 1G
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    binlog-format = ROW
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    sync_binlog = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    log-slave-updates = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    expire_logs_days = 7
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    default-time_zone = +8:00
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_connect_errors = 65535
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_allowed_packet = 536870912
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_connections = 5120
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    innodb_buffer_pool_instances = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    innodb_buffer_pool_size = 6442450944
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    innodb_temp_data_file_path = ibtmp1:12M:autoextend:max:15G
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    server_id = 100</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-config</span>
+</span></span></code></pre></div>
 	</div>
 </article>
 <article class="list__item post">
@@ -224,25 +379,207 @@ apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql sp
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-14T15:53:33&#43;08:00">2023-11-14 15:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-14T15:53:33&#43;08:00">2023.11.14 15:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		数据安全一直是企业安全的重中之重，在企业系统开发过程中，数据库的安全日益增强，所以需要有个平台能够记录和审查数据库变更。
-SQL 审计平台的功能特点：
-实时监控和记录：SQL 审计平台能够实时监听数据库操作，记录所有的 SQL 查询和事务操作，确保数据变更的可追溯性。 用户行为分析：通过分析用户的查询行为和访问模式，SQL 审计平台可以识别风险操作、异常查询和异常登录行为，帮助提前发现潜在的安全威胁。 合规报告与警报：SQL 审计平台能够生成详尽的合规报告，满足合规要求，并根据预设的规则触发警报，帮助管理员及时采取应对措施。 数据完整性保护：通过审计日志记录的数据变更信息，SQL 审计平台能够帮助恢复受损的数据或进行调查取证，确保数据库的完整性和可靠性。 权限管理与访问控制：SQL 审计平台提供丰富的权限管理功能，可以对用户进行细粒度的访问控制，确保只有经过授权的用户能够访问敏感数据。 常见的sql审计平台：
-Yearning Archery bytebase Yearning 官网：https://yearning.io
-开发语言：golang
-功能：
-SQL 查询 查询工单 导出 自动补全，智能提示 查询语句审计 查询结果脱敏 SQL 审核 流程化工单 SQL语句语法检测 根据规则检测SQL语句合规性 自动生成DDL/DML回滚语句 历史审核记录 推送 E-mail 工单推送 钉钉 webhook 机器人工单推送 用户权限及管理 角色划分 基于用户的细粒度权限 注册 其他 todoList LDAP 登录 动态审核规则配置 自定义审核层级 AutoTask 自动执行 部署 支持容器部署。
-Archery 官网：https://archerydms.com/
-开发语言：python
-功能：
-查询 审核 执行 备份 数据字典 慢日志 会话管理 账号管理 参数管理 数据归档 MySQL √ √ √ √ √ √ √ √ √ MsSQL √ × √ × × × × × × Redis √ × √ × × × × × × PgSQL √ × √ × × × × × × Oracle √ √ √ √ × × × × × MongoDB √ √ √ × × × × × × Phoenix √ × √ × × × × × × ODPS √ × × × × × × × × ClickHouse √ × × × × × × × × SQL审核 MySQL实例 基于Inception/goInception实现，集成审核、执行、备份
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2023/11/sql-audit/">阅读全文…</a>
+		<p>数据安全一直是企业安全的重中之重，在企业系统开发过程中，数据库的安全日益增强，所以需要有个平台能够记录和审查数据库变更。</p>
+<p>SQL 审计平台的功能特点：</p>
+<ul>
+<li>实时监控和记录：SQL 审计平台能够实时监听数据库操作，记录所有的 SQL 查询和事务操作，确保数据变更的可追溯性。</li>
+<li>用户行为分析：通过分析用户的查询行为和访问模式，SQL 审计平台可以识别风险操作、异常查询和异常登录行为，帮助提前发现潜在的安全威胁。</li>
+<li>合规报告与警报：SQL 审计平台能够生成详尽的合规报告，满足合规要求，并根据预设的规则触发警报，帮助管理员及时采取应对措施。</li>
+<li>数据完整性保护：通过审计日志记录的数据变更信息，SQL 审计平台能够帮助恢复受损的数据或进行调查取证，确保数据库的完整性和可靠性。</li>
+<li>权限管理与访问控制：SQL 审计平台提供丰富的权限管理功能，可以对用户进行细粒度的访问控制，确保只有经过授权的用户能够访问敏感数据。</li>
+</ul>
+<p>常见的sql审计平台：</p>
+<ul>
+<li>Yearning</li>
+<li>Archery</li>
+<li>bytebase</li>
+</ul>
+<h2 id="yearning">Yearning</h2>
+<p>官网：<a href="https://yearning.io/">https://yearning.io</a></p>
+<p>开发语言：golang</p>
+<p>功能：</p>
+<ul>
+<li>SQL 查询
+<ul>
+<li>查询工单</li>
+<li>导出</li>
+<li>自动补全，智能提示</li>
+<li>查询语句审计</li>
+<li>查询结果脱敏</li>
+</ul>
+</li>
+<li>SQL 审核
+<ul>
+<li>流程化工单</li>
+<li>SQL语句语法检测</li>
+<li>根据规则检测SQL语句合规性</li>
+<li>自动生成DDL/DML回滚语句</li>
+<li>历史审核记录</li>
+</ul>
+</li>
+<li>推送
+<ul>
+<li>E-mail 工单推送</li>
+<li>钉钉 webhook 机器人工单推送</li>
+</ul>
+</li>
+<li>用户权限及管理
+<ul>
+<li>角色划分</li>
+<li>基于用户的细粒度权限</li>
+<li>注册</li>
+</ul>
+</li>
+<li>其他
+<ul>
+<li>todoList</li>
+<li>LDAP 登录</li>
+<li>动态审核规则配置</li>
+<li>自定义审核层级</li>
+</ul>
+</li>
+<li>AutoTask 自动执行</li>
+</ul>
+<h3 id="部署">部署</h3>
+<p>支持容器部署。</p>
+<h2 id="archery">Archery</h2>
+<p>官网：<a href="https://archerydms.com/">https://archerydms.com/</a></p>
+<p>开发语言：python</p>
+<p>功能：</p>
+<table>
+  <thead>
+      <tr>
+          <th>查询</th>
+          <th>审核</th>
+          <th>执行</th>
+          <th>备份</th>
+          <th>数据字典</th>
+          <th>慢日志</th>
+          <th>会话管理</th>
+          <th>账号管理</th>
+          <th>参数管理</th>
+          <th>数据归档</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>MySQL</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+      </tr>
+      <tr>
+          <td>MsSQL</td>
+          <td>√</td>
+          <td>×</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>Redis</td>
+          <td>√</td>
+          <td>×</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>PgSQL</td>
+          <td>√</td>
+          <td>×</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>Oracle</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>MongoDB</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>Phoenix</td>
+          <td>√</td>
+          <td>×</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>ODPS</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>ClickHouse</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="sql审核">SQL审核</h3>
+<h4 id="mysql实例">MySQL实例</h4>
+<p>基于Inception/goInception实现，集成审核、执行、备份</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -261,23 +598,30 @@ Archery 官网：https://archerydms.com/
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-24T11:07:26&#43;08:00">2023-09-24 11:07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-24T11:07:26&#43;08:00">2023.09.24 11:07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		多年前微信开发写过一篇关于内网穿透的文章《微信开发通过公网访问本地服务器》，随着时间的推移，有些方法已经不再适用。
-本地服务器地址 前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。
-不可用的方式——ngrok
-最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。
-可用的方式——借助花生壳来实现
-如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&gt; https://console.hsk.oray.com/forward
-服务器配置 此处的服务器地址(URL) 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。
-测试号管理 测试号管理点开后就会看到和上面服务器配置一样的配置内容。
-测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。
-接口访问白名单 设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单
-这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。
-有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！
+		<p>多年前微信开发写过一篇关于内网穿透的文章<a href="/blogdetail/55ab0f6ed366f15412cbf596/">《微信开发通过公网访问本地服务器》</a>，随着时间的推移，有些方法已经不再适用。</p>
+<h2 id="本地服务器地址">本地服务器地址</h2>
+<p>前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。</p>
+<p><strong>不可用的方式——ngrok</strong></p>
+<p>最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。</p>
+<p><strong>可用的方式——借助花生壳来实现</strong></p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
+<p>如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&gt; <a href="https://console.hsk.oray.com/forward">https://console.hsk.oray.com/forward</a></p>
+<h2 id="服务器配置">服务器配置</h2>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
+<p>此处的<strong>服务器地址(URL)</strong> 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。</p>
+<h2 id="测试号管理">测试号管理</h2>
+<p><a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index">测试号管理</a>点开后就会看到和上面服务器配置一样的配置内容。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
+<p>测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。</p>
+<h2 id="接口访问白名单">接口访问白名单</h2>
+<p>设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单</p>
+<p>这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。</p>
+<p>有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -291,15 +635,17 @@ Archery 官网：https://archerydms.com/
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-12T14:18:30&#43;08:00">2023-09-12 14:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-12T14:18:30&#43;08:00">2023.09.12 14:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		生成crt证书
-openssl req -new -x509 -key domain.key -out domain.crt -days 365
-将CRT转换为CSR：
-openssl req -new -key domain.key -out domain.csr
+		<p>生成crt证书</p>
+<blockquote>
+<p>openssl req -new -x509 -key domain.key -out domain.crt -days 365</p></blockquote>
+<p>将CRT转换为CSR：</p>
+<blockquote>
+<p>openssl req -new -key domain.key -out domain.csr</p></blockquote>
 	</div>
 </article>
 <article class="list__item post">
@@ -313,39 +659,96 @@ openssl req -new -key domain.key -out domain.csr
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-23T14:31:17&#43;08:00">2021-07-23 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-23T14:31:17&#43;08:00">2021.07.23 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		事件驱动 事件驱动机制就是：
-让驴拉磨，它不拉，你用鞭抽一下，它就开始拉了。然后又停了，你再抽一下，它又继续拉了
-这叫用“鞭”驱动“驴”拉磨
-在程序里，程序停止在那不动，你点击一个按钮，它就有反应了，过一会，又没反应了，你再点一下，它又继续运行。
-这叫用“事件”驱动“程序”运行
-0. 基本概念 窗口/组件 事件 消息(队列) 事件响应(服务处理程序) 调度算法 进程/线程 非阻塞I/O 程序的执行可以看成对CPU,内存,IO资源一次占用 现代操作系统支持多任务,可以分时复用上述资源. 1. 为什么采用事件驱动模型? 事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：
-首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）； 当目标发送改变（发布），观察者（订阅者）就可以接收到改变； 观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。 2. 代码执行流程 在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。 在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。
-3. 事件驱动模型 在UI编程中，常常要对鼠标点击进行相应，首先如何获得鼠标点击呢？
-方式一：创建一个线程，该线程一直循环检测是否有鼠标点击，那么这个方式有以下几个缺点：
-CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？ 如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘； 如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。 方式二：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：
-有一个事件（消息）队列； 鼠标按下时，往这个队列中增加一个点击事件（消息）； 有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等； 事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图: 4. 事件驱动处理库 select poll epoll libev 消息驱动 事件驱动机制跟消息驱动机制相比
-消息驱动和事件驱动很类似，都是先有一个事件，然后产生一个相应的消息，再把消息放入消息队列，由需要的项目获取。他们的区别是消息是谁产生的
-消息驱动：鼠标管自己点击不需要和系统有过多的交互，消息由系统（第三方）循环检测，来捕获并放入消息队列。消息对于点击事件来说是被动产生的，高内聚。
-事件驱动：鼠标点击产生点击事件后要向系统发送消息“我点击了”的消息，消息是主动产生的。再发送到消息队列中。
-事件：按下鼠标，按下键盘，按下游戏手柄，将U盘插入USB接口，都将产生事件。比如说按下鼠标左键，将产生鼠标左键被按下的事件。
-消息：当鼠标被按下，产生了鼠标按下事件，windows侦测到这一事件的发生，随即发出鼠标被按下的消息到消息队列中，这消息附带了一系列相关的事件信息，比如鼠标哪个键被按了，在哪个窗口被按的，按下点的坐标是多少？如此等等。
-要理解事件驱动和程序，就需要与非事件驱动的程序进行比较。实际上，现代的程序大多是事件驱动的，比如多线程的程序，肯定是事件驱动的。早期则存在许多非事件驱动的程序，这样的程序，在需要等待某个条件触发时，会不断地检查这个条件，直到条件满足，这是很浪费cpu时间的。而事件驱动的程序，则有机会释放cpu从而进入睡眠态（注意是有机会，当然程序也可自行决定不释放cpu），当事件触发时被操作系统唤醒，这样就能更加有效地使用cpu. 再说什么是事件驱动的程序。一个典型的事件驱动的程序，就是一个死循环，并以一个线程的形式存在，这个死循环包括两个部分，第一个部分是按照一定的条件接收并选择一个要处理的事件，第二个部分就是事件的处理过程。程序的执行过程就是选择事件和处理事件，而当没有任何事件触发时，程序会因查询事件队列失败而进入睡眠状态，从而释放cpu。 事件驱动的程序，必定会直接或者间接拥有一个事件队列，用于存储未能及时处理的事件。 事件驱动的程序的行为，完全受外部输入的事件控制，所以，事件驱动的系统中，存在大量这种程序，并以事件作为主要的通信方式。 事件驱动的程序，还有一个最大的好处，就是可以按照一定的顺序处理队列中的事件，而这个顺序则是由事件的触发顺序决定的，这一特性往往被用于保证某些过程的原子化。 目前windows,linux,nucleus,vxworks都是事件驱动的，只有一些单片机可能是非事件驱动的。 事件模式耦合高，同模块内好用；消息模式耦合低，跨模块好用。事件模式集成其它语言比较繁琐，消息模式集成其他语言比较轻松。事件是侵入式设计，霸占你的主循环；消息是非侵入式设计，将主循环该怎样设计的自由留给用户。如果你在设计一个东西举棋不定，那么你可以参考win32的GetMessage，本身就是一个藕合度极低的接口，又足够自由，接口任何语言都很方便，具体应用场景再在其基础上封装成事件并不是难事，接口耦合较低，即便哪天事件框架调整，修改外层即可，不会伤经动骨。而如果直接实现成事件，那就完全反过来了。
-什么是数据驱动编程 最近在学习《Unix编程艺术》。以前粗略的翻过，以为是介绍unix工具的。现在认真的看了下，原来是介绍设计原则的。它的核心就是第一章介绍的unix的哲学以及17个设计原则，而后面的内容就是围绕它来展开的。以前说过，要学习适合自己的资料，而判断是否适合的一个方法就是看你是否能够读得下去。我对这本书有一种相见恨晚的感觉。推荐有4~6年工作经验的朋友可以读一下。
-正题：
-作者在介绍Unix设计原则时，其中有一条为“表示原则：把知识叠入数据以求逻辑质朴而健壮”。结合之前自己的一些经验，我对这个原则很有共鸣，所以先学习了数据驱动编程相关的内容，这里和大家分享出来和大家一起讨论。
-数据驱动编程的核心
-数据驱动编程的核心出发点是相对于程序逻辑，人类更擅长于处理数据。数据比程序逻辑更容易驾驭，所以我们应该尽可能的将设计的复杂度从程序代码转移至数据。
-真的是这样吗？让我们来看一个示例。
-假设有一个程序，需要处理其他程序发送的消息，消息类型是字符串，每个消息都需要一个函数进行处理。第一印象，我们可能会这样处理：
-void msg_proc(const char *msg_type, const char *msg_buf) { if (0 == strcmp(msg_type, &#34;inivite&#34;)) { inivite_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;tring_100&#34;)) { tring_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ring_180&#34;)) { ring_180_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ring_181&#34;)) { ring_181_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ring_182&#34;)) { ring_182_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ring_183&#34;)) { ring_183_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;ok_200&#34;)) { ok_200_fun(msg_buf); } else if (0 == strcmp(msg_type, &#34;fail_486&#34;)) { fail_486_fun(msg_buf); } else { log(&#34;未识别的消息类型%s\n&#34;, msg_type); } } 上面的消息类型取自sip协议（不完全相同，sip协议借鉴了http协议），消息类型可能还会增加。看着常常的流程可能有点累，检测一下中间某个消息有没有处理也比较费劲，而且，没增加一个消息，就要增加一个流程分支。
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/07/event-message-data-driven/">阅读全文…</a>
+		<h3 id="事件驱动">事件驱动</h3>
+<p>事件驱动机制就是：<br>
+让驴拉磨，它不拉，你用鞭抽一下，它就开始拉了。然后又停了，你再抽一下，它又继续拉了<br>
+这叫用“鞭”驱动“驴”拉磨</p>
+<p>在程序里，程序停止在那不动，你点击一个按钮，它就有反应了，过一会，又没反应了，你再点一下，它又继续运行。<br>
+这叫用“事件”驱动“程序”运行</p>
+<h4 id="0-基本概念">0. 基本概念</h4>
+<pre><code>窗口/组件
+
+事件
+
+消息(队列)
+
+事件响应(服务处理程序)
+
+调度算法
+
+进程/线程
+
+非阻塞I/O
+
+程序的执行可以看成对CPU,内存,IO资源一次占用
+
+现代操作系统支持多任务,可以分时复用上述资源.
+</code></pre>
+<h4 id="1-为什么采用事件驱动模型">1. 为什么采用事件驱动模型?</h4>
+<p>事件驱动模型也就是我们常说的观察者，或者发布-订阅模型；理解它的几个关键点：</p>
+<pre><code>首先是一种对象间的一对多的关系；最简单的如交通信号灯，信号灯是目标（一方），行人注视着信号灯（多方）；
+
+当目标发送改变（发布），观察者（订阅者）就可以接收到改变；
+
+观察者如何处理（如行人如何走，是快走/慢走/不走，目标不会管的），目标无需干涉；所以就松散耦合了它们之间的关系。
+</code></pre>
+<h4 id="2-代码执行流程">2. 代码执行流程</h4>
+<p>在传统的或“过程化”的应用程序中，应用程序自身控制了执行哪一部分代码和按何种顺序执行代码。从第一行代码执行程序并按应用程序中预定的路径执行，必要时调用过程。
+在事件驱动的应用程序中，代码不是按照预定的路径执行－而是在响应不同的事件时执行不同的代码片段。事件可以由用户操作触发、也可以由来自操作系统或其它应用程序调度算法的消息触发、甚至由应用程序本身的消息触发。这些事件的顺序决定了代码执行的顺序，因此应用程序每次运行时所经过的代码的路径都是不同的。</p>
+<h4 id="3-事件驱动模型">3. 事件驱动模型</h4>
+<p>在UI编程中，常常要对鼠标点击进行相应，首先如何获得鼠标点击呢？</p>
+<p><strong>方式一</strong>：创建一个线程，该线程一直循环检测是否有鼠标点击，那么这个方式有以下几个缺点：</p>
+<pre><code>CPU资源浪费，可能鼠标点击的频率非常小，但是扫描线程还是会一直循环检测，这会造成很多的CPU资源浪费；如果扫描鼠标点击的接口是阻塞的呢？
+
+如果是堵塞的，又会出现下面这样的问题，如果我们不但要扫描鼠标点击，还要扫描键盘是否按下，由于扫描鼠标时被堵塞了，那么可能永远不会去扫描键盘；
+
+如果一个循环需要扫描的设备非常多，这又会引来响应时间的问题；所以，该方式是非常不好的。
+</code></pre>
+<p><strong>方式二</strong>：就是事件驱动模型目前大部分的UI编程都是事件驱动模型，如很多UI平台都会提供onClick()事件，这个事件就代表鼠标按下事件。事件驱动模型大体思路如下：</p>
+<pre><code>有一个事件（消息）队列；
+
+鼠标按下时，往这个队列中增加一个点击事件（消息）；
+
+有个循环，不断从队列取出事件，根据不同的事件，调用不同的函数，如onClick()、onKeyDown()等；
+
+事件（消息）一般都各自保存各自的处理函数指针，这样，每个消息都有独立的处理函数；如图:
+</code></pre>
+<h4 id="4-事件驱动处理库">4. 事件驱动处理库</h4>
+<pre><code>select
+
+poll
+
+epoll
+
+libev
+</code></pre>
+<h3 id="消息驱动">消息驱动</h3>
+<p>事件驱动机制跟消息驱动机制相比</p>
+<p>消息驱动和事件驱动很类似，都是先有一个事件，然后产生一个相应的消息，再把消息放入消息队列，由需要的项目获取。他们的区别是消息是谁产生的</p>
+<p><strong>消息驱动</strong>：鼠标管自己点击不需要和系统有过多的交互，消息由系统（第三方）循环检测，来捕获并放入消息队列。消息对于点击事件来说是被动产生的，高内聚。</p>
+<p><strong>事件驱动</strong>：鼠标点击产生点击事件后要向系统发送消息“我点击了”的消息，消息是主动产生的。再发送到消息队列中。</p>
+<p><strong>事件</strong>：按下鼠标，按下键盘，按下游戏手柄，将U盘插入USB接口，都将产生事件。比如说按下鼠标左键，将产生鼠标左键被按下的事件。</p>
+<p><strong>消息</strong>：当鼠标被按下，产生了鼠标按下事件，windows侦测到这一事件的发生，随即发出鼠标被按下的消息到消息队列中，这消息附带了一系列相关的事件信息，比如鼠标哪个键被按了，在哪个窗口被按的，按下点的坐标是多少？如此等等。</p>
+<ol>
+<li>要理解事件驱动和程序，就需要与非事件驱动的程序进行比较。实际上，现代的程序大多是事件驱动的，比如多线程的程序，肯定是事件驱动的。早期则存在许多非事件驱动的程序，这样的程序，在需要等待某个条件触发时，会不断地检查这个条件，直到条件满足，这是很浪费cpu时间的。而事件驱动的程序，则有机会释放cpu从而进入睡眠态（注意是有机会，当然程序也可自行决定不释放cpu），当事件触发时被操作系统唤醒，这样就能更加有效地使用cpu.</li>
+<li>再说什么是事件驱动的程序。一个典型的事件驱动的程序，就是一个死循环，并以一个线程的形式存在，这个死循环包括两个部分，第一个部分是按照一定的条件接收并选择一个要处理的事件，第二个部分就是事件的处理过程。程序的执行过程就是选择事件和处理事件，而当没有任何事件触发时，程序会因查询事件队列失败而进入睡眠状态，从而释放cpu。</li>
+<li>事件驱动的程序，必定会直接或者间接拥有一个事件队列，用于存储未能及时处理的事件。</li>
+<li>事件驱动的程序的行为，完全受外部输入的事件控制，所以，事件驱动的系统中，存在大量这种程序，并以事件作为主要的通信方式。</li>
+<li>事件驱动的程序，还有一个最大的好处，就是可以按照一定的顺序处理队列中的事件，而这个顺序则是由事件的触发顺序决定的，这一特性往往被用于保证某些过程的原子化。</li>
+<li>目前windows,linux,nucleus,vxworks都是事件驱动的，只有一些单片机可能是非事件驱动的。</li>
+</ol>
+<p>事件模式耦合高，同模块内好用；消息模式耦合低，跨模块好用。事件模式集成其它语言比较繁琐，消息模式集成其他语言比较轻松。事件是侵入式设计，霸占你的主循环；消息是非侵入式设计，将主循环该怎样设计的自由留给用户。如果你在设计一个东西举棋不定，那么你可以参考win32的GetMessage，本身就是一个藕合度极低的接口，又足够自由，接口任何语言都很方便，具体应用场景再在其基础上封装成事件并不是难事，接口耦合较低，即便哪天事件框架调整，修改外层即可，不会伤经动骨。而如果直接实现成事件，那就完全反过来了。</p>
+<h3 id="什么是数据驱动编程">什么是数据驱动编程</h3>
+<p>最近在学习《Unix编程艺术》。以前粗略的翻过，以为是介绍unix工具的。现在认真的看了下，原来是介绍设计原则的。它的核心就是第一章介绍的unix的哲学以及17个设计原则，而后面的内容就是围绕它来展开的。以前说过，要学习适合自己的资料，而判断是否适合的一个方法就是看你是否能够读得下去。我对这本书有一种相见恨晚的感觉。推荐有4~6年工作经验的朋友可以读一下。</p>
+<p><strong>正题</strong>：</p>
+<p>作者在介绍Unix设计原则时，其中有一条为“<strong>表示原则：把知识叠入数据以求逻辑质朴而健壮</strong>”。结合之前自己的一些经验，我对这个原则很有共鸣，所以先学习了数据驱动编程相关的内容，这里和大家分享出来和大家一起讨论。</p>
+<p><strong>数据驱动编程的核心</strong></p>
+<p>数据驱动编程的核心出发点是<strong>相对于程序逻辑，人类更擅长于处理数据</strong>。数据比程序逻辑更容易驾驭，所以我们应该尽可能的将设计的复杂度从程序代码转移至数据。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -359,19 +762,63 @@ void msg_proc(const char *msg_type, const char *msg_buf) { if (0 == strcmp(msg_t
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-18T20:03:41&#43;08:00">2021-06-18 20:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-18T20:03:41&#43;08:00">2021.06.18 20:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		接上篇《博客迁移至hugo gitpage》后，因为缺失了每一篇文章的浏览量，而hugo又不具备这样的功能，原因还是gitpage不具备数据存储能力，自然就没办法统计每一篇文章的浏览量了。原本想使用自己服务器提供一个接口来记录，但发现https协议不支持调用http协议的接口，会出现block:mixed-content错误。
-错误：https页面去发送http请求报错(浏览器阻止https发送http请求)
-问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。
-后来想到了leancloud，直接在前端调用api，将数据存储在云端。
-&lt;script src=&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;&gt;&lt;/script&gt; &lt;script&gt; // https://leancloud.cn/docs/sdk_setup-js.html#hash14962003 // https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086 const appId = &#34;xxx&#34;; const appKey = &#34;xxx&#34;; const serverURL = &#34;xxx&#34;; AV.init({ appId, appKey, serverURL }); function updateCollect() { const collect = new AV.Query(&#39;Collect&#39;); const url = location.pathname; collect.select([&#39;url&#39;, &#39;pv&#39;]) collect.equalTo(&#39;url&#39;, url); collect.first().then((col) =&gt; { if (!col) { // 声明 class const Collect = AV.Object.extend(&#39;Collect&#39;); // 构建对象 const collect = new Collect(); // 为属性赋值 collect.set(&#39;url&#39;, url); collect.set(&#39;pv&#39;, 1); collect.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/06/gitpage-hugo-page-view/">阅读全文…</a>
+		<p>接上篇<a href="/2021/06/blog-move-to-gitpage/">《博客迁移至hugo gitpage》</a>后，因为缺失了每一篇文章的浏览量，而hugo又不具备这样的功能，原因还是gitpage不具备数据存储能力，自然就没办法统计每一篇文章的浏览量了。原本想使用自己服务器提供一个接口来记录，但发现https协议不支持调用http协议的接口，会出现<code>block:mixed-content</code>错误。</p>
+<blockquote>
+<p>错误：https页面去发送http请求报错(浏览器阻止https发送http请求)</p></blockquote>
+<p>问题是明确了，但是我也没办法提供https的接口，免费的证书也用在了www.yuedun.wang上了。</p>
+<p>后来想到了leancloud，直接在前端调用api，将数据存储在云端。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// https://leancloud.cn/docs/sdk_setup-js.html#hash14962003 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// https://leancloud.cn/docs/leanstorage_guide-js.html#hash813593086
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">appId</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">appKey</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">serverURL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;xxx&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">AV</span>.<span style="color:#a6e22e">init</span>({ <span style="color:#a6e22e">appId</span>, <span style="color:#a6e22e">appKey</span>, <span style="color:#a6e22e">serverURL</span> });
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateCollect</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">collect</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AV</span>.<span style="color:#a6e22e">Query</span>(<span style="color:#e6db74">&#39;Collect&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">pathname</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">select</span>([<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#e6db74">&#39;pv&#39;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">equalTo</span>(<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#a6e22e">url</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">first</span>().<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">col</span>) =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">col</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 声明 class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Collect</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">AV</span>.Object.<span style="color:#a6e22e">extend</span>(<span style="color:#e6db74">&#39;Collect&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 构建对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">collect</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Collect</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 为属性赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;url&#39;</span>, <span style="color:#a6e22e">url</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;pv&#39;</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">collect</span>.<span style="color:#a6e22e">save</span>()
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">increment</span>(<span style="color:#e6db74">&#39;pv&#39;</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">save</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 元素不存在的情况
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.post__meta.meta&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pv</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;div&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">pv</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;meta__item-author meta__item&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">span</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;span&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">span</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;class&#39;</span>, <span style="color:#e6db74">&#39;meta__text&#39;</span>);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">span</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;浏览（&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">col</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;pv&#39;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;）&#34;</span>;
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">pv</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">span</span>)
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">pv</span>)
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">updateCollect</span>()
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>因为hugo-dpsg主题没有浏览量字段，所以通过js在对应的位置插入浏览量字段即可。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -385,23 +832,81 @@ void msg_proc(const char *msg_type, const char *msg_buf) { if (0 == strcmp(msg_t
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-17T19:38:31&#43;08:00">2021-06-17 19:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-17T19:38:31&#43;08:00">2021.06.17 19:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		为什么迁移？ 6月初的时候，3年前买的阿里云服务器到期了，又买了其他服务器，但是只有1年期，于是进行了一番数据，应用迁移，这么一顿操作下来还是挺累的，尤其是在linux上安装mysql，mongodb，安装后又是连接不上，用了好几天时间才搞定，挺烦的。
-再想到一年后又是一顿操作，不由得一个激灵。
-经过一番的思量后，决定将自建博客迁移至gitpage上。
-自建和gitpage优劣对比 首先列出自己博客具备的功能：
-首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链 目录 所有文章时间线 留言 自维护留言系统 微博 新浪微博，最近出问题不显示了 速记 简单记录 关于 自我介绍 整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。所以迁移到gitpage上也不会有什么问题。
-劣势 静态博客在一些细节功能上面确实会有缺失，比如：
-评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。 目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。 PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。 自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。 不能在线编辑。 优势 免费，没有服务器费用。 可以自定义域名，只需要一丁点儿的域名费用。 seo良好。 规范的书写格式，使文章内容更统一美观。 更强大的编辑器，可以选择自己喜欢的markdown编辑器。 便于本地检索。 数据更保险，不易丢失。 安全，静态博客可以避免一些网络攻击。 整体来说，除了数据存储功能缺失外，其他都是可以实现的。
-迁移过程 将mongodb数据中的博客导出为本地markdown文件。
-// mongodb数据转markdown function genMd() { return Blog.find({ status: 1 }, null, { sort: { &#39;_id&#39;: -1 } }) .then(data =&gt; { data.forEach((b) =&gt; { debug(b) let tags = b.tags.split(&#34;,&#34;) let blog = `--- title: &#34;${b.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/06/blog-move-to-gitpage/">阅读全文…</a>
+		<h3 id="为什么迁移">为什么迁移？</h3>
+<p>6月初的时候，3年前买的阿里云服务器到期了，又买了其他服务器，但是只有1年期，于是进行了一番数据，应用迁移，这么一顿操作下来还是挺累的，尤其是在linux上安装mysql，mongodb，安装后又是连接不上，用了好几天时间才搞定，挺烦的。<br>
+再想到一年后又是一顿操作，不由得一个激灵。</p>
+<p>经过一番的思量后，决定将自建博客迁移至gitpage上。</p>
+<h3 id="自建和gitpage优劣对比">自建和gitpage优劣对比</h3>
+<p>首先列出自己博客具备的功能：</p>
+<ul>
+<li>首页 包含最近10篇文章的标题和部分内容，最近发表的5篇，分类，标签，友链</li>
+<li>目录 所有文章时间线</li>
+<li>留言 自维护留言系统</li>
+<li>微博 新浪微博，最近出问题不显示了</li>
+<li>速记 简单记录</li>
+<li>关于 自我介绍</li>
+</ul>
+<p>整体比较简单，没什么复杂功能。而很多静态博客也具备这些功能，而且做的更好，所以基本不会有主要功能的缺失。所以迁移到gitpage上也不会有什么问题。</p>
+<h4 id="劣势">劣势</h4>
+<p>静态博客在一些细节功能上面确实会有缺失，比如：</p>
+<ul>
+<li>评论功能，数据原来是存在自己服务器上的，gitpage不具备数据存储能力，所以需要对接第三方评论或留言功能。</li>
+<li>目录缺失，这点主要由博客主题决定，有些主题是没有目录功能的。</li>
+<li>PV/UV统计，同样是由于数据存储的缺失，所以gitpage也没有这样的统计功能，但是可以添加谷歌，百度统计之类的。</li>
+<li>自定义功能较弱，只能使用主题提供的页面模式，除非不使用静态博客工具，完全自己开发。</li>
+<li>不能在线编辑。</li>
+</ul>
+<h4 id="优势">优势</h4>
+<ul>
+<li>免费，没有服务器费用。</li>
+<li>可以自定义域名，只需要一丁点儿的域名费用。</li>
+<li>seo良好。</li>
+<li>规范的书写格式，使文章内容更统一美观。</li>
+<li>更强大的编辑器，可以选择自己喜欢的markdown编辑器。</li>
+<li>便于本地检索。</li>
+<li>数据更保险，不易丢失。</li>
+<li>安全，静态博客可以避免一些网络攻击。</li>
+</ul>
+<p>整体来说，除了数据存储功能缺失外，其他都是可以实现的。</p>
+<h3 id="迁移过程">迁移过程</h3>
+<p>将mongodb数据中的博客导出为本地markdown文件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// mongodb数据转markdown
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">genMd() {</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Blog</span>.<span style="color:#a6e22e">find</span>({ <span style="color:#a6e22e">status</span>: <span style="color:#66d9ef">1</span> }, <span style="color:#66d9ef">null</span>, { <span style="color:#a6e22e">sort</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;_id&#39;</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> } })
+</span></span><span style="display:flex;"><span>		.<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">b</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">debug</span>(<span style="color:#a6e22e">b</span>)
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tags</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">tags</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;,&#34;</span>)
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">blog</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`---
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">title: &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">title</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">description: &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/&lt;[^&lt;&gt;]+&gt;/g</span>, <span style="color:#e6db74">&#34;&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\r\n/g</span>, <span style="color:#e6db74">&#34;&#34;</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\n/g</span>, <span style="color:#e6db74">&#34;&#34;</span>).<span style="color:#a6e22e">substr</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">80</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">date: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">updatedAt</span>.<span style="color:#a6e22e">toISOString</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">draft: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">authorbox: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">categories:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">category</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">tags:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tags</span>[<span style="color:#ae81ff">0</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tags</span>[<span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tags</span>[<span style="color:#ae81ff">2</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tags</span>[<span style="color:#ae81ff">3</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">---
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">content</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    `</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFileSync</span>(<span style="color:#e6db74">`f:/workspace/yuedun</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">.wang/content/blogdetail/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.md`</span>, <span style="color:#a6e22e">blog</span>, { <span style="color:#a6e22e">flag</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a+&#39;</span> })
+</span></span><span style="display:flex;"><span>				<span style="color:#75715e">// debug(b.createdAt.toISOString())
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			})
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;data&#34;</span>;
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>ok！完成。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -415,24 +920,39 @@ void msg_proc(const char *msg_type, const char *msg_buf) { if (0 == strcmp(msg_t
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-17T11:49:05Z">2020-07-17 11:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-17T11:49:05Z">2020.07.17 11:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		前后端分离 近几年比较流行的web项目开发架构是前后端分离，前后端分离架构在系统稳定性方面非常有优势，其中一点优势主要体现在用户感知上，即使服务端发生错误也不会展现在视图层，一般情况下用户是可以继续浏览网页，不会很突兀的显示这样的信息： 502 bad gateway
-在接口发生错误时虽然可能会获取不到一些数据，但是在用户体验上比直接显示502错误要好。
-部署也相对安全和方便。
-前后端分离架构虽好，但不是”银弹”，不是所有网站都能使用前后端分离架构来做。
-服务端渲染 至于分不分离都有诸多的优缺点，可根据实际场景选择，本文要说的是不分离情况下文章开始所提到的问题——难看的502，500错误。
-本文我将使用“服务端渲染”来代替不分离的架构。
-由于服务端渲染的所有数据处理都在服务端进行，发生任何错误都可能引起500错误，这种错误会直接体现在视图层，用户看到这样的信息很不友好。 500 Internal Server Error
-遇到这种错误，可以使用适当的措施来弥补，带来的效果却非常良好。开发web最多遇到的错误码有：404，500，502。
-404错误很多网站都有默认页面，像这样的：
-但是500，502错误却鲜有默认页面，我们何不也搞一个呢？
-500错误 首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。
-502错误 再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。
-server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/html; } } 以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。
+		<h3 id="前后端分离">前后端分离</h3>
+<p>近几年比较流行的web项目开发架构是前后端分离，前后端分离架构在系统稳定性方面非常有优势，其中一点优势主要体现在用户感知上，即使服务端发生错误也不会展现在视图层，一般情况下用户是可以继续浏览网页，不会很突兀的显示这样的信息：
+502 bad gateway</p>
+<p><img src="https://hopefully-img.yuedun.wang/502.jpg" alt="502 bad gateway"></p>
+<p>在接口发生错误时虽然可能会获取不到一些数据，但是在用户体验上比直接显示502错误要好。</p>
+<p>部署也相对安全和方便。</p>
+<p>前后端分离架构虽好，但不是”银弹”，不是所有网站都能使用前后端分离架构来做。</p>
+<h3 id="服务端渲染">服务端渲染</h3>
+<p>至于分不分离都有诸多的优缺点，可根据实际场景选择，本文要说的是不分离情况下文章开始所提到的问题——难看的502，500错误。</p>
+<p>本文我将使用“服务端渲染”来代替不分离的架构。</p>
+<p>由于服务端渲染的所有数据处理都在服务端进行，发生任何错误都可能引起500错误，这种错误会直接体现在视图层，用户看到这样的信息很不友好。
+500 Internal Server Error</p>
+<p><img src="https://hopefully-img.yuedun.wang/500.png" alt="500 Internal Server Error"></p>
+<p>遇到这种错误，可以使用适当的措施来弥补，带来的效果却非常良好。开发web最多遇到的错误码有：404，500，502。</p>
+<p>404错误很多网站都有默认页面，像这样的：</p>
+<p><img src="https://hopefully-img.yuedun.wang/404.png" alt="404 not found"></p>
+<p>但是500，502错误却鲜有默认页面，我们何不也搞一个呢？</p>
+<h4 id="500错误">500错误</h4>
+<p>首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。</p>
+<h3 id="502错误">502错误</h3>
+<p>再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>server{
+</span></span><span style="display:flex;"><span>    error_page  502  /502.html;
+</span></span><span style="display:flex;"><span>        location = /502.html {
+</span></span><span style="display:flex;"><span>                root   /usr/share/nginx/html;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。</p>
 	</div>
 </article>
 
@@ -451,7 +971,7 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -467,13 +987,12 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -511,99 +1030,99 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -631,13 +1150,14 @@ server{ error_page 502 /502.html; location = /502.html { root /usr/share/nginx/h
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

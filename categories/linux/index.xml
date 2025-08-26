@@ -1,91 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on 月盾的博客</title>
+    <title>Linux on 月盾的博客</title>
     <link>https://www.yuedun.wang/categories/linux/</link>
-    <description>Recent content in linux on 月盾的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Linux on 月盾的博客</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 08 Mar 2021 03:45:19 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Mar 2021 03:45:19 +0000</lastBuildDate>
+    <atom:link href="https://www.yuedun.wang/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>/bin/rm: argument list too long</title>
       <link>https://www.yuedun.wang/blogdetail/60459dcf8e743369d9dd5a8f/</link>
       <pubDate>Mon, 08 Mar 2021 03:45:19 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/60459dcf8e743369d9dd5a8f/</guid>
-      <description>有人在服务器上不小心执行了rm -fr /*，而我想在删除某个文件夹下面的文件却遇到/bin/rm: argument list too long。
-意思是我删除的文件太多了，这倒有点稀奇。
-那怎么才能删除呢？
-试着直接删除目录也不行，这问题能难倒我，但难不倒百度。
-使用ls | xargs -n 1000 rm -fr ls删除，可是一直在输出错误提示：
-rm: invalid option -- &amp;#39;s&amp;#39; Try &amp;#39;rm --help&amp;#39; for more information. 出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了-。
-删除方式是：
-rm -- -foo 或 rm ./-foo 只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样
-ls | xargs -n 1000 rm -frv ls
-rm命令加个参数v，用来显示删除信息。
-最终会输出这样的提示信息，
-removed ‘zMJ1MgKdzgbjNsWawUcX7OO3WspyxZEU.json’
-为了让它在后台执行可以这样：
-ls | xargs -n 1000 rm -frv ls &amp;amp;</description>
+      <description>&lt;p&gt;有人在服务器上不小心执行了&lt;code&gt;rm -fr /*&lt;/code&gt;，而我想在删除某个文件夹下面的文件却遇到&lt;code&gt;/bin/rm: argument list too long&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;意思是我删除的文件太多了，这倒有点稀奇。&lt;/p&gt;&#xA;&lt;p&gt;那怎么才能删除呢？&lt;/p&gt;&#xA;&lt;p&gt;试着直接删除目录也不行，这问题能难倒我，但难不倒百度。&lt;/p&gt;&#xA;&lt;p&gt;使用&lt;code&gt;ls | xargs -n 1000 rm -fr ls&lt;/code&gt;删除，可是一直在输出错误提示：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm: invalid option -- &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Try &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;rm --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; more information.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;出现这个情况的原因是文件名是这种类型：-abc.txt。就是前面带了&lt;code&gt;-&lt;/code&gt;。&lt;/p&gt;&#xA;&lt;p&gt;删除方式是：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -- -foo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;或&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm ./-foo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;只看见报错，到底有没有在删文件？想要知道，那么把删除命令改成这样&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;ls | xargs -n 1000 rm -frv ls&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;rm命令加个参数&lt;code&gt;v&lt;/code&gt;，用来显示删除信息。&lt;/p&gt;&#xA;&lt;p&gt;最终会输出这样的提示信息，&lt;/p&gt;&#xA;&lt;p&gt;removed ‘zMJ1MgKdzgbjNsWawUcX7OO3WspyxZEU.json’&lt;/p&gt;&#xA;&lt;p&gt;为了让它在后台执行可以这样：&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;ls | xargs -n 1000 rm -frv ls &amp;amp;&lt;/code&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>linux安装nodejs——快捷版</title>
       <link>https://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4/</link>
       <pubDate>Mon, 18 Nov 2019 06:17:47 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4/</guid>
-      <description>前面写过一篇linux下安装nodejs，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。
-wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
-另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
-wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode</description>
+      <description>&lt;p&gt;前面写过一篇&lt;a href=&#34;http://yuedun.wang/blogdetail/574019ee0bdb5de027394523&#34; title=&#34;linux下安装nodejs&#34;&gt;linux下安装nodejs&lt;/a&gt;，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm install &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nvm use &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;好了，只需3行命令即可，其原理是先安装nodejs版本管理工具&lt;code&gt;nvm&lt;/code&gt;，通过&lt;code&gt;nvm&lt;/code&gt;来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于&lt;code&gt;nvm&lt;/code&gt;的使用方法大家使用&lt;code&gt;nvm -h&lt;/code&gt;即可查看，不再细说。&lt;/p&gt;&#xA;&lt;p&gt;另外，如果对nodejs有深度使用的话，建议直接安装&lt;code&gt;alinode&lt;/code&gt;,方便以后做性能监控，安装方法和上面一样简单。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;source ~/.bashrc&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# tnvm ls-remote alinode 查看需要的版本&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tnvm install alinode-v3.11.4 &lt;span style=&#34;color:#75715e&#34;&gt;# 安装需要的版本&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tnvm use alinode-v3.11.4 &lt;span style=&#34;color:#75715e&#34;&gt;# 使用需要的版本&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。&#xA;&lt;a href=&#34;https://help.aliyun.com/document_detail/60811.html?spm=a2c4g.11174283.6.586.1e4830b1CrwM93&#34;&gt;alinode&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>新阿里云服务器一些基本设置</title>
       <link>https://www.yuedun.wang/blogdetail/5b21fc996699964267f5e168/</link>
       <pubDate>Thu, 14 Jun 2018 05:26:49 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/5b21fc996699964267f5e168/</guid>
-      <description>修改terminal apt-get update更新软件源，安装zsh，设置默认terminal为zsh，chsh -s /usr/bin/zsh。非root用户需要在root权限下修改/etc/passwd文件才能实现。
-安装git
-apt-get install git
-nginx设置：
-sudo /etc/init.d/nginx restart # or start, stop
-或
-sudo service nginx restart # or start, stop
-有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
-目录/etc/nginx/sites-available/下增加文件配置反向代理，并软链接到/etc/nginx/sites-enabled/下
-mongodb导入数据 启动：
-/usr/local/mongodb/bin/mongod &amp;ndash;dbpath=/usr/local/mongodb/data &amp;ndash;logpath=/usr/local/mongodb/logs &amp;ndash;logappend &amp;ndash;auth &amp;ndash;fork
-如需外网客户端连接加参数--bind_ip_all
-导入单个collection
-./mongorestore -v -h ip -u xxxx -p xxxx &amp;ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
-或导入整个目录
-./mongorestore -v -h ip -u xxxx -p xxxx &amp;ndash;db=blogs &amp;ndash;drop /home/yuedun/download/xxxx.bson/xxxx
-没有指定-h参数会报错：Failed: error connecting to db server: no reachable servers 阿里云上-h参数需要内网ip，localhost不行。</description>
+      <description>&lt;p&gt;&lt;strong&gt;修改terminal&lt;/strong&gt;&#xA;&lt;code&gt;apt-get update&lt;/code&gt;更新软件源，安装&lt;code&gt;zsh&lt;/code&gt;，设置默认terminal为zsh，&lt;code&gt;chsh -s /usr/bin/zsh&lt;/code&gt;。非root用户需要在root权限下修改&lt;code&gt;/etc/passwd&lt;/code&gt;文件才能实现。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;安装git&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;apt-get install git&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;nginx设置：&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;sudo /etc/init.d/nginx restart # or start, stop&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;或&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;sudo service nginx restart # or start, stop&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。&lt;code&gt;sudo nginx -s reload&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;目录&lt;code&gt;/etc/nginx/sites-available/&lt;/code&gt;下增加文件配置反向代理，并软链接到&lt;code&gt;/etc/nginx/sites-enabled/&lt;/code&gt;下&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;mongodb导入数据&lt;/strong&gt;&#xA;启动：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;/usr/local/mongodb/bin/mongod &amp;ndash;dbpath=/usr/local/mongodb/data &amp;ndash;logpath=/usr/local/mongodb/logs &amp;ndash;logappend &amp;ndash;auth &amp;ndash;fork&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;如需外网客户端连接加参数&lt;code&gt;--bind_ip_all&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;导入单个collection&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;./mongorestore -v -h ip -u xxxx -p xxxx &amp;ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;或导入整个目录&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;./mongorestore -v -h ip -u xxxx -p xxxx &amp;ndash;db=blogs &amp;ndash;drop /home/yuedun/download/xxxx.bson/xxxx&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;没有指定&lt;code&gt;-h&lt;/code&gt;参数会报错：Failed: error connecting to db server: no reachable servers&#xA;阿里云上&lt;code&gt;-h&lt;/code&gt;参数需要内网ip，localhost不行。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>使用scp在Windows和linux之间传输文件</title>
       <link>https://www.yuedun.wang/blogdetail/575134e682887be008614fc5/</link>
       <pubDate>Fri, 03 Jun 2016 07:42:30 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/575134e682887be008614fc5/</guid>
-      <description>获取远程服务器（linux）文件到本地（Windows）： scp 远程name@远程IP:远程文件 本地文件
-发送本地文件（Windows）到远程服务器（linux）： scp 本地文件名 远程name@远程IP地址**:远程文件**</description>
+      <description>&lt;p&gt;获取远程服务器（linux）文件到本地（Windows）： scp 远程name@远程IP:远程文件 本地文件&lt;br&gt;&#xA;发送本地文件（Windows）到远程服务器（linux）： scp 本地文件名 远程name@远程IP地址**:远程文件**&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>linux下安装nodejs</title>
       <link>https://www.yuedun.wang/blogdetail/574019ee0bdb5de027394523/</link>
       <pubDate>Sat, 21 May 2016 08:18:54 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/574019ee0bdb5de027394523/</guid>
-      <description>此文过旧，请参阅linux安装nodejs——快捷版 首先下载nodejs压缩文件node-v4.4.4-linux-x64.tar.xz，先解压文件， &amp;gt; xz -d node-v4.4.4-linux-x64.tar.xz解压为tar格式文件，再通过tar命令解压 &amp;gt; tar -xvf node-v4.4.4-linux-x64.tar 可以将解压后的文件夹移动到自己的软件安装文件夹下，比如：/usr/local下，因为nodejs的版本更新太快，每次更新都这么移动文件夹太麻烦，所以还是改成一个通用的名字，就叫node，执行命令这样： mv /home/huo/Download/node-v4.4.4-linux-x64 /usr/local/node 为了能够全局执行node和npm命令，需要建立软链接到可执行目录下，执行命令： echo $PATH 可以看到：/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin是linux全局执行目录，所以就选择在/usr/local/bin下建立软链接吧。
-ln -s /usr/local/node/bin/npm /usr/local/bin/npm 这样就可以在任意目录下执行node和npm命令了，不过这样还没结束，使用npm全局安装包后，在命令行里执行会找不到命令，因为npm全局安装目录在node安装目录，也就是安装在了/usr/local/node/lib/node_modules目录下，所以还需要将这个目录添加的$PATH变量中，sudo vim /etc/profile在文件最下边添加export PATH=&amp;quot;/usr/local/node/bin:$PATH&amp;quot;,此处的路径/usr/local/node/bin并不是上面说的/usr/local/node/lib/node_modules目录，因为npm全局安装以后会在node安装目录下的bin文件夹中建立软链接，直接在$PATH中添加npm的全局安装目录是无法找到可执行文件的。
-升级node版本 可以通过全局安装n工具来升级 npm install -g n，或者nvm工具 或者就是直接下载新的tar文件覆盖升级 cp -Rv node-v8.11.3-linux-x64/* /home/yuedun/software/nodejs/</description>
+      <description>&lt;h1 id=&#34;此文过旧请参阅linux安装nodejs快捷版&#34;&gt;此文过旧，请参阅&lt;a href=&#34;http://yuedun.wang/blogdetail/5dd2378b00f24e1fd556d0c4&#34; title=&#34;linux安装nodejs——快捷版&#34;&gt;linux安装nodejs——快捷版&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;首先下载nodejs压缩文件node-v4.4.4-linux-x64.tar.xz，先解压文件，&#xA;&lt;code&gt;&amp;gt; xz -d node-v4.4.4-linux-x64.tar.xz&lt;/code&gt;解压为tar格式文件，再通过tar命令解压&#xA;&lt;code&gt;&amp;gt; tar -xvf node-v4.4.4-linux-x64.tar&lt;/code&gt;&#xA;可以将解压后的文件夹移动到自己的软件安装文件夹下，比如：&lt;code&gt;/usr/local&lt;/code&gt;下，因为nodejs的版本更新太快，每次更新都这么移动文件夹太麻烦，所以还是改成一个通用的名字，就叫node，执行命令这样：&#xA;&lt;code&gt;mv /home/huo/Download/node-v4.4.4-linux-x64 /usr/local/node&lt;/code&gt;&#xA;为了能够全局执行node和npm命令，需要建立软链接到可执行目录下，执行命令：&#xA;&lt;code&gt;echo $PATH&lt;/code&gt;&#xA;可以看到：&lt;code&gt;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin&lt;/code&gt;是linux全局执行目录，所以就选择在&lt;code&gt;/usr/local/bin&lt;/code&gt;下建立软链接吧。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-ln&#34; data-lang=&#34;ln&#34;&gt;ln -s /usr/local/node/bin/npm /usr/local/bin/npm&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样就可以在任意目录下执行node和npm命令了，不过这样还没结束，使用npm全局安装包后，在命令行里执行会找不到命令，因为npm全局安装目录在node安装目录，也就是安装在了&lt;code&gt;/usr/local/node/lib/node_modules&lt;/code&gt;目录下，所以还需要将这个目录添加的$PATH变量中，&lt;code&gt;sudo vim /etc/profile&lt;/code&gt;在文件最下边添加&lt;code&gt;export PATH=&amp;quot;/usr/local/node/bin:$PATH&amp;quot;&lt;/code&gt;,此处的路径&lt;code&gt;/usr/local/node/bin&lt;/code&gt;并不是上面说的&lt;code&gt;/usr/local/node/lib/node_modules&lt;/code&gt;目录，因为npm全局安装以后会在node安装目录下的bin文件夹中建立软链接，直接在&lt;code&gt;$PATH&lt;/code&gt;中添加npm的全局安装目录是无法找到可执行文件的。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;升级node版本&lt;/strong&gt;&#xA;可以通过全局安装&lt;code&gt;n&lt;/code&gt;工具来升级 &lt;code&gt;npm install -g n&lt;/code&gt;，或者&lt;code&gt;nvm&lt;/code&gt;工具&#xA;或者就是直接下载新的tar文件覆盖升级&#xA;&lt;code&gt;cp -Rv node-v8.11.3-linux-x64/* /home/yuedun/software/nodejs/&lt;/code&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="Blogdetails" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/blogdetail/" />
+		<meta property="og:url" content="https://www.yuedun.wang/blogdetail/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="Blogdetails">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="Blogdetails">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2021-06-14T10:40:52+00:00">
+  <meta itemprop="dateModified" content="2021-06-14T10:40:52+00:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blogdetails">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="Blogdetails">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/blogdetail/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,13 +116,14 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-04T06:57:38Z">2018-09-04 06:57</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-04T06:57:38Z">2018.09.04 06:57</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		无法重新声明块范围变量“onerror”
-解决办法：打开tsconfig.json中的&quot;lib&quot;: [&quot;es2015&quot;, &quot;es2016&quot;, &quot;es2017&quot;]
+		<p>无法重新声明块范围变量“onerror”</p>
+<p><img src="https://hopefully-img.yuedun.wang/onerror.png" alt=""></p>
+<p>解决办法：打开<code>tsconfig.json</code>中的<code>&quot;lib&quot;: [&quot;es2015&quot;, &quot;es2016&quot;, &quot;es2017&quot;]</code></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -169,15 +137,24 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-02T08:20:51Z">2018-09-02 08:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-09-02T08:20:51Z">2018.09.02 08:20</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		win10家庭版本身不支持组策略，但还是有办法让其支持。 复制下面内容到文本文件：
-@echo off pushd &#34;%~dp0&#34; dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt for /f %%i in (&#39;findstr /i . List.txt 2^&gt;nul&#39;) do dism /online /norestart /add-package:&#34;C:\Windows\servicing\Packages\%%i&#34; pause 后缀名保存为cmd,以管理员身份执行：
-然后WIN+R中执行gpedit.msc即可打开组策略。
-如此可以关闭占用CPU过高的Windows Defender。
+		<p>win10家庭版本身不支持组策略，但还是有办法让其支持。
+复制下面内容到文本文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>@echo off
+</span></span><span style="display:flex;"><span>pushd <span style="color:#e6db74">&#34;%~dp0&#34;</span>
+</span></span><span style="display:flex;"><span>dir /b C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ervicing<span style="color:#ae81ff">\P</span>ackages<span style="color:#ae81ff">\M</span>icrosoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt
+</span></span><span style="display:flex;"><span>dir /b C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ervicing<span style="color:#ae81ff">\P</span>ackages<span style="color:#ae81ff">\M</span>icrosoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> /f %%i in <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;findstr /i . List.txt 2^&gt;nul&#39;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> dism /online /norestart /add-package:<span style="color:#e6db74">&#34;C:\Windows\servicing\Packages\%%i&#34;</span>
+</span></span><span style="display:flex;"><span>pause
+</span></span></code></pre></div><p>后缀名保存为<code>cmd</code>,以管理员身份执行：</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902160354.png" alt=""></p>
+<p>然后<code>WIN+R</code>中执行<code>gpedit.msc</code>即可打开组策略。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902161900.png" alt=""></p>
+<p>如此可以关闭占用CPU过高的Windows Defender。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -191,19 +168,43 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-08-05T03:47:06Z">2018-08-05 03:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-08-05T03:47:06Z">2018.08.05 03:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		要说前端界的发展速度，那真是快！
-2012年那时候接触过extjs，用于企业级后台开发还真不错，有好看的UI界面，组件丰富，基本能满足各类需求。但此时，HTML5正在蓬勃发展，尤其是乔布斯宣布苹果设备不支持flash后HTML5发展更是迅猛。并且angularjs这类MVVM框架被大多数所知，reactjs,vuejs如雨后春笋般生长。
-2014年使用了一段时间angularjs，感觉学习难度有点大，并且据官方说2.0下向下兼容于是放弃继续学习。2015年使用vue1.0做了一个项目后我逢人便说angular，vue有多好用，推荐他们放弃jquery使用vue。不到2年时间再看看前端界，vue，react等框架已经是前端开发标配，如果你说公司项目还在使用jquery会被人笑话，对于前端新人MVVM框架是必学，jquery反而不会被重视。
-这就导致一个结果：**“手里拿着锤子，看什么都是钉子”，因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。**就拿一个需要SEO的网站来说，该选择哪种技术好？如果只会vue，那么肯定是选择vue，就算vue不太适合做这类网站，也会拿出ssr来强行做事。殊不知需要SEO的网站使用静态文件是最合适的。大多数人认为前后端分离是使用vue，react，angular，使用jquery的不叫前后端分离，这完全是搞混了概念，实际上后端的controller层也属于视图层，也可以归属于前端。
-现在去网上一搜，问一下身边的人怎么看待前后端分离的，大多数人秉持着支持的态度，认为前后端分离好处多多，列举几条：
-专业的人做专业的事 前后并行开发，效率高 前端工程化，组件化 解耦 降低了开发学习难度 等等…… 大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：
-增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。 一般前端开发速度会比后端快，在接口没开发好时前端只能闲等着。也有反过来的情况。前后端分离也意味着任务关联性减弱，可能不是同时开发，需要一方催着一方来完成。 跨域问题导致联调困难，前端只能等待接口开发上了服务器才能调试。 职责分离后确认职责也困难，一个问题出现到底是谁的问题？谁解决？ 一个需求需要前后端开发同时参与理解需求，有理解偏差问题。 小公司多一个人多一份支出。 那么到底该不该进行前后端分离，如何进行技术选型？这需要根据一些实际情况来决定，大体判断准则有以下几点：
-后台系统采用前后端分离比较合适。 需要SEO引流的就不要强行前后端分离了，react，vue的服务端渲染也很勉强，徒增开发难度而已。 数据交互比较多的使用前后端分离，操作数据比jquery方便。 页面本身特别简单，只负责简单数据展示，要求打开速度，直接服务端渲染即可。这种页面本身就是单页面，如果还要使用框架就是多此一举，增加页面负担，增加开发调试难度。 开发资源充足最好前后端分离，开发资源不足时不分离，一人包揽前后台端反而更快。 最后，前后端分离是一个趋势，但不是必须。更准确的说法应该叫做“前后端分工”，毕竟在5年前这些活都是一个开发来做的，因为技术复杂性提升，前端不想只是切图，后端不想学变化太快的前端就出现了分离。你可以想象测试的工作，现在的测试大多还是测业务，但是也出现了一个自动化测试的职位，因为测试不想天天鼠标点呀点的测，想搞点高深的东西，而开发又特别烦写单元测试代码，这就又出现分离。再者，数据库也是一样，所以出现了DBA这个角色。谁知哪一天又会合起来呢！
+		<p>要说前端界的发展速度，那真是快！</p>
+<p>2012年那时候接触过extjs，用于企业级后台开发还真不错，有好看的UI界面，组件丰富，基本能满足各类需求。但此时，HTML5正在蓬勃发展，尤其是乔布斯宣布苹果设备不支持flash后HTML5发展更是迅猛。并且angularjs这类MVVM框架被大多数所知，reactjs,vuejs如雨后春笋般生长。</p>
+<p>2014年使用了一段时间angularjs，感觉学习难度有点大，并且据官方说2.0下向下兼容于是放弃继续学习。2015年使用vue1.0做了一个项目后我逢人便说angular，vue有多好用，推荐他们放弃jquery使用vue。不到2年时间再看看前端界，vue，react等框架已经是前端开发标配，如果你说公司项目还在使用jquery会被人笑话，对于前端新人MVVM框架是必学，jquery反而不会被重视。</p>
+<p>这就导致一个结果：**“手里拿着锤子，看什么都是钉子”，因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。**就拿一个需要SEO的网站来说，该选择哪种技术好？如果只会vue，那么肯定是选择vue，就算vue不太适合做这类网站，也会拿出ssr来强行做事。殊不知需要SEO的网站使用静态文件是最合适的。大多数人认为前后端分离是使用vue，react，angular，使用jquery的不叫前后端分离，这完全是搞混了概念，实际上后端的controller层也属于视图层，也可以归属于前端。</p>
+<p>现在去网上一搜，问一下身边的人怎么看待前后端分离的，大多数人秉持着支持的态度，认为前后端分离好处多多，列举几条：</p>
+<ul>
+<li>专业的人做专业的事</li>
+<li>前后并行开发，效率高</li>
+<li>前端工程化，组件化</li>
+<li>解耦</li>
+<li>降低了开发学习难度</li>
+</ul>
+<p>等等……
+<img src="https://hopefully-img.yuedun.wang/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180805104325.jpg" alt="前后端分离" title="前后端分离"></p>
+<p>大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：</p>
+<ul>
+<li>增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。</li>
+<li>一般前端开发速度会比后端快，在接口没开发好时前端只能闲等着。也有反过来的情况。前后端分离也意味着任务关联性减弱，可能不是同时开发，需要一方催着一方来完成。</li>
+<li>跨域问题导致联调困难，前端只能等待接口开发上了服务器才能调试。</li>
+<li>职责分离后确认职责也困难，一个问题出现到底是谁的问题？谁解决？</li>
+<li>一个需求需要前后端开发同时参与理解需求，有理解偏差问题。</li>
+<li>小公司多一个人多一份支出。</li>
+</ul>
+<p>那么到底该不该进行前后端分离，如何进行技术选型？这需要根据一些实际情况来决定，大体判断准则有以下几点：</p>
+<ul>
+<li>后台系统采用前后端分离比较合适。</li>
+<li>需要SEO引流的就不要强行前后端分离了，react，vue的服务端渲染也很勉强，徒增开发难度而已。</li>
+<li>数据交互比较多的使用前后端分离，操作数据比jquery方便。</li>
+<li>页面本身特别简单，只负责简单数据展示，要求打开速度，直接服务端渲染即可。这种页面本身就是单页面，如果还要使用框架就是多此一举，增加页面负担，增加开发调试难度。</li>
+<li>开发资源充足最好前后端分离，开发资源不足时不分离，一人包揽前后台端反而更快。</li>
+</ul>
+<p>最后，前后端分离是一个趋势，但不是必须。更准确的说法应该叫做“前后端分工”，毕竟在5年前这些活都是一个开发来做的，因为技术复杂性提升，前端不想只是切图，后端不想学变化太快的前端就出现了分离。你可以想象测试的工作，现在的测试大多还是测业务，但是也出现了一个自动化测试的职位，因为测试不想天天鼠标点呀点的测，想搞点高深的东西，而开发又特别烦写单元测试代码，这就又出现分离。再者，数据库也是一样，所以出现了DBA这个角色。谁知哪一天又会合起来呢！</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -217,16 +218,38 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-29T13:05:59Z">2018-06-29 13:05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-29T13:05:59Z">2018.06.29 13:05</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		go可以很容易实现一个文件服务器，只需要使用函数 func ServeFile(w ResponseWriter, r *Request, name string)即可。
-package main import ( &#34;log&#34; &#34;net/http&#34; &#34;fmt&#34; ) func helloHandler(res http.ResponseWriter, req *http.Request) { http.ServeFile(res, req, &#34;E:/go-work/src/go-learning/foo.xlsx&#34;) } func main() { fmt.Println(&#34;web服务启动成功，可在浏览器中访问：localhost:8081&#34;) http.HandleFunc(&#34;/file&#34;, helloHandler) http.Handle(&#34;/&#34;, http.FileServer(http.Dir(&#34;E:/go-work/src/go-learning/&#34;))) err := http.ListenAndServe(&#34;:8081&#34;, nil) if err != nil { log.Fatal(&#34;ListenAndServe:&#34;, err.Error()) } } 查看go文档除了翻墙访问https://golang.org
-还可以访问国内镜像：https://golang.google.cn/
-最简单快速的访问，直接在本地起服务：
-godoc -http=:8082
+		<p>go可以很容易实现一个文件服务器，只需要使用函数
+<code>func ServeFile(w ResponseWriter, r *Request, name string)</code>即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;net/http&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">helloHandler</span>(<span style="color:#a6e22e">res</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ServeFile</span>(<span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">req</span>, <span style="color:#e6db74">&#34;E:/go-work/src/go-learning/foo.xlsx&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;web服务启动成功，可在浏览器中访问：localhost:8081&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">HandleFunc</span>(<span style="color:#e6db74">&#34;/file&#34;</span>, <span style="color:#a6e22e">helloHandler</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Handle</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">FileServer</span>(<span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Dir</span>(<span style="color:#e6db74">&#34;E:/go-work/src/go-learning/&#34;</span>)))
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ListenAndServe</span>(<span style="color:#e6db74">&#34;:8081&#34;</span>, <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;ListenAndServe:&#34;</span>, <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">Error</span>())
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>查看go文档除了翻墙访问<a href="https://golang.org">https://golang.org</a></p>
+<p>还可以访问国内镜像：<a href="https://golang.google.cn/">https://golang.google.cn/</a></p>
+<p>最简单快速的访问，直接在本地起服务：</p>
+<blockquote>
+<p>godoc -http=:8082</p></blockquote>
 	</div>
 </article>
 <article class="list__item post">
@@ -240,15 +263,41 @@ godoc -http=:8082
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-25T07:10:28Z">2018-06-25 07:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-25T07:10:28Z">2018.06.25 07:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		//上传图片 var imagesBase64 = []; $(&#34;input[type=file]&#34;).on(&#34;change&#34;, function (e) { var image = e.target.files[0]; var imgFile = new FileReader(); var imgShow = new Image(); imgFile.readAsDataURL(image); imgFile.onload = function () { var imgData = this.result; //base64数据 imagesBase64.push({ teaId: teacherInfo.id, fileType: &#34;award&#34;,//图片 fileName: image.name, file: imgData, }); imgShow.src = imgData; imgShow.style.width = &#34;100px&#34;; imgShow.style.height = &#34;100px&#34;; imgShow.title = &#34;双击删除&#34;; $(&#34;#imageShow&#34;).append(imgShow); } }); $(&#34;#imageShow&#34;).on(&#34;dblclick &#34;, &#34;img&#34;, function () { var index = $(&#34;#imageShow &gt; img&#34;).
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5b309564cca06924b14119ea/">阅读全文…</a>
+		<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//上传图片
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">imagesBase64</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;input[type=file]&#34;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;change&#34;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">image</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">files</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">imgFile</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">FileReader</span>();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">imgShow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>();
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">imgFile</span>.<span style="color:#a6e22e">readAsDataURL</span>(<span style="color:#a6e22e">image</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">imgFile</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">imgData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">result</span>; <span style="color:#75715e">//base64数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#a6e22e">imagesBase64</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">teaId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">teacherInfo</span>.<span style="color:#a6e22e">id</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">fileType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;award&#34;</span>,<span style="color:#75715e">//图片
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#a6e22e">fileName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">name</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">file</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">imgData</span>,
+</span></span><span style="display:flex;"><span>			});
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">imgShow</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">imgData</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">imgShow</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;100px&#34;</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">imgShow</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;100px&#34;</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">imgShow</span>.<span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;双击删除&#34;</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#imageShow&#34;</span>).<span style="color:#a6e22e">append</span>(<span style="color:#a6e22e">imgShow</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#imageShow&#34;</span>).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;dblclick &#34;</span>, <span style="color:#e6db74">&#34;img&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#imageShow &gt; img&#34;</span>).<span style="color:#a6e22e">index</span>(<span style="color:#66d9ef">this</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">index</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">remove</span>();
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">imagesBase64</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#a6e22e">index</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">imagesBase64</span>)
+</span></span><span style="display:flex;"><span>	});
+</span></span></code></pre></div>
 	</div>
 </article>
 <article class="list__item post">
@@ -262,31 +311,37 @@ godoc -http=:8082
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-14T05:26:49Z">2018-06-14 05:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-14T05:26:49Z">2018.06.14 05:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">Linux</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		修改terminal apt-get update更新软件源，安装zsh，设置默认terminal为zsh，chsh -s /usr/bin/zsh。非root用户需要在root权限下修改/etc/passwd文件才能实现。
-安装git
-apt-get install git
-nginx设置：
-sudo /etc/init.d/nginx restart # or start, stop
-或
-sudo service nginx restart # or start, stop
-有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。sudo nginx -s reload
-目录/etc/nginx/sites-available/下增加文件配置反向代理，并软链接到/etc/nginx/sites-enabled/下
-mongodb导入数据 启动：
-/usr/local/mongodb/bin/mongod &ndash;dbpath=/usr/local/mongodb/data &ndash;logpath=/usr/local/mongodb/logs &ndash;logappend &ndash;auth &ndash;fork
-如需外网客户端连接加参数--bind_ip_all
-导入单个collection
-./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson
-或导入整个目录
-./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.bson/xxxx
-没有指定-h参数会报错：Failed: error connecting to db server: no reachable servers 阿里云上-h参数需要内网ip，localhost不行。
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5b21fc996699964267f5e168/">阅读全文…</a>
+		<p><strong>修改terminal</strong>
+<code>apt-get update</code>更新软件源，安装<code>zsh</code>，设置默认terminal为zsh，<code>chsh -s /usr/bin/zsh</code>。非root用户需要在root权限下修改<code>/etc/passwd</code>文件才能实现。</p>
+<p><strong>安装git</strong></p>
+<blockquote>
+<p>apt-get install git</p></blockquote>
+<p><strong>nginx设置：</strong></p>
+<blockquote>
+<p>sudo /etc/init.d/nginx restart # or start, stop</p></blockquote>
+<p>或</p>
+<blockquote>
+<p>sudo service nginx restart # or start, stop</p></blockquote>
+<p>有时候我们改了配置文件只是要让配置生效，这个时候不必重启，只要重新加载配置文件即可。<code>sudo nginx -s reload</code></p>
+<p>目录<code>/etc/nginx/sites-available/</code>下增加文件配置反向代理，并软链接到<code>/etc/nginx/sites-enabled/</code>下</p>
+<p><strong>mongodb导入数据</strong>
+启动：</p>
+<blockquote>
+<p>/usr/local/mongodb/bin/mongod &ndash;dbpath=/usr/local/mongodb/data &ndash;logpath=/usr/local/mongodb/logs &ndash;logappend &ndash;auth &ndash;fork</p></blockquote>
+<p>如需外网客户端连接加参数<code>--bind_ip_all</code></p>
+<p>导入单个collection</p>
+<blockquote>
+<p>./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs -c blogs /home/yuedun/download/xxxx.bson/xxxx/blogs.bson</p></blockquote>
+<p>或导入整个目录</p>
+<blockquote>
+<p>./mongorestore -v -h ip -u xxxx -p xxxx &ndash;db=blogs &ndash;drop /home/yuedun/download/xxxx.bson/xxxx</p></blockquote>
+<p>没有指定<code>-h</code>参数会报错：Failed: error connecting to db server: no reachable servers
+阿里云上<code>-h</code>参数需要内网ip，localhost不行。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -300,19 +355,26 @@ mongodb导入数据 启动：
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-12T13:34:47Z">2018-06-12 13:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-12T13:34:47Z">2018.06.12 13:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		“过早的优化是万恶之源”，这句话或多或少在哪听过，不过为什么优化也会带来问题，恐怕只有经历过的人才能理解其中的意义。
-关于程序优化，产品优化这些词在开发工作中一定有经历过。某位程序员做事一丝不苟，对程序开发特别注重性能问题，花大量时间来优化某段代码。某位产品在提出需求的时候总是有一些目前用不到的功能，说是为了方便将来扩展。
-那么实际工作中这种优化到底起到了什么作用？个人认为弊多于利。
-问题一：过早引入新技术 甲同学在做一个员工日常工作内容列表的接口时，认为该接口会产生性能问题，将来数据增多的时候会有性能瓶颈，于是利用了某项缓存技术，觉得缓存一定比直接查数据库速度快，于是就引入了缓存数据库。把数据拉到缓存中，先从缓存中读取数据，没有数据的时候从数据库中读取放到缓存中。这个思路看似挺好，不过为了更新数据就设置过期时间为1天。上线后发现很多员工的日常工作内容一天内会有变化，就设置过期时间为半天，结果半天过期时间还是会有部分员工工作内容更新频繁。这时候就有些纠结了，到底是再降低过期时间还是单独更新某个员工的数据？如果选择降低过期时间会导致所有数据都要从数据库重新拉取，选择单独更新又要对各个更新几口进行修改来更新缓存。这期间不免要折腾几回来适应业务需求，而且容易造成各个业务过度依赖缓存，为了保持缓存数据一致性需要做很多工作，然而很多的工作目的并没有提高系统可用性。
-问题二：过早优化数据库 有些同学在设计数据库的时候总喜欢多加些字段，为了方便未来使用，知道索引能加速查询，就使劲加索引，这基本属于不够成熟的思想，试问：等真正需要字段的时候加会晚吗？现在提前加了后面还能知道这个字段当初是准备怎么用来的吗？别的同学要加的时候发现已经有了一个类似的，这个字段到底有没有在用，不敢删又不敢用。索引加了一大堆本以为有积极作用，可不知道索引会占用空间，插入修改却慢了下来。
-问题三：过早进行防范准备 在没有真实QPS数据和准确预估的情况，开发同学生生怕线上出现故障，要求多部署几台服务器做负载均衡，反正服务器多了也不会有问题。但是过多的服务器会带来其他方面的问题： 1、运维难度增加 2、企业成本增加 3、线上故障排查难度增加
-针对性优化 在避免过度设计的情况下才进行针对性优化。性能问题的出现并不是经常性的，而是在某个访问高峰期出现，这时候影响范围还不是很大，但是该考虑进行优化了，如果是经常性突发并发数增加可以考虑缓存数据库。如果是日常单机承载能力高可以进行一定压力测试，评估并发压力增加合适的服务器。随着企业发展，数据量不断累积，此时数据库成为主要压力，此时对数据库索引，SQL进行优化，往往能有立竿见影的效果。
-总结：没有针对性的性能优化，只是按照假象场景来设计，最后不但不能起到优化作用反而为后期优化带来累赘。
+		<p>“过早的优化是万恶之源”，这句话或多或少在哪听过，不过为什么优化也会带来问题，恐怕只有经历过的人才能理解其中的意义。</p>
+<p>关于程序优化，产品优化这些词在开发工作中一定有经历过。某位程序员做事一丝不苟，对程序开发特别注重性能问题，花大量时间来优化某段代码。某位产品在提出需求的时候总是有一些目前用不到的功能，说是为了方便将来扩展。</p>
+<p>那么实际工作中这种优化到底起到了什么作用？个人认为弊多于利。</p>
+<h3 id="问题一过早引入新技术">问题一：过早引入新技术</h3>
+<p>甲同学在做一个员工日常工作内容列表的接口时，认为该接口会产生性能问题，将来数据增多的时候会有性能瓶颈，于是利用了某项缓存技术，觉得缓存一定比直接查数据库速度快，于是就引入了缓存数据库。把数据拉到缓存中，先从缓存中读取数据，没有数据的时候从数据库中读取放到缓存中。这个思路看似挺好，不过为了更新数据就设置过期时间为1天。上线后发现很多员工的日常工作内容一天内会有变化，就设置过期时间为半天，结果半天过期时间还是会有部分员工工作内容更新频繁。这时候就有些纠结了，到底是再降低过期时间还是单独更新某个员工的数据？如果选择降低过期时间会导致所有数据都要从数据库重新拉取，选择单独更新又要对各个更新几口进行修改来更新缓存。这期间不免要折腾几回来适应业务需求，而且容易造成各个业务过度依赖缓存，为了保持缓存数据一致性需要做很多工作，然而很多的工作目的并没有提高系统可用性。</p>
+<h3 id="问题二过早优化数据库">问题二：过早优化数据库</h3>
+<p>有些同学在设计数据库的时候总喜欢多加些字段，为了方便未来使用，知道索引能加速查询，就使劲加索引，这基本属于不够成熟的思想，试问：等真正需要字段的时候加会晚吗？现在提前加了后面还能知道这个字段当初是准备怎么用来的吗？别的同学要加的时候发现已经有了一个类似的，这个字段到底有没有在用，不敢删又不敢用。索引加了一大堆本以为有积极作用，可不知道索引会占用空间，插入修改却慢了下来。</p>
+<h3 id="问题三过早进行防范准备">问题三：过早进行防范准备</h3>
+<p>在没有真实QPS数据和准确预估的情况，开发同学生生怕线上出现故障，要求多部署几台服务器做负载均衡，反正服务器多了也不会有问题。但是过多的服务器会带来其他方面的问题：
+1、运维难度增加
+2、企业成本增加
+3、线上故障排查难度增加</p>
+<h3 id="针对性优化">针对性优化</h3>
+<p>在避免过度设计的情况下才进行针对性优化。性能问题的出现并不是经常性的，而是在某个访问高峰期出现，这时候影响范围还不是很大，但是该考虑进行优化了，如果是经常性突发并发数增加可以考虑缓存数据库。如果是日常单机承载能力高可以进行一定压力测试，评估并发压力增加合适的服务器。随着企业发展，数据量不断累积，此时数据库成为主要压力，此时对数据库索引，SQL进行优化，往往能有立竿见影的效果。</p>
+<p>总结：没有针对性的性能优化，只是按照假象场景来设计，最后不但不能起到优化作用反而为后期优化带来累赘。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -326,18 +388,41 @@ mongodb导入数据 启动：
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-10T13:54:23Z">2018-06-10 13:54</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-06-10T13:54:23Z">2018.06.10 13:54</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		消息队列（MQ）在系统架构中发挥了重要作用，其主要作用有系统解耦，流量削峰，异步消息存储，分布式系统最终一致性等。 本文介绍的是消息系统中消息发布者和订阅者间参数如何约定和传递？实际应用场景中，一种消息的发布者和订阅者都有可能是多个，也就是多对多的关系，这样就形成了消息参数传递的复杂性，就算一开始参数有约定，大家都按照最初约定来开发，但不免开发过程中各端需求变化带来的修改。例如最开始为了实现系统解耦而引进了消息队列，此时消息参与者较少，只有一个发布者和一个订阅者，这种情况最简单（其实最简单还是直接调接口），双方简单约定了需要传递的参数。
-{ userId:123, userName:&#34;阿离&#34;, age:23 } 后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。
-{ userId:123, userName:&#34;阿离&#34;, age:23, gender:&#34;女&#34;, address:&#34;上海&#34;, job:&#34;测试&#34; } 再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。
-{ userId:123, userName:&#34;阿离&#34;, age:23, gender:&#34;女&#34;, address:&#34;上海&#34;, job:&#34;测试&#34;, workingLife:4 } 再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。
-这时消息系统已经不是当初简单的两个发布者订阅者了，而是一群人在参数，所谓的众口难调。此时弊端已现，无论哪一方有变化都势必牵连所有人。所以看出的出这种消息参数传递有其不合理的地方，那么怎么传递更合理？此处的MQ最开始已经说了，是为了解耦而引进，说明该MQ是多个系统的衔接者，而多个系统终究还是系统，不是简单的前端和后端接口调用，例如某个前端A也是由自己的接口提供服务系统的，MQ不是直接为前端A提供参数的。应该是由前端A自己的服务端A订阅消息，前端A需要什么参数就有服务A查询需要的参数即可，前端B需要什么参数由服务B查询提供。而发布者A，发布者B等只需要传递关键参数userId即可，其他姓名，性别，年龄什么的都不需要传。
-此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。
-总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。
+		<p>消息队列（MQ）在系统架构中发挥了重要作用，其主要作用有系统解耦，流量削峰，异步消息存储，分布式系统最终一致性等。
+本文介绍的是消息系统中消息发布者和订阅者间参数如何约定和传递？实际应用场景中，一种消息的发布者和订阅者都有可能是多个，也就是多对多的关系，这样就形成了消息参数传递的复杂性，就算一开始参数有约定，大家都按照最初约定来开发，但不免开发过程中各端需求变化带来的修改。例如最开始为了实现系统解耦而引进了消息队列，此时消息参与者较少，只有一个发布者和一个订阅者，这种情况最简单（其实最简单还是直接调接口），双方简单约定了需要传递的参数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span><span style="color:#ae81ff">123</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">userName</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;阿离&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span><span style="color:#ae81ff">23</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>后来订阅方又需要性别，地址，工作等信息，要求发布方加参数，这种要求也不过分，那就加好了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span><span style="color:#ae81ff">123</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">userName</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;阿离&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span><span style="color:#ae81ff">23</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">gender</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;女&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">address</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;上海&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">job</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;测试&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>再后来又有一个订阅者参与进了消息系统，要求在上述参数中再加“工作年限”参数，那么先不说什么了，加呗。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span><span style="color:#ae81ff">123</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">userName</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;阿离&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">age</span><span style="color:#f92672">:</span><span style="color:#ae81ff">23</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">gender</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;女&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">address</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;上海&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">job</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;测试&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">workingLife</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>再后来又有不同的订阅者参与进消息系统，每个订阅者都可能有自己的参数要求，参数类型不同，随着系统的发展，连发布者也有多个。这时最初的文档或约定已经不奏效了，总会有人不能及时更新文档导致约定不能成为约束，各自为政，比如“学历”参数有的人要求叫“硕士”，有人要叫“研究生”，总之是很难统一。如果要继续修改发布参数就会有很多冗余出现，参数类型不统一出现系统故障。</p>
+<p>这时消息系统已经不是当初简单的两个发布者订阅者了，而是一群人在参数，所谓的众口难调。此时弊端已现，无论哪一方有变化都势必牵连所有人。所以看出的出这种消息参数传递有其不合理的地方，那么怎么传递更合理？此处的MQ最开始已经说了，是为了解耦而引进，说明该MQ是多个系统的衔接者，而多个系统终究还是系统，不是简单的前端和后端接口调用，例如某个前端A也是由自己的接口提供服务系统的，MQ不是直接为前端A提供参数的。应该是由前端A自己的服务端A订阅消息，前端A需要什么参数就有服务A查询需要的参数即可，前端B需要什么参数由服务B查询提供。而发布者A，发布者B等只需要传递关键参数<code>userId</code>即可，其他姓名，性别，年龄什么的都不需要传。</p>
+<p>此时有人喜欢拿性能来说事，觉得应该由发布者一次性查出来传递并（作为日志）存储，订阅者不用每次都查询那么多相同参数，这是没理解MQ的意义，MQ应该是负责告诉其他人发布者做了什么，而不应该由订阅者决定发布者和MQ应该怎么做。因为既然是解耦系统，那么各个系统有不同需求，也可能有自己的数据库，就算是要记录日志也是由各系统自己负责存储，不应该由MQ来存储，如果所有参数都由发布者来查询那是不是会降低发布者的性能？就像上面的情况，MQ的参数随着各端要求不断增减，类型变化，最后存储的参数会变得乱七八糟，根本无法使用。</p>
+<p>总结：消息队列应该只传递和存储关键信息，如ID就足够了，如果传递多余信息而造成不一致也会出现扯皮的事。各个订阅方自己负责其他参数查询和日志存储，否则就不是解耦了。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -351,19 +436,46 @@ mongodb导入数据 启动：
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-15T13:21:36Z">2018-04-15 13:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-15T13:21:36Z">2018.04.15 13:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		beego注解路由匹配不到，返回404页面 router.go使用了两种方式注册路由：
-ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;controllers.UserController{}, &#34;get:Welcome&#34;), beego.NSInclude( &amp;controllers.UserController{}, ), controller中的路由注解设置：
-// @router /admin/user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.Data[&#34;json&#34;] = users c.ServeJSON() } 使用上面的方式注册路由后结果是nomatch
-最终结果显示上面的注解路由时错误的，下面是正确的注册方式： 问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。 即/admin为命名空间，注解中只需写/user/get-all-user，不能这样写/admin/user/get-all-user
-// @router /user/get-all-user [get] func (c *UserGroupController) GetAllUser() { user := new(User) users, err := user.GetUserList() if nil != err { c.Data[&#34;json&#34;] = ErrorMsg(err) } c.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5ad46aebb9be3f8e30daaea8/">阅读全文…</a>
+		<p>beego注解路由匹配不到，返回404页面
+router.go使用了两种方式注册路由：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ns</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">NewNamespace</span>(<span style="color:#e6db74">&#34;/admin&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">NSRouter</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">controllers</span>.<span style="color:#a6e22e">UserController</span>{}, <span style="color:#e6db74">&#34;get:Welcome&#34;</span>),
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">NSInclude</span>(
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">controllers</span>.<span style="color:#a6e22e">UserController</span>{},
+</span></span><span style="display:flex;"><span>	),
+</span></span></code></pre></div><p>controller中的路由注解设置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// @router /admin/user/get-all-user [get]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">UserGroupController</span>) <span style="color:#a6e22e">GetAllUser</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">User</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">users</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">GetUserList</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">err</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Data</span>[<span style="color:#e6db74">&#34;json&#34;</span>] = <span style="color:#a6e22e">ErrorMsg</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Data</span>[<span style="color:#e6db74">&#34;json&#34;</span>] = <span style="color:#a6e22e">users</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ServeJSON</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用上面的方式注册路由后结果是nomatch</p>
+<p>最终结果显示上面的注解路由时错误的，下面是正确的注册方式：
+问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。
+即<code>/admin</code>为命名空间，注解中只需写<code>/user/get-all-user</code>，不能这样写<code>/admin/user/get-all-user</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// @router /user/get-all-user [get]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">UserGroupController</span>) <span style="color:#a6e22e">GetAllUser</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">User</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">users</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">GetUserList</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">err</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Data</span>[<span style="color:#e6db74">&#34;json&#34;</span>] = <span style="color:#a6e22e">ErrorMsg</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Data</span>[<span style="color:#e6db74">&#34;json&#34;</span>] = <span style="color:#a6e22e">SuccessData</span>(<span style="color:#a6e22e">users</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ServeJSON</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当然，两种路由注册的方式可以同时</p>
+<blockquote>
+<p>完整项目：<a href="https://github.com/yuedun/metal">https://github.com/yuedun/metal</a></p></blockquote>
 	</div>
 </article>
 <article class="list__item post">
@@ -377,16 +489,102 @@ ns := beego.NewNamespace(&#34;/admin&#34;, beego.NSRouter(&#34;/&#34;, &amp;cont
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-09T11:08:42Z">2018-04-09 11:08</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-09T11:08:42Z">2018.04.09 11:08</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。
-package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() { syncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncFunc() fmt.Println(&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;) asyncChanFunc() } // 串行执行 func syncFunc() { var n,m,x int start := time.Now() fmt.Println(&#34;syncFunc start:&#34;,start) func () { time.Sleep(time.Second*1) n = 1 }() func () { time.Sleep(time.Second*2) m = 2 }() func () { time.Sleep(time.Second*3) x =3 }() t := time.Now() fmt.Println(t) elapsed := t.Sub(start) fmt.Println(&#34;syncFunc end:&#34;, elapsed, n, m, x) } // 并行执行 func asyncFunc() { var n,m,x int var wg sync.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5acb49ba45213aca5fde59e1/">阅读全文…</a>
+		<p>go语言可以很轻松的实现并发获取数据，就算是新手也可以按部就班的套用现成的并发模式来实现并发。以下是一个简单的测试程序，其中有串行，并行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;sync&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;time&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">syncFunc</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">asyncFunc</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">asyncChanFunc</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 串行执行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">syncFunc</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span>,<span style="color:#a6e22e">m</span>,<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;syncFunc start:&#34;</span>,<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">n</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">m</span> = <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">x</span>  =<span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">elapsed</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Sub</span>(<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;syncFunc end:&#34;</span>, <span style="color:#a6e22e">elapsed</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">x</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 并行执行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">asyncFunc</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span>,<span style="color:#a6e22e">m</span>,<span style="color:#a6e22e">x</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncFunc start:&#34;</span>, <span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">n</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">m</span> = <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">x</span> = <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">elapsed</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Sub</span>(<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncFunc end:&#34;</span>, <span style="color:#a6e22e">elapsed</span>, <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">x</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 并行执行</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">asyncChanFunc</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">m</span>, <span style="color:#a6e22e">x</span> =make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>),make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>),make(<span style="color:#66d9ef">chan</span> <span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">start</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncChanFunc start:&#34;</span>,<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">m</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span> () {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span><span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">x</span> <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>	}()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;n:%d, m:%d, x:%d\n&#34;</span>,<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">n</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">m</span>, <span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">x</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">t</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Now</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">t</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">elapsed</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Sub</span>(<span style="color:#a6e22e">start</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;asyncChanFunc end:&#34;</span>, <span style="color:#a6e22e">elapsed</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>测试结果：</p>
 	</div>
 </article>
 
@@ -406,7 +604,7 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -422,13 +620,12 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -466,99 +663,99 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -586,13 +783,14 @@ package main import ( &#34;sync&#34; &#34;time&#34; &#34;fmt&#34; ) func main() 
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

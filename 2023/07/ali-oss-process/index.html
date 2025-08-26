@@ -8,94 +8,62 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="阿里云oss私有桶图片处理，压缩，裁剪">
 		
-		<meta property="og:title" content="阿里云oss私有桶图片处理" />
-<meta property="og:description" content="阿里云oss私有桶图片处理，压缩，裁剪" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.yuedun.wang/2023/07/ali-oss-process/" /><meta property="article:section" content="2023" />
-<meta property="article:published_time" content="2023-07-01T18:13:43+08:00" />
-<meta property="article:modified_time" content="2023-07-01T18:13:43+08:00" />
+		<meta property="og:url" content="https://www.yuedun.wang/2023/07/ali-oss-process/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="阿里云oss私有桶图片处理">
+  <meta property="og:description" content="阿里云oss私有桶图片处理，压缩，裁剪">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="2023">
+    <meta property="article:published_time" content="2023-07-01T18:13:43+08:00">
+    <meta property="article:modified_time" content="2023-07-01T18:13:43+08:00">
+    <meta property="article:tag" content="阿里云">
 
+		
+  <meta itemprop="name" content="阿里云oss私有桶图片处理">
+  <meta itemprop="description" content="阿里云oss私有桶图片处理，压缩，裁剪">
+  <meta itemprop="datePublished" content="2023-07-01T18:13:43+08:00">
+  <meta itemprop="dateModified" content="2023-07-01T18:13:43+08:00">
+  <meta itemprop="wordCount" content="120">
+  <meta itemprop="keywords" content="阿里云">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="阿里云oss私有桶图片处理">
+  <meta name="twitter:description" content="阿里云oss私有桶图片处理，压缩，裁剪">
 
-		<meta itemprop="name" content="阿里云oss私有桶图片处理">
-<meta itemprop="description" content="阿里云oss私有桶图片处理，压缩，裁剪"><meta itemprop="datePublished" content="2023-07-01T18:13:43+08:00" />
-<meta itemprop="dateModified" content="2023-07-01T18:13:43+08:00" />
-<meta itemprop="wordCount" content="120">
-<meta itemprop="keywords" content="阿里云," />
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -147,21 +115,19 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-01T18:13:43&#43;08:00">2023-07-01 18:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-01T18:13:43&#43;08:00">2023.07.01 18:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
 			<blockquote>
-<p>针对OSS内存储的图片文件（Object），您可以在GetObject请求中携带图片处理参数对图片文件进行处理。例如添加图片水印、转换格式等。详情见：<a href="https://help.aliyun.com/document_detail/183902.html?spm=a2c4g.44686.0.0.3c532793kTBeVm">官方文档</a></p>
-</blockquote>
+<p>针对OSS内存储的图片文件（Object），您可以在GetObject请求中携带图片处理参数对图片文件进行处理。例如添加图片水印、转换格式等。详情见：<a href="https://help.aliyun.com/document_detail/183902.html?spm=a2c4g.44686.0.0.3c532793kTBeVm">官方文档</a></p></blockquote>
 <p>对于允许公共读写的文件可以直接在图片URL后面拼接参数的方式进行图片处理，格式：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value</p>
 <p><strong>对于不允许匿名访问的私有图片文件，不支持通过文件URL直接添加参数的方式处理图片，您需要通过SDK的方式将图片处理操作加入签名URL中。</strong></p>
 <p><strong>重要：</strong> <em>通过文件URL访问图片时，默认是下载行为。如需确保通过文件URL访问图片时是预览行为，您需要绑定自定义域名并添加CNAME记录。具体操作，请参见绑定<a href="https://help.aliyun.com/document_detail/31902.html?spm=a2c4g.44686.0.0.4e5c24cby8yy9K#concept-ozw-m2r-5fb">自定义域名</a>。</em></p>
 <p>所以，私有桶的图片是不能直接添加参数处理，否则会返回错误信息：</p>
 <blockquote>
 <p>SignatureDoesNotMatch<br>
-The request signature we calculated does not match the signature you provided. Check your key and signing method.</p>
-</blockquote>
+The request signature we calculated does not match the signature you provided. Check your key and signing method.</p></blockquote>
 <p>SDK处理方法，以go版本为例：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 </span></span><span style="display:flex;"><span>
@@ -177,24 +143,24 @@ The request signature we calculated does not match the signature you provided. C
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建OSSClient实例。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// yourEndpoint填写Bucket对应的Endpoint，以华东1（杭州）为例，填写为https://oss-cn-hangzhou.aliyuncs.com。其它Region请按实际情况填写。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;yourEndpoint&#34;</span>, <span style="color:#e6db74">&#34;yourAccessKeyId&#34;</span>, <span style="color:#e6db74">&#34;yourAccessKeySecret&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建OSSClient实例。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// yourEndpoint填写Bucket对应的Endpoint，以华东1（杭州）为例，填写为https://oss-cn-hangzhou.aliyuncs.com。其它Region请按实际情况填写。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;yourEndpoint&#34;</span>, <span style="color:#e6db74">&#34;yourAccessKeyId&#34;</span>, <span style="color:#e6db74">&#34;yourAccessKeySecret&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指定图片所在Bucket的名称，例如examplebucket。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">bucketName</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;examplebucket&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指定图片所在Bucket的名称，例如examplebucket。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bucketName</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;examplebucket&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bucket</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Bucket</span>(<span style="color:#a6e22e">bucketName</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指定图片名称。如果图片不在Bucket根目录，需携带文件完整路径，例如exampledir/example.jpg。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">ossImageName</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;exampledir/example.jpg&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 生成带签名的URL，并指定过期时间为600s。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">signedURL</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bucket</span>.<span style="color:#a6e22e">SignURL</span>(<span style="color:#a6e22e">ossImageName</span>, <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">HTTPGet</span>, <span style="color:#ae81ff">600</span>, <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">Process</span>(<span style="color:#e6db74">&#34;image/format,png&#34;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指定图片名称。如果图片不在Bucket根目录，需携带文件完整路径，例如exampledir/example.jpg。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ossImageName</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;exampledir/example.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 生成带签名的URL，并指定过期时间为600s。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">signedURL</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bucket</span>.<span style="color:#a6e22e">SignURL</span>(<span style="color:#a6e22e">ossImageName</span>, <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">HTTPGet</span>, <span style="color:#ae81ff">600</span>, <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">Process</span>(<span style="color:#e6db74">&#34;image/format,png&#34;</span>))
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
@@ -245,7 +211,7 @@ The request signature we calculated does not match the signature you provided. C
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cluster on 月盾的博客</title>
+    <title>Cluster on 月盾的博客</title>
     <link>https://www.yuedun.wang/tags/cluster/</link>
-    <description>Recent content in cluster on 月盾的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Cluster on 月盾的博客</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Jan 2018 14:21:51 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/cluster/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jan 2018 14:21:51 +0000</lastBuildDate>
+    <atom:link href="https://www.yuedun.wang/tags/cluster/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>pm2的fork模式和cluster模式的区别</title>
       <link>https://www.yuedun.wang/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</link>
       <pubDate>Wed, 17 Jan 2018 14:21:51 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/5a5f5bff4bdc8ea471fd2d9e/</guid>
-      <description>pm2的fork模式和cluster模式的区别
-fork模式 pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。 参考：http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2 运行非js语言必须设置运行模式为fork_mode
-cluster模式 cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。
-** 使用方法 ** pm2 start app.js -i max 使用-i参数，max代表最大CPU进程数
-也可以使用文件方式： processes.json文件：
-{ &amp;#34;apps&amp;#34; : [{ &amp;#34;script&amp;#34; : &amp;#34;api.js&amp;#34;, &amp;#34;instances&amp;#34; : &amp;#34;max&amp;#34;, &amp;#34;exec_mode&amp;#34; : &amp;#34;cluster&amp;#34; }] } pm2 start processes.json</description>
+      <description>&lt;p&gt;pm2的fork模式和cluster模式的区别&lt;/p&gt;&#xA;&lt;h3 id=&#34;fork模式&#34;&gt;fork模式&lt;/h3&gt;&#xA;&lt;p&gt;pm2默认启动的是fork模式，是以单核单进程运行的，在fork模式下可以直接运行coffee-script，PHP，python。&#xA;参考：&lt;a href=&#34;http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2&#34;&gt;http://pm2.keymetrics.io/docs/tutorials/using-transpilers-with-pm2&lt;/a&gt;&#xA;运行非js语言必须设置运行模式为&lt;code&gt;fork_mode&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;cluster模式&#34;&gt;cluster模式&lt;/h3&gt;&#xA;&lt;p&gt;cluster模式可以根据CPU数量进行实例扩展，可以开启多进程而不需要修改代码。可提高程序性能和可靠性。类似于分布式系统，只不过是在单台机器上开启多实例，而pm2自带负载均衡。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/kTAowsL.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;** 使用方法 **&#xA;&lt;code&gt;pm2 start app.js -i max&lt;/code&gt;&#xA;使用-i参数，max代表最大CPU进程数&lt;/p&gt;&#xA;&lt;p&gt;也可以使用文件方式：&#xA;processes.json文件：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;apps&amp;#34;&lt;/span&gt; : [{&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;script&amp;#34;&lt;/span&gt;    : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;api.js&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;instances&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;max&amp;#34;&lt;/span&gt;,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;exec_mode&amp;#34;&lt;/span&gt; : &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cluster&amp;#34;&lt;/span&gt; &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;pm2 start processes.json&lt;/code&gt;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,43 +4,23 @@
     <title>正则替换 on 月盾的博客</title>
     <link>https://www.yuedun.wang/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/</link>
     <description>Recent content in 正则替换 on 月盾的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Jun 2021 10:40:52 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Jun 2021 10:40:52 +0000</lastBuildDate>
+    <atom:link href="https://www.yuedun.wang/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vscode正则查找替换</title>
       <link>https://www.yuedun.wang/blogdetail/5e5a3fb45bd8165f28d21307/</link>
       <pubDate>Mon, 14 Jun 2021 10:40:52 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/5e5a3fb45bd8165f28d21307/</guid>
-      <description>查找某一类型字符串： 正则表达式onclick=.*&amp;quot; 会查找到所有： onclick=&amp;quot;_msq.push([&#39;trackEvent&#39;, &#39;210074305d6b0409-09c7759e04e98528&#39;, &#39;&#39;pcpid&#39;, &#39;&#39;]);&amp;quot;
-onclick=是固定一样的字符，
-.代表除\r和\n之外的任意字符，等价于[^\r\n]
-*代表匹配前面的模式 0或多次 {0,}
-&amp;quot;这是字符串最后一个字符
-在vscode中的效果如下： 至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：
-查找替换 查找：(onclick=.*&amp;quot;)
-替换：aaa($1)
-结果：
-替换字符串两头，保留中间 两部分文字交换位置 相同模式的文字交换位置。
-查找：(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))
-替换：$2 $1
-结果：
-vscode中一对括号()代表一个变量。
-第一组正则 (\(\d{4}-\d{1,2}-\d{2}\)) 对应 $1，
-第二组正则 (\[.*\))对应 $2，以此类推。
-所以，可以查找多组数据，在替换部分将两个对应变量交换位置即可。</description>
+      <description>&lt;h3 id=&#34;查找某一类型字符串&#34;&gt;查找某一类型字符串：&lt;/h3&gt;&#xA;&lt;p&gt;正则表达式&lt;code&gt;onclick=.*&amp;quot;&lt;/code&gt;&#xA;会查找到所有：&#xA;&lt;code&gt;onclick=&amp;quot;_msq.push([&#39;trackEvent&#39;, &#39;210074305d6b0409-09c7759e04e98528&#39;, &#39;&#39;pcpid&#39;, &#39;&#39;]);&amp;quot;&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;onclick=&lt;/code&gt;是固定一样的字符，&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;.&lt;/code&gt;代表除\r和\n之外的任意字符，等价于[^\r\n]&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;*&lt;/code&gt;代表匹配前面的模式 0或多次 {0,}&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;&amp;quot;&lt;/code&gt;这是字符串最后一个字符&lt;/p&gt;&#xA;&lt;p&gt;在vscode中的效果如下：&#xA;&lt;img src=&#34;https://hopefully-img.yuedun.wang/vscode%E6%AD%A3%E5%88%99.png&#34; alt=&#34;vscode正则查找替换&#34; title=&#34;vscode正则查找替换&#34;&gt;&#xA;至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：&lt;/p&gt;&#xA;&lt;h3 id=&#34;查找替换&#34;&gt;查找替换&lt;/h3&gt;&#xA;&lt;p&gt;查找：&lt;code&gt;(onclick=.*&amp;quot;)&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;替换：&lt;code&gt;aaa($1)&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;结果：&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2.png&#34; alt=&#34;vscode正则查找替换&#34; title=&#34;vscode正则查找替换&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;替换字符串两头保留中间&#34;&gt;替换字符串两头，保留中间&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/vscodereplace.jpg&#34; alt=&#34;vscode正则查找替换&#34; title=&#34;vscode正则查找替换&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;两部分文字交换位置&#34;&gt;两部分文字交换位置&lt;/h3&gt;&#xA;&lt;p&gt;相同模式的文字交换位置。&lt;/p&gt;&#xA;&lt;p&gt;查找：&lt;code&gt;(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;替换：&lt;code&gt;$2 $1&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;结果：&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://hopefully-img.yuedun.wang/regular.gif&#34; alt=&#34;vscode正则查找替换&#34; title=&#34;vscode正则查找替换&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;vscode中一对括号&lt;code&gt;()&lt;/code&gt;代表一个变量。&lt;/p&gt;&#xA;&lt;p&gt;第一组正则 &lt;code&gt;(\(\d{4}-\d{1,2}-\d{2}\))&lt;/code&gt; 对应 &lt;code&gt;$1&lt;/code&gt;，&lt;/p&gt;&#xA;&lt;p&gt;第二组正则 &lt;code&gt;(\[.*\))&lt;/code&gt;对应 &lt;code&gt;$2&lt;/code&gt;，以此类推。&lt;/p&gt;&#xA;&lt;p&gt;所以，可以查找多组数据，在替换部分将两个对应变量交换位置即可。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>mongodb forEach替换文本</title>
       <link>https://www.yuedun.wang/blogdetail/5bb08746f846d21847dc2aef/</link>
       <pubDate>Sun, 30 Sep 2018 08:20:22 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/5bb08746f846d21847dc2aef/</guid>
-      <description>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。
-db.getCollection(&amp;#39;blogs&amp;#39;).find({content:{$regex:/hopefully.qiniudn.com/}}).forEach(function(item){ item.content = item.content.replace(/hopefully.qiniudn.com/g, &amp;#39;hopefully-img.yuedun.wang&amp;#39;) db.getCollection(&amp;#39;blogs&amp;#39;).save(item) print(&amp;#34;&amp;gt;&amp;gt;&amp;#34;, item.content); }) </description>
+      <description>&lt;p&gt;最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。&#xA;首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;db&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;blogs&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;find&lt;/span&gt;({&lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;{&lt;span style=&#34;color:#a6e22e&#34;&gt;$regex&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/hopefully.qiniudn.com/&lt;/span&gt;}}).&lt;span style=&#34;color:#a6e22e&#34;&gt;forEach&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;){&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;replace&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;/hopefully.qiniudn.com/g&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;hopefully-img.yuedun.wang&amp;#39;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;db&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;blogs&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;save&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#x9;&lt;span style=&#34;color:#a6e22e&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;gt;&amp;gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;item&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;content&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;})&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

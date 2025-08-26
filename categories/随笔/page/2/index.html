@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="随笔" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/categories/%E9%9A%8F%E7%AC%94/" />
+		<meta property="og:url" content="https://www.yuedun.wang/categories/%E9%9A%8F%E7%AC%94/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="随笔">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="随笔">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2023-12-12T10:43:56+08:00">
+  <meta itemprop="dateModified" content="2023-12-12T10:43:56+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="随笔">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="随笔">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/categories/%E9%9A%8F%E7%AC%94/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,69 +116,81 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-09-17T15:40:10Z">2019-09-17 15:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-09-17T15:40:10Z">2019.09.17 15:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		1 这两天我看后台后台的时候，发现有几个朋友再问我能不能加盟瑞幸咖啡，能不能赚到钱。
-当时我是很迷惑的，因为据我所知瑞幸咖啡从来就没有开放加盟，网上所有挂着瑞幸咖啡加盟旗号的人都是各种沙雕骗子，可能是端幸咖啡。后来我一问，说的不是瑞幸咖啡，是财报上增长亮眼的小鹿茶进行了品牌独立，正在招募各地的合伙人，问我能不能加盟，有没有钱赚。
-看得我很伤心，真的。
-亏我多次称赞瑞幸是最牛逼的民族品牌，因为从来不割国内的韭菜，都是从国外搞钱烧来补贴大家喝咖啡，走的是公益路线。
-没想到浓眉大眼的瑞幸居然搞了小鹿茶现在开始在国内招募合伙人了。
-我觉得自己被扇了一耳光。
-不谈瑞幸和小鹿茶，单看奶茶加盟这个行业，我觉得我觉得但凡稍微有点眼力或者判断力的人，都不会在2019年投身到奶茶加盟这个无底巨坑了。
-作为一个参与了多家奶茶企业及供应链公司融资尽调的人，我想说目前几乎所有的奶茶加盟，对于绝大多数普通人而言，是坑。
-加盟奶茶的这些人，90%都是赔钱的，剩下的10%也基本是勉强维持赚不到什么钱，除了奶茶商家外，只有极少数自有店面的人还多少能捞一点点。
-如果现在是2014年，那么奶茶还算一个值得玩玩儿的领域。
-但现在是2019年，说这个行业是血海都感觉过于保守了。
-这个行业的现状简直可以称之为地中海。
-不仅深不见底，而且每一个加盟奶茶的人，最终都会愁成地中海。
-2 先不说行业，我想先问问各位想要加盟奶茶店的人3个灵魂问题，如果你的答案是否的话，建议直接拉黑所有让你加盟的销售就可以了。
-不然你脑子里绝对进奶茶了，还是加浓的那种。
-问题1，你在奶茶店打过工吗？ 这个问题其实是多个问题的综合，就是你对于奶茶行业了解多少。 你知道客流潮汐吗？你知道近3年店铺人流的变化吗？ 你知道原材料的真实成本以及营销成本和售价的ROI关系吗？ 你知道如何流程化管理员工让他们不要瞎JB搞甚至偷钱吗？ 你知道奶茶标准SOP有多少页，如何抓大放小吗？ 你知道如果外送的话，运费和外卖平台促销成本是怎样的吗？ 如果你听的很茫然，那么还是别来送人头了，奶茶这个行业，外行杀进来会死的很惨的。
-问题2，你在开店当地有资源吗？ 这个问题本质上是问你的奶茶店选址成本是否可控，奶茶，是一个高度吃地理位置的行业，这个年代别想什么酒香不怕巷子深，奶茶店地理位置不是人流中心地带的话，直接就不用开了。
-各个犄角旮旯里死去的奶茶店数都数不清。
-如果是中心地带的话，那么你能保证拿下这块地吗？
-注意，拿下的前提是以合理的成本，如果成本失控，那么拿这块地也没意义。
-如果不能，你还是别来了，这个门槛对你高到能卡蛋的地步。
-问题3，你有多少本钱可以烧掉不心疼？
-这个问题本质上是问你的抗风险能力。
-我相信每个人做生意都不是为了赔钱的，但正因如此，才要给自己留足余地，因为生意这件事情，真的是说不好的。
-别总想着孤注一掷破釜沉舟，人类历史上成功的也就那么几个，绝大多数都是死的不要不要的没人知道，这叫做幸存者偏差。
-奶茶店属于非常吃资金流的行业，很多原材料的保质期都不长，而且SOP要求新鲜度，如果没有足够的准备，那么很快你就发现自己手里的钢镚根本吃不住烧。
-这时候后悔，就真的晚了。
-如果你没有足够的运营资金等着烧，并且烧光了也不影响生活，那么还是别来玩儿奶茶店了，这行业成功率太低。
-我给供应链做贷款尽调的时候，见识过的普通家庭创业开奶茶店烧个妻离子散一屁股债的太多了。 多到你想象不到。
-3 经历灵魂3问，如果你还是觉得自己想要在奶茶行业一展拳脚，成为一代奶茶大师的话，那么我来和你好好讲讲奶茶加盟里的坑。
-其实上述的灵魂3问，各种奶茶加盟都有各种话术应对，无非是跟你讲自己是大品牌，实力雄厚，并且有足够的知名度，毛利率高，并且会帮你选址，帮你安排装修，帮你培训员工，教你如何管理，给你提供标准化的原材料，你只需要一颗创业的心和吃苦的勇气，以及一大堆加盟费就够了， 干奶茶，他们各个都是专业的，你只要躺下数钱就行。
-听起来真的很诱人，而且餐饮还是出名的强流水行业，还是实业，干干干，冲冲冲。
-各家的话术本质都差不多，但是这些话术中隐藏着一个非常实际的问题。
-既然厂家什么东西都能做到位包你上手就赚钱，有你没你差不多，那他们要你干嘛？
-一个必然赚钱的店，煞笔才开加盟，你见过星巴克开加盟吗？
-实力雄厚，知名度高，且毛利高的厂家差你一个外行的十几万钢镚吗？
-他们不是赚钱么？不是管理能力强吗？不是7天培训上岗吗？干嘛不自己做？
-除非，他们说的都是假的，就靠你交加盟费来养活。
-吃的就是外行不懂。
-绝大多数奶茶加盟，本质上就是厂家在割加盟者的韭菜，这个流程已经非常熟练了。
-其实也不局限于奶茶，各种品牌加盟的玩法，越来越像资金盘做局了。
-先搞几家样板店，然后雇人来买，造成特别火爆的假象，然后择机开放加盟，疯狂打广告，吸引人加盟。
-加入前他是儿子般的态度，交钱后他就是爹。
-加盟费割一笔，培训费割一笔，然后就是原材料高价割一笔，流水抽成赚一笔，时不时巡店罚款割一笔，最后保证金再割一笔。
-你赚不赚不重要，重要的是他们赚了，不仅赚了钱，而且韭菜们开了这么多店，无形中给他们打了很多广告，甚至有的品牌的考核还有拉多少人开店才能返还保证金，彻彻底底的资金盘玩法。
-之前在抖音爆火的某茶，一口气搞了6000多家加盟，最火爆的时候，一条街能有3家某案茶，结果3个月不到，倒闭了80%，但这不重要，因为厂家早就赚嗨了，可以换一个新品牌接着割了。
-可怜了那些负债加盟的人，以及他们的家庭。
-4 再说具体点，当你选择加盟一家奶茶后，会发生什么事情。
-记清楚，加盟商的目的不是帮你赚钱，而是从你手上赚钱，这一点非常重要。
-首先你得交加盟费，有的品牌收几万块，有的收几千块，随着韭菜不好割了，已经开始有品牌开始0加盟费了，靠后面的运营来赚你钱。
-然后你得交保证金，这个不同品牌不一样，但是说法都差不多，这个保证金是约束，防止你做对品牌不利的事情，只要XXX时间没问题或者退出时，保证金会还给你，当然最终还不还给你就不知道了。 培训费和培训之类的洗脑就不说了，我管这套叫做韭菜三板斧。
-当你经历了三板斧之后，你需要有一个店铺地址。
-这里就考验你拿店的能力了，每个城市，哪怕是县城，那些人流量大的好位置也都是有限的，不要想着找便宜的地方。
-奶茶店最重要的三要素，地理位置，地理位置，还是地理位置，就算你打算做外卖，也要选附近有学校或者是CBD。
-这些地理位置的统一特征就是贵。
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5d81a71a00f24e1fd556cc25/">阅读全文…</a>
+		<h3 id="1">1</h3>
+<p>这两天我看后台后台的时候，发现有几个朋友再问我能不能加盟瑞幸咖啡，能不能赚到钱。</p>
+<p>当时我是很迷惑的，因为据我所知瑞幸咖啡从来就没有开放加盟，网上所有挂着瑞幸咖啡加盟旗号的人都是各种沙雕骗子，可能是端幸咖啡。后来我一问，说的不是瑞幸咖啡，是财报上增长亮眼的小鹿茶进行了品牌独立，正在招募各地的合伙人，问我能不能加盟，有没有钱赚。</p>
+<p>看得我很伤心，真的。</p>
+<p>亏我多次称赞瑞幸是最牛逼的民族品牌，因为从来不割国内的韭菜，都是从国外搞钱烧来补贴大家喝咖啡，走的是公益路线。</p>
+<p>没想到浓眉大眼的瑞幸居然搞了小鹿茶现在开始在国内招募合伙人了。</p>
+<p>我觉得自己被扇了一耳光。</p>
+<p>不谈瑞幸和小鹿茶，单看奶茶加盟这个行业，我觉得我觉得但凡稍微有点眼力或者判断力的人，都不会在2019年投身到奶茶加盟这个无底巨坑了。</p>
+<p>作为一个参与了多家奶茶企业及供应链公司融资尽调的人，我想说目前几乎所有的奶茶加盟，对于绝大多数普通人而言，是坑。</p>
+<p>加盟奶茶的这些人，90%都是赔钱的，剩下的10%也基本是勉强维持赚不到什么钱，除了奶茶商家外，只有极少数自有店面的人还多少能捞一点点。</p>
+<p>如果现在是2014年，那么奶茶还算一个值得玩玩儿的领域。</p>
+<p>但现在是2019年，说这个行业是血海都感觉过于保守了。</p>
+<p>这个行业的现状简直可以称之为地中海。</p>
+<p>不仅深不见底，而且每一个加盟奶茶的人，最终都会愁成地中海。</p>
+<h3 id="2">2</h3>
+<p>先不说行业，我想先问问各位想要加盟奶茶店的人3个灵魂问题，如果你的答案是否的话，建议直接拉黑所有让你加盟的销售就可以了。</p>
+<p>不然你脑子里绝对进奶茶了，还是加浓的那种。</p>
+<p>问题1，你在奶茶店打过工吗？
+这个问题其实是多个问题的综合，就是你对于奶茶行业了解多少。
+你知道客流潮汐吗？你知道近3年店铺人流的变化吗？
+你知道原材料的真实成本以及营销成本和售价的ROI关系吗？
+你知道如何流程化管理员工让他们不要瞎JB搞甚至偷钱吗？
+你知道奶茶标准SOP有多少页，如何抓大放小吗？
+你知道如果外送的话，运费和外卖平台促销成本是怎样的吗？
+如果你听的很茫然，那么还是别来送人头了，奶茶这个行业，外行杀进来会死的很惨的。</p>
+<p>问题2，你在开店当地有资源吗？
+这个问题本质上是问你的奶茶店选址成本是否可控，奶茶，是一个高度吃地理位置的行业，这个年代别想什么酒香不怕巷子深，奶茶店地理位置不是人流中心地带的话，直接就不用开了。</p>
+<p>各个犄角旮旯里死去的奶茶店数都数不清。</p>
+<p>如果是中心地带的话，那么你能保证拿下这块地吗？</p>
+<p>注意，拿下的前提是以合理的成本，如果成本失控，那么拿这块地也没意义。</p>
+<p>如果不能，你还是别来了，这个门槛对你高到能卡蛋的地步。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E8%A7%A3%E5%86%B3%E4%BD%A0%E4%BA%BA%E7%94%9F50%E7%9A%84%E9%97%AE%E9%A2%98.png" alt=""></p>
+<p>问题3，你有多少本钱可以烧掉不心疼？</p>
+<p>这个问题本质上是问你的抗风险能力。</p>
+<p>我相信每个人做生意都不是为了赔钱的，但正因如此，才要给自己留足余地，因为生意这件事情，真的是说不好的。</p>
+<p>别总想着孤注一掷破釜沉舟，人类历史上成功的也就那么几个，绝大多数都是死的不要不要的没人知道，这叫做幸存者偏差。</p>
+<p>奶茶店属于非常吃资金流的行业，很多原材料的保质期都不长，而且SOP要求新鲜度，如果没有足够的准备，那么很快你就发现自己手里的钢镚根本吃不住烧。</p>
+<p>这时候后悔，就真的晚了。</p>
+<p>如果你没有足够的运营资金等着烧，并且烧光了也不影响生活，那么还是别来玩儿奶茶店了，这行业成功率太低。</p>
+<p>我给供应链做贷款尽调的时候，见识过的普通家庭创业开奶茶店烧个妻离子散一屁股债的太多了。
+多到你想象不到。</p>
+<h3 id="3">3</h3>
+<p>经历灵魂3问，如果你还是觉得自己想要在奶茶行业一展拳脚，成为一代奶茶大师的话，那么我来和你好好讲讲奶茶加盟里的坑。</p>
+<p>其实上述的灵魂3问，各种奶茶加盟都有各种话术应对，无非是跟你讲自己是大品牌，实力雄厚，并且有足够的知名度，毛利率高，并且会帮你选址，帮你安排装修，帮你培训员工，教你如何管理，给你提供标准化的原材料，你只需要一颗创业的心和吃苦的勇气，以及一大堆加盟费就够了，
+干奶茶，他们各个都是专业的，你只要躺下数钱就行。</p>
+<p>听起来真的很诱人，而且餐饮还是出名的强流水行业，还是实业，干干干，冲冲冲。</p>
+<p>各家的话术本质都差不多，但是这些话术中隐藏着一个非常实际的问题。</p>
+<p>既然厂家什么东西都能做到位包你上手就赚钱，有你没你差不多，那他们要你干嘛？</p>
+<p>一个必然赚钱的店，煞笔才开加盟，你见过星巴克开加盟吗？</p>
+<p>实力雄厚，知名度高，且毛利高的厂家差你一个外行的十几万钢镚吗？</p>
+<p>他们不是赚钱么？不是管理能力强吗？不是7天培训上岗吗？干嘛不自己做？</p>
+<p>除非，他们说的都是假的，就靠你交加盟费来养活。</p>
+<p>吃的就是外行不懂。</p>
+<p>绝大多数奶茶加盟，本质上就是厂家在割加盟者的韭菜，这个流程已经非常熟练了。</p>
+<p>其实也不局限于奶茶，各种品牌加盟的玩法，越来越像资金盘做局了。</p>
+<p>先搞几家样板店，然后雇人来买，造成特别火爆的假象，然后择机开放加盟，疯狂打广告，吸引人加盟。</p>
+<p>加入前他是儿子般的态度，交钱后他就是爹。</p>
+<p>加盟费割一笔，培训费割一笔，然后就是原材料高价割一笔，流水抽成赚一笔，时不时巡店罚款割一笔，最后保证金再割一笔。</p>
+<p>你赚不赚不重要，重要的是他们赚了，不仅赚了钱，而且韭菜们开了这么多店，无形中给他们打了很多广告，甚至有的品牌的考核还有拉多少人开店才能返还保证金，彻彻底底的资金盘玩法。</p>
+<p>之前在抖音爆火的某茶，一口气搞了6000多家加盟，最火爆的时候，一条街能有3家某案茶，结果3个月不到，倒闭了80%，但这不重要，因为厂家早就赚嗨了，可以换一个新品牌接着割了。</p>
+<p>可怜了那些负债加盟的人，以及他们的家庭。</p>
+<h3 id="4">4</h3>
+<p>再说具体点，当你选择加盟一家奶茶后，会发生什么事情。</p>
+<p>记清楚，加盟商的目的不是帮你赚钱，而是从你手上赚钱，这一点非常重要。</p>
+<p>首先你得交加盟费，有的品牌收几万块，有的收几千块，随着韭菜不好割了，已经开始有品牌开始0加盟费了，靠后面的运营来赚你钱。</p>
+<p>然后你得交保证金，这个不同品牌不一样，但是说法都差不多，这个保证金是约束，防止你做对品牌不利的事情，只要XXX时间没问题或者退出时，保证金会还给你，当然最终还不还给你就不知道了。
+培训费和培训之类的洗脑就不说了，我管这套叫做韭菜三板斧。</p>
+<p>当你经历了三板斧之后，你需要有一个店铺地址。</p>
+<p>这里就考验你拿店的能力了，每个城市，哪怕是县城，那些人流量大的好位置也都是有限的，不要想着找便宜的地方。</p>
+<p>奶茶店最重要的三要素，地理位置，地理位置，还是地理位置，就算你打算做外卖，也要选附近有学校或者是CBD。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -225,12 +204,18 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-23T09:13:28Z">2019-02-23 09:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-02-23T09:13:28Z">2019.02.23 09:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		天然气热水器莫名其妙就不打火了，然后到58上找了维修公司，在电话里问维修多少钱就是死活不说，连区间都不说。然后就是维修员上门检修20元。 就换了这么个零件，看着也不是特别精密的零件，问师傅换这个多少钱，说是300元。到最后收费的时候说是380，这两个数字听起来很像吗？我能听错！！还要加50元人工费，合计450元。 或许这就是维修公司的套路吧，开始不说多少钱，总是催着你什么时候可以上门维修，维修的时候又说这坏那坏了，换个零件又很贵。网上一看二手的都不过300块，还不及一个零件贵。还有就是问价格的时候一定要多次确认多少钱后再决定是否需要更换。最后要保留维修票据，以免日后保修。
+		<p>天然气热水器莫名其妙就不打火了，然后到58上找了维修公司，在电话里问维修多少钱就是死活不说，连区间都不说。然后就是维修员上门检修20元。
+<img src="https://hopefully-img.yuedun.wang/IMG_8158.jpg" alt="">
+<img src="https://hopefully-img.yuedun.wang/IMG_8156.jpg" alt="">
+<img src="https://hopefully-img.yuedun.wang/IMG_8157.jpg" alt="">
+<img src="https://hopefully-img.yuedun.wang/IMG_8155.jpg" alt="">
+就换了这么个零件，看着也不是特别精密的零件，问师傅换这个多少钱，说是300元。到最后收费的时候说是380，这两个数字听起来很像吗？我能听错！！还要加50元人工费，合计450元。
+或许这就是维修公司的套路吧，开始不说多少钱，总是催着你什么时候可以上门维修，维修的时候又说这坏那坏了，换个零件又很贵。网上一看二手的都不过300块，还不及一个零件贵。还有就是问价格的时候一定要多次确认多少钱后再决定是否需要更换。最后要保留维修票据，以免日后保修。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -244,19 +229,43 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-08-05T03:47:06Z">2018-08-05 03:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-08-05T03:47:06Z">2018.08.05 03:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		要说前端界的发展速度，那真是快！
-2012年那时候接触过extjs，用于企业级后台开发还真不错，有好看的UI界面，组件丰富，基本能满足各类需求。但此时，HTML5正在蓬勃发展，尤其是乔布斯宣布苹果设备不支持flash后HTML5发展更是迅猛。并且angularjs这类MVVM框架被大多数所知，reactjs,vuejs如雨后春笋般生长。
-2014年使用了一段时间angularjs，感觉学习难度有点大，并且据官方说2.0下向下兼容于是放弃继续学习。2015年使用vue1.0做了一个项目后我逢人便说angular，vue有多好用，推荐他们放弃jquery使用vue。不到2年时间再看看前端界，vue，react等框架已经是前端开发标配，如果你说公司项目还在使用jquery会被人笑话，对于前端新人MVVM框架是必学，jquery反而不会被重视。
-这就导致一个结果：**“手里拿着锤子，看什么都是钉子”，因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。**就拿一个需要SEO的网站来说，该选择哪种技术好？如果只会vue，那么肯定是选择vue，就算vue不太适合做这类网站，也会拿出ssr来强行做事。殊不知需要SEO的网站使用静态文件是最合适的。大多数人认为前后端分离是使用vue，react，angular，使用jquery的不叫前后端分离，这完全是搞混了概念，实际上后端的controller层也属于视图层，也可以归属于前端。
-现在去网上一搜，问一下身边的人怎么看待前后端分离的，大多数人秉持着支持的态度，认为前后端分离好处多多，列举几条：
-专业的人做专业的事 前后并行开发，效率高 前端工程化，组件化 解耦 降低了开发学习难度 等等…… 大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：
-增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。 一般前端开发速度会比后端快，在接口没开发好时前端只能闲等着。也有反过来的情况。前后端分离也意味着任务关联性减弱，可能不是同时开发，需要一方催着一方来完成。 跨域问题导致联调困难，前端只能等待接口开发上了服务器才能调试。 职责分离后确认职责也困难，一个问题出现到底是谁的问题？谁解决？ 一个需求需要前后端开发同时参与理解需求，有理解偏差问题。 小公司多一个人多一份支出。 那么到底该不该进行前后端分离，如何进行技术选型？这需要根据一些实际情况来决定，大体判断准则有以下几点：
-后台系统采用前后端分离比较合适。 需要SEO引流的就不要强行前后端分离了，react，vue的服务端渲染也很勉强，徒增开发难度而已。 数据交互比较多的使用前后端分离，操作数据比jquery方便。 页面本身特别简单，只负责简单数据展示，要求打开速度，直接服务端渲染即可。这种页面本身就是单页面，如果还要使用框架就是多此一举，增加页面负担，增加开发调试难度。 开发资源充足最好前后端分离，开发资源不足时不分离，一人包揽前后台端反而更快。 最后，前后端分离是一个趋势，但不是必须。更准确的说法应该叫做“前后端分工”，毕竟在5年前这些活都是一个开发来做的，因为技术复杂性提升，前端不想只是切图，后端不想学变化太快的前端就出现了分离。你可以想象测试的工作，现在的测试大多还是测业务，但是也出现了一个自动化测试的职位，因为测试不想天天鼠标点呀点的测，想搞点高深的东西，而开发又特别烦写单元测试代码，这就又出现分离。再者，数据库也是一样，所以出现了DBA这个角色。谁知哪一天又会合起来呢！
+		<p>要说前端界的发展速度，那真是快！</p>
+<p>2012年那时候接触过extjs，用于企业级后台开发还真不错，有好看的UI界面，组件丰富，基本能满足各类需求。但此时，HTML5正在蓬勃发展，尤其是乔布斯宣布苹果设备不支持flash后HTML5发展更是迅猛。并且angularjs这类MVVM框架被大多数所知，reactjs,vuejs如雨后春笋般生长。</p>
+<p>2014年使用了一段时间angularjs，感觉学习难度有点大，并且据官方说2.0下向下兼容于是放弃继续学习。2015年使用vue1.0做了一个项目后我逢人便说angular，vue有多好用，推荐他们放弃jquery使用vue。不到2年时间再看看前端界，vue，react等框架已经是前端开发标配，如果你说公司项目还在使用jquery会被人笑话，对于前端新人MVVM框架是必学，jquery反而不会被重视。</p>
+<p>这就导致一个结果：**“手里拿着锤子，看什么都是钉子”，因为有锤子的关系，遇到任何问题，都会先想如何用锤子解决。久而久之，陷入了一种思维定式。任何工具带来便利的同时，也带来了局限性。而这往往是用锤子的人很难看到的。**就拿一个需要SEO的网站来说，该选择哪种技术好？如果只会vue，那么肯定是选择vue，就算vue不太适合做这类网站，也会拿出ssr来强行做事。殊不知需要SEO的网站使用静态文件是最合适的。大多数人认为前后端分离是使用vue，react，angular，使用jquery的不叫前后端分离，这完全是搞混了概念，实际上后端的controller层也属于视图层，也可以归属于前端。</p>
+<p>现在去网上一搜，问一下身边的人怎么看待前后端分离的，大多数人秉持着支持的态度，认为前后端分离好处多多，列举几条：</p>
+<ul>
+<li>专业的人做专业的事</li>
+<li>前后并行开发，效率高</li>
+<li>前端工程化，组件化</li>
+<li>解耦</li>
+<li>降低了开发学习难度</li>
+</ul>
+<p>等等……
+<img src="https://hopefully-img.yuedun.wang/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180805104325.jpg" alt="前后端分离" title="前后端分离"></p>
+<p>大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：</p>
+<ul>
+<li>增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。</li>
+<li>一般前端开发速度会比后端快，在接口没开发好时前端只能闲等着。也有反过来的情况。前后端分离也意味着任务关联性减弱，可能不是同时开发，需要一方催着一方来完成。</li>
+<li>跨域问题导致联调困难，前端只能等待接口开发上了服务器才能调试。</li>
+<li>职责分离后确认职责也困难，一个问题出现到底是谁的问题？谁解决？</li>
+<li>一个需求需要前后端开发同时参与理解需求，有理解偏差问题。</li>
+<li>小公司多一个人多一份支出。</li>
+</ul>
+<p>那么到底该不该进行前后端分离，如何进行技术选型？这需要根据一些实际情况来决定，大体判断准则有以下几点：</p>
+<ul>
+<li>后台系统采用前后端分离比较合适。</li>
+<li>需要SEO引流的就不要强行前后端分离了，react，vue的服务端渲染也很勉强，徒增开发难度而已。</li>
+<li>数据交互比较多的使用前后端分离，操作数据比jquery方便。</li>
+<li>页面本身特别简单，只负责简单数据展示，要求打开速度，直接服务端渲染即可。这种页面本身就是单页面，如果还要使用框架就是多此一举，增加页面负担，增加开发调试难度。</li>
+<li>开发资源充足最好前后端分离，开发资源不足时不分离，一人包揽前后台端反而更快。</li>
+</ul>
+<p>最后，前后端分离是一个趋势，但不是必须。更准确的说法应该叫做“前后端分工”，毕竟在5年前这些活都是一个开发来做的，因为技术复杂性提升，前端不想只是切图，后端不想学变化太快的前端就出现了分离。你可以想象测试的工作，现在的测试大多还是测业务，但是也出现了一个自动化测试的职位，因为测试不想天天鼠标点呀点的测，想搞点高深的东西，而开发又特别烦写单元测试代码，这就又出现分离。再者，数据库也是一样，所以出现了DBA这个角色。谁知哪一天又会合起来呢！</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -270,18 +279,99 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-28T15:31:19Z">2017-11-28 15:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>, <a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-11-28T15:31:19Z">2017.11.28 15:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>, <a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故，我们本文还是来实测一下，由于时间关系，VC还没装，书生先用PHP测试了一下，下次有时间在C/C++上补充测试到本文来，因为 PHP的底层解析应该也是基于C的，所以估计两者环境测试结果差不多，小问题大收获，现在就来看一下测试过程及结果。
-测试程序如下： //说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。
-//说明2：测试两次一次是4K数据，一次是整形数据
-set_time_limit(0); function fnGet($filename) { $content = file_get_contents($filename); return $content; } function fnGetContent($filename) { $content = fnGet($filename); return $content; } $times=100000; echo &#39;数据库查询结果：&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_row($res); $content=$row[0]; } echo &#39;fetch_row &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_array($res); $content=$row[&#39;log_Content&#39;]; } echo &#39;fetch_array &#39;.$times.&#39; 次时间：&lt;font color=red&gt;&#39;.(fnGetMicroTime()-$begin).&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;; //--------------------------------- $begin=fnGetMicroTime(); for($i=0;$i&lt;$times;$i++) { $res=$dbcon-&gt;mydb_query(&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;); $row=$dbcon-&gt;mydb_fetch_object($res); $content=$row-&gt;log_Content; } echo &#39;fetch_object &#39;.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5a1d8147da5c711b612f4d88/">阅读全文…</a>
+		<p>由于开发物流信息网，关于这个问题也是最近才想到的，就是到底读文件更快还是读数据库更快，能快多少，书生也搜索过，没见有网友就这个问题答复过， 也可能是太简单的缘故，我们本文还是来实测一下，由于时间关系，VC还没装，书生先用PHP测试了一下，下次有时间在C/C++上补充测试到本文来，因为 PHP的底层解析应该也是基于C的，所以估计两者环境测试结果差不多，小问题大收获，现在就来看一下测试过程及结果。</p>
+<h4 id="测试程序如下">测试程序如下：</h4>
+<p>//说明1：由于读数据库语句调用简单的封包函数两次，所以把读文件也改成连续调用两次，数据库记录ID为1就在第一条，并且唯一索引。</p>
+<p>//说明2：测试两次一次是4K数据，一次是整形数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">set_time_limit</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fnGet</span>($filename)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">file_get_contents</span>($filename);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> $content;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fnGetContent</span>($filename)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">fnGet</span>($filename);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> $content;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>   
+</span></span><span style="display:flex;"><span>$times<span style="color:#f92672">=</span><span style="color:#ae81ff">100000</span>;   
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;数据库查询结果：&lt;br/&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//---------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    $res<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_query</span>(<span style="color:#e6db74">&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;</span>);
+</span></span><span style="display:flex;"><span>    $row<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_fetch_row</span>($res);
+</span></span><span style="display:flex;"><span>    $content<span style="color:#f92672">=</span>$row[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;fetch_row &#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39; 次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//---------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    $res<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_query</span>(<span style="color:#e6db74">&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;</span>);
+</span></span><span style="display:flex;"><span>    $row<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_fetch_array</span>($res);
+</span></span><span style="display:flex;"><span>    $content<span style="color:#f92672">=</span>$row[<span style="color:#e6db74">&#39;log_Content&#39;</span>];   
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;fetch_array &#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39; 次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//---------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    $res<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_query</span>(<span style="color:#e6db74">&#34;SELECT log_Content FROM blog WHERE log_ID=&#39;1&#39;&#34;</span>);
+</span></span><span style="display:flex;"><span>    $row<span style="color:#f92672">=</span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_fetch_object</span>($res);
+</span></span><span style="display:flex;"><span>    $content<span style="color:#f92672">=</span>$row<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">log_Content</span>;   
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;fetch_object &#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39; 次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//---------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_free_results</span>();
+</span></span><span style="display:flex;"><span>$dbcon<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">mydb_disconnect</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fnWriteCache</span>(<span style="color:#e6db74">&#39;test.txt&#39;</span>,$content);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;直接读文件测试结果：&lt;br/&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//---------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">fnGetContent</span>(<span style="color:#e6db74">&#39;test.txt&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;file_get_contents直接读&#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//---------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>$begin<span style="color:#f92672">=</span><span style="color:#a6e22e">fnGetMicroTime</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>($i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;$i<span style="color:#f92672">&lt;</span>$times;$i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    $fname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;test.txt&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">file_exists</span>($fname))
+</span></span><span style="display:flex;"><span>     {
+</span></span><span style="display:flex;"><span>        $fp<span style="color:#f92672">=</span><span style="color:#a6e22e">fopen</span>($fname,<span style="color:#e6db74">&#34;r&#34;</span>);<span style="color:#75715e">//flock($fp,LOCK_EX);       
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        $file_data<span style="color:#f92672">=</span><span style="color:#a6e22e">fread</span>($fp, <span style="color:#a6e22e">filesize</span>($fname));<span style="color:#75715e">//rewind($fp);      
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">fclose</span>($fp);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    $content <span style="color:#f92672">=</span> <span style="color:#a6e22e">fnGetContent</span>(<span style="color:#e6db74">&#39;test.txt&#39;</span>);
+</span></span><span style="display:flex;"><span>}   
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;fopen直接读&#39;</span><span style="color:#f92672">.</span>$times<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;次时间：&lt;font color=red&gt;&#39;</span><span style="color:#f92672">.</span>(<span style="color:#a6e22e">fnGetMicroTime</span>()<span style="color:#f92672">-</span>$begin)<span style="color:#f92672">.</span><span style="color:#e6db74">&#39;&lt;/font&gt;秒&lt;br/&gt;&#39;</span>;
+</span></span></code></pre></div><h3 id="结果">结果：</h3>
+<blockquote>
+<p>4K大小数据的查询结果：
+fetch_row 100000 次时间：16.737720012665秒
+fetch_array 100000 次时间：16.661195993423秒
+fetch_object 100000 次时间：16.775065898895秒
+直接读文件测试结果：
+file_get_contents直接读100000次时间：5.4631857872009秒
+fopen直接读100000次时间：11.463611125946秒</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -295,17 +385,31 @@ set_time_limit(0); function fnGet($filename) { $content = file_get_contents($fil
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-19T04:52:57Z">2017-06-19 04:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-06-19T04:52:57Z">2017.06.19 04:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		说起居住证这东西，对于来沪务工的人平时没什么用，但是到一些关键时候却是不可缺少的，比如考驾照，子女上学，落户等。我也是来上海几年了都没办过，最近为了孩子上学做准备不得已就赶紧办了，之前之所以没办就是觉得麻烦。
-办居住证麻烦的是准备材料，其实材料准备好了一小时甚至半小时就能办好。要准备的资料当中恐怕最难的就是房东方面了，如果房东OK其他倒是很简单。
-房东方面
-房东本人 房东身份证 房产证 房产所有人身份证 租赁合同 备案证明 按照上海市条文规定，房屋租赁备案证明是要缴纳5%的房租税的，这是要房东缴纳的，所以很多房东恐怕不太愿意，但实际上目前没有具体单位来收取这个税的，如果房东还是害怕收税那你们可以商量好另拟一份房租比较低的合同。办理居住证房东还需要准备身份证，房产证，如果房产为多人共同所有，那么就需要其他共有人的身份证，其实户口本是不行的，因为要刷身份证信息的。如果无法提供其他人身份证，那么就让其他人写一份委托书，这个委托书嘛！其实是不是真正的委托人写的无所谓。如果办事处还是不能接受，那么就让房东现场写一份承诺书，大概内容就是说房东可以全权代理其他人来出租这一套房产，保证今后不会产生分歧，如有分歧可以承担一切责任。其实就是保证这套房子不是由房东私自出租就行。有些房子是由二房东来出租的，没有房产证，这种情况可以先去街道办事处问一下。房东准备这些东西其实就是为了办理房屋租赁备案证明。
-自己方面
-身份证，2份复印件 租赁合同 劳动合同 1份复印件 近6个月社保单 在办理之前需要做一些准备，先去居委问一下街道办事处地址，也可以自己网上查，别去错地方，比如我住的地方近处就有一个街道办，但并不属于这个街道办事处管理。然后关心的可能是再哪办房屋租赁备案证明，我所在的甘泉街道办事处就是在一块的，我想其他地方也是一样的，要不然去两个地方跑就太不方便了。
+		<p>说起居住证这东西，对于来沪务工的人平时没什么用，但是到一些关键时候却是不可缺少的，比如考驾照，子女上学，落户等。我也是来上海几年了都没办过，最近为了孩子上学做准备不得已就赶紧办了，之前之所以没办就是觉得麻烦。</p>
+<p>办居住证麻烦的是准备材料，其实材料准备好了一小时甚至半小时就能办好。要准备的资料当中恐怕最难的就是房东方面了，如果房东OK其他倒是很简单。</p>
+<p><strong>房东方面</strong></p>
+<ol>
+<li>房东本人</li>
+<li>房东身份证</li>
+<li>房产证</li>
+<li>房产所有人身份证</li>
+<li>租赁合同</li>
+<li>备案证明</li>
+</ol>
+<p>按照上海市条文规定，房屋租赁备案证明是要缴纳5%的房租税的，这是要房东缴纳的，所以很多房东恐怕不太愿意，但实际上目前没有具体单位来收取这个税的，如果房东还是害怕收税那你们可以商量好另拟一份房租比较低的合同。办理居住证房东还需要准备身份证，房产证，如果房产为多人共同所有，那么就需要其他共有人的身份证，其实户口本是不行的，因为要刷身份证信息的。如果无法提供其他人身份证，那么就让其他人写一份委托书，这个委托书嘛！其实是不是真正的委托人写的无所谓。如果办事处还是不能接受，那么就让房东现场写一份承诺书，大概内容就是说房东可以全权代理其他人来出租这一套房产，保证今后不会产生分歧，如有分歧可以承担一切责任。其实就是保证这套房子不是由房东私自出租就行。有些房子是由二房东来出租的，没有房产证，这种情况可以先去街道办事处问一下。房东准备这些东西其实就是为了办理房屋租赁备案证明。</p>
+<p><strong>自己方面</strong></p>
+<ol>
+<li>身份证，2份复印件</li>
+<li>租赁合同</li>
+<li>劳动合同 1份复印件</li>
+<li>近6个月社保单</li>
+</ol>
+<p>在办理之前需要做一些准备，先去居委问一下街道办事处地址，也可以自己网上查，别去错地方，比如我住的地方近处就有一个街道办，但并不属于这个街道办事处管理。然后关心的可能是再哪办房屋租赁备案证明，我所在的甘泉街道办事处就是在一块的，我想其他地方也是一样的，要不然去两个地方跑就太不方便了。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -319,13 +423,15 @@ set_time_limit(0); function fnGet($filename) { $content = file_get_contents($fil
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-21T13:28:30Z">2017-05-21 13:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-21T13:28:30Z">2017.05.21 13:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		我女儿12个月开始学走路，由于她身高还很低，所以需要大人弯着腰搀扶着，时间长了大人的腰比较累，当时就在网上买了个绑带。 本以为能轻松点，结果发现排不上用场，因为实在不好用，宝宝根本不会老实的配合，她一感觉到胸前有个东西扶着她，就整个人爬下来了，所有重点都放在牵引绳上，所以大人就只能提着，而且由于刚学走路，也不能稳当的走，总是东倒西歪，牵引绳其实不能保证宝宝的平衡，反而会过于依赖绑带，结果就导致失去平衡类似于一只脚在地上一只脚翘起来打转，也容易勒到胳膊。
-宝宝学走路一般一个月就能自己走了，所以我觉得没必要用这个。
+		<p>我女儿12个月开始学走路，由于她身高还很低，所以需要大人弯着腰搀扶着，时间长了大人的腰比较累，当时就在网上买了个绑带。
+<img src="https://hopefully-img.yuedun.wang/%E7%89%B5%E5%BC%95%E7%BB%B31.jpg" alt="牵引绳" title="牵引绳">
+本以为能轻松点，结果发现排不上用场，因为实在不好用，宝宝根本不会老实的配合，她一感觉到胸前有个东西扶着她，就整个人爬下来了，所有重点都放在牵引绳上，所以大人就只能提着，而且由于刚学走路，也不能稳当的走，总是东倒西歪，牵引绳其实不能保证宝宝的平衡，反而会过于依赖绑带，结果就导致失去平衡类似于一只脚在地上一只脚翘起来打转，也容易勒到胳膊。</p>
+<p>宝宝学走路一般一个月就能自己走了，所以我觉得没必要用这个。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -339,42 +445,48 @@ set_time_limit(0); function fnGet($filename) { $content = file_get_contents($fil
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-01-11T03:06:15Z">2017-01-11 03:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-01-11T03:06:15Z">2017.01.11 03:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		很多段子手都曾经发过《手机丢后必做的N件事》这类教程，比如：致电运营商挂失手机号；致电银行冻结手机网银；手机解绑支付宝；微信冻结账号；修改微博、微信、QQ等密码；找手机运营商补手机卡；等等等等，实际上，这类教程所要求的事情都不是必要的，真正要做到丢失后手机安全，只需要事前做两件事情：设置指纹密码和SIM卡密码。
-以iPhone为例，一般都会设置“查找我的iPhone”功能，由于iPhone有GPS定位功能，小偷如果偷到手机不关机的话，会被GPS定位追踪，因此绝大多数小偷拿到手机后做的第一件事情往往是关机，这正好让指纹锁屏密码和SIM卡PIN码发挥最大作用：如果重新开机，必须要输入手机密码才能开机，同时，SIM卡处于锁定状态，需要输入PIN码才能正常通信，输错3次PIN码后就只能用PUK码来解锁，把SIM卡拔出来查到别的手机上，也需要输入SIM卡PIN码才能通讯，也就是说，不知道PIN码，这个SIM卡就无法接收短信和拨打电话，因此小偷就无法通过这个SIM卡来盗取用户的网银、支付宝、微信上的财产，甚至，小偷连这个手机的手机号码都无法获得，更不用说盗取微信和QQ密码了。
-当然，丢失iPhone手机的用户还需要补SIM卡和设置远程抹除iPhone内容最安全，千万不要关闭“查找我的iPhone”功能，忽略那些以苹果名义发来的钓鱼邮件和短信。
-以下是iPhone指纹解锁功能设置方法和iPhone的修改SIM卡密码的方法：
-指纹密码 指纹天生就是一种个人认证工具，虽然人人都有指纹，但各不相同，据说，现在还没有发现两个指纹完全相同的人。随着年龄的增长，指纹的纹样不会发生变化。因此，使用指纹做为身份验证是非常理想的。
-iPhone指纹解锁功能设置
-iPhone设置指纹密码的具体方法是：
-第一步：依次进入iPhone的“设置”，然后再找到，并点击进入“Touch ID与密码”设置。
-第二步：接下来需要输入一次四位数字的iPhone6手机密码，这个密码就是手机解锁密码，输入密码后，就可以进入iPhone指纹识别设置界面了。然后我们就可以开始录入指纹了，点击下方的“添加指纹”开始添加。
-第三步：接下来我们按照提示开始录入指纹，请将需要设置指纹的手指放置在iPhone屏幕底部的指纹识别Home键上，按照提示放置上去，再移开手指，反复几次，等待指纹录入完成。
-第四步：以上操作完成就，就可以成功完成一个手指的指纹录入，在返回的指纹设置中，已经可以看到有一个“指纹1”的记录了，如果还想录入多个指纹信息，继续点击下方的“添加指纹”，按照上面的步骤完成其他指纹信息录入即可。
-iPhone最多支持设置5个指纹，可以同时录入自己的和自己亲人的，另外录入成功的指纹1和指纹2名称，还可以自行修改名称。指纹信息录入成功后，在iTunes Stor与App Store安装应用开启指纹识别即可。
-SIM卡密码
-SIM卡是（Subscriber Identity Module 客户识别模块）即用户身份识别卡，是手机的一张个人资料卡。SIM卡通常用来存储用户的电话号码、安全数据、通讯费用以及能让运营商判定用户是否是其公司客户的数据。当用户更换新的手机，可以直接插入旧手机原有的SIM卡，即可继续享受之前的各项手机服务。
-SIM卡的PIN码（Personal Identification Number 个人识别码）主要用于保护SIM卡的安全性和隐私性，当手机重启、或者插拔SIM卡后，需要输入最正确的SIM卡PIN码才能使用SIM卡的通讯功能（拨打电话、收发短信等操作），当输入三次失败后，SIM卡则会被锁定，而需要输入PUK码（Personal Unlock Key 个人解锁码）进行解锁，PUK码共有10次输入机会，输错10次后，SIM卡会自动启动自毁程序，使SIM卡失效。
-修改设置SIM卡PIN码的步骤是：设置 - 电话 - SIM卡PIN码，将其启用。修改PIN码要先输入原有PIN码，SIM卡的默认PIN码为0000或1234，如果都不对的话，可以输错3次，使用PUK码强制修改PIN码。
-修改SIM卡PIN码
-修改SIM卡PIN码
-PUK码由8位数字组成，这是用户无法更改的。一些SIM卡的PUK码是用户在购卡时随卡附带的，通常在卡套背后附有PUK码，也可以登录运营商的网上营业厅，在自助服务里通常会提供查询PUK码的功能。实在找不到的话，也可以致电SIM卡所属运营商的服务热线，客服人员也可以提供查询PUK码的服务。
-SIM卡的PIN码有效地防止了盗用SIM卡的情况发生，使用户的正常通信得到了可靠保障。设置了PIN码之后，当用户手机丢失后，别人无法通过取出SIM卡插入另一部手机，来进行原SIM卡的通讯功能（拨打电话、收发短信等）。因此，建议所有手机用户都立刻启用SIM卡的PIN码。
-iPhone被偷
-iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和SIM卡PIN码应该同时启用，缺一不可。如果手机的SIM卡设置了PIN码，那么这个SIM卡插入另一个手机就需要PIN码解锁，重启手机也要PIN码解锁，不解锁无法进行通讯，这从一定程度上保证了手机通讯的安全性，SIM卡默认的PIN码通常是1234，建议手机用户都修改一下这个PIN码。锁屏密码不要使用简单密码，使用数字字母组合长密码，有条件的话建议选择支持指纹密码的iPhone，其使用体验远远优于普通的密码解锁。
-2、开启“查找我的iPhone”功能。iCloud设置强密码。iCloud开通二次验证。
-3、支付宝等应用启用指纹密码。
-4、发现手机丢失后，立即打电话给移动运营商，挂失SIM卡。登录iCloud的“查找我的iPhone”功能，启用“丢失模式”。
-5、登录appleid网站，将该手机从“受信任设备”中移除。
-6、忽略那些以苹果名义发来的钓鱼邮件和短信。
-7、如果手机确认无法找回，在“查找我的iPhone”里，使用“抹掉iPhone”功能。
-8、申请一个新的SIM卡并启用。
-总结：iPhone丢失后应该做什么？丢失前：设置指纹锁屏和SIM卡PIN码；开启“查找我的iPhone”功能。iCloud设置强密码。丢失后：打电话给移动运营商，挂失SIM卡。登录iCloud，启用“丢失模式”（无法找回的话就用“抹掉iPhone”）。电话冻结绑定的支付宝和网银。申请一个新的SIM卡并启用。
-作者：月光 (williamlong) | 来自：月光博客
+		<p>很多段子手都曾经发过《手机丢后必做的N件事》这类教程，比如：致电运营商挂失手机号；致电银行冻结手机网银；手机解绑支付宝；微信冻结账号；修改微博、微信、QQ等密码；找手机运营商补手机卡；等等等等，实际上，这类教程所要求的事情都不是必要的，真正要做到丢失后手机安全，只需要事前做两件事情：设置指纹密码和SIM卡密码。</p>
+<p>以iPhone为例，一般都会设置“查找我的iPhone”功能，由于iPhone有GPS定位功能，小偷如果偷到手机不关机的话，会被GPS定位追踪，因此绝大多数小偷拿到手机后做的第一件事情往往是关机，这正好让指纹锁屏密码和SIM卡PIN码发挥最大作用：如果重新开机，必须要输入手机密码才能开机，同时，SIM卡处于锁定状态，需要输入PIN码才能正常通信，输错3次PIN码后就只能用PUK码来解锁，把SIM卡拔出来查到别的手机上，也需要输入SIM卡PIN码才能通讯，也就是说，不知道PIN码，这个SIM卡就无法接收短信和拨打电话，因此小偷就无法通过这个SIM卡来盗取用户的网银、支付宝、微信上的财产，甚至，小偷连这个手机的手机号码都无法获得，更不用说盗取微信和QQ密码了。</p>
+<p>当然，丢失iPhone手机的用户还需要补SIM卡和设置远程抹除iPhone内容最安全，千万不要关闭“查找我的iPhone”功能，忽略那些以苹果名义发来的钓鱼邮件和短信。</p>
+<p>以下是iPhone指纹解锁功能设置方法和iPhone的修改SIM卡密码的方法：</p>
+<h3 id="指纹密码">指纹密码</h3>
+<p>指纹天生就是一种个人认证工具，虽然人人都有指纹，但各不相同，据说，现在还没有发现两个指纹完全相同的人。随着年龄的增长，指纹的纹样不会发生变化。因此，使用指纹做为身份验证是非常理想的。</p>
+<p><img src="https://hopefully-img.yuedun.wang/FnASLtfbNS8hUg2Vl1_qOnGtx7R3" alt="FnASLtfbNS8hUg2Vl1_qOnGtx7R3"></p>
+<p>iPhone指纹解锁功能设置</p>
+<p>iPhone设置指纹密码的具体方法是：</p>
+<p>第一步：依次进入iPhone的“设置”，然后再找到，并点击进入“Touch ID与密码”设置。</p>
+<p>第二步：接下来需要输入一次四位数字的iPhone6手机密码，这个密码就是手机解锁密码，输入密码后，就可以进入iPhone指纹识别设置界面了。然后我们就可以开始录入指纹了，点击下方的“添加指纹”开始添加。</p>
+<p>第三步：接下来我们按照提示开始录入指纹，请将需要设置指纹的手指放置在iPhone屏幕底部的指纹识别Home键上，按照提示放置上去，再移开手指，反复几次，等待指纹录入完成。</p>
+<p>第四步：以上操作完成就，就可以成功完成一个手指的指纹录入，在返回的指纹设置中，已经可以看到有一个“指纹1”的记录了，如果还想录入多个指纹信息，继续点击下方的“添加指纹”，按照上面的步骤完成其他指纹信息录入即可。</p>
+<p>iPhone最多支持设置5个指纹，可以同时录入自己的和自己亲人的，另外录入成功的指纹1和指纹2名称，还可以自行修改名称。指纹信息录入成功后，在iTunes Stor与App Store安装应用开启指纹识别即可。</p>
+<p>SIM卡密码</p>
+<p>SIM卡是（Subscriber Identity Module 客户识别模块）即用户身份识别卡，是手机的一张个人资料卡。SIM卡通常用来存储用户的电话号码、安全数据、通讯费用以及能让运营商判定用户是否是其公司客户的数据。当用户更换新的手机，可以直接插入旧手机原有的SIM卡，即可继续享受之前的各项手机服务。</p>
+<p>SIM卡的PIN码（Personal Identification Number 个人识别码）主要用于保护SIM卡的安全性和隐私性，当手机重启、或者插拔SIM卡后，需要输入最正确的SIM卡PIN码才能使用SIM卡的通讯功能（拨打电话、收发短信等操作），当输入三次失败后，SIM卡则会被锁定，而需要输入PUK码（Personal Unlock Key 个人解锁码）进行解锁，PUK码共有10次输入机会，输错10次后，SIM卡会自动启动自毁程序，使SIM卡失效。</p>
+<p>修改设置SIM卡PIN码的步骤是：设置 - 电话 - SIM卡PIN码，将其启用。修改PIN码要先输入原有PIN码，SIM卡的默认PIN码为0000或1234，如果都不对的话，可以输错3次，使用PUK码强制修改PIN码。</p>
+<p><img src="https://hopefully-img.yuedun.wang/Fu-b7LZzy2dWpNEJU1btye-Xehqj" alt="Fu-b7LZzy2dWpNEJU1btye-Xehqj"></p>
+<p>修改SIM卡PIN码</p>
+<p><img src="https://hopefully-img.yuedun.wang/FtLIcdX2Zvb59fvDD9Jt8q4pTM99" alt="FtLIcdX2Zvb59fvDD9Jt8q4pTM99"></p>
+<p>修改SIM卡PIN码</p>
+<p>PUK码由8位数字组成，这是用户无法更改的。一些SIM卡的PUK码是用户在购卡时随卡附带的，通常在卡套背后附有PUK码，也可以登录运营商的网上营业厅，在自助服务里通常会提供查询PUK码的功能。实在找不到的话，也可以致电SIM卡所属运营商的服务热线，客服人员也可以提供查询PUK码的服务。</p>
+<p>SIM卡的PIN码有效地防止了盗用SIM卡的情况发生，使用户的正常通信得到了可靠保障。设置了PIN码之后，当用户手机丢失后，别人无法通过取出SIM卡插入另一部手机，来进行原SIM卡的通讯功能（拨打电话、收发短信等）。因此，建议所有手机用户都立刻启用SIM卡的PIN码。</p>
+<p><img src="https://hopefully-img.yuedun.wang/Fp7LoSQoWDETlTBB3kFgLHg2VhV5" alt="Fp7LoSQoWDETlTBB3kFgLHg2VhV5"></p>
+<p>iPhone被偷</p>
+<h3 id="iphone丢失前后的处理流程">iPhone丢失前后的处理流程</h3>
+<p>1、手机的指纹锁屏（密码锁屏）和SIM卡PIN码应该同时启用，缺一不可。如果手机的SIM卡设置了PIN码，那么这个SIM卡插入另一个手机就需要PIN码解锁，重启手机也要PIN码解锁，不解锁无法进行通讯，这从一定程度上保证了手机通讯的安全性，SIM卡默认的PIN码通常是1234，建议手机用户都修改一下这个PIN码。锁屏密码不要使用简单密码，使用数字字母组合长密码，有条件的话建议选择支持指纹密码的iPhone，其使用体验远远优于普通的密码解锁。</p>
+<p>2、开启“查找我的iPhone”功能。iCloud设置强密码。iCloud开通二次验证。</p>
+<p>3、支付宝等应用启用指纹密码。</p>
+<p>4、发现手机丢失后，立即打电话给移动运营商，挂失SIM卡。登录iCloud的“查找我的iPhone”功能，启用“丢失模式”。</p>
+<p>5、登录appleid网站，将该手机从“受信任设备”中移除。</p>
+<p>6、忽略那些以苹果名义发来的钓鱼邮件和短信。</p>
+<p>7、如果手机确认无法找回，在“查找我的iPhone”里，使用“抹掉iPhone”功能。</p>
+<p>8、申请一个新的SIM卡并启用。</p>
+<p>总结：iPhone丢失后应该做什么？丢失前：设置指纹锁屏和SIM卡PIN码；开启“查找我的iPhone”功能。iCloud设置强密码。丢失后：打电话给移动运营商，挂失SIM卡。登录iCloud，启用“丢失模式”（无法找回的话就用“抹掉iPhone”）。电话冻结绑定的支付宝和网银。申请一个新的SIM卡并启用。</p>
+<p>作者：月光 (williamlong) | 来自：月光博客</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -388,15 +500,18 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T10:03:26Z">2016-11-05 10:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T10:03:26Z">2016.11.05 10:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		在遥远的未来，由于最后一次世界大战破坏了所有科学文明，曾经君临天下的贵族，凌驾于人类的统治者吸血鬼面临着原因不明的物种衰退，但是他们仍然威胁着人类的生存，猎杀吸血鬼的职业猎人便应运而生。其中人与吸血鬼贵族的混血儿由于兼备了吸血鬼和人类两方的优点，理所当然的成为了最理想的猎人。然而不幸的是，这些被称为“丹皮尔”的混血儿，无法过正常人的生活，就连吸血鬼也不欢迎他们。在这群孤独的人中有一位英俊的佼佼者，他就是吸血鬼猎人D。
-故事发生在西历12090年，埃尔邦家族的小姐夏洛特被吸血鬼贵族玛埃尔从家中绑架，于是埃尔邦老爷雇佣了远近闻名，连吸血鬼贵族也害怕的第一吸血鬼猎人D和另一组猎人玛克斯兄妹去救回女儿。
-外表高贵俊美，一身漆黑，骑着黑马的“D”，与玛克斯兄妹一路追踪驾马车逃走的吸血鬼。途中D和玛克斯兄妹为争夺奖金发生激斗，并且得知夏洛特并非被绑架，而是爱上了吸血鬼玛埃尔，但他们的爱不被接受，所以他们打算到没有人类和吸血鬼贵族的理想国度“夜之都”去过平静的生活。D受到贵族三杰“影子使者”、“千面人”和“狼人”的阻击，关键时刻D的“阳光症”发作，玛克斯兄妹中的雷拉及时伸出援手，他们约定两人中不管谁先死，另一个一定要到墓上献花。吸血鬼玛埃尔的目的地是让吸血鬼都闻风丧胆，被称为“喋血伯爵夫人”卡蜜拉的旧领地切迪城堡。卡蜜拉称自己理解他们，愿意帮助他们离开纷乱的世界前往理想的国度，并向他们展示了城堡内的飞船。
-一切都看似顺利，但玛埃尔和夏洛特没有想到卡蜜拉邀请他们来此只是一个险恶的阴谋，卡蜜拉为了复活需要夏洛特的鲜血。一番恶斗后，D彻底消灭了卡蜜拉，被吸血鬼洗礼的夏洛特则昏死在吸血鬼玛埃尔的怀中，等待新的生命。城堡在主人消失后开始崩溃，玛埃尔抱着夏洛特乘上飞船飞上蓝天，飞向他们梦想的地方。很多年过去了，在雷拉的葬礼上，她的小孙女看到远处的黑衣猎人，D遵守了和雷拉的约定。
+		<p><img src="https://hopefully-img.yuedun.wang/FhVgrAON10Nk97pm8lj1X-2Gt28n" alt="FhVgrAON10Nk97pm8lj1X-2Gt28n"></p>
+<p>在遥远的未来，由于最后一次世界大战破坏了所有科学文明，曾经君临天下的贵族，凌驾于人类的统治者吸血鬼面临着原因不明的物种衰退，但是他们仍然威胁着人类的生存，猎杀吸血鬼的职业猎人便应运而生。其中人与吸血鬼贵族的混血儿由于兼备了吸血鬼和人类两方的优点，理所当然的成为了最理想的猎人。然而不幸的是，这些被称为“丹皮尔”的混血儿，无法过正常人的生活，就连吸血鬼也不欢迎他们。在这群孤独的人中有一位英俊的佼佼者，他就是吸血鬼猎人D。</p>
+<p><img src="https://hopefully-img.yuedun.wang/FhtzqbmnV5wTdpyM85eMX6lDMfVw" alt="FhtzqbmnV5wTdpyM85eMX6lDMfVw"></p>
+<p>故事发生在西历12090年，埃尔邦家族的小姐夏洛特被吸血鬼贵族玛埃尔从家中绑架，于是埃尔邦老爷雇佣了远近闻名，连吸血鬼贵族也害怕的第一吸血鬼猎人D和另一组猎人玛克斯兄妹去救回女儿。</p>
+<p>外表高贵俊美，一身漆黑，骑着黑马的“D”，与玛克斯兄妹一路追踪驾马车逃走的吸血鬼。途中D和玛克斯兄妹为争夺奖金发生激斗，并且得知夏洛特并非被绑架，而是爱上了吸血鬼玛埃尔，但他们的爱不被接受，所以他们打算到没有人类和吸血鬼贵族的理想国度“夜之都”去过平静的生活。D受到贵族三杰“影子使者”、“千面人”和“狼人”的阻击，关键时刻D的“阳光症”发作，玛克斯兄妹中的雷拉及时伸出援手，他们约定两人中不管谁先死，另一个一定要到墓上献花。吸血鬼玛埃尔的目的地是让吸血鬼都闻风丧胆，被称为“喋血伯爵夫人”卡蜜拉的旧领地切迪城堡。卡蜜拉称自己理解他们，愿意帮助他们离开纷乱的世界前往理想的国度，并向他们展示了城堡内的飞船。</p>
+<p><img src="https://hopefully-img.yuedun.wang/Fv8PiQ_0oQ3e49g843uiXhZBA2tL" alt="Fv8PiQ_0oQ3e49g843uiXhZBA2tL"></p>
+<p>一切都看似顺利，但玛埃尔和夏洛特没有想到卡蜜拉邀请他们来此只是一个险恶的阴谋，卡蜜拉为了复活需要夏洛特的鲜血。一番恶斗后，D彻底消灭了卡蜜拉，被吸血鬼洗礼的夏洛特则昏死在吸血鬼玛埃尔的怀中，等待新的生命。城堡在主人消失后开始崩溃，玛埃尔抱着夏洛特乘上飞船飞上蓝天，飞向他们梦想的地方。很多年过去了，在雷拉的葬礼上，她的小孙女看到远处的黑衣猎人，D遵守了和雷拉的约定。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -410,16 +525,18 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-09-03T00:25:13Z">2016-09-03 00:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-09-03T00:25:13Z">2016.09.03 00:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		每个上班的人都会有这样的情况：在公司写一篇文档，设计一份PPT，但是此时已经下班了，又不想继续待在公司做，想拿回家做，所以只能将正在做的文件拷到U盘带回家，或保存到网络硬盘里，回家以后再打开自己的电脑插上U盘打开文件，做完以后再拷到U盘，说不定第二天还忘记带U盘，到了公司还得重做。
-基于以上情况，目前想到的有两种解决方案：
-第一种，在公司和家里的电脑上分别安装teamviewer软件，登录注册添加远程计算机，回家以后不需要再携带U盘，打开自己的电脑可以直接远程公司电脑工作。
-第二种，虽然第一种方法省去了带U盘的麻烦，但还是要开自己的电脑远程连接才行，也没省多少事。终究还是要开自己的电脑才能开始工作，而且远程连接的体验也不是很好，屏幕分辨率不一致导致显示效果不一样，尤其是字体会放大缩小。如果有条件的话何不在家里配一台大屏幕的显示器。而且你买一台三五千的笔记本就看看电影之类的小事情那就大才小用了，也根本没必要。所以我们何不将公司的电脑当做自己拿回来用呢！我的意思不是真的将公司的电脑扛回来用，而是用公司的电脑主机，家里只需要显示器，鼠键即可。要实现这样的需求要借助目前一些现成的解决方案。
-比如http://www.yun0101.com/xnhcp/nc61.html这样的设备，或者以前一家公司使用过的华为云终端。只需要一个小盒子即可连接云主机。第二种方案是我想要的，但是还没有亲自实现，需要继续探究去实现。
+		<p>每个上班的人都会有这样的情况：在公司写一篇文档，设计一份PPT，但是此时已经下班了，又不想继续待在公司做，想拿回家做，所以只能将正在做的文件拷到U盘带回家，或保存到网络硬盘里，回家以后再打开自己的电脑插上U盘打开文件，做完以后再拷到U盘，说不定第二天还忘记带U盘，到了公司还得重做。</p>
+<p>基于以上情况，目前想到的有两种解决方案：<br>
+第一种，在公司和家里的电脑上分别安装teamviewer软件，登录注册添加远程计算机，回家以后不需要再携带U盘，打开自己的电脑可以直接远程公司电脑工作。</p>
+<p><img src="https://hopefully-img.yuedun.wang/teamviewer.png" alt=""></p>
+<p>第二种，虽然第一种方法省去了带U盘的麻烦，但还是要开自己的电脑远程连接才行，也没省多少事。终究还是要开自己的电脑才能开始工作，而且远程连接的体验也不是很好，屏幕分辨率不一致导致显示效果不一样，尤其是字体会放大缩小。如果有条件的话何不在家里配一台大屏幕的显示器。而且你买一台三五千的笔记本就看看电影之类的小事情那就大才小用了，也根本没必要。所以我们何不将公司的电脑当做自己拿回来用呢！我的意思不是真的将公司的电脑扛回来用，而是用公司的电脑主机，家里只需要显示器，鼠键即可。要实现这样的需求要借助目前一些现成的解决方案。</p>
+<p><img src="https://hopefully-img.yuedun.wang/201249164126152.jpg" alt=""></p>
+<p>比如<a href="http://www.yun0101.com/xnhcp/nc61.html">http://www.yun0101.com/xnhcp/nc61.html</a>这样的设备，或者以前一家公司使用过的华为云终端。只需要一个小盒子即可连接云主机。第二种方案是我想要的，但是还没有亲自实现，需要继续探究去实现。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -433,13 +550,14 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-08-11T05:21:53Z">2016-08-11 05:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-08-11T05:21:53Z">2016.08.11 05:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		以iphone5s来说明，要关闭屏幕通常需要按顶部电源键，但是iphone5s的电源键高度太低，如果再装个手机壳的话基本很难按到，或者需要很大的力气才能锁屏。而且长期按压也会按坏，就算现在没坏也有这样的担心不是吗？所以我们希望有个快捷方式点击屏幕就能锁屏，所幸iphone提供了这样的功能，不过默认没有放到第一级菜单中，所以不太好找，但是可以通过设置来放到第一级菜单，就是屏幕上的虚拟home键打开后的菜单。
-设置-通用-辅助功能-AssistiveTouch-自定顶层菜单，点击一个不常用的按钮，选择锁定屏幕，完成。
+		<p>以iphone5s来说明，要关闭屏幕通常需要按顶部电源键，但是iphone5s的电源键高度太低，如果再装个手机壳的话基本很难按到，或者需要很大的力气才能锁屏。而且长期按压也会按坏，就算现在没坏也有这样的担心不是吗？所以我们希望有个快捷方式点击屏幕就能锁屏，所幸iphone提供了这样的功能，不过默认没有放到第一级菜单中，所以不太好找，但是可以通过设置来放到第一级菜单，就是屏幕上的虚拟home键打开后的菜单。</p>
+<p><img src="https://hopefully-img.yuedun.wang/quicklock.jpg" alt=""></p>
+<p>设置-通用-辅助功能-AssistiveTouch-自定顶层菜单，点击一个不常用的按钮，选择锁定屏幕，完成。</p>
 	</div>
 </article>
 
@@ -459,7 +577,7 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -475,13 +593,12 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -519,99 +636,99 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -639,13 +756,14 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

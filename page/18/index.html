@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.106.0">
+	<meta name="generator" content="Hugo 0.148.2">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,90 +9,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 		
-		<meta property="og:title" content="月盾的博客" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/" />
+		<meta property="og:url" content="https://www.yuedun.wang/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="月盾的博客">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="月盾的博客">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="月盾的博客">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="月盾的博客">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -150,12 +117,12 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-08T03:32:50Z">2015-11-08 03:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-08T03:32:50Z">2015.11.08 03:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		昨天用了一天的手机，晚上用着突然就黑屏了，死活开不了机，以为是没电了，充电时也开不了机。奇怪的是用了一天一直显示满电，怎么突然就坏掉了。抠电板试试，还是开不了机。扣电板充电，总算有点反应了，但是还是开不了机，不过这种情况遇见过，就是刚买回来试试有没有问题时没装电池充电一闪一闪的震动就是开不了机。后来才发现要装了电池才能开机，但是这次为什么装了电池也开不了机，反而是一点反应也没有。今天早上起来用数据线连接电脑打算刷机试试，刚连接电脑也是开不了机，就把电池扣掉，这时出现了充电的反应，原来是一点电量都没有了。充了一会总算是开机了。所以，如果突然开不了机可能是一点电都没有了，建议先充一会电再开机试试。
+		<p>昨天用了一天的手机，晚上用着突然就黑屏了，死活开不了机，以为是没电了，充电时也开不了机。奇怪的是用了一天一直显示满电，怎么突然就坏掉了。抠电板试试，还是开不了机。扣电板充电，总算有点反应了，但是还是开不了机，不过这种情况遇见过，就是刚买回来试试有没有问题时没装电池充电一闪一闪的震动就是开不了机。后来才发现要装了电池才能开机，但是这次为什么装了电池也开不了机，反而是一点反应也没有。今天早上起来用数据线连接电脑打算刷机试试，刚连接电脑也是开不了机，就把电池扣掉，这时出现了充电的反应，原来是一点电量都没有了。充了一会总算是开机了。所以，如果突然开不了机可能是一点电都没有了，建议先充一会电再开机试试。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -169,16 +136,42 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-03T03:02:54Z">2015-11-03 03:02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-03T03:02:54Z">2015.11.03 03:02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但是结果很不理想，waterfall的很多参数不管是什么用处，反正看着很头疼，最麻烦的是它会改变页面样式和布局，实在不想调整了，还是自己实现这个功能吧！
-首先看下面代码：
-var pageIndex = 2; (function loadmore() { //绑定滚动事件 $(window).bind(&#34;scroll&#34;, function() { if ($(this).scrollTop() + $(window).height() + 40 &gt;= $(document).height() &amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40) { $(window).unbind(&#34;scroll&#34;); //到底后先移除滚动事件 $.get(&#34;/portal/getTopic?pageIndex=&#34; + pageIndex + &#34;&amp;amp;pageSize=3&#34;, function(data) { $(&#34;#container&#34;).append(data); pageIndex++; loadmore(); //数据加载成功重新绑定滚动事件 }, &#34;html&#34;); }; }); })(); 没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。
-先来说明如何判断页面是否滚动到最底部，$(this).scrollTop()用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是$(this).scrollTop() + $(window).height()=$(document).height()，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么$(this).scrollTop() + $(window).height()就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有&amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。
-已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，$(window).unbind(&quot;scroll&quot;);等数据添加到页面以后再重新绑定滚动事件。
+		<p>以前在页面中动态加载帖子数据使用了waterfall.js插件，当初折腾了不少时间才搞定，这次又有一个页面需要动态加载数据，自然想到了waterfall插件，但是结果很不理想，waterfall的很多参数不管是什么用处，反正看着很头疼，最麻烦的是它会改变页面样式和布局，实在不想调整了，还是自己实现这个功能吧！</p>
+<p>首先看下面代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">loadmore</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//绑定滚动事件  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">bind</span>(<span style="color:#e6db74">&#34;scroll&#34;</span>,  <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">scrollTop</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">height</span>() <span style="color:#f92672">+</span> <span style="color:#ae81ff">40</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">height</span>() <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>;<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">amp</span>; <span style="color:#a6e22e">$</span>(<span style="color:#66d9ef">this</span>).<span style="color:#a6e22e">scrollTop</span>() <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">40</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">$</span>(window).<span style="color:#a6e22e">unbind</span>(<span style="color:#e6db74">&#34;scroll&#34;</span>); <span style="color:#75715e">//到底后先移除滚动事件  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/portal/getTopic?pageIndex=&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">pageIndex</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&amp;amp;pageSize=3&#34;</span>,  
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#34;#container&#34;</span>).<span style="color:#a6e22e">append</span>(<span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">pageIndex</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">loadmore</span>(); <span style="color:#75715e">//数据加载成功重新绑定滚动事件  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            },  
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;html&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><p>没错，就这么点，这已经是实现功能的最简单版本了。代码的基本流程是给页面绑定滚动事件，判断是否滚动到最底部，然后加载数据。但实际上并不是这么简单就能行的，有很多意外情况需要解决。</p>
+<p>先来说明如何判断页面是否滚动到最底部，<code>$(this).scrollTop()</code>用来计算滚动条顶端距离窗口顶部的距离，整个滚动条高度大约等于整个页面高度。当滚动条滚动到最底部的时候，滚动条顶端距离窗口顶部并不是整个页面的高度，还需要加上当前窗口所占高度才是整个页面正真的高度。所以就是<code>$(this).scrollTop() + $(window).height()=$(document).height()</code>，但是我们为什么还要加40呢？因为一般滚动到底部加载并不是完全要滚动到最低端才加载，而是差不多已经到底的时候就要开始加载，既然是差不多到底那么<code>$(this).scrollTop() + $(window).height()</code>就是还不完全等于整个页面高度，因为还有40没有滚动，所以加上了才是整个页面高度。此时滚动到距离最底部还有40像素的时候，再滚动一点就会大于页面高度，就该加载数据了。代码中还有<code>&amp;amp;&amp;amp; $(this).scrollTop() &gt;= 40</code>是为了监听有滚动发生，总不能在没有滚动事件发生时就加载。</p>
+<p>已经能够监听到是否滚动到底部了，但是滚动事件是稍微滚动一点就能触发好多次，就会请求好多次数据，就算数据没有返回稍微滚动就会继续发送同样请求，所以在数据没有返回之前要把监听滚动移除掉，<code>$(window).unbind(&quot;scroll&quot;);</code>等数据添加到页面以后再重新绑定滚动事件。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -192,20 +185,25 @@ var pageIndex = 2; (function loadmore() { //绑定滚动事件 $(window).bind(&#
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-28T06:23:43Z">2015-10-28 06:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-28T06:23:43Z">2015.10.28 06:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		网站的css样式文件在多次修改后会有很多样式废弃不再使用，使得维护起来困难，还可能出现重名样式，后面的覆盖掉前面的效果，所以有必要清除掉不再使用的样式。可以使用的工具很多，不过在使用了Dust-Me Selectors觉得足够了。
-https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/
-打开上面网址安装
-直接点击这个小扫把会检测当前页面没有使用的样式，不过这样的结果还不是我们想要的，因为当前页面没有使用不代表其他页面也没有使用。我们更需要的是找出整个网站中未使用的样式。
-选择第一项“Spider Sitemap”，就像是百度蜘蛛爬取整个网站数据一样。
-输入网址，本地网址和网络地址都可以检测，点击“Start”后很快就有结果了，如果页面较多会费时些。
-可以看到有橘黄色部分就是没有使用的样式，但是这也不能完全代表就是没有使用过，上面三个未使用的样式是我对于博客内容的图片和引用块使用的样式，因为本地的测试内容中的确没有使用这三个样式，但是线上的网站却使用了，遇到这种情况就需要仔细甄别了。
-再看一下扫描的页面日志
-基本的页面都有扫描过了。此时可以手动删除掉没有使用的样式，这个插件对于简单的网站够用了，但是大型网站就不准确了，当然有些其他工具还可以导出检测后的结果。有必要的可以去下载。
+		<p>网站的css样式文件在多次修改后会有很多样式废弃不再使用，使得维护起来困难，还可能出现重名样式，后面的覆盖掉前面的效果，所以有必要清除掉不再使用的样式。可以使用的工具很多，不过在使用了Dust-Me Selectors觉得足够了。</p>
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/">https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/</a></p>
+<p>打开上面网址安装</p>
+<p><img src="https://hopefully-img.yuedun.wang/dust1.png" alt=""></p>
+<p>直接点击这个小扫把会检测当前页面没有使用的样式，不过这样的结果还不是我们想要的，因为当前页面没有使用不代表其他页面也没有使用。我们更需要的是找出整个网站中未使用的样式。</p>
+<p><img src="https://hopefully-img.yuedun.wang/dust2.png" alt=""></p>
+<p>选择第一项“Spider Sitemap”，就像是百度蜘蛛爬取整个网站数据一样。</p>
+<p><img src="https://hopefully-img.yuedun.wang/dust3.png" alt=""></p>
+<p>输入网址，本地网址和网络地址都可以检测，点击“Start”后很快就有结果了，如果页面较多会费时些。</p>
+<p><img src="https://hopefully-img.yuedun.wang/dust4.png" alt=""></p>
+<p>可以看到有橘黄色部分就是没有使用的样式，但是这也不能完全代表就是没有使用过，上面三个未使用的样式是我对于博客内容的图片和引用块使用的样式，因为本地的测试内容中的确没有使用这三个样式，但是线上的网站却使用了，遇到这种情况就需要仔细甄别了。</p>
+<p>再看一下扫描的页面日志</p>
+<p><img src="https://hopefully-img.yuedun.wang/dust5.png" alt=""></p>
+<p>基本的页面都有扫描过了。此时可以手动删除掉没有使用的样式，这个插件对于简单的网站够用了，但是大型网站就不准确了，当然有些其他工具还可以导出检测后的结果。有必要的可以去下载。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -219,32 +217,32 @@ https://addons.mozilla.org/en-US/firefox/addon/dust-me-selectors/
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-26T03:23:21Z">2015-10-26 03:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-26T03:23:21Z">2015.10.26 03:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		首先需要知道配置文件的位置，比如我们的服务器中我就找到很多关于svn的目录，甚至分不清哪个目录下才是真正的配置文件
-root@handou:~# find / -name subversion
-/home/handou/workspace/subversion-1.8.11/subversion
-/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/src/org/apache/subversion
-/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/src/org/tigris/subversion
-/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/tests/org/apache/subversion
-/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/tests/org/tigris/subversion
-/etc/bash_completion.d/subversion
-/etc/subversion
-/usr/share/doc/subversion
-查找所得结果可以确定应该是在 /etc/subversion下，切换到subversion下有多个文件：
-config config.dpkg-dist dav_svn.authz dav_svn.passwd passwd servers
-可能需要一一查看下都是什么内容，其实主要是dav_svn.authz dav_svn.passwd这两个文件，一个存放用户名，一个存放密码，dav_svn.authz内容包含账号和权限：
-[groups]
-apiadmin=yuedun
-[handou:/]
-@admin=rw
-@apiadmin=rw
-可以编辑这个文件添加账号，然后添加密码，但是不能直接编辑dav_svn.passwd，这里面是加密数据，需要使用Apache的htpasswd命令添加。
-htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
-然后会提示输入密码，就此完成svn账号设置。
+		<p>首先需要知道配置文件的位置，比如我们的服务器中我就找到很多关于svn的目录，甚至分不清哪个目录下才是真正的配置文件</p>
+<p><code>root@handou:~# find / -name subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/src/org/apache/subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/src/org/tigris/subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/tests/org/apache/subversion</code></p>
+<p><code>/home/handou/workspace/subversion-1.8.11/subversion/bindings/javahl/tests/org/tigris/subversion</code></p>
+<p><code>/etc/bash_completion.d/subversion</code></p>
+<p><code>/etc/subversion</code></p>
+<p><code>/usr/share/doc/subversion</code></p>
+<p>查找所得结果可以确定应该是在 /etc/subversion下，切换到subversion下有多个文件：</p>
+<p>config  config.dpkg-dist  dav_svn.authz  dav_svn.passwd   passwd  servers</p>
+<p>可能需要一一查看下都是什么内容，其实主要是dav_svn.authz  dav_svn.passwd这两个文件，一个存放用户名，一个存放密码，dav_svn.authz内容包含账号和权限：</p>
+<p><code>[groups]</code></p>
+<p><code>apiadmin=yuedun</code></p>
+<p><code>[handou:/]</code></p>
+<p><code>@admin=rw</code></p>
+<p><code>@apiadmin=rw</code></p>
+<p>可以编辑这个文件添加账号，然后添加密码，但是不能直接编辑dav_svn.passwd，这里面是加密数据，需要使用Apache的htpasswd命令添加。</p>
+<p><code>htpasswd /etc/subversion/dav_svn.passwd  &lt;用户名&gt;</code></p>
+<p>然后会提示输入密码，就此完成svn账号设置。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -258,13 +256,13 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T09:23:20Z">2015-10-22 09:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T09:23:20Z">2015.10.22 09:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		http://www.chnxp.com.cn/
-几乎可以下载到任何想要的书籍
+		<p><a href="http://www.chnxp.com.cn/">http://www.chnxp.com.cn/</a></p>
+<p>几乎可以下载到任何想要的书籍</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -278,12 +276,14 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T05:10:46Z">2015-10-22 05:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T05:10:46Z">2015.10.22 05:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Firefox提供了在PC端调试手机端页面的工具，详情查看： https://developer.mozilla.org/zh-CN/docs/Tools/Remote_Debugging/Debugging_Firefox_for_Android_with_WebIDE
+		<p>Firefox提供了在PC端调试手机端页面的工具，详情查看：
+<a href="https://developer.mozilla.org/zh-CN/docs/Tools/Remote_Debugging/Debugging_Firefox_for_Android_with_WebIDE">https://developer.mozilla.org/zh-CN/docs/Tools/Remote_Debugging/Debugging_Firefox_for_Android_with_WebIDE</a></p>
+<p><img src="https://mdn.mozillademos.org/files/9011/remote-debugging-overview-fx36.png" alt="https://mdn.mozillademos.org/files/9011/remote-debugging-overview-fx36.png"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -297,18 +297,28 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T04:29:55Z">2015-10-22 04:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T04:29:55Z">2015.10.22 04:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。
-所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。
-首先在uses.js文件中有一个函数
-//我是一个测试方法 router.get(&#34;/commeHere&#34;, function(req, res) { }); 然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。
-可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open Folders，文本框中填充的就是，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。
-双击就可以跳转到对应的文件和行上。
-当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。
+		<p>开发中最常用的操作之一就是快速跳转到变量，方法声明处，比如在eclipse中按住Ctrl键鼠标点击变量或方法就能跳转到对应的位置或文件中，开发nodejs程序当然也需要这样的功能，比较强大的开发工具有webstorm，也是支持这种操作的。不过webstorm太占内存，4G的内存下总是提示内存不足，需要关闭占用内存程序，而首当其冲的就是webstorm，所以最近试了试另一款被大家熟知和推荐的开发神器sublime。虽然sublime是个文本编辑器，还不能算的上IDE，不过它可以安装各种插件来丰富功能，最重要的是它占用内存少，速度快。</p>
+<p>所以，我要介绍的是在ST下如何做到跳转到变量或方法声明处。</p>
+<p>首先在uses.js文件中有一个函数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//我是一个测试方法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">router</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/commeHere&#34;</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p><img src="https://hopefully-img.yuedun.wang/st1.jpg" alt=""></p>
+<p>然后我要从其他文件中跳转到这个函数。先关掉这个文件，打开其他文件。</p>
+<p><img src="https://hopefully-img.yuedun.wang/st2.jpg" alt="st2.jpg"></p>
+<p>可以双击或鼠标选中commeHere这个关键词（才发现单词打错了），键盘按下Ctrl+shift+F就会出现类似搜索框，选中的关键字会填充到find框中，需要手动选择where框，选择Add Open  Folders，文本框中填充的就是<!-- raw HTML omitted -->，然后回车就可以了，很快就会搜索出我们需要的关键字所在的文件。</p>
+<p><img src="https://hopefully-img.yuedun.wang/st3.png" alt=""></p>
+<p><img src="https://hopefully-img.yuedun.wang/st4.jpg" alt=""></p>
+<p>双击就可以跳转到对应的文件和行上。</p>
+<p><img src="https://hopefully-img.yuedun.wang/st5.jpg" alt=""></p>
+<p>当然，不可能像eclipse中那么方便，但其实只有两步操作，第一ctrl+shift+F搜索关键字，第二双击搜索结果跳转到对应文件位置。如果你习惯使用ST的话肯定很满足这样的设计，根本不会觉得繁琐。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -322,16 +332,19 @@ htpasswd /etc/subversion/dav_svn.passwd &lt;用户名&gt;
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-19T01:32:24Z">2015-10-19 01:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-19T01:32:24Z">2015.10.19 01:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		每次启动node服务都要先打开cmd命令行，或者在win8下先打开文件资源管理器&gt;文件&gt;打开命令提示符，然后执行node命令，这样的过程真的很烦人，当然需要一个简单粗暴的方式启动了，就像用bat文件双击启动。
-首先，建一个空白文件，输入以下内容：
-E: cd E:\\NodejsWorkSpace\\app-node nodemon ./bin/www 就像我们平时要依次输入这些内容一样，不过还有更简单的方式：
-E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
-使用&amp;符号连接各个命令也可以
+		<p>每次启动node服务都要先打开cmd命令行，或者在win8下先打开文件资源管理器&gt;文件&gt;打开命令提示符，然后执行node命令，这样的过程真的很烦人，当然需要一个简单粗暴的方式启动了，就像用bat文件双击启动。<br>
+首先，建一个空白文件，输入以下内容：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>E:  
+</span></span><span style="display:flex;"><span>cd E:<span style="color:#ae81ff">\\</span>NodejsWorkSpace<span style="color:#ae81ff">\\</span>app-node  
+</span></span><span style="display:flex;"><span>nodemon ./bin/www
+</span></span></code></pre></div><p>就像我们平时要依次输入这些内容一样，不过还有更简单的方式：</p>
+<p>E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www</p>
+<p>使用&amp;符号连接各个命令也可以</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -345,17 +358,25 @@ E: &amp;&amp; cd E:\NodejsWorkSpace\app-node &amp;&amp; nodemon ./bin/www
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-16T09:00:52Z">2015-10-16 09:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-16T09:00:52Z">2015.10.16 09:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。那么如何加索引才是正确的做法呢？
-数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。
-如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。
-最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。
-mysql多列索引适合的场景
-全字段匹配 匹配部分最左前缀 匹配第一列 匹配第一列范围查询(可用用like a%,但不能使用like %b) 精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) and id =&ldquo;3&rdquo;
+		<p>数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。那么如何加索引才是正确的做法呢？</p>
+<p>数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。<br>
+如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。</p>
+<blockquote>
+<p>最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。</p></blockquote>
+<p>mysql多列索引适合的场景</p>
+<ol>
+<li>全字段匹配</li>
+<li>匹配部分最左前缀</li>
+<li>匹配第一列</li>
+<li>匹配第一列范围查询(可用用like a%,但不能使用like %b)</li>
+<li>精确匹配某一列和和范围匹配另外一列</li>
+</ol>
+<p>order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) and id =&ldquo;3&rdquo;</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -369,64 +390,70 @@ mysql多列索引适合的场景
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-09T05:35:59Z">2015-10-09 05:35</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-09T05:35:59Z">2015.10.09 05:35</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		一名赣州车主处理“碰瓷”过程，值得认真学习，文很长，但值得一读。
-保险公司会吓唬你，交警也会嫌麻烦忽悠你，只要你捂紧你的钱包，除了时间，其实你不必付出任何费用来缴纳到这场事故中。
-#m第一篇 事故过程和处理
-第一章 事故发生 14日早8点左右，我从厚德路由东向西正常行驶，越过厚德路小学路口约10米后，前方一电动车突然左转横过机动车道然后逆行欲进入厚德路小学，由于她车速太快，电动车后座上反向乘坐的小女孩将左腿伸出车外，致小女孩左小腿撞在我车的右前大灯上。
-事故发生后，小女孩拼命哭叫，我无法判断伤情（虽然我知道肯定没大事），对方也不提如何处理，对于这种手段老辣的人，为避免被敲诈，我决定报警、出险走正当程序。
-警察、保险先后到场，警察也不主动提调解，我也就不提，因为我认为是对方全责，保险的希望我私了，还说不私了对我很不利，拖车、停车费是不赔的，当时有点心动想私了，但很不甘心，对方也不说私了的事，还强说我撞他，小孩又被120拉走，内心深处其实很想完整的走次事故程序（还没出过双方事故），也很不服拖车、停车费问题，想和交警较量下，再考虑到马上放假不太用车，最后还是决定走正常程序。
-交警看双方不能现场调解，于是叫车来拖对方的电动车，扣下我的驾照，叫人开我的车去停车场，我也去直属大队事故科领回扣车单据。
-回家马上查法规，等看到法律规定（《中华人民共和国行政强制法》第二十五条、第二十六条）停车、鉴定、检验费用由行政机关承担，心里踏实多了，也明白保险公司的险恶，他当然希望当事人私了，他就可以不费时、不费力、不出钱，还拿一般人很害怕的停车、拖车费来吓人，还好没吃他那套。继续查到事故责任认定书应当在10个工作日做出，事故责任认定书作出后就可以拿回车子，感觉更没什么了，也就半个月吧（当然各人情况不同，好车或没车不行的人另当别论），咱能等。
-策略：事故发生后迅速判断各种因素，做出最有利选择
-第二章 对扣车的行政强制行为提出行政复议 怎么讲车都是被扣了，心里总还是不舒服也不服气的，其实车主都明白，交警扣车无非就是希望机动车主能赔钱结案，警察省事又不容易发生信访事件。很反感交警动不动就扣车，于是继续查法规，发现法律只规定“因为收集证据的需要”（《中华人民共和国道路交通安全法》第七十二条）才能扣押事故车辆而且扣押车辆需要履行很多手续（《中华人民共和国行政强制法》第十八条、第十九条、第二十四条），当时想不通这么简单也没有车辆损失的事故还要收集什么证据，而且扣押财物是要履行必要的法定程序的，于是马上写好行政复议申请书，下午就去交警支队。
-到了支队进门要登记，一开始说去法制科，门卫说没这个科，于是说去行政复议办公室，门卫居然不知道有行政复议办公室，瞎指挥让我去7楼，整个7楼没有挂牌的办公室还都锁着，还好碰上2个穿制服的警察，问了以后说在4楼，于是去4楼，其实4楼是对交通事故责任认定书提出复核的地方，那里一个领导模样的人开始也以为是复核，问清是对行政强制行为复议后，打了电话问别人才说要去6楼秩序科，于是明白，很少有人提起行政复议啊，大家业务都不熟啊，中国真是刁民太少，天天在网上费唾沫没用啊，不如实际做点什么，赣州每天多少事故多少车被扣啊，别说多，每天有一个人复议，交警支队门斗挤破了，如果每个人对发生在自己身上的不公都提出行政复议、行政诉讼，中国早就官不聊生，早就不是现在这个样子了。
-终于到了6楼，马上发现有个办公室挂着行政复议办公室的牌子，心里骂门卫：文盲加法盲，怎么TMD都这素质啊。可门锁着，正好以前坐电梯上来的几个警察也走过来，一问是行政复议的，马上进了秩序科办公室。和每次行政复议一样，对方总是推脱说些理由，一番唇枪舌剑后，最后表示什么也别说了，按行政复议法规定的程序办理吧，对方终于没办法说受理了。
-一等就10多天，什么消息也没有，其实早就知道这样的结果，因为每次复议哪个行政机关都这样，25号过完节也放暑假了，于是再去交警支队，直奔秩序科，进门一说要拿行政复议受理通知书，对方和以前一样搬出领导不在要审批所以还没办等等说辞，我也冷处理，只问什么时候能拿到，一个主管模样的说今天一定会联系你，可今天26号了，还没动静，准备明天再去联系。
-咱也不急，先施加压力，看事故中队这边责任认定书怎么出，如果不认定对方全责（其实全不全责都是保险赔，我只是找理由和警察PK），我就两边一起动作，同时打2场行政诉讼；如果认定对方全责，还要看拿回车子的过程是不是没有障碍，不爽的话还是打官司（呵呵，我无责也要打官司，要交警好看）。
-第三章 调解、检验等前处理程序 15日下午，到事故中队调解，我早考虑好了，直接说调解就是各走各路，看着对方拿着各种片子和单据想问我要钱的样子，我很想告诉他：首先钱应该保险公司出，如果是抢救（什么是抢救法律也是有明确定义的）费用交警会责令保险公司垫付，也是与我无关的，只有超出交强险限额的部分我才承担，其次，事故责任认定书出来后你也是与保险公司协商赔偿，我可以不介入的，如果对保险公司的赔偿不满只能向法院起诉，法院判保险赔多少让它赔，超出交强险限额的部分按责任法院判我赔多少我才赔，我的损失只是用车不方便，这么小的事故而且你全责，我很欢迎你去法院起诉，说不定我反诉你，我还可以拿点钱呢。当然没说，反正我没出1分钱，懒得和他怄气。
-直接谈崩回家，其实真的是为了对方好也为了交警好，自我拔高下，呵呵：如果我赔了钱，对方下次还会违章，这次我是谨慎驾驶车速很慢，下次碰上个飙车的那结局很难想象，你就是赔了钱，人没了有什么意思？交警也就只图自己轻松，现在道路交通拥堵、事故多很多原因是行人、非机动车违章多又难管理、难处罚，好嘛，管不好行人、非机动车，交警就压迫机动车方，扣车迫你就范，让我这个机动车主免费帮你们教训下违章非机动车有什么不好啊。
-21号去事故中队做笔录，本来也没啥说的，交警叫我复印下被扣的驾照，可气的是去4楼复印居然要1块1张，还是个律师事务所的，中国就这帮黑心的狗腿子搞坏了，懂法执法的人都不守法。浪费他2张纸，然后问他要FP，他不给FP，我也就转身去楼下找店家，靠，狗还真多，紧挨事故中队一家复印店先问复什么，一看是驾驶证也叫价1块，插，哪天我办完这件事，把这两家店一起投诉到工商局去。继续往前走，很快就找到家2角的，既锻炼了身体又省了钱，还战胜了黑心狗，还是蛮愉快的（咱是个闲人，时间多，其他人慎重），只是悲哀中国狗太多还有人闲着没事拯救狗的（赤那），更悲哀中国良民太多，那个律师事务所明显占用国家资源（办公室居然在行政机关内），与交警肯定有利益关联，而且非法超出范围经营（律所没有复印的营业执照的），也没一个人去投诉，难道我又要成为第一个吃螃蟹的人？
-做笔录的时候，来了个处理事故的，可怜兮兮的样子，上来就发烟，还给我1支（我不抽烟，也没发烟给过交警），那警察也够坏，拿出好几份鉴定报告让那人去复印，还要那人去交鉴定费，那人很老实没有一句怨言地去了，我看着他的背影心底无限悲哀，***也只能现在这个样子了，人民就这水平啊，这样的水是不可能覆舟的，同时心底打定主意，以后决不去复印、更不可能交任何费用。
-26号下午通知我去拿车辆性能检验报告，办案协警还是叫我去复印，我先拿过来看完检验结论合格，然后装傻，怎么叫我去复印啊，也许是昨天去支队要复议通知书的消息传到这边，起了效果，主办的正式民警知道我难对付，就叫协警别啰嗦自己去复印（我判断一定是去4楼那律所不要钱复印来的，黑啊），然后，告知我如果双方对检验结果都没有异议，就可以拿车了，还说不管你交不交费，都会放车。呵呵。
-第四章 车辆技术性能鉴定报告 拿到鉴定报告第一眼看结论，合格，2月年检了，意料之中，但也算放心了；可看见日期很不爽，送检居然写15号，这么简单的鉴定居然要11天到26号才出结果，很显然是交警与司法鉴定所穿一条裤子，要么是更改送检时间包庇交警（因为法律规定要在事故发生3个工作日内送检），要么是故意拖延时间，配合交警长时间扣车，法律对鉴定的期限规定太宽松，《交通事故处理程序规定》是20天，《司法鉴定管理条例》是15天，鉴定时间还不算入办案时间。
-我的策略是去司法局投诉，虽然没有证据，但就按我自己猜测的写，既不要钱，写错了也不犯法，呵呵，投诉立案了司法局就会去查，查出问题自然好，一般来说总会有点问题的，特别是鉴定程序上，这些官办鉴定机构也是老爷作风；司法局这边也可能出错，反正司法局要出书面处理结果，到时再找他们的漏洞，不过司法鉴定的行政官司很难赢，法律基本空白，但可以行政复议，反正不要钱，但也止于行政复议。
-第五章 高潮：拿回自己的车 26号拿鉴定报告，27、28、29三天双方都没有对鉴定结论提出异议，7月2号鉴定结论确定，但当天因有事去南昌没能去拿车，7月3号，办完事10点来的交警办公室，等到10点半大仙终于回来了，向办案的正式民警提出拿车的要求，这个家伙估计是早准备好的，居然说要等鉴定结论确定5天后才能领车，因为这几天对方可能申请法院诉前财产保全（浑蛋法律术语还知道点啊，可法律不行）；本来倒也早就预料交警会找借口，没什么，但可气的是边上一个凯莱律师事务所来办事的律师居然为讨好交警帮着他说些违背法律的说辞（唉，TMD狗真多，完全如先生狂人日记的情形）；我随即反驳：第一，法条明文规定是鉴定结论确定5日内领车，没有5日后领车的法条，要继续扣车请提供法律依据；第二，法院与你们不是一个系统，如果法院委托你们扣车请提供委托书。丫的居然还嘴硬，于是向他们领导投诉，回来交警改口了，自己还找个台阶：领导这么说了怎么办呢？好无辜的样子，勒个去的，过会打印车辆放行呈报表的时候审批理由里就是我说的法条，他根本就是知法犯法，丫的天天都在这么办还来故意刁难我，好吧，看我的。
-吃完饭直奔吉埠新村停车场，交了放行单，如我所料守门的要我交19天20元/天的停车费，和开车来停车场的开车费50元，共计430元，于是我迅速拿回放行单，“还要交钱啊，交警没说啊”，守门的当然不肯。于是不废话，转身出来拨打110，报警说有人在吉埠新村非法扣押我的车辆并向我敲诈勒索，接警的也想混，说你们这是纠纷啊，自己解决啊。我说我有车辆放行单，车辆就处于合法自由状态，任何人阻拦就属于非法扣押私人财物，接着问你受理不受理，会不会出警？她没办法，说你等会。很快沙石派出所打来电话（这一点还是要肯定的，110必须出警现在规定的很严），还是一番唇枪舌剑，派出所的总推是纠纷，我坚持即使有纠纷任何人也不能非法扣押私人财产，没办法派出所答应出警。因为是午间休息时间，停车场那边与交警领导暂时沟通不上，于是民警说那就等会他们与交警联系了再说吧，我于是坚持回派出所作报案笔录（这点要强烈提醒各位朋友，千万别在现场傻等，一定要去派出所做笔录，否则，很可能警察出警后会记录为调解处理，很可能就没结果了，你要再提也还是要去派出所作笔录，被对方看出你不精于法律，再打交道就锐气尽失了），因为一旦形成笔录，这个案子就不是纠纷而是治安甚至刑事案件，派出所要结案（不按非法扣押财物处理，你可以行政复议），材料很多涉及面很广，派出所不愿意，自然会给停车场施压（毕竟其行为涉嫌犯法），交警也知道自己这么承包出去不合法，万一媒体曝光就很麻烦。
-做完笔录再去停车场，还在路上，派出所的警官就打来电话：你去找停车场，我已经沟通好了。到了停车场还顺利，车都摆好位置了（第一次来我的车是被堵在里面的），老板娘来了，很气也很无奈的诅咒：我们这了敞开大门欢迎你常来，我回复：谢谢您吉言，心里说，我常来你也收不到钱。开车回家，第一件事洗车，去晦气；第二件事，发帖，哈哈。
-第六章 余味：总结 1、关于行政复议：个人认为行政投诉和行政复议是公民个人维权最有效的手段，当发生侵害您权利的事件时（如您楼下某餐馆排油烟），确定侵权人管辖的行政机关和违反的法律条文，然后向行政机关写投诉书或现场投诉（如上例向卫生局、环保局投诉），如果行政机关不处理就向其上级机关行政复议，以我个人的经历基本全部能解决，当然这需要一定的法律技巧。特别的，行政复议是法律规定的行政机关必须受理处理的程序，在这个程序中，行政机关必须提供做出行政行为或不作出行政行为的法律依据和证据，行政复议必须受理且必须制作复议决定书，那么你就可以审查复议决定书是否合法，以及其依据的事实和理由是否合法，这样你就不用自己去搜集证据。这整个过程没有任何费用，花的时间也是很有限的，而收益是巨大的，很有效。
-2、关于车辆技术性能鉴定：依据法律规定，交警只有在需要收集证据的情况下才能扣押肇事车辆，而目前交警能提供的收集证据的最主要理由就是车辆技术性能鉴定，其实这是交警的借口，无非就是要扣车牟利，那么P民的策略也很简单，就是不出鉴定费，鉴定费这个东东可不像停车费，你不给就拿车很麻烦，交警一定会叫鉴定所先鉴定，因为这是法定的证据和程序，你不交鉴定费，交警也必须按法律规定的时限结案，所以在这点上，交警耗不起你，他是很怕你耍无赖的，像我的案例一样，交警看我难缠连要我交鉴定费的要求都不敢提。
-如果每个车主都不交鉴定费（这其实真的很容易做到），那么交警就会内牛满面，你想想，如果车主不交钱，就只能按法律规定由交警承担，而交警会把招待、旅游、公车费压缩出来交给鉴定所去吗？不给的话，又有哪家鉴定所会与交警合作免费鉴定呢？而不鉴定，交警扣车的法定理由就消失了，所以，只要每个车主坚持不出鉴定费，很快，大家的车辆就不会被扣了，大家只要花很少的努力就可以有很大的收获，QS们要努力啊。
-3、关于110：个人的实践总结，目前110是维权的一个强有力手段，如果你是合法权益一方，你应该不会惧怕110民警到场，而110的到场会为确定现场证据、控制事态恶化、威慑侵权一方等等起到决定性的作用，目前110接警必须出警的规定非常有利于合法权益方保护自己。当然110报警需要一些小技巧：1、适当严重化事件，这不是诬告陷害，只要事实存在，你对事实性质无论怎么理解和严重定义，都不是诬告陷害，是不负法律责任的；2、如果你确定希望民警到场，你就只需要坚持要求民警到场就行，不需要多说理由，就问你受不受理、出不出警、什么时间出警就行了，110是不敢不出警的。
-对于没有明显暴力事件，110一般都会按纠纷调解，如果你对处理不满一定要坚持报案，去派出所做笔录，笔录的时候亦可以按你的理解以最严重的罪名报案，坚持按你说的记录（因为这是你的笔录，你说了算），不要轻信民警的引导和对你措辞的修改，否则不签名，民警是不敢不做笔录的，因为这是110处警的必要法律文件。不要怕做笔录会浪费时间，这与你今后维权自己收集证据相比是完全值得的。
-4、关于停车费：法律有明确规定，只有你坚持，然后选择适合自己的策略和方式坚持自己的权益，交警是不敢向你开票收费的，而你真的没有义务向停车场缴费，因为你其实与停车场完全没有法律关系。特别重要的，如果没一个车主都不交停车费，那还有谁会免费为交警管理肇事违章车辆，你相信交警会从自己的经费里拿出钱来吗？如果没有停车费收入，每个停车场都要倒闭，那每个车主就都不会被扣车了，这实在是广大车主的最强福音啊。这会很难吗？
-5、关于停车场：本案中停车场挂出的牌子是“赣州市肇事车辆违章车辆管理处”，这个牌子会吓倒很多P民，其实，单从名称上分析，我就可以下结论，这是一个三无的非法组织。1、名称中没有冠以“赣州市公安局交通警察支队”说明不是交警的下属单位，现场也没有一个穿正规警服配警号的人员，在派出所联系交警时，交警也明确承认停车场是完全社会化的；我们也不可能在行政事业机构编制中找到肇事车辆违章车辆管理处这个单位；那么它是社会团体或企业法人吗，单从名称上“管理处”这个名字就不可能登记为任何社会团体或企业法人；所以毫无疑问的“赣州市肇事车辆违章车辆管理处”只是一块吓唬人的野鸡牌子，没有这个单位也就不可能有营业执照，也就不可能有收费许可证，那么它收费就完全站不住脚。在整个过程中停车场根本没有悬挂、出示过营业执照和收费许可证，这就是本案中停车场会屈服的根本原因。
-因为我没有交费所以不知道以前的朋友们缴费单是什么样的，上面盖的是什么单位的章，如果你现在还保留着单据，又想拿回这些钱的话，给您支个招：1、先看是什么单据，应该必须是行政事业性收费单，如果是FP（其实FP是不合法的，因为你与停车场不存在合同关系，停车场收钱属于不当得利，可以民事诉讼，当然那个更麻烦，就不多说了）必须加盖公章；如果是行政事业性收费单，可以去财政查询单据的真实性和时效性，如果是FP可以去税务查（没FP直接投诉）；个人直接下定论，这些票据如果不是假的也一定存在瑕疵（如过期、与收费项目不符、收付单位与登记单位不同，因为根本没有停车场这个单位等等），然后要求财政或税务查处；3、进一步的可以去派出所报案诈骗，这个可以成立的，因为对方捏造了一个不存在的单位（也就是伪造事实），在没有合法收费依据的情况下使用虚假的单据，骗取财物，这个涉案金额很大啊，很可怕啊。再吹下牛，如果是我，坚持报案和行政复议（如果派出所不立案的话），一定会成功。
-你说如果这件事变刑事案件了，或者媒体把这些法律关系曝光了，别说停车场怕，交警也要尿裤子啊。
-6、其他途径：至少，您可以向工商部门投诉非法经营。前面已经说了，以我的判断全国这类停车场90没有营业执照，100没有收费许可证或者收费项目不包含停车费，注意这里的停车费是指交警扣车发生的，不是自愿停车发生的。如果你耗不起车辆被扣时间，也可以在交费后，拿票据向工商投诉非法经营和强制交易（你与停车场没有合同关系），如果没有票据或票据有瑕疵还可以向税务投诉，很多投诉都只要打个电话不会很难。
-第二篇 保险赔偿:事故责任认定复核 7月6日下午，交警通知我去拿事故责任认定书，交警以“对道路的交通动态注意不够，忽视安全”“违反《中华人民共和国道路交通安全法》第二十二条第一款”为由，认定我负次要责任，很是无语，中国法律中口袋罪很多，对执法者的限定很少，好在我有准备，写好复核申请，9号上午就交去支队事故科。事故科的人说会把受理通知和结果寄给我，正好要上山度假1个月，也就不去管它，期间木有任何关于交通事故的电话给我。
-道路交通事故认定复核申请书
-申请人：，男，19年月日生，住址：赣州市章贡区红旗大道**，身份证号：，电话：
-被申请人：赣州市公安局交通警察支队直属大队，地址：赣州市东郊路，电话：8123138
-第三人： 陈XX，女，19年月日生，住址：赣州市章贡区贸易广场西区* ，身份证号：，电话：
-申请人因为不服赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，申请复核。
-复核请求
-依法撤销赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，对本起交通事故重新作出责任认定，认定申请人不承担本次事故的责任。
-事实和理由
-一、认定道路交通事故发生经过与事实不符 原认定书认定： “2012年6月14日7时55分左右，陈XX（对方）驾驶赣州A404XX号电动自行车（搭载叶X）沿厚德路由西向东行驶至厚德路小学门前路段时，在左转弯过程中，叶X左脚与相对方向直行由XXX（本人）驾驶的赣BHXXXX号轿车擦刮”。
-申请人认为与事实不符：
-1、从现场示意图可知，碰撞点位于厚德路小学路口西端以西10米外，距道路北侧边缘1.5米处，第三人左转横过机动车道后因送女儿叶X上学欲进入厚德路小学路口，故沿道路北侧向东逆行，并非如原认定书所述“在左转弯过程中”。碰撞点距道路边缘仅1.5米，而且是叶X反向骑乘，左脚伸出电动车尾部发生擦刮，而该电动车的长度已经超过1.5米，在这样的距离内，第三人不可能继续横过道路向道路边缘（道路北侧）运动，因而第三人必然已经改变运动方向，而从第三人送女儿上学的目的可以判定：第三人必然沿道路北侧向东逆行欲进入厚德路小学入口。
-2、从“叶X左脚与相对方向直行由XXX驾驶的赣BHXXXX号轿车擦刮”的认定可知，叶X为反向骑乘，因为，如果叶X正向骑乘，双方车辆右侧碰撞只能伤及叶X右侧肢体，而叶X左脚受伤故为反向骑乘，由于叶X反向骑乘而第三人车辆后座有较大的靠背，致使叶X左脚不得不外伸，超出第三人车辆车把宽度与车尾，因而与申请人车辆擦刮。被申请人对如此重要的事实没有认定是严重失职。
-二、认定交通事故成因错误 原认定书认定：“当事人XXX当日驾驶机动车行驶至学校门前路段时，对道路的交通动态注意不够，忽视安全”。
-申请人认为是错误的：
-1、被申请人没有任何证据证明申请人“对道路的交通动态注意不够，忽视安全”。
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5617523fbfae4b590b7a4aab/">阅读全文…</a>
+		<p>一名赣州车主处理“碰瓷”过程，值得认真学习，文很长，但值得一读。</p>
+<p>保险公司会吓唬你，交警也会嫌麻烦忽悠你，只要你捂紧你的钱包，除了时间，其实你不必付出任何费用来缴纳到这场事故中。</p>
+<p>#m第一篇 事故过程和处理</p>
+<h3 id="第一章-事故发生">第一章 事故发生</h3>
+<p>14日早8点左右，我从厚德路由东向西正常行驶，越过厚德路小学路口约10米后，前方一电动车突然左转横过机动车道然后逆行欲进入厚德路小学，由于她车速太快，电动车后座上反向乘坐的小女孩将左腿伸出车外，致小女孩左小腿撞在我车的右前大灯上。</p>
+<p>事故发生后，小女孩拼命哭叫，我无法判断伤情（虽然我知道肯定没大事），对方也不提如何处理，对于这种手段老辣的人，为避免被敲诈，我决定报警、出险走正当程序。</p>
+<p>警察、保险先后到场，警察也不主动提调解，我也就不提，因为我认为是对方全责，保险的希望我私了，还说不私了对我很不利，拖车、停车费是不赔的，当时有点心动想私了，但很不甘心，对方也不说私了的事，还强说我撞他，小孩又被120拉走，内心深处其实很想完整的走次事故程序（还没出过双方事故），也很不服拖车、停车费问题，想和交警较量下，再考虑到马上放假不太用车，最后还是决定走正常程序。</p>
+<p>交警看双方不能现场调解，于是叫车来拖对方的电动车，扣下我的驾照，叫人开我的车去停车场，我也去直属大队事故科领回扣车单据。</p>
+<p>回家马上查法规，等看到法律规定（《中华人民共和国行政强制法》第二十五条、第二十六条）停车、鉴定、检验费用由行政机关承担，心里踏实多了，也明白保险公司的险恶，他当然希望当事人私了，他就可以不费时、不费力、不出钱，还拿一般人很害怕的停车、拖车费来吓人，还好没吃他那套。继续查到事故责任认定书应当在10个工作日做出，事故责任认定书作出后就可以拿回车子，感觉更没什么了，也就半个月吧（当然各人情况不同，好车或没车不行的人另当别论），咱能等。</p>
+<p>策略：事故发生后迅速判断各种因素，做出最有利选择</p>
+<h3 id="第二章-对扣车的行政强制行为提出行政复议">第二章 对扣车的行政强制行为提出行政复议</h3>
+<p>怎么讲车都是被扣了，心里总还是不舒服也不服气的，其实车主都明白，交警扣车无非就是希望机动车主能赔钱结案，警察省事又不容易发生信访事件。很反感交警动不动就扣车，于是继续查法规，发现法律只规定“因为收集证据的需要”（《中华人民共和国道路交通安全法》第七十二条）才能扣押事故车辆而且扣押车辆需要履行很多手续（《中华人民共和国行政强制法》第十八条、第十九条、第二十四条），当时想不通这么简单也没有车辆损失的事故还要收集什么证据，而且扣押财物是要履行必要的法定程序的，于是马上写好行政复议申请书，下午就去交警支队。</p>
+<p>到了支队进门要登记，一开始说去法制科，门卫说没这个科，于是说去行政复议办公室，门卫居然不知道有行政复议办公室，瞎指挥让我去7楼，整个7楼没有挂牌的办公室还都锁着，还好碰上2个穿制服的警察，问了以后说在4楼，于是去4楼，其实4楼是对交通事故责任认定书提出复核的地方，那里一个领导模样的人开始也以为是复核，问清是对行政强制行为复议后，打了电话问别人才说要去6楼秩序科，于是明白，很少有人提起行政复议啊，大家业务都不熟啊，中国真是刁民太少，天天在网上费唾沫没用啊，不如实际做点什么，赣州每天多少事故多少车被扣啊，别说多，每天有一个人复议，交警支队门斗挤破了，如果每个人对发生在自己身上的不公都提出行政复议、行政诉讼，中国早就官不聊生，早就不是现在这个样子了。</p>
+<p>终于到了6楼，马上发现有个办公室挂着行政复议办公室的牌子，心里骂门卫：文盲加法盲，怎么TMD都这素质啊。可门锁着，正好以前坐电梯上来的几个警察也走过来，一问是行政复议的，马上进了秩序科办公室。和每次行政复议一样，对方总是推脱说些理由，一番唇枪舌剑后，最后表示什么也别说了，按行政复议法规定的程序办理吧，对方终于没办法说受理了。</p>
+<p>一等就10多天，什么消息也没有，其实早就知道这样的结果，因为每次复议哪个行政机关都这样，25号过完节也放暑假了，于是再去交警支队，直奔秩序科，进门一说要拿行政复议受理通知书，对方和以前一样搬出领导不在要审批所以还没办等等说辞，我也冷处理，只问什么时候能拿到，一个主管模样的说今天一定会联系你，可今天26号了，还没动静，准备明天再去联系。</p>
+<p>咱也不急，先施加压力，看事故中队这边责任认定书怎么出，如果不认定对方全责（其实全不全责都是保险赔，我只是找理由和警察PK），我就两边一起动作，同时打2场行政诉讼；如果认定对方全责，还要看拿回车子的过程是不是没有障碍，不爽的话还是打官司（呵呵，我无责也要打官司，要交警好看）。</p>
+<h3 id="第三章-调解检验等前处理程序">第三章 调解、检验等前处理程序</h3>
+<p>15日下午，到事故中队调解，我早考虑好了，直接说调解就是各走各路，看着对方拿着各种片子和单据想问我要钱的样子，我很想告诉他：首先钱应该保险公司出，如果是抢救（什么是抢救法律也是有明确定义的）费用交警会责令保险公司垫付，也是与我无关的，只有超出交强险限额的部分我才承担，其次，事故责任认定书出来后你也是与保险公司协商赔偿，我可以不介入的，如果对保险公司的赔偿不满只能向法院起诉，法院判保险赔多少让它赔，超出交强险限额的部分按责任法院判我赔多少我才赔，我的损失只是用车不方便，这么小的事故而且你全责，我很欢迎你去法院起诉，说不定我反诉你，我还可以拿点钱呢。当然没说，反正我没出1分钱，懒得和他怄气。</p>
+<p>直接谈崩回家，其实真的是为了对方好也为了交警好，自我拔高下，呵呵：如果我赔了钱，对方下次还会违章，这次我是谨慎驾驶车速很慢，下次碰上个飙车的那结局很难想象，你就是赔了钱，人没了有什么意思？交警也就只图自己轻松，现在道路交通拥堵、事故多很多原因是行人、非机动车违章多又难管理、难处罚，好嘛，管不好行人、非机动车，交警就压迫机动车方，扣车迫你就范，让我这个机动车主免费帮你们教训下违章非机动车有什么不好啊。</p>
+<p>21号去事故中队做笔录，本来也没啥说的，交警叫我复印下被扣的驾照，可气的是去4楼复印居然要1块1张，还是个律师事务所的，中国就这帮黑心的狗腿子搞坏了，懂法执法的人都不守法。浪费他2张纸，然后问他要FP，他不给FP，我也就转身去楼下找店家，靠，狗还真多，紧挨事故中队一家复印店先问复什么，一看是驾驶证也叫价1块，插，哪天我办完这件事，把这两家店一起投诉到工商局去。继续往前走，很快就找到家2角的，既锻炼了身体又省了钱，还战胜了黑心狗，还是蛮愉快的（咱是个闲人，时间多，其他人慎重），只是悲哀中国狗太多还有人闲着没事拯救狗的（赤那），更悲哀中国良民太多，那个律师事务所明显占用国家资源（办公室居然在行政机关内），与交警肯定有利益关联，而且非法超出范围经营（律所没有复印的营业执照的），也没一个人去投诉，难道我又要成为第一个吃螃蟹的人？</p>
+<p>做笔录的时候，来了个处理事故的，可怜兮兮的样子，上来就发烟，还给我1支（我不抽烟，也没发烟给过交警），那警察也够坏，拿出好几份鉴定报告让那人去复印，还要那人去交鉴定费，那人很老实没有一句怨言地去了，我看着他的背影心底无限悲哀，***也只能现在这个样子了，人民就这水平啊，这样的水是不可能覆舟的，同时心底打定主意，以后决不去复印、更不可能交任何费用。</p>
+<p>26号下午通知我去拿车辆性能检验报告，办案协警还是叫我去复印，我先拿过来看完检验结论合格，然后装傻，怎么叫我去复印啊，也许是昨天去支队要复议通知书的消息传到这边，起了效果，主办的正式民警知道我难对付，就叫协警别啰嗦自己去复印（我判断一定是去4楼那律所不要钱复印来的，黑啊），然后，告知我如果双方对检验结果都没有异议，就可以拿车了，还说不管你交不交费，都会放车。呵呵。</p>
+<h3 id="第四章-车辆技术性能鉴定报告">第四章 车辆技术性能鉴定报告</h3>
+<p>拿到鉴定报告第一眼看结论，合格，2月年检了，意料之中，但也算放心了；可看见日期很不爽，送检居然写15号，这么简单的鉴定居然要11天到26号才出结果，很显然是交警与司法鉴定所穿一条裤子，要么是更改送检时间包庇交警（因为法律规定要在事故发生3个工作日内送检），要么是故意拖延时间，配合交警长时间扣车，法律对鉴定的期限规定太宽松，《交通事故处理程序规定》是20天，《司法鉴定管理条例》是15天，鉴定时间还不算入办案时间。</p>
+<p>我的策略是去司法局投诉，虽然没有证据，但就按我自己猜测的写，既不要钱，写错了也不犯法，呵呵，投诉立案了司法局就会去查，查出问题自然好，一般来说总会有点问题的，特别是鉴定程序上，这些官办鉴定机构也是老爷作风；司法局这边也可能出错，反正司法局要出书面处理结果，到时再找他们的漏洞，不过司法鉴定的行政官司很难赢，法律基本空白，但可以行政复议，反正不要钱，但也止于行政复议。</p>
+<h3 id="第五章-高潮拿回自己的车">第五章 高潮：拿回自己的车</h3>
+<p>26号拿鉴定报告，27、28、29三天双方都没有对鉴定结论提出异议，7月2号鉴定结论确定，但当天因有事去南昌没能去拿车，7月3号，办完事10点来的交警办公室，等到10点半大仙终于回来了，向办案的正式民警提出拿车的要求，这个家伙估计是早准备好的，居然说要等鉴定结论确定5天后才能领车，因为这几天对方可能申请法院诉前财产保全（浑蛋法律术语还知道点啊，可法律不行）；本来倒也早就预料交警会找借口，没什么，但可气的是边上一个凯莱律师事务所来办事的律师居然为讨好交警帮着他说些违背法律的说辞（唉，TMD狗真多，完全如先生狂人日记的情形）；我随即反驳：第一，法条明文规定是鉴定结论确定5日内领车，没有5日后领车的法条，要继续扣车请提供法律依据；第二，法院与你们不是一个系统，如果法院委托你们扣车请提供委托书。丫的居然还嘴硬，于是向他们领导投诉，回来交警改口了，自己还找个台阶：领导这么说了怎么办呢？好无辜的样子，勒个去的，过会打印车辆放行呈报表的时候审批理由里就是我说的法条，他根本就是知法犯法，丫的天天都在这么办还来故意刁难我，好吧，看我的。</p>
+<p>吃完饭直奔吉埠新村停车场，交了放行单，如我所料守门的要我交19天20元/天的停车费，和开车来停车场的开车费50元，共计430元，于是我迅速拿回放行单，“还要交钱啊，交警没说啊”，守门的当然不肯。于是不废话，转身出来拨打110，报警说有人在吉埠新村非法扣押我的车辆并向我敲诈勒索，接警的也想混，说你们这是纠纷啊，自己解决啊。我说我有车辆放行单，车辆就处于合法自由状态，任何人阻拦就属于非法扣押私人财物，接着问你受理不受理，会不会出警？她没办法，说你等会。很快沙石派出所打来电话（这一点还是要肯定的，110必须出警现在规定的很严），还是一番唇枪舌剑，派出所的总推是纠纷，我坚持即使有纠纷任何人也不能非法扣押私人财产，没办法派出所答应出警。因为是午间休息时间，停车场那边与交警领导暂时沟通不上，于是民警说那就等会他们与交警联系了再说吧，我于是坚持回派出所作报案笔录（这点要强烈提醒各位朋友，千万别在现场傻等，一定要去派出所做笔录，否则，很可能警察出警后会记录为调解处理，很可能就没结果了，你要再提也还是要去派出所作笔录，被对方看出你不精于法律，再打交道就锐气尽失了），因为一旦形成笔录，这个案子就不是纠纷而是治安甚至刑事案件，派出所要结案（不按非法扣押财物处理，你可以行政复议），材料很多涉及面很广，派出所不愿意，自然会给停车场施压（毕竟其行为涉嫌犯法），交警也知道自己这么承包出去不合法，万一媒体曝光就很麻烦。</p>
+<p>做完笔录再去停车场，还在路上，派出所的警官就打来电话：你去找停车场，我已经沟通好了。到了停车场还顺利，车都摆好位置了（第一次来我的车是被堵在里面的），老板娘来了，很气也很无奈的诅咒：我们这了敞开大门欢迎你常来，我回复：谢谢您吉言，心里说，我常来你也收不到钱。开车回家，第一件事洗车，去晦气；第二件事，发帖，哈哈。</p>
+<h3 id="第六章-余味总结">第六章 余味：总结</h3>
+<p>1、关于行政复议：个人认为行政投诉和行政复议是公民个人维权最有效的手段，当发生侵害您权利的事件时（如您楼下某餐馆排油烟），确定侵权人管辖的行政机关和违反的法律条文，然后向行政机关写投诉书或现场投诉（如上例向卫生局、环保局投诉），如果行政机关不处理就向其上级机关行政复议，以我个人的经历基本全部能解决，当然这需要一定的法律技巧。特别的，行政复议是法律规定的行政机关必须受理处理的程序，在这个程序中，行政机关必须提供做出行政行为或不作出行政行为的法律依据和证据，行政复议必须受理且必须制作复议决定书，那么你就可以审查复议决定书是否合法，以及其依据的事实和理由是否合法，这样你就不用自己去搜集证据。这整个过程没有任何费用，花的时间也是很有限的，而收益是巨大的，很有效。</p>
+<p>2、关于车辆技术性能鉴定：依据法律规定，交警只有在需要收集证据的情况下才能扣押肇事车辆，而目前交警能提供的收集证据的最主要理由就是车辆技术性能鉴定，其实这是交警的借口，无非就是要扣车牟利，那么P民的策略也很简单，就是不出鉴定费，鉴定费这个东东可不像停车费，你不给就拿车很麻烦，交警一定会叫鉴定所先鉴定，因为这是法定的证据和程序，你不交鉴定费，交警也必须按法律规定的时限结案，所以在这点上，交警耗不起你，他是很怕你耍无赖的，像我的案例一样，交警看我难缠连要我交鉴定费的要求都不敢提。</p>
+<p>如果每个车主都不交鉴定费（这其实真的很容易做到），那么交警就会内牛满面，你想想，如果车主不交钱，就只能按法律规定由交警承担，而交警会把招待、旅游、公车费压缩出来交给鉴定所去吗？不给的话，又有哪家鉴定所会与交警合作免费鉴定呢？而不鉴定，交警扣车的法定理由就消失了，所以，只要每个车主坚持不出鉴定费，很快，大家的车辆就不会被扣了，大家只要花很少的努力就可以有很大的收获，QS们要努力啊。</p>
+<p>3、关于110：个人的实践总结，目前110是维权的一个强有力手段，如果你是合法权益一方，你应该不会惧怕110民警到场，而110的到场会为确定现场证据、控制事态恶化、威慑侵权一方等等起到决定性的作用，目前110接警必须出警的规定非常有利于合法权益方保护自己。当然110报警需要一些小技巧：1、适当严重化事件，这不是诬告陷害，只要事实存在，你对事实性质无论怎么理解和严重定义，都不是诬告陷害，是不负法律责任的；2、如果你确定希望民警到场，你就只需要坚持要求民警到场就行，不需要多说理由，就问你受不受理、出不出警、什么时间出警就行了，110是不敢不出警的。</p>
+<p>对于没有明显暴力事件，110一般都会按纠纷调解，如果你对处理不满一定要坚持报案，去派出所做笔录，笔录的时候亦可以按你的理解以最严重的罪名报案，坚持按你说的记录（因为这是你的笔录，你说了算），不要轻信民警的引导和对你措辞的修改，否则不签名，民警是不敢不做笔录的，因为这是110处警的必要法律文件。不要怕做笔录会浪费时间，这与你今后维权自己收集证据相比是完全值得的。</p>
+<p>4、关于停车费：法律有明确规定，只有你坚持，然后选择适合自己的策略和方式坚持自己的权益，交警是不敢向你开票收费的，而你真的没有义务向停车场缴费，因为你其实与停车场完全没有法律关系。特别重要的，如果没一个车主都不交停车费，那还有谁会免费为交警管理肇事违章车辆，你相信交警会从自己的经费里拿出钱来吗？如果没有停车费收入，每个停车场都要倒闭，那每个车主就都不会被扣车了，这实在是广大车主的最强福音啊。这会很难吗？</p>
+<p>5、关于停车场：本案中停车场挂出的牌子是“赣州市肇事车辆违章车辆管理处”，这个牌子会吓倒很多P民，其实，单从名称上分析，我就可以下结论，这是一个三无的非法组织。1、名称中没有冠以“赣州市公安局交通警察支队”说明不是交警的下属单位，现场也没有一个穿正规警服配警号的人员，在派出所联系交警时，交警也明确承认停车场是完全社会化的；我们也不可能在行政事业机构编制中找到肇事车辆违章车辆管理处这个单位；那么它是社会团体或企业法人吗，单从名称上“管理处”这个名字就不可能登记为任何社会团体或企业法人；所以毫无疑问的“赣州市肇事车辆违章车辆管理处”只是一块吓唬人的野鸡牌子，没有这个单位也就不可能有营业执照，也就不可能有收费许可证，那么它收费就完全站不住脚。在整个过程中停车场根本没有悬挂、出示过营业执照和收费许可证，这就是本案中停车场会屈服的根本原因。</p>
+<p>因为我没有交费所以不知道以前的朋友们缴费单是什么样的，上面盖的是什么单位的章，如果你现在还保留着单据，又想拿回这些钱的话，给您支个招：1、先看是什么单据，应该必须是行政事业性收费单，如果是FP（其实FP是不合法的，因为你与停车场不存在合同关系，停车场收钱属于不当得利，可以民事诉讼，当然那个更麻烦，就不多说了）必须加盖公章；如果是行政事业性收费单，可以去财政查询单据的真实性和时效性，如果是FP可以去税务查（没FP直接投诉）；个人直接下定论，这些票据如果不是假的也一定存在瑕疵（如过期、与收费项目不符、收付单位与登记单位不同，因为根本没有停车场这个单位等等），然后要求财政或税务查处；3、进一步的可以去派出所报案诈骗，这个可以成立的，因为对方捏造了一个不存在的单位（也就是伪造事实），在没有合法收费依据的情况下使用虚假的单据，骗取财物，这个涉案金额很大啊，很可怕啊。再吹下牛，如果是我，坚持报案和行政复议（如果派出所不立案的话），一定会成功。</p>
+<p>你说如果这件事变刑事案件了，或者媒体把这些法律关系曝光了，别说停车场怕，交警也要尿裤子啊。</p>
+<p>6、其他途径：至少，您可以向工商部门投诉非法经营。前面已经说了，以我的判断全国这类停车场90没有营业执照，100没有收费许可证或者收费项目不包含停车费，注意这里的停车费是指交警扣车发生的，不是自愿停车发生的。如果你耗不起车辆被扣时间，也可以在交费后，拿票据向工商投诉非法经营和强制交易（你与停车场没有合同关系），如果没有票据或票据有瑕疵还可以向税务投诉，很多投诉都只要打个电话不会很难。</p>
+<h1 id="第二篇-保险赔偿事故责任认定复核">第二篇 保险赔偿:事故责任认定复核</h1>
+<p>7月6日下午，交警通知我去拿事故责任认定书，交警以“对道路的交通动态注意不够，忽视安全”“违反《中华人民共和国道路交通安全法》第二十二条第一款”为由，认定我负次要责任，很是无语，中国法律中口袋罪很多，对执法者的限定很少，好在我有准备，写好复核申请，9号上午就交去支队事故科。事故科的人说会把受理通知和结果寄给我，正好要上山度假1个月，也就不去管它，期间木有任何关于交通事故的电话给我。</p>
+<p>道路交通事故认定复核申请书</p>
+<p>申请人：<em><strong>，男，19</strong>年</em>月<em>日生，住址：赣州市章贡区红旗大道</em>**，身份证号：<strong><strong>，电话：</strong></strong></p>
+<p>被申请人：赣州市公安局交通警察支队直属大队，地址：赣州市东郊路，电话：8123138</p>
+<p>第三人： 陈XX，女，19<strong>年<em>月</em>日生，住址：赣州市章贡区贸易广场西区</strong>* ，身份证号：<em><strong>，电话：</strong></em></p>
+<p>申请人因为不服赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，申请复核。</p>
+<p>复核请求</p>
+<p>依法撤销赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，对本起交通事故重新作出责任认定，认定申请人不承担本次事故的责任。</p>
+<p>事实和理由</p>
+<h3 id="一认定道路交通事故发生经过与事实不符">一、认定道路交通事故发生经过与事实不符</h3>
+<p>原认定书认定： “2012年6月14日7时55分左右，陈XX（对方）驾驶赣州A404XX号电动自行车（搭载叶X）沿厚德路由西向东行驶至厚德路小学门前路段时，在左转弯过程中，叶X左脚与相对方向直行由XXX（本人）驾驶的赣BHXXXX号轿车擦刮”。</p>
+<p>申请人认为与事实不符：</p>
+<p>1、从现场示意图可知，碰撞点位于厚德路小学路口西端以西10米外，距道路北侧边缘1.5米处，第三人左转横过机动车道后因送女儿叶X上学欲进入厚德路小学路口，故沿道路北侧向东逆行，并非如原认定书所述“在左转弯过程中”。碰撞点距道路边缘仅1.5米，而且是叶X反向骑乘，左脚伸出电动车尾部发生擦刮，而该电动车的长度已经超过1.5米，在这样的距离内，第三人不可能继续横过道路向道路边缘（道路北侧）运动，因而第三人必然已经改变运动方向，而从第三人送女儿上学的目的可以判定：第三人必然沿道路北侧向东逆行欲进入厚德路小学入口。</p>
+<p>2、从“叶X左脚与相对方向直行由XXX驾驶的赣BHXXXX号轿车擦刮”的认定可知，叶X为反向骑乘，因为，如果叶X正向骑乘，双方车辆右侧碰撞只能伤及叶X右侧肢体，而叶X左脚受伤故为反向骑乘，由于叶X反向骑乘而第三人车辆后座有较大的靠背，致使叶X左脚不得不外伸，超出第三人车辆车把宽度与车尾，因而与申请人车辆擦刮。被申请人对如此重要的事实没有认定是严重失职。</p>
+<h3 id="二认定交通事故成因错误">二、认定交通事故成因错误</h3>
+<p>原认定书认定：“当事人XXX当日驾驶机动车行驶至学校门前路段时，对道路的交通动态注意不够，忽视安全”。</p>
+<p>申请人认为是错误的：</p>
+<p>1、被申请人没有任何证据证明申请人“对道路的交通动态注意不够，忽视安全”。</p>
 	</div>
 </article>
 
@@ -445,7 +472,7 @@ mysql多列索引适合的场景
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -461,13 +488,12 @@ mysql多列索引适合的场景
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -505,99 +531,99 @@ mysql多列索引适合的场景
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -625,13 +651,14 @@ mysql多列索引适合的场景
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

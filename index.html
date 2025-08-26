@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.106.0">
+	<meta name="generator" content="Hugo 0.148.2">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,90 +9,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 		
-		<meta property="og:title" content="月盾的博客" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/" />
+		<meta property="og:url" content="https://www.yuedun.wang/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="月盾的博客">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="月盾的博客">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="月盾的博客">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="月盾的博客">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -150,20 +117,106 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-10-18T15:26:24&#43;08:00">2024-10-18 15:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-10-18T15:26:24&#43;08:00">2024.10.18 15:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Socket.io作为服务器推送的首要选择，可以很方便的在客户端和Web服务器之间实现双向通信。很多人在选择之初都会有个疑问：socket.io是有状态长链接服务，它能支撑多少个用户同时在线？
-虽然目前没有标准统一的答案，但是，在开发实践中已经证明，在单机情况下10万用户是没问题的。
-如果您觉得10万还是不够，那么可以通过多实例的方式来支持更多的用户也是可行的。实现方式几乎是零成本升级。
-您只需要将默认的适配器更换为redis或其他适配器就可以支持多实例：
-一个基于epxress和socket.io的多实例服务配置：
-#!/usr/bin/env node const app = require(&#39;../app&#39;); const debug = require(&#39;debug&#39;)(&#39;ws_server:www&#39;); const { createServer } = require(&#39;http&#39;); const { Server } = require(&#39;socket.io&#39;); const { createAdapter } = require(&#34;@socket.io/redis-adapter&#34;); const { Redis } = require(&#34;ioredis&#34;); const port = normalizePort(process.env.PORT || &#39;3000&#39;); app.set(&#39;port&#39;, port); const httpServer = createServer(app); /** * Normalize a port into a number, string, or false. */ function normalizePort(val) { var port = parseInt(val, 10); if (isNaN(port)) { // named pipe return val; } if (port &gt;= 0) { // port number return port; } return false; } /** * Event listener for HTTP server &#34;error&#34; event.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2024/10/socketio-cluster/">阅读全文…</a>
+		<p>Socket.io作为服务器推送的首要选择，可以很方便的在客户端和Web服务器之间实现双向通信。很多人在选择之初都会有个疑问：socket.io是有状态长链接服务，它能支撑多少个用户同时在线？</p>
+<p>虽然目前没有标准统一的答案，但是，在开发实践中已经证明，在单机情况下10万用户是没问题的。</p>
+<p>如果您觉得10万还是不够，那么可以通过多实例的方式来支持更多的用户也是可行的。实现方式几乎是零成本升级。</p>
+<p>您只需要将默认的适配器更换为redis或其他适配器就可以支持多实例：</p>
+<p>一个基于epxress和socket.io的多实例服务配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env node
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../app&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">debug</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;debug&#39;</span>)(<span style="color:#e6db74">&#39;ws_server:www&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">createServer</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;http&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">Server</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;socket.io&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">createAdapter</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;@socket.io/redis-adapter&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">Redis</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;ioredis&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">normalizePort</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;3000&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;port&#39;</span>, <span style="color:#a6e22e">port</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">httpServer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createServer</span>(<span style="color:#a6e22e">app</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Normalize a port into a number, string, or false.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">normalizePort</span>(<span style="color:#a6e22e">val</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> parseInt(<span style="color:#a6e22e">val</span>, <span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (isNaN(<span style="color:#a6e22e">port</span>)) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// named pipe
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">val</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">port</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// port number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">port</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Event listener for HTTP server &#34;error&#34; event.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onError</span>(<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">syscall</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;listen&#39;</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bind</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;string&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;Pipe &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">port</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Port &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">port</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// handle specific listen errors with friendly messages
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">code</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;EACCES&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">bind</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; requires elevated privileges&#39;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;EADDRINUSE&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">bind</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; is already in use&#39;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">exit</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Event listener for HTTP server &#34;listening&#34; event.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">onListening</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">addr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">address</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bind</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">addr</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;string&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;pipe &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">addr</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;port &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">addr</span>.<span style="color:#a6e22e">port</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Listening on &#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">bind</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 重点部分
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pubClient</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Redis</span>({
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">host</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">REDIS_HOST</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">port</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">REDIS_PORT</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">password</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">REDIS_PASSWORD</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">subClient</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pubClient</span>.<span style="color:#a6e22e">duplicate</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">io</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Server</span>(<span style="color:#a6e22e">httpServer</span>, {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">adapter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">createAdapter</span>(<span style="color:#a6e22e">pubClient</span>, <span style="color:#a6e22e">subClient</span>),
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">cors</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">origin</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;https://admin.socket.io&#34;</span>, <span style="color:#e6db74">&#34;http://127.0.0.1:8080&#34;</span>],
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// allowedHeaders: [&#34;Authorization&#34;, &#34;Cookie&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#a6e22e">credentials</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#34;IO&#34;</span>, <span style="color:#a6e22e">io</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">port</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;error&#39;</span>, <span style="color:#a6e22e">onError</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">httpServer</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;listening&#39;</span>, <span style="color:#a6e22e">onListening</span>);
+</span></span></code></pre></div><p>经过上面的改动后，所有的socket.io服务器实例可以共享一个redis实例来存储连接的状态信息。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -177,17 +230,32 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-08-06T14:50:43&#43;08:00">2024-08-06 14:50</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-08-06T14:50:43&#43;08:00">2024.08.06 14:50</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		gitlab ci/cd 中，需要使用到 docker registry 账号 push 镜像，这个可以设置为机器人，可以避免个人账号泄露
-配置Harbor机器人 登录 Harbor 管理界面，进入系统管理→认证页面； 选择机器人 Token页签，点击左上角的新建机器人，创建一个名为gitlab-ci的机器人； 给该机器人一个名称，并给该机器人添加相应的权限； 机器人创建完成以后，点击右侧的查看token来复制该机器人的 token，这个就是以后用 gitlab-ci 配置文件使用的账号密码； 在gitlab 创建 harbor-robot 用户； 为该用户添加项目级别的 开发 权限； 配置gitlab-ci 在项目的设置中添加 docker registry 账号密码，仓库地址是harbor的； 编辑.gitlab-ci.yml文件，把账号密码改为之前复制的 token； 注意点
-有些情况下创建的机器人账户会带上$符号，在gitlab中是无法使用的，需要将$改为两个$$来表示$；
-结束 这样gitlab-ci 就可以顺利跑测试、构建、推送镜像了；
-以上内容，只是简单的配了配 harbor，可以有很多其他方法完成该工作，这里只是简单的记录下而已；
-如果需要复杂的设置，欢迎移步harbor 文档，那里有更多的内容可以提供参考。
+		<p>gitlab ci/cd 中，需要使用到 docker registry 账号 push 镜像，这个可以设置为机器人，可以避免个人账号泄露</p>
+<h2 id="配置harbor机器人">配置Harbor机器人</h2>
+<ul>
+<li>登录 Harbor 管理界面，进入<code>系统管理→认证</code>页面；</li>
+<li>选择<code>机器人 Token</code>页签，点击左上角的<code>新建机器人</code>，创建一个名为<code>gitlab-ci</code>的机器人；</li>
+<li>给该机器人一个名称，并给该机器人添加相应的权限；</li>
+<li>机器人创建完成以后，点击右侧的<code>查看token</code>来复制该机器人的 token，这个就是以后用 gitlab-ci 配置文件使用的账号密码；</li>
+<li>在gitlab 创建 <code>harbor-robot</code> 用户；</li>
+<li>为该用户添加项目级别的 <code>开发</code> 权限；</li>
+</ul>
+<h2 id="配置gitlab-ci">配置gitlab-ci</h2>
+<ul>
+<li>在项目的设置中添加 docker registry 账号密码，仓库地址是harbor的；</li>
+<li>编辑<code>.gitlab-ci.yml</code>文件，把账号密码改为之前复制的 token；</li>
+</ul>
+<p><strong>注意点</strong></p>
+<p>有些情况下创建的机器人账户会带上<code>$</code>符号，在gitlab中是无法使用的，需要将<code>$</code>改为两个<code>$$</code>来表示<code>$</code>；</p>
+<h2 id="结束">结束</h2>
+<p>这样gitlab-ci 就可以顺利跑测试、构建、推送镜像了；</p>
+<p>以上内容，只是简单的配了配 harbor，可以有很多其他方法完成该工作，这里只是简单的记录下而已；</p>
+<p>如果需要复杂的设置，欢迎移步<a href="https://github.com/goharbor/harbor/blob/master/docs/user_guide.md">harbor 文档</a>，那里有更多的内容可以提供参考。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -201,7 +269,7 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-05-28T15:49:21&#43;08:00">2024-05-28 15:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-05-28T15:49:21&#43;08:00">2024.05.28 15:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
 	</span>
 </div></div>
 	</header>
@@ -260,15 +328,19 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-02-28T16:16:19&#43;08:00">2024-02-28 16:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2024-02-28T16:16:19&#43;08:00">2024.02.28 16:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		前端圈的发展一向让人感觉学不动，前有Deno，后有Bun，这不，最近又出了个比Nodejs快的Runtime，它叫LLRT。
-1. 什么是LLRT LLRT是Low Latency Runtime的缩写，是一种轻量级JavaScript运行时，旨在满足对快速高效的无服务器应用程序日益增长的需求。与在AWS Lambda上运行的其他JavaScript运行时相比，LLRT的启动速度提高了10倍以上，总体成本降低了2倍。
-2. LLRT是如何做到比Nodejs快的 它内置在Rust中，利用QuickJS作为JavaScript引擎，确保高效的内存使用和快速启动。
-3. LLRT的发展 它还处于实验阶段，并不稳定，还不推荐用于生产。
+		<p>前端圈的发展一向让人感觉学不动，前有Deno，后有Bun，这不，最近又出了个比Nodejs快的Runtime，它叫LLRT。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/02/node-deno-bun-llrt/85d300e304ad44e58231585e3f2b14fd.webp" alt="node deno bun对比"></p>
+<h2 id="1-什么是llrt">1. 什么是LLRT</h2>
+<p>LLRT是Low Latency Runtime的缩写，是一种轻量级JavaScript运行时，旨在满足对快速高效的无服务器应用程序日益增长的需求。与在AWS Lambda上运行的其他JavaScript运行时相比，LLRT的启动速度提高了10倍以上，总体成本降低了2倍。</p>
+<h2 id="2-llrt是如何做到比nodejs快的">2. LLRT是如何做到比Nodejs快的</h2>
+<p>它内置在Rust中，利用QuickJS作为JavaScript引擎，确保高效的内存使用和快速启动。</p>
+<h2 id="3-llrt的发展">3. LLRT的发展</h2>
+<p>它还处于实验阶段，并不稳定，还不推荐用于生产。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -282,19 +354,24 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-12-30T14:06:03&#43;08:00">2023-12-30 14:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-12-30T14:06:03&#43;08:00">2023.12.30 14:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		256G 的 MacBook Pro 用了2年了，最近发现磁盘空间越来越小，每次重启后还能剩余 20G 的空间，用一天后就开始硬盘余额告急，能清理的都清理了，还是不够用。实在找不到能够清理的内容了。
-但是“其他”选项占用了大部分磁盘空间，可以这该清理什么内容呢？
-可以尝试在命令行执行以下命令：
-查看具体文件夹信息
-du -sh &lt;folder&gt; 找到大文件，可以尝试删除。
-rm -rf &lt;file&gt; 比如查看~/Library/Caches目录
-$ du -h -d 1 | sort -h 会输出当前目录下所有子文件夹的大小，根据实际情况来清理。
-一顿深度清理后，磁盘空间腾出40G来，总算能再撑一段时间了。
+		<p>256G 的 MacBook Pro 用了2年了，最近发现磁盘空间越来越小，每次重启后还能剩余 20G 的空间，用一天后就开始硬盘余额告急，能清理的都清理了，还是不够用。实在找不到能够清理的内容了。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/12/mac-storage-clean/%E6%88%AA%E5%B1%8F2023-12-30%2014.08.25.png" alt="截屏2023-12-30%2014.08.25.png"></p>
+<p>但是“其他”选项占用了大部分磁盘空间，可以这该清理什么内容呢？</p>
+<p>可以尝试在命令行执行以下命令：</p>
+<p>查看具体文件夹信息</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>du -sh &lt;folder&gt;
+</span></span></code></pre></div><p>找到大文件，可以尝试删除。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -rf &lt;file&gt;
+</span></span></code></pre></div><p>比如查看~/Library/Caches目录</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ du -h -d <span style="color:#ae81ff">1</span> | sort -h
+</span></span></code></pre></div><p>会输出当前目录下所有子文件夹的大小，根据实际情况来清理。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/12/mac-storage-clean/%E6%88%AA%E5%B1%8F2023-12-30%2014.09.08.png" alt="截屏2023-12-30%2014.09.08.png"></p>
+<p>一顿深度清理后，磁盘空间腾出40G来，总算能再撑一段时间了。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -313,16 +390,33 @@ $ du -h -d 1 | sort -h 会输出当前目录下所有子文件夹的大小，根
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-12-12T10:43:56&#43;08:00">2023-12-12 10:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-12-12T10:43:56&#43;08:00">2023.12.12 10:43</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		使用电脑的人免不了使用浏览器，电脑端浏览器的一大特色是插件和扩展，等于是给浏览器添加外挂，增加一些额外的有用功能，比如：
-广告拦截器 密码管理器 翻译工具 网页截图工具 我自己使用的一些插件具备以下功能：
-保存和同步密码 下载网页视频 自定义网页样式 鼠标手势 破解功能 等等…… 然而，手机端的浏览器基本不支持插件功能。 但是令我万万没有想到的是，苹果手机的浏览器居然已经支持扩展功能了。
-设置 &gt; Safari浏览器 &gt; 扩展 &gt; 更多扩展 目前支持的扩展数量还有限，但是也算有个好的开头，也有一些比较使用的扩展。
-https://www.hopefly.top/article/65/
+		<p>使用电脑的人免不了使用浏览器，电脑端浏览器的一大特色是<strong>插件和扩展</strong>，等于是给浏览器添加外挂，增加一些额外的有用功能，比如：</p>
+<ul>
+<li>广告拦截器</li>
+<li>密码管理器</li>
+<li>翻译工具</li>
+<li>网页截图工具</li>
+</ul>
+<p>我自己使用的一些插件具备以下功能：</p>
+<ul>
+<li>保存和同步密码</li>
+<li>下载网页视频</li>
+<li>自定义网页样式</li>
+<li>鼠标手势</li>
+<li>破解功能</li>
+</ul>
+<p>等等……
+然而，手机端的浏览器基本不支持插件功能。
+但是令我万万没有想到的是，苹果手机的浏览器居然已经支持扩展功能了。</p>
+<p><a href="https://hopefully-img.yuedun.wang/sarfari%E6%89%A9%E5%B1%95.jpeg?imageView2/2/w/500/" title="safari浏览器扩展"><img src="https://hopefully-img.yuedun.wang/sarfari%E6%89%A9%E5%B1%95.jpeg?imageView2/2/w/500/" alt="safari浏览器扩展" title="safari浏览器扩展"></a></p>
+<h4 id="设置--safari浏览器--扩展--更多扩展">设置 &gt; Safari浏览器 &gt; 扩展 &gt; 更多扩展</h4>
+<p>目前支持的扩展数量还有限，但是也算有个好的开头，也有一些比较使用的扩展。</p>
+<p><a href="https://www.hopefly.top/article/65/">https://www.hopefly.top/article/65/</a></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -336,17 +430,104 @@ https://www.hopefly.top/article/65/
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-22T13:32:34&#43;08:00">2023-11-22 13:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-22T13:32:34&#43;08:00">2023.11.22 13:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		虽然很多文章说不建议将数据库部署在容器中，因为有性能问题。但我觉得这事还是要看具体使用场景来决定，而不是全盘否定。开发的过程中并不只有性能是最重要的，还有效率，易用性等也很重要。
-对于测试环境来说，数据库部署在容器中肯定是可以的。
-apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql spec: progressDeadlineSeconds: 600 replicas: 1 revisionHistoryLimit: 10 selector: matchLabels: app: mysql strategy: rollingUpdate: maxSurge: 25% maxUnavailable: 25% type: RollingUpdate template: labels: app: mysql spec: containers: - env: - name: MYSQL_ROOT_PASSWORD value: xxx image: mysql:8.0.33 imagePullPolicy: IfNotPresent name: mysql ports: - containerPort: 3306 name: mysql protocol: TCP resources: limits: cpu: &#34;4&#34; memory: 8Gi volumeMounts: - mountPath: /var/lib/mysql name: data - mountPath: /etc/mysql/conf.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2023/11/kubernetes-deploy-mysql8/">阅读全文…</a>
+		<p>虽然很多文章说不建议将数据库部署在容器中，因为有性能问题。但我觉得这事还是要看具体使用场景来决定，而不是全盘否定。开发的过程中并不只有性能是最重要的，还有效率，易用性等也很重要。</p>
+<p>对于测试环境来说，数据库部署在容器中肯定是可以的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">progressDeadlineSeconds</span>: <span style="color:#ae81ff">600</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">revisionHistoryLimit</span>: <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">selector</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">matchLabels</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">strategy</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rollingUpdate</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">maxSurge</span>: <span style="color:#ae81ff">25</span><span style="color:#ae81ff">%</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">maxUnavailable</span>: <span style="color:#ae81ff">25</span><span style="color:#ae81ff">%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#ae81ff">RollingUpdate</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">template</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">labels</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">containers</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">MYSQL_ROOT_PASSWORD</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">value</span>: <span style="color:#ae81ff">xxx</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">mysql:8.0.33</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">3306</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">resources</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">limits</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">cpu</span>: <span style="color:#e6db74">&#34;4&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">8Gi</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">volumeMounts</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/var/lib/mysql</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">data</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/etc/mysql/conf.d/</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-config</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">data</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">persistentVolumeClaim</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">claimName</span>: <span style="color:#ae81ff">mysql</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">configMap</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">defaultMode</span>: <span style="color:#ae81ff">420</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-config</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">ConfigMap</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">data</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">my.cnf</span>: |-<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [client]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    default-character-set = utf8mb4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [mysql]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    default-character-set=utf8mb4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    [mysqld]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    character-set-server=utf8mb4
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    collation_server=utf8mb4_unicode_ci
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    gtid_mode=ON
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    enforce_gtid_consistency=ON
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    lower_case_table_names=1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    open_files_limit=65535
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    slow_query_log = ON
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    long_query_time = 2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_heap_table_size = 32M
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    tmp_table_size = 2M
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    log-bin = mysql-bin
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    binlog_cache_size = 32K
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_binlog_cache_size = 1G
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_binlog_size = 1G
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    binlog-format = ROW
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    sync_binlog = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    log-slave-updates = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    expire_logs_days = 7
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    default-time_zone = +8:00
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_connect_errors = 65535
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_allowed_packet = 536870912
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    max_connections = 5120
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    innodb_buffer_pool_instances = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    innodb_buffer_pool_size = 6442450944
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    innodb_temp_data_file_path = ibtmp1:12M:autoextend:max:15G
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    server_id = 100</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">metadata</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-config</span>
+</span></span></code></pre></div>
 	</div>
 </article>
 <article class="list__item post">
@@ -360,25 +541,207 @@ apiVersion: apps/v1 kind: Deployment metadata: labels: app: mysql name: mysql sp
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-14T15:53:33&#43;08:00">2023-11-14 15:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-11-14T15:53:33&#43;08:00">2023.11.14 15:53</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		数据安全一直是企业安全的重中之重，在企业系统开发过程中，数据库的安全日益增强，所以需要有个平台能够记录和审查数据库变更。
-SQL 审计平台的功能特点：
-实时监控和记录：SQL 审计平台能够实时监听数据库操作，记录所有的 SQL 查询和事务操作，确保数据变更的可追溯性。 用户行为分析：通过分析用户的查询行为和访问模式，SQL 审计平台可以识别风险操作、异常查询和异常登录行为，帮助提前发现潜在的安全威胁。 合规报告与警报：SQL 审计平台能够生成详尽的合规报告，满足合规要求，并根据预设的规则触发警报，帮助管理员及时采取应对措施。 数据完整性保护：通过审计日志记录的数据变更信息，SQL 审计平台能够帮助恢复受损的数据或进行调查取证，确保数据库的完整性和可靠性。 权限管理与访问控制：SQL 审计平台提供丰富的权限管理功能，可以对用户进行细粒度的访问控制，确保只有经过授权的用户能够访问敏感数据。 常见的sql审计平台：
-Yearning Archery bytebase Yearning 官网：https://yearning.io
-开发语言：golang
-功能：
-SQL 查询 查询工单 导出 自动补全，智能提示 查询语句审计 查询结果脱敏 SQL 审核 流程化工单 SQL语句语法检测 根据规则检测SQL语句合规性 自动生成DDL/DML回滚语句 历史审核记录 推送 E-mail 工单推送 钉钉 webhook 机器人工单推送 用户权限及管理 角色划分 基于用户的细粒度权限 注册 其他 todoList LDAP 登录 动态审核规则配置 自定义审核层级 AutoTask 自动执行 部署 支持容器部署。
-Archery 官网：https://archerydms.com/
-开发语言：python
-功能：
-查询 审核 执行 备份 数据字典 慢日志 会话管理 账号管理 参数管理 数据归档 MySQL √ √ √ √ √ √ √ √ √ MsSQL √ × √ × × × × × × Redis √ × √ × × × × × × PgSQL √ × √ × × × × × × Oracle √ √ √ √ × × × × × MongoDB √ √ √ × × × × × × Phoenix √ × √ × × × × × × ODPS √ × × × × × × × × ClickHouse √ × × × × × × × × SQL审核 MySQL实例 基于Inception/goInception实现，集成审核、执行、备份
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2023/11/sql-audit/">阅读全文…</a>
+		<p>数据安全一直是企业安全的重中之重，在企业系统开发过程中，数据库的安全日益增强，所以需要有个平台能够记录和审查数据库变更。</p>
+<p>SQL 审计平台的功能特点：</p>
+<ul>
+<li>实时监控和记录：SQL 审计平台能够实时监听数据库操作，记录所有的 SQL 查询和事务操作，确保数据变更的可追溯性。</li>
+<li>用户行为分析：通过分析用户的查询行为和访问模式，SQL 审计平台可以识别风险操作、异常查询和异常登录行为，帮助提前发现潜在的安全威胁。</li>
+<li>合规报告与警报：SQL 审计平台能够生成详尽的合规报告，满足合规要求，并根据预设的规则触发警报，帮助管理员及时采取应对措施。</li>
+<li>数据完整性保护：通过审计日志记录的数据变更信息，SQL 审计平台能够帮助恢复受损的数据或进行调查取证，确保数据库的完整性和可靠性。</li>
+<li>权限管理与访问控制：SQL 审计平台提供丰富的权限管理功能，可以对用户进行细粒度的访问控制，确保只有经过授权的用户能够访问敏感数据。</li>
+</ul>
+<p>常见的sql审计平台：</p>
+<ul>
+<li>Yearning</li>
+<li>Archery</li>
+<li>bytebase</li>
+</ul>
+<h2 id="yearning">Yearning</h2>
+<p>官网：<a href="https://yearning.io/">https://yearning.io</a></p>
+<p>开发语言：golang</p>
+<p>功能：</p>
+<ul>
+<li>SQL 查询
+<ul>
+<li>查询工单</li>
+<li>导出</li>
+<li>自动补全，智能提示</li>
+<li>查询语句审计</li>
+<li>查询结果脱敏</li>
+</ul>
+</li>
+<li>SQL 审核
+<ul>
+<li>流程化工单</li>
+<li>SQL语句语法检测</li>
+<li>根据规则检测SQL语句合规性</li>
+<li>自动生成DDL/DML回滚语句</li>
+<li>历史审核记录</li>
+</ul>
+</li>
+<li>推送
+<ul>
+<li>E-mail 工单推送</li>
+<li>钉钉 webhook 机器人工单推送</li>
+</ul>
+</li>
+<li>用户权限及管理
+<ul>
+<li>角色划分</li>
+<li>基于用户的细粒度权限</li>
+<li>注册</li>
+</ul>
+</li>
+<li>其他
+<ul>
+<li>todoList</li>
+<li>LDAP 登录</li>
+<li>动态审核规则配置</li>
+<li>自定义审核层级</li>
+</ul>
+</li>
+<li>AutoTask 自动执行</li>
+</ul>
+<h3 id="部署">部署</h3>
+<p>支持容器部署。</p>
+<h2 id="archery">Archery</h2>
+<p>官网：<a href="https://archerydms.com/">https://archerydms.com/</a></p>
+<p>开发语言：python</p>
+<p>功能：</p>
+<table>
+  <thead>
+      <tr>
+          <th>查询</th>
+          <th>审核</th>
+          <th>执行</th>
+          <th>备份</th>
+          <th>数据字典</th>
+          <th>慢日志</th>
+          <th>会话管理</th>
+          <th>账号管理</th>
+          <th>参数管理</th>
+          <th>数据归档</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>MySQL</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+      </tr>
+      <tr>
+          <td>MsSQL</td>
+          <td>√</td>
+          <td>×</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>Redis</td>
+          <td>√</td>
+          <td>×</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>PgSQL</td>
+          <td>√</td>
+          <td>×</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>Oracle</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>MongoDB</td>
+          <td>√</td>
+          <td>√</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>Phoenix</td>
+          <td>√</td>
+          <td>×</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>ODPS</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+      <tr>
+          <td>ClickHouse</td>
+          <td>√</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="sql审核">SQL审核</h3>
+<h4 id="mysql实例">MySQL实例</h4>
+<p>基于Inception/goInception实现，集成审核、执行、备份</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -397,23 +760,30 @@ Archery 官网：https://archerydms.com/
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-24T11:07:26&#43;08:00">2023-09-24 11:07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-24T11:07:26&#43;08:00">2023.09.24 11:07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		多年前微信开发写过一篇关于内网穿透的文章《微信开发通过公网访问本地服务器》，随着时间的推移，有些方法已经不再适用。
-本地服务器地址 前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。
-不可用的方式——ngrok
-最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。
-可用的方式——借助花生壳来实现
-如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&gt; https://console.hsk.oray.com/forward
-服务器配置 此处的服务器地址(URL) 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。
-测试号管理 测试号管理点开后就会看到和上面服务器配置一样的配置内容。
-测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。
-接口访问白名单 设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单
-这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。
-有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！
+		<p>多年前微信开发写过一篇关于内网穿透的文章<a href="/blogdetail/55ab0f6ed366f15412cbf596/">《微信开发通过公网访问本地服务器》</a>，随着时间的推移，有些方法已经不再适用。</p>
+<h2 id="本地服务器地址">本地服务器地址</h2>
+<p>前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。</p>
+<p><strong>不可用的方式——ngrok</strong></p>
+<p>最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。</p>
+<p><strong>可用的方式——借助花生壳来实现</strong></p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
+<p>如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&gt; <a href="https://console.hsk.oray.com/forward">https://console.hsk.oray.com/forward</a></p>
+<h2 id="服务器配置">服务器配置</h2>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
+<p>此处的<strong>服务器地址(URL)</strong> 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。</p>
+<h2 id="测试号管理">测试号管理</h2>
+<p><a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index">测试号管理</a>点开后就会看到和上面服务器配置一样的配置内容。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
+<p>测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。</p>
+<h2 id="接口访问白名单">接口访问白名单</h2>
+<p>设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单</p>
+<p>这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。</p>
+<p>有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -427,15 +797,17 @@ Archery 官网：https://archerydms.com/
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-12T14:18:30&#43;08:00">2023-09-12 14:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-12T14:18:30&#43;08:00">2023.09.12 14:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		生成crt证书
-openssl req -new -x509 -key domain.key -out domain.crt -days 365
-将CRT转换为CSR：
-openssl req -new -key domain.key -out domain.csr
+		<p>生成crt证书</p>
+<blockquote>
+<p>openssl req -new -x509 -key domain.key -out domain.crt -days 365</p></blockquote>
+<p>将CRT转换为CSR：</p>
+<blockquote>
+<p>openssl req -new -key domain.key -out domain.csr</p></blockquote>
 	</div>
 </article>
 
@@ -453,7 +825,7 @@ openssl req -new -key domain.key -out domain.csr
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -469,13 +841,12 @@ openssl req -new -key domain.key -out domain.csr
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -513,99 +884,99 @@ openssl req -new -key domain.key -out domain.csr
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -633,13 +1004,14 @@ openssl req -new -key domain.key -out domain.csr
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

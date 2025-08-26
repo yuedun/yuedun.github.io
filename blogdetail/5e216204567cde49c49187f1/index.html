@@ -8,94 +8,62 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。常用的模块有以下这些：- session">
 		
-		<meta property="og:title" content="beego httplib库使用方法" />
-<meta property="og:description" content="beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。常用的模块有以下这些：- session" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.yuedun.wang/blogdetail/5e216204567cde49c49187f1/" /><meta property="article:section" content="blogdetail" />
-<meta property="article:published_time" content="2020-01-16T14:28:04+00:00" />
-<meta property="article:modified_time" content="2020-01-16T14:28:04+00:00" />
+		<meta property="og:url" content="https://www.yuedun.wang/blogdetail/5e216204567cde49c49187f1/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="beego httplib库使用方法">
+  <meta property="og:description" content="beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。常用的模块有以下这些：- session">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blogdetail">
+    <meta property="article:published_time" content="2020-01-16T14:28:04+00:00">
+    <meta property="article:modified_time" content="2020-01-16T14:28:04+00:00">
+    <meta property="article:tag" content="Golang">
 
+		
+  <meta itemprop="name" content="beego httplib库使用方法">
+  <meta itemprop="description" content="beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。常用的模块有以下这些：- session">
+  <meta itemprop="datePublished" content="2020-01-16T14:28:04+00:00">
+  <meta itemprop="dateModified" content="2020-01-16T14:28:04+00:00">
+  <meta itemprop="wordCount" content="163">
+  <meta itemprop="keywords" content="Golang">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="beego httplib库使用方法">
+  <meta name="twitter:description" content="beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。常用的模块有以下这些：- session">
 
-		<meta itemprop="name" content="beego httplib库使用方法">
-<meta itemprop="description" content="beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。常用的模块有以下这些：- session"><meta itemprop="datePublished" content="2020-01-16T14:28:04+00:00" />
-<meta itemprop="dateModified" content="2020-01-16T14:28:04+00:00" />
-<meta itemprop="wordCount" content="163">
-<meta itemprop="keywords" content="golang," />
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -147,7 +115,7 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-16T14:28:04Z">2020-01-16 14:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-16T14:28:04Z">2020.01.16 14:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 		</header><div class="content post__content clearfix">
@@ -186,8 +154,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>(<span style="color:#e6db74">&#34;Cookie&#34;</span>, <span style="color:#e6db74">&#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce;  PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>(<span style="color:#e6db74">&#34;Host&#34;</span>, <span style="color:#e6db74">&#34;m.lagou.com&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">resBody</span> <span style="color:#a6e22e">wapResBody</span><span style="color:#75715e">//TODO 根据需要自己定义
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">ToJSON</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">resBody</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">resBody</span> <span style="color:#a6e22e">wapResBody</span><span style="color:#75715e">//TODO 根据需要自己定义</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">ToJSON</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">resBody</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">logs</span>.<span style="color:#a6e22e">Debug</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;&gt;&gt;&gt;%+v&#34;</span>, <span style="color:#a6e22e">resBody</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">resBody</span>.<span style="color:#a6e22e">State</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> {
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">logs</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">&#34;获取&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">language</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;数据为空!&#34;</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprint</span>(<span style="color:#e6db74">&#34;%+v&#34;</span>, <span style="color:#a6e22e">resBody</span>))
@@ -197,8 +165,8 @@
 </span></span></code></pre></div><p>上面代码中的<strong>resBody</strong>就是接收到的body内容，其核心是<strong>req.ToJSON(&amp;resBody)</strong>。</p>
 <p><strong>注意</strong>：上面代码只是例子，因为拉钩做了防爬策略，cookie会失效，所以直接抄下来可能不会正常解析数据，请使用正常的接口做测试！</p>
 <h3 id="获取header头信息">获取header头信息</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">//获取页面cookie
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetCookies</span>(<span style="color:#a6e22e">url</span> <span style="color:#66d9ef">string</span>) []<span style="color:#66d9ef">string</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">//获取页面cookie</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">GetCookies</span>(<span style="color:#a6e22e">url</span> <span style="color:#66d9ef">string</span>) []<span style="color:#66d9ef">string</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req1</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">httplib</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">url</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req1</span>.<span style="color:#a6e22e">Header</span>(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">resp</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">req1</span>.<span style="color:#a6e22e">Response</span>()
@@ -256,7 +224,7 @@
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

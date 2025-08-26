@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="数据库" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" />
+		<meta property="og:url" content="https://www.yuedun.wang/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="数据库">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="数据库">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2022-09-28T14:00:43+08:00">
+  <meta itemprop="dateModified" content="2022-09-28T14:00:43+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="数据库">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="数据库">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,23 +116,47 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T05:51:40Z">2016-11-05 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T05:51:40Z">2016.11.05 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
-以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
-mongodb中查询
-select * from articles where content like &#39;%Nodejs%&#39;; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
-var a=&#34;Nodejs&#34; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
-var text = &#39;Nodejs&#39;;//动态传入的变量 Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {}); $options选项值：
-i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串 其实$regex就是正则表达式的写法
-查找数组中的字段：
-contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address: &#34;address2&#34;, name: &#34;李四&#34; }, .
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/581d736c43c18f1b7ae3e3ff/">阅读全文…</a>
+		<blockquote>
+<p>需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的</p></blockquote>
+<p>以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章</p>
+<p><strong>mongodb中查询</strong></p>
+<pre tabindex="0"><code>select * from articles where content like &#39;%Nodejs%&#39;;
+db.articles.find( { content: /Nodejs/i } )
+Article.find({ content: /Nodejs/i}, function (err, docs) {});
+</code></pre><p>这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用<code>/</code>包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：</p>
+<pre tabindex="0"><code>var a=&#34;Nodejs&#34; ;
+Article.find({ content: /a/i}, function (err, docs) {});
+</code></pre><p>此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用<code>$regex</code>关键字，还有$options选项</p>
+<pre tabindex="0"><code>var text = &#39;Nodejs&#39;;//动态传入的变量
+Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {});
+</code></pre><p><code>$options</code>选项值：</p>
+<ul>
+<li>i 大小写不敏感</li>
+<li>m $regex包含正则^,$符号的表达式</li>
+<li>x 忽略空格</li>
+<li>s 允许逗点匹配所有字符串</li>
+</ul>
+<p>其实$regex就是正则表达式的写法</p>
+<p>查找数组中的字段：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">contacts</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">address</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;address1&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;张三&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">address</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;address2&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;李四&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        .....
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以通过<code>db.collection.find({'contacts.name':{$regex:'张'}})</code>获得</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -179,19 +170,41 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016-11-02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016.11.02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		mongdb查询某一字段sum值 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
-mongodb中查询
-select sum(pv) from articles; db.articles.aggregate([{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 2 } select sum(pv) from articles where createDate &lt;= &#39;2016-10-20&#39;; db.articles.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 9 } select sum(pv) from articles where category = &#39;Nodejs&#39;; db.articles.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 7 } 需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
-mongoose实现方式，与上面sql的顺序对应：
-Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) { console.log(&#34;1&#34;, doc); }); Article.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) { console.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5819b2b7c4d0a377509b8f1a/">阅读全文…</a>
+		<h2 id="mongdb查询某一字段sum值">mongdb查询某一字段sum值</h2>
+<blockquote>
+<p>需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计</p></blockquote>
+<p><strong>mongodb中查询</strong></p>
+<pre tabindex="0"><code>select sum(pv) from articles;
+db.articles.aggregate([{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 2 }
+
+select sum(pv) from articles where createDate &lt;= &#39;2016-10-20&#39;;
+db.articles.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 9 }
+
+select sum(pv) from articles where category = &#39;Nodejs&#39;;
+db.articles.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 7 }
+</code></pre><p><em>需要注意<code>$match</code>和<code>$group</code>的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）</em></p>
+<p><strong>mongoose实现方式，与上面sql的顺序对应：</strong></p>
+<pre tabindex="0"><code>Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) {
+    console.log(&#34;1&#34;, doc);
+});
+Article.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) {
+    console.log(&#34;2&#34;, doc);
+});
+Article.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) {
+    console.log(&#34;3&#34;, doc);
+});
+1 [ { _id: null, pv: 25 } ]
+2 [ { _id: null, pv: 9 } ]
+3 [ { _id: null, pv: 7 } ]
+</code></pre><p>参考文档：</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -205,13 +218,13 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, fun
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-02-15T11:29:00Z">2016-02-15 11:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-02-15T11:29:00Z">2016.02.15 11:29</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		多人协作开发过程中会遇到一些字段设置默认值的情况，但是这个默认值到底该由哪一阶段来设置？比如有三个阶段:前端或移动端，接口程序，数据库。说个具体场景，APP上有个医生需要显示挂号费，这个挂号费是由后台管理系统添加的，但是在添加医生这个过程不是一次性完成的，先是添加员工信息，角色为医生，这个挂号费是添加完成员工信息以后在医生管理里设置的，那么在完成添加员工后还没来得及设置挂号费医生就显示到了APP中，由于这个医生没有挂号费，就会导致用户误解或者APP程序报错。这时候问题来了，挂号费该有个默认值吧！但是这个默认值由谁来设置呢？尤其是程序上线以后出现问题大家都不想背这个黑锅，移动端问接口，你要传个默认值给我，接口对后台管理说你怎么没传个默认值给我？后台管理说，就不能在数据库设置吗，没有值我干嘛还要传？究竟该由谁来设置这个默认值，好像谁都可以，但是有很多字段要设置的时候就有很多工作量要做了，需要判断用户有没有填，没有填就设置默认值。一堆的if判断，很不明智的做法，而且也不能保证万无一失。
-最后总结：默认值由数据库来设置，这是最简单的方法，可以为程序省去很多判断，而且数据库不为null的设置可以为索引字段带来好处，节省空间。
+		<p>多人协作开发过程中会遇到一些字段设置默认值的情况，但是这个默认值到底该由哪一阶段来设置？比如有三个阶段:前端或移动端，接口程序，数据库。说个具体场景，APP上有个医生需要显示挂号费，这个挂号费是由后台管理系统添加的，但是在添加医生这个过程不是一次性完成的，先是添加员工信息，角色为医生，这个挂号费是添加完成员工信息以后在医生管理里设置的，那么在完成添加员工后还没来得及设置挂号费医生就显示到了APP中，由于这个医生没有挂号费，就会导致用户误解或者APP程序报错。这时候问题来了，挂号费该有个默认值吧！但是这个默认值由谁来设置呢？尤其是程序上线以后出现问题大家都不想背这个黑锅，移动端问接口，你要传个默认值给我，接口对后台管理说你怎么没传个默认值给我？后台管理说，就不能在数据库设置吗，没有值我干嘛还要传？究竟该由谁来设置这个默认值，好像谁都可以，但是有很多字段要设置的时候就有很多工作量要做了，需要判断用户有没有填，没有填就设置默认值。一堆的if判断，很不明智的做法，而且也不能保证万无一失。</p>
+<p>最后总结：默认值由数据库来设置，这是最简单的方法，可以为程序省去很多判断，而且数据库不为null的设置可以为索引字段带来好处，节省空间。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -225,17 +238,25 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, fun
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-16T09:00:52Z">2015-10-16 09:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-16T09:00:52Z">2015.10.16 09:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。那么如何加索引才是正确的做法呢？
-数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。
-如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。
-最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。
-mysql多列索引适合的场景
-全字段匹配 匹配部分最左前缀 匹配第一列 匹配第一列范围查询(可用用like a%,但不能使用like %b) 精确匹配某一列和和范围匹配另外一列 order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) and id =&ldquo;3&rdquo;
+		<p>数据库优化第一想到的应该是建立索引，而且是最快速有效的优化方式，一般是对where子句中的字段建立索引，但是并不是越多越好，对于基数(区分度)越大的效果越好，比如唯一索引。对于一些表示状态的，比如值为0,1这类区分状态的字段就算数据再多索引的基数也很小，这类字段并不是非要加索引，加的索引越多越占磁盘空间，每次写入数据都要更新大量索引，反而成为累赘。但是不要以为真的没必要加，初学者对索引的认识浅薄，要么不加索引，要么在建表时就妄自推断加了很多索引。那么如何加索引才是正确的做法呢？</p>
+<p>数据库中有一种是单列索引，一种是多列索引，要怎么加需要搞清楚这两者的区别，当查询条件有多个字段时，单列索引和多列索引有很大的区别。<br>
+如果使用多列索引，where条件中字段的顺序非常重要，需要满足最左前缀列。</p>
+<blockquote>
+<p>最左前缀：查询条件中的所有字段需要从左边起按顺序出现在多列索引中，查询条件的字段数要小于等于多列索引的字段数，中间字段不能存在范围查询的字段(&lt;,like等)，这样的sql可以使用该多列索引。</p></blockquote>
+<p>mysql多列索引适合的场景</p>
+<ol>
+<li>全字段匹配</li>
+<li>匹配部分最左前缀</li>
+<li>匹配第一列</li>
+<li>匹配第一列范围查询(可用用like a%,但不能使用like %b)</li>
+<li>精确匹配某一列和和范围匹配另外一列</li>
+</ol>
+<p>order by操作中出现的字段同样适用于按值查找的规则，where+order by中出现的字段需可以建立满足如上五种规则多列索引。 使用多列需要按照最左索引列查找；不能跳过中间列；如果某一列是范围查询，那么其右边所有列无法使用索引。 IN什么情况下是范围查询，什么情况下是多个等值查询？如果有order by排序时，多个等于条件查询就是范围查询，没有order by排序就没有限制。 例如,建立多列索引(name, age, id), 只能使用索引的前两列。in是范围查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) order by id 可以使用整个索引，in是按值查询 &hellip; where name=&ldquo;nginx.cn&rdquo; and age in(15,16,17) and id =&ldquo;3&rdquo;</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -249,15 +270,16 @@ mysql多列索引适合的场景
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-08T14:04:07Z">2015-10-08 14:04</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-08T14:04:07Z">2015.10.08 14:04</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		以前找工作的时候总被面试到数据库方面的知识，尤其是数据库优化。当然在去面试之前先补习一下，背一些网上的概念来应付。现在想想，要考察一个开发者数据库优化方面的知识只需要问一下有没有做过数据库设计和优化就行，如果做过相关工作那么多少会总结出来一些，如果没做过说出再多也是概念而已。
-国庆节前韩豆咖派上线，然后这个节日就不会有好日子过了，上线三四天的时候很多用户反映帖子刷新不出来，登陆不了等问题，起初我以为是放假了大家回家网络不好导致的，后来测试了下接口花了一分多钟数据才返回，看来不是网络问题。查了下数据库帖子数量，居然达到6万了，想到以前背的概念，首先加索引试试，果然快了。但是节后数量达到12万的时候又出现了相同的问题，有点纳闷，索引页加了怎么还是慢呢？经过多次试验，分拆复杂查询后得出结论是由于查询语句中使用了left join自连接查询，通俗的说就是在12万数据中找出需要的数据，然后再在这12万中找出关联数据，光是这两个12万都够吓人了。最后还是把复杂的sql分解用程序控制查询子句，速度果然又提高了。
-得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片：
-但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.
+		<p>以前找工作的时候总被面试到数据库方面的知识，尤其是数据库优化。当然在去面试之前先补习一下，背一些网上的概念来应付。现在想想，要考察一个开发者数据库优化方面的知识只需要问一下有没有做过数据库设计和优化就行，如果做过相关工作那么多少会总结出来一些，如果没做过说出再多也是概念而已。</p>
+<p>国庆节前韩豆咖派上线，然后这个节日就不会有好日子过了，上线三四天的时候很多用户反映帖子刷新不出来，登陆不了等问题，起初我以为是放假了大家回家网络不好导致的，后来测试了下接口花了一分多钟数据才返回，看来不是网络问题。查了下数据库帖子数量，居然达到6万了，想到以前背的概念，首先加索引试试，果然快了。但是节后数量达到12万的时候又出现了相同的问题，有点纳闷，索引页加了怎么还是慢呢？经过多次试验，分拆复杂查询后得出结论是由于查询语句中使用了left join自连接查询，通俗的说就是在12万数据中找出需要的数据，然后再在这12万中找出关联数据，光是这两个12万都够吓人了。最后还是把复杂的sql分解用程序控制查询子句，速度果然又提高了。</p>
+<p>得出结论，一句复杂的sql不一定是最好的，分解成多句简单的sql可能有质的飞跃。这个方案在《高性能MYSQL》一书中也提到了，补充个图片：</p>
+<p><img src="https://hopefully-img.yuedun.wang/fuzachaxun.jpg" alt=""></p>
+<p>但是对于sql查询到底该一次复杂查询还是多次简单查询没有明显界限，只有当一条复杂查询发现很慢的时候再分析慢的原因多次试验后就能知道哪个是最好的，而且复杂的sql也不利于优化，可能加了索引都没用，也不能使用查询缓存。当一条复杂的sql需要花3秒钟才能查出来的时候分拆的简单sql可能每秒可以查询5000次了.</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -271,45 +293,44 @@ mysql多列索引适合的场景
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-28T06:18:25Z">2015-09-28 06:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-28T06:18:25Z">2015.09.28 06:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		今天是
-SELECT NOW();-- 2015-09-28 13:48:12 查询当天，格式为YYYY-MM-DD
-SELECT CURDATE();-- 2015-09-28
-查询当天，格式为YYYY-MM-DD HH:mm:ss
-SELECT NOW();-- 2015-09-28 13:42:00
-查询当天0点，格式为YYYY-MM-DD HH:mm:ss
-SELECT DATE_FORMAT(CURDATE(),&quot;%Y-%m-%d %H:%i:%s&quot;);-- 2015-09-28 00:00:00
-查询当天早上9点，格式为YYYY-MM-DD HH:mm:ss
-SELECT DATE_ADD(CURDATE(), INTERVAL 9 HOUR);-- 2015-09-28 09:00:00
-查询昨天，格式为YYYY-MM-DD
-SELECT DATE_SUB(CURDATE(),INTERVAL 1 DAY);-- 2015-09-27
-查询昨天早上9点
-SELECT DATE_ADD(DATE_SUB(CURDATE(),INTERVAL 1 DAY),INTERVAL 9 HOUR);-- 2015-09-27 09:00:00
-DATE_ADD(date,INTERVAL expr type) 参数是合法的日期表达式。expr 参数是您希望增加的时间。
-type 参数可以是下列值：
-Type 值
-MICROSECOND
-SECOND
-MINUTE
-HOUR
-DAY
-WEEK
-MONTH
-QUARTER
-YEAR
-SECOND_MICROSECOND
-MINUTE_MICROSECOND
-MINUTE_SECOND
-HOUR_MICROSECOND
-HOUR_SECOND
-HOUR_MINUTE
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5608dbb10adc9cf12635ebbb/">阅读全文…</a>
+		<p>今天是</p>
+<p><code>SELECT NOW();-- 2015-09-28 13:48:12 </code></p>
+<p>查询当天，格式为YYYY-MM-DD</p>
+<p><code>SELECT CURDATE();-- 2015-09-28</code></p>
+<p>查询当天，格式为YYYY-MM-DD HH:mm:ss</p>
+<p><code>SELECT NOW();-- 2015-09-28 13:42:00</code></p>
+<p>查询当天0点，格式为YYYY-MM-DD HH:mm:ss</p>
+<p><code>SELECT DATE_FORMAT(CURDATE(),&quot;%Y-%m-%d %H:%i:%s&quot;);-- 2015-09-28 00:00:00</code></p>
+<p>查询当天早上9点，格式为YYYY-MM-DD HH:mm:ss</p>
+<p><code>SELECT DATE_ADD(CURDATE(), INTERVAL 9 HOUR);-- 2015-09-28 09:00:00</code></p>
+<p>查询昨天，格式为YYYY-MM-DD</p>
+<p><code>SELECT DATE_SUB(CURDATE(),INTERVAL 1 DAY);-- 2015-09-27</code></p>
+<p>查询昨天早上9点</p>
+<p><code>SELECT DATE_ADD(DATE_SUB(CURDATE(),INTERVAL 1 DAY),INTERVAL 9 HOUR);-- 2015-09-27 09:00:00</code></p>
+<p><code>DATE_ADD(date,INTERVAL expr type)</code> 参数是合法的日期表达式。<em>expr</em> 参数是您希望增加的时间。</p>
+<p>type 参数可以是下列值：</p>
+<p>Type 值</p>
+<p>MICROSECOND</p>
+<p>SECOND</p>
+<p>MINUTE</p>
+<p>HOUR</p>
+<p>DAY</p>
+<p>WEEK</p>
+<p>MONTH</p>
+<p>QUARTER</p>
+<p>YEAR</p>
+<p>SECOND_MICROSECOND</p>
+<p>MINUTE_MICROSECOND</p>
+<p>MINUTE_SECOND</p>
+<p>HOUR_MICROSECOND</p>
+<p>HOUR_SECOND</p>
+<p>HOUR_MINUTE</p>
+<p>DAY_MICROSECOND</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -323,24 +344,24 @@ HOUR_MINUTE
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-04T04:27:35Z">2015-09-04 04:27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-04T04:27:35Z">2015.09.04 04:27</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		在没有做过数据库设计之前认为：数据库设计是表与表的关系设计，合理的表关系设计能使逻辑更易编写，不过这是以前肤浅的认知。后来逐渐开始参与公司数据库的设计才发现，单单是数据库表名，字段名也有一定学问，在最近的开发过程中感觉尤为突出。其中一些是历史遗留发现的，另外一些是新加表中发现的。
-一、遗留问题主要体现在文档缺失上，基本所有表没有注释，字段更不用说，然后就对每个字段的作用搞不清楚，而且很多字段也不知道有没有用到，因为所有记录都没有值，但又不敢删。留着不管又影响性能，看着也不爽。
-二、在新加表出现的问题是：新人喜欢模仿以前的表设计，也不管字段有没有用，有什么用，先都照搬过来，而且又喜欢添加一些新字段，说是为了预留以后新加功能的时候万一用到了，这就重蹈覆辙了，把字段加上了却又不喜欢写注释，然后导致后来连自己也不知道当初为什么加这个字段。
-三、另外对于一些枚举字段，用了数字来表示不同类型，比如用1，2，3，4表示超级管理员，普通管理员，用户，小编，这种方式好处是占用字节少，但是坏处也不少，首先，从数值上看不出代表什么类型，需要看文档注释，要是连注释也没写那就坑了。
-四、由于业务不断增加，表字段也不管添加，最后一张表中就会有好几十个字段，最后变得不好维护，而且有些字段是做的时候加上，最后又不用了，又没有及时删掉，然后就变成了垃圾字段。
-以上几点问题是比较突出又影响开发的，我也总结出了对策：
-1、表和字段一定要写注释
-2、只添加需要用到的字段，千万不要加一些以后用到的字段，以后用到以后加
-3、枚举字段在MySQL中建议使用enum枚举类型，在插入记录的时候使用单词来表明类型，在数据库保存的实际是数值索引
-4、对于常用的字段放到一个表中，不常用的字段可以考虑分表存放，一对一关联，需要的时候查询即可
-数据库引擎的使用：
-就目前mysql的使用来说，大多数人在数据库引擎上会选择InnoDB，也总是有人建议这么做，主要目的是为了支持事务。但同样有人认为MyISAM读取性能比InnoDB强很多，会选择使用MyISAM。所以说具体选择哪种引擎类型依据业务实际情况决定。根据我们的项目实际使用情况，我最后选择了MyISAM作为数据库引擎。
-前一个项目使用java开发，MySQL数据库InnoDB，确实也出现一些问题，在某次活动时200左右的并发量下不仅服务器宕机，连另一台数据库服务器在连接数暴增的情况下读取性能骤降，从而导致java服务器不能及时响应。这次开发语言选择了nodejs，经测试发现，可以支撑的并发量在2000多近3000的样子，所以就要求数据库能尽快读取数据，再加上目前业务中不要求事务，那么MyISAM就成了不二之选。
+		<p>在没有做过数据库设计之前认为：数据库设计是表与表的关系设计，合理的表关系设计能使逻辑更易编写，不过这是以前肤浅的认知。后来逐渐开始参与公司数据库的设计才发现，单单是数据库表名，字段名也有一定学问，在最近的开发过程中感觉尤为突出。其中一些是历史遗留发现的，另外一些是新加表中发现的。</p>
+<p>一、遗留问题主要体现在文档缺失上，基本所有表没有注释，字段更不用说，然后就对每个字段的作用搞不清楚，而且很多字段也不知道有没有用到，因为所有记录都没有值，但又不敢删。留着不管又影响性能，看着也不爽。</p>
+<p>二、在新加表出现的问题是：新人喜欢模仿以前的表设计，也不管字段有没有用，有什么用，先都照搬过来，而且又喜欢添加一些新字段，说是为了预留以后新加功能的时候万一用到了，这就重蹈覆辙了，把字段加上了却又不喜欢写注释，然后导致后来连自己也不知道当初为什么加这个字段。</p>
+<p>三、另外对于一些枚举字段，用了数字来表示不同类型，比如用1，2，3，4表示超级管理员，普通管理员，用户，小编，这种方式好处是占用字节少，但是坏处也不少，首先，从数值上看不出代表什么类型，需要看文档注释，要是连注释也没写那就坑了。</p>
+<p>四、由于业务不断增加，表字段也不管添加，最后一张表中就会有好几十个字段，最后变得不好维护，而且有些字段是做的时候加上，最后又不用了，又没有及时删掉，然后就变成了垃圾字段。</p>
+<p>以上几点问题是比较突出又影响开发的，我也总结出了对策：<br>
+1、表和字段一定要写注释<br>
+2、只添加需要用到的字段，千万不要加一些以后用到的字段，以后用到以后加<br>
+3、枚举字段在MySQL中建议使用enum枚举类型，在插入记录的时候使用单词来表明类型，在数据库保存的实际是数值索引<br>
+4、对于常用的字段放到一个表中，不常用的字段可以考虑分表存放，一对一关联，需要的时候查询即可</p>
+<p>数据库引擎的使用：</p>
+<p>就目前mysql的使用来说，大多数人在数据库引擎上会选择InnoDB，也总是有人建议这么做，主要目的是为了支持事务。但同样有人认为MyISAM读取性能比InnoDB强很多，会选择使用MyISAM。所以说具体选择哪种引擎类型依据业务实际情况决定。根据我们的项目实际使用情况，我最后选择了MyISAM作为数据库引擎。</p>
+<p>前一个项目使用java开发，MySQL数据库InnoDB，确实也出现一些问题，在某次活动时200左右的并发量下不仅服务器宕机，连另一台数据库服务器在连接数暴增的情况下读取性能骤降，从而导致java服务器不能及时响应。这次开发语言选择了nodejs，经测试发现，可以支撑的并发量在2000多近3000的样子，所以就要求数据库能尽快读取数据，再加上目前业务中不要求事务，那么MyISAM就成了不二之选。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -354,15 +375,22 @@ HOUR_MINUTE
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T05:59:28Z">2015-05-07 05:59</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T05:59:28Z">2015.05.07 05:59</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		redis-server.exe redis.windows.conf 使用上面命令启动redis服务的时候报了以下错误信息： The Windows version of Redis allocates a memory mapped heap for sharing with the forked process used for persistence operations. In order to share this memory, Windows allocates from the system paging file a portion equal to the size of the Redis heap. At this time there is insufficient contiguous free space available in the system paging file for this operation (Windows error 0x5AF). To work around this you may either increase the size of the system paging file, or decrease the size of the Redis heap with the &ndash;maxheap flag.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/554aff409ddef487a8b23409/">阅读全文…</a>
+		<p>redis-server.exe redis.windows.conf
+使用上面命令启动redis服务的时候报了以下错误信息：
+The Windows version of Redis allocates a memory mapped heap for sharing with
+the forked process used for persistence operations. In order to share this
+memory, Windows allocates from the system paging file a portion equal to the
+size of the Redis heap. At this time there is insufficient contiguous free
+space available in the system paging file for this operation (Windows error
+0x5AF). To work around this you may either increase the size of the system
+paging file, or decrease the size of the Redis heap with the &ndash;maxheap flag.
+Sometimes a reboot will defragment the system paging file sufficiently for
+this operation to complete successfully.</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -376,21 +404,24 @@ HOUR_MINUTE
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-04-20T10:17:38Z">2015-04-20 10:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-04-20T10:17:38Z">2015.04.20 10:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		表中有两个日期字段createDate，updateDate。其中updateDate可以为空，要求使用updateDate排序，如果updateDate为空则使用createDate排序，结果要顺序排下来。
-按照常规方法：
-select * from table order by updateDate desc;
-这样的结果是为空的数据排在了最下面，不符合要求。
-这样试试：
-select * from table order by updateDate desc, createDate desc;
-这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。
-正确方法：
-select * from table order by IFNULL(updateDate, createDate) desc;
-这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排。
+		<p>表中有两个日期字段createDate，updateDate。其中updateDate可以为空，要求使用updateDate排序，如果updateDate为空则使用createDate排序，结果要顺序排下来。</p>
+<p>按照常规方法：</p>
+<p><code>select * from table order by updateDate desc;</code></p>
+<p><img src="https://hopefully-img.yuedun.wang/2020112010152474.jpg" alt=""></p>
+<p>这样的结果是为空的数据排在了最下面，不符合要求。</p>
+<p>这样试试：</p>
+<p><code>select * from table order by updateDate desc, createDate desc;</code></p>
+<p><img src="https://hopefully-img.yuedun.wang/2020112010153917.jpg" alt=""></p>
+<p>这样排的结果是先按updateDate排序，updateDate为空的排在最下面，然后按createDate排序，这样也不符合要求。</p>
+<p>正确方法：</p>
+<p><code>select * from table order by IFNULL(updateDate, createDate) desc;</code></p>
+<p><img src="https://hopefully-img.yuedun.wang/20201120101317915.jpg" alt=""></p>
+<p>这种排序的结果是正确的，用ifnull函数判断updateDate如果为空的话就使用createDate排。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -404,28 +435,49 @@ select * from table order by IFNULL(updateDate, createDate) desc;
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-16T03:46:38Z">2014-11-16 03:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-11-16T03:46:38Z">2014.11.16 03:46</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		在执行下面第一行启动mongodb服务的时候，命令行一闪而过，具体看了下输出内容看不出端倪来，不过解决办法却是有的，就是直接删除掉D:\Data\db下面的mongod.lock文件可以了
-C:\Program Files\MongoDB 2.6 Standard\bin&gt;mongod &ndash;dbpath=D:\Data\db
-2014-11-16T11:35:43.244+0800
-2014-11-16T11:35:43.252+0800 warning: 32-bit servers don&quot;t have journaling enabl
-ed by default. Please use &ndash;journal if you want durability.
-2014-11-16T11:35:43.253+0800
-2014-11-16T11:35:43.282+0800 [initandlisten] MongoDB starting : pid=8272 port=27
-017 dbpath=D:\Data\db 32-bit host=hp
-2014-11-16T11:35:43.283+0800 [initandlisten]
-2014-11-16T11:35:43.284+0800 [initandlisten] ** NOTE: This is a 32 bit MongoDB b
-inary.
-2014-11-16T11:35:43.284+0800 [initandlisten] ** 32 bit builds are limited
-to less than 2GB of data (or less with &ndash;journal).
-2014-11-16T11:35:43.284+0800 [initandlisten] ** Note that journaling defau
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/54681e1ee8183bcf964f88ec/">阅读全文…</a>
+		<p>在执行下面第一行启动mongodb服务的时候，命令行一闪而过，具体看了下输出内容看不出端倪来，不过解决办法却是有的，就是直接删除掉D:\Data\db下面的mongod.lock文件可以了</p>
+<p>C:\Program Files\MongoDB 2.6 Standard\bin&gt;mongod &ndash;dbpath=D:\Data\db<br>
+2014-11-16T11:35:43.244+0800<br>
+2014-11-16T11:35:43.252+0800 warning: 32-bit servers don&quot;t have journaling enabl<br>
+ed by default. Please use &ndash;journal if you want durability.<br>
+2014-11-16T11:35:43.253+0800<br>
+2014-11-16T11:35:43.282+0800 [initandlisten] MongoDB starting : pid=8272 port=27<br>
+017 dbpath=D:\Data\db 32-bit host=hp<br>
+2014-11-16T11:35:43.283+0800 [initandlisten]<br>
+2014-11-16T11:35:43.284+0800 [initandlisten] ** NOTE: This is a 32 bit MongoDB b<br>
+inary.<br>
+2014-11-16T11:35:43.284+0800 [initandlisten] **       32 bit builds are limited<br>
+to less than 2GB of data (or less with &ndash;journal).<br>
+2014-11-16T11:35:43.284+0800 [initandlisten] **       Note that journaling defau<br>
+lts to off for 32 bit and is currently off.<br>
+2014-11-16T11:35:43.285+0800 [initandlisten] **       See <a href="http://dochub.mongodb/">http://dochub.mongodb</a>.<br>
+org/core/32bit<br>
+2014-11-16T11:35:43.286+0800 [initandlisten]<br>
+2014-11-16T11:35:43.286+0800 [initandlisten] targetMinOS: Windows XP SP3<br>
+2014-11-16T11:35:43.286+0800 [initandlisten] db version v2.6.4<br>
+2014-11-16T11:35:43.287+0800 [initandlisten] git version: 3a830be0eb92d772aa855e<br>
+bb711ac91d658ee910<br>
+2014-11-16T11:35:43.287+0800 [initandlisten] build info: windows sys.getwindowsv<br>
+ersion(major=6, minor=1, build=7601, platform=2, service_pack=&ldquo;Service Pack 1&rdquo;)<br>
+BOOST_LIB_VERSION=1_49<br>
+2014-11-16T11:35:43.290+0800 [initandlisten] allocator: system<br>
+2014-11-16T11:35:43.292+0800 [initandlisten] options: { storage: { dbPath: &ldquo;D:\D<br>
+ata\db&rdquo; } }<br>
+**************<br>
+Unclean shutdown detected.<br>
+Please visit <a href="http://dochub.mongodb.org/core/repair">http://dochub.mongodb.org/core/repair</a> for recovery instructions.<br>
+*************<br>
+2014-11-16T11:35:43.360+0800 [initandlisten] exception in initAndListen: 12596 o<br>
+ld lock file, terminating<br>
+2014-11-16T11:35:43.362+0800 [initandlisten] dbexit:<br>
+2014-11-16T11:35:43.364+0800 [initandlisten] shutdown: going to close listening<br>
+sockets&hellip;<br>
+2014-11-16T11:35:43.365+0800 [initandlisten] shutdown: going to flush diaglog&hellip;</p>
 	</div>
 </article>
 
@@ -445,7 +497,7 @@ to less than 2GB of data (or less with &ndash;journal).
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -461,13 +513,12 @@ to less than 2GB of data (or less with &ndash;journal).
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -505,99 +556,99 @@ to less than 2GB of data (or less with &ndash;journal).
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -625,13 +676,14 @@ to less than 2GB of data (or less with &ndash;journal).
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

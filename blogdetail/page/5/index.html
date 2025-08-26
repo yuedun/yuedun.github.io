@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="Blogdetails" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/blogdetail/" />
+		<meta property="og:url" content="https://www.yuedun.wang/blogdetail/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="Blogdetails">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="Blogdetails">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2021-06-14T10:40:52+00:00">
+  <meta itemprop="dateModified" content="2021-06-14T10:40:52+00:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blogdetails">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="Blogdetails">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/blogdetail/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,14 +116,24 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-02-04T03:52:48Z">2020-02-04 03:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-02-04T03:52:48Z">2020.02.04 03:52</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		新买的windows笔记本一般会对磁盘进行分区，虽然有说法是现代电脑没必要分区，不过目前很多人还是有这样的习惯。 然而我们往往低估了软件的吃磁盘能力，会把C盘设置50G左右的大小，觉得C盘只是装个系统而已，会自觉把软件装到其他盘下，结果就是没用几个月C盘就满了。其实，虽然我们把软件装到了其他盘，但是软件本身会下载很多内容，比如数据保存，缓存，默认下载等等都会占用C盘。所以建议C盘设置100G比较合理。 关于已经分配好大小的磁盘也可以进行调整，需要借助一些软件来操作，本文作者使用的是Diskgenius。
-很简单的三个步骤：
-选择需要扩容的磁盘右击“扩容分区” 选择缩容的磁盘，用于将缩容的磁盘分配给C盘。 选择需要缩容的大小。 确认开始大约需要十几分钟就可以了。
+		<p>新买的windows笔记本一般会对磁盘进行分区，虽然有说法是现代电脑没必要分区，不过目前很多人还是有这样的习惯。
+然而我们往往低估了软件的吃磁盘能力，会把C盘设置50G左右的大小，觉得C盘只是装个系统而已，会自觉把软件装到其他盘下，结果就是没用几个月C盘就满了。其实，虽然我们把软件装到了其他盘，但是软件本身会下载很多内容，比如数据保存，缓存，默认下载等等都会占用C盘。所以建议C盘设置100G比较合理。
+关于已经分配好大小的磁盘也可以进行调整，需要借助一些软件来操作，本文作者使用的是<strong>Diskgenius</strong>。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E6%89%A9%E5%AE%B9%E5%88%86%E5%8C%BA.jpg" alt="扩容分区" title="扩容分区"></p>
+<p><img src="https://hopefully-img.yuedun.wang/%E7%BC%A9%E5%B0%8F%E7%A3%81%E7%9B%98.jpg" alt="缩容"></p>
+<p><img src="https://hopefully-img.yuedun.wang/%E7%BC%A9%E5%B0%8F%E5%90%8E.jpg" alt="缩容后"></p>
+<p>很简单的三个步骤：</p>
+<ol>
+<li>选择需要扩容的磁盘右击“扩容分区”</li>
+<li>选择缩容的磁盘，用于将缩容的磁盘分配给C盘。</li>
+<li>选择需要缩容的大小。</li>
+</ol>
+<p>确认开始大约需要十几分钟就可以了。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -170,21 +147,55 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-16T14:28:04Z">2020-01-16 14:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-16T14:28:04Z">2020.01.16 14:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。 常用的模块有以下这些：
-session 模块 cache 模块 logs 模块 httplib 模块 context 模块 toolbox 模块 config 模块 i18n 模块 本文要讲解的是httplib客户端请求的使用。
-日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用httplib。
-基本使用方法 import ( &#34;github.com/astaxie/beego/httplib&#34; ) 然后初始化请求方法，返回对象
-req := httplib.Get(&#34;http://beego.me/&#34;) 然后我们就可以获取数据了
-str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上是最基本的使用方法，更多文档可以查看httplib文档，本文不再做一次搬运工。 下面提供一些使用实例以供参考：
-获取body信息 func RequestByAjax3(region, language string) { req := httplib.Get(fmt.Sprintf(&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;, url.QueryEscape(region), language)) req.Header(&#34;Referer&#34;, &#34;https://m.lagou.com/search.html&#34;) req.Header(&#34;Cookie&#34;, &#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce; PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;) req.Header(&#34;Host&#34;, &#34;m.lagou.com&#34;) req.Header(&#34;User-Agent&#34;, &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5e216204567cde49c49187f1/">阅读全文…</a>
+		<p>beego是一个优秀的api，web框架，不只是其丰富的功能特性，更是因为其功能的独立性，可以根据自身需要单独添加使用。
+常用的模块有以下这些：</p>
+<ul>
+<li>session 模块</li>
+<li>cache 模块</li>
+<li>logs 模块</li>
+<li>httplib 模块</li>
+<li>context 模块</li>
+<li>toolbox 模块</li>
+<li>config 模块</li>
+<li>i18n 模块</li>
+</ul>
+<p>本文要讲解的是<strong>httplib</strong>客户端请求的使用。</p>
+<p>日常开发中不只是要接收请求，还会发起http请求，go本身提供了http库可以实现http请求，不过使用起来略微复杂一些。如果使用的框架是beego的话，那推荐使用<strong>httplib</strong>。</p>
+<h3 id="基本使用方法">基本使用方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/astaxie/beego/httplib&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>然后初始化请求方法，返回对象</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">req</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">httplib</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#34;http://beego.me/&#34;</span>)
+</span></span></code></pre></div><p>然后我们就可以获取数据了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">str</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">String</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">str</span>)
+</span></span></code></pre></div><p>以上是最基本的使用方法，更多文档可以查看<a href="https://beego.me/docs/module/httplib.md">httplib文档</a>，本文不再做一次搬运工。
+下面提供一些使用实例以供参考：</p>
+<h3 id="获取body信息">获取body信息</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">RequestByAjax3</span>(<span style="color:#a6e22e">region</span>, <span style="color:#a6e22e">language</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">httplib</span>.<span style="color:#a6e22e">Get</span>(<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;https://m.lagou.com/search.json?city=%s&amp;positionName=%s&amp;pageNo=1&amp;pageSize=1&#34;</span>, <span style="color:#a6e22e">url</span>.<span style="color:#a6e22e">QueryEscape</span>(<span style="color:#a6e22e">region</span>), <span style="color:#a6e22e">language</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>(<span style="color:#e6db74">&#34;Referer&#34;</span>, <span style="color:#e6db74">&#34;https://m.lagou.com/search.html&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>(<span style="color:#e6db74">&#34;Cookie&#34;</span>, <span style="color:#e6db74">&#34;JSESSIONID=ABAAAECAAHHAAFD8DC17DEB3DE2DF3C5FCAE8C3D4423759; user_trace_token=20200117101405-234d1d57-b8c1-4d66-956e-c49f35f28f75; LGSID=20200117101406-09c6fa83-38cf-11ea-b2e7-525400f775ce;  PRE_LAND=https%3A%2F%2Fm.lagou.com%2Fsearch.html; LGUID=20200117101406-09c6fc06-38cf-11ea-b2e7-525400f775ce; X_HTTP_TOKEN=8e6e6bd15763030e425822975149ec77fc62d73ec7;&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>(<span style="color:#e6db74">&#34;Host&#34;</span>, <span style="color:#e6db74">&#34;m.lagou.com&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">Header</span>(<span style="color:#e6db74">&#34;User-Agent&#34;</span>, <span style="color:#e6db74">&#34;Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">resBody</span> <span style="color:#a6e22e">wapResBody</span><span style="color:#75715e">//TODO 根据需要自己定义</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">ToJSON</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">resBody</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">logs</span>.<span style="color:#a6e22e">Debug</span>(<span style="color:#e6db74">&#34;&gt;&gt;&gt;&gt;&gt;&gt;%+v&#34;</span>, <span style="color:#a6e22e">resBody</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">resBody</span>.<span style="color:#a6e22e">State</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">logs</span>.<span style="color:#a6e22e">Error</span>(<span style="color:#e6db74">&#34;获取&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">language</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;数据为空!&#34;</span>, <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprint</span>(<span style="color:#e6db74">&#34;%+v&#34;</span>, <span style="color:#a6e22e">resBody</span>))
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">logs</span>.<span style="color:#a6e22e">Debug</span>(<span style="color:#a6e22e">resBody</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上面代码中的<strong>resBody</strong>就是接收到的body内容，其核心是<strong>req.ToJSON(&amp;resBody)</strong>。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -198,29 +209,60 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-10T08:48:58Z">2020-01-10 08:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-10T08:48:58Z">2020.01.10 08:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		由于“中台”概念的推动，关心业务架构的读者越来越多，很多企业也对实施“中台”、“中台”方法论趋之若鹜。历史总是相似的，之前无论 SOA、微服务、DDD，还是敏捷开发、双模开发等热门技术概念出现时，都曾经给大家燃起“捷径”的希望。 然而，最终还是证明了软件领域没有“银弹”，很多时候，反倒是应了北欧的一句民谚：捷径是迷路的最快方法。 架构没有捷径，无论从架构的设计、架构的落地还是架构的学习方面来讲，都是如此。
-1.架构设计没有捷径 架构设计如同求医问诊，必须对症下药。盲目相信任何已有架构设计成果都是很危险且极不负责任的。每个人的身体都各有特点，企业也是如此，而企业级转型、企业级工程是对企业现有能力的最大调整，需要企业在认清自己的基础上进行，任何忽略“向内看”过程的架构设计，都是为今后的混乱，甚至失败埋下伏笔。 对于复杂手术，不经过详细的诊断，不经过对术式反复揣摩，医生不会轻易为患者开刀，否则，不啻于用生命做试验。软件工程虽然少有“人命关天”的事情，但是，浪费时间也等同于浪费生命。
-没有为企业做过深入“体检”而轻易相信“领先实践”，很容易把在架构设计上节省的时间和精力，加倍“奉还”到实施过程中去。
-企业级架构设计往往给人以过于漫长、难以响应变化的印象，但是，人们恰恰忽略了由此带来的架构认知的积累，以及由量变到质变的过程。 当人们感慨一次“传统”的企业级业务架构设计方式可能耗时一到两年，而互联网时代非常追逐“快”时，其实并没有充分意识到，互联网企业的架构，比如阿里的“中台”也经历了十余年的积淀，而且十余年的积淀也还只是理清了一个方向，不然也不会有今日对“中台”概念的众说纷纭。 互联网架构并不代表架构设计上有“捷径”，反而证明了，任何“快”都来自于自身的积累，是充分“向内看”才有了外在的“快”。“快”源自对业务的深刻理解，“中台”对公共能力的沉淀正是来自于对业务能力的归纳和提炼，所以阿里才十分重视业务架构师的培养，而对“中台”的探索绝不仅限于对公共能力的沉淀，最终会上升到对企业整体、对何为业务经营的认识，这是一个自然的过程。 笔者在最近与原阿里中台核心架构师毗卢老师的交流中了解到，他们在进行中台设计时也在反复思考技术要努力支持业务经营的快速变化。
-那业务经营到底是什么？其实，大家关注的问题从领域级逐步上升到企业级之后，是一定会思考到底企业是什么、企业如何运转这些问题的。
-互联网架构并非简单地快速试错，这种试错是对业务选择能力的支持，而从技术视角看，则是对架构能力的不断提炼，是架构的强大才有了快速设计的可能。 所以，架构设计没有捷径，唯有积累，通过积累提高了对企业自身的了解、对架构设计的驾驭能力，才有了可以快的“资本”。
-此处，还得再说一次前边提到的北欧民谚：捷径是迷路的最快方法，无论是企业还是个人，切换架构设计方法前，都要对学习曲线有深刻的认识，否则，当别人在原来的方向上越走越远时，你可能还是在原地打转，只不过为别人提供了案例。
-笔者 2019 年在公司负责搭建风险管理体系，而该项工作再次让我认识到，架构不是可以“抄”的。
-风险管理是个很成熟的领域了，三道防线的体系设计方式，无论是金融企业还是科技企业、无论是国内企业还是国外企业都在使用，但是，你却无法直接把其他企业的防线设计简单套用过来，必须一个工作事项一个工作事项地分析自己企业的流程，确认风险点，确认工作事项的负责团队，落实具体的风控职责，之后，再考虑风控措施是否可以实现“机控”，而这一切又取决于该工作事项是否已经线上化。 这样才能形成一个与实际工作环境相符，并融合数字化风控方向的全面风险管理体系。这种深入细节的体系建设无法通过照搬任何现成经验来获得，否则会出现“削足适履”的情况。没有“捷径”，只有“路径”。
-2.架构落地没有捷径 经常有读者好奇企业级业务架构设计如何落地，笔者在书中、在 2019 年 12 月南京的中台大会上都直言，企业级业务架构设计的落地过程没有任何神秘和特殊，也不该有，今天笔者认为企业级业务架构日益重要，并不是因为它有什么落地的捷径，任何架构设计的落地过程都是靠一个逻辑一个逻辑、一个模块一个模块地实现的。 企业级业务架构设计只是让业务端的整理更加的结构化、整体化了，不同于需求分析对局部细节的关注，也不同于产品分析的领域性特点，企业级业务架构关注的是企业能力的整体规划和结构化表达，但它并不意味着在实现层面有何特殊性，它只是提供了软件过程中的一个“指挥棒”，通过业务架构设计形成对软件功能划分的指导。 而更重要的是，通过业务和技术都能理解的业务架构模型，使企业内部形成可以交流、甚至可以跨领域交流的“共同语言”。
-这个“指挥棒”对于提升企业的整体性而言是必不可少的，管理学上一直在研究如何让企业内部形成管理合力。
-业务架构诞生初期，在上个世纪 80-90 年代，企业的信息化程度还不如今日这么高，业务和技术的深度融合还没有受到应用的重视，但是今天，淘宝、滴滴、美团、头条等跨界竞争者给传统行业的原有企业造成了极大的竞争压力，乃至很多人都认同未来企业大部分都将转型为科技企业，工行的领导者最近也发表了此类言论。 由此可见，加强业务与技术的深度融合已经十分必要了，而业务架构正是符合这种时代要求的工具，赋予企业清晰的能力视图，清晰的结构加上架构的演进，就可能会不断提升架构的弹性。 企业管理经常追求韧性，常说希望企业能够像拧毛巾一样，越拧越紧却不会拧断，而未来，鉴于企业都具有科技属性，这样的“韧性”可能就要来自于架构的“弹性”了。 提升企业的整体性犹如进行马拉松训练，业务架构虽然提供了一个有力的工具，但是马拉松还是得依靠训练者一步一步地跑完，成绩的提升完全取决于训练者自身的能力和毅力。
-回到软件工程上，架构落地即便是采用敏捷过程，也不意味着靠的是什么“捷径”，而只是对工程组织方式的改进和对效率的追求。
-笔者近日阅读了《敏捷革命》一书，与广为流传的“敏捷价值观”相比，敏捷方法的原创者其实更在意的是如何通过信息的充分获取与共享、良好的思维模型，以短周期的方式迅速提供核心价值，从而降低项目周期过长导致的项目失败风险，通过多轮短周期的可控“冲刺”替代长周期的不可控过程。
-原创者非常推崇 OODA 原则，也就是飞行员训练中采用的**“观察 - 导向 - 决定 - 行动”模式**，其实每一次敏捷的 Scrum 中都体现了这一思想。 “观察”代表了对全面信息的迅速获取；“导向”是依靠思维模型进行快速分析，也就是快速的设计过程；“决定”就是确定结论，不再犹豫，“行动”就是将决定付诸实现。 原创者在书中也强调一个 Scrum 内，需求确定后就尽可能不动，这与飞行员的“决定”、“行动”的模式一样，因为空战时间太短了，几乎没有后悔重来的机会。 敏捷方法原创者十分推崇丰田的生产方式，笔者恰好最近也读了《新乡重夫谈丰田生产方式》一书。丰田的生产方式，又称“精益生产”、“Just-in-time”，是对拒绝“浪费”的极致追求，这个浪费指的不是原材料的浪费，而对是时间、效率的浪费。 比如，丰田在思考原材料在不同生产场地间搬运造成的浪费时，首先的解决思路是如何做到不搬运，通过这种思考去调整生产环境；再比如，在反思如何提高打磨零件毛刺工作的效率时，采用了引入欧洲真空加工技术，让零件根本不产生毛刺的方法。
-诸如此类的例子还有很多，正是通过这种对点滴效率提升的持续近 20 年的不断追求，才最终打造出丰田生产方式。
-任何方法的形成都是一个长期积累和反思的过程，而应用这些方法也需要使用者付出合理的努力加以掌握，架构设计的落地说到底是软件工程问题，没有捷径，只有持之以恒的效率提升。无论是给予敏捷方法原创者灵感的丰田生产方式，还是敏捷方法原创者自己的实践历程，都是一个对方法持续改进、日益精熟的过程。 没有真正理解方法之前，根本谈不上效率，与其总是在方法之间换来换去地求“快”，不如真把自己已有的功夫练到极致，只要解决问题的效率高，你自己就是“一派”。“四万八千法门”都能成佛，能够在修炼过程中“博采众长”就更好了，其实敏捷方法的原创者也正是这样创立敏捷方法的。
-3架构学习没有捷径 没有成为架构师的捷径，只有勤学苦练。架构的学习需要很多基础性工作，需要很广泛的涉猎，这方面笔者在《六方面学习，帮你走上业务架构师之路》一文中有所介绍，在架构能力、流程优化、建模技术、软件过程、编程语言、整体思维方面，都有很多知识需要学习，也列出了一些参考书目，此处不再赘述。 无论是哪一种架构师，都需要深厚的积累，架构师都是项目堆出来的。 不可否认的是，互联网企业架构师成长确实很快，这也许是企业机制提供了更多的考验机会给适任者，使其能够快速进步。如果说培养架构师有什么勉强可以称之为“捷径”的方法，对企业而言，就是认真思考下自己是否建立了快速发现人才、培养人才的机制吧，否则，阿里说过了，业务架构师只能自己培养，没有合适的人才是什么也干不成的。 最近在一部《Doctor X》的连续剧中，医术高超的女主角在一场难度极高的手术中，说了这样一段话：“就像河水流淌一样，反复的基本技巧，就能创造出美丽的最终术野，那就是理想的手术……最重要的是，不管手术再艰难，也不能抛弃患者”，笔者想，这也同样适用于架构领域吧。 架构没有捷径，有的只是前人的肩膀，努力学习，积极实践，消化理解，真正站在前人的肩膀上，才可能看到前进的方向，而前人的肩膀也不仅限于你所从事的行业。
+		<p>由于“中台”概念的推动，关心业务架构的读者越来越多，很多企业也对实施“中台”、“中台”方法论趋之若鹜。历史总是相似的，之前无论 SOA、微服务、DDD，还是敏捷开发、双模开发等热门技术概念出现时，都曾经给大家燃起“捷径”的希望。
+然而，最终还是证明了<strong>软件领域没有“银弹”</strong>，很多时候，反倒是应了北欧的一句民谚：捷径是迷路的最快方法。
+<strong>架构没有捷径</strong>，无论从架构的设计、架构的落地还是架构的学习方面来讲，都是如此。</p>
+<h3 id="1架构设计没有捷径">1.架构设计没有捷径</h3>
+<p><strong>架构设计如同求医问诊，必须对症下药</strong>。盲目相信任何已有架构设计成果都是很危险且极不负责任的。每个人的身体都各有特点，企业也是如此，而企业级转型、企业级工程是对企业现有能力的最大调整，需要企业在认清自己的基础上进行，任何忽略“向内看”过程的架构设计，都是为今后的混乱，甚至失败埋下伏笔。
+对于复杂手术，不经过详细的诊断，不经过对术式反复揣摩，医生不会轻易为患者开刀，否则，不啻于用生命做试验。<strong>软件工程虽然少有“人命关天”的事情，但是，浪费时间也等同于浪费生命</strong>。</p>
+<blockquote>
+<p>没有为企业做过深入“体检”而轻易相信“领先实践”，很容易把在架构设计上节省的时间和精力，加倍“奉还”到实施过程中去。</p></blockquote>
+<p>企业级架构设计往往给人以过于漫长、难以响应变化的印象，但是，人们恰恰忽略了由此带来的架构认知的积累，以及由量变到质变的过程。
+当人们感慨一次“传统”的企业级业务架构设计方式可能耗时一到两年，而互联网时代非常追逐“快”时，其实并没有充分意识到，互联网企业的架构，比如阿里的“中台”也经历了十余年的积淀，而且十余年的积淀也还只是理清了一个方向，不然也不会有今日对“中台”概念的众说纷纭。
+互联网架构并不代表架构设计上有“捷径”，反而证明了，任何“快”都来自于自身的积累，是充分“向内看”才有了外在的“快”。<strong>“快”源自对业务的深刻理解，“中台”对公共能力的沉淀正是来自于对业务能力的归纳和提炼</strong>，所以阿里才十分重视业务架构师的培养，而对“中台”的探索绝不仅限于对公共能力的沉淀，最终会上升到对企业整体、对何为业务经营的认识，这是一个自然的过程。
+笔者在最近与原阿里中台核心架构师毗卢老师的交流中了解到，他们在进行中台设计时也在反复思考技术要努力支持业务经营的快速变化。</p>
+<blockquote>
+<p>那业务经营到底是什么？其实，大家关注的问题从领域级逐步上升到企业级之后，是一定会思考到底企业是什么、企业如何运转这些问题的。</p></blockquote>
+<p><strong>互联网架构并非简单地快速试错，这种试错是对业务选择能力的支持</strong>，而从技术视角看，则是对架构能力的不断提炼，是架构的强大才有了快速设计的可能。
+所以，架构设计没有捷径，唯有积累，通过积累提高了对企业自身的了解、对架构设计的驾驭能力，才有了可以快的“资本”。</p>
+<p>此处，还得再说一次前边提到的北欧民谚：捷径是迷路的最快方法，无论是企业还是个人，切换架构设计方法前，都要对学习曲线有深刻的认识，否则，当别人在原来的方向上越走越远时，你可能还是在原地打转，只不过为别人提供了案例。</p>
+<blockquote>
+<p>笔者 2019 年在公司负责搭建风险管理体系，而该项工作再次让我认识到，架构不是可以“抄”的。</p></blockquote>
+<p>风险管理是个很成熟的领域了，三道防线的体系设计方式，无论是金融企业还是科技企业、无论是国内企业还是国外企业都在使用，但是，你却无法直接把其他企业的防线设计简单套用过来，必须一个工作事项一个工作事项地分析自己企业的流程，确认风险点，确认工作事项的负责团队，落实具体的风控职责，之后，再考虑风控措施是否可以实现“机控”，而这一切又取决于该工作事项是否已经线上化。
+这样才能形成一个与实际工作环境相符，并融合数字化风控方向的全面风险管理体系。这种深入细节的体系建设无法通过照搬任何现成经验来获得，否则会出现“削足适履”的情况。没有“捷径”，只有“路径”。</p>
+<h3 id="2架构落地没有捷径">2.架构落地没有捷径</h3>
+<p>经常有读者好奇企业级业务架构设计如何落地，笔者在书中、在 2019 年 12 月南京的中台大会上都直言，企业级业务架构设计的落地过程没有任何神秘和特殊，也不该有，今天笔者认为企业级业务架构日益重要，并不是因为它有什么落地的捷径，<strong>任何架构设计的落地过程都是靠一个逻辑一个逻辑、一个模块一个模块地实现的</strong>。
+企业级业务架构设计只是让业务端的整理更加的结构化、整体化了，不同于需求分析对局部细节的关注，也不同于产品分析的领域性特点，企业级业务架构关注的是企业能力的整体规划和结构化表达，但它并不意味着在实现层面有何特殊性，它只是提供了软件过程中的一个“指挥棒”，通过业务架构设计形成对软件功能划分的指导。
+而更重要的是，通过业务和技术都能理解的业务架构模型，使企业内部形成可以交流、甚至可以跨领域交流的“共同语言”。</p>
+<blockquote>
+<p>这个“指挥棒”对于提升企业的整体性而言是必不可少的，管理学上一直在研究如何让企业内部形成管理合力。</p></blockquote>
+<p>业务架构诞生初期，在上个世纪 80-90 年代，企业的信息化程度还不如今日这么高，业务和技术的深度融合还没有受到应用的重视，但是今天，淘宝、滴滴、美团、头条等跨界竞争者给传统行业的原有企业造成了极大的竞争压力，乃至很多人都认同未来企业大部分都将转型为科技企业，工行的领导者最近也发表了此类言论。
+由此可见，加强业务与技术的深度融合已经十分必要了，而业务架构正是符合这种时代要求的工具，赋予企业清晰的能力视图，清晰的结构加上架构的演进，就可能会不断提升架构的弹性。
+企业管理经常追求韧性，常说希望企业能够像拧毛巾一样，越拧越紧却不会拧断，而未来，鉴于企业都具有科技属性，这样的“韧性”可能就要来自于架构的“弹性”了。
+提升企业的整体性犹如进行马拉松训练，业务架构虽然提供了一个有力的工具，但是马拉松还是得依靠训练者一步一步地跑完，成绩的提升完全取决于训练者自身的能力和毅力。</p>
+<blockquote>
+<p>回到软件工程上，架构落地即便是采用敏捷过程，也不意味着靠的是什么“捷径”，而只是对工程组织方式的改进和对效率的追求。</p></blockquote>
+<p>笔者近日阅读了《敏捷革命》一书，与广为流传的“敏捷价值观”相比，敏捷方法的原创者其实更在意的是如何通过信息的充分获取与共享、良好的思维模型，以短周期的方式迅速提供核心价值，从而降低项目周期过长导致的项目失败风险，通过多轮短周期的可控“冲刺”替代长周期的不可控过程。</p>
+<p>原创者非常推崇 <strong>OODA 原则</strong>，也就是飞行员训练中采用的**“观察 - 导向 - 决定 - 行动”模式**，其实每一次敏捷的 Scrum 中都体现了这一思想。
+“观察”代表了对全面信息的迅速获取；“导向”是依靠思维模型进行快速分析，也就是快速的设计过程；“决定”就是确定结论，不再犹豫，“行动”就是将决定付诸实现。
+原创者在书中也强调一个 Scrum 内，需求确定后就尽可能不动，这与飞行员的“决定”、“行动”的模式一样，因为空战时间太短了，几乎没有后悔重来的机会。
+敏捷方法原创者十分推崇丰田的生产方式，笔者恰好最近也读了《新乡重夫谈丰田生产方式》一书。丰田的生产方式，又称“精益生产”、“Just-in-time”，是对拒绝“浪费”的极致追求，这个浪费指的不是原材料的浪费，而对是时间、效率的浪费。
+比如，丰田在思考原材料在不同生产场地间搬运造成的浪费时，首先的解决思路是如何做到不搬运，通过这种思考去调整生产环境；再比如，在反思如何提高打磨零件毛刺工作的效率时，采用了引入欧洲真空加工技术，让零件根本不产生毛刺的方法。</p>
+<blockquote>
+<p>诸如此类的例子还有很多，正是通过这种对点滴效率提升的持续近 20 年的不断追求，才最终打造出丰田生产方式。</p></blockquote>
+<p>任何方法的形成都是一个长期积累和反思的过程，而应用这些方法也需要使用者付出合理的努力加以掌握，架构设计的落地说到底是软件工程问题，没有捷径，只有持之以恒的效率提升。无论是给予敏捷方法原创者灵感的丰田生产方式，还是敏捷方法原创者自己的实践历程，都是一个对方法持续改进、日益精熟的过程。
+没有真正理解方法之前，根本谈不上效率，与其总是在方法之间换来换去地求“快”，不如真把自己已有的功夫练到极致，只要解决问题的效率高，你自己就是“一派”。“四万八千法门”都能成佛，能够在修炼过程中“博采众长”就更好了，其实敏捷方法的原创者也正是这样创立敏捷方法的。</p>
+<h3 id="3架构学习没有捷径">3架构学习没有捷径</h3>
+<p>没有成为架构师的捷径，只有勤学苦练。架构的学习需要很多基础性工作，需要很广泛的涉猎，这方面笔者在《六方面学习，帮你走上业务架构师之路》一文中有所介绍，在架构能力、流程优化、建模技术、软件过程、编程语言、整体思维方面，都有很多知识需要学习，也列出了一些参考书目，此处不再赘述。
+<strong>无论是哪一种架构师，都需要深厚的积累，架构师都是项目堆出来的</strong>。
+不可否认的是，互联网企业架构师成长确实很快，这也许是企业机制提供了更多的考验机会给适任者，使其能够快速进步。如果说培养架构师有什么勉强可以称之为“捷径”的方法，对企业而言，就是认真思考下自己是否建立了快速发现人才、培养人才的机制吧，否则，阿里说过了，业务架构师只能自己培养，没有合适的人才是什么也干不成的。
+最近在一部《Doctor X》的连续剧中，医术高超的女主角在一场难度极高的手术中，说了这样一段话：“就像河水流淌一样，反复的基本技巧，就能创造出美丽的最终术野，那就是理想的手术……最重要的是，不管手术再艰难，也不能抛弃患者”，笔者想，这也同样适用于架构领域吧。
+架构没有捷径，有的只是前人的肩膀，努力学习，积极实践，消化理解，真正站在前人的肩膀上，才可能看到前进的方向，而前人的肩膀也不仅限于你所从事的行业。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -234,14 +276,17 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-06T05:47:41Z">2020-01-06 05:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-01-06T05:47:41Z">2020.01.06 05:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		用过win10应该遇到过下图这个问题：
-当你想拖动窗口的时候都不知道鼠标该放在哪里，窗口标题栏和网页颜色融为一体了。
-设置颜色方法：桌面-右击-个性化
+		<p>用过win10应该遇到过下图这个问题：</p>
+<p><img src="https://hopefully-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200106114503646.jpg" alt="win10窗口" title="win10窗口"></p>
+<p>当你想拖动窗口的时候都不知道鼠标该放在哪里，窗口标题栏和网页颜色融为一体了。</p>
+<p>设置颜色方法：桌面-右击-个性化</p>
+<p><img src="https://hopefully-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200106134609792.jpg" alt="个性化" title="个性化"></p>
+<p><img src="https://hopefully-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200106133859593.jpg" alt="设置窗口颜色" title="设置窗口颜色"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -255,65 +300,65 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-12-27T11:15:40Z">2019-12-27 11:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-12-27T11:15:40Z">2019.12.27 11:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		传说回秧后的第二天，就会在地面上出现脚印，有梅花样的，那是猫爪神押回来的，有鸡爪鸭爪的，通通叫鸟脚神。大家说着，李道爷没有说话，而是领着大伙，顺着脚印往前走，走着走着脚印朝黄花观而去，李道爷一看，嘴里说道：“坏了坏了，我吃饭的水缸，看样子是不能再用了。”
-说完就拄着拐杖，顺着脚印，朝自己的道观疾走，我跟在李道爷的身后，到了道观，此时的道观，已经经历了几百年，好几个朝代，没有了当年的辉煌，东西配殿早就塌了，只剩下大殿。我们到了道观的院子，看见脚印一直通向李道爷门口的大水缸。开始的时候说过，我们那时候，没有自来水，甚至没有压水井，都是在井里担水吃，李道爷吃的水是周围善男信女帮着挑的，所以水缸特别的大，大家看着水缸，没有谁敢过去，李道爷跑到水缸前，用拐杖敲着水缸说：“你们这些人，赶紧的把这尸体捞出来，哎呀，这下子可恶心死老道我了，我这还咋吃水？”
-大伙没有谁敢过去，这时二怪拉着我说：“哥，哥，我们过去看看尸煞。”
-说完拉着我就往前走，我们到了大缸前，那大缸和我差不多高，我们看不到里面，幸好在旁边有石台子，我们站在石台子上，朝着缸里看，由于是黑天，只看见缸里飘着一个死尸非常的粗大，但是看不清楚面目，我看见那水里的尸体，不由的打了一个寒颤，想赶紧的跑，可是大伙看我们没有什么危险，直接都围过来，我再想走，已经走不出去了。
-大家手里有手电，有火把，一下子把水缸照的亮如白昼，这时我才算看清楚，缸里正是那个尸煞，此时的尸煞在水里一动不动，像是死了一般，其实本来就是死了，不动很正常，我们正在看的时候，忽然缸的前面响起了凄厉的哭声，我一看是巧儿姐的娘，只见她掐着脚脖子哇哇大哭，这时庄上几个上了年纪的老人走过来，让大伙都离远一点，特别是年轻人，更不准靠前，他们准备把尸体弄出来。
-有人抱来一床新芦席，用铁锹铲破四角，铺在地上，然后他们就把尸体从水缸里捞出来，放在席子上，头南脚北，尸煞由于被水泡了，比一般的尸体都大，再看看那双脚，当时差点吓的我魂飞魄散，只见那双脚已经被石灰烧烂了，上面的腐肉脱落，露出森森的白骨，撑开的脚掌，和那脚印一般的模样。我感觉自己的脊背发凉，头上冒冷汗，二怪也吓的不行，在那里身子直抖，我拉着二怪就跑。
-我和二怪跑到古槐树底下，那颗古槐里面已经空心了，只剩下外边的一层树干，从树下可以直接钻到顶上去。我们过了老槐树，就往家里走。那时候的农村不像现在，除了庄上几条长走的路宽些，其他的都是幽深的小巷，两米多宽就算是宽的了，小巷的两边都是房子，树木参天，大白天都阴森森的，晚上更是漆黑。
-我和二怪走在小巷里，快要到巧儿家的时候，忽然二怪说：“哥，哥先别走，前面有一个人在哭。”
-我一听赶紧的往前看，巧儿家的门口点着一堆火，在火光的照耀下隐隐约约的有人影，那个人影，面朝着墙，哭声悲悲切切的好不凄凉。我看着那人影说：“这哭声没准是咱大娘的。”
-二怪说：“不像，你听哭的那么凄惨，会不会是鬼？”
-我说：“你都能看见的，肯定不是鬼，要是鬼的话，只有我这样的阴阳眼才能看到。”
-二怪说：“哥，你说的对，要是人哭的话，咱们过去看看。”
-说着我们往前走，走到那个人影的跟前，人影看到我们来了，赶紧往黑窟里站了站，然后在那里继续抽泣，声音有点怪异，这时二怪小声的说：“哥，这好像是故意吓唬咱们的，咱们问问是谁。”
-说完之后，就大声的朝着人影说：“谁，你是谁？”
-可是那个人影好像没有听见一样，又朝黑窟里站了站，让我们看不清楚到底是谁，我一看到这里，当时从地上摸起一块石头，大声的说：“你到底是谁？再不说话，我揍你了。”
-我说完举起手里的石头，佯装要砸过去，这时那个人影开始慢慢的转头，在转头的时候，刮起一阵阴风，火光一下子变成了惨绿色，好像没有了一点热量，当那个人转过来的时候，我一下子愣住了，这不是巧儿姐吗？我正在愣神的时候，二怪大叫一声，“鬼呀。”
-我一下子惊醒，拉着二怪就跑，我们朝着来时的方向跑，想跑回黄花观，那里的人多，鬼肯定不会到那里去。我和二怪两个人，此时顾不得脚下的石头，一个劲的跑，眼看就要跑到胡同的尽头了，忽然前面传来凄惨的哭泣声，我们往前一看，连死的心都有了，只见在不远处，不知什么时候，多了一个人影，那个人影对着墙，在那里慢慢的抽泣，不用说那人影是巧儿的鬼魂，看样子她不知什么时候到了我们的前面了。
-我和二怪当时刹住，幸亏那时候腿短，没有直接摔到，我们两个人一转身再往后跑，一边跑我们一边喊着救命。此时整个胡同里的人，都跑到黄花观那里看热闹了，根本没有人救我们，当我们跑到胡同的尽头，发现巧儿又不知什么时候出现在另一头的胡同口，还是那样对着墙抽泣着。
-就这样我们不知跑了几趟，都快累的不行了，一边跑一边伸着舌头，至于为什么伸舌头，这是比我们大的小孩，教给我们的方法，说伸着舌头跑不累，我们当时不信，他就指着狗说，狗舌头就伸着，所以狗比人能跑，不信你们撵狗试试，我们试了试后来还就真信了。
-当我们伸着舌头，精疲力尽的跑到胡同口的时候，那哭泣的巧儿又出现在胡同口，这回我们真的跑不动了，两个人靠着另一面墙喘成了狗。
-我喘了一会拉着二怪说：“弟弟咱们赶紧再跑。”
-二怪伸着舌头说：“哥，我们不能再跑了，再跑，非、非累死不可。”
-我说：“那怎么办？”
-二怪弯着腰，捂着胸口喘着说：“哥，我喘匀了气，自有办法对付她。”
-说完之后二怪继续大口大口的喘气，我也在那里喘着，一时顾不得害怕了。巧儿的鬼魂还在那里哭泣，等我们喘的差不多了，二怪对我说：“哥你在这里等着，我过去对付她。”
-真想不到二怪还有对付鬼的本事，我拉着二怪说：“兄弟你要小心点。”
-二怪说：“哥你就放心吧，我过去了。”
-说完之后二怪慢慢的朝着巧儿走去，这时巧儿转过头来，用那双闪着绿光的眼睛，死死的盯着二怪。
-这时的二怪在我的眼里，忽然高大了许多，只见二怪走到离巧儿鬼魂的不远处，做出了一个令我意想不到的动作，只见他膝盖一弯，直接给巧儿的鬼魂跪下了，二怪一边磕头一边说：“巧儿姐，巧儿姐，你饶了我吧，你要带走的是我哥，和我一点关系都没有，我这么小，干瘦干瘦的，带回去也没有什么用。”
-我一听鼻子都气歪了，没有骨气的家伙，这么就当了叛徒，我心里义愤填膺，顾不得那么多了，做人就得以牙还牙，大丈夫膝下有黄金，这个时候不跪什么时候跪？于是我也走了过去，一下子跪在巧儿鬼魂的面前，对巧儿说：“巧儿姐，你带谁走都一样，干脆就把二怪带走吧，等你上来以后，我一定让我大爷给你扎金山银山，金童玉女。摇钱树，纸牛纸马。”
-二怪听了之后赶紧说：“我也让大爷给你扎那些东西。”
-我生气的说：“那个是我大爷，不是你大爷，不给你扎。”
-二怪说：“我爹有钱，给你大爷钱你大爷就给扎。”
-我们那时候小，经常为鸡毛蒜皮的事情争论，他在我家吃了什么，我在他家拿了什么，两个人能算一上午的糊涂账，最后算到谁也不欠谁的，我们因为是谁大爷，一句不合争论起来，直接把巧儿的鬼魂，晒到了一边，不知道这算不算藐视？我们两个正在争论，巧儿的鬼魂受不了了，大叫一声，“你们两个小黄黄给我住嘴，我还要说正事。”
-那声音非常的凄厉，把我们两个一下子吓的不敢吱声了，这时巧儿指着我们说：“你们两个，我谁也不带走，你们现在赶紧的去找李道爷，让李道爷给我叫魂，把我叫回我的身体，快，一旦五更鸡叫，我就得重新回水塘。”
-我们两个都听愣了，不知道该怎么办，巧儿一看我们两个傻愣的跪着不走，就大声的说：“快去，跪着干什么，再不去就来不及了。”
-我们都被凄厉的声音吓傻了，哪还知道跑，这时巧儿忽然尖声说道：“你们再不走，我就把你们吃了。”
-说完一抹脸，那张脸当时变成了一张巨脸，两只大眼睛闪着绿光，如同铜铃一样，张着大嘴，嘴巴一直裂到两个耳朵根，张开双手朝我们抓来，那双手指如同刀子一样锋利，闪着瘆人的寒光，我看到这些，知道再不走就晚了，身子一下子蹦起来，拉着二怪，转身就跑，我们一口气跑回了黄花观，两个人疯一般的扒开人群，钻了进去，顾不得对尸煞的害怕，跑到李道爷的跟前，弯着腰在那里大口大口的喘着粗气，我一边喘气，一边捂着肚子说：“道、道爷，那，那巧儿，巧儿姐的鬼魂……”
-我说的有点急，呛的我一阵咳嗽，李道爷赶紧的过来，给我捶背，让我慢慢的说，我使劲喘了几口气，然后就断断续续的把事情的经过说了一遍，李道爷一听，在那里拍拍脑袋说：“忘了，忘了，这尸煞只是没有灵魂的躯体，我们就是葬了，也替不出巧儿的灵魂，赶紧，赶紧的设法坛，我要给巧儿叫魂，让巧儿的魂魄，回到自己的躯体里来。”
-说完之后，让人安桌子摆法坛，然后进屋穿上那身要饭的衣服，拿来了七星宝剑，临时用白纸做了两个招魂幡，在巧儿的头前放了一碗白米饭，一双筷子插在上面，这个是给死人吃的倒头饭，我们这里吃米饭最忌讳的就是把筷子插在米饭上，如果来山东鲁南做客的话，这个禁忌一定不能犯，要是来走亲戚的新女婿，犯一次这样的错误，亲事就得玩完。
-弄好了这一切之后，李道爷又跳了一段舞动宝剑的舞蹈，然后用宝剑粘起一张黄纸符，放在蜡烛上点着，烧完之后，拿起三清铃，一边摇晃一边念念有词的如同唱歌一样，三清铃为道士作法事中的重要法器。又名帝钟、法钟、法铃、铃书。一般高约二十厘米，口径约九厘米，用黄铜制造，有柄、铃内有舌。僵尸最怕三清铃，凡是僵尸听到三清铃，都会害怕，不敢近前，有些道士想除掉僵尸，就手持三清铃，趁着僵尸出巢穴，守在僵尸的巢穴入口，使劲的摇动三清铃，僵尸不敢近前，一旦五更天亮，僵尸见日光，就会直接完蛋，到时候烈火焚烧就可以了。
-李道爷摇着三清铃，高唱道：“荡荡游魂，何处留存三魂早降，七魄来临，河边野处庙宇村庄，宫廷牢狱，坟墓山林，虚惊怪异，走散阴魂，今请山神，五道游路将军，当方土地，家宅灶君，吾进差役，着意收寻，收魂附体，葬在阴宅，魂魄来兮，魂魄来兮……”
-念了一会之后，对着大伙说：“魂魄归来，活人让道，阴阳不同路，切勿挡阴人。”
-李道爷这么一说，堵在门口看热闹的这些人都吓坏了，赶紧的让路，一个劲的往两边挤，顿时人仰马翻的，小孩哭大人叫，李道爷看到这里说：“切勿大声喧哗，惊动阴人。”
-大伙一听赶紧的闭嘴，一个个紧张的看着，就在这时起来阴风，招魂幡随风飘动，十分的诡异，一对白蜡烛，当时变的有豆粒大小，放出惨白的光芒，我听见风声中夹杂着哭号的声音，慢慢的由远而近，朝我们这里而来，那声音正是巧儿的声音，我赶紧朝门外看，只见飘来一个人影，飘飘渺渺的朝尸体这里而来。
-这些只有我和二怪能看到，其他的人看不到，不过他们虽然看不到，但能感受到阵阵阴风，一个个的使劲的后缩，二怪紧紧的靠着我，身子不住的抖，要不是看在我和他好的份上，我真想揍他一顿，这个小子没有骨气，关键时刻把我卖了。
-这时巧儿的阴魂越来越近，我和巧儿的阴魂数次相遇，还差点丢了小命，早就吓破了胆，顾不得倚在我身边发抖的二怪，赶紧朝李道爷跟前靠，李道爷没有理我，只是在那里念念有词，嘴里说着什么，这时巧儿已经到了自己的尸首前，朝我一笑，这一笑虽然没有什么恶意，还是把我吓了一跳，我这次胆子大了些，没有吓尿裤子，巧儿笑完了，好像说了句谢谢弟弟，回来真好的话，然后就一下子附在地上的尸体上，消失的无影无踪了。
-这时李道爷停止摇动三清铃，擦了擦额头上的汗，嘴里说道：“回来了，回来了。”
-李道爷正说着，巧儿的娘过来了，对李道爷说：“道爷你是说巧儿的魂魄回来了吗？”
-李道爷点点头，说：“是呀，历尽艰辛，总算是回来了，这回不用再受水淹冰寒之苦，也不用再找替身了。”
-巧儿的娘听完之后，当时哭着就要扑过去，李道爷拉住巧儿的娘说：“如今阴魂新入身体，身上带着煞气，你这贸然扑过去，身体上带的阳气太重，和鬼气相冲，要是反扑着你，可就麻烦了。”
-桥二娘一听，止住哭声说：“道爷您说怎么办？我苦命的巧儿呀，实在是太可怜了。”
-李道爷也叹了口气说：“这都是她的命，你就别太伤心了，我这就给她除秧。”
-说着话，拿起朱砂笔，在一张黄纸上，写了一长串字，然后走到尸体旁，大声的说道：“天圆地方律令九章，吾今下镇殃煞消亡。万鬼潜藏家宅永昌，吉星高照人口安康。太上老君急急如律令。”
+		<p>传说回秧后的第二天，就会在地面上出现脚印，有梅花样的，那是猫爪神押回来的，有鸡爪鸭爪的，通通叫鸟脚神。大家说着，李道爷没有说话，而是领着大伙，顺着脚印往前走，走着走着脚印朝黄花观而去，李道爷一看，嘴里说道：“坏了坏了，我吃饭的水缸，看样子是不能再用了。”</p>
+<p>说完就拄着拐杖，顺着脚印，朝自己的道观疾走，我跟在李道爷的身后，到了道观，此时的道观，已经经历了几百年，好几个朝代，没有了当年的辉煌，东西配殿早就塌了，只剩下大殿。我们到了道观的院子，看见脚印一直通向李道爷门口的大水缸。开始的时候说过，我们那时候，没有自来水，甚至没有压水井，都是在井里担水吃，李道爷吃的水是周围善男信女帮着挑的，所以水缸特别的大，大家看着水缸，没有谁敢过去，李道爷跑到水缸前，用拐杖敲着水缸说：“你们这些人，赶紧的把这尸体捞出来，哎呀，这下子可恶心死老道我了，我这还咋吃水？”</p>
+<p>大伙没有谁敢过去，这时二怪拉着我说：“哥，哥，我们过去看看尸煞。”</p>
+<p>说完拉着我就往前走，我们到了大缸前，那大缸和我差不多高，我们看不到里面，幸好在旁边有石台子，我们站在石台子上，朝着缸里看，由于是黑天，只看见缸里飘着一个死尸非常的粗大，但是看不清楚面目，我看见那水里的尸体，不由的打了一个寒颤，想赶紧的跑，可是大伙看我们没有什么危险，直接都围过来，我再想走，已经走不出去了。</p>
+<p>大家手里有手电，有火把，一下子把水缸照的亮如白昼，这时我才算看清楚，缸里正是那个尸煞，此时的尸煞在水里一动不动，像是死了一般，其实本来就是死了，不动很正常，我们正在看的时候，忽然缸的前面响起了凄厉的哭声，我一看是巧儿姐的娘，只见她掐着脚脖子哇哇大哭，这时庄上几个上了年纪的老人走过来，让大伙都离远一点，特别是年轻人，更不准靠前，他们准备把尸体弄出来。</p>
+<p>有人抱来一床新芦席，用铁锹铲破四角，铺在地上，然后他们就把尸体从水缸里捞出来，放在席子上，头南脚北，尸煞由于被水泡了，比一般的尸体都大，再看看那双脚，当时差点吓的我魂飞魄散，只见那双脚已经被石灰烧烂了，上面的腐肉脱落，露出森森的白骨，撑开的脚掌，和那脚印一般的模样。我感觉自己的脊背发凉，头上冒冷汗，二怪也吓的不行，在那里身子直抖，我拉着二怪就跑。</p>
+<p>我和二怪跑到古槐树底下，那颗古槐里面已经空心了，只剩下外边的一层树干，从树下可以直接钻到顶上去。我们过了老槐树，就往家里走。那时候的农村不像现在，除了庄上几条长走的路宽些，其他的都是幽深的小巷，两米多宽就算是宽的了，小巷的两边都是房子，树木参天，大白天都阴森森的，晚上更是漆黑。</p>
+<p>我和二怪走在小巷里，快要到巧儿家的时候，忽然二怪说：“哥，哥先别走，前面有一个人在哭。”</p>
+<p>我一听赶紧的往前看，巧儿家的门口点着一堆火，在火光的照耀下隐隐约约的有人影，那个人影，面朝着墙，哭声悲悲切切的好不凄凉。我看着那人影说：“这哭声没准是咱大娘的。”</p>
+<p>二怪说：“不像，你听哭的那么凄惨，会不会是鬼？”</p>
+<p>我说：“你都能看见的，肯定不是鬼，要是鬼的话，只有我这样的阴阳眼才能看到。”</p>
+<p>二怪说：“哥，你说的对，要是人哭的话，咱们过去看看。”</p>
+<p>说着我们往前走，走到那个人影的跟前，人影看到我们来了，赶紧往黑窟里站了站，然后在那里继续抽泣，声音有点怪异，这时二怪小声的说：“哥，这好像是故意吓唬咱们的，咱们问问是谁。”</p>
+<p>说完之后，就大声的朝着人影说：“谁，你是谁？”</p>
+<p>可是那个人影好像没有听见一样，又朝黑窟里站了站，让我们看不清楚到底是谁，我一看到这里，当时从地上摸起一块石头，大声的说：“你到底是谁？再不说话，我揍你了。”</p>
+<p>我说完举起手里的石头，佯装要砸过去，这时那个人影开始慢慢的转头，在转头的时候，刮起一阵阴风，火光一下子变成了惨绿色，好像没有了一点热量，当那个人转过来的时候，我一下子愣住了，这不是巧儿姐吗？我正在愣神的时候，二怪大叫一声，“鬼呀。”</p>
+<p>我一下子惊醒，拉着二怪就跑，我们朝着来时的方向跑，想跑回黄花观，那里的人多，鬼肯定不会到那里去。我和二怪两个人，此时顾不得脚下的石头，一个劲的跑，眼看就要跑到胡同的尽头了，忽然前面传来凄惨的哭泣声，我们往前一看，连死的心都有了，只见在不远处，不知什么时候，多了一个人影，那个人影对着墙，在那里慢慢的抽泣，不用说那人影是巧儿的鬼魂，看样子她不知什么时候到了我们的前面了。</p>
+<p>我和二怪当时刹住，幸亏那时候腿短，没有直接摔到，我们两个人一转身再往后跑，一边跑我们一边喊着救命。此时整个胡同里的人，都跑到黄花观那里看热闹了，根本没有人救我们，当我们跑到胡同的尽头，发现巧儿又不知什么时候出现在另一头的胡同口，还是那样对着墙抽泣着。</p>
+<p>就这样我们不知跑了几趟，都快累的不行了，一边跑一边伸着舌头，至于为什么伸舌头，这是比我们大的小孩，教给我们的方法，说伸着舌头跑不累，我们当时不信，他就指着狗说，狗舌头就伸着，所以狗比人能跑，不信你们撵狗试试，我们试了试后来还就真信了。</p>
+<p>当我们伸着舌头，精疲力尽的跑到胡同口的时候，那哭泣的巧儿又出现在胡同口，这回我们真的跑不动了，两个人靠着另一面墙喘成了狗。</p>
+<p>我喘了一会拉着二怪说：“弟弟咱们赶紧再跑。”</p>
+<p>二怪伸着舌头说：“哥，我们不能再跑了，再跑，非、非累死不可。”</p>
+<p>我说：“那怎么办？”</p>
+<p>二怪弯着腰，捂着胸口喘着说：“哥，我喘匀了气，自有办法对付她。”</p>
+<p>说完之后二怪继续大口大口的喘气，我也在那里喘着，一时顾不得害怕了。巧儿的鬼魂还在那里哭泣，等我们喘的差不多了，二怪对我说：“哥你在这里等着，我过去对付她。”</p>
+<p>真想不到二怪还有对付鬼的本事，我拉着二怪说：“兄弟你要小心点。”</p>
+<p>二怪说：“哥你就放心吧，我过去了。”</p>
+<p>说完之后二怪慢慢的朝着巧儿走去，这时巧儿转过头来，用那双闪着绿光的眼睛，死死的盯着二怪。</p>
+<p>这时的二怪在我的眼里，忽然高大了许多，只见二怪走到离巧儿鬼魂的不远处，做出了一个令我意想不到的动作，只见他膝盖一弯，直接给巧儿的鬼魂跪下了，二怪一边磕头一边说：“巧儿姐，巧儿姐，你饶了我吧，你要带走的是我哥，和我一点关系都没有，我这么小，干瘦干瘦的，带回去也没有什么用。”</p>
+<p>我一听鼻子都气歪了，没有骨气的家伙，这么就当了叛徒，我心里义愤填膺，顾不得那么多了，做人就得以牙还牙，大丈夫膝下有黄金，这个时候不跪什么时候跪？于是我也走了过去，一下子跪在巧儿鬼魂的面前，对巧儿说：“巧儿姐，你带谁走都一样，干脆就把二怪带走吧，等你上来以后，我一定让我大爷给你扎金山银山，金童玉女。摇钱树，纸牛纸马。”</p>
+<p>二怪听了之后赶紧说：“我也让大爷给你扎那些东西。”</p>
+<p>我生气的说：“那个是我大爷，不是你大爷，不给你扎。”</p>
+<p>二怪说：“我爹有钱，给你大爷钱你大爷就给扎。”</p>
+<p>我们那时候小，经常为鸡毛蒜皮的事情争论，他在我家吃了什么，我在他家拿了什么，两个人能算一上午的糊涂账，最后算到谁也不欠谁的，我们因为是谁大爷，一句不合争论起来，直接把巧儿的鬼魂，晒到了一边，不知道这算不算藐视？我们两个正在争论，巧儿的鬼魂受不了了，大叫一声，“你们两个小黄黄给我住嘴，我还要说正事。”</p>
+<p>那声音非常的凄厉，把我们两个一下子吓的不敢吱声了，这时巧儿指着我们说：“你们两个，我谁也不带走，你们现在赶紧的去找李道爷，让李道爷给我叫魂，把我叫回我的身体，快，一旦五更鸡叫，我就得重新回水塘。”</p>
+<p>我们两个都听愣了，不知道该怎么办，巧儿一看我们两个傻愣的跪着不走，就大声的说：“快去，跪着干什么，再不去就来不及了。”</p>
+<p>我们都被凄厉的声音吓傻了，哪还知道跑，这时巧儿忽然尖声说道：“你们再不走，我就把你们吃了。”</p>
+<p>说完一抹脸，那张脸当时变成了一张巨脸，两只大眼睛闪着绿光，如同铜铃一样，张着大嘴，嘴巴一直裂到两个耳朵根，张开双手朝我们抓来，那双手指如同刀子一样锋利，闪着瘆人的寒光，我看到这些，知道再不走就晚了，身子一下子蹦起来，拉着二怪，转身就跑，我们一口气跑回了黄花观，两个人疯一般的扒开人群，钻了进去，顾不得对尸煞的害怕，跑到李道爷的跟前，弯着腰在那里大口大口的喘着粗气，我一边喘气，一边捂着肚子说：“道、道爷，那，那巧儿，巧儿姐的鬼魂……”</p>
+<p>我说的有点急，呛的我一阵咳嗽，李道爷赶紧的过来，给我捶背，让我慢慢的说，我使劲喘了几口气，然后就断断续续的把事情的经过说了一遍，李道爷一听，在那里拍拍脑袋说：“忘了，忘了，这尸煞只是没有灵魂的躯体，我们就是葬了，也替不出巧儿的灵魂，赶紧，赶紧的设法坛，我要给巧儿叫魂，让巧儿的魂魄，回到自己的躯体里来。”</p>
+<p>说完之后，让人安桌子摆法坛，然后进屋穿上那身要饭的衣服，拿来了七星宝剑，临时用白纸做了两个招魂幡，在巧儿的头前放了一碗白米饭，一双筷子插在上面，这个是给死人吃的倒头饭，我们这里吃米饭最忌讳的就是把筷子插在米饭上，如果来山东鲁南做客的话，这个禁忌一定不能犯，要是来走亲戚的新女婿，犯一次这样的错误，亲事就得玩完。</p>
+<p>弄好了这一切之后，李道爷又跳了一段舞动宝剑的舞蹈，然后用宝剑粘起一张黄纸符，放在蜡烛上点着，烧完之后，拿起三清铃，一边摇晃一边念念有词的如同唱歌一样，三清铃为道士作法事中的重要法器。又名帝钟、法钟、法铃、铃书。一般高约二十厘米，口径约九厘米，用黄铜制造，有柄、铃内有舌。僵尸最怕三清铃，凡是僵尸听到三清铃，都会害怕，不敢近前，有些道士想除掉僵尸，就手持三清铃，趁着僵尸出巢穴，守在僵尸的巢穴入口，使劲的摇动三清铃，僵尸不敢近前，一旦五更天亮，僵尸见日光，就会直接完蛋，到时候烈火焚烧就可以了。</p>
+<p>李道爷摇着三清铃，高唱道：“荡荡游魂，何处留存三魂早降，七魄来临，河边野处庙宇村庄，宫廷牢狱，坟墓山林，虚惊怪异，走散阴魂，今请山神，五道游路将军，当方土地，家宅灶君，吾进差役，着意收寻，收魂附体，葬在阴宅，魂魄来兮，魂魄来兮……”</p>
+<p>念了一会之后，对着大伙说：“魂魄归来，活人让道，阴阳不同路，切勿挡阴人。”</p>
+<p>李道爷这么一说，堵在门口看热闹的这些人都吓坏了，赶紧的让路，一个劲的往两边挤，顿时人仰马翻的，小孩哭大人叫，李道爷看到这里说：“切勿大声喧哗，惊动阴人。”</p>
+<p>大伙一听赶紧的闭嘴，一个个紧张的看着，就在这时起来阴风，招魂幡随风飘动，十分的诡异，一对白蜡烛，当时变的有豆粒大小，放出惨白的光芒，我听见风声中夹杂着哭号的声音，慢慢的由远而近，朝我们这里而来，那声音正是巧儿的声音，我赶紧朝门外看，只见飘来一个人影，飘飘渺渺的朝尸体这里而来。</p>
+<p>这些只有我和二怪能看到，其他的人看不到，不过他们虽然看不到，但能感受到阵阵阴风，一个个的使劲的后缩，二怪紧紧的靠着我，身子不住的抖，要不是看在我和他好的份上，我真想揍他一顿，这个小子没有骨气，关键时刻把我卖了。</p>
+<p>这时巧儿的阴魂越来越近，我和巧儿的阴魂数次相遇，还差点丢了小命，早就吓破了胆，顾不得倚在我身边发抖的二怪，赶紧朝李道爷跟前靠，李道爷没有理我，只是在那里念念有词，嘴里说着什么，这时巧儿已经到了自己的尸首前，朝我一笑，这一笑虽然没有什么恶意，还是把我吓了一跳，我这次胆子大了些，没有吓尿裤子，巧儿笑完了，好像说了句谢谢弟弟，回来真好的话，然后就一下子附在地上的尸体上，消失的无影无踪了。</p>
+<p>这时李道爷停止摇动三清铃，擦了擦额头上的汗，嘴里说道：“回来了，回来了。”</p>
+<p>李道爷正说着，巧儿的娘过来了，对李道爷说：“道爷你是说巧儿的魂魄回来了吗？”</p>
+<p>李道爷点点头，说：“是呀，历尽艰辛，总算是回来了，这回不用再受水淹冰寒之苦，也不用再找替身了。”</p>
+<p>巧儿的娘听完之后，当时哭着就要扑过去，李道爷拉住巧儿的娘说：“如今阴魂新入身体，身上带着煞气，你这贸然扑过去，身体上带的阳气太重，和鬼气相冲，要是反扑着你，可就麻烦了。”</p>
+<p>桥二娘一听，止住哭声说：“道爷您说怎么办？我苦命的巧儿呀，实在是太可怜了。”</p>
+<p>李道爷也叹了口气说：“这都是她的命，你就别太伤心了，我这就给她除秧。”</p>
+<p>说着话，拿起朱砂笔，在一张黄纸上，写了一长串字，然后走到尸体旁，大声的说道：“天圆地方律令九章，吾今下镇殃煞消亡。万鬼潜藏家宅永昌，吉星高照人口安康。太上老君急急如律令。”</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -327,17 +372,17 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-12-13T04:00:37Z">2019-12-13 04:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-12-13T04:00:37Z">2019.12.13 04:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。
-所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。
-要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。
-选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。
-技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
-这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。
+		<p>最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。</p>
+<p>所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。</p>
+<p>要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。</p>
+<p>选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。</p>
+<p>技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。</p>
+<p>这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -351,15 +396,24 @@ str, err := req.String() if err != nil { t.Fatal(err) } fmt.Println(str) 以上�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019-11-18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">linux</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-11-18T06:17:47Z">2019.11.18 06:17</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/linux/" rel="category">Linux</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		前面写过一篇linux下安装nodejs，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。
-wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh nvm install 10 nvm use 10 好了，只需3行命令即可，其原理是先安装nodejs版本管理工具nvm，通过nvm来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于nvm的使用方法大家使用nvm -h即可查看，不再细说。
-另外，如果对nodejs有深度使用的话，建议直接安装alinode,方便以后做性能监控，安装方法和上面一样简单。
-wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash source ~/.bashrc # tnvm ls-remote alinode 查看需要的版本 tnvm install alinode-v3.11.4 # 安装需要的版本 tnvm use alinode-v3.11.4 # 使用需要的版本 如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。 alinode
+		<p>前面写过一篇<a href="http://yuedun.wang/blogdetail/574019ee0bdb5de027394523" title="linux下安装nodejs">linux下安装nodejs</a>，不过这种方式安装有弊端，首先就是安装过程复杂漫长，容易出错，且不易升级。这次展示的是简单易操作的方式。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
+</span></span><span style="display:flex;"><span>nvm install <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>nvm use <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><p>好了，只需3行命令即可，其原理是先安装nodejs版本管理工具<code>nvm</code>，通过<code>nvm</code>来安装和管理nodejs，这样就一举两得，既安装了nodejs，还可以方便升级，至于<code>nvm</code>的使用方法大家使用<code>nvm -h</code>即可查看，不再细说。</p>
+<p>另外，如果对nodejs有深度使用的话，建议直接安装<code>alinode</code>,方便以后做性能监控，安装方法和上面一样简单。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | bash
+</span></span><span style="display:flex;"><span>source ~/.bashrc
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tnvm ls-remote alinode 查看需要的版本</span>
+</span></span><span style="display:flex;"><span>tnvm install alinode-v3.11.4 <span style="color:#75715e"># 安装需要的版本</span>
+</span></span><span style="display:flex;"><span>tnvm use alinode-v3.11.4 <span style="color:#75715e"># 使用需要的版本</span>
+</span></span></code></pre></div><p>如果后面有性能监控需要，可以查看官网帮助文件进行下一步操作。
+<a href="https://help.aliyun.com/document_detail/60811.html?spm=a2c4g.11174283.6.586.1e4830b1CrwM93">alinode</a></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -373,23 +427,32 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-10-23T11:47:00Z">2019-10-23 11:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-10-23T11:47:00Z">2019.10.23 11:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		背景 面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。
-原来 日常开发流程是这样的：
-开发 -&gt; 合代码 -&gt; 上测试环境 -&gt; 测试 -&gt; 合代码 -&gt; 上uat环境 -&gt; 测试 -&gt; 合代码 -&gt; 提发布申请 -&gt; 发布 -&gt; 验收
-就算是一个3分钟搞定的需求，流程也需要1天，因为中间有太多的环境切换和人员流转。
-这样的经历所有做过运营活动的童鞋或多或少都有体验，所以很多人也想过做一个编辑器，比如拖拉组件的方式实现一个页面。
-我们曾经有种设想是直接给运营做一个活动编辑器，让他们自己去修改，自己去做页面，自己发布。说实话这个也做过，但是没用起来，原因呢大概就是人性的贪婪与懒惰，当初做出第一版的时候觉得太简单，不能满足使用需求，第二版的时候功能倒是挺丰富，但是运营又不会用。想想那么多css样式，你以为图形化了他们就会用？太天真！干脆教他们写代码好了！
-现在 所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。 这个平台最终流程变成了这样：
-开发 -&gt; 测试 -&gt; 发布 -&gt; 验收
-是的，由原来的11步直接变成了4步，其中开发和发布也比原来更简单了，你可以选择自己喜欢的编辑方式和开发框架，或vscode，或devtool,或工具提供的文本框，或jquery，或vue。可单独对css，js，html修改，将修改的内容直接提交即可看到效果。 为什么会减少这么多？因为没有了测试环境和uat环境的流转，直接在生产环境操作的。
-是不是会有疑问——直接在生产环境开发会不会有风险？ 答案是：不会！项目本身是分为两个环境，一个是开发环境，另一个是访问环境。开发环境是用于内部开发和测试使用，不对外开放，只有发布后才将开发数据同步到公开环境。
-上图展示的是一个示例程序，提供一种思路，可根据自己需求开发相应功能。比如支持多环境发布，回滚，都可以做到点个按钮就行，不需要等待编译和重启等耗时。因为开发完成后的一切操作都是数据的操作，并不会涉及到编译，所以无论是发布还是回滚都是毫秒完成。 这种做法适合频繁修改的页面，万年不变的页面就不需要这样做了。
-核心思想 这个项目的核心思想是将代码做成配置，我们都喜欢做配置平台，让业务来操作数据省去了修改代码，为什么不可以将代码也做成配置？
+		<h3 id="背景">背景</h3>
+<p>面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。</p>
+<h3 id="原来">原来</h3>
+<p>日常开发流程是这样的：</p>
+<p><code> 开发 -&gt; 合代码 -&gt; 上测试环境 -&gt; 测试 -&gt; 合代码 -&gt; 上uat环境 -&gt; 测试 -&gt; 合代码 -&gt; 提发布申请 -&gt; 发布 -&gt; 验收</code></p>
+<p>就算是一个3分钟搞定的需求，流程也需要1天，因为中间有太多的环境切换和人员流转。</p>
+<p>这样的经历所有做过运营活动的童鞋或多或少都有体验，所以很多人也想过做一个编辑器，比如拖拉组件的方式实现一个页面。</p>
+<p>我们曾经有种设想是直接给运营做一个活动编辑器，让他们自己去修改，自己去做页面，自己发布。说实话这个也做过，但是没用起来，原因呢大概就是人性的贪婪与懒惰，当初做出第一版的时候觉得太简单，不能满足使用需求，第二版的时候功能倒是挺丰富，但是运营又不会用。想想那么多css样式，你以为图形化了他们就会用？太天真！干脆教他们写代码好了！</p>
+<h3 id="现在">现在</h3>
+<p>所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。
+这个平台最终流程变成了这样：</p>
+<p><code>开发 -&gt; 测试 -&gt; 发布 -&gt; 验收</code></p>
+<p>是的，由原来的11步直接变成了4步，其中<code>开发</code>和<code>发布</code>也比原来更简单了，你可以选择自己喜欢的编辑方式和开发框架，或vscode，或devtool,或工具提供的文本框，或jquery，或vue。可单独对css，js，html修改，将修改的内容直接提交即可看到效果。
+为什么会减少这么多？因为没有了测试环境和uat环境的流转，直接在生产环境操作的。</p>
+<p>是不是会有疑问——直接在生产环境开发会不会有风险？
+答案是：不会！项目本身是分为两个环境，一个是开发环境，另一个是访问环境。开发环境是用于内部开发和测试使用，不对外开放，只有发布后才将开发数据同步到公开环境。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E7%BC%96%E8%BE%91%E5%99%A84.gif" alt="编辑器演示" title="编辑器演示"></p>
+<p>上图展示的是一个示例程序，提供一种思路，可根据自己需求开发相应功能。比如支持多环境发布，回滚，都可以做到点个按钮就行，不需要等待编译和重启等耗时。因为开发完成后的一切操作都是数据的操作，并不会涉及到编译，所以无论是发布还是回滚都是毫秒完成。
+这种做法适合频繁修改的页面，万年不变的页面就不需要这样做了。</p>
+<h3 id="核心思想">核心思想</h3>
+<p>这个项目的核心思想是将代码做成配置，我们都喜欢做配置平台，让业务来操作数据省去了修改代码，为什么不可以将代码也做成配置？</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -403,69 +466,81 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-09-17T15:40:10Z">2019-09-17 15:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-09-17T15:40:10Z">2019.09.17 15:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		1 这两天我看后台后台的时候，发现有几个朋友再问我能不能加盟瑞幸咖啡，能不能赚到钱。
-当时我是很迷惑的，因为据我所知瑞幸咖啡从来就没有开放加盟，网上所有挂着瑞幸咖啡加盟旗号的人都是各种沙雕骗子，可能是端幸咖啡。后来我一问，说的不是瑞幸咖啡，是财报上增长亮眼的小鹿茶进行了品牌独立，正在招募各地的合伙人，问我能不能加盟，有没有钱赚。
-看得我很伤心，真的。
-亏我多次称赞瑞幸是最牛逼的民族品牌，因为从来不割国内的韭菜，都是从国外搞钱烧来补贴大家喝咖啡，走的是公益路线。
-没想到浓眉大眼的瑞幸居然搞了小鹿茶现在开始在国内招募合伙人了。
-我觉得自己被扇了一耳光。
-不谈瑞幸和小鹿茶，单看奶茶加盟这个行业，我觉得我觉得但凡稍微有点眼力或者判断力的人，都不会在2019年投身到奶茶加盟这个无底巨坑了。
-作为一个参与了多家奶茶企业及供应链公司融资尽调的人，我想说目前几乎所有的奶茶加盟，对于绝大多数普通人而言，是坑。
-加盟奶茶的这些人，90%都是赔钱的，剩下的10%也基本是勉强维持赚不到什么钱，除了奶茶商家外，只有极少数自有店面的人还多少能捞一点点。
-如果现在是2014年，那么奶茶还算一个值得玩玩儿的领域。
-但现在是2019年，说这个行业是血海都感觉过于保守了。
-这个行业的现状简直可以称之为地中海。
-不仅深不见底，而且每一个加盟奶茶的人，最终都会愁成地中海。
-2 先不说行业，我想先问问各位想要加盟奶茶店的人3个灵魂问题，如果你的答案是否的话，建议直接拉黑所有让你加盟的销售就可以了。
-不然你脑子里绝对进奶茶了，还是加浓的那种。
-问题1，你在奶茶店打过工吗？ 这个问题其实是多个问题的综合，就是你对于奶茶行业了解多少。 你知道客流潮汐吗？你知道近3年店铺人流的变化吗？ 你知道原材料的真实成本以及营销成本和售价的ROI关系吗？ 你知道如何流程化管理员工让他们不要瞎JB搞甚至偷钱吗？ 你知道奶茶标准SOP有多少页，如何抓大放小吗？ 你知道如果外送的话，运费和外卖平台促销成本是怎样的吗？ 如果你听的很茫然，那么还是别来送人头了，奶茶这个行业，外行杀进来会死的很惨的。
-问题2，你在开店当地有资源吗？ 这个问题本质上是问你的奶茶店选址成本是否可控，奶茶，是一个高度吃地理位置的行业，这个年代别想什么酒香不怕巷子深，奶茶店地理位置不是人流中心地带的话，直接就不用开了。
-各个犄角旮旯里死去的奶茶店数都数不清。
-如果是中心地带的话，那么你能保证拿下这块地吗？
-注意，拿下的前提是以合理的成本，如果成本失控，那么拿这块地也没意义。
-如果不能，你还是别来了，这个门槛对你高到能卡蛋的地步。
-问题3，你有多少本钱可以烧掉不心疼？
-这个问题本质上是问你的抗风险能力。
-我相信每个人做生意都不是为了赔钱的，但正因如此，才要给自己留足余地，因为生意这件事情，真的是说不好的。
-别总想着孤注一掷破釜沉舟，人类历史上成功的也就那么几个，绝大多数都是死的不要不要的没人知道，这叫做幸存者偏差。
-奶茶店属于非常吃资金流的行业，很多原材料的保质期都不长，而且SOP要求新鲜度，如果没有足够的准备，那么很快你就发现自己手里的钢镚根本吃不住烧。
-这时候后悔，就真的晚了。
-如果你没有足够的运营资金等着烧，并且烧光了也不影响生活，那么还是别来玩儿奶茶店了，这行业成功率太低。
-我给供应链做贷款尽调的时候，见识过的普通家庭创业开奶茶店烧个妻离子散一屁股债的太多了。 多到你想象不到。
-3 经历灵魂3问，如果你还是觉得自己想要在奶茶行业一展拳脚，成为一代奶茶大师的话，那么我来和你好好讲讲奶茶加盟里的坑。
-其实上述的灵魂3问，各种奶茶加盟都有各种话术应对，无非是跟你讲自己是大品牌，实力雄厚，并且有足够的知名度，毛利率高，并且会帮你选址，帮你安排装修，帮你培训员工，教你如何管理，给你提供标准化的原材料，你只需要一颗创业的心和吃苦的勇气，以及一大堆加盟费就够了， 干奶茶，他们各个都是专业的，你只要躺下数钱就行。
-听起来真的很诱人，而且餐饮还是出名的强流水行业，还是实业，干干干，冲冲冲。
-各家的话术本质都差不多，但是这些话术中隐藏着一个非常实际的问题。
-既然厂家什么东西都能做到位包你上手就赚钱，有你没你差不多，那他们要你干嘛？
-一个必然赚钱的店，煞笔才开加盟，你见过星巴克开加盟吗？
-实力雄厚，知名度高，且毛利高的厂家差你一个外行的十几万钢镚吗？
-他们不是赚钱么？不是管理能力强吗？不是7天培训上岗吗？干嘛不自己做？
-除非，他们说的都是假的，就靠你交加盟费来养活。
-吃的就是外行不懂。
-绝大多数奶茶加盟，本质上就是厂家在割加盟者的韭菜，这个流程已经非常熟练了。
-其实也不局限于奶茶，各种品牌加盟的玩法，越来越像资金盘做局了。
-先搞几家样板店，然后雇人来买，造成特别火爆的假象，然后择机开放加盟，疯狂打广告，吸引人加盟。
-加入前他是儿子般的态度，交钱后他就是爹。
-加盟费割一笔，培训费割一笔，然后就是原材料高价割一笔，流水抽成赚一笔，时不时巡店罚款割一笔，最后保证金再割一笔。
-你赚不赚不重要，重要的是他们赚了，不仅赚了钱，而且韭菜们开了这么多店，无形中给他们打了很多广告，甚至有的品牌的考核还有拉多少人开店才能返还保证金，彻彻底底的资金盘玩法。
-之前在抖音爆火的某茶，一口气搞了6000多家加盟，最火爆的时候，一条街能有3家某案茶，结果3个月不到，倒闭了80%，但这不重要，因为厂家早就赚嗨了，可以换一个新品牌接着割了。
-可怜了那些负债加盟的人，以及他们的家庭。
-4 再说具体点，当你选择加盟一家奶茶后，会发生什么事情。
-记清楚，加盟商的目的不是帮你赚钱，而是从你手上赚钱，这一点非常重要。
-首先你得交加盟费，有的品牌收几万块，有的收几千块，随着韭菜不好割了，已经开始有品牌开始0加盟费了，靠后面的运营来赚你钱。
-然后你得交保证金，这个不同品牌不一样，但是说法都差不多，这个保证金是约束，防止你做对品牌不利的事情，只要XXX时间没问题或者退出时，保证金会还给你，当然最终还不还给你就不知道了。 培训费和培训之类的洗脑就不说了，我管这套叫做韭菜三板斧。
-当你经历了三板斧之后，你需要有一个店铺地址。
-这里就考验你拿店的能力了，每个城市，哪怕是县城，那些人流量大的好位置也都是有限的，不要想着找便宜的地方。
-奶茶店最重要的三要素，地理位置，地理位置，还是地理位置，就算你打算做外卖，也要选附近有学校或者是CBD。
-这些地理位置的统一特征就是贵。
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5d81a71a00f24e1fd556cc25/">阅读全文…</a>
+		<h3 id="1">1</h3>
+<p>这两天我看后台后台的时候，发现有几个朋友再问我能不能加盟瑞幸咖啡，能不能赚到钱。</p>
+<p>当时我是很迷惑的，因为据我所知瑞幸咖啡从来就没有开放加盟，网上所有挂着瑞幸咖啡加盟旗号的人都是各种沙雕骗子，可能是端幸咖啡。后来我一问，说的不是瑞幸咖啡，是财报上增长亮眼的小鹿茶进行了品牌独立，正在招募各地的合伙人，问我能不能加盟，有没有钱赚。</p>
+<p>看得我很伤心，真的。</p>
+<p>亏我多次称赞瑞幸是最牛逼的民族品牌，因为从来不割国内的韭菜，都是从国外搞钱烧来补贴大家喝咖啡，走的是公益路线。</p>
+<p>没想到浓眉大眼的瑞幸居然搞了小鹿茶现在开始在国内招募合伙人了。</p>
+<p>我觉得自己被扇了一耳光。</p>
+<p>不谈瑞幸和小鹿茶，单看奶茶加盟这个行业，我觉得我觉得但凡稍微有点眼力或者判断力的人，都不会在2019年投身到奶茶加盟这个无底巨坑了。</p>
+<p>作为一个参与了多家奶茶企业及供应链公司融资尽调的人，我想说目前几乎所有的奶茶加盟，对于绝大多数普通人而言，是坑。</p>
+<p>加盟奶茶的这些人，90%都是赔钱的，剩下的10%也基本是勉强维持赚不到什么钱，除了奶茶商家外，只有极少数自有店面的人还多少能捞一点点。</p>
+<p>如果现在是2014年，那么奶茶还算一个值得玩玩儿的领域。</p>
+<p>但现在是2019年，说这个行业是血海都感觉过于保守了。</p>
+<p>这个行业的现状简直可以称之为地中海。</p>
+<p>不仅深不见底，而且每一个加盟奶茶的人，最终都会愁成地中海。</p>
+<h3 id="2">2</h3>
+<p>先不说行业，我想先问问各位想要加盟奶茶店的人3个灵魂问题，如果你的答案是否的话，建议直接拉黑所有让你加盟的销售就可以了。</p>
+<p>不然你脑子里绝对进奶茶了，还是加浓的那种。</p>
+<p>问题1，你在奶茶店打过工吗？
+这个问题其实是多个问题的综合，就是你对于奶茶行业了解多少。
+你知道客流潮汐吗？你知道近3年店铺人流的变化吗？
+你知道原材料的真实成本以及营销成本和售价的ROI关系吗？
+你知道如何流程化管理员工让他们不要瞎JB搞甚至偷钱吗？
+你知道奶茶标准SOP有多少页，如何抓大放小吗？
+你知道如果外送的话，运费和外卖平台促销成本是怎样的吗？
+如果你听的很茫然，那么还是别来送人头了，奶茶这个行业，外行杀进来会死的很惨的。</p>
+<p>问题2，你在开店当地有资源吗？
+这个问题本质上是问你的奶茶店选址成本是否可控，奶茶，是一个高度吃地理位置的行业，这个年代别想什么酒香不怕巷子深，奶茶店地理位置不是人流中心地带的话，直接就不用开了。</p>
+<p>各个犄角旮旯里死去的奶茶店数都数不清。</p>
+<p>如果是中心地带的话，那么你能保证拿下这块地吗？</p>
+<p>注意，拿下的前提是以合理的成本，如果成本失控，那么拿这块地也没意义。</p>
+<p>如果不能，你还是别来了，这个门槛对你高到能卡蛋的地步。</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E8%A7%A3%E5%86%B3%E4%BD%A0%E4%BA%BA%E7%94%9F50%E7%9A%84%E9%97%AE%E9%A2%98.png" alt=""></p>
+<p>问题3，你有多少本钱可以烧掉不心疼？</p>
+<p>这个问题本质上是问你的抗风险能力。</p>
+<p>我相信每个人做生意都不是为了赔钱的，但正因如此，才要给自己留足余地，因为生意这件事情，真的是说不好的。</p>
+<p>别总想着孤注一掷破釜沉舟，人类历史上成功的也就那么几个，绝大多数都是死的不要不要的没人知道，这叫做幸存者偏差。</p>
+<p>奶茶店属于非常吃资金流的行业，很多原材料的保质期都不长，而且SOP要求新鲜度，如果没有足够的准备，那么很快你就发现自己手里的钢镚根本吃不住烧。</p>
+<p>这时候后悔，就真的晚了。</p>
+<p>如果你没有足够的运营资金等着烧，并且烧光了也不影响生活，那么还是别来玩儿奶茶店了，这行业成功率太低。</p>
+<p>我给供应链做贷款尽调的时候，见识过的普通家庭创业开奶茶店烧个妻离子散一屁股债的太多了。
+多到你想象不到。</p>
+<h3 id="3">3</h3>
+<p>经历灵魂3问，如果你还是觉得自己想要在奶茶行业一展拳脚，成为一代奶茶大师的话，那么我来和你好好讲讲奶茶加盟里的坑。</p>
+<p>其实上述的灵魂3问，各种奶茶加盟都有各种话术应对，无非是跟你讲自己是大品牌，实力雄厚，并且有足够的知名度，毛利率高，并且会帮你选址，帮你安排装修，帮你培训员工，教你如何管理，给你提供标准化的原材料，你只需要一颗创业的心和吃苦的勇气，以及一大堆加盟费就够了，
+干奶茶，他们各个都是专业的，你只要躺下数钱就行。</p>
+<p>听起来真的很诱人，而且餐饮还是出名的强流水行业，还是实业，干干干，冲冲冲。</p>
+<p>各家的话术本质都差不多，但是这些话术中隐藏着一个非常实际的问题。</p>
+<p>既然厂家什么东西都能做到位包你上手就赚钱，有你没你差不多，那他们要你干嘛？</p>
+<p>一个必然赚钱的店，煞笔才开加盟，你见过星巴克开加盟吗？</p>
+<p>实力雄厚，知名度高，且毛利高的厂家差你一个外行的十几万钢镚吗？</p>
+<p>他们不是赚钱么？不是管理能力强吗？不是7天培训上岗吗？干嘛不自己做？</p>
+<p>除非，他们说的都是假的，就靠你交加盟费来养活。</p>
+<p>吃的就是外行不懂。</p>
+<p>绝大多数奶茶加盟，本质上就是厂家在割加盟者的韭菜，这个流程已经非常熟练了。</p>
+<p>其实也不局限于奶茶，各种品牌加盟的玩法，越来越像资金盘做局了。</p>
+<p>先搞几家样板店，然后雇人来买，造成特别火爆的假象，然后择机开放加盟，疯狂打广告，吸引人加盟。</p>
+<p>加入前他是儿子般的态度，交钱后他就是爹。</p>
+<p>加盟费割一笔，培训费割一笔，然后就是原材料高价割一笔，流水抽成赚一笔，时不时巡店罚款割一笔，最后保证金再割一笔。</p>
+<p>你赚不赚不重要，重要的是他们赚了，不仅赚了钱，而且韭菜们开了这么多店，无形中给他们打了很多广告，甚至有的品牌的考核还有拉多少人开店才能返还保证金，彻彻底底的资金盘玩法。</p>
+<p>之前在抖音爆火的某茶，一口气搞了6000多家加盟，最火爆的时候，一条街能有3家某案茶，结果3个月不到，倒闭了80%，但这不重要，因为厂家早就赚嗨了，可以换一个新品牌接着割了。</p>
+<p>可怜了那些负债加盟的人，以及他们的家庭。</p>
+<h3 id="4">4</h3>
+<p>再说具体点，当你选择加盟一家奶茶后，会发生什么事情。</p>
+<p>记清楚，加盟商的目的不是帮你赚钱，而是从你手上赚钱，这一点非常重要。</p>
+<p>首先你得交加盟费，有的品牌收几万块，有的收几千块，随着韭菜不好割了，已经开始有品牌开始0加盟费了，靠后面的运营来赚你钱。</p>
+<p>然后你得交保证金，这个不同品牌不一样，但是说法都差不多，这个保证金是约束，防止你做对品牌不利的事情，只要XXX时间没问题或者退出时，保证金会还给你，当然最终还不还给你就不知道了。
+培训费和培训之类的洗脑就不说了，我管这套叫做韭菜三板斧。</p>
+<p>当你经历了三板斧之后，你需要有一个店铺地址。</p>
+<p>这里就考验你拿店的能力了，每个城市，哪怕是县城，那些人流量大的好位置也都是有限的，不要想着找便宜的地方。</p>
+<p>奶茶店最重要的三要素，地理位置，地理位置，还是地理位置，就算你打算做外卖，也要选附近有学校或者是CBD。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -479,16 +554,56 @@ wget -O- https://raw.githubusercontent.com/aliyun-node/tnvm/master/install.sh | 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-04-30T08:31:18Z">2019-04-30 08:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-04-30T08:31:18Z">2019.04.30 08:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		main.ts
-import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, NestExpressApplication, } from &#39;@nestjs/platform-express&#39;; import { AppModule } from &#39;./app.module&#39;; import nunjucks = require(&#39;nunjucks&#39;); import { join } from &#39;path&#39;; async function bootstrap() { const app = await NestFactory.create&lt;NestExpressApplication&gt;( AppModule, new ExpressAdapter(), ); app.useStaticAssets(join(__dirname, &#39;..&#39;, &#39;public&#39;)); // NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt; app.setBaseViewsDir(join(__dirname, &#39;..&#39;, &#39;views&#39;)); // 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用 nunjucks.configure(&#39;views&#39;, { ext:&#39;njk&#39;, autoescape: true, express: app, watch: true, }); await app.listen(3000, () =&gt; { }); } bootstrap(); app.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5cc807d6effb223a816d9114/">阅读全文…</a>
+		<p><code>main.ts</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">NestFactory</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@nestjs/core&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ExpressAdapter</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">NestExpressApplication</span>,
+</span></span><span style="display:flex;"><span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@nestjs/platform-express&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppModule</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./app.module&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">nunjucks</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;nunjucks&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">join</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;path&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bootstrap</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">NestFactory</span>.<span style="color:#a6e22e">create</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">NestExpressApplication</span><span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">AppModule</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ExpressAdapter</span>(),
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">useStaticAssets</span>(<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;..&#39;</span>, <span style="color:#e6db74">&#39;public&#39;</span>)); <span style="color:#75715e">// NestFactory.create需要加泛型参数&lt;NestExpressApplication&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">setBaseViewsDir</span>(<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">__dirname</span>, <span style="color:#e6db74">&#39;..&#39;</span>, <span style="color:#e6db74">&#39;views&#39;</span>)); <span style="color:#75715e">// 修改模板文件后立马生效，否则需要重启服务，nunjucks watch参数也有相同作用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">nunjucks</span>.<span style="color:#a6e22e">configure</span>(<span style="color:#e6db74">&#39;views&#39;</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ext</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;njk&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">autoescape</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">express</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">app</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">watch</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bootstrap</span>();
+</span></span></code></pre></div><p><code>app.controller.ts</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Controller</span>, <span style="color:#a6e22e">Get</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AppService</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./app.service&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">Controller</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppController</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">readonly</span> <span style="color:#a6e22e">appService</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">AppService</span>) {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">Get</span>(<span style="color:#e6db74">&#39;articles&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// @Render(&#39;articles.njk&#39;) // 不能使用@Render装饰器，而是使用res.render
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">findArticlesByUser</span>(<span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">Res</span>() <span style="color:#a6e22e">res</span><span style="color:#f92672">:</span><span style="color:#a6e22e">Response</span>)<span style="color:#f92672">:</span> Promise<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">any</span><span style="color:#f92672">&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">render</span>(<span style="color:#e6db74">&#39;articles.njk&#39;</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;标题&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">articles</span>
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>articles.njk</code></p>
 	</div>
 </article>
 
@@ -508,7 +623,7 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -524,13 +639,12 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -568,99 +682,99 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -688,13 +802,14 @@ import { NestFactory } from &#39;@nestjs/core&#39;; import { ExpressAdapter, Nes
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

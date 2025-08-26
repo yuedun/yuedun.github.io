@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="工具使用" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" />
+		<meta property="og:url" content="https://www.yuedun.wang/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="工具使用">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="工具使用">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2023-07-01T18:13:43+08:00">
+  <meta itemprop="dateModified" content="2023-07-01T18:13:43+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="工具使用">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="工具使用">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,23 +116,61 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-01T18:13:43&#43;08:00">2023-07-01 18:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-07-01T18:13:43&#43;08:00">2023.07.01 18:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		针对OSS内存储的图片文件（Object），您可以在GetObject请求中携带图片处理参数对图片文件进行处理。例如添加图片水印、转换格式等。详情见：官方文档
-对于允许公共读写的文件可以直接在图片URL后面拼接参数的方式进行图片处理，格式：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value
-对于不允许匿名访问的私有图片文件，不支持通过文件URL直接添加参数的方式处理图片，您需要通过SDK的方式将图片处理操作加入签名URL中。
-重要： 通过文件URL访问图片时，默认是下载行为。如需确保通过文件URL访问图片时是预览行为，您需要绑定自定义域名并添加CNAME记录。具体操作，请参见绑定自定义域名。
-所以，私有桶的图片是不能直接添加参数处理，否则会返回错误信息：
-SignatureDoesNotMatch
-The request signature we calculated does not match the signature you provided. Check your key and signing method.
-SDK处理方法，以go版本为例：
-package main import ( &#34;fmt&#34; &#34;os&#34; &#34;github.com/aliyun/aliyun-oss-go-sdk/oss&#34; ) func HandleError(err error) { fmt.Println(&#34;Error:&#34;, err) os.Exit(-1) } func main() { // 创建OSSClient实例。 // yourEndpoint填写Bucket对应的Endpoint，以华东1（杭州）为例，填写为https://oss-cn-hangzhou.aliyuncs.com。其它Region请按实际情况填写。 // 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。 client, err := oss.New(&#34;yourEndpoint&#34;, &#34;yourAccessKeyId&#34;, &#34;yourAccessKeySecret&#34;) if err != nil { HandleError(err) } // 指定图片所在Bucket的名称，例如examplebucket。 bucketName := &#34;examplebucket&#34; bucket, err := client.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2023/07/ali-oss-process/">阅读全文…</a>
+		<blockquote>
+<p>针对OSS内存储的图片文件（Object），您可以在GetObject请求中携带图片处理参数对图片文件进行处理。例如添加图片水印、转换格式等。详情见：<a href="https://help.aliyun.com/document_detail/183902.html?spm=a2c4g.44686.0.0.3c532793kTBeVm">官方文档</a></p></blockquote>
+<p>对于允许公共读写的文件可以直接在图片URL后面拼接参数的方式进行图片处理，格式：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value</p>
+<p><strong>对于不允许匿名访问的私有图片文件，不支持通过文件URL直接添加参数的方式处理图片，您需要通过SDK的方式将图片处理操作加入签名URL中。</strong></p>
+<p><strong>重要：</strong> <em>通过文件URL访问图片时，默认是下载行为。如需确保通过文件URL访问图片时是预览行为，您需要绑定自定义域名并添加CNAME记录。具体操作，请参见绑定<a href="https://help.aliyun.com/document_detail/31902.html?spm=a2c4g.44686.0.0.4e5c24cby8yy9K#concept-ozw-m2r-5fb">自定义域名</a>。</em></p>
+<p>所以，私有桶的图片是不能直接添加参数处理，否则会返回错误信息：</p>
+<blockquote>
+<p>SignatureDoesNotMatch<br>
+The request signature we calculated does not match the signature you provided. Check your key and signing method.</p></blockquote>
+<p>SDK处理方法，以go版本为例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;os&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;github.com/aliyun/aliyun-oss-go-sdk/oss&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Error:&#34;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建OSSClient实例。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// yourEndpoint填写Bucket对应的Endpoint，以华东1（杭州）为例，填写为https://oss-cn-hangzhou.aliyuncs.com。其它Region请按实际情况填写。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;yourEndpoint&#34;</span>, <span style="color:#e6db74">&#34;yourAccessKeyId&#34;</span>, <span style="color:#e6db74">&#34;yourAccessKeySecret&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指定图片所在Bucket的名称，例如examplebucket。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bucketName</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;examplebucket&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bucket</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">Bucket</span>(<span style="color:#a6e22e">bucketName</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指定图片名称。如果图片不在Bucket根目录，需携带文件完整路径，例如exampledir/example.jpg。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ossImageName</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;exampledir/example.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 生成带签名的URL，并指定过期时间为600s。</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">signedURL</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">bucket</span>.<span style="color:#a6e22e">SignURL</span>(<span style="color:#a6e22e">ossImageName</span>, <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">HTTPGet</span>, <span style="color:#ae81ff">600</span>, <span style="color:#a6e22e">oss</span>.<span style="color:#a6e22e">Process</span>(<span style="color:#e6db74">&#34;image/format,png&#34;</span>))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HandleError</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">signedURL</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>其中，<code>yourAccessKeyId</code>,<code>yourAccessKeySecret</code>的来源参考该文，<a href="https://blog.csdn.net/iteye_19045/article/details/106721450">阿里云OSS上传报错: You have no right to access this object because of bucket acl</a>。创建完用户需要创建AccessKeyId，接着就可以创建yourAccessKeyId和AccessKeySecret。
+最后会生成完整的图片链接，注意，如果发现链接中多出了bucket，需要排查yourEndpoint是否已经加上了bucket，需要删除掉。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -184,13 +189,20 @@ package main import ( &#34;fmt&#34; &#34;os&#34; &#34;github.com/aliyun/aliyun-o
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-05-10T18:55:23&#43;08:00">2023-05-10 18:55</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-05-10T18:55:23&#43;08:00">2023.05.10 18:55</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		如果你打算搭建一套发布系统，你可能会考虑jenkins，或者其他。 我要介绍的则是一些现成的，使用更简单的工具。没用特殊环境要求的情况下则完全可以代替jenkins。
-GitHub Actions gitlab ci 阿里云流水线 coding持续部署 上面只是列举了四类，实际上你会发现市面上的云服务商和代码仓库都提供了类似的工具，虽然有些是收费的，但是也有不少免费的，对于个人来说其实大多数都是够用了。
+		<p>如果你打算搭建一套发布系统，你可能会考虑jenkins，或者其他。
+我要介绍的则是一些现成的，使用更简单的工具。没用特殊环境要求的情况下则完全可以代替jenkins。</p>
+<ul>
+<li>GitHub Actions</li>
+<li>gitlab ci</li>
+<li>阿里云流水线</li>
+<li>coding持续部署</li>
+</ul>
+<p>上面只是列举了四类，实际上你会发现市面上的云服务商和代码仓库都提供了类似的工具，虽然有些是收费的，但是也有不少免费的，对于个人来说其实大多数都是够用了。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -204,14 +216,18 @@ GitHub Actions gitlab ci 阿里云流水线 coding持续部署 上面只是列�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-02-18T16:23:26&#43;08:00">2022-02-18 16:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-02-18T16:23:26&#43;08:00">2022.02.18 16:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		chrome浏览器的开发者工具是前端开发必不可少的工具，其中接口查看是最常用的功能之一。默认情况下显示如下： 主要是红框内的接口显示只有很短的名称，并没有完整的显示出整个接口，这对于一些最后名称一样的接口就不能知晓是哪个接口了，只能点击查看详情。我们希望的当然是能够显示完整的接口，实际上也是能做到的。
-在名称栏上右击：
-可以显示很多选项，其中路径和网址就是我们先要的，点击以后就可以显示完整的接口路径了。
+		<p>chrome浏览器的开发者工具是前端开发必不可少的工具，其中接口查看是最常用的功能之一。默认情况下显示如下：
+<img src="https://hopefully-img.yuedun.wang/2a067be4926308c85147f1b39b8ce549" alt="chrome开发者工具"></p>
+<p>主要是红框内的接口显示只有很短的名称，并没有完整的显示出整个接口，这对于一些最后名称一样的接口就不能知晓是哪个接口了，只能点击查看详情。我们希望的当然是能够显示完整的接口，实际上也是能做到的。</p>
+<p>在名称栏上右击：</p>
+<p><img src="https://hopefully-img.yuedun.wang/3a5fd9c34183471f3b5cafb1575c06c4" alt="chrome开发者工具"></p>
+<p>可以显示很多选项，其中路径和网址就是我们先要的，点击以后就可以显示完整的接口路径了。</p>
+<p><img src="https://hopefully-img.yuedun.wang/de31aa9c16b9fd3c54e1df44e1aca43f" alt="chrome开发者工具"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -225,12 +241,14 @@ GitHub Actions gitlab ci 阿里云流水线 coding持续部署 上面只是列�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-11-08T14:31:17&#43;08:00">2021-11-08 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-11-08T14:31:17&#43;08:00">2021.11.08 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		使用postman进行接口测试时，经常需要使用到cookie参数。我们会先调用登陆接口，得到sessionid，然后使用sessionID来调用其他需要登陆的接口。 但是有些情况下，cookie不会自动添加到header中，总是需要手动添加cookie。或许又发现有的接口却能自动添加上cookie，为什么会区别对待呢？ 其实这是postman根据登陆接口返回的cookie来操作的，如果cookie的path指定来某个路径，那么所有在这个路径下的接口都会自动加上cookie。
+		<p>使用postman进行接口测试时，经常需要使用到cookie参数。我们会先调用登陆接口，得到sessionid，然后使用sessionID来调用其他需要登陆的接口。
+但是有些情况下，cookie不会自动添加到header中，总是需要手动添加cookie。或许又发现有的接口却能自动添加上cookie，为什么会区别对待呢？
+其实这是postman根据登陆接口返回的cookie来操作的，如果cookie的path指定来某个路径，那么所有在这个路径下的接口都会自动加上cookie。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -244,23 +262,47 @@ GitHub Actions gitlab ci 阿里云流水线 coding持续部署 上面只是列�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-10T20:15:08&#43;08:00">2021-07-10 20:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-10T20:15:08&#43;08:00">2021.07.10 20:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		如何Hook Ajax请求 现在很多网站都使用Ajax作为数据接口，这样其实也方便爬虫爬取数据，但是，如果站点对IP，访问频率做 了限制，或者网站定位就是搜索类，无法遍历完所有页面，或者是数据实时变化，无法预期的。这样就可能需要 直接在浏览器中模拟人的行为，对于这样的网站(使用Ajax作数据接口，有一定防范措施) ，如果我们可以通过hook得到Ajax请求，就可以搞定它的数据了。
-单页面Web应用 对于单页面的Web应用，在console中使用如下代码，就能在浏览器进行Ajax请求时候，得到返回内容， 然后在post给存储接口就好了:
-(function() { var origOpen = XMLHttpRequest.prototype.open; XMLHttpRequest.prototype.open = function() { // console.log(&#39;request started!&#39;); this.addEventListener(&#39;load&#39;, function() { console.log(this.responseText); // 得到Ajax的返回内容 }); origOpen.apply(this, arguments); }; })(); 比如百度图片:
-我们可以看到请求图片的路径，这段代码 直接使用了一个匿名函数，重写了Ajax请求的open方法，给load事件加上一个事件监听器，从而把内容得到:
-对于单页面的Web应用，基本可以满足需求，但是如果翻页的话，每次翻页上一页的代码就失效了， 不可能每页都把这段代码复制进console中，还是需要使用类似Chrome插件的方式才能实现。
-翻页Web应用 有了上面的代码，如果我们把它直接丢到Chrome插件的JS文件里面(官方叫Content Scripts)，发现是无法执行的，XMLHttpRequest.prototype.open 还是浏览器自身的代码。
-这样看来，就无法实现自动翻页，自动获取ajax请求内容了。
-Chrome官方说法如下:
-Content scripts execute in a special environment called an isolated world. They have access to the DOM of the page they are injected into, but not to any JavaScript variables or functions created by the page.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/07/chrome-extensions-hook-ajax/">阅读全文…</a>
+		<h3 id="如何hook-ajax请求">如何Hook Ajax请求</h3>
+<p>现在很多网站都使用Ajax作为数据接口，这样其实也方便爬虫爬取数据，但是，如果站点对IP，访问频率做
+了限制，或者网站定位就是搜索类，无法遍历完所有页面，或者是数据实时变化，无法预期的。这样就可能需要
+直接在浏览器中模拟人的行为，对于这样的网站(使用Ajax作数据接口，有一定防范措施)
+，如果我们可以通过hook得到Ajax请求，就可以搞定它的数据了。</p>
+<h3 id="单页面web应用">单页面Web应用</h3>
+<p>对于单页面的Web应用，在console中使用如下代码，就能在浏览器进行Ajax请求时候，得到返回内容，
+然后在post给存储接口就好了:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>(<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">origOpen</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">XMLHttpRequest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">open</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">XMLHttpRequest</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">open</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// console.log(&#39;request started!&#39;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;load&#39;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">responseText</span>); <span style="color:#75715e">// 得到Ajax的返回内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">origOpen</span>.<span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">arguments</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><p>比如百度图片:</p>
+<p><img src="https://hopefully-img.yuedun.wang/e11ad5848d47af4db195906e3e7e0ff9" alt=""></p>
+<p>我们可以看到请求图片的路径，这段代码 直接使用了一个匿名函数，重写了Ajax请求的open方法，给load事件加上一个事件监听器，从而把内容得到:</p>
+<p><img src="https://hopefully-img.yuedun.wang/7a2805ce46aa176227952ba13c63c49b" alt=""></p>
+<p>对于单页面的Web应用，基本可以满足需求，但是如果翻页的话，每次翻页上一页的代码就失效了，
+不可能每页都把这段代码复制进console中，还是需要使用类似Chrome插件的方式才能实现。</p>
+<h3 id="翻页web应用">翻页Web应用</h3>
+<p>有了上面的代码，如果我们把它直接丢到Chrome插件的JS文件里面(官方叫Content Scripts)，发现是无法执行的，XMLHttpRequest.prototype.open 还是浏览器自身的代码。</p>
+<p>这样看来，就无法实现自动翻页，自动获取ajax请求内容了。</p>
+<p>Chrome官方说法如下:</p>
+<blockquote>
+<p>Content scripts execute in a special environment called an isolated world.
+They have access to the DOM of the page they are injected into, but not to any
+JavaScript variables or functions created by the page. It looks to each
+content script as if there is no other JavaScript executing on the page it is
+running on. The same is true in reverse: JavaScript running on the page cannot
+call any functions or access any variables defined by content scripts.</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -279,22 +321,70 @@ Content scripts execute in a special environment called an isolated world. They 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-06T19:32:15&#43;08:00">2021-07-06 19:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>, <a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-07-06T19:32:15&#43;08:00">2021.07.06 19:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>, <a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。
-vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。
-上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。
-可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也没有时间排序，只有名称排序，真的是很难用。
-为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。
-关于chrome插件开发的细节本文暂不细说，直接上代码。
-代码展示 manifest.json
-{ &#34;manifest_version&#34;: 2, &#34;name&#34;: &#34;chome-plugin&#34;, &#34;version&#34;: &#34;0.0.1&#34;, &#34;description&#34;: &#34;chrome示例插件&#34;, &#34;icons&#34;: { &#34;16&#34;: &#34;images/icon-16x16.png&#34;, &#34;48&#34;: &#34;images/icon-48x48.png&#34;, &#34;128&#34;: &#34;images/icon-128x128.png&#34; }, &#34;page_action&#34;: { &#34;default_icon&#34;: { &#34;48&#34;: &#34;images/icon-48x48.png&#34; }, &#34;default_popup&#34;: &#34;html/popup.html&#34;, &#34;default_title&#34;: &#34;Hello yuedun&#34; }, &#34;author&#34;: &#34;yuedun&#34;, &#34;background&#34;: { &#34;scripts&#34;: [ &#34;scripts/jquery.min.js&#34;, &#34;scripts/background.js&#34; ] }, &#34;devtools_page&#34;: &#34;html/devtools-page.html&#34;, &#34;content_scripts&#34;: [ { &#34;js&#34;: [ &#34;scripts/jquery.min.js&#34;, &#34;scripts/content.js&#34; ], &#34;css&#34;: [ &#34;styles/yuedun-insert.css&#34; ], &#34;matches&#34;: [ &#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&#34; ], &#34;run_at&#34;: &#34;document_start&#34; } ], &#34;permissions&#34;: [ &#34;cookies&#34;, &#34;*://*/*&#34;, &#34;webRequest&#34; ], &#34;homepage_url&#34;: &#34;https://www.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/2021/07/qiuniu-image-preivew/">阅读全文…</a>
+		<p>七牛云图片存储有10G的免费额度，对于个人来说足够使用了。使用七牛图片存储涉及到图片上传，查看，管理的问题。为了能提高使用效率，我们可以利用好一些工具。</p>
+<h3 id="vscode插件上传图片到七牛">vscode插件上传图片到七牛</h3>
+<p><img src="https://hopefully-img.yuedun.wang/0965f9bb7471b1d4a9b728c18a20e061" alt="vscode插件上传图片到七牛" title="vscode插件上传图片到七牛"></p>
+<p>vsocode扩展市场有很多上传到七牛的插件，大家可以根据需要自己选择。<!-- raw HTML omitted --></p>
+<p>上传的图片多了以后，有时需要找一些已经上传的图片来使用，目前我所知道的方法还仅限于登录的七牛后台上查看。</p>
+<p><img src="https://hopefully-img.yuedun.wang/8e7ce912394747e8e72c8972d458be9a" alt="七牛在线管理图片预览chrome插件" title="七牛在线管理图片预览chrome插件"></p>
+<p>可以看到，七牛的管理后台做的不能说很差，可以说是很气人。要预览图片必须点击“详情”，当你关掉预览窗口时却不知道查看的是哪张图片，也没有个高亮聚焦。而且也没有时间排序，只有名称排序，真的是很难用。</p>
+<p>为了能够直观的看到图片，决定开发一款chrome插件，将图片直接显示出来，而不用再点击查看。</p>
+<p>关于chrome插件开发的细节本文暂不细说，直接上代码。</p>
+<h3 id="代码展示">代码展示</h3>
+<p><strong>manifest.json</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;manifest_version&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;chome-plugin&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;version&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.0.1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;chrome示例插件&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;icons&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;16&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/icon-16x16.png&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;48&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/icon-48x48.png&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;128&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/icon-128x128.png&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;page_action&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;default_icon&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;48&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;images/icon-48x48.png&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;default_popup&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;html/popup.html&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;default_title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello yuedun&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;author&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;yuedun&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;background&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;scripts/jquery.min.js&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;scripts/background.js&#34;</span>
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;devtools_page&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;html/devtools-page.html&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;content_scripts&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;js&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;scripts/jquery.min.js&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;scripts/content.js&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;css&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;styles/yuedun-insert.css&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;matches&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;https://portal.qiniu.com/kodo/bucket/resource?bucketName=*&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;run_at&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;document_start&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;permissions&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cookies&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;*://*/*&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;webRequest&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;homepage_url&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.yuedun.wang&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>background.js</strong></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -313,28 +403,39 @@ vscode插件上传图片到七牛 vsocode扩展市场有很多上传到七牛的
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-14T10:40:52Z">2021-06-14 10:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-14T10:40:52Z">2021.06.14 10:40</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		查找某一类型字符串： 正则表达式onclick=.*&quot; 会查找到所有： onclick=&quot;_msq.push(['trackEvent', '210074305d6b0409-09c7759e04e98528', ''pcpid', '']);&quot;
-onclick=是固定一样的字符，
-.代表除\r和\n之外的任意字符，等价于[^\r\n]
-*代表匹配前面的模式 0或多次 {0,}
-&quot;这是字符串最后一个字符
-在vscode中的效果如下： 至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：
-查找替换 查找：(onclick=.*&quot;)
-替换：aaa($1)
-结果：
-替换字符串两头，保留中间 两部分文字交换位置 相同模式的文字交换位置。
-查找：(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))
-替换：$2 $1
-结果：
-vscode中一对括号()代表一个变量。
-第一组正则 (\(\d{4}-\d{1,2}-\d{2}\)) 对应 $1，
-第二组正则 (\[.*\))对应 $2，以此类推。
-所以，可以查找多组数据，在替换部分将两个对应变量交换位置即可。
+		<h3 id="查找某一类型字符串">查找某一类型字符串：</h3>
+<p>正则表达式<code>onclick=.*&quot;</code>
+会查找到所有：
+<code>onclick=&quot;_msq.push(['trackEvent', '210074305d6b0409-09c7759e04e98528', ''pcpid', '']);&quot;</code></p>
+<p><code>onclick=</code>是固定一样的字符，</p>
+<p><code>.</code>代表除\r和\n之外的任意字符，等价于[^\r\n]</p>
+<p><code>*</code>代表匹配前面的模式 0或多次 {0,}</p>
+<p><code>&quot;</code>这是字符串最后一个字符</p>
+<p>在vscode中的效果如下：
+<img src="https://hopefully-img.yuedun.wang/vscode%E6%AD%A3%E5%88%99.png" alt="vscode正则查找替换" title="vscode正则查找替换">
+至于要替换成什么就看自己需求了，如果要给选中的字符串包裹字符串则需要修改成这样：</p>
+<h3 id="查找替换">查找替换</h3>
+<p>查找：<code>(onclick=.*&quot;)</code></p>
+<p>替换：<code>aaa($1)</code></p>
+<p>结果：</p>
+<p><img src="https://hopefully-img.yuedun.wang/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2.png" alt="vscode正则查找替换" title="vscode正则查找替换"></p>
+<h3 id="替换字符串两头保留中间">替换字符串两头，保留中间</h3>
+<p><img src="https://hopefully-img.yuedun.wang/vscodereplace.jpg" alt="vscode正则查找替换" title="vscode正则查找替换"></p>
+<h3 id="两部分文字交换位置">两部分文字交换位置</h3>
+<p>相同模式的文字交换位置。</p>
+<p>查找：<code>(\(\d{4}-\d{1,2}-\d{2}\)) (\[.*\))</code></p>
+<p>替换：<code>$2 $1</code></p>
+<p>结果：</p>
+<p><img src="https://hopefully-img.yuedun.wang/regular.gif" alt="vscode正则查找替换" title="vscode正则查找替换"></p>
+<p>vscode中一对括号<code>()</code>代表一个变量。</p>
+<p>第一组正则 <code>(\(\d{4}-\d{1,2}-\d{2}\))</code> 对应 <code>$1</code>，</p>
+<p>第二组正则 <code>(\[.*\))</code>对应 <code>$2</code>，以此类推。</p>
+<p>所以，可以查找多组数据，在替换部分将两个对应变量交换位置即可。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -348,16 +449,25 @@ vscode中一对括号()代表一个变量。
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-11T14:16:17&#43;08:00">2021-06-11 14:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-11T14:16:17&#43;08:00">2021.06.11 14:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		tsconfig.json 中 exclude node_modules，但 tsc 还是报错。
-node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 113 get: (sid: string, callback: (err: any, session: Express.SessionData | null) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 114 set: (sid: string, session: Express.SessionData, callback?: (err: any) =&gt; void) =&gt; void; ~~~~~~~~~~~ node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace &#39;global.Express&#39; has no exported member &#39;SessionData&#39;. 118 touch: (sid: string, session: Express.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/60b48e405caa4b4dc69e3abf/">阅读全文…</a>
+		<p>tsconfig.json 中 exclude node_modules，但 tsc 还是报错。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace <span style="color:#e6db74">&#39;global.Express&#39;</span> has no exported member <span style="color:#e6db74">&#39;SessionData&#39;</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">113</span>         get: <span style="color:#f92672">(</span>sid: string, callback: <span style="color:#f92672">(</span>err: any, session: Express.SessionData | null<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void;                                                                     ~~~~~~~~~~~
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>node_modules/connect-mongo/src/types.d.ts:114:45 - error TS2694: Namespace <span style="color:#e6db74">&#39;global.Express&#39;</span> has no exported member <span style="color:#e6db74">&#39;SessionData&#39;</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">114</span>         set: <span style="color:#f92672">(</span>sid: string, session: Express.SessionData, callback?: <span style="color:#f92672">(</span>err: any<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void;
+</span></span><span style="display:flex;"><span>                                                ~~~~~~~~~~~
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>node_modules/connect-mongo/src/types.d.ts:118:47 - error TS2694: Namespace <span style="color:#e6db74">&#39;global.Express&#39;</span> has no exported member <span style="color:#e6db74">&#39;SessionData&#39;</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">118</span>         touch: <span style="color:#f92672">(</span>sid: string, session: Express.SessionData, callback?: <span style="color:#f92672">(</span>err: any<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void<span style="color:#f92672">)</span> <span style="color:#f92672">=</span>&gt; void;
+</span></span></code></pre></div><p>另一种解决方案：</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -376,20 +486,41 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-11T14:16:17&#43;08:00">2021-06-11 14:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-06-11T14:16:17&#43;08:00">2021.06.11 14:16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		去年花了三天时间开发了一个简易版的nodejs发布系统，它是基于pm2自带的deploy机制开发的，主要原理就是在两台装有pm2的机器直接通信，并执行相应的命令。再往简单了说就是在发布机上远程执行命令，而朱雀发布系统提供了一个图形界面而已。
-当时把这个系统定位为nodejs专用发布系统，因为它依赖了pm2，而pm2则是nodejs专用的进程管理工具，其他语言用不到。这个系统的上线也算是解决了我司一直以来没有合适的nodejs发布系统的空缺。
-经过9个月的使用，也算比较稳定。但是也存在问题，最大的问题是部署应用方面比较繁琐。
-基本流程如下：
-发布机和应用服务器设置ssh通信配置。 应用服务器安装git（有自带，但是版本太旧）。 配置git用户名，邮箱。 生成ssh公钥。 把应用服务器的公钥配置到git代码服务器上。以便能拉代码。 发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。 执行编译打包操作。 执行重启服务操作。 部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。
-使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。
-最后找到了rsync命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。
-朱雀和Jenkins对比如何？ 要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。
-朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。 目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。 配置简单。 部署发布一键完成，不需要单独的部署过程。 并行发布。 审批，通知，权限。 开源，可定制开发。 项目地址：朱雀发布系统
+		<p>去年花了三天时间开发了一个简易版的<a href="https://www.yuedun.wang/blogdetail/5f41c9d65edb9b37630b0d46">nodejs发布系统</a>，它是基于pm2自带的<a href="https://pm2.keymetrics.io/docs/usage/deployment/">deploy</a>机制开发的，主要原理就是在两台装有pm2的机器直接通信，并执行相应的命令。再往简单了说就是在发布机上远程执行命令，而朱雀发布系统提供了一个图形界面而已。</p>
+<p>当时把这个系统定位为nodejs专用发布系统，因为它依赖了pm2，而pm2则是nodejs专用的进程管理工具，其他语言用不到。这个系统的上线也算是解决了我司一直以来没有合适的nodejs发布系统的空缺。</p>
+<p>经过9个月的使用，也算比较稳定。但是也存在问题，最大的问题是部署应用方面比较繁琐。</p>
+<p>基本流程如下：</p>
+<ul>
+<li>发布机和应用服务器设置ssh通信配置。</li>
+<li>应用服务器安装git（有自带，但是版本太旧）。</li>
+<li>配置git用户名，邮箱。</li>
+<li>生成ssh公钥。</li>
+<li>把应用服务器的公钥配置到git代码服务器上。以便能拉代码。</li>
+<li>发布机远程执行git pull来代码操作，各应用服务把代码拉取下来。</li>
+<li>执行编译打包操作。</li>
+<li>执行重启服务操作。</li>
+</ul>
+<p>部署一次系统还是比较麻烦的，如果应用服务器有多台，可能还要重复这样的操作多次，实在比较麻烦。</p>
+<p>使用scp同步代码的方式会比较简单一些，但是像nodejs这样的项目，node_module占了很大比重，如果每次都打包的话会拖慢同步速度，而scp又不具备排除文件夹的能力。</p>
+<p>最后找到了<strong>rsync</strong>命令可以满足需求。然后就是基于rsync实现了一版。不用再依赖pm2，应用服务器也不用强制使用git了。</p>
+<p><img src="https://hopefully-img.yuedun.wang/zhuque1.jpg" alt="朱雀发布系统" title="朱雀发布系统"></p>
+<h3 id="朱雀和jenkins对比如何">朱雀和Jenkins对比如何？</h3>
+<p>要说Jenkins那绝对是持续集成领域的老大哥，自然是功能强大。但是每个团队和产品有其特殊性，Jenkins并不完全适用。而朱雀也有其优势。</p>
+<ul>
+<li>朱雀本身部署简单，使用go开发，不依赖运行时，无需安装，开箱即用。</li>
+<li>目前支持和测试过的数据库有sqlite3（目前用的，不需要繁琐的安装过程）和mysql。</li>
+<li>配置简单。</li>
+<li>部署发布一键完成，不需要单独的部署过程。</li>
+<li>并行发布。</li>
+<li>审批，通知，权限。</li>
+<li>开源，可定制开发。</li>
+</ul>
+<p>项目地址：<a href="https://github.com/yuedun/zhuque">朱雀发布系统</a></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -403,16 +534,47 @@ node_modules/connect-mongo/src/types.d.ts:113:66 - error TS2694: Namespace &#39;
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-04-26T01:48:31Z">2021-04-26 01:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2021-04-26T01:48:31Z">2021.04.26 01:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Easy-Monitor是一款轻量级的Node性能监控工具，仅仅需要项目入口 require 一次，就可以非常便捷地展示出进程的状态细节。
-Easy-Monitor主要提供以下的功能：
-找出执行时长耗费最久的5个或者更多的函数 找出那些执行时间超出预期的函数 找出v8引擎无法优化的函数 Easy-Monitor的特点：
-轻量级：非传统C/S物理分离模式，require 后即可使用，没有额外的监控server/agent部署成本。 运行时：针对的是运行时的函数性能以及内存细节进行处理展示，可用于线上生产环境项目。 无状态：永远展示的是开发者访问时的业务进程状态 关于监控qps，作者在文档中并没有提到qps这样的关键字，很多人也不知道怎么监控qps。 不过在监控界面中有这样的指标数据： 所以我从源码入手，找到了该数据指标的源头是这样的：
-const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_memory_percent * 100).toFixed(2)), maxDisk: max_disk_usage, disks: disks_json, load1: Number(load1.toFixed(2)), load5: Number(load5.toFixed(2)), load15: Number(load15.toFixed(2)), nodeCount: node_count, scavengeTotal: total_scavange_duration, scavengeAverage: scavange_duration_last_record, marksweepTotal: total_marksweep_duration, marksweepAverage: marksweep_duration_last_record, qps: Number((http_response_sent / 60).toFixed(2)), rtExpired: http_patch_timeout, rtAverage: http_rt, }; 这是接口返回的数据，包含了qps数据，那么qps实际上就是http_response_sent，所以监控中就可以这样设置qps了： @http_response_sent/60 &gt; 10
+		<p>Easy-Monitor是一款轻量级的Node性能监控工具，仅仅需要项目入口 require 一次，就可以非常便捷地展示出进程的状态细节。</p>
+<p>Easy-Monitor主要提供以下的功能：</p>
+<ul>
+<li>找出执行时长耗费最久的5个或者更多的函数</li>
+<li>找出那些执行时间超出预期的函数</li>
+<li>找出v8引擎无法优化的函数</li>
+</ul>
+<p>Easy-Monitor的特点：</p>
+<ul>
+<li>轻量级：非传统C/S物理分离模式，require 后即可使用，没有额外的监控server/agent部署成本。</li>
+<li>运行时：针对的是运行时的函数性能以及内存细节进行处理展示，可用于线上生产环境项目。</li>
+<li>无状态：永远展示的是开发者访问时的业务进程状态</li>
+</ul>
+<p>关于监控qps，作者在文档中并没有提到<strong>qps</strong>这样的关键字，很多人也不知道怎么监控qps。
+不过在监控界面中有这样的指标数据：
+<img src="https://hopefully-img.yuedun.wang/easy-monitor1.jpg" alt="easy-monitor-qps" title="easy-monitor-qps"></p>
+<p>所以我从源码入手，找到了该数据指标的源头是这样的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">osCpu</span><span style="color:#f92672">:</span> Number((<span style="color:#a6e22e">used_cpu</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">osMem</span><span style="color:#f92672">:</span> Number((<span style="color:#a6e22e">used_memory_percent</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">maxDisk</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">max_disk_usage</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">disks</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">disks_json</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">load1</span><span style="color:#f92672">:</span> Number(<span style="color:#a6e22e">load1</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">load5</span><span style="color:#f92672">:</span> Number(<span style="color:#a6e22e">load5</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">load15</span><span style="color:#f92672">:</span> Number(<span style="color:#a6e22e">load15</span>.<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">nodeCount</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">node_count</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">scavengeTotal</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">total_scavange_duration</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">scavengeAverage</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">scavange_duration_last_record</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">marksweepTotal</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">total_marksweep_duration</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">marksweepAverage</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">marksweep_duration_last_record</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">qps</span><span style="color:#f92672">:</span> Number((<span style="color:#a6e22e">http_response_sent</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span>).<span style="color:#a6e22e">toFixed</span>(<span style="color:#ae81ff">2</span>)),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">rtExpired</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">http_patch_timeout</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">rtAverage</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">http_rt</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span></code></pre></div><p>这是接口返回的数据，包含了qps数据，那么qps实际上就是<strong>http_response_sent</strong>，所以监控中就可以这样设置qps了：
+<code>@http_response_sent/60 &gt; 10</code></p>
 	</div>
 </article>
 
@@ -431,7 +593,7 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -447,13 +609,12 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -491,99 +652,99 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -611,13 +772,14 @@ const data = { osCpu: Number((used_cpu * 100).toFixed(2)), osMem: Number((used_m
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

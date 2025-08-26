@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jquery on 月盾的博客</title>
+    <title>Jquery on 月盾的博客</title>
     <link>https://www.yuedun.wang/tags/jquery/</link>
-    <description>Recent content in jquery on 月盾的博客</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Jquery on 月盾的博客</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Dec 2019 04:00:37 +0000</lastBuildDate><atom:link href="https://www.yuedun.wang/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Dec 2019 04:00:37 +0000</lastBuildDate>
+    <atom:link href="https://www.yuedun.wang/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title> 一次商业web网站搭建的取舍过程</title>
       <link>https://www.yuedun.wang/blogdetail/5df30ce58803fb4044fa0651/</link>
       <pubDate>Fri, 13 Dec 2019 04:00:37 +0000</pubDate>
-      
       <guid>https://www.yuedun.wang/blogdetail/5df30ce58803fb4044fa0651/</guid>
-      <description>最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。
-所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。
-要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。
-选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。
-技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。
-这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。</description>
+      <description>&lt;p&gt;最近为公司官网重构搭建项目，把遇到的问题总结一下。此处的“商业”并没有多神秘，说的有点夸张而已，不过是为了区分公司项目与个人项目罢了。在这之前，我自己搭建过的网站也不下于10个，其中有个人网站也有公司网站，那时候搭建的网站也能上线运行，也没有过多的条件限制，所以不会有什么纠结的地方。&lt;/p&gt;&#xA;&lt;p&gt;所以搭建一个网站并不复杂，复杂的是让其满足很多要求。有业务需求，有领导喜好，有同事对技术的接受度。业务说网站要支持SEO，支持IE浏览器，领导说我们要前后端分离，同事说我想使用主流新技术。最后经过几轮商讨下来自然是业务第一，领导第二，同事第三的优先级进行选择了。&lt;/p&gt;&#xA;&lt;p&gt;要支持SEO和IE浏览器，只能是服务端渲染，可选的技术就只有SSR和模板引擎。SSR能选择的也就同事熟悉的Vue技术栈nuxtjs，但是其只能首屏渲染，并不能完全满足整站的SEO需求，而且开发体验并不怎么好，编译时间长，调试难，占用内存高等缺点。最后只能选择一把刷技术jQuery和node模板引擎。&lt;/p&gt;&#xA;&lt;p&gt;选择了jQuery和模板引擎还不够，前端的模块化怎么做？目前前端模块化方案还是少的可怜，但并不是没有好的方案，只是在技术潮流下显得有点暗淡失色。比如requirejs，seajs，fis等都可以做模块化，~~最后在内心斗争一番后选择了layui自带的模块化（主要是使用了这一套UI）。layui本身是一套UI框架，为了尽量减少引入第三方js就直接使用其提供的模块化。~~原网站使用的是fis3也很好，但是如果继续使用的话等于又回去了，而且fis3也不再维护了。好在改造难度不大，只需要重新包装一下即可，其实fis3最后生成的代码也是类似于AMD/CMD规范。&lt;/p&gt;&#xA;&lt;p&gt;技术方案确定后就剩开发环境工程问题了，由于一些老项目的缘故，前端同事都习惯了使用less开发css，也需要引入。然后是公司项目不同于个人项目具有服务器完全管理权限，通常使用NGINX代理，这样会对前端文件进行缓存，而网站发布频率较大，前端文件变化了还有缓存，所以又需要对前端文件进行哈希处理，这样就有了编译过程，同时还有node服务需要同时运行，所以使用了gulp工作流。后续补充：layui在开发过程中没啥问题，但是要上线时对静态文件哈希处理不好，最终也放弃了,回归了最原始的开发方式。&lt;/p&gt;&#xA;&lt;p&gt;这样一顿操作下来也耗时一周才完成，远比搭建个人项目一天内费事多了。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

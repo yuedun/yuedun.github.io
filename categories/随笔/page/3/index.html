@@ -8,90 +8,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		
-		<meta property="og:title" content="随笔" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/categories/%E9%9A%8F%E7%AC%94/" />
+		<meta property="og:url" content="https://www.yuedun.wang/categories/%E9%9A%8F%E7%AC%94/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="随笔">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="随笔">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2023-12-12T10:43:56+08:00">
+  <meta itemprop="dateModified" content="2023-12-12T10:43:56+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="随笔">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="随笔">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/categories/%E9%9A%8F%E7%AC%94/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -149,26 +116,60 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T08:13:21Z">2015-11-25 08:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-25T08:13:21Z">2015.11.25 08:13</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		近些年出现不少新的开发语言，比如:
-Rust是Mozilla开发的注重安全、性能和并发性的编程语言。
-Go语言是谷歌2009发布的第二款开源编程语言。专门针对多处理器系统应用程序的编程进行了优化，使用Go编译的程序可以媲美C或C++代码的速度，而且更加安全、支持并行进程。
-D语言最初由Digital Mars公司就职的Walter Bright于2001年发布，意图改进C++语言。目前最新D语言被简称为D2。最主要的D语言的实现是DMD。
-Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行的数据密集型的实时应用。
-等等……
-对于这些新语言，总有不少槽点被开发者吐槽。很多人都会进行对比，褒贬。但是我还是首先选择了Nodejs，简单快速上手，目前完全用于生产环境，它的快速开发让我很满意。ES6标准的定稿更让我肯定nodejs将会有更好的发展。
-最近又学习了go语言，在学一门语言前总会迟疑值不值得学习，然后看到网上各种讨论。但我觉得还是值得学习，且不说性能有没有C++好，光凭开发效率就值得我学了，现代计算机性能都有很大的提升，如果不是开发底层系统，而是开发软件服务端系统那么它的有点足够了。
-原生http请求获取参数 获取URL参数
-url:localhost:8081/?startDate=2017-11-22 var query = req.URL.Query() Println(query[&quot;startDate&quot;])
-go返回json数据
-type ResObj struct { Code int Data map[string]string } //或 //type ResObj struct { // Code int `json:&#34;code&#34;` // Data map[string]string `json:&#34;data&#34;` //} //首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样 //{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别 func helloHandler(res http.ResponseWriter, req *http.Request) { m := make(map[string]string) m[&#34;a&#34;] = &#34;aaaaaa&#34; ress := &amp;ResObj{ Code: 0, Data: m} byt, _ := json.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56556da1c72f59d15379b4b9/">阅读全文…</a>
+		<p>近些年出现不少新的开发语言，比如:</p>
+<p>Rust是Mozilla开发的注重安全、性能和并发性的编程语言。</p>
+<p>Go语言是谷歌2009发布的第二款开源编程语言。专门针对多处理器系统应用程序的编程进行了优化，使用Go编译的程序可以媲美C或C++代码的速度，而且更加安全、支持并行进程。</p>
+<p>D语言最初由Digital Mars公司就职的Walter Bright于2001年发布，意图改进C++语言。目前最新D语言被简称为D2。最主要的D语言的实现是DMD。</p>
+<p>Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行的数据密集型的实时应用。</p>
+<p>等等……</p>
+<p>对于这些新语言，总有不少槽点被开发者吐槽。很多人都会进行对比，褒贬。但是我还是首先选择了Nodejs，简单快速上手，目前完全用于生产环境，它的快速开发让我很满意。ES6标准的定稿更让我肯定nodejs将会有更好的发展。</p>
+<p>最近又学习了go语言，在学一门语言前总会迟疑值不值得学习，然后看到网上各种讨论。但我觉得还是值得学习，且不说性能有没有C++好，光凭开发效率就值得我学了，现代计算机性能都有很大的提升，如果不是开发底层系统，而是开发软件服务端系统那么它的有点足够了。</p>
+<h2 id="原生http请求获取参数">原生http请求获取参数</h2>
+<ul>
+<li>
+<p>获取URL参数</p>
+</li>
+<li>
+<p><code>url:localhost:8081/?startDate=2017-11-22</code> <code>var query = req.URL.Query()</code> <code>Println(query[&quot;startDate&quot;])</code></p>
+</li>
+<li>
+<p>go返回json数据</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ResObj</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Code</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Data</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span> 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//或</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//type ResObj struct {</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  Code int `json:&#34;code&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//  Data map[string]string `json:&#34;data&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//首先要保证ResObj的属性首字母大写，否则访问不到，其次`json:&#34;code&#34;`不是必须，只不过加了什么样返回的json就是什么样</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//{&#34;Code&#34;:0,&#34;Data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}和{&#34;code&#34;:0,&#34;data&#34;:{&#34;a&#34;:&#34;aaaaaa&#34;}}这样的区别</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">helloHandler</span>(<span style="color:#a6e22e">res</span> <span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">ResponseWriter</span>, <span style="color:#a6e22e">req</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">http</span>.<span style="color:#a6e22e">Request</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">m</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">m</span>[<span style="color:#e6db74">&#34;a&#34;</span>] = <span style="color:#e6db74">&#34;aaaaaa&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ress</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">ResObj</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Code</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Data</span>: <span style="color:#a6e22e">m</span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">byt</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Marshal</span>(<span style="color:#a6e22e">ress</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">resb</span> <span style="color:#a6e22e">ResObj</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Unmarshal</span>(<span style="color:#a6e22e">byt</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">resb</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">resb</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">Write</span>(<span style="color:#a6e22e">byt</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//为什么Write参数要是byte数组？就不能像Nodejs直接是个对象。其实这是偏于底层了，Nodejs最后返回的也是byte，请看下文</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>nodejs的write函数：</p>
+<blockquote>
+<p>response.write(chunk[, encoding][, callback])</p></blockquote>
+<h1></h1>
+<p>Added in: v0.1.29</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -182,15 +183,16 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-18T08:15:58Z">2015-11-18 08:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-18T08:15:58Z">2015.11.18 08:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		关于代码重构是否必须，在网上也是找了很多资料。很多人持不同态度，至少给我的感觉是对半分的态度。有人说应该重构，可以是项目更加健壮，代码读起来更加顺畅，性能提升，大工程更易维护，可扩展性强等等好处。但有人持反对态度，认为代码千万不要重写，其中原因也可以理解，比如：重构代码需要耗费大量时间，在项目周期紧张的情况下更加不可能了，只要可运行就行。很多时候写代码容易，但是读代码难，这是很多人有的感觉，尤其是没有文档，注释的代码更是看了伤眼伤神。而且重构可能带来新的问题，遗留项目更是没人敢碰。
-那到底该不该重构呢？或许我也不能说出绝对的理由，不过我有自己的理由，首先我对代码有洁癖，见不得乱糟糟的代码，不过我更多的情况是在写的时候会做代码审查，看看能不能够用更简单的方式实现，对于多次重复出现的代码会考虑封装一下以便共用。至于已经上线很久以后发现的烂代码还是谨慎重构，太复杂的就不要动了。
-有一种比较频繁出现的情况是，有很多时候会写之前写过的代码，某个类似的功能，这个时候是坚决会对以前的代码重构简化，我讨厌写重复的东西。往往能将以前的代码缩减不少使之更精简明了。
-对于重构的意义除了上面提到的，个人认为还有一个好处——虽然一次不能写出最好的代码，但是只要有重构的意识，至少是能写出比上次更好的代码，也算是经验总结，要不然怎么会出现那么多设计模式。
+		<p>关于代码重构是否必须，在网上也是找了很多资料。很多人持不同态度，至少给我的感觉是对半分的态度。有人说应该重构，可以是项目更加健壮，代码读起来更加顺畅，性能提升，大工程更易维护，可扩展性强等等好处。但有人持反对态度，认为代码千万不要重写，其中原因也可以理解，比如：重构代码需要耗费大量时间，在项目周期紧张的情况下更加不可能了，只要可运行就行。很多时候写代码容易，但是读代码难，这是很多人有的感觉，尤其是没有文档，注释的代码更是看了伤眼伤神。而且重构可能带来新的问题，遗留项目更是没人敢碰。</p>
+<p><img src="https://hopefully-img.yuedun.wang/touteng.jpg" alt=""></p>
+<p>那到底该不该重构呢？或许我也不能说出绝对的理由，不过我有自己的理由，首先我对代码有洁癖，见不得乱糟糟的代码，不过我更多的情况是在写的时候会做代码审查，看看能不能够用更简单的方式实现，对于多次重复出现的代码会考虑封装一下以便共用。至于已经上线很久以后发现的烂代码还是谨慎重构，太复杂的就不要动了。</p>
+<p>有一种比较频繁出现的情况是，有很多时候会写之前写过的代码，某个类似的功能，这个时候是坚决会对以前的代码重构简化，我讨厌写重复的东西。往往能将以前的代码缩减不少使之更精简明了。</p>
+<p>对于重构的意义除了上面提到的，个人认为还有一个好处——虽然一次不能写出最好的代码，但是只要有重构的意识，至少是能写出比上次更好的代码，也算是经验总结，要不然怎么会出现那么多设计模式。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -204,77 +206,74 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-16T09:06:55Z">2015-11-16 09:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-16T09:06:55Z">2015.11.16 09:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		烹饪可以看一个人的性格，慢性的人喜欢慢炖，性急的人喜欢爆炒，心细的人爱做复杂精致的菜，但不管什么样的性格，烹饪都需要保持一个好心情才会做的好吃。
-0、放盐的多少关系着一道菜的生死，最关键的放在最前边讲
-1、鱼煎过后再煮才会变白汤，而且要双面煎（某电影有提）
-2、炖骨头汤时冷水下锅小火炖6小时变白，重复加水时万不可加冷水，只要一直保持加热水汤可以一直是乳白色（当然骨头没有营养了记得换掉）加一滴醋会瞬间变清汤
-3、任何肉类在遇热后在遇冷怎么煮都不会烂，所以做红烧肉一类的菜在烹饪过程中万不可加冷水（另补充补救的办法，利用高压锅的超高内温可以再次溶解肉类，有同学说有地方喜欢吃弹的可以用冷水处理）
-4、99％的菜都在临近出锅前才可以加盐、醋这两种调味品，过早的投入不仅影响口感，还会使菜变得难看
-5、灵活的运用酱油，分清酱油的种类，分别的作用，最简单的是生抽调味，老抽上色
-6、炒鸡蛋记得用筷子炒，炒的时候慢慢的将鸡蛋滑散，你会发现因为受热均匀鸡蛋变得更蓬松更大了
-7、学会焯菜，在菜变色的同时捞出，有些需要口感清脆的菜还要立刻过凉水
-8、炒菜要遵循一个道理，最难熟的先下锅，可以生吃的最后放
-9、永远不要忘记葱姜蒜，他们很重要
-10、糖有时候是为了甜，有时候是为了更突出咸或者辣，同理盐有时候是为了咸，有时候是为了更突出甜（全靠这个多年来耻笑表哥的料理能力）
-11、肉类遇到酸会变嫩，很多菜吃起来并没有酸味，可是却有一丝丝说不清的醋香，其实那是在出锅前加了一瓶盖起锅醋，起锅醋适用于绝大多数肉类炒菜
-12、可以去腥的东西有很多，味精，鸡精，白糖，料酒，柠檬皮都可以用来去腥
-13、记得酸是甜的老婆，辣是甜的二奶，酸是辣的姐姐，咸是辣的闺蜜，甜是苦的哥们。他们是黄金搭档（这是母上的经验之谈，适用于绝大多数料理）
-14、炸肉类火不要大，否则面衣糊了肉没熟，快熟的时候火不能小，不然油都被吸到食物里，这也就是复炸的用意。（母上万岁）
-15、学会油泼，最简单的练习水煮肉片
-16、记住你吃过的每一道菜，有些蔬菜的经典搭配是全球通用的，比如茄子配蒜，洋葱配肉
-17、蒸米饭加点油会让米颗粒分明，加百合会让米饭变甜，加啤酒会让米饭变香，用高压锅蒸米饭更香，隔水蒸米饭更筋道，淘米水是最好的天然餐洗 净，糊锅了插几根葱，有的时候可以挽救米饭（家父是料理界的格格巫，经他手的食材都会变成碳，没有碳化的部分还不熟，我就天然的领悟了这个能力了）
-18、想要鸡蛋嫩，打鸡蛋的时候加水（小学看小当家学到的）
-19、切肉要逆纹路纵向切，不然咬不动煮不熟（肉丝顺纹路切，不然会断，速成鸡肉一类较嫩的肉类需要顺纹切不然会散，速成猪肉的肉质较鸡肉更老比 牛肉更嫩要斜切，土猪肉则纵切，整块的猪肉又需要逆纹切，总之需要自己理解肉类的紧实度选择切的方向，谢提醒）切蘑菇要顺纹路不然吃起来太糯，切笋要避开 纹路斜切不然切不动也咬不动
-20、整块的肉料理需要断筋，用刀背给予一定力道，不需要太大力，重复在肉面敲打3分钟
-21、辣味不是只有辣椒，还有黑白胡椒，姜，蒜。同理甜味不只有糖，还有蜂蜜，果糖，各种饮料等。酸味不是只有醋，还有柠檬，山楂等
-22、蜂蜜也可以用作嫩肉（食戟之灵）
-23、一定要试菜，由于很多菜重要的调味都在最后步骤，试菜可以很大程度上解决味道不够的问题，所以最后的关键调味料宁缺毋滥！调味结束后不要忙着关火，试过之后没问题在出锅，俗话说饿死的厨子三百斤，就是说的试菜
-24、热锅凉油是为了给高蛋白食物一个缓冲，不至于外面熟了里面不熟，还有个好处是蒸腾锅内多余水分，不至于遇油飞溅，多用于滑炒，上浆的肉片什么的。热锅热油，锁水，用于爆炒
-调料：
-1、鱼香味（sorry，各严格的原产地同学表示我这个鱼香太水了，我就删掉了，正经八百的鱼香据说非常稀有，几近失传，我此生可能无缘吃到，本着不会不写的心态我就不加了）
-2、红烧就是老抽上色＋生抽调味＋糖
-3、宫爆味就是生抽＋水淀粉（或豆瓣酱，也有凝固的作用）＋干辣椒＋糖＋醋＋葱白
-4、勾芡就是淀粉＋各种液体预热凝固（糖醋里脊，糖醋鲤鱼也是）
-5、韩国味就是韩国大酱＋韩国辣酱
-6、照烧汁就是蜂蜜＋日本酱油
-7、老干妈豆豉可以直接用做调料，比如回锅肉，蛋炒饭
-8、关东煮汤料，日本酱油，苹果，海带，水果萝卜，炖4个小时（有先后顺序）
-9、白灼就是蚝油＋糖＋盐＋葱蒜
-10、火锅蘸料：①花生酱＋芝麻酱＋盐或者生抽＋巧克力＋水调成糊状菜肉蘸料（这就是店里的秘制酱料，某前男友教的）。②海鲜汁＋凉拌酱油＋蚝油＋醋＋糖＋香油＋香菜碎调成肉类蘸料（火锅店吃还是在家吃都很方便，另一个前男友教的）
-11、蛋黄酱就是原味沙拉＋鸡蛋黄搅拌均匀
-饺子馅：
-**1、红肉类：**各种红肉馅＋各种配菜＋十三香或者五香面少许（去腥）＋白糖少许或者耗油（去腥，耗油本身有 甜味取其一）＋姜汁（去腥，超市有卖）＋料酒（去腥）＋香油（母上会在添加花生油用作调味）＋盐＋鸡精＋生鸡蛋＋花椒油（去腥，是有多腥！）（羊肉属于味 道较重的肉类可以用胡萝卜大葱来遮掩一点点味道，另有的地方肉馅会加酱油）
-**2、白肉类：**鸡肉或者鱼肉＋猪肉或者牛肉＋各种去腥少量版＋鸡精＋韭菜或者胡萝卜（别的配菜没试验过，因为韭菜跟胡萝卜属于重口味蔬菜，可以中和不和谐的味道）
-**3、素馅类：**各种蔬菜馅（各种含水量大的蔬菜都需要在剁好馅后撒盐静置一段时间过滤掉多余水分，此步骤为杀水）＋香油＋盐＋炒鸡蛋＋木耳碎（可以不加）＋鸡精
-**常备的调料：**盐，糖，米醋，豆瓣酱，郫县豆瓣，老干妈豆豉，料酒，鸡精，白胡椒粉，黑胡椒粉，花椒，葱姜蒜，干辣椒，香油，蚝油
-**可选调料：**番茄酱，白醋，各种混合酱油，黑白芝麻，干木耳，干香菇，干银耳，枸杞，沙拉酱，蛋黄酱，千岛酱，金枪鱼罐头，花生酱，芝麻酱，豆豉鲮鱼，午餐肉，方火腿，各种罐头，咖喱，姜汁，蒜汁，花椒油，米酒
-**炖料类：**桂皮，八角，肉桂，香叶，山楂干，柠檬，十三香（柠檬籽与香叶有苦味，放的时候记得去籽，少量）
-根据上文的理论进行的一些简单的料理实践，通过一点点更改原有做法，从而突出个人特色，但又不会变成黑暗料理的方法，要知道我那些年做过多少黑暗料理才总结出来！
-番茄炒蛋：（由于番茄是酸的，可以跟刚才提到酸配甜或者酸配辣可以混搭一下，那么做法就变成）鸡蛋加水打 散，下油锅（油温要高一点）用筷子炒到凝固盛出待用，下番茄炒到出汁，喜欢汁多就多炖一会，加入白糖，加入炒好的鸡蛋翻炒均匀，出锅前加入盐，蒜片，待闻 到蒜香的时候即可关火盛盘，这样的番茄炒蛋酸甜适口，鸡蛋蓬松滑嫩，又有一丝微微的蒜辣混杂着蒜香，最适合下饭。
-水煮肉片：（这道菜有个简单的逻辑，肉要碗里熟）
-1、里脊肉或者牛肉切薄片（有朋友表示新手难切，加入方法，将肉在速冻层冻半小时再切肉会定型），加入鸡蛋，淀粉，盐，料酒腌制2小时
-2、可以选用各种带叶菜，我喜欢油菜或者圆白菜，生菜撕成块状大小随意，加水，盐煮菜5分钟后连汤带菜一起盛出。
-3、热油把肉炒到变色断生铺在菜上，撒上盐，辣椒粉，葱碎（新手请加入超市花椒粉，或者花椒在微波炉叮一分钟用蒜窝捣碎铺上）
-4、重新热油放入花椒，干辣椒煸糊（有朋友表示蹦糊有苦味，糊不是真的让他变成碳，红色脆硬或者红黄相间即可，上一部加了花椒粉的就不需要花椒了），趁着油温最高的时候浇在肉跟料上即可。
-高油温与菜的热度会将肉煮熟。由于用料随意这基本上算是入门级的肉类料理，对于刚学做菜的人来说，这算是拿的出手的大菜了。
-洋葱炒肉：（会用到上面我们说到“起锅醋”这个东西）
-1、随意猪或者牛肉切丝用生姜，料酒，盐腌，淀粉制十分钟；
-2、锅中倒油，烧热，放入腌好的肉丝，迅速拨开，炒到肉丝变色；
-3、加入洗好、切好的洋葱，放入适量的酱油，和盐；
-4、加入味精，倒入一瓶盖米醋，翻炒5秒出锅装盘。
-全靠那一瓶盖醋，从不吃洋葱的傲娇表弟把盘子都舔了。
-回锅肉：（好开心，辣的哎）
-1、将二刀肉（有的地方叫二条，就是肥瘦各一半的肉）整块放入热水煮熟
-2、用筷子试插，如无血水渗出即已熟透，捞出，待冷却后切成薄片备用（上面提到过不可接触凉水）
-3、青辣椒洗净，去蒂去籽，切成菱形
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/56499caf536a927c57d10a9c/">阅读全文…</a>
+		<p>烹饪可以看一个人的性格，慢性的人喜欢慢炖，性急的人喜欢爆炒，心细的人爱做复杂精致的菜，但不管什么样的性格，烹饪都需要保持一个好心情才会做的好吃。</p>
+<p>0、放盐的多少关系着一道菜的生死，最关键的放在最前边讲</p>
+<p>1、鱼煎过后再煮才会变白汤，而且要双面煎（某电影有提）</p>
+<p>2、炖骨头汤时冷水下锅小火炖6小时变白，重复加水时万不可加冷水，只要一直保持加热水汤可以一直是乳白色（当然骨头没有营养了记得换掉）加一滴醋会瞬间变清汤</p>
+<p>3、任何肉类在遇热后在遇冷怎么煮都不会烂，所以做红烧肉一类的菜在烹饪过程中万不可加冷水（另补充补救的办法，利用高压锅的超高内温可以再次溶解肉类，有同学说有地方喜欢吃弹的可以用冷水处理）</p>
+<p>4、99％的菜都在临近出锅前才可以加盐、醋这两种调味品，过早的投入不仅影响口感，还会使菜变得难看</p>
+<p>5、灵活的运用酱油，分清酱油的种类，分别的作用，最简单的是生抽调味，老抽上色</p>
+<p>6、炒鸡蛋记得用筷子炒，炒的时候慢慢的将鸡蛋滑散，你会发现因为受热均匀鸡蛋变得更蓬松更大了</p>
+<p>7、学会焯菜，在菜变色的同时捞出，有些需要口感清脆的菜还要立刻过凉水</p>
+<p>8、炒菜要遵循一个道理，最难熟的先下锅，可以生吃的最后放</p>
+<p>9、永远不要忘记葱姜蒜，他们很重要</p>
+<p><img src="http://attachment.dgtle.com/forum/201203/13/004551bbb8ubb37kwfumku.jpg" alt=""></p>
+<p>10、糖有时候是为了甜，有时候是为了更突出咸或者辣，同理盐有时候是为了咸，有时候是为了更突出甜（全靠这个多年来耻笑表哥的料理能力）</p>
+<p>11、肉类遇到酸会变嫩，很多菜吃起来并没有酸味，可是却有一丝丝说不清的醋香，其实那是在出锅前加了一瓶盖起锅醋，起锅醋适用于绝大多数肉类炒菜</p>
+<p>12、可以去腥的东西有很多，味精，鸡精，白糖，料酒，柠檬皮都可以用来去腥</p>
+<p>13、记得酸是甜的老婆，辣是甜的二奶，酸是辣的姐姐，咸是辣的闺蜜，甜是苦的哥们。他们是黄金搭档（这是母上的经验之谈，适用于绝大多数料理）</p>
+<p>14、炸肉类火不要大，否则面衣糊了肉没熟，快熟的时候火不能小，不然油都被吸到食物里，这也就是复炸的用意。（母上万岁）</p>
+<p>15、学会油泼，最简单的练习水煮肉片</p>
+<p>16、记住你吃过的每一道菜，有些蔬菜的经典搭配是全球通用的，比如茄子配蒜，洋葱配肉</p>
+<p>17、蒸米饭加点油会让米颗粒分明，加百合会让米饭变甜，加啤酒会让米饭变香，用高压锅蒸米饭更香，隔水蒸米饭更筋道，淘米水是最好的天然餐洗 净，糊锅了插几根葱，有的时候可以挽救米饭（家父是料理界的格格巫，经他手的食材都会变成碳，没有碳化的部分还不熟，我就天然的领悟了这个能力了）</p>
+<p>18、想要鸡蛋嫩，打鸡蛋的时候加水（小学看小当家学到的）</p>
+<p>19、切肉要逆纹路纵向切，不然咬不动煮不熟（肉丝顺纹路切，不然会断，速成鸡肉一类较嫩的肉类需要顺纹切不然会散，速成猪肉的肉质较鸡肉更老比 牛肉更嫩要斜切，土猪肉则纵切，整块的猪肉又需要逆纹切，总之需要自己理解肉类的紧实度选择切的方向，谢提醒）切蘑菇要顺纹路不然吃起来太糯，切笋要避开 纹路斜切不然切不动也咬不动</p>
+<p>20、整块的肉料理需要断筋，用刀背给予一定力道，不需要太大力，重复在肉面敲打3分钟</p>
+<p>21、辣味不是只有辣椒，还有黑白胡椒，姜，蒜。同理甜味不只有糖，还有蜂蜜，果糖，各种饮料等。酸味不是只有醋，还有柠檬，山楂等</p>
+<p>22、蜂蜜也可以用作嫩肉（食戟之灵）</p>
+<p>23、一定要试菜，由于很多菜重要的调味都在最后步骤，试菜可以很大程度上解决味道不够的问题，所以最后的关键调味料宁缺毋滥！调味结束后不要忙着关火，试过之后没问题在出锅，俗话说饿死的厨子三百斤，就是说的试菜</p>
+<p>24、热锅凉油是为了给高蛋白食物一个缓冲，不至于外面熟了里面不熟，还有个好处是蒸腾锅内多余水分，不至于遇油飞溅，多用于滑炒，上浆的肉片什么的。热锅热油，锁水，用于爆炒</p>
+<p><strong>调料：</strong></p>
+<p>1、鱼香味（sorry，各严格的原产地同学表示我这个鱼香太水了，我就删掉了，正经八百的鱼香据说非常稀有，几近失传，我此生可能无缘吃到，本着不会不写的心态我就不加了）</p>
+<p>2、红烧就是老抽上色＋生抽调味＋糖</p>
+<p>3、宫爆味就是生抽＋水淀粉（或豆瓣酱，也有凝固的作用）＋干辣椒＋糖＋醋＋葱白</p>
+<p>4、勾芡就是淀粉＋各种液体预热凝固（糖醋里脊，糖醋鲤鱼也是）</p>
+<p>5、韩国味就是韩国大酱＋韩国辣酱</p>
+<p>6、照烧汁就是蜂蜜＋日本酱油</p>
+<p>7、老干妈豆豉可以直接用做调料，比如回锅肉，蛋炒饭</p>
+<p>8、关东煮汤料，日本酱油，苹果，海带，水果萝卜，炖4个小时（有先后顺序）</p>
+<p>9、白灼就是蚝油＋糖＋盐＋葱蒜</p>
+<p>10、火锅蘸料：①花生酱＋芝麻酱＋盐或者生抽＋巧克力＋水调成糊状菜肉蘸料（这就是店里的秘制酱料，某前男友教的）。②海鲜汁＋凉拌酱油＋蚝油＋醋＋糖＋香油＋香菜碎调成肉类蘸料（火锅店吃还是在家吃都很方便，另一个前男友教的）</p>
+<p>11、蛋黄酱就是原味沙拉＋鸡蛋黄搅拌均匀</p>
+<p><img src="http://www.pwys.net/uploadfile/20120601105640751.jpg" alt=""></p>
+<p><strong>饺子馅：</strong></p>
+<p>**1、红肉类：**各种红肉馅＋各种配菜＋十三香或者五香面少许（去腥）＋白糖少许或者耗油（去腥，耗油本身有 甜味取其一）＋姜汁（去腥，超市有卖）＋料酒（去腥）＋香油（母上会在添加花生油用作调味）＋盐＋鸡精＋生鸡蛋＋花椒油（去腥，是有多腥！）（羊肉属于味 道较重的肉类可以用胡萝卜大葱来遮掩一点点味道，另有的地方肉馅会加酱油）</p>
+<p>**2、白肉类：**鸡肉或者鱼肉＋猪肉或者牛肉＋各种去腥少量版＋鸡精＋韭菜或者胡萝卜（别的配菜没试验过，因为韭菜跟胡萝卜属于重口味蔬菜，可以中和不和谐的味道）</p>
+<p>**3、素馅类：**各种蔬菜馅（各种含水量大的蔬菜都需要在剁好馅后撒盐静置一段时间过滤掉多余水分，此步骤为杀水）＋香油＋盐＋炒鸡蛋＋木耳碎（可以不加）＋鸡精</p>
+<p>**常备的调料：**盐，糖，米醋，豆瓣酱，郫县豆瓣，老干妈豆豉，料酒，鸡精，白胡椒粉，黑胡椒粉，花椒，葱姜蒜，干辣椒，香油，蚝油</p>
+<p>**可选调料：**番茄酱，白醋，各种混合酱油，黑白芝麻，干木耳，干香菇，干银耳，枸杞，沙拉酱，蛋黄酱，千岛酱，金枪鱼罐头，花生酱，芝麻酱，豆豉鲮鱼，午餐肉，方火腿，各种罐头，咖喱，姜汁，蒜汁，花椒油，米酒</p>
+<p>**炖料类：**桂皮，八角，肉桂，香叶，山楂干，柠檬，十三香（柠檬籽与香叶有苦味，放的时候记得去籽，少量）</p>
+<p>根据上文的理论进行的一些简单的料理实践，通过一点点更改原有做法，从而突出个人特色，但又不会变成黑暗料理的方法，要知道我那些年做过多少黑暗料理才总结出来！</p>
+<p><strong>番茄炒蛋：</strong>（由于番茄是酸的，可以跟刚才提到酸配甜或者酸配辣可以混搭一下，那么做法就变成）鸡蛋加水打 散，下油锅（油温要高一点）用筷子炒到凝固盛出待用，下番茄炒到出汁，喜欢汁多就多炖一会，加入白糖，加入炒好的鸡蛋翻炒均匀，出锅前加入盐，蒜片，待闻 到蒜香的时候即可关火盛盘，这样的番茄炒蛋酸甜适口，鸡蛋蓬松滑嫩，又有一丝微微的蒜辣混杂着蒜香，最适合下饭。</p>
+<p><strong>水煮肉片：</strong>（这道菜有个简单的逻辑，肉要碗里熟）</p>
+<p>1、里脊肉或者牛肉切薄片（有朋友表示新手难切，加入方法，将肉在速冻层冻半小时再切肉会定型），加入鸡蛋，淀粉，盐，料酒腌制2小时</p>
+<p>2、可以选用各种带叶菜，我喜欢油菜或者圆白菜，生菜撕成块状大小随意，加水，盐煮菜5分钟后连汤带菜一起盛出。</p>
+<p>3、热油把肉炒到变色断生铺在菜上，撒上盐，辣椒粉，葱碎（新手请加入超市花椒粉，或者花椒在微波炉叮一分钟用蒜窝捣碎铺上）</p>
+<p>4、重新热油放入花椒，干辣椒煸糊（有朋友表示蹦糊有苦味，糊不是真的让他变成碳，红色脆硬或者红黄相间即可，上一部加了花椒粉的就不需要花椒了），趁着油温最高的时候浇在肉跟料上即可。</p>
+<p>高油温与菜的热度会将肉煮熟。由于用料随意这基本上算是入门级的肉类料理，对于刚学做菜的人来说，这算是拿的出手的大菜了。</p>
+<p><img src="http://a3.att.hudong.com/34/82/20300039515174132326826219262.jpg" alt=""></p>
+<p><strong>洋葱炒肉：</strong>（会用到上面我们说到“起锅醋”这个东西）</p>
+<p>1、随意猪或者牛肉切丝用生姜，料酒，盐腌，淀粉制十分钟；</p>
+<p>2、锅中倒油，烧热，放入腌好的肉丝，迅速拨开，炒到肉丝变色；</p>
+<p>3、加入洗好、切好的洋葱，放入适量的酱油，和盐；</p>
+<p>4、加入味精，倒入一瓶盖米醋，翻炒5秒出锅装盘。</p>
+<p>全靠那一瓶盖醋，从不吃洋葱的傲娇表弟把盘子都舔了。</p>
+<p><strong>回锅肉：</strong>（好开心，辣的哎）</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -288,12 +287,12 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-08T03:32:50Z">2015-11-08 03:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-11-08T03:32:50Z">2015.11.08 03:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		昨天用了一天的手机，晚上用着突然就黑屏了，死活开不了机，以为是没电了，充电时也开不了机。奇怪的是用了一天一直显示满电，怎么突然就坏掉了。抠电板试试，还是开不了机。扣电板充电，总算有点反应了，但是还是开不了机，不过这种情况遇见过，就是刚买回来试试有没有问题时没装电池充电一闪一闪的震动就是开不了机。后来才发现要装了电池才能开机，但是这次为什么装了电池也开不了机，反而是一点反应也没有。今天早上起来用数据线连接电脑打算刷机试试，刚连接电脑也是开不了机，就把电池扣掉，这时出现了充电的反应，原来是一点电量都没有了。充了一会总算是开机了。所以，如果突然开不了机可能是一点电都没有了，建议先充一会电再开机试试。
+		<p>昨天用了一天的手机，晚上用着突然就黑屏了，死活开不了机，以为是没电了，充电时也开不了机。奇怪的是用了一天一直显示满电，怎么突然就坏掉了。抠电板试试，还是开不了机。扣电板充电，总算有点反应了，但是还是开不了机，不过这种情况遇见过，就是刚买回来试试有没有问题时没装电池充电一闪一闪的震动就是开不了机。后来才发现要装了电池才能开机，但是这次为什么装了电池也开不了机，反而是一点反应也没有。今天早上起来用数据线连接电脑打算刷机试试，刚连接电脑也是开不了机，就把电池扣掉，这时出现了充电的反应，原来是一点电量都没有了。充了一会总算是开机了。所以，如果突然开不了机可能是一点电都没有了，建议先充一会电再开机试试。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -307,13 +306,13 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T09:23:20Z">2015-10-22 09:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-22T09:23:20Z">2015.10.22 09:23</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		http://www.chnxp.com.cn/
-几乎可以下载到任何想要的书籍
+		<p><a href="http://www.chnxp.com.cn/">http://www.chnxp.com.cn/</a></p>
+<p>几乎可以下载到任何想要的书籍</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -327,64 +326,70 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-09T05:35:59Z">2015-10-09 05:35</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-10-09T05:35:59Z">2015.10.09 05:35</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		一名赣州车主处理“碰瓷”过程，值得认真学习，文很长，但值得一读。
-保险公司会吓唬你，交警也会嫌麻烦忽悠你，只要你捂紧你的钱包，除了时间，其实你不必付出任何费用来缴纳到这场事故中。
-#m第一篇 事故过程和处理
-第一章 事故发生 14日早8点左右，我从厚德路由东向西正常行驶，越过厚德路小学路口约10米后，前方一电动车突然左转横过机动车道然后逆行欲进入厚德路小学，由于她车速太快，电动车后座上反向乘坐的小女孩将左腿伸出车外，致小女孩左小腿撞在我车的右前大灯上。
-事故发生后，小女孩拼命哭叫，我无法判断伤情（虽然我知道肯定没大事），对方也不提如何处理，对于这种手段老辣的人，为避免被敲诈，我决定报警、出险走正当程序。
-警察、保险先后到场，警察也不主动提调解，我也就不提，因为我认为是对方全责，保险的希望我私了，还说不私了对我很不利，拖车、停车费是不赔的，当时有点心动想私了，但很不甘心，对方也不说私了的事，还强说我撞他，小孩又被120拉走，内心深处其实很想完整的走次事故程序（还没出过双方事故），也很不服拖车、停车费问题，想和交警较量下，再考虑到马上放假不太用车，最后还是决定走正常程序。
-交警看双方不能现场调解，于是叫车来拖对方的电动车，扣下我的驾照，叫人开我的车去停车场，我也去直属大队事故科领回扣车单据。
-回家马上查法规，等看到法律规定（《中华人民共和国行政强制法》第二十五条、第二十六条）停车、鉴定、检验费用由行政机关承担，心里踏实多了，也明白保险公司的险恶，他当然希望当事人私了，他就可以不费时、不费力、不出钱，还拿一般人很害怕的停车、拖车费来吓人，还好没吃他那套。继续查到事故责任认定书应当在10个工作日做出，事故责任认定书作出后就可以拿回车子，感觉更没什么了，也就半个月吧（当然各人情况不同，好车或没车不行的人另当别论），咱能等。
-策略：事故发生后迅速判断各种因素，做出最有利选择
-第二章 对扣车的行政强制行为提出行政复议 怎么讲车都是被扣了，心里总还是不舒服也不服气的，其实车主都明白，交警扣车无非就是希望机动车主能赔钱结案，警察省事又不容易发生信访事件。很反感交警动不动就扣车，于是继续查法规，发现法律只规定“因为收集证据的需要”（《中华人民共和国道路交通安全法》第七十二条）才能扣押事故车辆而且扣押车辆需要履行很多手续（《中华人民共和国行政强制法》第十八条、第十九条、第二十四条），当时想不通这么简单也没有车辆损失的事故还要收集什么证据，而且扣押财物是要履行必要的法定程序的，于是马上写好行政复议申请书，下午就去交警支队。
-到了支队进门要登记，一开始说去法制科，门卫说没这个科，于是说去行政复议办公室，门卫居然不知道有行政复议办公室，瞎指挥让我去7楼，整个7楼没有挂牌的办公室还都锁着，还好碰上2个穿制服的警察，问了以后说在4楼，于是去4楼，其实4楼是对交通事故责任认定书提出复核的地方，那里一个领导模样的人开始也以为是复核，问清是对行政强制行为复议后，打了电话问别人才说要去6楼秩序科，于是明白，很少有人提起行政复议啊，大家业务都不熟啊，中国真是刁民太少，天天在网上费唾沫没用啊，不如实际做点什么，赣州每天多少事故多少车被扣啊，别说多，每天有一个人复议，交警支队门斗挤破了，如果每个人对发生在自己身上的不公都提出行政复议、行政诉讼，中国早就官不聊生，早就不是现在这个样子了。
-终于到了6楼，马上发现有个办公室挂着行政复议办公室的牌子，心里骂门卫：文盲加法盲，怎么TMD都这素质啊。可门锁着，正好以前坐电梯上来的几个警察也走过来，一问是行政复议的，马上进了秩序科办公室。和每次行政复议一样，对方总是推脱说些理由，一番唇枪舌剑后，最后表示什么也别说了，按行政复议法规定的程序办理吧，对方终于没办法说受理了。
-一等就10多天，什么消息也没有，其实早就知道这样的结果，因为每次复议哪个行政机关都这样，25号过完节也放暑假了，于是再去交警支队，直奔秩序科，进门一说要拿行政复议受理通知书，对方和以前一样搬出领导不在要审批所以还没办等等说辞，我也冷处理，只问什么时候能拿到，一个主管模样的说今天一定会联系你，可今天26号了，还没动静，准备明天再去联系。
-咱也不急，先施加压力，看事故中队这边责任认定书怎么出，如果不认定对方全责（其实全不全责都是保险赔，我只是找理由和警察PK），我就两边一起动作，同时打2场行政诉讼；如果认定对方全责，还要看拿回车子的过程是不是没有障碍，不爽的话还是打官司（呵呵，我无责也要打官司，要交警好看）。
-第三章 调解、检验等前处理程序 15日下午，到事故中队调解，我早考虑好了，直接说调解就是各走各路，看着对方拿着各种片子和单据想问我要钱的样子，我很想告诉他：首先钱应该保险公司出，如果是抢救（什么是抢救法律也是有明确定义的）费用交警会责令保险公司垫付，也是与我无关的，只有超出交强险限额的部分我才承担，其次，事故责任认定书出来后你也是与保险公司协商赔偿，我可以不介入的，如果对保险公司的赔偿不满只能向法院起诉，法院判保险赔多少让它赔，超出交强险限额的部分按责任法院判我赔多少我才赔，我的损失只是用车不方便，这么小的事故而且你全责，我很欢迎你去法院起诉，说不定我反诉你，我还可以拿点钱呢。当然没说，反正我没出1分钱，懒得和他怄气。
-直接谈崩回家，其实真的是为了对方好也为了交警好，自我拔高下，呵呵：如果我赔了钱，对方下次还会违章，这次我是谨慎驾驶车速很慢，下次碰上个飙车的那结局很难想象，你就是赔了钱，人没了有什么意思？交警也就只图自己轻松，现在道路交通拥堵、事故多很多原因是行人、非机动车违章多又难管理、难处罚，好嘛，管不好行人、非机动车，交警就压迫机动车方，扣车迫你就范，让我这个机动车主免费帮你们教训下违章非机动车有什么不好啊。
-21号去事故中队做笔录，本来也没啥说的，交警叫我复印下被扣的驾照，可气的是去4楼复印居然要1块1张，还是个律师事务所的，中国就这帮黑心的狗腿子搞坏了，懂法执法的人都不守法。浪费他2张纸，然后问他要FP，他不给FP，我也就转身去楼下找店家，靠，狗还真多，紧挨事故中队一家复印店先问复什么，一看是驾驶证也叫价1块，插，哪天我办完这件事，把这两家店一起投诉到工商局去。继续往前走，很快就找到家2角的，既锻炼了身体又省了钱，还战胜了黑心狗，还是蛮愉快的（咱是个闲人，时间多，其他人慎重），只是悲哀中国狗太多还有人闲着没事拯救狗的（赤那），更悲哀中国良民太多，那个律师事务所明显占用国家资源（办公室居然在行政机关内），与交警肯定有利益关联，而且非法超出范围经营（律所没有复印的营业执照的），也没一个人去投诉，难道我又要成为第一个吃螃蟹的人？
-做笔录的时候，来了个处理事故的，可怜兮兮的样子，上来就发烟，还给我1支（我不抽烟，也没发烟给过交警），那警察也够坏，拿出好几份鉴定报告让那人去复印，还要那人去交鉴定费，那人很老实没有一句怨言地去了，我看着他的背影心底无限悲哀，***也只能现在这个样子了，人民就这水平啊，这样的水是不可能覆舟的，同时心底打定主意，以后决不去复印、更不可能交任何费用。
-26号下午通知我去拿车辆性能检验报告，办案协警还是叫我去复印，我先拿过来看完检验结论合格，然后装傻，怎么叫我去复印啊，也许是昨天去支队要复议通知书的消息传到这边，起了效果，主办的正式民警知道我难对付，就叫协警别啰嗦自己去复印（我判断一定是去4楼那律所不要钱复印来的，黑啊），然后，告知我如果双方对检验结果都没有异议，就可以拿车了，还说不管你交不交费，都会放车。呵呵。
-第四章 车辆技术性能鉴定报告 拿到鉴定报告第一眼看结论，合格，2月年检了，意料之中，但也算放心了；可看见日期很不爽，送检居然写15号，这么简单的鉴定居然要11天到26号才出结果，很显然是交警与司法鉴定所穿一条裤子，要么是更改送检时间包庇交警（因为法律规定要在事故发生3个工作日内送检），要么是故意拖延时间，配合交警长时间扣车，法律对鉴定的期限规定太宽松，《交通事故处理程序规定》是20天，《司法鉴定管理条例》是15天，鉴定时间还不算入办案时间。
-我的策略是去司法局投诉，虽然没有证据，但就按我自己猜测的写，既不要钱，写错了也不犯法，呵呵，投诉立案了司法局就会去查，查出问题自然好，一般来说总会有点问题的，特别是鉴定程序上，这些官办鉴定机构也是老爷作风；司法局这边也可能出错，反正司法局要出书面处理结果，到时再找他们的漏洞，不过司法鉴定的行政官司很难赢，法律基本空白，但可以行政复议，反正不要钱，但也止于行政复议。
-第五章 高潮：拿回自己的车 26号拿鉴定报告，27、28、29三天双方都没有对鉴定结论提出异议，7月2号鉴定结论确定，但当天因有事去南昌没能去拿车，7月3号，办完事10点来的交警办公室，等到10点半大仙终于回来了，向办案的正式民警提出拿车的要求，这个家伙估计是早准备好的，居然说要等鉴定结论确定5天后才能领车，因为这几天对方可能申请法院诉前财产保全（浑蛋法律术语还知道点啊，可法律不行）；本来倒也早就预料交警会找借口，没什么，但可气的是边上一个凯莱律师事务所来办事的律师居然为讨好交警帮着他说些违背法律的说辞（唉，TMD狗真多，完全如先生狂人日记的情形）；我随即反驳：第一，法条明文规定是鉴定结论确定5日内领车，没有5日后领车的法条，要继续扣车请提供法律依据；第二，法院与你们不是一个系统，如果法院委托你们扣车请提供委托书。丫的居然还嘴硬，于是向他们领导投诉，回来交警改口了，自己还找个台阶：领导这么说了怎么办呢？好无辜的样子，勒个去的，过会打印车辆放行呈报表的时候审批理由里就是我说的法条，他根本就是知法犯法，丫的天天都在这么办还来故意刁难我，好吧，看我的。
-吃完饭直奔吉埠新村停车场，交了放行单，如我所料守门的要我交19天20元/天的停车费，和开车来停车场的开车费50元，共计430元，于是我迅速拿回放行单，“还要交钱啊，交警没说啊”，守门的当然不肯。于是不废话，转身出来拨打110，报警说有人在吉埠新村非法扣押我的车辆并向我敲诈勒索，接警的也想混，说你们这是纠纷啊，自己解决啊。我说我有车辆放行单，车辆就处于合法自由状态，任何人阻拦就属于非法扣押私人财物，接着问你受理不受理，会不会出警？她没办法，说你等会。很快沙石派出所打来电话（这一点还是要肯定的，110必须出警现在规定的很严），还是一番唇枪舌剑，派出所的总推是纠纷，我坚持即使有纠纷任何人也不能非法扣押私人财产，没办法派出所答应出警。因为是午间休息时间，停车场那边与交警领导暂时沟通不上，于是民警说那就等会他们与交警联系了再说吧，我于是坚持回派出所作报案笔录（这点要强烈提醒各位朋友，千万别在现场傻等，一定要去派出所做笔录，否则，很可能警察出警后会记录为调解处理，很可能就没结果了，你要再提也还是要去派出所作笔录，被对方看出你不精于法律，再打交道就锐气尽失了），因为一旦形成笔录，这个案子就不是纠纷而是治安甚至刑事案件，派出所要结案（不按非法扣押财物处理，你可以行政复议），材料很多涉及面很广，派出所不愿意，自然会给停车场施压（毕竟其行为涉嫌犯法），交警也知道自己这么承包出去不合法，万一媒体曝光就很麻烦。
-做完笔录再去停车场，还在路上，派出所的警官就打来电话：你去找停车场，我已经沟通好了。到了停车场还顺利，车都摆好位置了（第一次来我的车是被堵在里面的），老板娘来了，很气也很无奈的诅咒：我们这了敞开大门欢迎你常来，我回复：谢谢您吉言，心里说，我常来你也收不到钱。开车回家，第一件事洗车，去晦气；第二件事，发帖，哈哈。
-第六章 余味：总结 1、关于行政复议：个人认为行政投诉和行政复议是公民个人维权最有效的手段，当发生侵害您权利的事件时（如您楼下某餐馆排油烟），确定侵权人管辖的行政机关和违反的法律条文，然后向行政机关写投诉书或现场投诉（如上例向卫生局、环保局投诉），如果行政机关不处理就向其上级机关行政复议，以我个人的经历基本全部能解决，当然这需要一定的法律技巧。特别的，行政复议是法律规定的行政机关必须受理处理的程序，在这个程序中，行政机关必须提供做出行政行为或不作出行政行为的法律依据和证据，行政复议必须受理且必须制作复议决定书，那么你就可以审查复议决定书是否合法，以及其依据的事实和理由是否合法，这样你就不用自己去搜集证据。这整个过程没有任何费用，花的时间也是很有限的，而收益是巨大的，很有效。
-2、关于车辆技术性能鉴定：依据法律规定，交警只有在需要收集证据的情况下才能扣押肇事车辆，而目前交警能提供的收集证据的最主要理由就是车辆技术性能鉴定，其实这是交警的借口，无非就是要扣车牟利，那么P民的策略也很简单，就是不出鉴定费，鉴定费这个东东可不像停车费，你不给就拿车很麻烦，交警一定会叫鉴定所先鉴定，因为这是法定的证据和程序，你不交鉴定费，交警也必须按法律规定的时限结案，所以在这点上，交警耗不起你，他是很怕你耍无赖的，像我的案例一样，交警看我难缠连要我交鉴定费的要求都不敢提。
-如果每个车主都不交鉴定费（这其实真的很容易做到），那么交警就会内牛满面，你想想，如果车主不交钱，就只能按法律规定由交警承担，而交警会把招待、旅游、公车费压缩出来交给鉴定所去吗？不给的话，又有哪家鉴定所会与交警合作免费鉴定呢？而不鉴定，交警扣车的法定理由就消失了，所以，只要每个车主坚持不出鉴定费，很快，大家的车辆就不会被扣了，大家只要花很少的努力就可以有很大的收获，QS们要努力啊。
-3、关于110：个人的实践总结，目前110是维权的一个强有力手段，如果你是合法权益一方，你应该不会惧怕110民警到场，而110的到场会为确定现场证据、控制事态恶化、威慑侵权一方等等起到决定性的作用，目前110接警必须出警的规定非常有利于合法权益方保护自己。当然110报警需要一些小技巧：1、适当严重化事件，这不是诬告陷害，只要事实存在，你对事实性质无论怎么理解和严重定义，都不是诬告陷害，是不负法律责任的；2、如果你确定希望民警到场，你就只需要坚持要求民警到场就行，不需要多说理由，就问你受不受理、出不出警、什么时间出警就行了，110是不敢不出警的。
-对于没有明显暴力事件，110一般都会按纠纷调解，如果你对处理不满一定要坚持报案，去派出所做笔录，笔录的时候亦可以按你的理解以最严重的罪名报案，坚持按你说的记录（因为这是你的笔录，你说了算），不要轻信民警的引导和对你措辞的修改，否则不签名，民警是不敢不做笔录的，因为这是110处警的必要法律文件。不要怕做笔录会浪费时间，这与你今后维权自己收集证据相比是完全值得的。
-4、关于停车费：法律有明确规定，只有你坚持，然后选择适合自己的策略和方式坚持自己的权益，交警是不敢向你开票收费的，而你真的没有义务向停车场缴费，因为你其实与停车场完全没有法律关系。特别重要的，如果没一个车主都不交停车费，那还有谁会免费为交警管理肇事违章车辆，你相信交警会从自己的经费里拿出钱来吗？如果没有停车费收入，每个停车场都要倒闭，那每个车主就都不会被扣车了，这实在是广大车主的最强福音啊。这会很难吗？
-5、关于停车场：本案中停车场挂出的牌子是“赣州市肇事车辆违章车辆管理处”，这个牌子会吓倒很多P民，其实，单从名称上分析，我就可以下结论，这是一个三无的非法组织。1、名称中没有冠以“赣州市公安局交通警察支队”说明不是交警的下属单位，现场也没有一个穿正规警服配警号的人员，在派出所联系交警时，交警也明确承认停车场是完全社会化的；我们也不可能在行政事业机构编制中找到肇事车辆违章车辆管理处这个单位；那么它是社会团体或企业法人吗，单从名称上“管理处”这个名字就不可能登记为任何社会团体或企业法人；所以毫无疑问的“赣州市肇事车辆违章车辆管理处”只是一块吓唬人的野鸡牌子，没有这个单位也就不可能有营业执照，也就不可能有收费许可证，那么它收费就完全站不住脚。在整个过程中停车场根本没有悬挂、出示过营业执照和收费许可证，这就是本案中停车场会屈服的根本原因。
-因为我没有交费所以不知道以前的朋友们缴费单是什么样的，上面盖的是什么单位的章，如果你现在还保留着单据，又想拿回这些钱的话，给您支个招：1、先看是什么单据，应该必须是行政事业性收费单，如果是FP（其实FP是不合法的，因为你与停车场不存在合同关系，停车场收钱属于不当得利，可以民事诉讼，当然那个更麻烦，就不多说了）必须加盖公章；如果是行政事业性收费单，可以去财政查询单据的真实性和时效性，如果是FP可以去税务查（没FP直接投诉）；个人直接下定论，这些票据如果不是假的也一定存在瑕疵（如过期、与收费项目不符、收付单位与登记单位不同，因为根本没有停车场这个单位等等），然后要求财政或税务查处；3、进一步的可以去派出所报案诈骗，这个可以成立的，因为对方捏造了一个不存在的单位（也就是伪造事实），在没有合法收费依据的情况下使用虚假的单据，骗取财物，这个涉案金额很大啊，很可怕啊。再吹下牛，如果是我，坚持报案和行政复议（如果派出所不立案的话），一定会成功。
-你说如果这件事变刑事案件了，或者媒体把这些法律关系曝光了，别说停车场怕，交警也要尿裤子啊。
-6、其他途径：至少，您可以向工商部门投诉非法经营。前面已经说了，以我的判断全国这类停车场90没有营业执照，100没有收费许可证或者收费项目不包含停车费，注意这里的停车费是指交警扣车发生的，不是自愿停车发生的。如果你耗不起车辆被扣时间，也可以在交费后，拿票据向工商投诉非法经营和强制交易（你与停车场没有合同关系），如果没有票据或票据有瑕疵还可以向税务投诉，很多投诉都只要打个电话不会很难。
-第二篇 保险赔偿:事故责任认定复核 7月6日下午，交警通知我去拿事故责任认定书，交警以“对道路的交通动态注意不够，忽视安全”“违反《中华人民共和国道路交通安全法》第二十二条第一款”为由，认定我负次要责任，很是无语，中国法律中口袋罪很多，对执法者的限定很少，好在我有准备，写好复核申请，9号上午就交去支队事故科。事故科的人说会把受理通知和结果寄给我，正好要上山度假1个月，也就不去管它，期间木有任何关于交通事故的电话给我。
-道路交通事故认定复核申请书
-申请人：，男，19年月日生，住址：赣州市章贡区红旗大道**，身份证号：，电话：
-被申请人：赣州市公安局交通警察支队直属大队，地址：赣州市东郊路，电话：8123138
-第三人： 陈XX，女，19年月日生，住址：赣州市章贡区贸易广场西区* ，身份证号：，电话：
-申请人因为不服赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，申请复核。
-复核请求
-依法撤销赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，对本起交通事故重新作出责任认定，认定申请人不承担本次事故的责任。
-事实和理由
-一、认定道路交通事故发生经过与事实不符 原认定书认定： “2012年6月14日7时55分左右，陈XX（对方）驾驶赣州A404XX号电动自行车（搭载叶X）沿厚德路由西向东行驶至厚德路小学门前路段时，在左转弯过程中，叶X左脚与相对方向直行由XXX（本人）驾驶的赣BHXXXX号轿车擦刮”。
-申请人认为与事实不符：
-1、从现场示意图可知，碰撞点位于厚德路小学路口西端以西10米外，距道路北侧边缘1.5米处，第三人左转横过机动车道后因送女儿叶X上学欲进入厚德路小学路口，故沿道路北侧向东逆行，并非如原认定书所述“在左转弯过程中”。碰撞点距道路边缘仅1.5米，而且是叶X反向骑乘，左脚伸出电动车尾部发生擦刮，而该电动车的长度已经超过1.5米，在这样的距离内，第三人不可能继续横过道路向道路边缘（道路北侧）运动，因而第三人必然已经改变运动方向，而从第三人送女儿上学的目的可以判定：第三人必然沿道路北侧向东逆行欲进入厚德路小学入口。
-2、从“叶X左脚与相对方向直行由XXX驾驶的赣BHXXXX号轿车擦刮”的认定可知，叶X为反向骑乘，因为，如果叶X正向骑乘，双方车辆右侧碰撞只能伤及叶X右侧肢体，而叶X左脚受伤故为反向骑乘，由于叶X反向骑乘而第三人车辆后座有较大的靠背，致使叶X左脚不得不外伸，超出第三人车辆车把宽度与车尾，因而与申请人车辆擦刮。被申请人对如此重要的事实没有认定是严重失职。
-二、认定交通事故成因错误 原认定书认定：“当事人XXX当日驾驶机动车行驶至学校门前路段时，对道路的交通动态注意不够，忽视安全”。
-申请人认为是错误的：
-1、被申请人没有任何证据证明申请人“对道路的交通动态注意不够，忽视安全”。
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5617523fbfae4b590b7a4aab/">阅读全文…</a>
+		<p>一名赣州车主处理“碰瓷”过程，值得认真学习，文很长，但值得一读。</p>
+<p>保险公司会吓唬你，交警也会嫌麻烦忽悠你，只要你捂紧你的钱包，除了时间，其实你不必付出任何费用来缴纳到这场事故中。</p>
+<p>#m第一篇 事故过程和处理</p>
+<h3 id="第一章-事故发生">第一章 事故发生</h3>
+<p>14日早8点左右，我从厚德路由东向西正常行驶，越过厚德路小学路口约10米后，前方一电动车突然左转横过机动车道然后逆行欲进入厚德路小学，由于她车速太快，电动车后座上反向乘坐的小女孩将左腿伸出车外，致小女孩左小腿撞在我车的右前大灯上。</p>
+<p>事故发生后，小女孩拼命哭叫，我无法判断伤情（虽然我知道肯定没大事），对方也不提如何处理，对于这种手段老辣的人，为避免被敲诈，我决定报警、出险走正当程序。</p>
+<p>警察、保险先后到场，警察也不主动提调解，我也就不提，因为我认为是对方全责，保险的希望我私了，还说不私了对我很不利，拖车、停车费是不赔的，当时有点心动想私了，但很不甘心，对方也不说私了的事，还强说我撞他，小孩又被120拉走，内心深处其实很想完整的走次事故程序（还没出过双方事故），也很不服拖车、停车费问题，想和交警较量下，再考虑到马上放假不太用车，最后还是决定走正常程序。</p>
+<p>交警看双方不能现场调解，于是叫车来拖对方的电动车，扣下我的驾照，叫人开我的车去停车场，我也去直属大队事故科领回扣车单据。</p>
+<p>回家马上查法规，等看到法律规定（《中华人民共和国行政强制法》第二十五条、第二十六条）停车、鉴定、检验费用由行政机关承担，心里踏实多了，也明白保险公司的险恶，他当然希望当事人私了，他就可以不费时、不费力、不出钱，还拿一般人很害怕的停车、拖车费来吓人，还好没吃他那套。继续查到事故责任认定书应当在10个工作日做出，事故责任认定书作出后就可以拿回车子，感觉更没什么了，也就半个月吧（当然各人情况不同，好车或没车不行的人另当别论），咱能等。</p>
+<p>策略：事故发生后迅速判断各种因素，做出最有利选择</p>
+<h3 id="第二章-对扣车的行政强制行为提出行政复议">第二章 对扣车的行政强制行为提出行政复议</h3>
+<p>怎么讲车都是被扣了，心里总还是不舒服也不服气的，其实车主都明白，交警扣车无非就是希望机动车主能赔钱结案，警察省事又不容易发生信访事件。很反感交警动不动就扣车，于是继续查法规，发现法律只规定“因为收集证据的需要”（《中华人民共和国道路交通安全法》第七十二条）才能扣押事故车辆而且扣押车辆需要履行很多手续（《中华人民共和国行政强制法》第十八条、第十九条、第二十四条），当时想不通这么简单也没有车辆损失的事故还要收集什么证据，而且扣押财物是要履行必要的法定程序的，于是马上写好行政复议申请书，下午就去交警支队。</p>
+<p>到了支队进门要登记，一开始说去法制科，门卫说没这个科，于是说去行政复议办公室，门卫居然不知道有行政复议办公室，瞎指挥让我去7楼，整个7楼没有挂牌的办公室还都锁着，还好碰上2个穿制服的警察，问了以后说在4楼，于是去4楼，其实4楼是对交通事故责任认定书提出复核的地方，那里一个领导模样的人开始也以为是复核，问清是对行政强制行为复议后，打了电话问别人才说要去6楼秩序科，于是明白，很少有人提起行政复议啊，大家业务都不熟啊，中国真是刁民太少，天天在网上费唾沫没用啊，不如实际做点什么，赣州每天多少事故多少车被扣啊，别说多，每天有一个人复议，交警支队门斗挤破了，如果每个人对发生在自己身上的不公都提出行政复议、行政诉讼，中国早就官不聊生，早就不是现在这个样子了。</p>
+<p>终于到了6楼，马上发现有个办公室挂着行政复议办公室的牌子，心里骂门卫：文盲加法盲，怎么TMD都这素质啊。可门锁着，正好以前坐电梯上来的几个警察也走过来，一问是行政复议的，马上进了秩序科办公室。和每次行政复议一样，对方总是推脱说些理由，一番唇枪舌剑后，最后表示什么也别说了，按行政复议法规定的程序办理吧，对方终于没办法说受理了。</p>
+<p>一等就10多天，什么消息也没有，其实早就知道这样的结果，因为每次复议哪个行政机关都这样，25号过完节也放暑假了，于是再去交警支队，直奔秩序科，进门一说要拿行政复议受理通知书，对方和以前一样搬出领导不在要审批所以还没办等等说辞，我也冷处理，只问什么时候能拿到，一个主管模样的说今天一定会联系你，可今天26号了，还没动静，准备明天再去联系。</p>
+<p>咱也不急，先施加压力，看事故中队这边责任认定书怎么出，如果不认定对方全责（其实全不全责都是保险赔，我只是找理由和警察PK），我就两边一起动作，同时打2场行政诉讼；如果认定对方全责，还要看拿回车子的过程是不是没有障碍，不爽的话还是打官司（呵呵，我无责也要打官司，要交警好看）。</p>
+<h3 id="第三章-调解检验等前处理程序">第三章 调解、检验等前处理程序</h3>
+<p>15日下午，到事故中队调解，我早考虑好了，直接说调解就是各走各路，看着对方拿着各种片子和单据想问我要钱的样子，我很想告诉他：首先钱应该保险公司出，如果是抢救（什么是抢救法律也是有明确定义的）费用交警会责令保险公司垫付，也是与我无关的，只有超出交强险限额的部分我才承担，其次，事故责任认定书出来后你也是与保险公司协商赔偿，我可以不介入的，如果对保险公司的赔偿不满只能向法院起诉，法院判保险赔多少让它赔，超出交强险限额的部分按责任法院判我赔多少我才赔，我的损失只是用车不方便，这么小的事故而且你全责，我很欢迎你去法院起诉，说不定我反诉你，我还可以拿点钱呢。当然没说，反正我没出1分钱，懒得和他怄气。</p>
+<p>直接谈崩回家，其实真的是为了对方好也为了交警好，自我拔高下，呵呵：如果我赔了钱，对方下次还会违章，这次我是谨慎驾驶车速很慢，下次碰上个飙车的那结局很难想象，你就是赔了钱，人没了有什么意思？交警也就只图自己轻松，现在道路交通拥堵、事故多很多原因是行人、非机动车违章多又难管理、难处罚，好嘛，管不好行人、非机动车，交警就压迫机动车方，扣车迫你就范，让我这个机动车主免费帮你们教训下违章非机动车有什么不好啊。</p>
+<p>21号去事故中队做笔录，本来也没啥说的，交警叫我复印下被扣的驾照，可气的是去4楼复印居然要1块1张，还是个律师事务所的，中国就这帮黑心的狗腿子搞坏了，懂法执法的人都不守法。浪费他2张纸，然后问他要FP，他不给FP，我也就转身去楼下找店家，靠，狗还真多，紧挨事故中队一家复印店先问复什么，一看是驾驶证也叫价1块，插，哪天我办完这件事，把这两家店一起投诉到工商局去。继续往前走，很快就找到家2角的，既锻炼了身体又省了钱，还战胜了黑心狗，还是蛮愉快的（咱是个闲人，时间多，其他人慎重），只是悲哀中国狗太多还有人闲着没事拯救狗的（赤那），更悲哀中国良民太多，那个律师事务所明显占用国家资源（办公室居然在行政机关内），与交警肯定有利益关联，而且非法超出范围经营（律所没有复印的营业执照的），也没一个人去投诉，难道我又要成为第一个吃螃蟹的人？</p>
+<p>做笔录的时候，来了个处理事故的，可怜兮兮的样子，上来就发烟，还给我1支（我不抽烟，也没发烟给过交警），那警察也够坏，拿出好几份鉴定报告让那人去复印，还要那人去交鉴定费，那人很老实没有一句怨言地去了，我看着他的背影心底无限悲哀，***也只能现在这个样子了，人民就这水平啊，这样的水是不可能覆舟的，同时心底打定主意，以后决不去复印、更不可能交任何费用。</p>
+<p>26号下午通知我去拿车辆性能检验报告，办案协警还是叫我去复印，我先拿过来看完检验结论合格，然后装傻，怎么叫我去复印啊，也许是昨天去支队要复议通知书的消息传到这边，起了效果，主办的正式民警知道我难对付，就叫协警别啰嗦自己去复印（我判断一定是去4楼那律所不要钱复印来的，黑啊），然后，告知我如果双方对检验结果都没有异议，就可以拿车了，还说不管你交不交费，都会放车。呵呵。</p>
+<h3 id="第四章-车辆技术性能鉴定报告">第四章 车辆技术性能鉴定报告</h3>
+<p>拿到鉴定报告第一眼看结论，合格，2月年检了，意料之中，但也算放心了；可看见日期很不爽，送检居然写15号，这么简单的鉴定居然要11天到26号才出结果，很显然是交警与司法鉴定所穿一条裤子，要么是更改送检时间包庇交警（因为法律规定要在事故发生3个工作日内送检），要么是故意拖延时间，配合交警长时间扣车，法律对鉴定的期限规定太宽松，《交通事故处理程序规定》是20天，《司法鉴定管理条例》是15天，鉴定时间还不算入办案时间。</p>
+<p>我的策略是去司法局投诉，虽然没有证据，但就按我自己猜测的写，既不要钱，写错了也不犯法，呵呵，投诉立案了司法局就会去查，查出问题自然好，一般来说总会有点问题的，特别是鉴定程序上，这些官办鉴定机构也是老爷作风；司法局这边也可能出错，反正司法局要出书面处理结果，到时再找他们的漏洞，不过司法鉴定的行政官司很难赢，法律基本空白，但可以行政复议，反正不要钱，但也止于行政复议。</p>
+<h3 id="第五章-高潮拿回自己的车">第五章 高潮：拿回自己的车</h3>
+<p>26号拿鉴定报告，27、28、29三天双方都没有对鉴定结论提出异议，7月2号鉴定结论确定，但当天因有事去南昌没能去拿车，7月3号，办完事10点来的交警办公室，等到10点半大仙终于回来了，向办案的正式民警提出拿车的要求，这个家伙估计是早准备好的，居然说要等鉴定结论确定5天后才能领车，因为这几天对方可能申请法院诉前财产保全（浑蛋法律术语还知道点啊，可法律不行）；本来倒也早就预料交警会找借口，没什么，但可气的是边上一个凯莱律师事务所来办事的律师居然为讨好交警帮着他说些违背法律的说辞（唉，TMD狗真多，完全如先生狂人日记的情形）；我随即反驳：第一，法条明文规定是鉴定结论确定5日内领车，没有5日后领车的法条，要继续扣车请提供法律依据；第二，法院与你们不是一个系统，如果法院委托你们扣车请提供委托书。丫的居然还嘴硬，于是向他们领导投诉，回来交警改口了，自己还找个台阶：领导这么说了怎么办呢？好无辜的样子，勒个去的，过会打印车辆放行呈报表的时候审批理由里就是我说的法条，他根本就是知法犯法，丫的天天都在这么办还来故意刁难我，好吧，看我的。</p>
+<p>吃完饭直奔吉埠新村停车场，交了放行单，如我所料守门的要我交19天20元/天的停车费，和开车来停车场的开车费50元，共计430元，于是我迅速拿回放行单，“还要交钱啊，交警没说啊”，守门的当然不肯。于是不废话，转身出来拨打110，报警说有人在吉埠新村非法扣押我的车辆并向我敲诈勒索，接警的也想混，说你们这是纠纷啊，自己解决啊。我说我有车辆放行单，车辆就处于合法自由状态，任何人阻拦就属于非法扣押私人财物，接着问你受理不受理，会不会出警？她没办法，说你等会。很快沙石派出所打来电话（这一点还是要肯定的，110必须出警现在规定的很严），还是一番唇枪舌剑，派出所的总推是纠纷，我坚持即使有纠纷任何人也不能非法扣押私人财产，没办法派出所答应出警。因为是午间休息时间，停车场那边与交警领导暂时沟通不上，于是民警说那就等会他们与交警联系了再说吧，我于是坚持回派出所作报案笔录（这点要强烈提醒各位朋友，千万别在现场傻等，一定要去派出所做笔录，否则，很可能警察出警后会记录为调解处理，很可能就没结果了，你要再提也还是要去派出所作笔录，被对方看出你不精于法律，再打交道就锐气尽失了），因为一旦形成笔录，这个案子就不是纠纷而是治安甚至刑事案件，派出所要结案（不按非法扣押财物处理，你可以行政复议），材料很多涉及面很广，派出所不愿意，自然会给停车场施压（毕竟其行为涉嫌犯法），交警也知道自己这么承包出去不合法，万一媒体曝光就很麻烦。</p>
+<p>做完笔录再去停车场，还在路上，派出所的警官就打来电话：你去找停车场，我已经沟通好了。到了停车场还顺利，车都摆好位置了（第一次来我的车是被堵在里面的），老板娘来了，很气也很无奈的诅咒：我们这了敞开大门欢迎你常来，我回复：谢谢您吉言，心里说，我常来你也收不到钱。开车回家，第一件事洗车，去晦气；第二件事，发帖，哈哈。</p>
+<h3 id="第六章-余味总结">第六章 余味：总结</h3>
+<p>1、关于行政复议：个人认为行政投诉和行政复议是公民个人维权最有效的手段，当发生侵害您权利的事件时（如您楼下某餐馆排油烟），确定侵权人管辖的行政机关和违反的法律条文，然后向行政机关写投诉书或现场投诉（如上例向卫生局、环保局投诉），如果行政机关不处理就向其上级机关行政复议，以我个人的经历基本全部能解决，当然这需要一定的法律技巧。特别的，行政复议是法律规定的行政机关必须受理处理的程序，在这个程序中，行政机关必须提供做出行政行为或不作出行政行为的法律依据和证据，行政复议必须受理且必须制作复议决定书，那么你就可以审查复议决定书是否合法，以及其依据的事实和理由是否合法，这样你就不用自己去搜集证据。这整个过程没有任何费用，花的时间也是很有限的，而收益是巨大的，很有效。</p>
+<p>2、关于车辆技术性能鉴定：依据法律规定，交警只有在需要收集证据的情况下才能扣押肇事车辆，而目前交警能提供的收集证据的最主要理由就是车辆技术性能鉴定，其实这是交警的借口，无非就是要扣车牟利，那么P民的策略也很简单，就是不出鉴定费，鉴定费这个东东可不像停车费，你不给就拿车很麻烦，交警一定会叫鉴定所先鉴定，因为这是法定的证据和程序，你不交鉴定费，交警也必须按法律规定的时限结案，所以在这点上，交警耗不起你，他是很怕你耍无赖的，像我的案例一样，交警看我难缠连要我交鉴定费的要求都不敢提。</p>
+<p>如果每个车主都不交鉴定费（这其实真的很容易做到），那么交警就会内牛满面，你想想，如果车主不交钱，就只能按法律规定由交警承担，而交警会把招待、旅游、公车费压缩出来交给鉴定所去吗？不给的话，又有哪家鉴定所会与交警合作免费鉴定呢？而不鉴定，交警扣车的法定理由就消失了，所以，只要每个车主坚持不出鉴定费，很快，大家的车辆就不会被扣了，大家只要花很少的努力就可以有很大的收获，QS们要努力啊。</p>
+<p>3、关于110：个人的实践总结，目前110是维权的一个强有力手段，如果你是合法权益一方，你应该不会惧怕110民警到场，而110的到场会为确定现场证据、控制事态恶化、威慑侵权一方等等起到决定性的作用，目前110接警必须出警的规定非常有利于合法权益方保护自己。当然110报警需要一些小技巧：1、适当严重化事件，这不是诬告陷害，只要事实存在，你对事实性质无论怎么理解和严重定义，都不是诬告陷害，是不负法律责任的；2、如果你确定希望民警到场，你就只需要坚持要求民警到场就行，不需要多说理由，就问你受不受理、出不出警、什么时间出警就行了，110是不敢不出警的。</p>
+<p>对于没有明显暴力事件，110一般都会按纠纷调解，如果你对处理不满一定要坚持报案，去派出所做笔录，笔录的时候亦可以按你的理解以最严重的罪名报案，坚持按你说的记录（因为这是你的笔录，你说了算），不要轻信民警的引导和对你措辞的修改，否则不签名，民警是不敢不做笔录的，因为这是110处警的必要法律文件。不要怕做笔录会浪费时间，这与你今后维权自己收集证据相比是完全值得的。</p>
+<p>4、关于停车费：法律有明确规定，只有你坚持，然后选择适合自己的策略和方式坚持自己的权益，交警是不敢向你开票收费的，而你真的没有义务向停车场缴费，因为你其实与停车场完全没有法律关系。特别重要的，如果没一个车主都不交停车费，那还有谁会免费为交警管理肇事违章车辆，你相信交警会从自己的经费里拿出钱来吗？如果没有停车费收入，每个停车场都要倒闭，那每个车主就都不会被扣车了，这实在是广大车主的最强福音啊。这会很难吗？</p>
+<p>5、关于停车场：本案中停车场挂出的牌子是“赣州市肇事车辆违章车辆管理处”，这个牌子会吓倒很多P民，其实，单从名称上分析，我就可以下结论，这是一个三无的非法组织。1、名称中没有冠以“赣州市公安局交通警察支队”说明不是交警的下属单位，现场也没有一个穿正规警服配警号的人员，在派出所联系交警时，交警也明确承认停车场是完全社会化的；我们也不可能在行政事业机构编制中找到肇事车辆违章车辆管理处这个单位；那么它是社会团体或企业法人吗，单从名称上“管理处”这个名字就不可能登记为任何社会团体或企业法人；所以毫无疑问的“赣州市肇事车辆违章车辆管理处”只是一块吓唬人的野鸡牌子，没有这个单位也就不可能有营业执照，也就不可能有收费许可证，那么它收费就完全站不住脚。在整个过程中停车场根本没有悬挂、出示过营业执照和收费许可证，这就是本案中停车场会屈服的根本原因。</p>
+<p>因为我没有交费所以不知道以前的朋友们缴费单是什么样的，上面盖的是什么单位的章，如果你现在还保留着单据，又想拿回这些钱的话，给您支个招：1、先看是什么单据，应该必须是行政事业性收费单，如果是FP（其实FP是不合法的，因为你与停车场不存在合同关系，停车场收钱属于不当得利，可以民事诉讼，当然那个更麻烦，就不多说了）必须加盖公章；如果是行政事业性收费单，可以去财政查询单据的真实性和时效性，如果是FP可以去税务查（没FP直接投诉）；个人直接下定论，这些票据如果不是假的也一定存在瑕疵（如过期、与收费项目不符、收付单位与登记单位不同，因为根本没有停车场这个单位等等），然后要求财政或税务查处；3、进一步的可以去派出所报案诈骗，这个可以成立的，因为对方捏造了一个不存在的单位（也就是伪造事实），在没有合法收费依据的情况下使用虚假的单据，骗取财物，这个涉案金额很大啊，很可怕啊。再吹下牛，如果是我，坚持报案和行政复议（如果派出所不立案的话），一定会成功。</p>
+<p>你说如果这件事变刑事案件了，或者媒体把这些法律关系曝光了，别说停车场怕，交警也要尿裤子啊。</p>
+<p>6、其他途径：至少，您可以向工商部门投诉非法经营。前面已经说了，以我的判断全国这类停车场90没有营业执照，100没有收费许可证或者收费项目不包含停车费，注意这里的停车费是指交警扣车发生的，不是自愿停车发生的。如果你耗不起车辆被扣时间，也可以在交费后，拿票据向工商投诉非法经营和强制交易（你与停车场没有合同关系），如果没有票据或票据有瑕疵还可以向税务投诉，很多投诉都只要打个电话不会很难。</p>
+<h1 id="第二篇-保险赔偿事故责任认定复核">第二篇 保险赔偿:事故责任认定复核</h1>
+<p>7月6日下午，交警通知我去拿事故责任认定书，交警以“对道路的交通动态注意不够，忽视安全”“违反《中华人民共和国道路交通安全法》第二十二条第一款”为由，认定我负次要责任，很是无语，中国法律中口袋罪很多，对执法者的限定很少，好在我有准备，写好复核申请，9号上午就交去支队事故科。事故科的人说会把受理通知和结果寄给我，正好要上山度假1个月，也就不去管它，期间木有任何关于交通事故的电话给我。</p>
+<p>道路交通事故认定复核申请书</p>
+<p>申请人：<em><strong>，男，19</strong>年</em>月<em>日生，住址：赣州市章贡区红旗大道</em>**，身份证号：<strong><strong>，电话：</strong></strong></p>
+<p>被申请人：赣州市公安局交通警察支队直属大队，地址：赣州市东郊路，电话：8123138</p>
+<p>第三人： 陈XX，女，19<strong>年<em>月</em>日生，住址：赣州市章贡区贸易广场西区</strong>* ，身份证号：<em><strong>，电话：</strong></em></p>
+<p>申请人因为不服赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，申请复核。</p>
+<p>复核请求</p>
+<p>依法撤销赣州市公安局交通警察支队直属大队赣市公交直认字[2012]第272号《道路交通事故认定书》，对本起交通事故重新作出责任认定，认定申请人不承担本次事故的责任。</p>
+<p>事实和理由</p>
+<h3 id="一认定道路交通事故发生经过与事实不符">一、认定道路交通事故发生经过与事实不符</h3>
+<p>原认定书认定： “2012年6月14日7时55分左右，陈XX（对方）驾驶赣州A404XX号电动自行车（搭载叶X）沿厚德路由西向东行驶至厚德路小学门前路段时，在左转弯过程中，叶X左脚与相对方向直行由XXX（本人）驾驶的赣BHXXXX号轿车擦刮”。</p>
+<p>申请人认为与事实不符：</p>
+<p>1、从现场示意图可知，碰撞点位于厚德路小学路口西端以西10米外，距道路北侧边缘1.5米处，第三人左转横过机动车道后因送女儿叶X上学欲进入厚德路小学路口，故沿道路北侧向东逆行，并非如原认定书所述“在左转弯过程中”。碰撞点距道路边缘仅1.5米，而且是叶X反向骑乘，左脚伸出电动车尾部发生擦刮，而该电动车的长度已经超过1.5米，在这样的距离内，第三人不可能继续横过道路向道路边缘（道路北侧）运动，因而第三人必然已经改变运动方向，而从第三人送女儿上学的目的可以判定：第三人必然沿道路北侧向东逆行欲进入厚德路小学入口。</p>
+<p>2、从“叶X左脚与相对方向直行由XXX驾驶的赣BHXXXX号轿车擦刮”的认定可知，叶X为反向骑乘，因为，如果叶X正向骑乘，双方车辆右侧碰撞只能伤及叶X右侧肢体，而叶X左脚受伤故为反向骑乘，由于叶X反向骑乘而第三人车辆后座有较大的靠背，致使叶X左脚不得不外伸，超出第三人车辆车把宽度与车尾，因而与申请人车辆擦刮。被申请人对如此重要的事实没有认定是严重失职。</p>
+<h3 id="二认定交通事故成因错误">二、认定交通事故成因错误</h3>
+<p>原认定书认定：“当事人XXX当日驾驶机动车行驶至学校门前路段时，对道路的交通动态注意不够，忽视安全”。</p>
+<p>申请人认为是错误的：</p>
+<p>1、被申请人没有任何证据证明申请人“对道路的交通动态注意不够，忽视安全”。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -398,14 +403,15 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-20T03:15:19Z">2015-09-20 03:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-09-20T03:15:19Z">2015.09.20 03:15</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		我是做技术的，平时也有喜欢写写博客，但是由于自己作文水平有限，又比较懒，所以很少写大篇幅的内容，也很少为了写一篇文章而到处收集资料，毕竟不是专业写手，就是为了记录一下工作遇到的问题，虽然写的时候本着一颗能帮助他人的心，希望自己写的东西有助于其他人参考，但是通过平时查找资料的观察发现，有时在看别人文章的容总是很难读懂，或者写的不够详细，然后又找了很多资料后终于搞懂了。事后一想，还是自己写一篇更易懂的博客吧！
-听说优秀的博客都要有配图
-然后花了点时间把自己理解的整理出来，很有成就感的发表出去，可谁又能想到其实自己也可能重蹈覆辙，走了前人的路，在别人看来同样晦涩难懂。造成这种情况的原因其实与作者有关与读者也有关，作者不能全方位的表达出思想，读者又不能百分之百的理解作者的意图，然后就形成了后浪推前浪的补充风波，或许知识就是这样不断翻新传播的
+		<p>我是做技术的，平时也有喜欢写写博客，但是由于自己作文水平有限，又比较懒，所以很少写大篇幅的内容，也很少为了写一篇文章而到处收集资料，毕竟不是专业写手，就是为了记录一下工作遇到的问题，虽然写的时候本着一颗能帮助他人的心，希望自己写的东西有助于其他人参考，但是通过平时查找资料的观察发现，有时在看别人文章的容总是很难读懂，或者写的不够详细，然后又找了很多资料后终于搞懂了。事后一想，还是自己写一篇更易懂的博客吧！</p>
+<p><img src="https://hopefully-img.yuedun.wang/xiezuo.jpg" alt="听说优秀的博客都要有配图"></p>
+<p>听说优秀的博客都要有配图<br>
+然后花了点时间把自己理解的整理出来，很有成就感的发表出去，可谁又能想到其实自己也可能重蹈覆辙，走了前人的路，在别人看来同样晦涩难懂。造成这种情况的原因其实与作者有关与读者也有关，作者不能全方位的表达出思想，读者又不能百分之百的理解作者的意图，然后就形成了后浪推前浪的补充风波，或许知识就是这样不断翻新传播的</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -419,14 +425,14 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-04T05:51:14Z">2015-07-04 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-04T05:51:14Z">2015.07.04 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		三月的时候做了一个简单的计划，主要是在前端知识方面的学习，包括HTML5，CSS3，bootstrap,angularjs。到目前的四个月时间里工作内容基本包揽了所有前端任务开发，从不会到会，到熟练，对于我来说痛并快乐着，学习过程虽然艰难，但是如果让我每天重复一样的工作内容真的会很烦躁，而现在连做梦都会梦到遇到的技术难题，想到解决办法就迫不及待第二天上班去解决。这样一路下来，除了angularjs不太熟练其他都可以轻松胜任，这是不是离全栈更近一步了。
-虽然angularjs这个坑挖的越来越深，下一个2.0版本也不向后兼容，让人纠结该不该继续学习，不过其实大家都对它的先进性认可的，暂时不会放弃。No这样的话前端技术暂时没有要学习的，接下来就是要学习服务器方面的东西，Linux操作系统，Nginx服务器使用，MySQL数据库优化，NoSQL公司暂时没有使用就先不深入学习了，不过好在公司的技术使用上有决策权，如有必要还是希望能用上，从上次活动服务器挂掉得出结论，MySQL不作特别优化处理是有点难以支撑高并发，有点与nodejs不搭调。
-总体来说，这几个月成长不少，除了自己努力之外还要感谢公司提供了我能够充分发挥的环境和前辈同事的指导和老板的信任。——不论公司最后成败，付出的努力不会付之东流。
+		<p>三月的时候做了一个简单的计划，主要是在前端知识方面的学习，包括HTML5，CSS3，bootstrap,angularjs。到目前的四个月时间里工作内容基本包揽了所有前端任务开发，从不会到会，到熟练，对于我来说痛并快乐着，学习过程虽然艰难，但是如果让我每天重复一样的工作内容真的会很烦躁，而现在连做梦都会梦到遇到的技术难题，想到解决办法就迫不及待第二天上班去解决。这样一路下来，除了angularjs不太熟练其他都可以轻松胜任，这是不是离全栈更近一步了。</p>
+<p>虽然angularjs这个坑挖的越来越深，下一个2.0版本也不向后兼容，让人纠结该不该继续学习，不过其实大家都对它的先进性认可的，暂时不会放弃。No这样的话前端技术暂时没有要学习的，接下来就是要学习服务器方面的东西，Linux操作系统，Nginx服务器使用，MySQL数据库优化，NoSQL公司暂时没有使用就先不深入学习了，不过好在公司的技术使用上有决策权，如有必要还是希望能用上，从上次活动服务器挂掉得出结论，MySQL不作特别优化处理是有点难以支撑高并发，有点与nodejs不搭调。</p>
+<p>总体来说，这几个月成长不少，除了自己努力之外还要感谢公司提供了我能够充分发挥的环境和前辈同事的指导和老板的信任。——不论公司最后成败，付出的努力不会付之东流。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -440,17 +446,22 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-31T00:41:46Z">2015-05-31 00:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-31T00:41:46Z">2015.05.31 00:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		在网上到处都能看见诸如：“世界那么大，我想去看看”，“来一场说走就走的旅行”,“年轻人最值得去的N的地方”，“再不出发你就老了，年轻人”等等。不知道从什么时候开始出去旅游成了年轻人必干之事。给自己的理由是：“给心灵放个假”，“从不同角度去看看这个世界，在一个地方呆久了会被周围环境禁锢的”，“增加自己的眼界，开阔自己的胸襟”，“年轻时不去，老了就去不了了”，总能给自己找一个很充分的理由把自己都感动了。
-但是我想站在一个反面的位置来说说旅行到对于很多人来说其实没什么意义： 首先是旅游是一件耗费时间和金钱的事，没有充裕的时间和金钱想要去旅行着实困难，也有人说可以穷游，是啊，当然可以，不过如果你没有做好风餐露宿，忍饥挨饿，跑断腿的心理准备就暂且打消这个念头，否则就准备好帐篷睡袋睡桥洞下吧，一个月后回来连亲妈都不认识你了。在时间上来说，除非你放下工作，不然只有周末的时间是没法去远处旅行的，如果只是在周围的小圈子里转还能算旅行吗？所以我说的旅行是指去有着不同文化的地域和国家。
-其次是旅游是否具有放松心情的功能，说旅游是为了暂时抛开工作去放松一下，可是如果工作上还有很多事需要做，还能好好旅行吗？如果你的工作很轻松，那么还真该去旅游，因为你太闲了，你的工作太乏味太无聊了，只能用旅游去打发时间，我觉得就算是有钱的老板也不可能不关心工作而只想着去哪旅行的。不过事实确实是只有工作轻松无聊的人旅行的比较多吧！对于普通人来说旅游应该是有目的的，比如工作太累，心情不好，这时一次旅游可以分散注意力，改变心情。如果纯粹是为了旅游而旅游，那么这能得到什么？只不过是去别的地方消费而已。在国内出去旅行看到最多的还是人。
-我开始怀疑那些年轻人该出去旅游的话是出自何人之口？是年轻人本身吗？你凭什么说年轻时候该出去旅行而不是踏实的工作学习，多读几本书！你确定旅行能长见识而不会影响工作学习？又不是什么作家诗人画家的需要出去找灵感，如果是靠旅行来增加工作激情，那么只能说你还不适合工作或者这份工作不适合你。是老一辈人说的？那他有没有说他自己因为旅行获得什么益处，可能是他后悔年轻时没有旅行，那么你的父母爷爷辈的有没有经常教导你说:年轻人不要光埋头工作，要经常出去玩玩，到处走走，增长点见识，免得老了和我一样后悔。那么话说回来，为什么是年轻的时候该出去旅行呢？有这么几种解释:年轻的时候有时间，没有家庭负担，增加阅历。说的好有道理，谁能不服，所以就有很多人都这么说这么做了。那么我想问，你旅行的次数和回家看父母的次数哪个多，一年全国各地，甚至满世界的跑，有没有回家看过？你说年轻时没有家庭负担，有没有想过还有父母呢，怎么不带他们也去玩，他们年轻时可能为了你而没时间去玩，现在你有时间金钱去玩怎么不带上他们！
-我倒是为了写这篇文章搜索了下关于旅行的内容，鼓励出去玩的大多是旅行社，旅游网站发的，个人发的却又没说旅行能获得多少好处，他也不反对旅行，让你自己体会去，当你体会了以后别人问的时候是不是也用同样的话去回答？这样旅行的结果是多了谈资，晒照片去了哪哪哪，吃了什么美食，一大把各地门票，出国签证，还有账单。旅游真有那么多好处你倒是这个总结让大家也学习学习，不要只让我自己体会。
-旅游有时候确实可以改变一些事，只不过很多人被网络上的话给洗脑了，盲目跟风。读万卷书，行万里路，没有读万卷书，只行万里路一样是无知。世界那么大，宇宙那么浩瀚，人生只不多短短的几十年怎么可能了解全部，想要自己人生有意义最好的办法应该是让今天比昨天更好。
+		<p>在网上到处都能看见诸如：“世界那么大，我想去看看”，“来一场说走就走的旅行”,“年轻人最值得去的N的地方”，“再不出发你就老了，年轻人”等等。不知道从什么时候开始出去旅游成了年轻人必干之事。给自己的理由是：“给心灵放个假”，“从不同角度去看看这个世界，在一个地方呆久了会被周围环境禁锢的”，“增加自己的眼界，开阔自己的胸襟”，“年轻时不去，老了就去不了了”，总能给自己找一个很充分的理由把自己都感动了。</p>
+<p><img src="https://hopefully-img.yuedun.wang/328342-14011621341957.jpg" alt="旅行的意义"></p>
+<p>但是我想站在一个反面的位置来说说旅行到对于很多人来说其实没什么意义： 首先是旅游是一件耗费时间和金钱的事，没有充裕的时间和金钱想要去旅行着实困难，也有人说可以穷游，是啊，当然可以，不过如果你没有做好风餐露宿，忍饥挨饿，跑断腿的心理准备就暂且打消这个念头，否则就准备好帐篷睡袋睡桥洞下吧，一个月后回来连亲妈都不认识你了。在时间上来说，除非你放下工作，不然只有周末的时间是没法去远处旅行的，如果只是在周围的小圈子里转还能算旅行吗？所以我说的旅行是指去有着不同文化的地域和国家。</p>
+<p><img src="https://hopefully-img.yuedun.wang/3023-11101112463825.jpg" alt="旅行的意义"></p>
+<p>其次是旅游是否具有放松心情的功能，说旅游是为了暂时抛开工作去放松一下，可是如果工作上还有很多事需要做，还能好好旅行吗？如果你的工作很轻松，那么还真该去旅游，因为你太闲了，你的工作太乏味太无聊了，只能用旅游去打发时间，我觉得就算是有钱的老板也不可能不关心工作而只想着去哪旅行的。不过事实确实是只有工作轻松无聊的人旅行的比较多吧！对于普通人来说旅游应该是有目的的，比如工作太累，心情不好，这时一次旅游可以分散注意力，改变心情。如果纯粹是为了旅游而旅游，那么这能得到什么？只不过是去别的地方消费而已。在国内出去旅行看到最多的还是人。</p>
+<p><img src="https://hopefully-img.yuedun.wang/20140226160556_88099.jpg" alt="旅行的意义"></p>
+<p>我开始怀疑那些年轻人该出去旅游的话是出自何人之口？是年轻人本身吗？你凭什么说年轻时候该出去旅行而不是踏实的工作学习，多读几本书！你确定旅行能长见识而不会影响工作学习？又不是什么作家诗人画家的需要出去找灵感，如果是靠旅行来增加工作激情，那么只能说你还不适合工作或者这份工作不适合你。是老一辈人说的？那他有没有说他自己因为旅行获得什么益处，可能是他后悔年轻时没有旅行，那么你的父母爷爷辈的有没有经常教导你说:年轻人不要光埋头工作，要经常出去玩玩，到处走走，增长点见识，免得老了和我一样后悔。那么话说回来，为什么是年轻的时候该出去旅行呢？有这么几种解释:年轻的时候有时间，没有家庭负担，增加阅历。说的好有道理，谁能不服，所以就有很多人都这么说这么做了。那么我想问，你旅行的次数和回家看父母的次数哪个多，一年全国各地，甚至满世界的跑，有没有回家看过？你说年轻时没有家庭负担，有没有想过还有父母呢，怎么不带他们也去玩，他们年轻时可能为了你而没时间去玩，现在你有时间金钱去玩怎么不带上他们！</p>
+<p><img src="https://hopefully-img.yuedun.wang/119867884632a96298o.jpg" alt="旅行的意义"></p>
+<p>我倒是为了写这篇文章搜索了下关于旅行的内容，鼓励出去玩的大多是旅行社，旅游网站发的，个人发的却又没说旅行能获得多少好处，他也不反对旅行，让你自己体会去，当你体会了以后别人问的时候是不是也用同样的话去回答？这样旅行的结果是多了谈资，晒照片去了哪哪哪，吃了什么美食，一大把各地门票，出国签证，还有账单。旅游真有那么多好处你倒是这个总结让大家也学习学习，不要只让我自己体会。</p>
+<p><img src="https://hopefully-img.yuedun.wang/1_1920x1200.jpg" alt="旅行的意义"></p>
+<p>旅游有时候确实可以改变一些事，只不过很多人被网络上的话给洗脑了，盲目跟风。读万卷书，行万里路，没有读万卷书，只行万里路一样是无知。世界那么大，宇宙那么浩瀚，人生只不多短短的几十年怎么可能了解全部，想要自己人生有意义最好的办法应该是让今天比昨天更好。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -464,12 +475,12 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-29T02:48:08Z">2015-05-29 02:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-29T02:48:08Z">2015.05.29 02:48</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		
+		<p><img src="https://hopefully-img.yuedun.wang/%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84%E5%BF%83%E7%81%B5%E9%B8%A1%E6%B1%A4.JPG" alt="朋友圈微商语录"></p>
 	</div>
 </article>
 
@@ -489,7 +500,7 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -505,13 +516,12 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -549,99 +559,99 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -669,13 +679,14 @@ type ResObj struct { Code int Data map[string]string } //或 //type ResObj struc
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>

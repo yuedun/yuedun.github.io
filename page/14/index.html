@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zh-cn">
 <head>
-	<meta name="generator" content="Hugo 0.106.0">
+	<meta name="generator" content="Hugo 0.148.2">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,90 +9,57 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 		
-		<meta property="og:title" content="月盾的博客" />
-<meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yuedun.wang/" />
+		<meta property="og:url" content="https://www.yuedun.wang/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="月盾的博客">
+  <meta property="og:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
 
+		
+  <meta itemprop="name" content="月盾的博客">
+  <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
+  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="月盾的博客">
+  <meta name="twitter:description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
-		<meta itemprop="name" content="月盾的博客">
-<meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
 
 	<link rel="stylesheet" href="/css/style.css">
 		<link rel="stylesheet" href="/css/custom.css">
 		<link rel="alternate" type="application/rss+xml" href="/index.xml" title="月盾的博客">
 
-	<link rel="shortcut icon" href="https://www.yuedun.wang/favicon.ico">
+	<link rel="shortcut icon" href="/favicon.ico">
 
 	
 		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-9KRMQRCRDQ');
-</script>
-
-
-<script src="/js/av-min.js"></script>
-<script>
-  
-  
-  const appId = "6d7LcvXU1mrrM8h2P6QszhWN-gzGzoHsz";
-  const appKey = "O1FUquffQDSOPso3gC4XkqbG";
-  const serverURL = "https://api.yuedun.wang";
-  AV.init({ appId, appKey, serverURL });
-  function updateCollect() {
-    const collect = new AV.Query('Collect');
-    const url = location.pathname;
-    collect.select(['url', 'pv'])
-    collect.equalTo('url', url);
-    collect.first().then((col) => {
-      if (!col) {
-        
-        const Collect = AV.Object.extend('Collect');
-        
-        const collect = new Collect();
-        
-        const title = document.title;
-        collect.set('title', title);
-        collect.set('url', url);
-        collect.set('pv', 1);
-        collect.save()
-      } else {
-        col.increment('pv', 1)
-        col.save();
-        
-        try {
-          const context = document.querySelector('.post__meta.meta');
-          const pv = document.createElement('div');
-          pv.setAttribute('class', 'meta__item-author meta__item');
-          const span = document.createElement('span');
-          span.setAttribute('class', 'meta__text');
-          span.innerText = "浏览（" + col.get('pv') + "）";
-          pv.appendChild(span)
-          context.appendChild(pv)
-        } catch (error) {
-          console.error(error);
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
         }
-      }
-    });
-  }
-
-  updateCollect()
-</script>
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
 </head>
 <body class="body">
 	<header class="header">
 	
 	<div class="logo">
 		<div class="container">
-			<a class="logo__link" href="/" title="月盾" rel="home">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
 				<div class="logo__item logo__text">
-						<div class="logo__title">月盾</div>
-						<div class="logo__tagline">分享Go，nodejs，开发工具以及生活感悟</div>
+						<div class="logo__title">月盾的博客</div>
+						
 					</div>
 			</a>
 		</div>
@@ -150,21 +117,35 @@
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-19T08:02:30Z">2017-05-19 08:02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-19T08:02:30Z">2017.05.19 08:02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="category">工具使用</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		RockMongo是一个PHP5写的MongoDB管理工具。
-鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。
-查询操作 点击某个collection后的默认画面：
-查询界面很简单，关键是怎么写查询语句？
-点击文本可以查看所有数据字段，查询title为“测试”文档：
-array( &#39;title&#39; =&gt; &#39;测试&#39; ) 模糊查询：
-array( &#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;) ) 字段名要加引号，中间使用=&gt;而不是使用:分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据
-修改操作 动作中选择“modify”
-再查询一下
-基本操作就是这样，删除操作不用说也应该能知道怎么做了。
+		<blockquote>
+<p>RockMongo是一个PHP5写的MongoDB管理工具。</p></blockquote>
+<p>鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。</p>
+<h3 id="查询操作">查询操作</h3>
+<p>点击某个collection后的默认画面：</p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo1.png" alt="rockmongo"></p>
+<p>查询界面很简单，关键是怎么写查询语句？</p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo2.png" alt="rockmongo"></p>
+<p>点击文本可以查看所有数据字段，查询title为“测试”文档：</p>
+<pre tabindex="0"><code>array(
+	&#39;title&#39; =&gt; &#39;测试&#39;
+)
+</code></pre><p>模糊查询：</p>
+<pre tabindex="0"><code>array(
+	&#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;)
+)
+</code></pre><p>字段名要加引号，中间使用<code>=&gt;</code>而不是使用<code>:</code>分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据</p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo3.png" alt="rockmongo"></p>
+<h3 id="修改操作">修改操作</h3>
+<p>动作中选择“modify”</p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo4.png" alt="rockmongo"></p>
+<p>再查询一下</p>
+<p><img src="https://hopefully-img.yuedun.wang/rockmongo5.png" alt="rockmongo"></p>
+<p>基本操作就是这样，删除操作不用说也应该能知道怎么做了。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -178,17 +159,73 @@ array( &#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;) ) 字段名要�
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-17T14:31:08Z">2017-05-17 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-17T14:31:08Z">2017.05.17 14:31</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理if else流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。 下面用了一个不复杂的例子来说明：
-假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。 如果是VIP用户，直接进行第2，3步操作。 如果普通用户是黑名单用户不给开户办卡。
-var fs = require(&#34;fs&#34;); function queue(){ return new Promise((resolve, reject)=&gt;{ fs.readFile(&#34;../queue.txt&#34;, &#34;utf8&#34;, (err, data)=&gt;{ if (err) reject(err); console.log(data.toString()); resolve(data.toString()); }) }) } function account(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../account.txt&#39;, id+&#39;一个新账户&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;办卡成功!&#39;); resolve(); }); }) } function money(id){ return new Promise((resolve, reject)=&gt;{ fs.writeFile(&#39;../money.txt&#39;, id+&#39;存了10万&#39;, (err) =&gt; { if (err) reject(err); console.log(&#39;存款成功!&#39;); resolve(); }); }) } //入口 function enter(id) { Promise.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/591c5eac35b6751981e4681e/">阅读全文…</a>
+		<p>Promise虽然解决了原生回调的金字塔写法，但是并不能很好的处理<code>if else</code>流程，相比起Java等同步方式编写还是有点难度，不过还是有方法写出优雅的代码。
+下面用了一个不复杂的例子来说明：</p>
+<blockquote>
+<p>假设一个人去银行开户，存钱，如果这个人是普通用户，需要先1.排队等候，2.开户，3.存钱。
+如果是VIP用户，直接进行第2，3步操作。
+如果普通用户是黑名单用户不给开户办卡。</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;fs&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">queue</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>)=&gt;{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFile</span>(<span style="color:#e6db74">&#34;../queue.txt&#34;</span>, <span style="color:#e6db74">&#34;utf8&#34;</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>)=&gt;{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>		})
+</span></span><span style="display:flex;"><span>	})
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">account</span>(<span style="color:#a6e22e">id</span>){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>)=&gt;{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFile</span>(<span style="color:#e6db74">&#39;../account.txt&#39;</span>, <span style="color:#a6e22e">id</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;一个新账户&#39;</span>, (<span style="color:#a6e22e">err</span>) =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;办卡成功!&#39;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">resolve</span>();
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>	})
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">money</span>(<span style="color:#a6e22e">id</span>){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>)=&gt;{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFile</span>(<span style="color:#e6db74">&#39;../money.txt&#39;</span>, <span style="color:#a6e22e">id</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;存了10万&#39;</span>, (<span style="color:#a6e22e">err</span>) =&gt; {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;存款成功!&#39;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">resolve</span>();
+</span></span><span style="display:flex;"><span>		});
+</span></span><span style="display:flex;"><span>	})
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//入口
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">enter</span>(<span style="color:#a6e22e">id</span>) {
+</span></span><span style="display:flex;"><span>	Promise.<span style="color:#a6e22e">resolve</span>()
+</span></span><span style="display:flex;"><span>	.<span style="color:#a6e22e">then</span>(()=&gt;{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">id</span><span style="color:#f92672">==</span><span style="color:#e6db74">&#34;common&#34;</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">queue</span>()
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">id</span> <span style="color:#f92672">==</span><span style="color:#e6db74">&#34;vip&#34;</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;我是VIP用户，不需要排队等待验证身份直接开户存钱&#34;</span>)
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">user</span>=&gt;{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">user</span> <span style="color:#f92672">==</span><span style="color:#e6db74">&#34;黑名单用户&#34;</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span> <span style="color:#e6db74">&#34;禁止开户&#34;</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">user</span>;
+</span></span><span style="display:flex;"><span>	}).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">user</span>=&gt;{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">account</span>(<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>	}).<span style="color:#a6e22e">then</span>(()=&gt;{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">money</span>(<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>	}).<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">err</span>=&gt;{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;回家&#34;</span>)
+</span></span><span style="display:flex;"><span>	})
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// enter(&#34;vip&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">enter</span>(<span style="color:#e6db74">&#34;common&#34;</span>);
+</span></span></code></pre></div><p>不通的用户会有不同的判断，走不同的流程，但是各类用户又有相同的操作，所以有if条件判断的逻辑单独放到一个then中处理，返回处理结果，如果后续then不需要处理结果也可以不返回，当做没有这个then。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -202,20 +239,56 @@ var fs = require(&#34;fs&#34;); function queue(){ return new Promise((resolve, r
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T15:01:39Z">2017-05-05 15:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-05T15:01:39Z">2017.05.05 15:01</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写） 个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。
-function a(args: number ): number { return args; } console.log(a(123)); 又有另外一个要求，参数为string类型，并且返回string
-function b(args: string ): string { return args; } console.log(b(&#34;sdg&#34;)); 如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：
-function c(args: any ): any { return args; } console.log(c(&#34;sdg&#34;)); 这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的c函数稍作修改：
-function c(args: any ): any { let n = args + &#34;变成了字符串&#34;; //甚至更多的处理 return n; } console.log(c(1)); c函数参数是数字，返回的可能是其他类型。 知道前面几种写法的不足再对比一下泛型的写法：
-function d&lt;A&gt;(args: A ): A { let n = args + &#34;变成了字符串&#34;; //甚至更多的处理 return n; } console.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/590c93d3266e3f1c8fd4aa83/">阅读全文…</a>
+		<p>typescript（以下简称ts）中泛型如何使用？（以下代码为ts书写）
+个人认为开发语言中一些高级特性如果在不太理解的情况下不使用也无妨，无非是代码写的多一点，烂一点。但是我想作为程序猿大家还是会有所追求的。就以泛型来说，不使用也能正常开发，只不过在个别情况下需要写几份看起来相同的代码。比如在不使用泛型的情况下要求函数参数为number类型，并且返回number。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">a</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span>(<span style="color:#ae81ff">123</span>));
+</span></span></code></pre></div><p>又有另外一个要求，参数为string类型，并且返回string</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">b</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">b</span>(<span style="color:#e6db74">&#34;sdg&#34;</span>));
+</span></span></code></pre></div><p>如果还有其他类似的要求，就要不停的写类似格式的代码，那么改进一下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">args</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;sdg&#34;</span>));
+</span></span></code></pre></div><p>这样是可以接受任何类型参数并且返回，但缺点是可以知道能传入任何类型而不知道返回的具体类型是什么，只知道是any类型。将上面的<code>c</code>函数稍作修改：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">any</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//甚至更多的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>));
+</span></span></code></pre></div><p><code>c</code>函数参数是数字，返回的可能是其他类型。
+知道前面几种写法的不足再对比一下泛型的写法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">args</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">A</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">A</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//甚至更多的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">1</span>));
+</span></span></code></pre></div><p><img src="https://hopefully-img.yuedun.wang/FhO7R54TnMePUhwcnry3fo8AJz7_" alt="FhO7R54TnMePUhwcnry3fo8AJz7_">
+<code>d</code>函数要求参数是A类型，并且返回A类型，但是实际返回的类型可能由number类型变成了string类型，所以提示错误。其中<code>&lt;&gt;</code>中可以是任意大小写的英文，中文也行，但数字不行，比如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span>&lt;<span style="color:#f92672">Az</span>&gt;(<span style="color:#a6e22e">args</span>: <span style="color:#66d9ef">Az</span> )<span style="color:#f92672">:</span> <span style="color:#a6e22e">Az</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">args</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;变成了字符串&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//甚至更多的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">n</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">1</span>));
+</span></span></code></pre></div><p><code>&lt;&gt;</code>中的值是指代某种基础类型或任何自定义类型，它只是一种形式。也可以有下面的形式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">d</span>&lt;<span style="color:#f92672">T</span>, <span style="color:#a6e22e">U</span>&gt;(<span style="color:#a6e22e">args</span>: <span style="color:#66d9ef">T</span>,<span style="color:#a6e22e">ar</span>: <span style="color:#66d9ef">U</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">U</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ar</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;aaaa&#34;</span>))
+</span></span></code></pre></div><p>其实就是提供一种形式供后面代码使用，没有提供就不能使用。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -229,12 +302,15 @@ function d&lt;A&gt;(args: A ): A { let n = args + &#34;变成了字符串&#34;; 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-20T14:14:02Z">2017-04-20 14:14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-04-20T14:14:02Z">2017.04.20 14:14</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: &#39;skipTo&#39;, which lacks return-type annotation, implicitly has an &#39;any&#39; return type. 缺少返回类型的注释，隐含地具有&rsquo;any&rsquo;返回类型。 tsconfig.json配置文件中noImplicitAny设置为false,该选项的意思是：在表达式和声明上有隐含的&rsquo;any&rsquo;类型时报错。
+		<pre tabindex="0"><code>node_modules/nodemailer/node_modules/socks/node_modules/smart-buffer/typings/index.d.ts(351,5): error TS7010: &#39;skipTo&#39;, which lacks return-type annotation, implicitly has an &#39;any&#39; return type.
+</code></pre><p><img src="https://hopefully-img.yuedun.wang/FswDvibb9SAli1FUGUM_aGgIuEAq" alt="FswDvibb9SAli1FUGUM_aGgIuEAq"></p>
+<p>缺少返回类型的注释，隐含地具有&rsquo;any&rsquo;返回类型。
+tsconfig.json配置文件中<code>noImplicitAny</code>设置为false,该选项的意思是：在表达式和声明上有隐含的&rsquo;any&rsquo;类型时报错。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -248,42 +324,48 @@ function d&lt;A&gt;(args: A ): A { let n = args + &#34;变成了字符串&#34;; 
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-01-11T03:06:15Z">2017-01-11 03:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-01-11T03:06:15Z">2017.01.11 03:06</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		很多段子手都曾经发过《手机丢后必做的N件事》这类教程，比如：致电运营商挂失手机号；致电银行冻结手机网银；手机解绑支付宝；微信冻结账号；修改微博、微信、QQ等密码；找手机运营商补手机卡；等等等等，实际上，这类教程所要求的事情都不是必要的，真正要做到丢失后手机安全，只需要事前做两件事情：设置指纹密码和SIM卡密码。
-以iPhone为例，一般都会设置“查找我的iPhone”功能，由于iPhone有GPS定位功能，小偷如果偷到手机不关机的话，会被GPS定位追踪，因此绝大多数小偷拿到手机后做的第一件事情往往是关机，这正好让指纹锁屏密码和SIM卡PIN码发挥最大作用：如果重新开机，必须要输入手机密码才能开机，同时，SIM卡处于锁定状态，需要输入PIN码才能正常通信，输错3次PIN码后就只能用PUK码来解锁，把SIM卡拔出来查到别的手机上，也需要输入SIM卡PIN码才能通讯，也就是说，不知道PIN码，这个SIM卡就无法接收短信和拨打电话，因此小偷就无法通过这个SIM卡来盗取用户的网银、支付宝、微信上的财产，甚至，小偷连这个手机的手机号码都无法获得，更不用说盗取微信和QQ密码了。
-当然，丢失iPhone手机的用户还需要补SIM卡和设置远程抹除iPhone内容最安全，千万不要关闭“查找我的iPhone”功能，忽略那些以苹果名义发来的钓鱼邮件和短信。
-以下是iPhone指纹解锁功能设置方法和iPhone的修改SIM卡密码的方法：
-指纹密码 指纹天生就是一种个人认证工具，虽然人人都有指纹，但各不相同，据说，现在还没有发现两个指纹完全相同的人。随着年龄的增长，指纹的纹样不会发生变化。因此，使用指纹做为身份验证是非常理想的。
-iPhone指纹解锁功能设置
-iPhone设置指纹密码的具体方法是：
-第一步：依次进入iPhone的“设置”，然后再找到，并点击进入“Touch ID与密码”设置。
-第二步：接下来需要输入一次四位数字的iPhone6手机密码，这个密码就是手机解锁密码，输入密码后，就可以进入iPhone指纹识别设置界面了。然后我们就可以开始录入指纹了，点击下方的“添加指纹”开始添加。
-第三步：接下来我们按照提示开始录入指纹，请将需要设置指纹的手指放置在iPhone屏幕底部的指纹识别Home键上，按照提示放置上去，再移开手指，反复几次，等待指纹录入完成。
-第四步：以上操作完成就，就可以成功完成一个手指的指纹录入，在返回的指纹设置中，已经可以看到有一个“指纹1”的记录了，如果还想录入多个指纹信息，继续点击下方的“添加指纹”，按照上面的步骤完成其他指纹信息录入即可。
-iPhone最多支持设置5个指纹，可以同时录入自己的和自己亲人的，另外录入成功的指纹1和指纹2名称，还可以自行修改名称。指纹信息录入成功后，在iTunes Stor与App Store安装应用开启指纹识别即可。
-SIM卡密码
-SIM卡是（Subscriber Identity Module 客户识别模块）即用户身份识别卡，是手机的一张个人资料卡。SIM卡通常用来存储用户的电话号码、安全数据、通讯费用以及能让运营商判定用户是否是其公司客户的数据。当用户更换新的手机，可以直接插入旧手机原有的SIM卡，即可继续享受之前的各项手机服务。
-SIM卡的PIN码（Personal Identification Number 个人识别码）主要用于保护SIM卡的安全性和隐私性，当手机重启、或者插拔SIM卡后，需要输入最正确的SIM卡PIN码才能使用SIM卡的通讯功能（拨打电话、收发短信等操作），当输入三次失败后，SIM卡则会被锁定，而需要输入PUK码（Personal Unlock Key 个人解锁码）进行解锁，PUK码共有10次输入机会，输错10次后，SIM卡会自动启动自毁程序，使SIM卡失效。
-修改设置SIM卡PIN码的步骤是：设置 - 电话 - SIM卡PIN码，将其启用。修改PIN码要先输入原有PIN码，SIM卡的默认PIN码为0000或1234，如果都不对的话，可以输错3次，使用PUK码强制修改PIN码。
-修改SIM卡PIN码
-修改SIM卡PIN码
-PUK码由8位数字组成，这是用户无法更改的。一些SIM卡的PUK码是用户在购卡时随卡附带的，通常在卡套背后附有PUK码，也可以登录运营商的网上营业厅，在自助服务里通常会提供查询PUK码的功能。实在找不到的话，也可以致电SIM卡所属运营商的服务热线，客服人员也可以提供查询PUK码的服务。
-SIM卡的PIN码有效地防止了盗用SIM卡的情况发生，使用户的正常通信得到了可靠保障。设置了PIN码之后，当用户手机丢失后，别人无法通过取出SIM卡插入另一部手机，来进行原SIM卡的通讯功能（拨打电话、收发短信等）。因此，建议所有手机用户都立刻启用SIM卡的PIN码。
-iPhone被偷
-iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和SIM卡PIN码应该同时启用，缺一不可。如果手机的SIM卡设置了PIN码，那么这个SIM卡插入另一个手机就需要PIN码解锁，重启手机也要PIN码解锁，不解锁无法进行通讯，这从一定程度上保证了手机通讯的安全性，SIM卡默认的PIN码通常是1234，建议手机用户都修改一下这个PIN码。锁屏密码不要使用简单密码，使用数字字母组合长密码，有条件的话建议选择支持指纹密码的iPhone，其使用体验远远优于普通的密码解锁。
-2、开启“查找我的iPhone”功能。iCloud设置强密码。iCloud开通二次验证。
-3、支付宝等应用启用指纹密码。
-4、发现手机丢失后，立即打电话给移动运营商，挂失SIM卡。登录iCloud的“查找我的iPhone”功能，启用“丢失模式”。
-5、登录appleid网站，将该手机从“受信任设备”中移除。
-6、忽略那些以苹果名义发来的钓鱼邮件和短信。
-7、如果手机确认无法找回，在“查找我的iPhone”里，使用“抹掉iPhone”功能。
-8、申请一个新的SIM卡并启用。
-总结：iPhone丢失后应该做什么？丢失前：设置指纹锁屏和SIM卡PIN码；开启“查找我的iPhone”功能。iCloud设置强密码。丢失后：打电话给移动运营商，挂失SIM卡。登录iCloud，启用“丢失模式”（无法找回的话就用“抹掉iPhone”）。电话冻结绑定的支付宝和网银。申请一个新的SIM卡并启用。
-作者：月光 (williamlong) | 来自：月光博客
+		<p>很多段子手都曾经发过《手机丢后必做的N件事》这类教程，比如：致电运营商挂失手机号；致电银行冻结手机网银；手机解绑支付宝；微信冻结账号；修改微博、微信、QQ等密码；找手机运营商补手机卡；等等等等，实际上，这类教程所要求的事情都不是必要的，真正要做到丢失后手机安全，只需要事前做两件事情：设置指纹密码和SIM卡密码。</p>
+<p>以iPhone为例，一般都会设置“查找我的iPhone”功能，由于iPhone有GPS定位功能，小偷如果偷到手机不关机的话，会被GPS定位追踪，因此绝大多数小偷拿到手机后做的第一件事情往往是关机，这正好让指纹锁屏密码和SIM卡PIN码发挥最大作用：如果重新开机，必须要输入手机密码才能开机，同时，SIM卡处于锁定状态，需要输入PIN码才能正常通信，输错3次PIN码后就只能用PUK码来解锁，把SIM卡拔出来查到别的手机上，也需要输入SIM卡PIN码才能通讯，也就是说，不知道PIN码，这个SIM卡就无法接收短信和拨打电话，因此小偷就无法通过这个SIM卡来盗取用户的网银、支付宝、微信上的财产，甚至，小偷连这个手机的手机号码都无法获得，更不用说盗取微信和QQ密码了。</p>
+<p>当然，丢失iPhone手机的用户还需要补SIM卡和设置远程抹除iPhone内容最安全，千万不要关闭“查找我的iPhone”功能，忽略那些以苹果名义发来的钓鱼邮件和短信。</p>
+<p>以下是iPhone指纹解锁功能设置方法和iPhone的修改SIM卡密码的方法：</p>
+<h3 id="指纹密码">指纹密码</h3>
+<p>指纹天生就是一种个人认证工具，虽然人人都有指纹，但各不相同，据说，现在还没有发现两个指纹完全相同的人。随着年龄的增长，指纹的纹样不会发生变化。因此，使用指纹做为身份验证是非常理想的。</p>
+<p><img src="https://hopefully-img.yuedun.wang/FnASLtfbNS8hUg2Vl1_qOnGtx7R3" alt="FnASLtfbNS8hUg2Vl1_qOnGtx7R3"></p>
+<p>iPhone指纹解锁功能设置</p>
+<p>iPhone设置指纹密码的具体方法是：</p>
+<p>第一步：依次进入iPhone的“设置”，然后再找到，并点击进入“Touch ID与密码”设置。</p>
+<p>第二步：接下来需要输入一次四位数字的iPhone6手机密码，这个密码就是手机解锁密码，输入密码后，就可以进入iPhone指纹识别设置界面了。然后我们就可以开始录入指纹了，点击下方的“添加指纹”开始添加。</p>
+<p>第三步：接下来我们按照提示开始录入指纹，请将需要设置指纹的手指放置在iPhone屏幕底部的指纹识别Home键上，按照提示放置上去，再移开手指，反复几次，等待指纹录入完成。</p>
+<p>第四步：以上操作完成就，就可以成功完成一个手指的指纹录入，在返回的指纹设置中，已经可以看到有一个“指纹1”的记录了，如果还想录入多个指纹信息，继续点击下方的“添加指纹”，按照上面的步骤完成其他指纹信息录入即可。</p>
+<p>iPhone最多支持设置5个指纹，可以同时录入自己的和自己亲人的，另外录入成功的指纹1和指纹2名称，还可以自行修改名称。指纹信息录入成功后，在iTunes Stor与App Store安装应用开启指纹识别即可。</p>
+<p>SIM卡密码</p>
+<p>SIM卡是（Subscriber Identity Module 客户识别模块）即用户身份识别卡，是手机的一张个人资料卡。SIM卡通常用来存储用户的电话号码、安全数据、通讯费用以及能让运营商判定用户是否是其公司客户的数据。当用户更换新的手机，可以直接插入旧手机原有的SIM卡，即可继续享受之前的各项手机服务。</p>
+<p>SIM卡的PIN码（Personal Identification Number 个人识别码）主要用于保护SIM卡的安全性和隐私性，当手机重启、或者插拔SIM卡后，需要输入最正确的SIM卡PIN码才能使用SIM卡的通讯功能（拨打电话、收发短信等操作），当输入三次失败后，SIM卡则会被锁定，而需要输入PUK码（Personal Unlock Key 个人解锁码）进行解锁，PUK码共有10次输入机会，输错10次后，SIM卡会自动启动自毁程序，使SIM卡失效。</p>
+<p>修改设置SIM卡PIN码的步骤是：设置 - 电话 - SIM卡PIN码，将其启用。修改PIN码要先输入原有PIN码，SIM卡的默认PIN码为0000或1234，如果都不对的话，可以输错3次，使用PUK码强制修改PIN码。</p>
+<p><img src="https://hopefully-img.yuedun.wang/Fu-b7LZzy2dWpNEJU1btye-Xehqj" alt="Fu-b7LZzy2dWpNEJU1btye-Xehqj"></p>
+<p>修改SIM卡PIN码</p>
+<p><img src="https://hopefully-img.yuedun.wang/FtLIcdX2Zvb59fvDD9Jt8q4pTM99" alt="FtLIcdX2Zvb59fvDD9Jt8q4pTM99"></p>
+<p>修改SIM卡PIN码</p>
+<p>PUK码由8位数字组成，这是用户无法更改的。一些SIM卡的PUK码是用户在购卡时随卡附带的，通常在卡套背后附有PUK码，也可以登录运营商的网上营业厅，在自助服务里通常会提供查询PUK码的功能。实在找不到的话，也可以致电SIM卡所属运营商的服务热线，客服人员也可以提供查询PUK码的服务。</p>
+<p>SIM卡的PIN码有效地防止了盗用SIM卡的情况发生，使用户的正常通信得到了可靠保障。设置了PIN码之后，当用户手机丢失后，别人无法通过取出SIM卡插入另一部手机，来进行原SIM卡的通讯功能（拨打电话、收发短信等）。因此，建议所有手机用户都立刻启用SIM卡的PIN码。</p>
+<p><img src="https://hopefully-img.yuedun.wang/Fp7LoSQoWDETlTBB3kFgLHg2VhV5" alt="Fp7LoSQoWDETlTBB3kFgLHg2VhV5"></p>
+<p>iPhone被偷</p>
+<h3 id="iphone丢失前后的处理流程">iPhone丢失前后的处理流程</h3>
+<p>1、手机的指纹锁屏（密码锁屏）和SIM卡PIN码应该同时启用，缺一不可。如果手机的SIM卡设置了PIN码，那么这个SIM卡插入另一个手机就需要PIN码解锁，重启手机也要PIN码解锁，不解锁无法进行通讯，这从一定程度上保证了手机通讯的安全性，SIM卡默认的PIN码通常是1234，建议手机用户都修改一下这个PIN码。锁屏密码不要使用简单密码，使用数字字母组合长密码，有条件的话建议选择支持指纹密码的iPhone，其使用体验远远优于普通的密码解锁。</p>
+<p>2、开启“查找我的iPhone”功能。iCloud设置强密码。iCloud开通二次验证。</p>
+<p>3、支付宝等应用启用指纹密码。</p>
+<p>4、发现手机丢失后，立即打电话给移动运营商，挂失SIM卡。登录iCloud的“查找我的iPhone”功能，启用“丢失模式”。</p>
+<p>5、登录appleid网站，将该手机从“受信任设备”中移除。</p>
+<p>6、忽略那些以苹果名义发来的钓鱼邮件和短信。</p>
+<p>7、如果手机确认无法找回，在“查找我的iPhone”里，使用“抹掉iPhone”功能。</p>
+<p>8、申请一个新的SIM卡并启用。</p>
+<p>总结：iPhone丢失后应该做什么？丢失前：设置指纹锁屏和SIM卡PIN码；开启“查找我的iPhone”功能。iCloud设置强密码。丢失后：打电话给移动运营商，挂失SIM卡。登录iCloud，启用“丢失模式”（无法找回的话就用“抹掉iPhone”）。电话冻结绑定的支付宝和网银。申请一个新的SIM卡并启用。</p>
+<p>作者：月光 (williamlong) | 来自：月光博客</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -297,20 +379,85 @@ iPhone丢失前后的处理流程 1、手机的指纹锁屏（密码锁屏）和
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-10T09:30:27Z">2016-11-10 09:30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-10T09:30:27Z">2016.11.10 09:30</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行tsc会在ts后缀文件同级目录下生成js后缀的文件， 这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。 所以还是单独有个文件夹存放生成的js文件，这时就要配置tsconfig.json文件了。tsconfig.json文件可以通过tsc --init命令生成，自动生成内容比较简单，是可以直接使用的。 以下的配置是经过一些特别需求配置的，可以直接复制一下内容到tsconfig.json文件中，然后根据自己的需求加减内容。 其余参数可以参考:http://www.tslang.cn/docs/handbook/compiler-options.html
-typescript编译配置
-{ &#34;compilerOptions&#34;: { &#34;module&#34;: &#34;commonjs&#34;,//模块化规范 &#34;target&#34;: &#34;es5&#34;,//生成js &#34;noImplicitAny&#34;: true,//在表达式和声明上有隐含的&#39;any&#39;类型时报错 &#34;noImplicitReturns&#34;: true,//函数没有返回值提示 &#34;noFallthroughCasesInSwitch&#34;: true,//switch没有break提示 &#34;removeComments&#34;: true,//输出文件移除注释 &#34;noEmitOnError&#34;: true,//ts文件错误时不生成js &#34;rootDir&#34;: &#34;./&#34;,//需要编译的根目录 &#34;outDir&#34;: &#34;./build&#34;,//编译文件输出目录 &#34;sourceMap&#34;: ture//是否生成.map文件，用于ts debug调试 }, &#34;include&#34;: [ &#34;*/**/*.ts&#34; ], &#34;exclude&#34;: [ //默认排除了node_modules ] } 为了能抛开在命令行中执行tsc命令，能直接通过vscode编辑器来编译，可以使用ctrl+shift+B快捷方式来编译ts文件。第一次使用会有提示
-选择TypeScript - Watch-Mode，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：
-vscode编译typescript配置
-{ // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format &#34;version&#34;: &#34;0.1.0&#34;, &#34;command&#34;: &#34;tsc&#34;, &#34;isShellCommand&#34;: true, &#34;args&#34;: [&#34;-w&#34;, &#34;-p&#34;, &#34;.&#34;], &#34;showOutput&#34;: &#34;silent&#34;, &#34;isWatching&#34;: true, &#34;problemMatcher&#34;: &#34;$tsc-watch&#34; } 这样就不用每次编译了，只要文件有修改就会自动编译
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/58243e338fa26c04fd124ee6/">阅读全文…</a>
+		<p>完成了最基本的项目框架以后就是配置编辑器和编译选项，在没有特别配置的情况下，根目录下执行<code>tsc</code>会在ts后缀文件同级目录下生成js后缀的文件，
+这样也没什么不可以，但是在编辑器列表中看着有点混乱，生成的js文件是不建议直接修改的，就算修改了下次修改ts文件编译后也会重置文件内容。
+所以还是单独有个文件夹存放生成的js文件，这时就要配置<code>tsconfig.json</code>文件了。<code>tsconfig.json</code>文件可以通过<code>tsc --init</code>命令生成，自动生成内容比较简单，是可以直接使用的。
+以下的配置是经过一些特别需求配置的，可以直接复制一下内容到<code>tsconfig.json</code>文件中，然后根据自己的需求加减内容。
+其余参数可以参考:<a href="http://www.tslang.cn/docs/handbook/compiler-options.html">http://www.tslang.cn/docs/handbook/compiler-options.html</a></p>
+<p><strong>typescript编译配置</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;compilerOptions&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;module&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;commonjs&#34;</span>,<span style="color:#75715e">//模块化规范
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;target&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;es5&#34;</span>,<span style="color:#75715e">//生成js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;noImplicitAny&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,<span style="color:#75715e">//在表达式和声明上有隐含的&#39;any&#39;类型时报错
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;noImplicitReturns&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,<span style="color:#75715e">//函数没有返回值提示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;noFallthroughCasesInSwitch&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,<span style="color:#75715e">//switch没有break提示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;removeComments&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,<span style="color:#75715e">//输出文件移除注释
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;noEmitOnError&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,<span style="color:#75715e">//ts文件错误时不生成js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;rootDir&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./&#34;</span>,<span style="color:#75715e">//需要编译的根目录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;outDir&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./build&#34;</span>,<span style="color:#75715e">//编译文件输出目录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#e6db74">&#34;sourceMap&#34;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ture</span><span style="color:#75715e">//是否生成.map文件，用于ts debug调试
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;include&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;*/**/*.ts&#34;</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;exclude&#34;</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//默认排除了node_modules
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ]    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>为了能抛开在命令行中执行<code>tsc</code>命令，能直接通过vscode编辑器来编译，可以使用<code>ctrl+shift+B</code>快捷方式来编译ts文件。第一次使用会有提示</p>
+<p><img src="https://hopefully-img.yuedun.wang/FrQK9PP8WHyeCNa6kM0Ie64IiN9Q" alt="FrQK9PP8WHyeCNa6kM0Ie64IiN9Q"></p>
+<p>选择<code>TypeScript - Watch-Mode</code>，会在项目根目录下创建.vscode文件夹和tasks.json文件，内容如下：</p>
+<p><strong>vscode编译typescript配置</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// See https://go.microsoft.com/fwlink/?LinkId=733558
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// for the documentation about the tasks.json format
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;version&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;0.1.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;command&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;tsc&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;isShellCommand&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;args&#34;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;-w&#34;</span>, <span style="color:#e6db74">&#34;-p&#34;</span>, <span style="color:#e6db74">&#34;.&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;showOutput&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;silent&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;isWatching&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;problemMatcher&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;$tsc-watch&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这样就不用每次编译了，只要文件有修改就会自动编译</p>
+<p><strong>编译输出配置</strong></p>
+<p>为了将js文件输出到固定的目录，tsconfig.json中配置了<code>&quot;outDir&quot;: &quot;./build&quot;</code>选项,会将ts文件编译到build目录下，得到了下面的文件目录结构：</p>
+<pre tabindex="0"><code>.
+├── app.ts
+├── bin
+│   └── www.ts
+├── build
+│   ├── app.js
+│   ├── app.js.map
+│   ├── bin
+│   ├── public
+│   ├── routes
+│   ├── utils
+│   └── views
+├── node_modules
+├── package.json
+├── README.md
+├── routes
+│   ├── index.ts
+│   ├── test.js
+│   └── users.ts
+├── test
+├── tsconfig.json
+├── typings
+│   ├── globals
+│   ├── index.d.ts
+│   └── modules
+├── typings.json
+└── utils
+    ├── cover.ts
+    └── route.ts
+</code></pre><p>build的目录下包含了public目录和views目录，这并不是编译生成的，因为最后执行的文件是js文件，为了与原来的express框架目录保持一致，手动将public和views等文件夹拷贝进去。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -324,15 +471,18 @@ vscode编译typescript配置
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T10:03:26Z">2016-11-05 10:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T10:03:26Z">2016.11.05 10:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		在遥远的未来，由于最后一次世界大战破坏了所有科学文明，曾经君临天下的贵族，凌驾于人类的统治者吸血鬼面临着原因不明的物种衰退，但是他们仍然威胁着人类的生存，猎杀吸血鬼的职业猎人便应运而生。其中人与吸血鬼贵族的混血儿由于兼备了吸血鬼和人类两方的优点，理所当然的成为了最理想的猎人。然而不幸的是，这些被称为“丹皮尔”的混血儿，无法过正常人的生活，就连吸血鬼也不欢迎他们。在这群孤独的人中有一位英俊的佼佼者，他就是吸血鬼猎人D。
-故事发生在西历12090年，埃尔邦家族的小姐夏洛特被吸血鬼贵族玛埃尔从家中绑架，于是埃尔邦老爷雇佣了远近闻名，连吸血鬼贵族也害怕的第一吸血鬼猎人D和另一组猎人玛克斯兄妹去救回女儿。
-外表高贵俊美，一身漆黑，骑着黑马的“D”，与玛克斯兄妹一路追踪驾马车逃走的吸血鬼。途中D和玛克斯兄妹为争夺奖金发生激斗，并且得知夏洛特并非被绑架，而是爱上了吸血鬼玛埃尔，但他们的爱不被接受，所以他们打算到没有人类和吸血鬼贵族的理想国度“夜之都”去过平静的生活。D受到贵族三杰“影子使者”、“千面人”和“狼人”的阻击，关键时刻D的“阳光症”发作，玛克斯兄妹中的雷拉及时伸出援手，他们约定两人中不管谁先死，另一个一定要到墓上献花。吸血鬼玛埃尔的目的地是让吸血鬼都闻风丧胆，被称为“喋血伯爵夫人”卡蜜拉的旧领地切迪城堡。卡蜜拉称自己理解他们，愿意帮助他们离开纷乱的世界前往理想的国度，并向他们展示了城堡内的飞船。
-一切都看似顺利，但玛埃尔和夏洛特没有想到卡蜜拉邀请他们来此只是一个险恶的阴谋，卡蜜拉为了复活需要夏洛特的鲜血。一番恶斗后，D彻底消灭了卡蜜拉，被吸血鬼洗礼的夏洛特则昏死在吸血鬼玛埃尔的怀中，等待新的生命。城堡在主人消失后开始崩溃，玛埃尔抱着夏洛特乘上飞船飞上蓝天，飞向他们梦想的地方。很多年过去了，在雷拉的葬礼上，她的小孙女看到远处的黑衣猎人，D遵守了和雷拉的约定。
+		<p><img src="https://hopefully-img.yuedun.wang/FhVgrAON10Nk97pm8lj1X-2Gt28n" alt="FhVgrAON10Nk97pm8lj1X-2Gt28n"></p>
+<p>在遥远的未来，由于最后一次世界大战破坏了所有科学文明，曾经君临天下的贵族，凌驾于人类的统治者吸血鬼面临着原因不明的物种衰退，但是他们仍然威胁着人类的生存，猎杀吸血鬼的职业猎人便应运而生。其中人与吸血鬼贵族的混血儿由于兼备了吸血鬼和人类两方的优点，理所当然的成为了最理想的猎人。然而不幸的是，这些被称为“丹皮尔”的混血儿，无法过正常人的生活，就连吸血鬼也不欢迎他们。在这群孤独的人中有一位英俊的佼佼者，他就是吸血鬼猎人D。</p>
+<p><img src="https://hopefully-img.yuedun.wang/FhtzqbmnV5wTdpyM85eMX6lDMfVw" alt="FhtzqbmnV5wTdpyM85eMX6lDMfVw"></p>
+<p>故事发生在西历12090年，埃尔邦家族的小姐夏洛特被吸血鬼贵族玛埃尔从家中绑架，于是埃尔邦老爷雇佣了远近闻名，连吸血鬼贵族也害怕的第一吸血鬼猎人D和另一组猎人玛克斯兄妹去救回女儿。</p>
+<p>外表高贵俊美，一身漆黑，骑着黑马的“D”，与玛克斯兄妹一路追踪驾马车逃走的吸血鬼。途中D和玛克斯兄妹为争夺奖金发生激斗，并且得知夏洛特并非被绑架，而是爱上了吸血鬼玛埃尔，但他们的爱不被接受，所以他们打算到没有人类和吸血鬼贵族的理想国度“夜之都”去过平静的生活。D受到贵族三杰“影子使者”、“千面人”和“狼人”的阻击，关键时刻D的“阳光症”发作，玛克斯兄妹中的雷拉及时伸出援手，他们约定两人中不管谁先死，另一个一定要到墓上献花。吸血鬼玛埃尔的目的地是让吸血鬼都闻风丧胆，被称为“喋血伯爵夫人”卡蜜拉的旧领地切迪城堡。卡蜜拉称自己理解他们，愿意帮助他们离开纷乱的世界前往理想的国度，并向他们展示了城堡内的飞船。</p>
+<p><img src="https://hopefully-img.yuedun.wang/Fv8PiQ_0oQ3e49g843uiXhZBA2tL" alt="Fv8PiQ_0oQ3e49g843uiXhZBA2tL"></p>
+<p>一切都看似顺利，但玛埃尔和夏洛特没有想到卡蜜拉邀请他们来此只是一个险恶的阴谋，卡蜜拉为了复活需要夏洛特的鲜血。一番恶斗后，D彻底消灭了卡蜜拉，被吸血鬼洗礼的夏洛特则昏死在吸血鬼玛埃尔的怀中，等待新的生命。城堡在主人消失后开始崩溃，玛埃尔抱着夏洛特乘上飞船飞上蓝天，飞向他们梦想的地方。很多年过去了，在雷拉的葬礼上，她的小孙女看到远处的黑衣猎人，D遵守了和雷拉的约定。</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -346,23 +496,47 @@ vscode编译typescript配置
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T05:51:40Z">2016-11-05 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-05T05:51:40Z">2016.11.05 05:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的
-以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章
-mongodb中查询
-select * from articles where content like &#39;%Nodejs%&#39;; db.articles.find( { content: /Nodejs/i } ) Article.find({ content: /Nodejs/i}, function (err, docs) {}); 这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用/包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：
-var a=&#34;Nodejs&#34; ; Article.find({ content: /a/i}, function (err, docs) {}); 此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用$regex关键字，还有$options选项
-var text = &#39;Nodejs&#39;;//动态传入的变量 Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {}); $options选项值：
-i 大小写不敏感 m $regex包含正则^,$符号的表达式 x 忽略空格 s 允许逗点匹配所有字符串 其实$regex就是正则表达式的写法
-查找数组中的字段：
-contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address: &#34;address2&#34;, name: &#34;李四&#34; }, .
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/581d736c43c18f1b7ae3e3ff/">阅读全文…</a>
+		<blockquote>
+<p>需求说明：在mongdb中使用模糊查询，就像sql中的like查询，在where条件中使用模糊匹配，当然最重要的是需要模糊查询的字符串是动态传入的</p></blockquote>
+<p>以一篇文章为例，content字段为文章内容，我们要查询文章内容中包含Nodejs关键字的文章</p>
+<p><strong>mongodb中查询</strong></p>
+<pre tabindex="0"><code>select * from articles where content like &#39;%Nodejs%&#39;;
+db.articles.find( { content: /Nodejs/i } )
+Article.find({ content: /Nodejs/i}, function (err, docs) {});
+</code></pre><p>这种写法是一种简写操作，需要注意的是不能带双引号，带了双引号就成了字符串。但是这种写法是用<code>/</code>包裹了一个字符串类型的关键字，在实际程序是动态传入的，比如：</p>
+<pre tabindex="0"><code>var a=&#34;Nodejs&#34; ;
+Article.find({ content: /a/i}, function (err, docs) {});
+</code></pre><p>此时会把&quot;a&quot;当做要查询的关键字而不是&quot;Nodejs&quot;，所以这时还是需要用到完整的查询方式，就是使用<code>$regex</code>关键字，还有$options选项</p>
+<pre tabindex="0"><code>var text = &#39;Nodejs&#39;;//动态传入的变量
+Article.find({ content: { $regex: text, $options: &#39;i&#39; }}, function (err, docs) {});
+</code></pre><p><code>$options</code>选项值：</p>
+<ul>
+<li>i 大小写不敏感</li>
+<li>m $regex包含正则^,$符号的表达式</li>
+<li>x 忽略空格</li>
+<li>s 允许逗点匹配所有字符串</li>
+</ul>
+<p>其实$regex就是正则表达式的写法</p>
+<p>查找数组中的字段：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">contacts</span><span style="color:#f92672">:</span>{
+</span></span><span style="display:flex;"><span>    [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">address</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;address1&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;张三&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">address</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;address2&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;李四&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        .....
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以通过<code>db.collection.find({'contacts.name':{$regex:'张'}})</code>获得</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -376,19 +550,41 @@ contacts:{ [ { address: &#34;address1&#34;, name: &#34;张三&#34; }, { address:
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016-11-02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-11-02T09:32:39Z">2016.11.02 09:32</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		mongdb查询某一字段sum值 需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计
-mongodb中查询
-select sum(pv) from articles; db.articles.aggregate([{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 2 } select sum(pv) from articles where createDate &lt;= &#39;2016-10-20&#39;; db.articles.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 9 } select sum(pv) from articles where category = &#39;Nodejs&#39;; db.articles.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]); 结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 7 } 需要注意$match和$group的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）
-mongoose实现方式，与上面sql的顺序对应：
-Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) { console.log(&#34;1&#34;, doc); }); Article.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) { console.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/5819b2b7c4d0a377509b8f1a/">阅读全文…</a>
+		<h2 id="mongdb查询某一字段sum值">mongdb查询某一字段sum值</h2>
+<blockquote>
+<p>需求说明：articles有一个字段pv记录了该文章的访问量，现在要统计所有文章访问量，类似于sql中的sum统计</p></blockquote>
+<p><strong>mongodb中查询</strong></p>
+<pre tabindex="0"><code>select sum(pv) from articles;
+db.articles.aggregate([{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 2 }
+
+select sum(pv) from articles where createDate &lt;= &#39;2016-10-20&#39;;
+db.articles.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 9 }
+
+select sum(pv) from articles where category = &#39;Nodejs&#39;;
+db.articles.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null,pv:{$sum:&#34;$pv&#34;}}}]);
+结果：{ &#34;_id&#34; : null, &#34;pv&#34; : 7 }
+</code></pre><p><em>需要注意<code>$match</code>和<code>$group</code>的顺序，反了是不行的，因为这是Aggregation Pipeline（管道流）</em></p>
+<p><strong>mongoose实现方式，与上面sql的顺序对应：</strong></p>
+<pre tabindex="0"><code>Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, function(err, doc) {
+    console.log(&#34;1&#34;, doc);
+});
+Article.aggregate([{$match:{createDate:{$lte:&#34;2016-10-20&#34;}}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) {
+    console.log(&#34;2&#34;, doc);
+});
+Article.aggregate([{$match:{category:&#34;Nodejs&#34;}},{$group:{_id:null, pvCount:{$sum:&#34;$pv&#34;}}}], function(err, doc) {
+    console.log(&#34;3&#34;, doc);
+});
+1 [ { _id: null, pv: 25 } ]
+2 [ { _id: null, pv: 9 } ]
+3 [ { _id: null, pv: 7 } ]
+</code></pre><p>参考文档：</p>
 	</div>
 </article>
 <article class="list__item post">
@@ -402,21 +598,66 @@ Article.aggregate({ $group: { _id: null, pvCount: { $sum: &#39;$pv&#39; }}}, fun
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-16T13:03:51Z">2016-10-16 13:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2016-10-16T13:03:51Z">2016.10.16 13:03</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启experimentalDecorators。
-命令行编译
-tsc --target ES5 --experimentalDecorators /test.ts 或者配置文件设置：
-tsconfig.json:
-{ &#34;compilerOptions&#34;: { &#34;experimentalDecorators&#34;: true } } 那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：
-//test.ts class Route { greeting: string; constructor(greet: string){ this.greeting = greet; } @route(&#34;hello&#34;) default(): any { console.log(this.greeting); } } function route(name: string) { return function (target: Object, value: string, desc: PropertyDescriptor) { console.log(&#39;&gt;&gt;&gt;&gt;&#39;, name); } } 生成的js代码：
-//test.js var __decorate = (this &amp;&amp; this.__decorate) || function (decorators, target, key, desc) { var c = arguments.
-	</div>
-	<div class="list__footer clearfix">
-		<a class="list__footer-readmore btn" href="/blogdetail/58037ab767a381257039c926/">阅读全文…</a>
+		<p>ES6引入了类的概念，同时也引入了类似于java的注解概念，我们称之为装饰器，用于在某些场景下修改类和类成员。typescript要支持装饰器需要手动开启<code>experimentalDecorators</code>。</p>
+<p><strong>命令行编译</strong></p>
+<p><code>tsc --target ES5 --experimentalDecorators /test.ts</code>
+或者配置文件设置：</p>
+<p><strong>tsconfig.json</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;compilerOptions&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;experimentalDecorators&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>那么这个装饰器到底什么原理呢？它是什么时候执行的？用下面代码为例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">//test.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Route</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">greeting</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">greet</span>: <span style="color:#66d9ef">string</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">greet</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">@route</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span>()<span style="color:#f92672">:</span> <span style="color:#66d9ef">any</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">route</span>(<span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">target</span>: <span style="color:#66d9ef">Object</span>, <span style="color:#a6e22e">value</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">desc</span>: <span style="color:#66d9ef">PropertyDescriptor</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;&gt;&gt;&gt;&gt;&#39;</span>, <span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><p>生成的js代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">//test.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">__decorate</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">__decorate</span>) <span style="color:#f92672">||</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">decorators</span>, <span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">desc</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>.<span style="color:#a6e22e">length</span>, <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">target</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">desc</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">desc</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">getOwnPropertyDescriptor</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">desc</span>, <span style="color:#a6e22e">d</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">Reflect</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;object&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">Reflect</span>.<span style="color:#a6e22e">decorate</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;function&#34;</span>) <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Reflect</span>.<span style="color:#a6e22e">decorate</span>(<span style="color:#a6e22e">decorators</span>, <span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">desc</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decorators</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span>) <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">decorators</span>[<span style="color:#a6e22e">i</span>]) <span style="color:#a6e22e">r</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">d</span>(<span style="color:#a6e22e">r</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">d</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">r</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">d</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>)) <span style="color:#f92672">||</span> <span style="color:#a6e22e">r</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">r</span> <span style="color:#f92672">&amp;&amp;</span> Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">r</span>), <span style="color:#a6e22e">r</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Route</span> <span style="color:#f92672">=</span> <span style="color:#75715e">/** @class */</span> (<span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Route</span>(<span style="color:#a6e22e">greet</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">greet</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Route</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#66d9ef">default</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">greeting</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__decorate</span>([
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">route</span>(<span style="color:#e6db74">&#34;hello&#34;</span>)
+</span></span><span style="display:flex;"><span>    ], <span style="color:#a6e22e">Route</span>.<span style="color:#a6e22e">prototype</span>, <span style="color:#e6db74">&#34;default&#34;</span>, <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">Route</span>;
+</span></span><span style="display:flex;"><span>}());
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">route</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">target</span>, <span style="color:#a6e22e">value</span>, <span style="color:#a6e22e">desc</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;装饰器输出&#39;</span>, <span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>备注</strong></p>
 	</div>
 </article>
 
@@ -435,7 +676,7 @@ tsconfig.json:
 			<input class="widget-search__field" type="search" placeholder="搜索..." value="" name="q" aria-label="搜索...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang" />
+		<input type="hidden" name="sitesearch" value="https://www.yuedun.wang/" />
 	</form>
 </div>
 <div class="widget-recent widget">
@@ -451,13 +692,12 @@ tsconfig.json:
 	</div>
 </div>
 
-
 <div class="widget-categories widget">
 	<h4 class="widget__title">分类</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item">
-				<a class="widget__link" href="/categories/linux/">linux</a>
+				<a class="widget__link" href="/categories/linux/">Linux</a>
 			</li>
 			<li class="widget__item">
 				<a class="widget__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/">产品设计</a>
@@ -495,99 +735,99 @@ tsconfig.json:
 <div class="widget-taglist widget">
 	<h4 class="widget__title">标签</h4>
 	<div class="widget__content">
-		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="beego">beego</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="chrome">chrome</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="cluster">cluster</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="docker">docker</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="elasticsearch">elasticsearch</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="etcd">etcd</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="git">git</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="github">github</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="go">go</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="go-micro">go-micro</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="golang">golang</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="goquery">goquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="gorm">gorm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="goroutine">goroutine</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="grpc">grpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="gulp">gulp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="javascript">javascript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="jquery">jquery</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="linux">linux</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="mongodb">mongodb</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="mongoose">mongoose</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="mysql">mysql</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="nestjs">nestjs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="next.js">next.js</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="nginx">nginx</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="nodejs">nodejs</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="nodemailer">nodemailer</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="nokia">nokia</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="nunjucks">nunjucks</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="nuxt">nuxt</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="nvm">nvm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="oracle">oracle</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="pin">pin</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="pm2">pm2</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="postman">postman</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="request">request</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="rpc">rpc</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="rsync">rsync</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="sapper">sapper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="scp">scp</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="sequelize">sequelize</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="sim">sim</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="socket.io">socket.io</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="ssh-key">ssh-key</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="sublime">sublime</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="svelte">svelte</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="sveltekit">sveltekit</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="typescript">typescript</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="vm">vm</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="vscode">vscode</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="vue">vue</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="webpack">webpack</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="windows">windows</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/500/" title="500">500 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elasticsearch/" title="Elasticsearch">Elasticsearch (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/elk/" title="ELK">ELK (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/etcd/" title="Etcd">Etcd (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="Github">Github (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go-micro/" title="Go-Micro">Go-Micro (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang (22)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goquery/" title="Goquery">Goquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gorm/" title="Gorm">Gorm (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/goroutine/" title="Goroutine">Goroutine (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grpc/" title="Grpc">Grpc (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gulp/" title="Gulp">Gulp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="Javascript">Javascript (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/jquery/" title="Jquery">Jquery (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongodb/" title="Mongodb">Mongodb (14)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mongoose/" title="Mongoose">Mongoose (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mq/" title="MQ">MQ (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mysql/" title="Mysql">Mysql (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nestjs/" title="Nestjs">Nestjs (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/next.js/" title="Next.js">Next.js (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nginx/" title="Nginx">Nginx (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs/" title="Nodejs">Nodejs (43)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nodemailer/" title="Nodemailer">Nodemailer (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nokia/" title="Nokia">Nokia (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nunjucks/" title="Nunjucks">Nunjucks (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nuxt/" title="Nuxt">Nuxt (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvm/" title="Nvm">Nvm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/oracle/" title="Oracle">Oracle (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pin/" title="Pin">Pin (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pm2/" title="Pm2">Pm2 (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postman/" title="Postman">Postman (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/request/" title="Request">Request (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rpc/" title="RPC">RPC (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rsync/" title="Rsync">Rsync (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sapper/" title="Sapper">Sapper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/scp/" title="Scp">Scp (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sequelize/" title="Sequelize">Sequelize (7)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sim/" title="Sim">Sim (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/socket.io/" title="Socket.io">Socket.io (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ssh-key/" title="Ssh-Key">Ssh-Key (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sublime/" title="Sublime">Sublime (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/svelte/" title="Svelte">Svelte (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sveltekit/" title="Sveltekit">Sveltekit (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="Typescript">Typescript (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vm/" title="Vm">Vm (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="Vscode">Vscode (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vue/" title="Vue">Vue (9)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/webpack/" title="Webpack">Webpack (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows (8)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/zookeeper/" title="Zookeeper">Zookeeper (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" title="产品设计">产品设计 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BB%A3%E7%A0%81/" title="代码">代码 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E4%BD%93%E9%AA%8C/" title="体验">体验 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%86%85%E7%BD%91%E6%98%A0%E5%B0%84/" title="内网映射">内网映射 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%89%8D%E7%AB%AF/" title="前端">前端 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%8D%9A%E5%AE%A2/" title="博客">博客 (4)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%AD%A6%E4%B9%A0/" title="学习">学习 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="小程序">小程序 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B1%85%E4%BD%8F%E8%AF%81/" title="居住证">居住证 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%B7%A5%E4%BD%9C/" title="工作">工作 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E5%BE%AE%E4%BF%A1/" title="微信">微信 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%80%A7%E8%83%BD/" title="性能">性能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%89%8B%E6%9C%BA/" title="手机">手机 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%8F%92%E4%BB%B6/" title="插件">插件 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%97%85%E8%A1%8C/" title="旅行">旅行 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%90%86/" title="本地代理">本地代理 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/" title="模糊查询">模糊查询 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2/" title="正则替换">正则替换 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B3%A8%E8%A7%A3%E8%B7%AF%E7%94%B1/" title="注解路由">注解路由 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" title="浏览器">浏览器 (18)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">消息队列 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%88%AC%E8%99%AB/" title="爬虫">爬虫 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="环境变量">环境变量 (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%94%B5%E8%84%91/" title="电脑">电脑 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%B4%A2%E5%BC%95/" title="索引">索引 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E7%BB%84%E4%BB%B6/" title="组件">组件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%8A%82%E8%83%BD/" title="节能">节能 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%A3%81%E5%91%98/" title="裁员">裁员 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡">负载均衡 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%82%AE%E4%BB%B6/" title="邮件">邮件 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置 (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" title="阿里云">阿里云 (3)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/%E9%9D%A2%E8%AF%95/" title="面试">面试 (1)</a>
 	</div>
 </div>
 <div class="widget-social widget">
@@ -615,13 +855,14 @@ tsconfig.json:
 		
 	</div>
 </div>
+
 </aside>
 	</div>
 	<footer class="footer">
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2024 月盾.
+			&copy; 2025 月盾.
 			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
 			
 		</div>
