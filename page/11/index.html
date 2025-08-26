@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
-  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,59 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5ad46aebb9be3f8e30daaea8/" rel="bookmark">
+			beego注解路由404
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-04-15T13:21:36Z">2018.04.15 13:21</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>beego注解路由匹配不到，返回404页面
+router.go使用了两种方式注册路由：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">ns</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">NewNamespace</span>(<span style="color:#e6db74">&#34;/admin&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">NSRouter</span>(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">controllers</span>.<span style="color:#a6e22e">UserController</span>{}, <span style="color:#e6db74">&#34;get:Welcome&#34;</span>),
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">beego</span>.<span style="color:#a6e22e">NSInclude</span>(
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">controllers</span>.<span style="color:#a6e22e">UserController</span>{},
+</span></span><span style="display:flex;"><span>	),
+</span></span></code></pre></div><p>controller中的路由注解设置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// @router /admin/user/get-all-user [get]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">UserGroupController</span>) <span style="color:#a6e22e">GetAllUser</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">User</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">users</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">GetUserList</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">err</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Data</span>[<span style="color:#e6db74">&#34;json&#34;</span>] = <span style="color:#a6e22e">ErrorMsg</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Data</span>[<span style="color:#e6db74">&#34;json&#34;</span>] = <span style="color:#a6e22e">users</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ServeJSON</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>使用上面的方式注册路由后结果是nomatch</p>
+<p>最终结果显示上面的注解路由时错误的，下面是正确的注册方式：
+问题在于controller的注解写法，如果该路由在namespace下，则不能在注解中拼接命名空间前缀，框架会自动拼接。
+即<code>/admin</code>为命名空间，注解中只需写<code>/user/get-all-user</code>，不能这样写<code>/admin/user/get-all-user</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// @router /user/get-all-user [get]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">UserGroupController</span>) <span style="color:#a6e22e">GetAllUser</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">user</span> <span style="color:#f92672">:=</span> new(<span style="color:#a6e22e">User</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">users</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">GetUserList</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">err</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Data</span>[<span style="color:#e6db74">&#34;json&#34;</span>] = <span style="color:#a6e22e">ErrorMsg</span>(<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Data</span>[<span style="color:#e6db74">&#34;json&#34;</span>] = <span style="color:#a6e22e">SuccessData</span>(<span style="color:#a6e22e">users</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">ServeJSON</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>当然，两种路由注册的方式可以同时</p>
+<blockquote>
+<p>完整项目：<a href="https://github.com/yuedun/metal">https://github.com/yuedun/metal</a></p></blockquote>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5acb49ba45213aca5fde59e1/" rel="bookmark">
@@ -554,57 +607,6 @@
 <p>其他情况可参考：<a href="https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox">https://help.getpocket.com/article/942-where-is-the-pocket-button-in-firefox</a></p>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5a6021fa4bdc8ea471fd2db0/" rel="bookmark">
-			在docker中运行nodejs
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-01-18T04:26:34Z">2018.01.18 04:26</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>首先看项目目录：</p>
-<p><img src="https://hopefully-img.yuedun.wang/projectdir.png" alt="项目目录"></p>
-<p>再看Dockerfile文件内容：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 以最新的node为基础镜像</span>
-</span></span><span style="display:flex;"><span>FROM hub.c.163.com/library/node:latest
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 工作目录为app</span>
-</span></span><span style="display:flex;"><span>WORKDIR /app
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 拷贝当前所在项目根目录到app目录</span>
-</span></span><span style="display:flex;"><span>COPY . /app
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 全局安装pm2</span>
-</span></span><span style="display:flex;"><span>RUN npm install pm2 -g
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">8081</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#使用pm2启动nodejs，如果没有--no-daemon参数docker启动后就退出</span>
-</span></span><span style="display:flex;"><span>CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;pm2-runtime&#34;</span>, <span style="color:#e6db74">&#34;dest/server.js&#34;</span>, <span style="color:#e6db74">&#34;--no-daemon&#34;</span><span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ENTRYPOINT [&#34;node&#34;, &#34;server.js&#34;]</span>
-</span></span></code></pre></div><p>或者在Dockerfile中不添加CMD命令，可以在启动docker时执行命令：</p>
-<p><code>docker run --name ks -ti -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
-<p>如果是后台运行的docker:</p>
-<p><code>docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
-<p><code>-d</code>选项是后台运行</p>
-<p>需要进入到docker查看pm2运行情况
-，可以通过<code>docker exec -ti ks /bin/sh</code>查看运行的容器内部情况
-<img src="https://hopefully-img.yuedun.wang/pm2running.png" alt="pm2运行情况"></p>
-<h1 id="要不要在docker中使用pm2运行nodejs">要不要在docker中使用pm2运行nodejs</h1>
-<ul>
-<li>pm2可以监控nodejs进程，如果进程挂了，可以自动重启</li>
-<li>pm2可以设置启动的nodejs进程个数，提高服务性能</li>
-<li>pm2可以设置日志记录</li>
-<li>pm2可以设置端口，避免端口冲突</li>
-</ul>
-<p>docker已经提供了自动重启的功能，可以这样启动nodejs服务：</p>
-<p><code>docker run --name ks -d --restart=always -p 8081:8081 kser:pm2 pm2-runtime dest/server.js</code></p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -628,11 +630,11 @@
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 		</ul>
 	</div>
 </div>
@@ -684,7 +686,7 @@
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>

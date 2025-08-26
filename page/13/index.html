@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
-  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,44 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/59eab23989faeadc30eac826/" rel="bookmark">
+			sequelize.js不能将驼峰camelCased命名转化为下划线underscored命名
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-21T02:34:33Z">2017.10.21 02:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>定义Model的时候有这样两个参数：
+<code>underscored</code>,<code>underscoredAll</code>,</p>
+<blockquote>
+<p>Converts all camelCased columns to underscored if true. Will not affect timestamp fields named explicitly by model options and will not affect fields with explicitly set field option</p></blockquote>
+<p>其意思是说转化所有驼峰字段为下划线字段，但实际情况并不是如此。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Model</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sequelize</span>.<span style="color:#a6e22e">define</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">ModelInstance</span>, <span style="color:#a6e22e">ModelAttributes</span><span style="color:#f92672">&gt;</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;Assistance&#39;</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fullName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>
+</span></span><span style="display:flex;"><span>    }, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">underscored</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">tableName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;assistance&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">charset</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;utf8&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">collate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;utf8_unicode_ci&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">IF</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">EXISTS</span> <span style="color:#f92672">`</span>assistance<span style="color:#f92672">`</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> INTEGER <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> auto_increment , <span style="color:#f92672">`</span>title<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">255</span>), <span style="color:#f92672">`</span>description<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">255</span>), <span style="color:#f92672">`</span>fullName<span style="color:#f92672">`</span> VARCHAR(<span style="color:#ae81ff">255</span>), <span style="color:#f92672">`</span>created_at<span style="color:#f92672">`</span> DATETIME <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>, <span style="color:#f92672">`</span>updated_at<span style="color:#f92672">`</span> DATETIME <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>, <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>)) ENGINE<span style="color:#f92672">=</span>InnoDB <span style="color:#66d9ef">DEFAULT</span> CHARSET<span style="color:#f92672">=</span>utf8 <span style="color:#66d9ef">COLLATE</span> utf8_unicode_ci;
+</span></span></code></pre></div><p>其中<code>fullName</code>字段在创建表的时候还是和模型中保持一致，并没有转换为<code>full_name</code>，underscored的设置其实只影响到了createdAt和updatedAt等内置字段。
+在github上也有相关讨论：<a href="https://github.com/sequelize/sequelize/issues/6423">https://github.com/sequelize/sequelize/issues/6423</a></p>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/599cf46c1bffdb00880597b3/" rel="bookmark">
@@ -463,28 +501,6 @@ npm ERR!     E:\workspace\zm-platform\npm-debug.log
 <p>但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。</p>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/592195fed65a0126c7cdf455/" rel="bookmark">
-			婴儿学步牵引绳需不需要？
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-21T13:28:30Z">2017.05.21 13:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E9%9A%8F%E7%AC%94/" rel="category">随笔</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>我女儿12个月开始学走路，由于她身高还很低，所以需要大人弯着腰搀扶着，时间长了大人的腰比较累，当时就在网上买了个绑带。
-<img src="https://hopefully-img.yuedun.wang/%E7%89%B5%E5%BC%95%E7%BB%B31.jpg" alt="牵引绳" title="牵引绳">
-本以为能轻松点，结果发现排不上用场，因为实在不好用，宝宝根本不会老实的配合，她一感觉到胸前有个东西扶着她，就整个人爬下来了，所有重点都放在牵引绳上，所以大人就只能提着，而且由于刚学走路，也不能稳当的走，总是东倒西歪，牵引绳其实不能保证宝宝的平衡，反而会过于依赖绑带，结果就导致失去平衡类似于一只脚在地上一只脚翘起来打转，也容易勒到胳膊。</p>
-<p>宝宝学走路一般一个月就能自己走了，所以我觉得没必要用这个。</p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -508,11 +524,11 @@ npm ERR!     E:\workspace\zm-platform\npm-debug.log
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 		</ul>
 	</div>
 </div>
@@ -564,7 +580,7 @@ npm ERR!     E:\workspace\zm-platform\npm-debug.log
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>

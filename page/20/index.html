@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
-  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,64 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/559bd64ad366f15412cbf594/" rel="bookmark">
+			前端工具gulp的用途和使用方法
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-07-07T13:38:18Z">2015.07.07 13:38</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>在接触前端开始就听说过grunt和gulp是很叼的前端构建工具，但不知道到底有多叼，只是听说可以自动编译less，sass为css，目前还没有使用less和sass，所以也就没有尝试使用grunt和gulp。但是作为一个技术爱好者还是经不住诱惑，照着网上的教程简单使用了一下，总算是知道有什么用处了，因为都说gulp比grunt更简单好用，就以gulp的使用方法为例来说明一下。</p>
+<p><strong>文件合并</strong>：关于文件合并很多人存在这样的疑惑，在前端开发中到底该把所有js和css写在一个文件里还是各个页面分开写，我的建议是开发的时候分开写，上线的时候合并为一个，这样的好处是对于浏览器来说，不同页面中相同的文件默认会请求一次缓存下来，其他页面请求相同文件时就直接从缓存中读取，减少文件的网络请求可以提高网页速度，所以文件合并的是很有必要的。</p>
+<p><strong>2.文件压缩</strong>：既然都合并了，何不再压缩一下呢</p>
+<p><strong>3.语法检查</strong>：这个功能一般会和下面第4条功能配合使用，当文件修改的时候检查是否有语法错误，并在命令行中输出错误信息。</p>
+<p><strong>4.监听文件变化</strong>：监听某个目录下文件是否修改，修改的话就执行特定的操作，比如上面几个操作。
+   
+以上4点是比较常用的功能，更多功能根据自己需要添加</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">gulp</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;gulp&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">jshint</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;gulp-jshint&#39;</span>);<span style="color:#75715e">//语法检查
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">concat</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;gulp-concat&#39;</span>);<span style="color:#75715e">//合并文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">uglify</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;gulp-uglify&#39;</span>);<span style="color:#75715e">//压缩代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">rename</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;gulp-rename&#39;</span>);<span style="color:#75715e">//重命名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 语法检查
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">task</span>(<span style="color:#e6db74">&#39;jshint&#39;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">src</span>(<span style="color:#e6db74">&#39;public/javascripts/*.js&#39;</span>)
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">jshint</span>())
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">jshint</span>.<span style="color:#a6e22e">reporter</span>(<span style="color:#e6db74">&#39;default&#39;</span>));
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 合并文件之后压缩代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">task</span>(<span style="color:#e6db74">&#39;minify&#39;</span>, <span style="color:#66d9ef">function</span> (){
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">src</span>(<span style="color:#e6db74">&#39;public/javascripts/*.js&#39;</span>)
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">concat</span>(<span style="color:#e6db74">&#39;all.js&#39;</span>))
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">dest</span>(<span style="color:#e6db74">&#39;public/javascripts/dist&#39;</span>))
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">uglify</span>())
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">rename</span>(<span style="color:#e6db74">&#39;all.min.js&#39;</span>))
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">pipe</span>(<span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">dest</span>(<span style="color:#e6db74">&#39;public/javascripts/dist&#39;</span>));
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 监视文件的变化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">task</span>(<span style="color:#e6db74">&#39;watch&#39;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">watch</span>(<span style="color:#e6db74">&#39;public/javascripts/*.js&#39;</span>, [<span style="color:#e6db74">&#39;jshint&#39;</span>, <span style="color:#e6db74">&#39;minify&#39;</span>]);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 注册缺省任务
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">gulp</span>.<span style="color:#a6e22e">task</span>(<span style="color:#e6db74">&#39;default&#39;</span>, [<span style="color:#e6db74">&#39;jshint&#39;</span>, <span style="color:#e6db74">&#39;minify&#39;</span>, <span style="color:#e6db74">&#39;watch&#39;</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// gulp.task(&#39;default&#39;, [&#39;jshint&#39;, &#39;minify&#39;]);
+</span></span></span></code></pre></div><p>目录结构:</p>
+<p><img src="https://hopefully-img.yuedun.wang/gulp.jpg" alt=""></p>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/559774527756526fccc59577/" rel="bookmark">
@@ -312,37 +370,6 @@ Sometimes a reboot will defragment the system paging file sufficiently for
 this operation to complete successfully.</p>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/554ae5b3a07843eb8002a388/" rel="bookmark">
-			sequelize定义实体对象
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T04:10:27Z">2015.05.07 04:10</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>sequelize定义实体对象</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sequelize</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;../utils/sequelizeDB&#34;</span>);<span style="color:#75715e">//连接数据库 var Sequelize = require(&#34;sequelize&#34;); var User = sequelize.define(&#34;User&#34;, {  
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">user_id</span><span style="color:#f92672">:</span>{ <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>, <span style="color:#a6e22e">primaryKey</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>},  
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>,  
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">phone</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">STRING</span>,  
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">create_date</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">DATE</span>,  
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">update_date</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Sequelize</span>.<span style="color:#a6e22e">DATE</span>  
-</span></span><span style="display:flex;"><span>}, {  
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">freezeTableName</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 默认false修改表名为复数，true不修改表名，与数据库表名同步  
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">tableName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;user&#34;</span>,  
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">timestamps</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>  
-</span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p>define函数的第一个参数’User’就是定义一个实体对象，名称不必与数据库表名一致，只是为了确定该对象没有重复 { type: Sequelize.STRING, primaryKey: true}将属性作为主键 freezeTableName禁用修改表名;默认情况下,sequelize会自动将模型名称(第一个参数定义‘User’)为复数。值为ture时不修改 tableName数据库表名 timestamps是否自动添加时间戳createAt，updateAt</p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -366,11 +393,11 @@ this operation to complete successfully.</p>
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 		</ul>
 	</div>
 </div>
@@ -422,7 +449,7 @@ this operation to complete successfully.</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>

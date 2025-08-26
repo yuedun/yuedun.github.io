@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
-  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,30 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2023/09/https-ca/" rel="bookmark">
+			https证书生成
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-12T14:18:30&#43;08:00">2023.09.12 14:18</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>生成crt证书</p>
+<blockquote>
+<p>openssl req -new -x509 -key domain.key -out domain.crt -days 365</p></blockquote>
+<p>将CRT转换为CSR：</p>
+<blockquote>
+<p>openssl req -new -key domain.key -out domain.csr</p></blockquote>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/2023/07/ali-oss-process/" rel="bookmark">
@@ -422,104 +446,6 @@ ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-li
 <p><a href="https://kit.svelte.dev/docs/introduction">sveltekit官方文档</a></p>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2022/09/elasticsearch-bulk-upsert/" rel="bookmark">
-			Elasticsearch批量insert和批量upsert
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-09-28T14:00:43&#43;08:00">2022.09.28 14:00</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>, <a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>golang版本的elasticsearch批量插入和批量更新方法如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;github.com/elastic/go-elasticsearch/v8&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;github.com/elastic/go-elasticsearch/v8/esutil&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>()  {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">list</span><span style="color:#f92672">:=</span>make(<span style="color:#a6e22e">User</span>, <span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">bulkES</span>(<span style="color:#a6e22e">list</span>)
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bulkES</span>(<span style="color:#a6e22e">list</span> []<span style="color:#a6e22e">User</span>) <span style="color:#66d9ef">error</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">indexer</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">esutil</span>.<span style="color:#a6e22e">NewBulkIndexer</span>(<span style="color:#a6e22e">esutil</span>.<span style="color:#a6e22e">BulkIndexerConfig</span>{
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Index</span>:  <span style="color:#e6db74">&#34;search-user&#34;</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Client</span>: <span style="color:#a6e22e">ES</span>,
-</span></span><span style="display:flex;"><span>	})
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">list</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Marshal</span>(<span style="color:#a6e22e">v</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">indexer</span>.<span style="color:#a6e22e">Add</span>(
-</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(),
-</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">esutil</span>.<span style="color:#a6e22e">BulkIndexerItem</span>{
-</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">Action</span>: <span style="color:#e6db74">&#34;index&#34;</span>,
-</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">Body</span>:   <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">NewReader</span>(<span style="color:#a6e22e">data</span>),
-</span></span><span style="display:flex;"><span>			},
-</span></span><span style="display:flex;"><span>		)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">indexer</span>.<span style="color:#a6e22e">Close</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>())
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>最简单版的代码整体上就是如此，但需要注意，该代码不适用于生产环境，只能作为测试。主要原因是indexer实例不能多次实例化，所以上面所示代码是一个函数，这个函数是不能多次调用，因为多次进行indexer实例化了，很快就会内存溢出崩溃掉。</p>
-<p>正确的使用方式是在<code>init</code>函数或者连接elasticsearch后进行实例化一次，作为全局变量在后续使用，大概是这样：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;github.com/elastic/go-elasticsearch/v8&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;github.com/elastic/go-elasticsearch/v8/esutil&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">userindexer</span> <span style="color:#a6e22e">esutil</span>.<span style="color:#a6e22e">BulkIndexer</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">init</span>() {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">indexer</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">esutil</span>.<span style="color:#a6e22e">NewBulkIndexer</span>(<span style="color:#a6e22e">esutil</span>.<span style="color:#a6e22e">BulkIndexerConfig</span>{
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Index</span>:  <span style="color:#e6db74">&#34;search-user&#34;</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Client</span>: <span style="color:#a6e22e">ES</span>,
-</span></span><span style="display:flex;"><span>	})
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userindexer</span> = <span style="color:#a6e22e">indexer</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">bulkES</span>(<span style="color:#a6e22e">list</span> []<span style="color:#a6e22e">User</span>) <span style="color:#66d9ef">error</span> {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">v</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">list</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">Marshal</span>(<span style="color:#a6e22e">v</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">userindexer</span>.<span style="color:#a6e22e">Add</span>(
-</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">Background</span>(),
-</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">esutil</span>.<span style="color:#a6e22e">BulkIndexerItem</span>{
-</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">Action</span>: <span style="color:#e6db74">&#34;index&#34;</span>,
-</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">Body</span>:   <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">NewReader</span>(<span style="color:#a6e22e">data</span>),
-</span></span><span style="display:flex;"><span>			},
-</span></span><span style="display:flex;"><span>		)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">err</span>
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// userindexer.Close(context.Background())</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><strong>注意：</strong> 代码只做演示使用，不保证能正确运行。</p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -543,11 +469,11 @@ ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-li
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 		</ul>
 	</div>
 </div>
@@ -599,7 +525,7 @@ ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-li
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>

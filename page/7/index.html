@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2024-10-18T15:26:24+08:00">
-  <meta itemprop="dateModified" content="2024-10-18T15:26:24+08:00">
+  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,52 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5f119031148c8850e521735f/" rel="bookmark">
+			让web项目不再502
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-07-17T11:49:05Z">2020.07.17 11:49</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h3 id="前后端分离">前后端分离</h3>
+<p>近几年比较流行的web项目开发架构是前后端分离，前后端分离架构在系统稳定性方面非常有优势，其中一点优势主要体现在用户感知上，即使服务端发生错误也不会展现在视图层，一般情况下用户是可以继续浏览网页，不会很突兀的显示这样的信息：
+502 bad gateway</p>
+<p><img src="https://hopefully-img.yuedun.wang/502.jpg" alt="502 bad gateway"></p>
+<p>在接口发生错误时虽然可能会获取不到一些数据，但是在用户体验上比直接显示502错误要好。</p>
+<p>部署也相对安全和方便。</p>
+<p>前后端分离架构虽好，但不是”银弹”，不是所有网站都能使用前后端分离架构来做。</p>
+<h3 id="服务端渲染">服务端渲染</h3>
+<p>至于分不分离都有诸多的优缺点，可根据实际场景选择，本文要说的是不分离情况下文章开始所提到的问题——难看的502，500错误。</p>
+<p>本文我将使用“服务端渲染”来代替不分离的架构。</p>
+<p>由于服务端渲染的所有数据处理都在服务端进行，发生任何错误都可能引起500错误，这种错误会直接体现在视图层，用户看到这样的信息很不友好。
+500 Internal Server Error</p>
+<p><img src="https://hopefully-img.yuedun.wang/500.png" alt="500 Internal Server Error"></p>
+<p>遇到这种错误，可以使用适当的措施来弥补，带来的效果却非常良好。开发web最多遇到的错误码有：404，500，502。</p>
+<p>404错误很多网站都有默认页面，像这样的：</p>
+<p><img src="https://hopefully-img.yuedun.wang/404.png" alt="404 not found"></p>
+<p>但是500，502错误却鲜有默认页面，我们何不也搞一个呢？</p>
+<h4 id="500错误">500错误</h4>
+<p>首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。</p>
+<h3 id="502错误">502错误</h3>
+<p>再说一下502错误，发生502错误一般是应用直接宕机了，任何页面都是访问不到的，这样是无法在应用层面监听和处理的，但也不是没办法，我们可以在NGINX上处理，当NGINX发生502时跳转到”合适的页面”。这个页面需要是一个静态页，可以是友好的提示信息，可以是网站首页，根据需求自己定制即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>server{
+</span></span><span style="display:flex;"><span>    error_page  502  /502.html;
+</span></span><span style="display:flex;"><span>        location = /502.html {
+</span></span><span style="display:flex;"><span>                root   /usr/share/nginx/html;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>以上两种错误处理虽然不能应对所有网站，比如一些个性化网站，即使掩饰的再好，用户也知道出问题了，但是在有些网站却能起到良好的作用，比如有些web站点发布时会中断服务出现502，比起光秃秃的500和502错误，上面的处理是不是就好多了。</p>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5eec6fd5e8775d3b7f2ee79c/" rel="bookmark">
@@ -565,40 +611,6 @@ MongoDB Go驱动程序教程</p>
 </span></span></code></pre></div>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5e709b485bd8165f28d22394/" rel="bookmark">
-			go-micro线上部署，注册服务到etcd
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-03-17T09:41:28Z">2020.03.17 09:41</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<h3 id="线上部署">线上部署</h3>
-<p>在线上部署就不能使用<code>go run main.go</code>命令了，需要打包编译成可执行文件。
-linux系统需要这样编译：<code>GOOS=linux go build -o service main.go</code>，就是在windows系统上进行交叉编译，可根据自己服务器情况修改参数。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go build -o service main.go
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>go build -o api api/api.go
-</span></span></code></pre></div><p>线上的restful api也不能使用<code>micro api</code>了。需要选择适合自己的web服务框架，在web服务中调用api服务。</p>
-<h3 id="etcd启动">etcd启动</h3>
-<p>线上etcd和本地启动有区别，如果etcd是单独的服务器，那么在不加任何参数的情况下直接启动，那基本是调不通的。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ ./service --registry<span style="color:#f92672">=</span>etcd --registry_address<span style="color:#f92672">=</span>xx.xx.xx.xx:2379
-</span></span><span style="display:flex;"><span>2020-03-17 17:04:42 Starting <span style="color:#f92672">[</span>service<span style="color:#f92672">]</span> go.micro.srv.user
-</span></span><span style="display:flex;"><span>2020-03-17 17:04:42 Server <span style="color:#f92672">[</span>grpc<span style="color:#f92672">]</span> Listening on <span style="color:#f92672">[</span>::<span style="color:#f92672">]</span>:48493
-</span></span><span style="display:flex;"><span>2020-03-17 17:04:42 Registry <span style="color:#f92672">[</span>etcd<span style="color:#f92672">]</span> Registering node: go.micro.srv.user-f32a2950-8e59-44d4-ac86-f4e1ec103395
-</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;level&#34;</span>:<span style="color:#e6db74">&#34;warn&#34;</span>,<span style="color:#e6db74">&#34;ts&#34;</span>:<span style="color:#e6db74">&#34;2020-03-17T17:04:47.849+0800&#34;</span>,<span style="color:#e6db74">&#34;caller&#34;</span>:<span style="color:#e6db74">&#34;clientv3/retry_interceptor.go:61&#34;</span>,<span style="color:#e6db74">&#34;msg&#34;</span>:<span style="color:#e6db74">&#34;retrying of unary invoker failed&#34;</span>,<span style="color:#e6db74">&#34;target&#34;</span>:<span style="color:#e6db74">&#34;endpoint://client-e45decee-12bf-4a9b-a7ab-f92eece39420/xx.xx.xx.xx:2379&#34;</span>,<span style="color:#e6db74">&#34;attempt&#34;</span>:0,<span style="color:#e6db74">&#34;error&#34;</span>:<span style="color:#e6db74">&#34;rpc error: code = DeadlineExceeded desc = latest connection error: connection error: desc = \&#34;transport: Error while dialing dial tcp xx.xx.xx.xx:2379: connect: connection refused\&#34;&#34;</span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>2020-03-17 17:04:47 Server register error: %!<span style="color:#f92672">(</span>EXTRA context.deadlineExceededError<span style="color:#f92672">=</span>context deadline exceeded<span style="color:#f92672">)</span>
-</span></span></code></pre></div><p>这就是错误示例。
-为了能顺利看到胜利的结果，需要这样启动etcd:</p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -622,11 +634,11 @@ linux系统需要这样编译：<code>GOOS=linux go build -o service main.go</co
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2023/12/mac-storage-clean/">Mac硬盘清理</a></li>
 		</ul>
 	</div>
 </div>
@@ -678,7 +690,7 @@ linux系统需要这样编译：<code>GOOS=linux go build -o service main.go</co
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (5)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
