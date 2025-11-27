@@ -170,15 +170,15 @@
 		<p>mongodb提供了免费的mongodb集群可用于学习使用
 <a href="https://www.mongodb.com/cloud">https://www.mongodb.com/cloud</a>
 并且有3个节点
-<img src="https://qn-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200407112738529.jpg" alt=""></p>
+<img src="https://qn-img.hopefly.top/360%E6%88%AA%E5%9B%BE20200407112738529.jpg" alt=""></p>
 <p>mongodb Atlas免费集群存储空间为512M，这对于个人项目来说足够使用（本博客运行6年使用空间8M）。</p>
 <h3 id="本地客户端连接mongo-atlas">本地客户端连接mongo Atlas</h3>
-<p><img src="https://qn-img.yuedun.wang/atlas1.png" alt="连接mongodb Atlas">
-<img src="https://qn-img.yuedun.wang/atlas2.jpg" alt="连接mongodb Atlas">
-<img src="https://qn-img.yuedun.wang/atlas3.jpg" alt="连接mongodb Atlas"></p>
+<p><img src="https://qn-img.hopefly.top/atlas1.png" alt="连接mongodb Atlas">
+<img src="https://qn-img.hopefly.top/atlas2.jpg" alt="连接mongodb Atlas">
+<img src="https://qn-img.hopefly.top/atlas3.jpg" alt="连接mongodb Atlas"></p>
 <p>复制了连接字符串后直接粘贴到客户端中，替换<!-- raw HTML omitted -->,点击<code>From SRV</code>,会自动拉取集群配置，点击<code>Test</code>测试连接是否成功。</p>
-<p><img src="https://qn-img.yuedun.wang/atlas4.jpg" alt="连接mongodb Atlas">
-<img src="https://qn-img.yuedun.wang/atlas5.png" alt="连接mongodb Atlas"></p>
+<p><img src="https://qn-img.hopefly.top/atlas4.jpg" alt="连接mongodb Atlas">
+<img src="https://qn-img.hopefly.top/atlas5.png" alt="连接mongodb Atlas"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -200,7 +200,7 @@
 		<p>在之前mgo是一个使用广泛的mongodb驱动器，不过从2018年开始已不再维护，虽然觉得怪可惜的，但也不推荐使用了，毕竟mongodb本身一直在迭代，如果驱动器不更新后续也没法使用。
 详细说明见仓库:<a href="https://github.com/go-mgo/mgo">https://github.com/go-mgo/mgo</a></p>
 <p>而mongodb提供了官方驱动，目前能找到的中文文档大多比较旧了，推荐直接看官方文档，有完整的操作手册:<a href="https://www.mongodb.com/blog/search/golang">https://www.mongodb.com/blog/search/golang</a>
-<img src="https://qn-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200406233717565.jpg" alt="">
+<img src="https://qn-img.hopefly.top/360%E6%88%AA%E5%9B%BE20200406233717565.jpg" alt="">
 本文也不想做一次搬运工，毕竟也不能随时保持更新，还是直接看官方文档比较好。下面列出一些主要的文章链接:</p>
 <p><a href="https://www.mongodb.com/blog/post/official-mongodb-go-driver-now-available-for-beta-testing">Stack Overflow Research of 100,000 Developers Finds MongoDB is the Most Wanted Database</a> (2019-2-2)</p>
 <p><a href="https://www.mongodb.com/blog/post/stack-overflow-research-developers-mongodb-most-wanted-database">Official MongoDB Go Driver Now Available for Beta Testing</a> (2019-2-2)
@@ -233,7 +233,7 @@ MongoDB Go驱动程序教程</p>
 		<p>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website</p>
 <pre tabindex="0"><code>db.createUser( {user: &#34;hp_website&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]})
 </code></pre><p>退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户<code>db.getUsers()</code>显示</p>
-<p><img src="https://qn-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200404094439043.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/360%E6%88%AA%E5%9B%BE20200404094439043.jpg" alt=""></p>
 <p>虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用<code>use website</code>后创建用户也是不对。
 正确的做法是关闭数据库认证，使用不带<code>--auth</code>启动数据库，使用命令行来创建</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>use website
@@ -261,7 +261,7 @@ MongoDB Go驱动程序教程</p>
 		<p>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。
 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">find</span>({<span style="color:#a6e22e">content</span><span style="color:#f92672">:</span>{<span style="color:#a6e22e">$regex</span><span style="color:#f92672">:</span><span style="color:#e6db74">/hopefully.qiniudn.com/</span>}}).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">item</span>){
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;qn-img.yuedun.wang&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;qn-img.hopefly.top&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">save</span>(<span style="color:#a6e22e">item</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;&gt;&gt;&#34;</span>, <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>);
 </span></span><span style="display:flex;"><span>})
@@ -431,9 +431,9 @@ Please authenticate using MongoClient.connect with auth credentials.
 <p>鉴于百度bce的mongodb数据使用了RockMongo来管理数据，就以此来说明。</p>
 <h3 id="查询操作">查询操作</h3>
 <p>点击某个collection后的默认画面：</p>
-<p><img src="https://qn-img.yuedun.wang/rockmongo1.png" alt="rockmongo"></p>
+<p><img src="https://qn-img.hopefly.top/rockmongo1.png" alt="rockmongo"></p>
 <p>查询界面很简单，关键是怎么写查询语句？</p>
-<p><img src="https://qn-img.yuedun.wang/rockmongo2.png" alt="rockmongo"></p>
+<p><img src="https://qn-img.hopefly.top/rockmongo2.png" alt="rockmongo"></p>
 <p>点击文本可以查看所有数据字段，查询title为“测试”文档：</p>
 <pre tabindex="0"><code>array(
 	&#39;title&#39; =&gt; &#39;测试&#39;
@@ -443,12 +443,12 @@ Please authenticate using MongoClient.connect with auth credentials.
 	&#39;title&#39;=&gt; new MongoRegex(&#34;/测试/i&#34;)
 )
 </code></pre><p>字段名要加引号，中间使用<code>=&gt;</code>而不是使用<code>:</code>分割，需要查询的值也需要注意，字符串加引号，数字不加，如果类型不匹配就会查不出数据。查询结果有一条数据</p>
-<p><img src="https://qn-img.yuedun.wang/rockmongo3.png" alt="rockmongo"></p>
+<p><img src="https://qn-img.hopefly.top/rockmongo3.png" alt="rockmongo"></p>
 <h3 id="修改操作">修改操作</h3>
 <p>动作中选择“modify”</p>
-<p><img src="https://qn-img.yuedun.wang/rockmongo4.png" alt="rockmongo"></p>
+<p><img src="https://qn-img.hopefly.top/rockmongo4.png" alt="rockmongo"></p>
 <p>再查询一下</p>
-<p><img src="https://qn-img.yuedun.wang/rockmongo5.png" alt="rockmongo"></p>
+<p><img src="https://qn-img.hopefly.top/rockmongo5.png" alt="rockmongo"></p>
 <p>基本操作就是这样，删除操作不用说也应该能知道怎么做了。</p>
 	</div>
 </article>

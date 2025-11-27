@@ -131,9 +131,9 @@
 <h3 id="事出有因">事出有因</h3>
 <p>这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。</p>
 <p>最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。</p>
-<p><img src="https://qn-img.yuedun.wang/1%E5%AF%B91M%E7%AB%99%E4%BC%98%E5%8C%96%E5%89%8D.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/1%E5%AF%B91M%E7%AB%99%E4%BC%98%E5%8C%96%E5%89%8D.jpg" alt=""></p>
 <p>对以上问题分析得出结论之一：<strong>资源过大</strong>，有兴趣的可以打开<a href="http://www.taobao.wang">淘宝网</a>看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。</p>
-<p><img src="https://qn-img.yuedun.wang/taobao.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/taobao.jpg" alt=""></p>
 <p>而我们一个移动端网站的资源居然能超过3M，究其原因：</p>
 <ul>
 <li>图片大</li>
@@ -378,7 +378,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。
-<img src="https://qn-img.yuedun.wang/nodejs-go%E5%86%85%E5%AD%98%E5%8D%A0%E6%AF%94.png" alt="nodejs-go内存占比" title="nodejs-go内存占比">
+<img src="https://qn-img.hopefly.top/nodejs-go%E5%86%85%E5%AD%98%E5%8D%A0%E6%AF%94.png" alt="nodejs-go内存占比" title="nodejs-go内存占比">
 go占14.7M
 nodejs占122.2M</p>
 	</div>
@@ -417,12 +417,12 @@ server {
 }
 </code></pre><p>配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。
 效果图：
-<img src="https://qn-img.yuedun.wang/grpc_nginx.gif" alt="grpc-nginx" title="grpc-nginx"></p>
+<img src="https://qn-img.hopefly.top/grpc_nginx.gif" alt="grpc-nginx" title="grpc-nginx"></p>
 <p>可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。</p>
 <p>虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。</p>
-<p><img src="https://qn-img.yuedun.wang/grpc_nginx2.gif" alt="grpc_nginx2" title="grpc_nginx2"></p>
+<p><img src="https://qn-img.hopefly.top/grpc_nginx2.gif" alt="grpc_nginx2" title="grpc_nginx2"></p>
 <p>原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了<code>grpc_connect_timeout</code>选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。</p>
-<p><img src="https://qn-img.yuedun.wang/grpc_nginx3.gif" alt="grpc_nginx3" title="grpc_nginx3"></p>
+<p><img src="https://qn-img.hopefly.top/grpc_nginx3.gif" alt="grpc_nginx3" title="grpc_nginx3"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -523,7 +523,7 @@ server {
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>首先看项目目录：</p>
-<p><img src="https://qn-img.yuedun.wang/projectdir.png" alt="项目目录"></p>
+<p><img src="https://qn-img.hopefly.top/projectdir.png" alt="项目目录"></p>
 <p>再看Dockerfile文件内容：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 以最新的node为基础镜像</span>
 </span></span><span style="display:flex;"><span>FROM hub.c.163.com/library/node:latest
@@ -545,7 +545,7 @@ server {
 <p><code>-d</code>选项是后台运行</p>
 <p>需要进入到docker查看pm2运行情况
 ，可以通过<code>docker exec -ti ks /bin/sh</code>查看运行的容器内部情况
-<img src="https://qn-img.yuedun.wang/pm2running.png" alt="pm2运行情况"></p>
+<img src="https://qn-img.hopefly.top/pm2running.png" alt="pm2运行情况"></p>
 <h1 id="要不要在docker中使用pm2运行nodejs">要不要在docker中使用pm2运行nodejs</h1>
 <ul>
 <li>pm2可以监控nodejs进程，如果进程挂了，可以自动重启</li>

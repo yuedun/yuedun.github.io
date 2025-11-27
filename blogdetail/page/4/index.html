@@ -157,9 +157,9 @@
 <h3 id="事出有因">事出有因</h3>
 <p>这种现状在开发圈内决不少见，不仅限于前端。本文只说说前端的现状，原因是笔者最近在工作中遇到一个棘手的问题：性能优化。</p>
 <p>最近接手了多个现有的前端项目，是公司比较核心的移动端官网，作为门户网站访问量和用户量都比较大，但是随着项目的迭代出现了性能问题，页面加载速度在WiFi网络下达到3s,3G网络15s以上，更差的网络40s+。加载的资源小则3M，大则6M。如果一切往好处想，假设所有用户使用最好的网络，用户和公司都不在乎流量费，两三秒的加载速度也还挺快的，每次打开页面费个3M流量也不是个事。但如果考虑这些问题的话就会发现这不是小问题。</p>
-<p><img src="https://qn-img.yuedun.wang/1%E5%AF%B91M%E7%AB%99%E4%BC%98%E5%8C%96%E5%89%8D.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/1%E5%AF%B91M%E7%AB%99%E4%BC%98%E5%8C%96%E5%89%8D.jpg" alt=""></p>
 <p>对以上问题分析得出结论之一：<strong>资源过大</strong>，有兴趣的可以打开<a href="http://www.taobao.wang">淘宝网</a>看下首屏资源做下对比，可以看到资源不超过3M，时间不超过2s。</p>
-<p><img src="https://qn-img.yuedun.wang/taobao.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/taobao.jpg" alt=""></p>
 <p>而我们一个移动端网站的资源居然能超过3M，究其原因：</p>
 <ul>
 <li>图片大</li>
@@ -202,16 +202,16 @@
 		<h3 id="为什么需要ui自动化">为什么需要UI自动化？</h3>
 <p>说起自动化，听着很厉害，可是也没见识过到底多厉害，基本是属于传说，没见过实战。但不能否认其价值，作者本人作为一个开发者也是偶然的机会接触到UI自动化，感受到了自动化的魅力，才不惜花时间来学习并使用在实际工作中。下面就来说一下为什么要做自动化。
 自动化有很多种，单元测试，接口测试，UI测试。所有测试过程可以形成这样一个金字塔：</p>
-<p><img src="https://qn-img.yuedun.wang/testPyramid.png" alt="测试金字塔">
+<p><img src="https://qn-img.hopefly.top/testPyramid.png" alt="测试金字塔">
 （图片来自网络）</p>
-<p><img src="https://qn-img.yuedun.wang/test-pyramid.png" alt="测试金字塔">
+<p><img src="https://qn-img.hopefly.top/test-pyramid.png" alt="测试金字塔">
 （图片来自网络）</p>
 <p>从图中看出底层测试简单快速，每个单元相对独立，测试成本也较低。而最顶层的UI层聚合了底层的很多接口服务，一个测试流程相对更长更复杂，也就导致了速度慢，成本高的问题。如果由人工来完成，一个完整的测试流程往往需要几分钟，而且是不停的重复这样一个流程。所以很多开发都不愿意完整的测试自己所开发的一套业务，只能由测试人员不厌其烦的循环往复。此时如果有自动化的话就非常nice了。口说无凭，一图胜千言：</p>
-<p><img src="https://qn-img.yuedun.wang/register.gif" alt="自动注册"></p>
+<p><img src="https://qn-img.hopefly.top/register.gif" alt="自动注册"></p>
 <p>是不是还没看清？没错，平时人工测试一个报名表单需要15秒左右，而自动化后几乎一瞬间即可完成，速度提升不言而喻。如果您对UI自动化已产生兴趣，请继续往下看。</p>
 <h3 id="哪些场景可以ui自动化">哪些场景可以UI自动化？</h3>
 <p>UI自动化的目的不是为了自动化而自动化，也并不能覆盖所有测试。还是以测试金字塔来说明：</p>
-<p><img src="https://qn-img.yuedun.wang/test-tower.jpg" alt="测试金字塔"></p>
+<p><img src="https://qn-img.hopefly.top/test-tower.jpg" alt="测试金字塔"></p>
 <p>UI自动化虽然只能覆盖到约10%，但其价值却不可忽略，因为越往顶层消耗的人力成本越高，如果底层测试不够充分就只能靠顶层测试来保证。自动化虽好，但需要满足特定的场景才行，那么什么样的场景可以做UI自动化？</p>
 <ul>
 <li>流程变化少。侧重UI的修改，而不是流程的修改。</li>
@@ -223,7 +223,7 @@
 如果满足了上述的场景，那么UI自动化在人力消耗和效率上就有很大的提升。正确性上更有保证，手工录入会有输错重输的情况，而自动化则不会出现。
 再看一个流程比较长的页面：</li>
 </ul>
-<p><img src="https://qn-img.yuedun.wang/order.gif" alt="自动下单"></p>
+<p><img src="https://qn-img.hopefly.top/order.gif" alt="自动下单"></p>
 <p>上面动图并没与快进，一气呵成完成了一次下单流程，基本不需要停留即可进入下一步，相比起手动操作省时省力。</p>
 <h3 id="为什么ui自动化普及率低">为什么UI自动化普及率低？</h3>
 <p>既然UI自动化能提高效率，但为什么却很少有人去使用？</p>
@@ -286,15 +286,15 @@ iOS</p>
 		<p>mongodb提供了免费的mongodb集群可用于学习使用
 <a href="https://www.mongodb.com/cloud">https://www.mongodb.com/cloud</a>
 并且有3个节点
-<img src="https://qn-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200407112738529.jpg" alt=""></p>
+<img src="https://qn-img.hopefly.top/360%E6%88%AA%E5%9B%BE20200407112738529.jpg" alt=""></p>
 <p>mongodb Atlas免费集群存储空间为512M，这对于个人项目来说足够使用（本博客运行6年使用空间8M）。</p>
 <h3 id="本地客户端连接mongo-atlas">本地客户端连接mongo Atlas</h3>
-<p><img src="https://qn-img.yuedun.wang/atlas1.png" alt="连接mongodb Atlas">
-<img src="https://qn-img.yuedun.wang/atlas2.jpg" alt="连接mongodb Atlas">
-<img src="https://qn-img.yuedun.wang/atlas3.jpg" alt="连接mongodb Atlas"></p>
+<p><img src="https://qn-img.hopefly.top/atlas1.png" alt="连接mongodb Atlas">
+<img src="https://qn-img.hopefly.top/atlas2.jpg" alt="连接mongodb Atlas">
+<img src="https://qn-img.hopefly.top/atlas3.jpg" alt="连接mongodb Atlas"></p>
 <p>复制了连接字符串后直接粘贴到客户端中，替换<!-- raw HTML omitted -->,点击<code>From SRV</code>,会自动拉取集群配置，点击<code>Test</code>测试连接是否成功。</p>
-<p><img src="https://qn-img.yuedun.wang/atlas4.jpg" alt="连接mongodb Atlas">
-<img src="https://qn-img.yuedun.wang/atlas5.png" alt="连接mongodb Atlas"></p>
+<p><img src="https://qn-img.hopefly.top/atlas4.jpg" alt="连接mongodb Atlas">
+<img src="https://qn-img.hopefly.top/atlas5.png" alt="连接mongodb Atlas"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -316,7 +316,7 @@ iOS</p>
 		<p>在之前mgo是一个使用广泛的mongodb驱动器，不过从2018年开始已不再维护，虽然觉得怪可惜的，但也不推荐使用了，毕竟mongodb本身一直在迭代，如果驱动器不更新后续也没法使用。
 详细说明见仓库:<a href="https://github.com/go-mgo/mgo">https://github.com/go-mgo/mgo</a></p>
 <p>而mongodb提供了官方驱动，目前能找到的中文文档大多比较旧了，推荐直接看官方文档，有完整的操作手册:<a href="https://www.mongodb.com/blog/search/golang">https://www.mongodb.com/blog/search/golang</a>
-<img src="https://qn-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200406233717565.jpg" alt="">
+<img src="https://qn-img.hopefly.top/360%E6%88%AA%E5%9B%BE20200406233717565.jpg" alt="">
 本文也不想做一次搬运工，毕竟也不能随时保持更新，还是直接看官方文档比较好。下面列出一些主要的文章链接:</p>
 <p><a href="https://www.mongodb.com/blog/post/official-mongodb-go-driver-now-available-for-beta-testing">Stack Overflow Research of 100,000 Developers Finds MongoDB is the Most Wanted Database</a> (2019-2-2)</p>
 <p><a href="https://www.mongodb.com/blog/post/stack-overflow-research-developers-mongodb-most-wanted-database">Official MongoDB Go Driver Now Available for Beta Testing</a> (2019-2-2)
@@ -349,7 +349,7 @@ MongoDB Go驱动程序教程</p>
 		<p>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website</p>
 <pre tabindex="0"><code>db.createUser( {user: &#34;hp_website&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]})
 </code></pre><p>退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户<code>db.getUsers()</code>显示</p>
-<p><img src="https://qn-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200404094439043.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/360%E6%88%AA%E5%9B%BE20200404094439043.jpg" alt=""></p>
 <p>虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用<code>use website</code>后创建用户也是不对。
 正确的做法是关闭数据库认证，使用不带<code>--auth</code>启动数据库，使用命令行来创建</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>use website

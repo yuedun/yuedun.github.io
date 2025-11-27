@@ -212,7 +212,7 @@
 </span></span></code></pre></div><p>_操作其实只是引入该包。当导入一个包时，它所有的init()函数就会被执行，但有些时候并非真的需要使用这些包，仅仅是希望它的init()函数被执行而已。这个时候就可以使用_操作引用该包了。即使用_操作引用包是无法通过包名来调用包中的导出函数，而是只是为了简单的调用其init函数()。</p>
 <p>二、 包的导入过程说明
 程序的初始化和执行都起始于main包。如果main包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到fmt包，但它只会被导入一次，因为没有必要导入多次）。当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行init函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对main包中的包级常量和变量进行初始化，然后执行main包中的init函数（如果存在的话），最后执行main函数。下图详细地解释了整个执行过程：</p>
-<p><img src="https://qn-img.yuedun.wang/20140511222515968.jpg" alt="go包导入过程" title="go包导入过程"></p>
+<p><img src="https://qn-img.hopefly.top/20140511222515968.jpg" alt="go包导入过程" title="go包导入过程"></p>
 <p>通过上面的介绍我们了解了import的时候其实是执行了该包里面的init函数，初始化了里面的变量，_操作只是说该包引入了，只初始化里面的init函数和一些变量，不能通过包名来调用其它的函数，这有什么用呢？往往这些init函数里面是注册自己包里面的引擎，让外部可以方便的使用，就很多实现database/sql的引起，在init函数里面都是调用了sql.Register(name string, driver driver.Driver)注册自己，然后外部就可以使用了。</p>
 <p>原文地址：http://blog.csdn.net/zhangzhebjut/article/details/25564457</p>
 	</div>
@@ -237,7 +237,7 @@
 <blockquote>
 <p>右上角头像-settings-emails-Add email address</p></blockquote>
 <p>验证邮箱后就会立马重新统计</p>
-<p><img src="https://qn-img.yuedun.wang/profile.png" alt="" title="github email"></p>
+<p><img src="https://qn-img.hopefly.top/profile.png" alt="" title="github email"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -437,7 +437,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>从火狐量子浏览器开始，pocket按钮集成到了地址栏右侧，</p>
-<p><img src="https://qn-img.yuedun.wang/firefoxpocket.png" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/firefoxpocket.png" alt=""></p>
 <p>如果你找不到，那么有可能是在浏览器配置中关闭了，开启方式：</p>
 <blockquote>
 <p>地址栏中输入<code>about:config</code>,点击“我了解风险”继续，搜索“pocket.enabled”，如果是false双击修改为true就会出现。</p></blockquote>
@@ -461,7 +461,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>首先看项目目录：</p>
-<p><img src="https://qn-img.yuedun.wang/projectdir.png" alt="项目目录"></p>
+<p><img src="https://qn-img.hopefly.top/projectdir.png" alt="项目目录"></p>
 <p>再看Dockerfile文件内容：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 以最新的node为基础镜像</span>
 </span></span><span style="display:flex;"><span>FROM hub.c.163.com/library/node:latest
@@ -483,7 +483,7 @@
 <p><code>-d</code>选项是后台运行</p>
 <p>需要进入到docker查看pm2运行情况
 ，可以通过<code>docker exec -ti ks /bin/sh</code>查看运行的容器内部情况
-<img src="https://qn-img.yuedun.wang/pm2running.png" alt="pm2运行情况"></p>
+<img src="https://qn-img.hopefly.top/pm2running.png" alt="pm2运行情况"></p>
 <h1 id="要不要在docker中使用pm2运行nodejs">要不要在docker中使用pm2运行nodejs</h1>
 <ul>
 <li>pm2可以监控nodejs进程，如果进程挂了，可以自动重启</li>

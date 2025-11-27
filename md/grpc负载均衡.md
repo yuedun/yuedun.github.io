@@ -19,10 +19,10 @@ server {
 }
 ```
 配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。
-效果图：![grpc-nginx](http://qn-img.yuedun.wang/grpc_nginx.gif "grpc-nginx")
+效果图：![grpc-nginx](http://qn-img.hopefly.top/grpc_nginx.gif "grpc-nginx")
 可以看到，每一次请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。
 
 虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。
-![grpc_nginx2](http://qn-img.yuedun.wang/grpc_nginx2.gif "grpc_nginx2")
+![grpc_nginx2](http://qn-img.hopefly.top/grpc_nginx2.gif "grpc_nginx2")
 原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了`grpc_connect_timeout`选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。
-![grpc_nginx3](http://qn-img.yuedun.wang/grpc_nginx3.gif "grpc_nginx3")
+![grpc_nginx3](http://qn-img.hopefly.top/grpc_nginx3.gif "grpc_nginx3")

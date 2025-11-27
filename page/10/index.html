@@ -125,7 +125,7 @@
 		<p>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。
 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">find</span>({<span style="color:#a6e22e">content</span><span style="color:#f92672">:</span>{<span style="color:#a6e22e">$regex</span><span style="color:#f92672">:</span><span style="color:#e6db74">/hopefully.qiniudn.com/</span>}}).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">item</span>){
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;qn-img.yuedun.wang&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;qn-img.hopefly.top&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">save</span>(<span style="color:#a6e22e">item</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;&gt;&gt;&#34;</span>, <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>);
 </span></span><span style="display:flex;"><span>})
@@ -182,7 +182,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>无法重新声明块范围变量“onerror”</p>
-<p><img src="https://qn-img.yuedun.wang/onerror.png" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/onerror.png" alt=""></p>
 <p>解决办法：打开<code>tsconfig.json</code>中的<code>&quot;lib&quot;: [&quot;es2015&quot;, &quot;es2016&quot;, &quot;es2017&quot;]</code></p>
 	</div>
 </article>
@@ -211,9 +211,9 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> /f %%i in <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;findstr /i . List.txt 2^&gt;nul&#39;</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">do</span> dism /online /norestart /add-package:<span style="color:#e6db74">&#34;C:\Windows\servicing\Packages\%%i&#34;</span>
 </span></span><span style="display:flex;"><span>pause
 </span></span></code></pre></div><p>后缀名保存为<code>cmd</code>,以管理员身份执行：</p>
-<p><img src="https://qn-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902160354.png" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902160354.png" alt=""></p>
 <p>然后<code>WIN+R</code>中执行<code>gpedit.msc</code>即可打开组策略。</p>
-<p><img src="https://qn-img.yuedun.wang/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902161900.png" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20180902161900.png" alt=""></p>
 <p>如此可以关闭占用CPU过高的Windows Defender。</p>
 	</div>
 </article>
@@ -246,7 +246,7 @@
 <li>降低了开发学习难度</li>
 </ul>
 <p>等等……
-<img src="https://qn-img.yuedun.wang/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180805104325.jpg" alt="前后端分离" title="前后端分离"></p>
+<img src="https://qn-img.hopefly.top/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180805104325.jpg" alt="前后端分离" title="前后端分离"></p>
 <p>大家说的都说到点上了，这也是前后端分离能发展起来的驱动力。但是道理说的都挺好，如果不结合实际情况的话就是大炮打蚊子，不但达不到理想的效果还浪费资源。而且前后端分离带来的负面情况也不可忽视：</p>
 <ul>
 <li>增加了沟通成本，一些前后端都可以做又都不想做的事或许只能由权利大的来决定。</li>

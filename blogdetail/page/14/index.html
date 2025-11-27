@@ -122,8 +122,8 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>本想写篇vue.js的教程的，但牵扯的知识点比较多，最近又没时间，就记录下过程中遇到问题吧。开发过程中用的360极速浏览器，也没什么问题，但是其他人测试的时候用的是chrome浏览器，输入汉字的时候会连拼音也带进去，比如输入的是“你好”，结果却成了“nihao你好”。</p>
-<p><img src="https://qn-img.yuedun.wang/shurufa1.jpg" alt=""></p>
-<p><img src="https://qn-img.yuedun.wang/shurufa2.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/shurufa1.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/shurufa2.jpg" alt=""></p>
 <p>按理说360极速浏览器也用的是chrome内核，不应该出现这两种不同的情况，这个问题先不追究了。还是说说为什么vue.js的输入框会出现拼音的问题。我本以为是浏览器的差异造成这种现象，但是也不是所有输入框都会出现，那一定是程序的问题。</p>
 <!-- raw HTML omitted -->
 <p>这是一种双向数据绑定常见写法，但是由于我的理解不够透彻，写成了这样：</p>
@@ -197,7 +197,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。</p>
 <p>据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。</p>
-<p><img src="https://qn-img.yuedun.wang/sequelizeobj.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/sequelizeobj.jpg" alt=""></p>
 <p>但是还是有办法的，可以这样删除</p>
 <pre tabindex="0"><code>user.getDataValue(&#39;friends&#39;)[0].setDataValue(&#39;friends&#39;, undefined)
 </code></pre><p>就是将属性设置为undefined，查询的时候就没有小樱的friends了。</p>
@@ -552,7 +552,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>关于代码重构是否必须，在网上也是找了很多资料。很多人持不同态度，至少给我的感觉是对半分的态度。有人说应该重构，可以是项目更加健壮，代码读起来更加顺畅，性能提升，大工程更易维护，可扩展性强等等好处。但有人持反对态度，认为代码千万不要重写，其中原因也可以理解，比如：重构代码需要耗费大量时间，在项目周期紧张的情况下更加不可能了，只要可运行就行。很多时候写代码容易，但是读代码难，这是很多人有的感觉，尤其是没有文档，注释的代码更是看了伤眼伤神。而且重构可能带来新的问题，遗留项目更是没人敢碰。</p>
-<p><img src="https://qn-img.yuedun.wang/touteng.jpg" alt=""></p>
+<p><img src="https://qn-img.hopefly.top/touteng.jpg" alt=""></p>
 <p>那到底该不该重构呢？或许我也不能说出绝对的理由，不过我有自己的理由，首先我对代码有洁癖，见不得乱糟糟的代码，不过我更多的情况是在写的时候会做代码审查，看看能不能够用更简单的方式实现，对于多次重复出现的代码会考虑封装一下以便共用。至于已经上线很久以后发现的烂代码还是谨慎重构，太复杂的就不要动了。</p>
 <p>有一种比较频繁出现的情况是，有很多时候会写之前写过的代码，某个类似的功能，这个时候是坚决会对以前的代码重构简化，我讨厌写重复的东西。往往能将以前的代码缩减不少使之更精简明了。</p>
 <p>对于重构的意义除了上面提到的，个人认为还有一个好处——虽然一次不能写出最好的代码，但是只要有重构的意识，至少是能写出比上次更好的代码，也算是经验总结，要不然怎么会出现那么多设计模式。</p>
