@@ -235,10 +235,10 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>天然气热水器莫名其妙就不打火了，然后到58上找了维修公司，在电话里问维修多少钱就是死活不说，连区间都不说。然后就是维修员上门检修20元。
-<img src="https://hopefully-img.yuedun.wang/IMG_8158.jpg" alt="">
-<img src="https://hopefully-img.yuedun.wang/IMG_8156.jpg" alt="">
-<img src="https://hopefully-img.yuedun.wang/IMG_8157.jpg" alt="">
-<img src="https://hopefully-img.yuedun.wang/IMG_8155.jpg" alt="">
+<img src="https://qn-img.yuedun.wang/IMG_8158.jpg" alt="">
+<img src="https://qn-img.yuedun.wang/IMG_8156.jpg" alt="">
+<img src="https://qn-img.yuedun.wang/IMG_8157.jpg" alt="">
+<img src="https://qn-img.yuedun.wang/IMG_8155.jpg" alt="">
 就换了这么个零件，看着也不是特别精密的零件，问师傅换这个多少钱，说是300元。到最后收费的时候说是380，这两个数字听起来很像吗？我能听错！！还要加50元人工费，合计450元。
 或许这就是维修公司的套路吧，开始不说多少钱，总是催着你什么时候可以上门维修，维修的时候又说这坏那坏了，换个零件又很贵。网上一看二手的都不过300块，还不及一个零件贵。还有就是问价格的时候一定要多次确认多少钱后再决定是否需要更换。最后要保留维修票据，以免日后保修。</p>
 	</div>
@@ -307,7 +307,7 @@ golang相对于其他语言，在服务，器上不需要安装运行时，不�
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>同一台服务器上部署了两个功能差不多的服务，但是内存占比差距有点大。
-<img src="https://hopefully-img.yuedun.wang/nodejs-go%E5%86%85%E5%AD%98%E5%8D%A0%E6%AF%94.png" alt="nodejs-go内存占比" title="nodejs-go内存占比">
+<img src="https://qn-img.yuedun.wang/nodejs-go%E5%86%85%E5%AD%98%E5%8D%A0%E6%AF%94.png" alt="nodejs-go内存占比" title="nodejs-go内存占比">
 go占14.7M
 nodejs占122.2M</p>
 	</div>
@@ -383,12 +383,12 @@ server {
 }
 </code></pre><p>配置好nginx以后，客户端需要连接到localhost:8080来调用远程服务。
 效果图：
-<img src="https://hopefully-img.yuedun.wang/grpc_nginx.gif" alt="grpc-nginx" title="grpc-nginx"></p>
+<img src="https://qn-img.yuedun.wang/grpc_nginx.gif" alt="grpc-nginx" title="grpc-nginx"></p>
 <p>可以看到，一次任务的多个请求两个RPC服务器都有输出，证明请求被分配到了两台服务器上。</p>
 <p>虽然我们使用了两台服务器来保证性能和可用性，但是当其中一台服务器挂掉以后发现部分请求响应非常慢。</p>
-<p><img src="https://hopefully-img.yuedun.wang/grpc_nginx2.gif" alt="grpc_nginx2" title="grpc_nginx2"></p>
+<p><img src="https://qn-img.yuedun.wang/grpc_nginx2.gif" alt="grpc_nginx2" title="grpc_nginx2"></p>
 <p>原因是服务器虽然宕机，但是请求还会发送到挂掉的服务器上，然后等待超时（默认1分钟），超时后再请求另外的服务器，重新请求以后可能还会再次分配到这台宕机的服务器。为了能加快响应，配置了<code>grpc_connect_timeout</code>选项，把时间设为5秒，再次测试，大概5秒后就能返回。如果设置更小的时间响应时间会更短。</p>
-<p><img src="https://hopefully-img.yuedun.wang/grpc_nginx3.gif" alt="grpc_nginx3" title="grpc_nginx3"></p>
+<p><img src="https://qn-img.yuedun.wang/grpc_nginx3.gif" alt="grpc_nginx3" title="grpc_nginx3"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -413,7 +413,7 @@ server {
 </span></span><span style="display:flex;"><span>character-set-server<span style="color:#f92672">=</span>utf8
 </span></span><span style="display:flex;"><span>collation-server<span style="color:#f92672">=</span>utf8_general_ci
 </span></span></code></pre></div><p>重启成功。</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011181909.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011181909.png" alt=""></p>
 <p>这是本地虚拟机里的mysql</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mysql&gt; show variables like <span style="color:#e6db74">&#34;character%&#34;</span>;
 </span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
@@ -429,10 +429,10 @@ server {
 </span></span><span style="display:flex;"><span>| character_sets_dir       | /usr/share/mysql/charsets/ |
 </span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
 </span></span></code></pre></div><p>完全正确，但是修改阿里云服务器以后还是有点小问题</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011182126.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011182126.png" alt=""></p>
 <p><code>character_set_database</code>这一项还是<code>latin1</code>,不过似乎并不影响。
 友情提示：纠正了mysql字符集发现新建的表还是<code>latin1</code>字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011182445.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011182445.png" alt=""></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -454,7 +454,7 @@ server {
 		<p>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。
 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">find</span>({<span style="color:#a6e22e">content</span><span style="color:#f92672">:</span>{<span style="color:#a6e22e">$regex</span><span style="color:#f92672">:</span><span style="color:#e6db74">/hopefully.qiniudn.com/</span>}}).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">item</span>){
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;hopefully-img.yuedun.wang&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;qn-img.yuedun.wang&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">save</span>(<span style="color:#a6e22e">item</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;&gt;&gt;&#34;</span>, <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>);
 </span></span><span style="display:flex;"><span>})

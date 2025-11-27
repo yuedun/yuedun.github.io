@@ -268,15 +268,15 @@
 		<p>mongodb提供了免费的mongodb集群可用于学习使用
 <a href="https://www.mongodb.com/cloud">https://www.mongodb.com/cloud</a>
 并且有3个节点
-<img src="https://hopefully-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200407112738529.jpg" alt=""></p>
+<img src="https://qn-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200407112738529.jpg" alt=""></p>
 <p>mongodb Atlas免费集群存储空间为512M，这对于个人项目来说足够使用（本博客运行6年使用空间8M）。</p>
 <h3 id="本地客户端连接mongo-atlas">本地客户端连接mongo Atlas</h3>
-<p><img src="https://hopefully-img.yuedun.wang/atlas1.png" alt="连接mongodb Atlas">
-<img src="https://hopefully-img.yuedun.wang/atlas2.jpg" alt="连接mongodb Atlas">
-<img src="https://hopefully-img.yuedun.wang/atlas3.jpg" alt="连接mongodb Atlas"></p>
+<p><img src="https://qn-img.yuedun.wang/atlas1.png" alt="连接mongodb Atlas">
+<img src="https://qn-img.yuedun.wang/atlas2.jpg" alt="连接mongodb Atlas">
+<img src="https://qn-img.yuedun.wang/atlas3.jpg" alt="连接mongodb Atlas"></p>
 <p>复制了连接字符串后直接粘贴到客户端中，替换<!-- raw HTML omitted -->,点击<code>From SRV</code>,会自动拉取集群配置，点击<code>Test</code>测试连接是否成功。</p>
-<p><img src="https://hopefully-img.yuedun.wang/atlas4.jpg" alt="连接mongodb Atlas">
-<img src="https://hopefully-img.yuedun.wang/atlas5.png" alt="连接mongodb Atlas"></p>
+<p><img src="https://qn-img.yuedun.wang/atlas4.jpg" alt="连接mongodb Atlas">
+<img src="https://qn-img.yuedun.wang/atlas5.png" alt="连接mongodb Atlas"></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -298,7 +298,7 @@
 		<p>使用mongodb数据库时有这样的场景，使用可视化工具登陆了某个数据库blogs,然后又创建了数据库website,给website数据库添加用户hp_website</p>
 <pre tabindex="0"><code>db.createUser( {user: &#34;hp_website&#34;,pwd: &#34;xxxxxx&#34;,roles: [ { role: &#34;userAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbAdmin&#34;, db: &#34;website&#34; },{ role: &#34;dbOwner&#34;, db: &#34;website&#34; } ]})
 </code></pre><p>退出后使用bbb-user登陆数据库bbb却发现登陆不上去。登陆aaa数据查看用户<code>db.getUsers()</code>显示</p>
-<p><img src="https://hopefully-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200404094439043.jpg" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/360%E6%88%AA%E5%9B%BE20200404094439043.jpg" alt=""></p>
 <p>虽然创建了很多用户，但db值都是blogs,显然是不对的。即时使用<code>use website</code>后创建用户也是不对。
 正确的做法是关闭数据库认证，使用不带<code>--auth</code>启动数据库，使用命令行来创建</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>use website
@@ -329,7 +329,7 @@
 </span></span><span style="display:flex;"><span>character-set-server<span style="color:#f92672">=</span>utf8
 </span></span><span style="display:flex;"><span>collation-server<span style="color:#f92672">=</span>utf8_general_ci
 </span></span></code></pre></div><p>重启成功。</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011181909.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011181909.png" alt=""></p>
 <p>这是本地虚拟机里的mysql</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mysql&gt; show variables like <span style="color:#e6db74">&#34;character%&#34;</span>;
 </span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
@@ -345,10 +345,10 @@
 </span></span><span style="display:flex;"><span>| character_sets_dir       | /usr/share/mysql/charsets/ |
 </span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
 </span></span></code></pre></div><p>完全正确，但是修改阿里云服务器以后还是有点小问题</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011182126.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011182126.png" alt=""></p>
 <p><code>character_set_database</code>这一项还是<code>latin1</code>,不过似乎并不影响。
 友情提示：纠正了mysql字符集发现新建的表还是<code>latin1</code>字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011182445.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011182445.png" alt=""></p>
 	</div>
 </article>
 <article class="list__item post">
@@ -370,7 +370,7 @@
 		<p>最近七牛云存储要收回测试域名，但是我的博客中图片使用了这些测试域名，所以要替换掉，避免图片不可访问。在文档中没有找到可以直接替换的方法，所以就使用了mongodb的forEach循环替换。
 首先用正则查询法查出使用了测试域名的文档，然后forEach循环，在每个循环中使用js的正则替换函数将域名替换掉，最后再保存该文档即可。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">find</span>({<span style="color:#a6e22e">content</span><span style="color:#f92672">:</span>{<span style="color:#a6e22e">$regex</span><span style="color:#f92672">:</span><span style="color:#e6db74">/hopefully.qiniudn.com/</span>}}).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">item</span>){
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;hopefully-img.yuedun.wang&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/hopefully.qiniudn.com/g</span>, <span style="color:#e6db74">&#39;qn-img.yuedun.wang&#39;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;blogs&#39;</span>).<span style="color:#a6e22e">save</span>(<span style="color:#a6e22e">item</span>)
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;&gt;&gt;&#34;</span>, <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">content</span>);
 </span></span><span style="display:flex;"><span>})

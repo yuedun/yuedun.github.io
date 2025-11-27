@@ -108,7 +108,7 @@
 	</header><article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.yuedun.wang/2023/09/wechatchat-developement/">
-			<img src="https://hopefully-img.yuedun.wang/%e5%85%b1%e4%ba%ab%e7%9b%ae%e5%bd%95/09/wechatchat-devolep/%e8%8a%b1%e7%94%9f%e5%a3%b3%e5%9f%9f%e5%90%8d.png?imageMogr2/thumbnail/!20p/" alt="微信开发基础设施准备" />
+			<img src="https://qn-img.yuedun.wang/%e5%85%b1%e4%ba%ab%e7%9b%ae%e5%bd%95/09/wechatchat-devolep/%e8%8a%b1%e7%94%9f%e5%a3%b3%e5%9f%9f%e5%90%8d.png?imageMogr2/thumbnail/!20p/" alt="微信开发基础设施准备" />
 		</a>
 	</figure>
 	<header class="list__header">
@@ -132,14 +132,14 @@
 <p><strong>不可用的方式——ngrok</strong></p>
 <p>最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。</p>
 <p><strong>可用的方式——借助花生壳来实现</strong></p>
-<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
+<p><img src="https://qn-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
 <p>如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&gt; <a href="https://console.hsk.oray.com/forward">https://console.hsk.oray.com/forward</a></p>
 <h2 id="服务器配置">服务器配置</h2>
-<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
+<p><img src="https://qn-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
 <p>此处的<strong>服务器地址(URL)</strong> 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。</p>
 <h2 id="测试号管理">测试号管理</h2>
 <p><a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index">测试号管理</a>点开后就会看到和上面服务器配置一样的配置内容。</p>
-<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
+<p><img src="https://qn-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
 <p>测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。</p>
 <h2 id="接口访问白名单">接口访问白名单</h2>
 <p>设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单</p>
@@ -164,16 +164,16 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>做微信开发的时候，在开发者中心需要进行服务器配置，这里的配置是一个可以公网访问的地址，如果是产品上线的话肯定有公网地址，但是在开发过程中需要本地测试，总不能开发一点部署到服务器测试。这时候我们就需要从公网访问本地服务器。</p>
-<p><img src="https://hopefully-img.yuedun.wang/1.jpg" alt="设置你的路由器，进行内网映射"></p>
+<p><img src="https://qn-img.yuedun.wang/1.jpg" alt="设置你的路由器，进行内网映射"></p>
 <p>这已经是设置好的，服务器端口是指公网地址的端口，就以80端口来好了，这样公网地址可以省略端口，内部服务器端口就是本地服务器端口，Java程序一般是8080这样的端口，IP地址就是本地服务器在局域网中的ip，协议选ALL，状态：生效。常用服务器端口可以不选。</p>
-<p><img src="https://hopefully-img.yuedun.wang/2.png" alt="设置你的路由器，进行内网映射"></p>
+<p><img src="https://qn-img.yuedun.wang/2.png" alt="设置你的路由器，进行内网映射"></p>
 <p>然后启动本地服务器就可以通过路由器的公网IP访问本地服务了</p>
-<p><img src="https://hopefully-img.yuedun.wang/3.jpg" alt="设置你的路由器，进行内网映射"></p>
-<p><img src="https://hopefully-img.yuedun.wang/4.jpg" alt="设置你的路由器，进行内网映射"></p>
+<p><img src="https://qn-img.yuedun.wang/3.jpg" alt="设置你的路由器，进行内网映射"></p>
+<p><img src="https://qn-img.yuedun.wang/4.jpg" alt="设置你的路由器，进行内网映射"></p>
 <p>但是我们不习惯使用IP地址访问，可以通过域名来访问，首先再到路由器中配置“动态DNS”：</p>
-<p><img src="https://hopefully-img.yuedun.wang/5.jpg" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/5.jpg" alt=""></p>
 <p>当然，得先注册一个动态域名，登录成功之后就可以通过域名访问本地应用服务器了</p>
-<p><img src="https://hopefully-img.yuedun.wang/6.jpg" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/6.jpg" alt=""></p>
 	</div>
 </article>
 

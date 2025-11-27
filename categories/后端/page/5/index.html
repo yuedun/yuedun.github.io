@@ -248,7 +248,7 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>鸣人有小樱和佐助两个朋友，小樱有井野一个朋友，小樱的朋友也可以当做鸣人的朋友，现在想把井野也提出来并列到鸣人的朋友列表里，这样做很容易，但是既然提出来了就不需要小樱的朋友列表了，应该删掉。但是用delete user.friends[0].friends这样的方法是删不掉的。可能的是sequelize对象的属性是放在dataValues对象下面的，不能直接删除。</p>
 <p>据我debug观察，虽然有直接属性，但是sequelize提供了getDataValue方法来获取属性值，获取到的值应该是dataValues下面的。所以，就算即使用delete删掉了直接属性还是能获取到。</p>
-<p><img src="https://hopefully-img.yuedun.wang/sequelizeobj.jpg" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/sequelizeobj.jpg" alt=""></p>
 <p>但是还是有办法的，可以这样删除</p>
 <pre tabindex="0"><code>user.getDataValue(&#39;friends&#39;)[0].setDataValue(&#39;friends&#39;, undefined)
 </code></pre><p>就是将属性设置为undefined，查询的时候就没有小樱的friends了。</p>
@@ -297,11 +297,11 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		<p>先来一张效果图：</p>
-<p><img src="https://hopefully-img.yuedun.wang/172722906.png" alt="">](<a href="https://hopefully-img.yuedun.wang/172722906.png">https://hopefully-img.yuedun.wang/172722906.png</a>)</p>
+<p><img src="https://qn-img.yuedun.wang/172722906.png" alt="">](<a href="https://qn-img.yuedun.wang/172722906.png">https://qn-img.yuedun.wang/172722906.png</a>)</p>
 <p>由图可以看出，监控内容有CPU，内存使用，系统bug，以及代码更新和重启服务，还有更多功能，比如bug邮件提醒功能。</p>
 <p>使用方法很简单，几乎是一条命令搞定，首先打开<a href="https://app.keymetrics.io/#/%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%EF%BC%8C">https://app.keymetrics.io/#/ </a></p>
 <p>注册登录以后应该可以看到下图命令提示，在服务器中执行第一条命令，需要带后面的machine name</p>
-<p><img src="https://hopefully-img.yuedun.wang/171710421.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/171710421.png" alt=""></p>
 <p>可能会失败，多试几次就可以了。然后再web页面会自动出现服务器状况。</p>
 	</div>
 </article>

@@ -125,7 +125,7 @@
 </span></span><span style="display:flex;"><span>character-set-server<span style="color:#f92672">=</span>utf8
 </span></span><span style="display:flex;"><span>collation-server<span style="color:#f92672">=</span>utf8_general_ci
 </span></span></code></pre></div><p>重启成功。</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011181909.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011181909.png" alt=""></p>
 <p>这是本地虚拟机里的mysql</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mysql&gt; show variables like <span style="color:#e6db74">&#34;character%&#34;</span>;
 </span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
@@ -141,10 +141,10 @@
 </span></span><span style="display:flex;"><span>| character_sets_dir       | /usr/share/mysql/charsets/ |
 </span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
 </span></span></code></pre></div><p>完全正确，但是修改阿里云服务器以后还是有点小问题</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011182126.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011182126.png" alt=""></p>
 <p><code>character_set_database</code>这一项还是<code>latin1</code>,不过似乎并不影响。
 友情提示：纠正了mysql字符集发现新建的表还是<code>latin1</code>字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。</p>
-<p><img src="https://hopefully-img.yuedun.wang/20181011182445.png" alt=""></p>
+<p><img src="https://qn-img.yuedun.wang/20181011182445.png" alt=""></p>
 
 		</div>
 		<footer class="post__footer">

@@ -585,7 +585,7 @@
 <article class="list__item post">
 	<figure class="list__thumbnail">
 		<a href="https://www.yuedun.wang/2023/09/wechatchat-developement/">
-			<img src="https://hopefully-img.yuedun.wang/%e5%85%b1%e4%ba%ab%e7%9b%ae%e5%bd%95/09/wechatchat-devolep/%e8%8a%b1%e7%94%9f%e5%a3%b3%e5%9f%9f%e5%90%8d.png?imageMogr2/thumbnail/!20p/" alt="微信开发基础设施准备" />
+			<img src="https://qn-img.yuedun.wang/%e5%85%b1%e4%ba%ab%e7%9b%ae%e5%bd%95/09/wechatchat-devolep/%e8%8a%b1%e7%94%9f%e5%a3%b3%e5%9f%9f%e5%90%8d.png?imageMogr2/thumbnail/!20p/" alt="微信开发基础设施准备" />
 		</a>
 	</figure>
 	<header class="list__header">
@@ -609,14 +609,14 @@
 <p><strong>不可用的方式——ngrok</strong></p>
 <p>最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。</p>
 <p><strong>可用的方式——借助花生壳来实现</strong></p>
-<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
+<p><img src="https://qn-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
 <p>如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&gt; <a href="https://console.hsk.oray.com/forward">https://console.hsk.oray.com/forward</a></p>
 <h2 id="服务器配置">服务器配置</h2>
-<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
+<p><img src="https://qn-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
 <p>此处的<strong>服务器地址(URL)</strong> 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。</p>
 <h2 id="测试号管理">测试号管理</h2>
 <p><a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index">测试号管理</a>点开后就会看到和上面服务器配置一样的配置内容。</p>
-<p><img src="https://hopefully-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
+<p><img src="https://qn-img.yuedun.wang/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
 <p>测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。</p>
 <h2 id="接口访问白名单">接口访问白名单</h2>
 <p>设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单</p>
@@ -928,7 +928,7 @@ libev
 		<h3 id="前后端分离">前后端分离</h3>
 <p>近几年比较流行的web项目开发架构是前后端分离，前后端分离架构在系统稳定性方面非常有优势，其中一点优势主要体现在用户感知上，即使服务端发生错误也不会展现在视图层，一般情况下用户是可以继续浏览网页，不会很突兀的显示这样的信息：
 502 bad gateway</p>
-<p><img src="https://hopefully-img.yuedun.wang/502.jpg" alt="502 bad gateway"></p>
+<p><img src="https://qn-img.yuedun.wang/502.jpg" alt="502 bad gateway"></p>
 <p>在接口发生错误时虽然可能会获取不到一些数据，但是在用户体验上比直接显示502错误要好。</p>
 <p>部署也相对安全和方便。</p>
 <p>前后端分离架构虽好，但不是”银弹”，不是所有网站都能使用前后端分离架构来做。</p>
@@ -937,10 +937,10 @@ libev
 <p>本文我将使用“服务端渲染”来代替不分离的架构。</p>
 <p>由于服务端渲染的所有数据处理都在服务端进行，发生任何错误都可能引起500错误，这种错误会直接体现在视图层，用户看到这样的信息很不友好。
 500 Internal Server Error</p>
-<p><img src="https://hopefully-img.yuedun.wang/500.png" alt="500 Internal Server Error"></p>
+<p><img src="https://qn-img.yuedun.wang/500.png" alt="500 Internal Server Error"></p>
 <p>遇到这种错误，可以使用适当的措施来弥补，带来的效果却非常良好。开发web最多遇到的错误码有：404，500，502。</p>
 <p>404错误很多网站都有默认页面，像这样的：</p>
-<p><img src="https://hopefully-img.yuedun.wang/404.png" alt="404 not found"></p>
+<p><img src="https://qn-img.yuedun.wang/404.png" alt="404 not found"></p>
 <p>但是500，502错误却鲜有默认页面，我们何不也搞一个呢？</p>
 <h4 id="500错误">500错误</h4>
 <p>首先说一下500错误的应对措施，500发生在服务端，比如空指针，数组溢出，超时等都会引起web服务500错误，一般的500错误在应用层面是可以捕捉到的，在response返回之前捕获异常跳转到一个”合适的页面”，这样就可以避免出现500 Internal Server Error信息。虽然这个“合适的页面”不是本应该跳转的页面，但起码还是个正常页面。</p>
