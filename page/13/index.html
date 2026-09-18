@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
-  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="datePublished" content="2026-09-18T17:33:45+08:00">
+  <meta itemprop="dateModified" content="2026-09-18T17:33:45+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,32 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/59f4a228f99acfed859c831e/" rel="bookmark">
+			typescript开发sequelize返回ModelInstance或null值无法获取属性值
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-10-28T15:28:40Z">2017.10.28 15:28</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p><img src="https://qn-img.hopefly.top/typescript.png" alt="sequelize nulll" title="sequelize nulll"></p>
+<p>从图片中的代码可以看出
+<code>let userRecord = await item.getUser();</code>获取到的是<code>Bluebird&lt;UserInstance | null&gt;</code>类型，然后在下面获取对象属性的时候报错，错误信息是：</p>
+<pre tabindex="0"><code>[ts] Object is possibly &#39;null&#39;.
+let userRecord: UserInstance | null
+</code></pre><p>说对象可能是null，所以无法获取其中的属性。遇到这种情况请设置typescript的编译选项，tsconfig.json文件中的
+<code>&quot;strictNullChecks&quot;: true,              /* Enable strict null checks. */</code>
+默认是true，即严格null检查，设置为falsse即可。</p>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/59eab23989faeadc30eac826/" rel="bookmark">
@@ -472,35 +498,6 @@ npm ERR!     E:\workspace\zm-platform\npm-debug.log
 <code>{ timestamps: {createdAt:'created_at', updatedAt:'updated_at'}}</code></p>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/59278639c1abbe00911df03c/" rel="bookmark">
-			基于beego框架的go项目目录结构
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2017-05-25T15:34:49Z">2017.05.25 15:34</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%90%8E%E7%AB%AF/" rel="category">后端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>原生的go推荐目录是</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>├─bin
-</span></span><span style="display:flex;"><span>├─pkg
-</span></span><span style="display:flex;"><span>├─src
-</span></span></code></pre></div><p>bin目录放二进制文件，可以是编译后的可执行文件，也可以是安装的第三方命令行，比如beego的命令行工具会安装在bin目录。pkg存放第三方依赖，src存放代码文件。单个项目没什么疑问，就这么存放，主要是有多个项目的时候对新手来说会有点迷糊，就像我，建立了两个项目就像进了迷宫，提交到git上就更乱了，究其原因是把bin目录和pkg目录当做项目源码的一部分了。其实这两个目录是作为公共目录存在的，多个项目公用。src目录下也是可以有多个项目的，每个项目有自己独立的文件夹。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>.src<span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>├─project1
-</span></span><span style="display:flex;"><span>├─project2
-</span></span><span style="display:flex;"><span>├─project3
-</span></span></code></pre></div><p>所以在创建项目和克隆代码时都是在src目录下进行，不能把bin目录和pkg目录提交到git上。</p>
-<p>但是beego并没有完全遵循这一原则，它将二进制文件直接编译到了项目源码目录下，或许可配置生成目录，暂时没有了解到，所以需要在.gitignore中排除掉生成的可执行文件，否则提交的时候就比较费时了。</p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -524,11 +521,11 @@ npm ERR!     E:\workspace\zm-platform\npm-debug.log
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2026/09/opencode-sensenova/">在 OpenCode 中使用 SenseNova Token Plan</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 		</ul>
 	</div>
 </div>
@@ -580,7 +577,7 @@ npm ERR!     E:\workspace\zm-platform\npm-debug.log
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (7)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>

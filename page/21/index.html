@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
-  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="datePublished" content="2026-09-18T17:33:45+08:00">
+  <meta itemprop="dateModified" content="2026-09-18T17:33:45+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,35 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/554aff409ddef487a8b23409/" rel="bookmark">
+			redis启动失败
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2015-05-07T05:59:28Z">2015.05.07 05:59</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>redis-server.exe redis.windows.conf
+使用上面命令启动redis服务的时候报了以下错误信息：
+The Windows version of Redis allocates a memory mapped heap for sharing with
+the forked process used for persistence operations. In order to share this
+memory, Windows allocates from the system paging file a portion equal to the
+size of the Redis heap. At this time there is insufficient contiguous free
+space available in the system paging file for this operation (Windows error
+0x5AF). To work around this you may either increase the size of the system
+paging file, or decrease the size of the Redis heap with the &ndash;maxheap flag.
+Sometimes a reboot will defragment the system paging file sufficiently for
+this operation to complete successfully.</p>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/554ae5b3a07843eb8002a388/" rel="bookmark">
@@ -484,39 +513,6 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 为对象的属性输出。如果我们去掉 objSub.sayHello(); 这行的注释，将会看到：</p>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5449dac894f76294f5e60fe1/" rel="bookmark">
-			BAE上连接mongodb每隔十多小时就不能连接的问题(二)
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2014-10-24T04:51:20Z">2014.10.24 04:51</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" rel="category">疑难杂症</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>前段时间写了<a href="http://guard.iteye.com/admin/blogs/2142655">《BAE上连接mongodb每隔十多小时就不能连接的问题(一)》</a>之后暂时的解决了连不上的问题，每隔十小时重启一次，但是这个方法却没有彻底解决问题，偶尔还会出现三四小时就连不上，实在搞不懂问题到底出在哪，到底是bae的mongodb的问题还是mongoose中间件的问题，现象是有做open操作，但是却没有open事件发出，那么我想是不是mongoose存在bug，翻看了源码也没看出来个所以然，不过大概是觉得要重新打开需要保证连接已经关闭的，那么干脆在监听到error事件时就将状态直接改为disconnected，反正是要调用db.close()方法进行关闭连接的，可能close()方法不好使，没有完全关闭，如果我手动将状态设为disconnected，close方法中也会判断是否是这个状态，如果是就直接返回，省的多走其他步骤了。不过这样一来就不会有close事件发出了，根据我所写代码的逻辑，那就不会调用open()方法了，但实际情况确实程序可以正常运行，说明已经重连上了，原来在代码中添加了这个属性：</p>
-<p>Js代码 :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">opts</span> <span style="color:#f92672">=</span> { 
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">db</span><span style="color:#f92672">:</span> { 
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">native_parser</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>  
-</span></span><span style="display:flex;"><span>}, 
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">server</span><span style="color:#f92672">:</span> { 
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">poolSize</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>, 
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">auto_reconnect</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>  
-</span></span><span style="display:flex;"><span>}, 
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">username</span>, 
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">password</span> 
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>上面的红色字体，只能说是可能这个参数起作用了。</p>
-<p>不过由此看来，auto_reconect这个参数要起作用必须是在连接断开的情况下，说明close()方法有时候并没有完全断开连接。</p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -540,11 +536,11 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2026/09/opencode-sensenova/">在 OpenCode 中使用 SenseNova Token Plan</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 		</ul>
 	</div>
 </div>
@@ -596,7 +592,7 @@ util.inherits(constructor, superConstructor)是一个实现对象间原型继承
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (7)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>

@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
-  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="datePublished" content="2026-09-18T17:33:45+08:00">
+  <meta itemprop="dateModified" content="2026-09-18T17:33:45+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,45 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/blogdetail/5db03db400f24e1fd556cec4/" rel="bookmark">
+			让代码配置化
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2019-10-23T11:47:00Z">2019.10.23 11:47</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/" rel="category">产品设计</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h3 id="背景">背景</h3>
+<p>面对运营频繁的页面修改，每次都是换个图，改个字，要么就是在现有的页面基础上新做一个，再稍微的改点东西，虽然这种需求做起来也不是很费事，但也架不住一天一次修改（有点夸张，但的确很多）。日积月累，就开发出很多相似页面，大多数都用作abtest，在众多页面中选出个别页面，其他页面只能被打入冷宫，永远没有访问的机会。显然这些页面留在项目中额外增加了打包编译负担，甚至拖累其他页面速度。</p>
+<h3 id="原来">原来</h3>
+<p>日常开发流程是这样的：</p>
+<p><code> 开发 -&gt; 合代码 -&gt; 上测试环境 -&gt; 测试 -&gt; 合代码 -&gt; 上uat环境 -&gt; 测试 -&gt; 合代码 -&gt; 提发布申请 -&gt; 发布 -&gt; 验收</code></p>
+<p>就算是一个3分钟搞定的需求，流程也需要1天，因为中间有太多的环境切换和人员流转。</p>
+<p>这样的经历所有做过运营活动的童鞋或多或少都有体验，所以很多人也想过做一个编辑器，比如拖拉组件的方式实现一个页面。</p>
+<p>我们曾经有种设想是直接给运营做一个活动编辑器，让他们自己去修改，自己去做页面，自己发布。说实话这个也做过，但是没用起来，原因呢大概就是人性的贪婪与懒惰，当初做出第一版的时候觉得太简单，不能满足使用需求，第二版的时候功能倒是挺丰富，但是运营又不会用。想想那么多css样式，你以为图形化了他们就会用？太天真！干脆教他们写代码好了！</p>
+<h3 id="现在">现在</h3>
+<p>所以这个项目就夭折了。本文演示的是一个将代码配置化的平台。期望解决的是代码冗余，但同时也有效率的提升。
+这个平台最终流程变成了这样：</p>
+<p><code>开发 -&gt; 测试 -&gt; 发布 -&gt; 验收</code></p>
+<p>是的，由原来的11步直接变成了4步，其中<code>开发</code>和<code>发布</code>也比原来更简单了，你可以选择自己喜欢的编辑方式和开发框架，或vscode，或devtool,或工具提供的文本框，或jquery，或vue。可单独对css，js，html修改，将修改的内容直接提交即可看到效果。
+为什么会减少这么多？因为没有了测试环境和uat环境的流转，直接在生产环境操作的。</p>
+<p>是不是会有疑问——直接在生产环境开发会不会有风险？
+答案是：不会！项目本身是分为两个环境，一个是开发环境，另一个是访问环境。开发环境是用于内部开发和测试使用，不对外开放，只有发布后才将开发数据同步到公开环境。</p>
+<p><img src="https://qn-img.hopefly.top/%E7%BC%96%E8%BE%91%E5%99%A84.gif" alt="编辑器演示" title="编辑器演示"></p>
+<p>上图展示的是一个示例程序，提供一种思路，可根据自己需求开发相应功能。比如支持多环境发布，回滚，都可以做到点个按钮就行，不需要等待编译和重启等耗时。因为开发完成后的一切操作都是数据的操作，并不会涉及到编译，所以无论是发布还是回滚都是毫秒完成。
+这种做法适合频繁修改的页面，万年不变的页面就不需要这样做了。</p>
+<h3 id="核心思想">核心思想</h3>
+<p>这个项目的核心思想是将代码做成配置，我们都喜欢做配置平台，让业务来操作数据省去了修改代码，为什么不可以将代码也做成配置？</p>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/blogdetail/5d81a71a00f24e1fd556cc25/" rel="bookmark">
@@ -543,50 +582,6 @@ server {
 <p><img src="https://qn-img.hopefly.top/grpc_nginx3.gif" alt="grpc_nginx3" title="grpc_nginx3"></p>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/blogdetail/5bbf2531f846d21847dc2fcc/" rel="bookmark">
-			linux修改MySQL 5.7.22字符集为utf8
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2018-10-11T10:25:53Z">2018.10.11 10:25</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="category">数据库</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>网上也找了很多方案结果就是奇葩的不成功，最后直接修改<code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>成功了。
-在该文件最后添加</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>default-storage-engine<span style="color:#f92672">=</span>INNODB
-</span></span><span style="display:flex;"><span>character-set-server<span style="color:#f92672">=</span>utf8
-</span></span><span style="display:flex;"><span>collation-server<span style="color:#f92672">=</span>utf8_general_ci
-</span></span></code></pre></div><p>重启成功。</p>
-<p><img src="https://qn-img.hopefly.top/20181011181909.png" alt=""></p>
-<p>这是本地虚拟机里的mysql</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mysql&gt; show variables like <span style="color:#e6db74">&#34;character%&#34;</span>;
-</span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
-</span></span><span style="display:flex;"><span>| Variable_name            | Value                      |
-</span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
-</span></span><span style="display:flex;"><span>| character_set_client     | utf8                       |
-</span></span><span style="display:flex;"><span>| character_set_connection | utf8                       |
-</span></span><span style="display:flex;"><span>| character_set_database   | utf8                       |
-</span></span><span style="display:flex;"><span>| character_set_filesystem | binary                     |
-</span></span><span style="display:flex;"><span>| character_set_results    | utf8                       |
-</span></span><span style="display:flex;"><span>| character_set_server     | utf8                       |
-</span></span><span style="display:flex;"><span>| character_set_system     | utf8                       |
-</span></span><span style="display:flex;"><span>| character_sets_dir       | /usr/share/mysql/charsets/ |
-</span></span><span style="display:flex;"><span>+--------------------------+----------------------------+
-</span></span></code></pre></div><p>完全正确，但是修改阿里云服务器以后还是有点小问题</p>
-<p><img src="https://qn-img.hopefly.top/20181011182126.png" alt=""></p>
-<p><code>character_set_database</code>这一项还是<code>latin1</code>,不过似乎并不影响。
-友情提示：纠正了mysql字符集发现新建的表还是<code>latin1</code>字符集，那有可能是该数据库本身的字符集就不对，可以试着看看。</p>
-<p><img src="https://qn-img.hopefly.top/20181011182445.png" alt=""></p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -610,11 +605,11 @@ server {
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2026/09/opencode-sensenova/">在 OpenCode 中使用 SenseNova Token Plan</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 		</ul>
 	</div>
 </div>
@@ -666,7 +661,7 @@ server {
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (7)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2026s on 月盾的博客</title>
+    <link>https://blog.hopefly.top/2026/</link>
+    <description>Recent content in 2026s on 月盾的博客</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Sep 2026 17:33:45 +0800</lastBuildDate>
+    <atom:link href="https://blog.hopefly.top/2026/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 OpenCode 中使用 SenseNova Token Plan</title>
+      <link>https://blog.hopefly.top/2026/09/opencode-sensenova/</link>
+      <pubDate>Fri, 18 Sep 2026 17:33:45 +0800</pubDate>
+      <guid>https://blog.hopefly.top/2026/09/opencode-sensenova/</guid>
+      <description>&lt;p&gt;OpenCode 是一个面向终端的 AI 编程工具，支持配置多个模型 Provider，并可以在不同模型之间进行切换。&lt;/p&gt;&#xA;&lt;p&gt;如果手上有 &lt;strong&gt;SenseNova Token Plan Token&lt;/strong&gt;，可以直接将 SenseNova 配置到 OpenCode 中使用。目前SenseNova处于公测期间，完全免费试用，可以上手一试。&lt;/p&gt;&#xA;&lt;p&gt;本文记录完整配置过程，并给出一份实际验证可用的 &lt;code&gt;opencode.json&lt;/code&gt; 配置。&lt;/p&gt;&#xA;&lt;h2 id=&#34;一整体方案&#34;&gt;一、整体方案&lt;/h2&gt;&#xA;&lt;p&gt;OpenCode 支持通过 OpenAI-compatible 接口接入第三方模型。&lt;/p&gt;&#xA;&lt;p&gt;SenseNova Token Plan 提供了兼容 OpenAI API 风格的接口，因此不需要额外搭建一个 OpenAI-compatible 服务，可以直接从 OpenCode 请求 SenseNova。&lt;/p&gt;&#xA;&lt;p&gt;整体调用链路如下：&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌─────────────────────┐&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│       OpenCode      │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│     AI 编程工具      │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────┬──────────┘&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           │ OpenAI-compatible API&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           ▼&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┌─────────────────────┐&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ SenseNova Token Plan│&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ token.sensenova.cn  │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└──────────┬──────────┘&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           ├── SenseNova 6.8 Flash Lite&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           │&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           └── DeepSeek V4 Pro&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;核心配置实际上只有三个部分：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

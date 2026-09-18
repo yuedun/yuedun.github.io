@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>在 OpenCode 中使用 SenseNova Token Plan - 月盾的博客</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="在 OpenCode 中使用 SenseNova Token Plan">
+		
+		<meta property="og:url" content="https://blog.hopefly.top/2026/09/opencode-sensenova/">
+  <meta property="og:site_name" content="月盾的博客">
+  <meta property="og:title" content="在 OpenCode 中使用 SenseNova Token Plan">
+  <meta property="og:description" content="在 OpenCode 中使用 SenseNova Token Plan">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="2026">
+    <meta property="article:published_time" content="2026-09-18T17:33:45+08:00">
+    <meta property="article:modified_time" content="2026-09-18T17:33:45+08:00">
+    <meta property="article:tag" content="CI/CD">
+
+		
+  <meta itemprop="name" content="在 OpenCode 中使用 SenseNova Token Plan">
+  <meta itemprop="description" content="在 OpenCode 中使用 SenseNova Token Plan">
+  <meta itemprop="datePublished" content="2026-09-18T17:33:45+08:00">
+  <meta itemprop="dateModified" content="2026-09-18T17:33:45+08:00">
+  <meta itemprop="wordCount" content="801">
+  <meta itemprop="keywords" content="CI/CD">
+		
+		
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="在 OpenCode 中使用 SenseNova Token Plan">
+  <meta name="twitter:description" content="在 OpenCode 中使用 SenseNova Token Plan">
+
+
+	<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	
+		
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9KRMQRCRDQ"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9KRMQRCRDQ');
+        }
+      </script>
+</head>
+<body class="body">
+	<header class="header">
+	
+	<div class="logo">
+		<div class="container">
+			<a class="logo__link" href="/" title="月盾的博客" rel="home">
+				<div class="logo__item logo__text">
+						<div class="logo__title">月盾的博客</div>
+						
+					</div>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+<nav class="menu">
+	<div class="container">
+		<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+			<span class="menu__btn-title" tabindex="-1">菜单</span>
+		</button>
+		<ul class="menu__list">
+			<li class="menu__item">
+				<a class="menu__link" href="/catalog/">
+					
+					<span class="menu__text">目录</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/quicknote/">
+					
+					<span class="menu__text">速记</span>
+					
+				</a>
+			</li>
+			<li class="menu__item">
+				<a class="menu__link" href="/about/">
+					
+					<span class="menu__text">关于我</span>
+					
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+
+	<div class="container wrapper flex">
+		<div class="primary">
+		
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">在 OpenCode 中使用 SenseNova Token Plan</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2026-09-18T17:33:45&#43;08:00">2026.09.18 17:33</time></div></div>
+		</header><div class="content post__content clearfix">
+			<p>OpenCode 是一个面向终端的 AI 编程工具，支持配置多个模型 Provider，并可以在不同模型之间进行切换。</p>
+<p>如果手上有 <strong>SenseNova Token Plan Token</strong>，可以直接将 SenseNova 配置到 OpenCode 中使用。目前SenseNova处于公测期间，完全免费试用，可以上手一试。</p>
+<p>本文记录完整配置过程，并给出一份实际验证可用的 <code>opencode.json</code> 配置。</p>
+<h2 id="一整体方案">一、整体方案</h2>
+<p>OpenCode 支持通过 OpenAI-compatible 接口接入第三方模型。</p>
+<p>SenseNova Token Plan 提供了兼容 OpenAI API 风格的接口，因此不需要额外搭建一个 OpenAI-compatible 服务，可以直接从 OpenCode 请求 SenseNova。</p>
+<p>整体调用链路如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>┌─────────────────────┐
+</span></span><span style="display:flex;"><span>│       OpenCode      │
+</span></span><span style="display:flex;"><span>│     AI 编程工具      │
+</span></span><span style="display:flex;"><span>└──────────┬──────────┘
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           │ OpenAI-compatible API
+</span></span><span style="display:flex;"><span>           ▼
+</span></span><span style="display:flex;"><span>┌─────────────────────┐
+</span></span><span style="display:flex;"><span>│ SenseNova Token Plan│
+</span></span><span style="display:flex;"><span>│ token.sensenova.cn  │
+</span></span><span style="display:flex;"><span>└──────────┬──────────┘
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           ├── SenseNova 6.8 Flash Lite
+</span></span><span style="display:flex;"><span>           │
+</span></span><span style="display:flex;"><span>           └── DeepSeek V4 Pro
+</span></span></code></pre></div><p>核心配置实际上只有三个部分：</p>
+<ol>
+<li>Provider ID</li>
+<li>SenseNova API Base URL</li>
+<li>Token Plan API Key</li>
+</ol>
+<hr>
+<h1 id="二准备-sensenova-token">二、准备 SenseNova Token</h1>
+<p>首先需要准备 SenseNova Token Plan 对应的 API Key。</p>
+<p>拿到 Token 后，可以通过环境变量提供给 OpenCode：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export SENSENOVA_API_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;你的 SenseNova Token&#34;</span>
+</span></span></code></pre></div><p>如果希望每次打开终端都自动生效，可以加入 shell 配置文件。</p>
+<p>例如 macOS 默认使用 zsh：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export SENSENOVA_API_KEY=&#34;你的 SenseNova Token&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span style="display:flex;"><span>source ~/.zshrc
+</span></span></code></pre></div><p>检查：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo $SENSENOVA_API_KEY
+</span></span></code></pre></div><p>能够看到 Token，说明环境变量已经生效。</p>
+<blockquote>
+<p>不建议直接把 API Key 写进 <code>opencode.json</code>，使用环境变量更加安全，也方便更换 Token。</p></blockquote>
+<hr>
+<h1 id="三sensenova-api-地址">三、SenseNova API 地址</h1>
+<p>SenseNova Token Plan 使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>https://token.sensenova.cn/v1
+</span></span></code></pre></div><p>这个地址就是 OpenCode 配置中的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;baseURL&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;https://token.sensenova.cn/v1&#34;</span>
+</span></span></code></pre></div><p>由于接口兼容 OpenAI 风格，所以 OpenCode 可以使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>@ai-sdk/openai-compatible
+</span></span></code></pre></div><p>作为 SDK Provider。</p>
+<hr>
+<h1 id="四opencode-配置">四、OpenCode 配置</h1>
+<p>OpenCode 的配置文件一般是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>opencode.json
+</span></span></code></pre></div><p>或者：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>opencode.jsonc
+</span></span></code></pre></div><p>在用户主目录下~/.config/opencode/opencode.jsonc。
+经过实际验证，可以使用下面的配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;$schema&#34;</span>: <span style="color:#e6db74">&#34;https://opencode.ai/config.json&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;provider&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ollama&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;npm&#34;</span>: <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Ollama&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;options&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:11434/v1&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;models&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;qwen3-vl:2b&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;qwen3-vl:2b&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;sensenova&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;SenseNova Token Plan&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;env&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SENSENOVA_API_KEY&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;npm&#34;</span>: <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;options&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;https://token.sensenova.cn/v1&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;models&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;sensenova-6.8-flash-lite&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;SenseNova 6.8 Flash Lite&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;deepseekv4pro&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;deepseek-v4-pro&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里同时配置了两个 Provider：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ollama
+</span></span><span style="display:flex;"><span>sensenova
+</span></span></code></pre></div><p>其中 Ollama 用于本地模型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>qwen3-vl:2b
+</span></span></code></pre></div><p>SenseNova 用于远程模型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>sensenova-6.8-flash-lite
+</span></span><span style="display:flex;"><span>deepseek-v4-pro
+</span></span></code></pre></div><h2 id="实际上可以不用models部分使用models搜索供应商会自动列出支持的模型">实际上可以不用models部分，使用/models，搜索供应商会自动列出支持的模型。</h2>
+<h1 id="五重点理解-sensenova-provider-配置">五、重点理解 SenseNova Provider 配置</h1>
+<p>SenseNova 这一段是整个配置的核心：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;sensenova&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;SenseNova Token Plan&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;env&#34;</span>: [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;SENSENOVA_API_KEY&#34;</span>
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;npm&#34;</span>: <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;options&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;https://token.sensenova.cn/v1&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;models&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;sensenova-6.8-flash-lite&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;SenseNova 6.8 Flash Lite&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;deepseekv4pro&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;deepseek-v4-pro&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>可以拆成几个部分理解。</p>
+<h2 id="1-provider-id">1. provider ID</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;sensenova&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {}
+</span></span></code></pre></div><p>这里的 <code>sensenova</code> 是 Provider ID。</p>
+<p>后续 OpenCode 中模型的完整标识可以理解为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>sensenova/模型ID
+</span></span></code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>sensenova/sensenova-6.8-flash-lite
+</span></span></code></pre></div><p>以及：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>sensenova/deepseekv4pro
+</span></span></code></pre></div><hr>
+<h2 id="2-name">2. name</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;SenseNova Token Plan&#34;</span>
+</span></span></code></pre></div><p>这是 OpenCode UI 中显示的 Provider 名称。</p>
+<p>它可以自定义，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;SenseNova&#34;</span>
+</span></span></code></pre></div><p>或者：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;SenseNova Token Plan&#34;</span>
+</span></span></code></pre></div><p>不会影响 API 请求。</p>
+<hr>
+<h2 id="3-env">3. env</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;env&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;SENSENOVA_API_KEY&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>告诉 OpenCode 使用哪个环境变量作为 API Key。</p>
+<p>因此：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export SENSENOVA_API_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;xxxxxxxx&#34;</span>
+</span></span></code></pre></div><p>对应：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;env&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;SENSENOVA_API_KEY&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>这样就形成：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>OpenCode
+</span></span><span style="display:flex;"><span>   │
+</span></span><span style="display:flex;"><span>   └── SENSENOVA_API_KEY
+</span></span><span style="display:flex;"><span>             │
+</span></span><span style="display:flex;"><span>             ▼
+</span></span><span style="display:flex;"><span>       SenseNova API
+</span></span></code></pre></div><hr>
+<h2 id="4-npm">4. npm</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;npm&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>
+</span></span></code></pre></div><p>这是非常关键的一项。</p>
+<p>它告诉 OpenCode：</p>
+<blockquote>
+<p>使用 OpenAI-compatible Provider 访问这个模型服务。</p></blockquote>
+<p>因此 SenseNova 不需要在 OpenCode 中存在一个专门的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SenseNova Provider
+</span></span></code></pre></div><p>只要它提供兼容 OpenAI API 的接口，就可以通过：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>@ai-sdk/openai-compatible
+</span></span></code></pre></div><p>接入。</p>
+<p>同样的方式也可以用于其他兼容 OpenAI API 的模型服务。</p>
+<hr>
+<h1 id="六配置-sensenova-68-flash-lite">六、配置 SenseNova 6.8 Flash Lite</h1>
+<p>配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;models&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;sensenova-6.8-flash-lite&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;SenseNova 6.8 Flash Lite&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>其中：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>sensenova-6.8-flash-lite
+</span></span></code></pre></div><p>是实际请求的 Model ID。</p>
+<p>而：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SenseNova 6.8 Flash Lite
+</span></span></code></pre></div><p>只是 OpenCode 中显示的名称。</p>
+<p>两者不一定需要完全相同。</p>
+<p>例如也可以写：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;sensenova-6.8-flash-lite&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;SenseNova Flash&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这样在 OpenCode 中显示的就是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SenseNova Flash
+</span></span></code></pre></div><hr>
+<h1 id="七配置-deepseek-v4-pro">七、配置 DeepSeek V4 Pro</h1>
+<p>同样可以在 SenseNova Provider 下增加：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;deepseekv4pro&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;deepseek-v4-pro&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这里需要注意：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>deepseekv4pro
+</span></span></code></pre></div><p>是 OpenCode 配置中的模型 ID。</p>
+<p>而：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>deepseek-v4-pro
+</span></span></code></pre></div><p>是显示名称。</p>
+<p>如果 SenseNova Token Plan 的接口将该模型映射为这个 Model ID，那么 OpenCode 就会通过同一个 Provider 请求 DeepSeek V4 Pro。</p>
+<p>因此最终可以形成：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SenseNova Token Plan
+</span></span><span style="display:flex;"><span>        │
+</span></span><span style="display:flex;"><span>        ├── SenseNova 6.8 Flash Lite
+</span></span><span style="display:flex;"><span>        │
+</span></span><span style="display:flex;"><span>        └── DeepSeek V4 Pro
+</span></span></code></pre></div><p>这样不需要为 DeepSeek V4 Pro 再创建一个独立 Provider。</p>
+<hr>
+<h1 id="八在-opencode-中选择模型">八、在 OpenCode 中选择模型</h1>
+<p>配置完成后启动 OpenCode：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>opencode
+</span></span></code></pre></div><p>然后查看模型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/models
+</span></span></code></pre></div><p>或者使用 OpenCode 提供的模型选择功能。</p>
+<p>应该可以看到类似：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SenseNova Token Plan
+</span></span><span style="display:flex;"><span> ├── SenseNova 6.8 Flash Lite
+</span></span><span style="display:flex;"><span> └── deepseek-v4-pro
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Ollama
+</span></span><span style="display:flex;"><span> └── qwen3-vl:2b
+</span></span></code></pre></div><p>选择：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>sensenova/sensenova-6.8-flash-lite
+</span></span></code></pre></div><p>或者：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>sensenova/deepseekv4pro
+</span></span></code></pre></div><p>即可使用对应模型进行代码分析和编程。</p>
+<hr>
+<h1 id="九为什么不需要-openai-compatible-中转服务">九、为什么不需要 OpenAI Compatible 中转服务？</h1>
+<p>这是整个方案比较重要的一点。</p>
+<p>很多模型平台虽然不是 OpenAI 官方服务，但提供了类似：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/v1/chat/completions
+</span></span></code></pre></div><p>这样的接口。</p>
+<p>只要接口协议兼容 OpenAI API，就可以：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>OpenCode
+</span></span><span style="display:flex;"><span>   │
+</span></span><span style="display:flex;"><span>   │ @ai-sdk/openai-compatible
+</span></span><span style="display:flex;"><span>   ▼
+</span></span><span style="display:flex;"><span>SenseNova
+</span></span><span style="display:flex;"><span>   │
+</span></span><span style="display:flex;"><span>   ▼
+</span></span><span style="display:flex;"><span>模型
+</span></span></code></pre></div><p>而不是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>OpenCode
+</span></span><span style="display:flex;"><span>   │
+</span></span><span style="display:flex;"><span>   ▼
+</span></span><span style="display:flex;"><span>自己搭建 OpenAI Proxy
+</span></span><span style="display:flex;"><span>   │
+</span></span><span style="display:flex;"><span>   ▼
+</span></span><span style="display:flex;"><span>SenseNova
+</span></span></code></pre></div><p>因此少了一层代理服务。</p>
+<p>对于个人开发环境来说，直接调用通常更加简单。</p>
+<hr>
+<h1 id="十与-ollama-配合使用">十、与 Ollama 配合使用</h1>
+<p>实际上 OpenCode 可以同时配置本地模型和云端模型。</p>
+<p>例如本文配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>                 OpenCode
+</span></span><span style="display:flex;"><span>                    │
+</span></span><span style="display:flex;"><span>          ┌─────────┴─────────┐
+</span></span><span style="display:flex;"><span>          │                   │
+</span></span><span style="display:flex;"><span>          ▼                   ▼
+</span></span><span style="display:flex;"><span>       Ollama              SenseNova
+</span></span><span style="display:flex;"><span>          │                   │
+</span></span><span style="display:flex;"><span>          ▼              ┌────┴────┐
+</span></span><span style="display:flex;"><span>      qwen3-vl:2b        │         │
+</span></span><span style="display:flex;"><span>                         ▼         ▼
+</span></span><span style="display:flex;"><span>                    SenseNova   DeepSeek
+</span></span><span style="display:flex;"><span>                       6.8       V4 Pro
+</span></span></code></pre></div><p>本地模型：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;ollama&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;npm&#34;</span>: <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Ollama&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;options&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:11434/v1&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>SenseNova：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;sensenova&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;npm&#34;</span>: <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;options&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;https://token.sensenova.cn/v1&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>两者本质上使用的是同一种接入方式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>@ai-sdk/openai-compatible
+</span></span></code></pre></div><p>区别只是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Ollama
+</span></span><span style="display:flex;"><span>→ localhost:11434
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SenseNova
+</span></span><span style="display:flex;"><span>→ token.sensenova.cn
+</span></span></code></pre></div><hr>
+<h1 id="十一常见问题">十一、常见问题</h1>
+<h2 id="1-是否需要自己部署-openai-compatible-服务">1. 是否需要自己部署 OpenAI-compatible 服务？</h2>
+<p>不需要。</p>
+<p>SenseNova Token Plan 已经提供兼容接口，可以直接从 OpenCode 调用。</p>
+<hr>
+<h2 id="2-是否需要把-api-key-写进配置文件">2. 是否需要把 API Key 写进配置文件？</h2>
+<p>不建议。</p>
+<p>推荐：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export SENSENOVA_API_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;你的 Token&#34;</span>
+</span></span></code></pre></div><p>配置文件只保留：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;env&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;SENSENOVA_API_KEY&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>这样即使把 <code>opencode.json</code> 提交到 Git，也不会直接泄露 Token。</p>
+<hr>
+<h2 id="3-为什么使用-ai-sdkopenai-compatible">3. 为什么使用 <code>@ai-sdk/openai-compatible</code>？</h2>
+<p>因为 SenseNova 提供的是 OpenAI-compatible API。</p>
+<p>OpenCode 不需要为每一个模型平台实现一套独立 Provider，而是可以通过 OpenAI-compatible Adapter 接入。</p>
+<p>因此同样的思路也适用于其他提供兼容接口的模型服务。</p>
+<hr>
+<h2 id="4-一个-provider-可以配置多个模型吗">4. 一个 Provider 可以配置多个模型吗？</h2>
+<p>可以。</p>
+<p>本文就是一个例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;sensenova&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;models&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;sensenova-6.8-flash-lite&#34;</span>: {},
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;deepseekv4pro&#34;</span>: {}
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>所以 Provider 与 Model 的关系可以理解为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Provider
+</span></span><span style="display:flex;"><span>   │
+</span></span><span style="display:flex;"><span>   ├── Model A
+</span></span><span style="display:flex;"><span>   ├── Model B
+</span></span><span style="display:flex;"><span>   └── Model C
+</span></span></code></pre></div><p>而不是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>一个模型 = 一个 Provider
+</span></span></code></pre></div><hr>
+<h1 id="十二最终配置">十二、最终配置</h1>
+<p>如果已经同时使用 Ollama 和 SenseNova，可以直接使用下面这份配置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;$schema&#34;</span>: <span style="color:#e6db74">&#34;https://opencode.ai/config.json&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;provider&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ollama&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;npm&#34;</span>: <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Ollama&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;options&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:11434/v1&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;models&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;qwen3-vl:2b&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;qwen3-vl:2b&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;sensenova&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;SenseNova Token Plan&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;env&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SENSENOVA_API_KEY&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;npm&#34;</span>: <span style="color:#e6db74">&#34;@ai-sdk/openai-compatible&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;options&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;baseURL&#34;</span>: <span style="color:#e6db74">&#34;https://token.sensenova.cn/v1&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;models&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;sensenova-6.8-flash-lite&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;SenseNova 6.8 Flash Lite&#34;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;deepseekv4pro&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;deepseek-v4-pro&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>环境变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export SENSENOVA_API_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;你的 SenseNova Token&#34;</span>
+</span></span></code></pre></div><p>最终 OpenCode 中可以同时使用：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>┌──────────────────────────────────────┐
+</span></span><span style="display:flex;"><span>│               OpenCode               │
+</span></span><span style="display:flex;"><span>├──────────────────────────────────────┤
+</span></span><span style="display:flex;"><span>│ Ollama                               │
+</span></span><span style="display:flex;"><span>│   └── qwen3-vl:2b                    │
+</span></span><span style="display:flex;"><span>│                                      │
+</span></span><span style="display:flex;"><span>│ SenseNova Token Plan                 │
+</span></span><span style="display:flex;"><span>│   ├── SenseNova 6.8 Flash Lite       │
+</span></span><span style="display:flex;"><span>│   └── DeepSeek V4 Pro                │
+</span></span><span style="display:flex;"><span>└──────────────────────────────────────┘
+</span></span></code></pre></div><p>这套方式的核心价值是：<strong>利用 OpenCode 的 OpenAI-compatible Provider 能力，把 SenseNova Token Plan 直接作为模型后端接入，同时保留 Ollama 等本地模型，最终在 OpenCode 内统一切换。</strong></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ci/cd/" rel="tag">CI/CD</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+
+
+
+		</div>
+		
+	</div>
+	<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2026 月盾.
+			<span class="footer__copyright-credits">基于 <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> 引擎和 <a href="https://github.com/pfadfinder-konstanz/hugo-dpsg/" rel="nofollow noopener" target="_blank">DPSG</a>主題</span>
+			
+		</div>
+		
+
+	</div>
+</footer>
+
+	<script async defer src="/js/menu.js"></script>
+	<script src="/js/custom.js"></script>
+	
+	
+</body>
+</html>

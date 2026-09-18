@@ -19,8 +19,8 @@
 		
   <meta itemprop="name" content="月盾的博客">
   <meta itemprop="description" content="分享golang，nodejs，前端，svelte，sveltekit，系统架构，技术实战，电脑技术，生活感想等。">
-  <meta itemprop="datePublished" content="2025-08-26T19:41:31+08:00">
-  <meta itemprop="dateModified" content="2025-08-26T19:41:31+08:00">
+  <meta itemprop="datePublished" content="2026-09-18T17:33:45+08:00">
+  <meta itemprop="dateModified" content="2026-09-18T17:33:45+08:00">
 		
 		
   <meta name="twitter:card" content="summary">
@@ -107,6 +107,48 @@
 	<header class="main__header">
 		<h1 class="main__title">月盾的博客</h1>
 	</header><article class="list__item post">
+	<figure class="list__thumbnail">
+		<a href="https://blog.hopefly.top/2023/09/wechatchat-developement/">
+			<img src="https://qn-img.hopefly.top/%e5%85%b1%e4%ba%ab%e7%9b%ae%e5%bd%95/09/wechatchat-devolep/%e8%8a%b1%e7%94%9f%e5%a3%b3%e5%9f%9f%e5%90%8d.png?imageMogr2/thumbnail/!20p/" alt="微信开发基础设施准备" />
+		</a>
+	</figure>
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="/2023/09/wechatchat-developement/" rel="bookmark">
+			微信开发基础设施准备
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-09-24T11:07:26&#43;08:00">2023.09.24 11:07</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" rel="category">系统架构</a>
+	</span>
+</div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>多年前微信开发写过一篇关于内网穿透的文章<a href="/blogdetail/55ab0f6ed366f15412cbf596/">《微信开发通过公网访问本地服务器》</a>，随着时间的推移，有些方法已经不再适用。</p>
+<h2 id="本地服务器地址">本地服务器地址</h2>
+<p>前面提到的公网访问本地服务器还是有一些限制，那时候是基于路由器的内网映射实现的，不是所有路由器都具备内网映射功能，就像我现在使用的路由器是移动宽带送的，外面看着挺有内涵，实际功能少的可怜。还是需要通过其他方式实现内网穿透。</p>
+<p><strong>不可用的方式——ngrok</strong></p>
+<p>最开始想通过ngrok来实现，结果发现怎么都无法通过token验证，原因是ngrok会在首次打开时展现广告页面。</p>
+<p><strong>可用的方式——借助花生壳来实现</strong></p>
+<p><img src="https://qn-img.hopefly.top/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E8%8A%B1%E7%94%9F%E5%A3%B3%E5%9F%9F%E5%90%8D.png" alt="花生壳域名.png"></p>
+<p>如果通过客户端无法选择htt和http协议，提示：“不支持web访问方式，如有需要请使用HTTP或HTTPS”，就去web页面配置即可 -&gt; <a href="https://console.hsk.oray.com/forward">https://console.hsk.oray.com/forward</a></p>
+<h2 id="服务器配置">服务器配置</h2>
+<p><img src="https://qn-img.hopefly.top/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.png" alt="微信服务器配置.png"></p>
+<p>此处的<strong>服务器地址(URL)</strong> 不止用于验证token，如果在文档中看到这样的字样，就是指这个地址，比如它还可以用于接收各种消息。这个地址是生产服务器地址，如果是开发阶段也不用将开发服务器地址配置到这里，因为微信提供了专门用于测试的配置，往下看。</p>
+<h2 id="测试号管理">测试号管理</h2>
+<p><a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index">测试号管理</a>点开后就会看到和上面服务器配置一样的配置内容。</p>
+<p><img src="https://qn-img.hopefly.top/%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/09/wechatchat-devolep/%E5%BE%AE%E4%BF%A1%E6%B5%8B%E8%AF%95%E5%8F%B7%E7%AE%A1%E7%90%86.png" alt="微信测试号管理.png"></p>
+<p>测试账号具备所有API权限，所以你不用为了测试接口而花300元认证，而且认证也不对个人开放。</p>
+<h2 id="接口访问白名单">接口访问白名单</h2>
+<p>设置路径：设置与开发 -&gt; 安全中心 -&gt; IP白名单</p>
+<p>这个IP是通过ping内网穿透得到的IP，不是你电脑的内网IP，也不是你的电脑公网IP。有可能会变如果接口突然访问不同请检测是否IP已变动。</p>
+<p>有了以上准备基本就可以正式进入开发阶段了。祝一切顺利！</p>
+	</div>
+</article>
+<article class="list__item post">
 	<header class="list__header">
 		<h2 class="list__title post__title">
 			<a href="/2023/09/https-ca/" rel="bookmark">
@@ -422,30 +464,6 @@ ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-li
 </span></span></code></pre></div><p>如果是在vscode中执行测试代码，则需要设置settings.json文件：</p>
 	</div>
 </article>
-<article class="list__item post">
-	<header class="list__header">
-		<h2 class="list__title post__title">
-			<a href="/2022/12/sveltekit/" rel="bookmark">
-			Sveltekit1.0后的使用感受
-			</a>
-		</h2>
-		<div class="list__meta meta"><div class="meta__item-author meta__item">
-	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">月盾</span>
-</div>
-<div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2022-12-31T11:02:40&#43;08:00">2022.12.31 11:02</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/%E5%89%8D%E7%AB%AF/" rel="category">前端</a>
-	</span>
-</div></div>
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		<p>之前提到过<a href="/blogdetail/60628dfa8f0b5a0240684581/">关于svelte框架——sapper和sveltekit的发展</a>，已经是1年前的事了，其中提到过svelte的框架sapper和sveltekit，sapper已经明确不再更新了，官方推荐的是sveltekit。然后经过两年的迭代更新，于2022年12月终于推出了1.0版本。可以看看官方博客对1.0的介绍<a href="https://svelte.dev/blog/announcing-sveltekit-1.0">Announcing SvelteKit 1.0</a>。</p>
-<p>然后谈谈个人感受。</p>
-<p><strong>优点：</strong> sveltekit集成的还不错，开发体验可以，使用官方提供的脚手架创建的项目就可以直接使用，不需要做任何配置。热更新，响应速度快，支持typescript等等，该有的都有了。</p>
-<p><strong>缺点：</strong> 又是一个全新轮子，这也是整个前端的通病，除了js是通用的，其他的都能给你整出花来，sveltekit在1.0版本之内已经有破坏性的更新，一年前创建的新项目，一年后基本不能用了。</p>
-<p>至于要不要使用，那就看个人情况了，如果你厌烦了其他框架，倒是可以尝尝鲜，如果你想以此来做长期项目的话，个人就不推荐了，毕竟太新，而且向下兼容又做的不好，隔三差五一个破坏性更新，这种折腾劲恐怕没几个人受得了。而且对自己的技术也不能积累，长此以往并没有好处。</p>
-<p><a href="https://kit.svelte.dev/docs/introduction">sveltekit官方文档</a></p>
-	</div>
-</article>
 
 		
 <div class="pagination">
@@ -469,11 +487,11 @@ ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-li
 	<h4 class="widget__title">近期文章</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2026/09/opencode-sensenova/">在 OpenCode 中使用 SenseNova Token Plan</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2025/08/%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0/">博客终于可以更新了</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/10/socketio-cluster/">socket.io多实例集群化实现</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/08/gitlab-cicd-harbor/">gitlab-ci使用Harbor机器人账户</a></li>
 			<li class="widget__item"><a class="widget__link" href="/2024/05/miniprogram-page-comunicate/">微信小程序页面之间传递数据和通信</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2024/02/node-deno-bun-llrt/">又一个比Nodejs快的运行时，它叫LLRT</a></li>
 		</ul>
 	</div>
 </div>
@@ -525,7 +543,7 @@ ld: warning: object file (/var/folders/9p/2x3ls9kn7qb59hf9l9mtfs8s6rbmfg/T/go-li
 		<a class="widget-taglist__link widget__link btn" href="/tags/502/" title="502">502 (3)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/beego/" title="Beego">Beego (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chrome/" title="Chrome">Chrome (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (6)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ci/cd/" title="CI/CD">CI/CD (7)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cluster/" title="Cluster">Cluster (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/consul/" title="Consul">Consul (2)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker (4)</a>
